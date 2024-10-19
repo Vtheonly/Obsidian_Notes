@@ -18,7 +18,7 @@ In Vim, `w`, `e`, and `b` are motion commands used to move the cursor within the
 
 Assume the text is as follows, with the cursor starting at `|`:
 
-```
+```sh
 This is a test sentence.
 ```
 
