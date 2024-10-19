@@ -1,0 +1,198 @@
+{
+  "main": {
+    "id": "308deefd054d3722",
+    "type": "split",
+    "children": [
+      {
+        "id": "7bc1a8d205cc3bec",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "922996e796a6e631",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Level 8 Async API/Active Recall Test/Test - 56.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b63c96ca28db4b02",
+    "type": "split",
+    "children": [
+      {
+        "id": "1838c8c8f0f7bcb6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f5d36d4cd6c1b085",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "dc46c18453518b9f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0fc76c05fd59a55e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "275bf1f6c1e32571",
+    "type": "split",
+    "children": [
+      {
+        "id": "c8a89ea9a3cfabe6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "74a95ceee9eb25be",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Level 8 Async API/Active Recall Test/Test - 56.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "b951e8b1df6bc057",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Level 8 Async API/Active Recall Test/Test - 56.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "05d5de92c60ce5e5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "d3047e3ee9788e59",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Level 8 Async API/Active Recall Test/Test - 56.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true,
+      "zk-prefixer:Create new unique note": true,
+      "publish:Publish changes...": true,
+      "markdown-importer:Open format converter": true
+    }
+  },
+  "active": "922996e796a6e631",
+  "lastOpenFiles": [
+    "Level 1/Active Recall Test/Test - 21 - Functions.md",
+    "Level 1/Lessons/21 - Functions.md",
+    "Level 10 Interview Test/README.md",
+    "Level 8 Async API/Active Recall Test/Test - 56.md",
+    "Level 7/Active Recall Test/Test - 55 - and exporting.md",
+    "Level 7/Active Recall Test/Test - 54 - Generator.md",
+    "Level 6/Active Recall Test/Test - 53 - and new.md",
+    "Level 6/Active Recall Test/Test - 52 - static.md",
+    "Level 6/Active Recall Test/Test - 51 - OOP.md",
+    "Level 6/Active Recall Test/Test - 50 - Metadata and Property Descriptors.md",
+    "Level 6/Active Recall Test/Test - 49 - Functions.md",
+    "Level 5/Active Recall Test/Test - 48 - Array.copyWithin.md",
+    "Level 4/Active Recall Test/Test - 47 - Use WeakSet.md",
+    "Level 4/Active Recall Test/Test - 46 - WeakSet.md",
+    "Level 4/Active Recall Test/Test - 45 - Prototype.md",
+    "Level 4/Active Recall Test/Test - 44 - Maps.md",
+    "Level 4/Active Recall Test/Test - 43 - Iterator.md",
+    "Level 4/Active Recall Test/Test - 42 - Destructuring.md",
+    "Level 3/Active Recall Test/Test - 41 - and clearTimeout.md",
+    "Level 3/Active Recall Test/Test - 40 - Storage.md",
+    "Level 3/Active Recall Test/Test - 39 - Storage.md",
+    "Level 3/Active Recall Test/Test - 38 - Object Model.md",
+    "Level 3/Active Recall Test/Test - 37 - prompt, confirm.md",
+    "Level 2/Active Recall Test/Test - 36 - classList.md",
+    "Level 2/Active Recall Test/Test - 35 - Styling.md",
+    "Level 2/Active Recall Test/Test - 34 - Creating node.md",
+    "makeTest.sh",
+    "Node/makeTest.sh",
+    "Node/Lesson",
+    "Node/Active Recall Test",
+    "Node",
+    "organize.sh",
+    "Untitled",
+    "Untitled/Level 8 Async",
+    "Level API",
+    "Level 7",
+    "Untitled.canvas",
+    "Pasted image 20240718011535.png",
+    "Pasted image 20240718015935.png",
+    "Pasted image 20240717212523.png",
+    "Pasted image 20240717212353.png",
+    "Pasted image 20240718011130.png",
+    "21 - functions/Untitled.canvas"
+  ]
+}

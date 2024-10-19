@@ -1,0 +1,270 @@
+{
+  "main": {
+    "id": "e3c2aeab73cfb3af",
+    "type": "split",
+    "children": [
+      {
+        "id": "961f1f12f074baa4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0b6e1ce7d0b7759e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Main/Lessons/Chapter 3 Classical Models of Inter-process Communication.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Chapter 3 Classical Models of Inter-process Communication"
+            }
+          },
+          {
+            "id": "39464be34ea96c9d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Main/Lessons/Chapter 3 Classical Models of Inter-process Communication.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Chapter 3 Classical Models of Inter-process Communication"
+            }
+          },
+          {
+            "id": "07e163ad5798a7d6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Main/Lessons/Chapter 4 Monitors and Critical Regions.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Chapter 4 Monitors and Critical Regions"
+            }
+          },
+          {
+            "id": "ca569b91e4f17b1c",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          },
+          {
+            "id": "5a73a6a7ecfd92c0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Untitled.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Untitled"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "750e786274084096",
+    "type": "split",
+    "children": [
+      {
+        "id": "e69cf6904b3dc40a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1b4b3edcd0863da6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "08d76ae2d547eaa2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "5c40ebcaf1c2fdc4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "15e0256d6dab06c6",
+    "type": "split",
+    "children": [
+      {
+        "id": "a9a89c290e04a967",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "df1a5df856aed997",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "2025/Chapter - 1/Untitled.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Untitled"
+            }
+          },
+          {
+            "id": "191c9451f1061453",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "2025/Chapter - 1/Untitled.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Untitled"
+            }
+          },
+          {
+            "id": "9875f9a0cb5f0832",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "f8d1bdb2855965c1",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2025/Chapter - 1/Untitled.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Untitled"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true,
+      "audio-recorder:Start/stop recording": false
+    }
+  },
+  "active": "5a73a6a7ecfd92c0",
+  "lastOpenFiles": [
+    "Untitled.md",
+    "Main/Active Recall Test/Chapter 2.md",
+    "Main/Active Recall Test/Chapter 1.md",
+    "Main/Active Recall Test/Chapter 4.md",
+    "Main/Lessons/Chapter 4 Monitors and Critical Regions.md",
+    "Main/Lessons/Chapter 3 Classical Models of Inter-process Communication.md",
+    "Main/Lessons/Chapter 2 Process Synchronization.md",
+    "Main/Lessons/Chapter 1 Introduction to Tasks and Sequential Processes.md",
+    "Main/TPs/TP - 1.md",
+    "Main/Active Recall Test/Chapter 3.md",
+    "2024/Cours - 1/Chapter 3 - Interprocess Communication Models.md",
+    "2024/Cours - 1/Chapter 2 - Synchronisation des processus.md",
+    "2024/Cours - 2/Interprocess Communication.md",
+    "2024/Cours - 2/3..md",
+    "2024/Cours - 2/2..md",
+    "2024/Cours - 2/1..md",
+    "2024/Cours - 1/Chapter 0 - Index.md",
+    "2024/Cours - 1/Chapter 1 - Introduction.md",
+    "Untitled",
+    "Multi Threading/Lessons/Model - 1/Part - 1/7 - Converting Single-threaded Code to Multi-threaded Code.md",
+    "Multi Threading/Active Learning Tests/UMBB/Test - 0 - Understanding and Managing Threads.md",
+    "2025/Chapter - 2",
+    "Main/Active Recall Test",
+    "2025/Chapter - 3",
+    "Multi Threading/Lessons/Model - 1/Part - 1/0 - Advanced Concepts and Practical Applications.md",
+    "Multi Threading/Lessons/Model - 1/Part - 1/6 - Threads in Distributed Systems.md",
+    "Multi Threading/Lessons/Model - 1/Part - 1/2 - Multi-threading in Modern Systems.md",
+    "Multi Threading/Lessons/Model - 1/Part - 1/3 - Multi-threading Models.md",
+    "Multi Threading/Lessons/Model - 1/Part - 1/4 - Kernel-Level Threads and POSIX Thread.md",
+    "Multi Threading/Lessons/Model - 1/Part - 1/5 - Thread Creation and PID Management.md",
+    "Multi Threading/Active Learning Tests/Model - 1",
+    "Multi Threading/Active Learning Tests/UMBB",
+    "Multi Threading/Lessons/UMBB",
+    "Multi Threading/Lessons/Model - 1/Part - 1",
+    "assets/Pasted image 20241016225815.png",
+    "assets/Pasted image 20241016225748.png",
+    "assets/Pasted image 20241016225541.png",
+    "assets/Pasted image 20241016225511.png",
+    "assets/Pasted image 20241016224807.png",
+    "assets/Pasted image 20241016222634.png",
+    "Multi Threading/Lessons/Model - 1",
+    "assets/Pasted image 20241016221639.png",
+    "assets/Pasted image 20241016222048.png",
+    "assets",
+    "assets/Pasted image 20241016221848.png",
+    "Pasted image 20240526150023.png",
+    "Untitled.canvas",
+    "Untitled 1.canvas"
+  ]
+}

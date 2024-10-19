@@ -1,0 +1,1 @@
+ **Wsgi Server**: Python applications are typically run using a WSGI (Web Server Gateway Interface) server, such as Gunicorn or uWSGI, which serves as a bridge between the web server (like Nginx or Apache) and the Python application.

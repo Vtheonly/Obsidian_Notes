@@ -1,0 +1,200 @@
+{
+  "main": {
+    "id": "9f17be95a2ec801f",
+    "type": "split",
+    "children": [
+      {
+        "id": "345b234adfe07c85",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "982d82edb3024224",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "7 - Design Pattern/1. Design Pattern.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c2c22c1f3e662016",
+    "type": "split",
+    "children": [
+      {
+        "id": "3f4ced52c52d8196",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8aae07e0fe99b640",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "23b604768045da9d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "3d7928978db14234",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 390.5
+  },
+  "right": {
+    "id": "1ef7b2412217203f",
+    "type": "split",
+    "children": [
+      {
+        "id": "5db573c97dab7b20",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "99180b362007b563",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "7 - Design Pattern/1. Design Pattern.md",
+                "collapseAll": false,
+                "extraContext": true,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "34790f2615fdd6ca",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "7 - Design Pattern/1. Design Pattern.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "a2a3ee5cf6fb70c7",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "756332d3cd0235c9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "7 - Design Pattern/1. Design Pattern.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "canvas:Create new canvas": false,
+      "graph:Open graph view": false,
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true
+    }
+  },
+  "active": "982d82edb3024224",
+  "lastOpenFiles": [
+    "3 - Objects Diagram/1. Objects Diagram.md",
+    "1 - Use Case Diagram/3. Actors.md",
+    "1 - Use Case Diagram/4. Relationship between actors.md",
+    "1 - Use Case Diagram/6. relationships between use cases.md",
+    "1 - Use Case Diagram/5. paths between actors and use cases.md",
+    "1 - Use Case Diagram/7. Generalization vs Extension.md",
+    "1 - Use Case Diagram/8. naming CU.md",
+    "1 - Use Case Diagram/9. Temporal and Sequential Aspect.md",
+    "1 - Use Case Diagram/10. Association, inheritance, and dependency..md",
+    "0 - Intro/3. UML.md",
+    "0 - Intro/1. Introduction.md",
+    "1 - Use Case Diagram/0. Exam Suggestion.md",
+    "1 - Use Case Diagram/1. Use case.md",
+    "7 - Design Pattern/1. Design Pattern.md",
+    "2 - Class Diagram/5.3 Class Digram.md",
+    "2 - Class Diagram/5.2 Class Digram.md",
+    "2 - Class Diagram/5.1 Class Digram.md",
+    "0 - Intro/2. Lifecycle.md",
+    "Untitled.md",
+    "0 - Intro",
+    "3 - Objects Diagram",
+    "Bank Sheet.md",
+    "Images/Pasted image 20240523001316.png",
+    "7 - Design Pattern",
+    "Images/Pasted image 20240525013022.png",
+    "Images/Pasted image 20240525020343.png",
+    "1 - Use Case Diagram/0 - Exam Suggestion.md",
+    "2 - Class Diagram",
+    "Images/Pasted image 20240525012607.png",
+    "Images/Pasted image 20240525020322.png",
+    "Images/Pasted image 20240525014955.png",
+    "Images/Pasted image 20240525014934.png",
+    "Images/Pasted image 20240525014234.png",
+    "Images/Pasted image 20240525012747.png",
+    "Images/Pasted image 20240523001511.png",
+    "1 - Use Case Diagram/4. Use Case.md",
+    "SE2/7..md",
+    "SE2/6..md",
+    "SE2/5..md",
+    "SE2/4..md",
+    "SE2",
+    "Images",
+    "Class Digram",
+    "Untitled.canvas",
+    "TD",
+    "jj.pdf",
+    "serverStartup.pdf"
+  ]
+}

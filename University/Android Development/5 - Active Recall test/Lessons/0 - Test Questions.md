@@ -1,0 +1,2 @@
+5. Pour une activité Android, expliquez comment sauver des informations d’un lancement à l’autre. (1 point)
+Que se passe-t-il lorsqu’on modifie les requêtes de création des tables d’une BDD SQLite sur Android (ex. ajouter des tables ou des colonnes) ?

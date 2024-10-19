@@ -1,0 +1,182 @@
+{
+  "main": {
+    "id": "631852f936d208d1",
+    "type": "split",
+    "children": [
+      {
+        "id": "058990dfbb408835",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7c59f8c4c853a054",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Obsidian Preview.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "972b016094fde915",
+    "type": "split",
+    "children": [
+      {
+        "id": "b4f0425ed82a75ba",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "73864273544d66f4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "f377c9c273999612",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "58528a43756b8291",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "76d46b638c842c54",
+    "type": "split",
+    "children": [
+      {
+        "id": "5ee4339bdcc37c17",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "eecce2abbdf8bac8",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Obsidian Preview.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "24f8205d03cc73b9",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Obsidian Preview.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "a9db23529248c315",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "470d552f1fe02d0f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Obsidian Preview.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-kanban:Create new board": false
+    }
+  },
+  "active": "7c59f8c4c853a054",
+  "lastOpenFiles": [
+    "2024-10-16.md",
+    "Obsidian Preview.md",
+    "Kanban Board.md",
+    "Untitled.canvas",
+    "Level 4 - Pointers/Active Recall Test/Test - 11 - pointers to function.md",
+    "Level 4 - Pointers/Active Recall Test/Test - 10 - Constant Pointer.md",
+    "Untitled.md",
+    "Untitled Kanban.md",
+    "Untitled Kanban 1.md",
+    "Level 0 - Compiler/Lessons/0 - GNU.md",
+    "Level 0 - Compiler/Active Recall Test/Test - 1 - GCC.md",
+    "Level 3 - Structs/Active Recall Test/Test - 0 - Structs.md",
+    "Flow Charts.canvas",
+    "Untitled Kanban 5.md",
+    "Untitled Kanban 2.md",
+    "Untitled Kanban 3.md",
+    "Untitled Kanban 4.md",
+    "Level 4 - Pointers/Active Recall Test/Test - 2 - Referencing and Dereferencing.md",
+    "Level 4 - Pointers/Lessons/2 - Referencing and Dereferencing.md",
+    "Level 4 - Pointers/Lessons/9 - int a vs int a.md",
+    "Level 4 - Pointers/Lessons/4 - malloc.md",
+    "Level 4 - Pointers/Lessons/0 - Introduction to Pointers in C.md",
+    "Level 4 - Pointers/Lessons/1 - Difference Between Memory Address and Pointe.md",
+    "Level 4 - Pointers/Active Recall Test/Test - 1 - Difference Between Memory Address and Pointe.md",
+    "Level 4 - Pointers/Active Recall Test/Test - 0 - Introduction to Pointers in C.md",
+    "Level 5 - Memory/Active Recall Test/Test - 1 - Bit-Fields.md",
+    "Level 5 - Memory/Active Recall Test/Test - 0 - Stack and Heap.md",
+    "Assetes/Picture - 1.png"
+  ]
+}
