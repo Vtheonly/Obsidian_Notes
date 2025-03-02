@@ -1,4 +1,4 @@
-The provided text introduces some fundamental notations and concepts related to formal languages and alphabets. Let's break down these concepts:
+=The provided text introduces some fundamental notations and concepts related to formal languages and alphabets. Let's break down these concepts:
 
 **Alphabet (Alphabète):**
 - An alphabet is a finite set whose elements are called letters. For example, in the binary alphabet, the letters are '0' and '1'.

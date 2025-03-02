@@ -1,0 +1,197 @@
+{
+  "main": {
+    "id": "c17fa6ad89ff3ca8",
+    "type": "split",
+    "children": [
+      {
+        "id": "7553ab1312acfd4b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a669c641f8cc4de3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Active Learning Tests/Model - 1/Part - 1/0 - Advanced Concepts and Practical Applications.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "0 - Advanced Concepts and Practical Applications"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "233a9e7f4d90d10d",
+    "type": "split",
+    "children": [
+      {
+        "id": "5f2d65d0a547424d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "40fedcd9709b4144",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "64e882b15770e73d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "pth",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "2d9de11777352b92",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "839ebb94bf6dbf6d",
+    "type": "split",
+    "children": [
+      {
+        "id": "4ee43b1c9f234d7e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fe0c8b1d06900eed",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Lessons/UMBB/0 - Understanding and Managing Threads.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 0 - Understanding and Managing Threads"
+            }
+          },
+          {
+            "id": "cf9bae7c60443c6f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Lessons/UMBB/0 - Understanding and Managing Threads.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 0 - Understanding and Managing Threads"
+            }
+          },
+          {
+            "id": "16f19fc14cb48670",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "e189392747fba7d2",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Lessons/UMBB/0 - Understanding and Managing Threads.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 0 - Understanding and Managing Threads"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "40fedcd9709b4144",
+  "lastOpenFiles": [
+    "Lessons/Model - 1/Part - 1/1 - Advanced Concepts and Practical Applications.md",
+    "Active Learning Tests/UMBB/Test - 0 - Understanding and Managing Threads.md",
+    "Active Learning Tests/Model - 1/Part - 1/4 - Kernel-Level Threads and POSIX Thread.md",
+    "Active Learning Tests/Model - 1/Part - 1/7 - Converting Single-threaded Code to Multi-threaded Code.md",
+    "Lessons/Model - 1/Part - 1/3 - Multi-threading Models.md",
+    "Lessons/Model - 1/Part - 1/6 - Threads in Distributed Systems.md",
+    "Lessons/Model - 1/Part - 1/5 - Thread Creation and PID Management.md",
+    "Lessons/Model - 1/Part - 1/7 - Converting Single-threaded Code to Multi-threaded Code.md",
+    "Lessons/UMBB/0 - Understanding and Managing Threads.md",
+    "other/More Examples on threads.md",
+    "other/POSIX threads.md",
+    "Untitled.md",
+    "Lessons/Model - 1/Part - 1/2 - Multi-threading in Modern Systems.md",
+    "Lessons/Model - 1/Part - 1/4 - Kernel-Level Threads and POSIX Thread.md",
+    "assets/Pasted image 20241016225815.png",
+    "assets/Pasted image 20241016225748.png",
+    "assets/Pasted image 20241016225541.png",
+    "assets/Pasted image 20241016225511.png",
+    "assets/Pasted image 20241016224807.png",
+    "assets/Pasted image 20241016222634.png",
+    "assets/Pasted image 20241016222048.png",
+    "assets/Pasted image 20241016221848.png",
+    "assets/Pasted image 20241016221639.png",
+    "assets",
+    "Active Learning Tests/Model - 1/Part - 1/6 - Threads in Distributed Systems.md",
+    "Active Learning Tests/Model - 1/Part - 1/5 - Thread Creation and PID Management.md",
+    "Active Learning Tests/Model - 1/Part - 1/3 - Multi-threading Models.md",
+    "Active Learning Tests/Model - 1/Part - 1/2 - Multi-threading in Modern Systems.md",
+    "Active Learning Tests/Model - 1/Part - 1/0 - Advanced Concepts and Practical Applications.md"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+	"nodes":[
+		{"id":"b9c3d8e5a6f7g8h9","type":"text","text":"Traditional IT","x":-450,"y":-40,"width":250,"height":100},
+		{"id":"c0d4e5f6g7h8i9j0","type":"text","text":"**You Manage Everything:**\n\n- Network\n- Storage\n- Servers\n- Virtualization\n- OS\n- Middleware\n- Runtime environment\n- Data\n- Application","x":-450,"y":100,"width":250,"height":200},
+		{"id":"d1e5f9g2h3i4j5k6","type":"text","text":"IaaS\n(Infrastructure as a Service)","x":0,"y":-40,"width":250,"height":100,"color":"5"},
+		{"id":"e2f6g0h3i4j5k7l8","type":"text","text":"**Provider Manages:**\n- Network\n- Storage\n- Servers\n- Virtualization\n\n**You Manage:**\n- OS\n- Middleware\n- Runtime environment\n- Data\n- Application","x":0,"y":100,"width":250,"height":200},
+		{"id":"f3g7h1i4j5k8l9m0","type":"text","text":"PaaS\n(Platform as a Service)","x":450,"y":-40,"width":250,"height":100,"color":"2"},
+		{"id":"g4h8i2j5k9l0m1n2","type":"text","text":"**Provider Manages:**\n- Network\n- Storage\n- Servers\n- Virtualization\n- OS\n- Middleware\n\n**You Manage:**\n- Runtime environment\n- Data\n- Application","x":450,"y":100,"width":250,"height":200},
+		{"id":"h5i9j3k6l0m1n3o4","type":"text","text":"SaaS\n(Software as a Service)","x":900,"y":-40,"width":250,"height":100,"color":"3"},
+		{"id":"i6j0k4l7m1n4o5p6","type":"text","text":"**Provider Manages:**\n- Network\n- Storage\n- Servers\n- Virtualization\n- OS\n- Middleware\n- Runtime environment\n\n**You Manage:**\n- Data\n- Application\n\n**(Sometimes just the Application)**","x":900,"y":100,"width":250,"height":200},
+		{"id":"6a7b29c1d34e5f8a","type":"text","text":"Cloud Service Models","x":275,"y":-340,"width":350,"height":60,"color":"1"},
+		{"id":"j7k1l5m8n2o5p7q8","type":"text","text":"**Key Takeaway:**\n\nAs you move from IaaS to SaaS, the Cloud Provider manages more, and you manage less.","x":400,"y":500,"width":350,"height":160,"color":"4"}
+	],
+	"edges":[
+		{"id":"k8l2m6n9o3p6q9r0","fromNode":"b9c3d8e5a6f7g8h9","fromSide":"right","toNode":"d1e5f9g2h3i4j5k6","toSide":"left","label":"Compared to"},
+		{"id":"l9m3n7o0p4q7r1s2","fromNode":"d1e5f9g2h3i4j5k6","fromSide":"right","toNode":"f3g7h1i4j5k8l9m0","toSide":"left","label":"Evolution"},
+		{"id":"m0n4o8p1q5r8s2t3","fromNode":"f3g7h1i4j5k8l9m0","fromSide":"right","toNode":"h5i9j3k6l0m1n3o4","toSide":"left","label":"Evolution"},
+		{"id":"n1o5p9q2r6s9t3u4","fromNode":"6a7b29c1d34e5f8a","fromSide":"bottom","toNode":"b9c3d8e5a6f7g8h9","toSide":"top"},
+		{"id":"o2p6q0r3s7t0u5v6","fromNode":"6a7b29c1d34e5f8a","fromSide":"bottom","toNode":"d1e5f9g2h3i4j5k6","toSide":"top"},
+		{"id":"p3q7r1s4t8u1v7w8","fromNode":"6a7b29c1d34e5f8a","fromSide":"bottom","toNode":"f3g7h1i4j5k8l9m0","toSide":"top"},
+		{"id":"q4r8s2t5u9v2w8x9","fromNode":"6a7b29c1d34e5f8a","fromSide":"bottom","toNode":"h5i9j3k6l0m1n3o4","toSide":"top"},
+		{"id":"r5s9t3u6v0w3x0y1","fromNode":"d1e5f9g2h3i4j5k6","fromSide":"bottom","toNode":"j7k1l5m8n2o5p7q8","toSide":"top"},
+		{"id":"s6t0u4v7w1x4y1z2","fromNode":"f3g7h1i4j5k8l9m0","fromSide":"bottom","toNode":"j7k1l5m8n2o5p7q8","toSide":"top"},
+		{"id":"t7u1v5w8x2y5z2a3","fromNode":"h5i9j3k6l0m1n3o4","fromSide":"bottom","toNode":"j7k1l5m8n2o5p7q8","toSide":"top"}
+	]
+}

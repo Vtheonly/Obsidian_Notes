@@ -4,20 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "75718614fb92a563",
+        "id": "56da84c233af5d12",
         "type": "tabs",
         "children": [
           {
-            "id": "51e03412c17b065d",
+            "id": "a475fc5479e8054b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0 - Intro/0 - Rappel THL (Very Important).md",
+                "file": "4 - Intermediate Code Generation/Untitled.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Untitled"
             }
           }
         ]
@@ -40,7 +42,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -49,21 +53,22 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "refac",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 255.5,
-    "collapsed": true
+    "width": 377.5
   },
   "right": {
     "id": "020d14730466135d",
@@ -79,10 +84,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "0 - Intro/0 - Rappel THL (Very Important).md",
+                "file": "4 - Intermediate Code Generation/3 - Multiplication in Compiler.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 3 - Multiplication in Compiler"
             }
           },
           {
@@ -91,8 +98,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "0 - Intro/0 - Rappel THL (Very Important).md"
-              }
+                "file": "4 - Intermediate Code Generation/3 - Multiplication in Compiler.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 3 - Multiplication in Compiler"
             }
           },
           {
@@ -104,7 +113,9 @@
                 "sortOrder": "frequency",
                 "showSearch": false,
                 "searchQuery": ""
-              }
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
             }
           }
         ]
@@ -124,47 +135,52 @@
       "zk-prefixer:Create new unique note": true
     }
   },
-  "active": "b2452462eb233b59",
+  "active": "a475fc5479e8054b",
   "lastOpenFiles": [
+    "Youtube/1 - compiler phases.md",
+    "4 - Intermediate Code Generation/Untitled.md",
+    "Youtube/0 - Intro.md",
+    "Youtube/2 - the Symbol Table.md",
+    "Youtube/3 - Understanding the Parsing Techniques.md",
+    "Factory Design.md",
+    "2 - Syntax Analysis/4. Notions of FIRST and FOLLOW Sets.md",
+    "2 - Syntax Analysis/3. Basic Concepts.md",
+    "2 - Syntax Analysis/3.6 Dangling If Else.md",
+    "1 - Lexical Analysis/1. Lexical Analysis.md",
+    "2 - Syntax Analysis/3.5 Refactoring, factoring, and ensuring non-ambiguity.md",
+    "4 - Intermediate Code Generation/Quadruplets - 3/P2.png",
+    "4 - Intermediate Code Generation/Quadruplets - 3/P1.png",
     "0 - Intro/1 - Intro.md",
-    "1 - Lexical Analysis/FLEX/0 - Intro.md",
-    "1 - Lexical Analysis/1 - Lexical Analysis.md",
-    "4 - Intermediate Code Generation/1 - Triplets.md",
-    "6 - Object Code Generation/1 - Assembly.md",
-    "2 - Syntax Analysis/3 -  FIRST and FOLLOW.md",
-    "2 - Syntax Analysis/2 - Tree Generation.md",
-    "2 - Syntax Analysis/1 - Syntax Analysis.md",
-    "4 - Intermediate Code Generation/3 - Multiplication in Compiler.md",
-    "4 - Intermediate Code Generation/2 - Quadruplets vs. Triplets.md",
-    "5 - Intermediate Code Optimization/1 - Code Optimization.md",
-    "202409161846.md",
+    "Youtube",
+    "1 - Lexical Analysis/2. Definitions.md",
+    "4 - Intermediate Code Generation/Quadruplets - 1/Facts.md",
+    "4 - Intermediate Code Generation/Quadruplets - 1/Expectancy.md",
+    "4 - Intermediate Code Generation/Quadruplets - 2/P1.png",
+    "4 - Intermediate Code Generation/Quadruplets - 3",
+    "4 - Intermediate Code Generation/Quadruplets - 2",
+    "4 - Intermediate Code Generation/Quadruplets - 1",
+    "hidden/pics/Pasted image 20241211175908.png",
+    "2 - Syntax Analysis/9. Descending Parsing SLR(1).md",
+    "1 - Lexical Analysis/FLEX/TP Lex Code.md",
+    "2 - Syntax Analysis/8. Descending Parsing LR(1).md",
+    "2 - Syntax Analysis/7. Descending Parsing LL(K).md",
+    "2 - Syntax Analysis/6. Descending Parsing LL(1).md",
+    "2 - Syntax Analysis/5. Descending Parsing LL(0).md",
+    "2 - Syntax Analysis/4.5. Additional Grammar Examples.md",
+    "1 - Lexical Analysis/FLEX/LEX Exercises.md",
+    "1 - Lexical Analysis/FLEX/Flex Resume - 01.md",
+    "1 - Lexical Analysis/5. Construction of a Lexical Analyzer.md",
+    "1 - Lexical Analysis/FLEX/Flex Resume - 02.md",
+    "hidden/pics",
+    "hidden",
+    "hidden/Foucs",
+    "1 - Lexical Analysis/Resume lex - (1).pdf",
     "1 - Lexical Analysis/FLEX",
-    "m.md",
-    "202409161849.md",
-    "202409161848.md",
-    "202409161847.md",
-    "0 - Intro/0 - Rappel THL (Very Important).md",
-    "Pasted image 20240531183934.png.md",
-    "1 - Lexical Analysis/2 - User Knowledge vs. Compiler Control.md",
-    "1 - Lexical Analysis/9 - Lexeme and tokens.md",
-    "1 - Lexical Analysis/1 - Lexical Analysis 1.md",
     "6 - Object Code Generation",
-    "5 - Intermediate Code Optimization",
-    "4 - Intermediate Code Generation",
-    "3 - Semantic Analysis",
     "Untitled.canvas",
     "Images/Pasted image 20240531183934.png",
     "Images/Pasted image 20240603044339.png",
     "Images/Pasted image 20240603231306.png",
-    "0 - Intro/0 - Compilation Overall steps.md",
-    "Untitled 2",
-    "2 - Syntax Analysis",
-    "1 - Lexical Analysis",
-    "Recording 20240603205854.webm",
-    "Final/2 - Analyse Syntax.md",
-    "Final/1 - Analyse lexicale.md",
-    "Final/0 - Intro Part -0.md",
-    "Recording 20240603034617.webm",
     "Libary/Compilation Part-1/Overview Map.canvas",
     "Untitled 3.canvas",
     "Untitled 2.canvas",

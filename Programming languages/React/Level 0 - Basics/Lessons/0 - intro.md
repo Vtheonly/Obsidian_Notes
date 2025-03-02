@@ -42,7 +42,7 @@ Vite is a modern build tool that provides an alternative to traditional build to
 - **Hot Module Replacement (HMR)**: Vite's HMR is designed to be fast and efficient, allowing developers to see changes instantly without a full reload.
 - **Optimized Build**: For production, Vite bundles the application using Rollup, ensuring that the final build is optimized and efficient.
 - **Out-of-the-Box Support**: Vite has built-in support for popular frameworks like React, Vue, and others, making it easy to get started with minimal configuration.
-
+[[0.1 - What is Vite?]]
 ### Why Should I Run `npm install`?
 
 When you create a new project using Vite (or any other tool that generates a project scaffold), the project usually includes a `package.json` file. This file contains a list of dependencies that your project needs to run. Here's why running `npm install` is essential:

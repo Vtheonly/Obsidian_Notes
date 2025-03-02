@@ -8,15 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "9f368ac5c16d6c84",
+            "id": "e7b9fda405262c04",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "5.1 - XML Schema (XSD) Basics.md",
-                "mode": "source",
+                "file": "Semi-Structured Data and XML.md",
+                "mode": "preview",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Semi-Structured Data and XML"
             }
           }
         ]
@@ -39,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -54,7 +58,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -62,7 +68,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -85,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "5.1 - XML Schema (XSD) Basics.md",
+                "file": "Semi-Structured Data and XML.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -93,7 +101,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Semi-Structured Data and XML"
             }
           },
           {
@@ -102,10 +112,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "5.1 - XML Schema (XSD) Basics.md",
+                "file": "Semi-Structured Data and XML.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Semi-Structured Data and XML"
             }
           },
           {
@@ -116,7 +128,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -125,8 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "5.1 - XML Schema (XSD) Basics.md"
-              }
+                "file": "Semi-Structured Data and XML.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Semi-Structured Data and XML"
             }
           }
         ]
@@ -147,18 +163,24 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "9f368ac5c16d6c84",
+  "active": "c145f3c9cdad833b",
   "lastOpenFiles": [
-    "5.2 - types and declarations.md",
-    "3 - Entities in DTDs.md",
-    "6.1.md",
-    "5.1 - XML Schema (XSD) Basics.md",
+    "6.",
+    "5. XML Parsing in Python",
+    "4. XSLT Transforming XML Documents",
+    "3. XPath Querying XML Documents",
+    "2. XML Structure and Validation",
+    "1. Introduction to Semi-Structured Data",
     "1 - intro.md",
+    "5.1 - XML Schema (XSD) Basics.md",
+    "7.1.md",
+    "5.2 - types and declarations.md",
+    "6.1.md",
+    "Semi-Structured Data and XML.md",
+    "3 - Entities in DTDs.md",
     "2 - XML file.md",
     "3 -  DTD File.md",
     "4 - NameSpace.md",
-    "7.1.md",
-    "Untitled.md",
     "Untitled.canvas",
     "Picture/2.png",
     "Picture/1.png",
@@ -168,7 +190,6 @@
     "Recording 20240313003914.webm",
     "Recording 20240313004054.webm",
     "Recording 20240313004700.webm",
-    "Recording 20240313003942.webm",
     "Welcome.md"
   ]
 }

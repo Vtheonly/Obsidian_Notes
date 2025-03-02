@@ -13,10 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Level 8 Async API/Active Recall Test/Test - 56.md",
+                "file": "Level 0/Lessons/15 - Template literal.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "15 - Template literal"
             }
           }
         ]
@@ -38,8 +40,11 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -54,7 +59,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -62,7 +69,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -85,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Level 8 Async API/Active Recall Test/Test - 56.md",
+                "file": "Level 0/Lessons/15 - Template literal.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -93,7 +102,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 15 - Template literal"
             }
           },
           {
@@ -102,10 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Level 8 Async API/Active Recall Test/Test - 56.md",
+                "file": "Level 0/Lessons/15 - Template literal.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 15 - Template literal"
             }
           },
           {
@@ -115,8 +128,12 @@
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
-              }
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -125,8 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Level 8 Async API/Active Recall Test/Test - 56.md"
-              }
+                "file": "Level 0/Lessons/15 - Template literal.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 15 - Template literal"
             }
           }
         ]
@@ -151,10 +173,17 @@
   },
   "active": "922996e796a6e631",
   "lastOpenFiles": [
+    "Level 0/Lessons/9 - Temporal Dead Zone (TDZ).md",
+    "Level 0/Lessons/10 - Console.md",
+    "Level 0/Lessons/4 - Syntax tricks.md",
+    "Level 0/Lessons/2 - Comparison operators.md",
+    "Level 0/Lessons/3 - Arrays.md",
+    "Level 0/Lessons/1 - Linking.md",
+    "Level 2/Lessons/31 - DOM.md",
+    "Level 8 Async API/Active Recall Test/Test - 56.md",
     "Level 1/Active Recall Test/Test - 21 - Functions.md",
     "Level 1/Lessons/21 - Functions.md",
     "Level 10 Interview Test/README.md",
-    "Level 8 Async API/Active Recall Test/Test - 56.md",
     "Level 7/Active Recall Test/Test - 55 - and exporting.md",
     "Level 7/Active Recall Test/Test - 54 - Generator.md",
     "Level 6/Active Recall Test/Test - 53 - and new.md",
@@ -170,13 +199,6 @@
     "Level 4/Active Recall Test/Test - 43 - Iterator.md",
     "Level 4/Active Recall Test/Test - 42 - Destructuring.md",
     "Level 3/Active Recall Test/Test - 41 - and clearTimeout.md",
-    "Level 3/Active Recall Test/Test - 40 - Storage.md",
-    "Level 3/Active Recall Test/Test - 39 - Storage.md",
-    "Level 3/Active Recall Test/Test - 38 - Object Model.md",
-    "Level 3/Active Recall Test/Test - 37 - prompt, confirm.md",
-    "Level 2/Active Recall Test/Test - 36 - classList.md",
-    "Level 2/Active Recall Test/Test - 35 - Styling.md",
-    "Level 2/Active Recall Test/Test - 34 - Creating node.md",
     "makeTest.sh",
     "Node/makeTest.sh",
     "Node/Lesson",

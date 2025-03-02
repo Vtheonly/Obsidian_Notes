@@ -1,0 +1,222 @@
+{
+  "main": {
+    "id": "22cfe80e564579eb",
+    "type": "split",
+    "children": [
+      {
+        "id": "12d0d652d84e0fd8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "af59a936753c6890",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Math Logic/1 - Operator Precedence.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "1 - Operator Precedence"
+            }
+          },
+          {
+            "id": "e43c6f7f11ccacdf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Math Logic/0 - Propositional Logic.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "0 - Propositional Logic"
+            }
+          },
+          {
+            "id": "d8a39a873d24f73d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Math Logic/5 - Substitution and Replacement Theorem.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "5 - Substitution and Replacement Theorem"
+            }
+          },
+          {
+            "id": "96f37b7cde0cc010",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.7.7"
+              },
+              "icon": "lucide-file",
+              "title": "Release Notes 1.7.7"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "20303736863205e0",
+    "type": "split",
+    "children": [
+      {
+        "id": "372d820d7e947329",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0cafbc28341becd8",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "7ff7d8894c04cb59",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "be2a896ec9b0f920",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c4b758171b0cac57",
+    "type": "split",
+    "children": [
+      {
+        "id": "fd224a2a247e74ba",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f5145ee8af1fd8b7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "f575063275ab54b7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "32567682793b579e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "cd9b270db668428b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {},
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "e43c6f7f11ccacdf",
+  "lastOpenFiles": [
+    "Math Logic/1 - Operator Precedence.md",
+    "Math Logic/0 - Propositional Logic.md",
+    "Math Logic/5 - Substitution and Replacement Theorem.md",
+    "Math Logic/6 - Conjunctive Normal Form (CNF).md",
+    "Math Logic Active Recall/Complete Connector Sets.md",
+    "Math Logic/7 - Complete Connector Sets.md",
+    "Math Logic/4 - Propositional Logic Semantics.md",
+    "Math Logic Active Recall/Operator Precedence 1.md",
+    "Math Logic/3 - Operator Precedence.md",
+    "Math Logic/2 - Operator Precedence.md",
+    "Math Logic/Sequent Calculus/1 - Axioms and Inference Rules.md",
+    "Math Logic/Sequent Calculus/0 - Understanding a Sequent.md",
+    "Math Logic/Sequent Calculus/0 - Axioms and Inference Rules.md",
+    "assets",
+    "assets/picture - 1.png",
+    "Math Logic/Sequent Calculus",
+    "Math Logic/8 - Sequent Calculus.md"
+  ]
+}

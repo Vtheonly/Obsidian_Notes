@@ -4,7 +4,7 @@
 **Question 1:**  
 Which of the following best describes the architecture of Node.js?
 - [ ] A) Multi-threaded and synchronous
-- [x] B) Event-driven and non-blocking
+- [ ] B) Event-driven and non-blocking
 - [ ] C) Event-driven and blocking
 - [ ] D) Multi-threaded and asynchronous
 

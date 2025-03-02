@@ -1,0 +1,31 @@
+{
+	"nodes":[
+		{"id":"j4k3l2m1n0o9p8q7","type":"text","text":"Low-cost\nSoftware","x":500,"y":0,"width":200,"height":80,"color":"2"},
+		{"id":"k5l4m3n2o1p0q9r8","type":"text","text":"**Open Source & Efficient:**\nCloud often utilizes open-source software and efficient resource management.\n\n**Cost Savings:**\nReducing software licensing costs and operational expenses.","x":500,"y":90,"width":350,"height":80},
+		{"id":"a1b2c3d4e5f6g7h8","type":"text","text":"8 Common Characteristics of Cloud Computing","x":0,"y":-320,"width":350,"height":60,"color":"1"},
+		{"id":"b9c8d7e6f5g4h3i2","type":"text","text":"Massive Scale","x":-700,"y":-10,"width":200,"height":60,"color":"6"},
+		{"id":"c0d1e2f3g4h5i6j7","type":"text","text":"**Huge Capacity:**\nCloud providers offer enormous computing, storage, and network resources.\n\n**Scalability:**\nEasily scale up or down resources as needed.","x":-700,"y":60,"width":350,"height":80},
+		{"id":"h2i1j0k9l8m7n6o5","type":"text","text":"Resilient\nComputing","x":750,"y":-290,"width":200,"height":80,"color":"5"},
+		{"id":"i3j2k1l0m9n8o7p6","type":"text","text":"**Fault Tolerance:**\nCloud platforms are designed to be highly reliable and fault-tolerant.\n\n**Redundancy:**\nBuilt-in redundancy and failover mechanisms ensure continuous service.","x":750,"y":-200,"width":350,"height":80},
+		{"id":"p0q9r8s7t6u5v4w3","type":"text","text":"Service\nOrientation","x":775,"y":340,"width":200,"height":80,"color":"10"},
+		{"id":"q1r0s9t8u7v6w5x4","type":"text","text":"**Service-Based Model:**\nCloud computing is delivered as services (IaaS, PaaS, SaaS).\n\n**Focus on Consumption:**\nUsers consume and pay for services as needed, abstracting underlying infrastructure.","x":775,"y":430,"width":350,"height":80},
+		{"id":"d8e7f6g5h4i3j2k1","type":"text","text":"Homogeneity","x":-725,"y":430,"width":200,"height":60,"color":"3"},
+		{"id":"e9f8g7h6i5j4k3l2","type":"text","text":"**Uniform Infrastructure:**\nCloud infrastructure is built using standardized, often commodity hardware.\n\n**Simplified Management:**\nThis uniformity simplifies management and automation.","x":-725,"y":500,"width":350,"height":80},
+		{"id":"f0g9h8i7j6k5l4m3","type":"text","text":"Virtualization","x":-175,"y":170,"width":200,"height":60,"color":"4"},
+		{"id":"g1h0i9j8k7l6m5n4","type":"text","text":"**Abstracted Resources:**\nVirtualization technology abstracts hardware resources.\n\n**Flexibility & Efficiency:**\nEnables sharing, multi-tenancy, and efficient resource utilization.","x":-175,"y":240,"width":350,"height":80},
+		{"id":"n8o7p6q5r4s3t2u1","type":"text","text":"Geographical\nDistribution","x":100,"y":540,"width":250,"height":80,"color":"9"},
+		{"id":"o9p8q7r6s5t4u3v2","type":"text","text":"**Global Reach:**\nCloud services are often deployed in multiple geographical locations.\n\n**Proximity & Resilience:**\nImproving performance and availability through regional deployments.","x":100,"y":630,"width":350,"height":80},
+		{"id":"l6m5n4o3p2q1r0s9","type":"text","text":"Advanced Security\nTechnologies","x":-850,"y":-320,"width":250,"height":80,"color":"8"},
+		{"id":"m7n6o5p4q3r2s1t0","type":"text","text":"**Robust Security:**\nCloud providers invest heavily in security technologies and expertise.\n\n**Multi-layered Security:**\nImplementing various security measures to protect data and infrastructure.","x":-850,"y":-230,"width":350,"height":80}
+	],
+	"edges":[
+		{"id":"r2s1t0u9v8w7x6y5","fromNode":"a1b2c3d4e5f6g7h8","fromSide":"bottom","toNode":"b9c8d7e6f5g4h3i2","toSide":"top"},
+		{"id":"s3t2u1v0w9x8y7z6","fromNode":"a1b2c3d4e5f6g7h8","fromSide":"bottom","toNode":"d8e7f6g5h4i3j2k1","toSide":"top"},
+		{"id":"t4u3v2w1x0y9z8a7","fromNode":"a1b2c3d4e5f6g7h8","fromSide":"bottom","toNode":"f0g9h8i7j6k5l4m3","toSide":"top"},
+		{"id":"u5v4w3x2y1z0a9b8","fromNode":"a1b2c3d4e5f6g7h8","fromSide":"bottom","toNode":"h2i1j0k9l8m7n6o5","toSide":"top"},
+		{"id":"v6w5x4y3z2a1b0c9","fromNode":"a1b2c3d4e5f6g7h8","fromSide":"bottom","toNode":"j4k3l2m1n0o9p8q7","toSide":"top"},
+		{"id":"w7x6y5z4a3b2c1d0","fromNode":"a1b2c3d4e5f6g7h8","fromSide":"bottom","toNode":"l6m5n4o3p2q1r0s9","toSide":"top"},
+		{"id":"x8y7z6a5b4c3d2e1f0","fromNode":"a1b2c3d4e5f6g7h8","fromSide":"bottom","toNode":"n8o7p6q5r4s3t2u1","toSide":"top"},
+		{"id":"y9z8a7b6c5d4e3f2g1","fromNode":"a1b2c3d4e5f6g7h8","fromSide":"bottom","toNode":"p0q9r8s7t6u5v4w3","toSide":"top"}
+	]
+}

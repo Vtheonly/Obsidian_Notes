@@ -11,11 +11,32 @@
             "id": "6d05f666f7b42c00",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Level 0 - Basics/Lessons/0 - intro.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "0 - intro"
+            }
+          },
+          {
+            "id": "dae0837c3ed84fbc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0.1 - What is Vite?.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "0.1 - What is Vite?"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -34,8 +55,11 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -44,13 +68,15 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "vite",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -58,10 +84,13 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -81,6 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "0.1 - What is Vite?.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,7 +118,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 0.1 - What is Vite?"
             }
           },
           {
@@ -97,9 +129,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "0.1 - What is Vite?.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 0.1 - What is Vite?"
             }
           },
           {
@@ -109,8 +144,12 @@
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
-              }
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -118,7 +157,14 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "0.1 - What is Vite?.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 0.1 - What is Vite?"
             }
           }
         ]
@@ -138,8 +184,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4218ac597c6bc159",
+  "active": "dae0837c3ed84fbc",
   "lastOpenFiles": [
+    "Level 0 - Basics/Lessons/0 - intro.md",
+    "0.1 - What is Vite?.md",
+    "Level 0 - Basics/Lessons/6 - UseState Count.md",
+    "Level 0 - Basics/Lessons/5 - UseState.md",
     "Untitled",
     "Active Recall Test/Test - 6.md",
     "Lessons",

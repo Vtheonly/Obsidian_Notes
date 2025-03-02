@@ -198,7 +198,7 @@ Effective error handling is crucial throughout the compilation process to provid
 7. **Tree Traversal (Parsing):**
    - **The Importance of a Starting Pattern:** When a compiler parses your code, it often represents the code's structure as a tree. To traverse this tree correctly, the compiler needs a defined starting point and a clear path to follow.
    - **"Precisez le chemin":** Emphasizes the need for a precise traversal path, ensuring the compiler processes every part of your code correctly.
-   - **Analyze Syntax and Tree Generation [[2 - Tree Generation]]:** The analysis of syntax involves generating a tree, and the correct generation requires knowledge of operation priorities.
+   - **Analyze Syntax and Tree Generation [[2. Tree Generation]]:** The analysis of syntax involves generating a tree, and the correct generation requires knowledge of operation priorities.
 
 8. **Linking Multiple Object Files:**
    - **Resolution:** The linker connects function calls and variable references across different files.
@@ -221,8 +221,8 @@ Effective error handling is crucial throughout the compilation process to provid
       ```
     - **User Knowledge vs. Compiler Control [[2 - User Knowledge vs. Compiler Control]]:** The user doesn't know where the value is stored; only the compiler does. Quadruplets allow changing variable names but use more memory.
 
-11. **Simple Operations in Assembly [[1 - Assembly]]:**
+11. **Simple Operations in Assembly [[5 - Assembly]]:**
     - Operations include arithmetic operations (+, -), conditional and unconditional branching, logical operations, and simple variable operations.
 
-12. **Code Optimization [[1 - Code Optimization]]:**
+12. **Code Optimization [[4 - Code Optimization]]:**
     - After obtaining intermediate code, optimization is performed. Examples include simplifying expressions like `x = 2*y` to `x = y + y` and removing dead or invalid code.

@@ -4,19 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "345b234adfe07c85",
+        "id": "1210b53b012d0c71",
         "type": "tabs",
         "children": [
           {
-            "id": "982d82edb3024224",
+            "id": "0c08e913ce1dd515",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "7 - Design Pattern/1. Design Pattern.md",
-                "mode": "source",
+                "file": "2 - Class Diagram/5.2 Class Digram.md",
+                "mode": "preview",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "5.2 Class Digram"
             }
           }
         ]
@@ -39,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -54,7 +58,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -62,7 +68,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -85,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "7 - Design Pattern/1. Design Pattern.md",
+                "file": "1 - Use Case Diagram/3. Actors.md",
                 "collapseAll": false,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -93,7 +101,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 3. Actors"
             }
           },
           {
@@ -102,10 +112,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "7 - Design Pattern/1. Design Pattern.md",
+                "file": "3 - seq/Untitled.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Untitled"
             }
           },
           {
@@ -116,7 +128,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -125,8 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "7 - Design Pattern/1. Design Pattern.md"
-              }
+                "file": "1 - Use Case Diagram/3. Actors.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 3. Actors"
             }
           }
         ],
@@ -147,54 +163,54 @@
       "command-palette:Open command palette": true
     }
   },
-  "active": "982d82edb3024224",
+  "active": "0c08e913ce1dd515",
   "lastOpenFiles": [
-    "3 - Objects Diagram/1. Objects Diagram.md",
-    "1 - Use Case Diagram/3. Actors.md",
-    "1 - Use Case Diagram/4. Relationship between actors.md",
-    "1 - Use Case Diagram/6. relationships between use cases.md",
-    "1 - Use Case Diagram/5. paths between actors and use cases.md",
-    "1 - Use Case Diagram/7. Generalization vs Extension.md",
-    "1 - Use Case Diagram/8. naming CU.md",
-    "1 - Use Case Diagram/9. Temporal and Sequential Aspect.md",
-    "1 - Use Case Diagram/10. Association, inheritance, and dependency..md",
-    "0 - Intro/3. UML.md",
-    "0 - Intro/1. Introduction.md",
-    "1 - Use Case Diagram/0. Exam Suggestion.md",
-    "1 - Use Case Diagram/1. Use case.md",
-    "7 - Design Pattern/1. Design Pattern.md",
     "2 - Class Diagram/5.3 Class Digram.md",
     "2 - Class Diagram/5.2 Class Digram.md",
     "2 - Class Diagram/5.1 Class Digram.md",
     "0 - Intro/2. Lifecycle.md",
-    "Untitled.md",
-    "0 - Intro",
-    "3 - Objects Diagram",
-    "Bank Sheet.md",
-    "Images/Pasted image 20240523001316.png",
-    "7 - Design Pattern",
-    "Images/Pasted image 20240525013022.png",
-    "Images/Pasted image 20240525020343.png",
-    "1 - Use Case Diagram/0 - Exam Suggestion.md",
-    "2 - Class Diagram",
-    "Images/Pasted image 20240525012607.png",
-    "Images/Pasted image 20240525020322.png",
-    "Images/Pasted image 20240525014955.png",
-    "Images/Pasted image 20240525014934.png",
-    "Images/Pasted image 20240525014234.png",
-    "Images/Pasted image 20240525012747.png",
-    "Images/Pasted image 20240523001511.png",
+    "0 - Intro/1. Introduction.md",
+    "3 - seq/Untitled.md",
+    "3 - seq",
+    "1 - Use Case Diagram/10. Association, inheritance, and dependency..md",
+    "1 - Use Case Diagram/9. Temporal and Sequential Aspect.md",
+    "1 - Use Case Diagram/8. Naming CU.md",
+    "1 - Use Case Diagram/7. Generalization vs Extension.md",
+    "1 - Use Case Diagram/6. relationships between use cases.md",
+    "1 - Use Case Diagram/5. paths between actors and use cases.md",
     "1 - Use Case Diagram/4. Use Case.md",
-    "SE2/7..md",
-    "SE2/6..md",
-    "SE2/5..md",
-    "SE2/4..md",
+    "1 - Use Case Diagram/3. Relationship between actors.md",
+    "1 - Use Case Diagram/Active Test/3. Relationship between actors.md",
+    "1 - Use Case Diagram/Active Test/2. Actors.md",
+    "1 - Use Case Diagram/2. Actors.md",
+    "1 - Use Case Diagram/1. Use case Diagram.md",
+    "1 - Use Case Diagram/0. Exam Suggestion.md",
+    "1 - Use Case Diagram/Active Test/1. Use Case Diagram.md",
+    "1 - Use Case Diagram/Active Test/8. naming CU.md",
+    "1 - Use Case Diagram/Active Test/9. Temporal and Sequential Aspect.md",
+    "1 - Use Case Diagram/Active Test/10. Association, inheritance, and dependency..md",
+    "1 - Use Case Diagram/Active Test/4. Use Case.md",
+    "1 - Use Case Diagram/Active Test/7. Generalization vs Extension.md",
+    "1 - Use Case Diagram/Active Test/6. relationships between use cases.md",
+    "1 - Use Case Diagram/Active Test",
+    "hidden",
+    "0 - Intro",
+    "hidden/3 - Objects Diagram",
+    "hidden/Images/Pasted image 20240523001316.png",
+    "hidden/7 - Design Pattern",
+    "hidden/Images/Pasted image 20240525013022.png",
+    "hidden/Images/Pasted image 20240525020343.png",
+    "2 - Class Diagram",
+    "hidden/Images/Pasted image 20240525012607.png",
+    "hidden/Images/Pasted image 20240525020322.png",
+    "hidden/Images/Pasted image 20240525014955.png",
+    "hidden/Images/Pasted image 20240525014934.png",
+    "hidden/Images/Pasted image 20240525014234.png",
+    "hidden/Images/Pasted image 20240525012747.png",
+    "hidden/Images/Pasted image 20240523001511.png",
     "SE2",
-    "Images",
+    "hidden/Images",
     "Class Digram",
-    "Untitled.canvas",
-    "TD",
-    "jj.pdf",
-    "serverStartup.pdf"
+    "Untitled.canvas"
   ]
 }

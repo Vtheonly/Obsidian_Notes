@@ -13,10 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Level 0 - Baseics/Lessons/2 - Classes.md",
-                "mode": "source",
+                "file": "Level 0 - Baseics/Active Recall Test/Test - 18 - Methods.md",
+                "mode": "preview",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Test - 18 - Methods"
             }
           }
         ]
@@ -38,8 +40,11 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -54,7 +59,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -62,7 +69,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -85,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Level 0 - Baseics/Lessons/2 - Classes.md",
+                "file": "Level 2 - OOP/Lessons/7 - inheritance.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -93,7 +102,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 7 - inheritance"
             }
           },
           {
@@ -102,10 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Level 0 - Baseics/Lessons/2 - Classes.md",
+                "file": "Level 2 - OOP/Lessons/7 - inheritance.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 7 - inheritance"
             }
           },
           {
@@ -116,7 +129,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -125,8 +140,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Level 0 - Baseics/Lessons/2 - Classes.md"
-              }
+                "file": "Level 2 - OOP/Lessons/7 - inheritance.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 7 - inheritance"
             }
           }
         ]
@@ -146,8 +163,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "23465047205239ec",
+  "active": "00489cc9abab94f1",
   "lastOpenFiles": [
+    "Level 0 - Baseics/Active Recall Test/Test - 10 - Loops.md",
+    "Level 0 - Baseics/Active Recall Test/Test - 3 - Access Modifiers.md",
+    "Level 0 - Baseics/Active Recall Test/Test - 1 - How to run Java.md",
+    "Level 2 - OOP/Lessons/10 - Polymorphism.md",
+    "Level 0 - Baseics/Lessons/0 - Intro How Java Works.md",
+    "Level 2 - OOP/Lessons/7 - inheritance.md",
+    "Level 2 - OOP/Lessons/1 - Object.md",
+    "Level 0 - Baseics/Lessons/2 - Classes.md",
     "Level 0 - Baseics/Lessons/1 - How to run Java.md",
     "Level 0 - Baseics/Lessons/10 - Loops.md",
     "Level 2 - OOP/Lessons/15 - Generics.md",
@@ -165,14 +190,6 @@
     "Level 2 - OOP/Active Recall Test/Test - 14 - Compile time vs Run time.md",
     "Level 2 - OOP/Active Recall Test/Test - 13 - Copying Objects.md",
     "Level 2 - OOP/Active Recall Test/Test - 12 - super.md",
-    "Level 2 - OOP/Active Recall Test/Test - 11 - Interfaces.md",
-    "Level 2 - OOP/Active Recall Test/Test - 10 - Polymorphism.md",
-    "Level 2 - OOP/Active Recall Test/Test - 0 - OOP basics.md",
-    "Level 0 - Baseics/Active Recall Test/Test - 9 - Swittch.md",
-    "Level 0 - Baseics/Active Recall Test/Test - 8 - if-else Statement.md",
-    "Level 0 - Baseics/Active Recall Test/Test - 7 - Specifying packages.md",
-    "Level 0 - Baseics/Active Recall Test/Test - 6 - Strings in Java.md",
-    "Level 0 - Baseics/Active Recall Test/Test - 5 - Data Types.md",
-    "Level 0 - Baseics/Active Recall Test/Test - 4 - Immutability in Java.md"
+    "Level 2 - OOP/Active Recall Test/Test - 11 - Interfaces.md"
   ]
 }
