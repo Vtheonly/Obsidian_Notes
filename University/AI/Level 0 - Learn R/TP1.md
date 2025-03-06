@@ -80,3 +80,19 @@ The statement "All objects in R are composite, and a scalar is likened to an obj
 Feel free to run your own R code and experiment with these concepts!
 
 ---
+
+1. Introduction to R
+   - Basic syntax and operations
+   - Working with RStudio
+
+2. Data Types in R
+   - Numeric
+   - Character
+   - Logical
+   - Factor
+
+3. Data Structures
+   - Vectors
+   - Matrices
+   - Lists
+   - Data Frames

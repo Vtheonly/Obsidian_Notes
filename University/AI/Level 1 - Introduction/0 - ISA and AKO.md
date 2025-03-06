@@ -4,6 +4,20 @@
 
 In the realm of Artificial Intelligence, particularly within semantic networks, effectively representing knowledge is paramount. Two fundamental relationships used to structure hierarchical knowledge are **ISA** and **AKO**. These relationships, while both dealing with hierarchies, represent distinct types of connections between concepts. This note will delve into the nuances of ISA and AKO, providing clear definitions, examples, and analyses of potentially ambiguous cases.
 
+1. Introduction to ISA and AKO Relations
+
+2. ISA (Instance-Of) Relation
+   - Represents relationships between specific instances and their classes
+   - Example: "Snoopy is a dog" (Snoopy is an instance of the dog class)
+
+3. AKO (A-Kind-Of) Relation
+   - Represents relationships between classes (subclass-superclass)
+   - Example: "Dog is a kind of mammal" (Dog class is a subclass of mammal class)
+
+4. Key Differences
+   - ISA: Individual → Class relationship
+   - AKO: Class → Class relationship
+
 **Understanding ISA and AKO** : Both ISA and AKO are used to represent hierarchical relationships between concepts in semantic networks, but they represent different types of hierarchies:
 
 *   **ISA (Instance-Of or Is-A):**  This relationship expresses **instance membership**. It connects a *specific individual* (an instance) to its *class or category*.  Think of it as saying "**This *thing* is a *type of*...**" or "**This *thing* belongs to the category of...**" or simply "**This *thing* is a ...**".

@@ -18,70 +18,71 @@ From Section 1: IS-A Relation (Inheritance)
 
 4. "Albert Einstein is a physicist."
 
-	- Explanation: Albert Einstein is a specific individual who belongs to the class of physicists.
+   - Explanation: Albert Einstein is a specific individual who belongs to the class of physicists.
+
 5. "Paris is a city."
 
-- Explanation: Paris is a specific instance (a particular city) that belongs to the class of cities.
+   - Explanation: Paris is a specific instance (a particular city) that belongs to the class of cities.
 
-26. "The Pacific Ocean is an ocean."
+6. "The Pacific Ocean is an ocean."
 
-- Explanation: The Pacific Ocean is a specific instance that belongs to the class of oceans.
+   - Explanation: The Pacific Ocean is a specific instance that belongs to the class of oceans.
 
-27. "A rose is a flower."
+7. "A rose is a flower."
 
-- Explanation: Per the annotation ("A specific rose - individual, flower - class"), this refers to a specific rose (an individual) belonging to the class of flowers. Note: Without the annotation, this could be AKO if "rose" meant the class of roses, but the intent here is ISA.
+   - Explanation: Per the annotation ("A specific rose - individual, flower - class"), this refers to a specific rose (an individual) belonging to the class of flowers. Note: Without the annotation, this could be AKO if "rose" meant the class of roses, but the intent here is ISA.
 
-28. "My smartphone is a mobile device."
+8. "My smartphone is a mobile device."
 
-- Explanation: "My smartphone" is a specific instance that belongs to the class of mobile devices.
+   - Explanation: "My smartphone" is a specific instance that belongs to the class of mobile devices.
 
-29. "Mount Everest is a mountain."
+9. "Mount Everest is a mountain."
 
-- Explanation: Mount Everest is a specific instance that belongs to the class of mountains.
+   - Explanation: Mount Everest is a specific instance that belongs to the class of mountains.
 
-30. "The Mona Lisa is a painting."
+10. "The Mona Lisa is a painting."
 
-- Explanation: The Mona Lisa is a specific instance (a particular artwork) that belongs to the class of paintings.
+   - Explanation: The Mona Lisa is a specific instance (a particular artwork) that belongs to the class of paintings.
 
-31. "Italian is a language."
+11. "Italian is a language."
 
-- Explanation: Italian is a specific instance (a particular language) that belongs to the class of languages.
+   - Explanation: Italian is a specific instance (a particular language) that belongs to the class of languages.
 
-32. "Apple pie is a dessert."
+12. "Apple pie is a dessert."
 
-- Explanation: Apple pie is a specific instance (a particular dish) that belongs to the class of desserts.
+   - Explanation: Apple pie is a specific instance (a particular dish) that belongs to the class of desserts.
 
-33. "Dr. Smith is a doctor."
+13. "Dr. Smith is a doctor."
 
-- Explanation: Dr. Smith is a specific individual who belongs to the class of doctors.
+   - Explanation: Dr. Smith is a specific individual who belongs to the class of doctors.
 
-34. "Tuesday is a day of the week."
+14. "Tuesday is a day of the week."
 
-- Explanation: Tuesday is a specific instance (a particular day) that belongs to the class of days of the week.
+   - Explanation: Tuesday is a specific instance (a particular day) that belongs to the class of days of the week.
 
-35. "This webpage is a document."
+15. "This webpage is a document."
 
-- Explanation: "This webpage" refers to a specific instance that belongs to the class of documents.
+   - Explanation: "This webpage" refers to a specific instance that belongs to the class of documents.
 
-36. "A blue whale is a mammal."
+16. "A blue whale is a mammal."
 
-- Explanation: Per the annotation ("A blue whale - individual, mammal - class"), this refers to a specific blue whale (an individual) belonging to the class of mammals. Note: Without the annotation, this could be AKO if "blue whale" meant the species, but the intent here is ISA.
+   - Explanation: Per the annotation ("A blue whale - individual, mammal - class"), this refers to a specific blue whale (an individual) belonging to the class of mammals. Note: Without the annotation, this could be AKO if "blue whale" meant the species, but the intent here is ISA.
 
-37. "My laptop is a computer."
+17. "My laptop is a computer."
 
-- Explanation: "My laptop" is a specific instance that belongs to the class of computers.
+   - Explanation: "My laptop" is a specific instance that belongs to the class of computers.
 
-38. "The Nile is a river."
+18. "The Nile is a river."
 
-- Explanation: The Nile is a specific instance (a particular river) that belongs to the class of rivers.
+   - Explanation: The Nile is a specific instance (a particular river) that belongs to the class of rivers.
 
-39. "A novel is a book."
+19. "A novel is a book."
 
-- Explanation: Per the annotation ("A specific novel - individual, book - class"), this refers to a specific novel (an individual) belonging to the class of books. Note: Without the annotation, this could be AKO if "novel" meant the class of novels, but the intent here is ISA.
+   - Explanation: Per the annotation ("A specific novel - individual, book - class"), this refers to a specific novel (an individual) belonging to the class of books. Note: Without the annotation, this could be AKO if "novel" meant the class of novels, but the intent here is ISA.
 
-40. "A zebra is an animal."
+20. "A zebra is an animal."
 
-- Explanation: Per the annotation ("A zebra - individual, animal - class"), this refers to a specific zebra (an individual) belonging to the class of animals. Note: Without the annotation, this could be AKO if "zebra" meant the species, but the intent here is ISA.
+   - Explanation: Per the annotation ("A zebra - individual, animal - class"), this refers to a specific zebra (an individual) belonging to the class of animals. Note: Without the annotation, this could be AKO if "zebra" meant the species, but the intent here is ISA.
 
 ---
 
@@ -91,165 +92,165 @@ These examples involve a class being a subclass of a broader class, often indica
 
 From Section 1: IS-A Relation (Inheritance)
 
-4. "A dog is a kind of mammal."
+1. "A dog is a kind of mammal."
 
    - Explanation: The class of dogs is a subclass of the broader class of mammals.
 
-5. "A monument is a kind of structure."
+2. "A monument is a kind of structure."
 
    - Explanation: The class of monuments is a subclass of the broader class of structures.
 
-6. "A car is a kind of vehicle."
+3. "A car is a kind of vehicle."
 
    - Explanation: The class of cars is a subclass of the broader class of vehicles.
 
-7. "A physicist is a kind of scientist."
+4. "A physicist is a kind of scientist."
 
    - Explanation: The class of physicists is a subclass of the broader class of scientists.
 
-8. "A city is a kind of urban area."
+5. "A city is a kind of urban area."
 
    - Explanation: The class of cities is a subclass of the broader class of urban areas.
 
-9. "An ocean is a kind of body of water."
+6. "An ocean is a kind of body of water."
 
    - Explanation: The class of oceans is a subclass of the broader class of bodies of water.
 
-10. "A flower is a kind of plant."
+7. "A flower is a kind of plant."
 
-    - Explanation: The class of flowers is a subclass of the broader class of plants.
+   - Explanation: The class of flowers is a subclass of the broader class of plants.
 
-11. "A smartphone is a kind of electronic device."
+8. "A smartphone is a kind of electronic device."
 
-    - Explanation: The class of smartphones is a subclass of the broader class of electronic devices.
+   - Explanation: The class of smartphones is a subclass of the broader class of electronic devices.
 
-12. "A mountain is a kind of landform."
+9. "A mountain is a kind of landform."
 
-    - Explanation: The class of mountains is a subclass of the broader class of landforms.
+   - Explanation: The class of mountains is a subclass of the broader class of landforms.
 
-13. "A painting is a kind of artwork."
+10. "A painting is a kind of artwork."
 
     - Explanation: The class of paintings is a subclass of the broader class of artworks.
 
-14. "Language is a kind of communication system."
+11. "Language is a kind of communication system."
 
     - Explanation: The class of languages is a subclass of the broader class of communication systems.
 
-15. "Dessert is a kind of food."
+12. "Dessert is a kind of food."
 
     - Explanation: The class of desserts is a subclass of the broader class of foods.
 
-16. "Doctor is a kind of profession."
+13. "Doctor is a kind of profession."
 
     - Explanation: The class of doctors is a subclass of the broader class of professions.
 
-17. "Day of the week is a kind of time unit."
+14. "Day of the week is a kind of time unit."
 
     - Explanation: The class of days of the week is a subclass of the broader class of time units.
 
-18. "Document is a kind of information carrier."
+15. "Document is a kind of information carrier."
 
     - Explanation: The class of documents is a subclass of the broader class of information carriers.
 
-19. "Mammal is a kind of animal."
+16. "Mammal is a kind of animal."
 
     - Explanation: The class of mammals is a subclass of the broader class of animals.
 
-20. "Computer is a kind of electronic device."
+17. "Computer is a kind of electronic device."
 
     - Explanation: The class of computers is a subclass of the broader class of electronic devices.
 
-21. "River is a kind of body of water."
+18. "River is a kind of body of water."
 
     - Explanation: The class of rivers is a subclass of the broader class of bodies of water.
 
-22. "Book is a kind of publication."
+19. "Book is a kind of publication."
 
     - Explanation: The class of books is a subclass of the broader class of publications.
 
-23. "Animal is a kind of living organism."
+20. "Animal is a kind of living organism."
 
     - Explanation: The class of animals is a subclass of the broader class of living organisms.
 
-24. "A dog is a kind of animal."
+21. "A dog is a kind of animal."
 
     - Explanation: The class of dogs is a subclass of the broader class of animals.
 
-25. "A cat is a kind of mammal."
+22. "A cat is a kind of mammal."
 
     - Explanation: The class of cats is a subclass of the broader class of mammals.
 
-26. "A rose is a kind of flower."
+23. "A rose is a kind of flower."
 
-    - Explanation: The class of roses is a subclass of the broader class of flowers. Note: This differs from example 27 in Section 1, where "a rose" was an individual due to the annotation.
+    - Explanation: The class of roses is a subclass of the broader class of flowers. Note: This differs from example 7 in Section 1, where "a rose" was an individual due to the annotation.
 
-27. "A sedan is a kind of car."
+24. "A sedan is a kind of car."
 
     - Explanation: The class of sedans is a subclass of the broader class of cars.
 
-28. "A pizza is a kind of food."
+25. "A pizza is a kind of food."
 
     - Explanation: The class of pizzas is a subclass of the broader class of foods.
 
-29. "A novel is a kind of book."
+26. "A novel is a kind of book."
 
-    - Explanation: The class of novels is a subclass of the broader class of books. Note: This differs from example 39 in Section 1, where "a novel" was an individual due to the annotation.
+    - Explanation: The class of novels is a subclass of the broader class of books. Note: This differs from example 19 in Section 1, where "a novel" was an individual due to the annotation.
 
-30. "A square is a kind of rectangle."
+27. "A square is a kind of rectangle."
 
     - Explanation: The class of squares is a subclass of the broader class of rectangles.
 
-31. "A poem is a kind of literature."
+28. "A poem is a kind of literature."
 
     - Explanation: The class of poems is a subclass of the broader class of literature.
 
-32. "A smartphone is a kind of electronic device."
+29. "A smartphone is a kind of electronic device."
 
     - Explanation: The class of smartphones is a subclass of the broader class of electronic devices.
 
-33. "A river is a kind of body of water."
+30. "A river is a kind of body of water."
 
     - Explanation: The class of rivers is a subclass of the broader class of bodies of water.
 
-34. "A maple is a kind of tree."
+31. "A maple is a kind of tree."
 
     - Explanation: The class of maples is a subclass of the broader class of trees.
 
-35. "A comedy is a kind of movie."
+32. "A comedy is a kind of movie."
 
     - Explanation: The class of comedies is a subclass of the broader class of movies.
 
-36. "A jazz is a kind of music."
+33. "A jazz is a kind of music."
 
     - Explanation: The class of jazz (as a genre) is a subclass of the broader class of music. Note: "A jazz" is slightly awkward phrasing; typically, it would be "Jazz is a kind of music."
 
-37. "A doctor is a kind of professional."
+34. "A doctor is a kind of professional."
 
     - Explanation: The class of doctors is a subclass of the broader class of professionals.
 
-38. "A Tuesday is a kind of weekday."
+35. "A Tuesday is a kind of weekday."
 
     - Explanation: This is problematic because "Tuesday" is typically an individual day, not a class, making "Tuesday is a weekday" an ISA relationship. However, the phrasing "a kind of" and annotation ("Tuesday - class, weekday - broader class") suggest an intent for AKO, implying the class of all Tuesdays (e.g., every Tuesday) as a subclass of weekdays. This is non-standard but followed here per the query’s intent.
 
-39. "A webpage is a kind of document."
+36. "A webpage is a kind of document."
 
     - Explanation: The class of webpages is a subclass of the broader class of documents.
 
-40. "A blue whale is a kind of mammal."
+37. "A blue whale is a kind of mammal."
 
-    - Explanation: The class of blue whales (as a species) is a subclass of the broader class of mammals. Note: This differs from example 36 in Section 1, where "a blue whale" was an individual due to the annotation.
+    - Explanation: The class of blue whales (as a species) is a subclass of the broader class of mammals. Note: This differs from example 16 in Section 1, where "a blue whale" was an individual due to the annotation.
 
-41. "A laptop is a kind of computer."
+38. "A laptop is a kind of computer."
 
     - Explanation: The class of laptops is a subclass of the broader class of computers.
 
-42. "A novel is a kind of book."
+39. "A novel is a kind of book."
 
-    - Explanation: The class of novels is a subclass of the broader class of books (same as example 6 in this section).
+    - Explanation: The class of novels is a subclass of the broader class of books (same as example 26 in this section).
 
-43. "A zebra is a kind of animal."
+40. "A zebra is a kind of animal."
 
-    - Explanation: The class of zebras is a subclass of the broader class of animals. Note: This differs from example 40 in Section 1, where "a zebra" was an individual due to the annotation.
+    - Explanation: The class of zebras is a subclass of the broader class of animals. Note: This differs from example 20 in Section 1, where "a zebra" was an individual due to the annotation.
 
 ---
 
@@ -259,13 +260,13 @@ Notes on Mixed Examples
   - In Section 1, they are ISA because the annotations specify them as individuals (e.g., "A specific rose - individual").
   - In Section 2, they are AKO because the phrase "is a kind of" indicates a class-to-class relationship (e.g., "rose - class").
 - This "mixed" nature arises from ambiguous phrasing in English, where "a [noun]" can denote either an individual or a class. I’ve followed the query’s annotations and phrasing ("is a" vs. "is a kind of") to resolve these ambiguities.
-- Example 15 in Section 2 ("A Tuesday is a kind of weekday") is an outlier. Logically, "Tuesday" is an instance (ISA), but the "kind of" phrasing and annotation suggest AKO, which I’ve respected despite its unconventionality.
+- Example 35 in Section 2 ("A Tuesday is a kind of weekday") is an outlier. Logically, "Tuesday" is an instance (ISA), but the "kind of" phrasing and annotation suggest AKO, which I’ve respected despite its unconventionality.
 
 ---
 
 Summary
 
-- ISA: 20 examples from Section 1 (1-3, 24-40), all involving specific individuals (e.g., Snoopy, Paris, The Mona Lisa) or annotated as such (e.g., "A specific rose").
-- AKO: 20 examples from Section 1 (4-23) and 20 from Section 2 (1-20), all involving class-to-class relationships, typically marked by "is a kind of" or implied as subclass-superclass links.
+- ISA: 20 examples from Section 1 (1-20), all involving specific individuals (e.g., Snoopy, Paris, The Mona Lisa) or annotated as such (e.g., "A specific rose").
+- AKO: 20 examples from Section 1 (1-20) and 20 from Section 2 (1-20), all involving class-to-class relationships, typically marked by "is a kind of" or implied as subclass-superclass links.
 
 This completes the sorting of all examples into ISA and AKO categories with explanations for each.
