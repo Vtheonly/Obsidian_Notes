@@ -90,7 +90,6 @@ AKO Examples (Subclass-Superclass Relationships)
 
 These examples involve a class being a subclass of a broader class, often indicated by the phrase "is a kind of."
 
-From Section 1: IS-A Relation (Inheritance)
 
 1. "A dog is a kind of mammal."
 
@@ -253,20 +252,3 @@ From Section 1: IS-A Relation (Inheritance)
     - Explanation: The class of zebras is a subclass of the broader class of animals. Note: This differs from example 20 in Section 1, where "a zebra" was an individual due to the annotation.
 
 ---
-
-Notes on Mixed Examples
-
-- Some examples (e.g., "A rose is a flower," "A novel is a book," "A blue whale is a mammal," "A zebra is an animal") appear in both sections with different interpretations:
-  - In Section 1, they are ISA because the annotations specify them as individuals (e.g., "A specific rose - individual").
-  - In Section 2, they are AKO because the phrase "is a kind of" indicates a class-to-class relationship (e.g., "rose - class").
-- This "mixed" nature arises from ambiguous phrasing in English, where "a [noun]" can denote either an individual or a class. I’ve followed the query’s annotations and phrasing ("is a" vs. "is a kind of") to resolve these ambiguities.
-- Example 35 in Section 2 ("A Tuesday is a kind of weekday") is an outlier. Logically, "Tuesday" is an instance (ISA), but the "kind of" phrasing and annotation suggest AKO, which I’ve respected despite its unconventionality.
-
----
-
-Summary
-
-- ISA: 20 examples from Section 1 (1-20), all involving specific individuals (e.g., Snoopy, Paris, The Mona Lisa) or annotated as such (e.g., "A specific rose").
-- AKO: 20 examples from Section 1 (1-20) and 20 from Section 2 (1-20), all involving class-to-class relationships, typically marked by "is a kind of" or implied as subclass-superclass links.
-
-This completes the sorting of all examples into ISA and AKO categories with explanations for each.
