@@ -72,7 +72,7 @@ In the realm of Artificial Intelligence, particularly within semantic networks, 
 13. "Doctor **is a kind of** profession." (doctor - *class*, profession - *broader class*)
 14. "Day of the week **is a kind of** time unit." (day of the week - *class*, time unit - *broader class*)
 15. "Document **is a kind of** information carrier." (document - *class*, information carrier - *broader class*)
-
+[[1 - More ISA AKO Examples]]
 ## Disambiguating Challenging Cases
 
 Certain examples can appear ambiguous, potentially blurring the lines between ISA and AKO. Let's analyze some of these instances to solidify our understanding.

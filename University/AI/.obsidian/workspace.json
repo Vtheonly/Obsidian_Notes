@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Level 1 - Introduction/ISA and AKO.md",
-                "mode": "source",
+                "file": "Level 1 - Introduction/1 - More ISA AKO Examples.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ISA and AKO"
+              "title": "1 - More ISA AKO Examples"
             }
           }
         ]
@@ -40,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -164,10 +165,11 @@
   },
   "active": "25c750401af31808",
   "lastOpenFiles": [
-    "Level 0 - Learn R/TP1.md",
-    "Level 1 - Introduction/ISA and AKO.md",
-    "Level 1 - Introduction/Untitled.md",
+    "Level 1 - Introduction/more on isa an ako.md",
+    "Level 1 - Introduction/1 - More ISA AKO Examples.md",
+    "Level 1 - Introduction/0 - ISA and AKO.md",
     "Course Content.md",
+    "Level 0 - Learn R/TP1.md",
     "1 - Semantic Networks.md",
     "10 -  Forward and Backward chaining.md",
     "3 - Supervised Learning.md",
