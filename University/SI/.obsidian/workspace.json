@@ -4,19 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "cbcdf7d55793a546",
+        "id": "e22e75f5461b468a",
         "type": "tabs",
         "children": [
           {
-            "id": "0cd27ee2369c93a7",
+            "id": "05370f193da3c557",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "5.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -38,8 +36,11 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -48,13 +49,15 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#DDoS",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -62,14 +65,26 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "f7dffed64dd3073a",
+            "type": "leaf",
+            "state": {
+              "type": "rag-test-view",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Test Dashboard"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 412.500732421875
   },
   "right": {
     "id": "98630170dbbee4e1",
@@ -85,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "5.md",
+                "file": "New/4 - The Scope of IT Security.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -93,7 +108,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 4 - The Scope of IT Security"
             }
           },
           {
@@ -102,10 +119,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "5.md",
+                "file": "New/4 - The Scope of IT Security.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 4 - The Scope of IT Security"
             }
           },
           {
@@ -115,8 +134,12 @@
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
-              }
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -125,8 +148,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "5.md"
-              }
+                "file": "New/4 - The Scope of IT Security.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 4 - The Scope of IT Security"
             }
           }
         ]
@@ -138,16 +166,30 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
+      "quiz-generator:Open generator": false,
+      "llm-test-gen:Test Dashboard": false,
+      "switcher:Open quick switcher": true,
       "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "canvas:Create new canvas": true,
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true
     }
   },
-  "active": "f46c367fb1cb7371",
+  "active": "05370f193da3c557",
   "lastOpenFiles": [
+    "New/3 - IT Security Terminology.md",
+    "Old/6-7.md",
+    "Quiz/Quiz 1.md",
+    "New/0 - Introduction.md",
+    "Quiz",
+    "New/4 - The Scope of IT Security.md",
+    "New/2 - Historical Context in IT Security.md",
+    "New/1 - Prerequisite.md",
+    "Old/1.md",
+    "New",
+    "Old/8.md",
+    "Old/5.md",
     "Cours/New folder/8.pdf",
     "Cours/New folder/6-7.pdf",
     "Cours/New folder/5.pdf",
@@ -156,15 +198,8 @@
     "Cours/New folder/1.pdf",
     "Cours/New folder",
     "New folder/8.pdf",
-    "New folder/6-7.pdf",
-    "New folder/5.pdf",
-    "New folder/4.pdf",
-    "8.md",
-    "6-7.md",
-    "5.md",
-    "4.md",
-    "2-3.md",
-    "1.md",
+    "Old/4.md",
+    "Old/2-3.md",
     "TDs/Autres Univs/Univ Msila/TD/Psudo-Code chiffrement.png",
     "TDs/Autres Univs/Univ Alger 1/Exercices faites en cours avec Mr Rahmani/1.jpg",
     "TDs/Autres Univs/Univ Alger 1/Exercices faites en cours avec Mr Rahmani/2.jpg",

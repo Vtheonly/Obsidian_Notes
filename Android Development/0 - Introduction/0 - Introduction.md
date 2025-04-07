@@ -76,7 +76,7 @@
 ---
 
 # Additional Information
-
+[[0.1 - Android architecture]]
 ## Applications
 - Android comes with a set of basic programs (called native applications) allowing access to features such as emails, SMS, calendar, photos, theWeb…
 - These applications are developed using the Java programming language
@@ -96,7 +96,7 @@
   - WebKit: Web navigation engine (used in the browser)
 
 ## Android Runtime
-- DalvikVM:
+- DalvikVM:[[0.2 - Dalvik]]
   - Provides a virtual machine adapted to the limitations of mobile devices.
   - Dalvik allows multiple applications to run simultaneously.
   - It executes bytecode dedicated to it (the .dex bytecode)

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Level 0/Lessons/15 - Template literal.md",
+                "file": "Level 1/Lessons/21 - Functions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "15 - Template literal"
+              "title": "21 - Functions"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 908.5
   },
   "right": {
     "id": "275bf1f6c1e32571",
@@ -168,11 +168,19 @@
       "command-palette:Open command palette": true,
       "zk-prefixer:Create new unique note": true,
       "publish:Publish changes...": true,
-      "markdown-importer:Open format converter": true
+      "markdown-importer:Open format converter": true,
+      "llm-test-gen:Test Dashboard": false,
+      "quiz-generator:Open generator": false
     }
   },
   "active": "922996e796a6e631",
   "lastOpenFiles": [
+    "Quiz 2.md",
+    "Level 1/Lessons/22 - Rest Default Params.md",
+    "Level 8 Async API/Lesson/56 - JSON.md",
+    "Level 8 Async API/Lesson/57 - POST and GET.md",
+    "Level 0/Lessons/15 - Template literal.md",
+    "Quiz 1.md",
     "Level 0/Lessons/9 - Temporal Dead Zone (TDZ).md",
     "Level 0/Lessons/10 - Console.md",
     "Level 0/Lessons/4 - Syntax tricks.md",
@@ -193,12 +201,6 @@
     "Level 6/Active Recall Test/Test - 49 - Functions.md",
     "Level 5/Active Recall Test/Test - 48 - Array.copyWithin.md",
     "Level 4/Active Recall Test/Test - 47 - Use WeakSet.md",
-    "Level 4/Active Recall Test/Test - 46 - WeakSet.md",
-    "Level 4/Active Recall Test/Test - 45 - Prototype.md",
-    "Level 4/Active Recall Test/Test - 44 - Maps.md",
-    "Level 4/Active Recall Test/Test - 43 - Iterator.md",
-    "Level 4/Active Recall Test/Test - 42 - Destructuring.md",
-    "Level 3/Active Recall Test/Test - 41 - and clearTimeout.md",
     "makeTest.sh",
     "Node/makeTest.sh",
     "Node/Lesson",

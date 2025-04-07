@@ -40,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -77,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 467.5026054382324
   },
   "right": {
     "id": "dbf8546038f8a24c",
@@ -160,7 +161,8 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "audio-recorder:Start/stop recording": false
+      "audio-recorder:Start/stop recording": false,
+      "quiz-generator:Open generator": false
     }
   },
   "active": "c145f3c9cdad833b",

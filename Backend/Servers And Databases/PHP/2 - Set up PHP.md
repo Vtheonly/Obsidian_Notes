@@ -108,7 +108,8 @@ If you prefer not to install Apache and just want to test PHP scripts quickly, y
 3. **Access Your Project:**
     
     Open your browser and go to `http://localhost:8000/`.
-    
+
+[[2.1 - php -S]]
 
 ---
 

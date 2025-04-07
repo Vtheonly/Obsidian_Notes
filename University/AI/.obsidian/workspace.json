@@ -4,24 +4,53 @@
     "type": "split",
     "children": [
       {
-        "id": "6b59c979476d10b0",
+        "id": "d72b742f7bc0f4c0",
         "type": "tabs",
         "children": [
           {
-            "id": "25c750401af31808",
+            "id": "0b97d593a6bc4bad",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Level 1 - Introduction/1 - More ISA AKO Examples.md",
+                "file": "Level 0 - Learn R/TP 1.1.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1 - More ISA AKO Examples"
+              "title": "TP 1.1"
+            }
+          },
+          {
+            "id": "00dac090b0ed88d1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "free or discounted services to nonprofit organizations.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "free or discounted services to nonprofit organizations"
+            }
+          },
+          {
+            "id": "7b21ed2932a83166",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Level 0 - Learn R/TP 1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "TP 1"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -73,12 +102,23 @@
               "icon": "lucide-bookmark",
               "title": "Bookmarks"
             }
+          },
+          {
+            "id": "e07c6e67a63f2c35",
+            "type": "leaf",
+            "state": {
+              "type": "rag-test-view",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Test Dashboard"
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 528.5
   },
   "right": {
     "id": "c68e6e4ae9a8afbc",
@@ -155,6 +195,8 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "quiz-generator:Open generator": false,
+      "llm-test-gen:Test Dashboard": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -163,13 +205,25 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "25c750401af31808",
+  "active": "e07c6e67a63f2c35",
   "lastOpenFiles": [
-    "Level 0 - Learn R/TP1.md",
+    "Quiz 1.md",
+    "free or discounted services to nonprofit organizations.md",
+    "Level 0 - Learn R/TP 1.1.md",
+    "Level 0 - Learn R/TP 1.md",
+    "Level 0 - Learn R/TP 3.1.md",
+    "Untitled/Untitled.md",
+    "Untitled",
+    "Level 0 - Learn R/TP 3.md",
+    "Level 0 - Learn R/TP 2.md",
+    "Course Content.md",
+    "Level 2 - Knowledge Representation/0 - Production rules.md",
+    "Level 2 - Knowledge Representation/2 - Other examples.md",
+    "Level 2 - Knowledge Representation/1 - Propositional and Predicate Logic.md",
+    "Level 1 - Introduction/0 - ISA and AKO.md",
+    "Level 2 - Knowledge Representation",
     "Level 1 - Introduction/1 - More ISA AKO Examples.md",
     "Level 1 - Introduction/more on isa an ako.md",
-    "Level 1 - Introduction/0 - ISA and AKO.md",
-    "Course Content.md",
     "1 - Semantic Networks.md",
     "10 -  Forward and Backward chaining.md",
     "3 - Supervised Learning.md",

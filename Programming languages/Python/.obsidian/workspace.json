@@ -11,10 +11,14 @@
             "id": "3fc654680361b78e",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Sockets/Untitled.md",
+                "mode": "preview",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Untitled"
             }
           }
         ]
@@ -36,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -155,5 +160,8 @@
     }
   },
   "active": "3fc654680361b78e",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "Sockets/Untitled.md",
+    "Sockets"
+  ]
 }
