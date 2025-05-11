@@ -2,42 +2,9 @@ Okay, I understand. Here's the same information, formatted for direct copy-pasti
 
 ---
 
-### A. Installing R
 
-R is available for both Windows and Linux.  The installation process depends on your operating system.
 
-1.  **Go to CRAN:** Visit the CRAN Mirrors page (https://cran.r-project.org/mirrors.html).
-2.  **Choose a Mirror:** Select a mirror site geographically close to you.  This will speed up the download.  The example given is `http://ftp.igh.cnrs.fr/pub/CRAN/`.
-3.  **Select Your OS:**  Click the link for your operating system (Windows or Linux).
-4.  **Follow Instructions:**  The CRAN website will provide detailed instructions for your specific OS.
-5.  **For Ubuntu Linux Specifically**:
-    Precautions must be taken before installation, check https://cran.r-project.org/bin/linux/ubuntu/ for more details, otherwise open terminal and run:
 
-```bash
-sudo apt-get install r-base
-```
-
-This command uses the `apt-get` package manager to install the `r-base` package, which is the core R system.
-
-### B. Installing R Packages
-
-R packages extend the functionality of base R.  You'll often need to install packages for specific tasks.
-
-To install a package, use the `install.packages()` function:
-
-```R
-install.packages("packageName", dependencies = TRUE)
-```
-
-*   `"packageName"`:  Replace this with the actual name of the package you want to install (e.g., "ggplot2", "dplyr").  The name *must* be in quotes.
-*   `dependencies = TRUE`:  This is generally recommended. It tells R to also install any other packages that the package you're installing depends on.
-    *   Example:
-
-```R
-install.packages("ggplot2", dependencies = TRUE) # Install ggplot2 and its dependencies.
-install.packages("dplyr", dependencies = TRUE)
-install.packages("readr", dependencies = TRUE)
-```
 
 ### C. The R Console
 
@@ -184,6 +151,8 @@ my_logical2 <- scan(what = logical(), nmax = 1)
 #FALSE
 print(my_logical2)
 ```
+[[TP 1.1 what]]
+ 
  * Use the str() to check the variable type:
 
 ```R
@@ -275,27 +244,27 @@ source("essai.R") # make sure the file is located in the same folder, or provide
 
 R provides a range of operators for performing calculations and comparisons.
 
-| Operator | Description            |
-| :-------- | :--------------------- |
-| `+`       | Addition               |
-| `-`       | Subtraction            |
-| `*`       | Multiplication         |
-| `/`       | Division               |
-| `%%`      | Modulo (remainder)     |
-| `%/%`     | Integer Division       |
-| `^`       | Exponentiation         |
-| `:`       | Sequence               |
-| `==`      | Equal to               |
-| `!=`      | Not equal to           |
-| `>`       | Greater than           |
-| `>=`      | Greater than or equal to |
-| `<`       | Less than              |
-| `<=`      | Less than or equal to  |
-| `&`       | Logical AND (element-wise)|
-| `&&`      | Logical AND (single)   |
-| `|`       | Logical OR (element-wise) |
-| `||`      | Logical OR (single)    |
-| `!`       | Logical NOT            |
+| Operator | Description                |                           |                     |
+| :------- | :------------------------- | ------------------------- | ------------------- |
+| `+`      | Addition                   |                           |                     |
+| `-`      | Subtraction                |                           |                     |
+| `*`      | Multiplication             |                           |                     |
+| `/`      | Division                   |                           |                     |
+| `%%`     | Modulo (remainder)         |                           |                     |
+| `%/%`    | Integer Division           |                           |                     |
+| `^`      | Exponentiation             |                           |                     |
+| `:`      | Sequence                   |                           |                     |
+| `==`     | Equal to                   |                           |                     |
+| `!=`     | Not equal to               |                           |                     |
+| `>`      | Greater than               |                           |                     |
+| `>=`     | Greater than or equal to   |                           |                     |
+| `<`      | Less than                  |                           |                     |
+| `<=`     | Less than or equal to      |                           |                     |
+| `&`      | Logical AND (element-wise) |                           |                     |
+| `&&`     | Logical AND (single)       |                           |                     |
+| `        | `                          | Logical OR (element-wise) |                     |
+| `        |                            | `                         | Logical OR (single) |
+| `!`      | Logical NOT                |                           |                     |
 
 **Operator Precedence (highest to lowest):**
 

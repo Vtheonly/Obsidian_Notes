@@ -64,7 +64,7 @@ This output suggests that three separate expressions or commands were run, each 
 - The first line `[1] 42` is the result of a command that likely assigned the value 42 to a variable.
 - The second line `[1] 8` suggests another command, possibly involving the number 8.
 - The third line `[1] 18` follows a similar pattern, indicating the result of another computation.
-
+[[TP 1.2 the bracket]]
 **Role of Writing the Variable Identifier Alone:**
 When you write the variable identifier alone in the console, R displays the value of that variable. For instance:
 

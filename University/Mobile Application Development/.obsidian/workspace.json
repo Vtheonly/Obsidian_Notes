@@ -1,0 +1,215 @@
+{
+  "main": {
+    "id": "0c04e7d9f8a92ca6",
+    "type": "split",
+    "children": [
+      {
+        "id": "04e1c2085435d7ee",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5ebd02a9cbb3c077",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.4 - Dialogs/5.4.1 - AlertDialog.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "5.4.1 - AlertDialog"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "657508e860bbd66d",
+    "type": "split",
+    "children": [
+      {
+        "id": "ed689d3d9aa65eb8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7cce8262e09f0a5d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "501f11dbc1ecab79",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "237bcc468c18a17b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 414.5086555480957
+  },
+  "right": {
+    "id": "c6409cf33d7bd90a",
+    "type": "split",
+    "children": [
+      {
+        "id": "5e94872c04ca8bc8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8387586337e3c84d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "4 - Application Components & Lifecycles/4.2 - Services/4.2.0 - Services Overview.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 4.2.0 - Services Overview"
+            }
+          },
+          {
+            "id": "caad7858cfc17249",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "4 - Application Components & Lifecycles/4.2 - Services/4.2.0 - Services Overview.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 4.2.0 - Services Overview"
+            }
+          },
+          {
+            "id": "18dab0569bff5e3e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "51af6870721a4c6b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "4 - Application Components & Lifecycles/4.2 - Services/4.2.0 - Services Overview.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 4.2.0 - Services Overview"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "llm-test-gen:Test Dashboard": false,
+      "quiz-generator:Open generator": false
+    }
+  },
+  "active": "5ebd02a9cbb3c077",
+  "lastOpenFiles": [
+    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.4 - Dialogs/5.4.2 - Custom Dialogs.md",
+    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.4 - Dialogs/5.4.0 - Dialogs Overview.md",
+    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.3 - Menus/5.3.0 - Menus Overview & Creation (XML).md",
+    "8 - Connectivity & Advanced Topics/8.0 - Connecting to a Database Server (PHP JSON Example).md",
+    "8 - Connectivity & Advanced Topics/8.1 - Asynchronous Tasks (AsyncTask).md",
+    "7 - Android Programming (Data - SQLite, JSON, Adapters)/7.4 - JSON/7.4.1 - JSON Structure (Elements).md",
+    "7 - Android Programming (Data - SQLite, JSON, Adapters)/7.4 - JSON/7.4.2 - Reading JSON (JSONArray, JSONObject).md",
+    "7 - Android Programming (Data - SQLite, JSON, Adapters)/7.3 - SQLite/7.3.0 - SQLite Introduction.md",
+    "7 - Android Programming (Data - SQLite, JSON, Adapters)/7.3 - SQLite/7.3.1 - SQLite Syntax & Data Types.md",
+    "7 - Android Programming (Data - SQLite, JSON, Adapters)/7.2 - Adapters/7.2.1 - CursorAdapter.md",
+    "7 - Android Programming (Data - SQLite, JSON, Adapters)/7.2 - Adapters/7.2.0 - Adapters Overview.md",
+    "7 - Android Programming (Data - SQLite, JSON, Adapters)/7.1 - ListView & GridView/7.1.3 - Custom ListView (BaseAdapter).md",
+    "7 - Android Programming (Data - SQLite, JSON, Adapters)/7.1 - ListView & GridView/7.1.4 - GridView Overview & Usage.md",
+    "7 - Android Programming (Data - SQLite, JSON, Adapters)/7.1 - ListView & GridView/7.1.1 - Creating a Simple ListView (ArrayAdapter).md",
+    "7 - Android Programming (Data - SQLite, JSON, Adapters)/7.1 - ListView & GridView/7.1.0 - ListView Overview.md",
+    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.5 - Handling Click Events.md",
+    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.0 - UI Building Overview (XML, View, ViewGroup).md",
+    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.4 - Dialogs/5.4.1 - AlertDialog.md",
+    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.3 - Menus/5.3.3 - Popup Menu.md",
+    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.3 - Menus/5.3.2 - Context Menu.md",
+    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.3 - Menus/5.3.1 - Options Menu.md",
+    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.1 - XML Layouts/5.1.7 - GridLayout.md",
+    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.1 - XML Layouts/5.1.6 - TableLayout.md",
+    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.1 - XML Layouts/5.1.5 - RelativeLayout.md",
+    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.1 - XML Layouts/5.1.4 - LinearLayout.md",
+    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.1 - XML Layouts/5.1.3 - layout_gravity and gravity.md",
+    "Quiz",
+    "Picture/9.png",
+    "Picture/8.png",
+    "Picture/7.png",
+    "Picture/6.png",
+    "Picture/5.png",
+    "Picture/41.png",
+    "Picture/40.png",
+    "Picture/4.png",
+    "Picture/39.png",
+    "Picture/38.png",
+    "Picture",
+    "1 - Introduction"
+  ]
+}

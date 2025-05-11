@@ -2,7 +2,7 @@
   "showNotePath": false,
   "showFolderPath": false,
   "includeSubfolderNotes": true,
-  "randomizeQuestions": true,
+  "randomizeQuestions": false,
   "language": "English",
   "provider": "GOOGLE",
   "openAIApiKey": "",
