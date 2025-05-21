@@ -219,12 +219,16 @@ How do we associate the elements *defined* by the schema (like `<message>`, `<to
         </xs:schema>
         ```
      *   **Example Instance XML (assuming elementFormDefault="qualified"):**
-        ```xml
+
+
+
+```xml
         <monN:message xmlns:monN="https://www.monnamespace.com">
           <monN:to>Recipient</monN:to>
           <monN:from>Sender</monN:from>
         </monN:message>
-        ```
+```
+
 
 ### Validation (liaison du fichier XML avec le fichier XSD) (Validation: Linking XML to XSD)
 

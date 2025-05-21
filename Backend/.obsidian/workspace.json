@@ -50,12 +50,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux/Tools and Commands/Lessons/5 - grep.md",
+                "file": "Linux/Installing in Linux/Lessons/0 - How to Install Apps in Linux.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "5 - grep"
+              "title": "0 - How to Install Apps in Linux"
             }
           }
         ],
@@ -91,7 +91,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "ip address",
+                "query": "appim",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -112,7 +112,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -206,6 +207,8 @@
   },
   "active": "038784960d1d1497",
   "lastOpenFiles": [
+    "Linux/Installing in Linux/Lessons/6 - Understanding APT (Advanced Package Tool).md",
+    "Linux/Tools and Commands/Lessons/5 - grep.md",
     "Linux/Tools and Commands/Lessons/2 - .desktop Files.md",
     "Seeding in C++.md",
     "XML Schema (Schéma XML).md",
@@ -232,8 +235,6 @@
     "Quiz/Quiz 3.md",
     "Quiz/Quiz 2.md",
     "WebRTC/What is STUN.md",
-    "WebRTC/What is NAT.md",
-    "WebRTC/What is TURN.md",
     "Quiz",
     "WebRTC",
     "Backend"

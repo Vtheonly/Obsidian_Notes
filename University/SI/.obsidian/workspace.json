@@ -4,17 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "d0cdf38d8cec33f1",
+        "id": "eb939f8233e39b1c",
         "type": "tabs",
         "children": [
           {
-            "id": "2ea5cf93b4635bcc",
+            "id": "df44f7a14adb9111",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Quiz/Q1.md",
+                "mode": "preview",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Q1"
+            }
+          },
+          {
+            "id": "4f843c08246595b1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Quiz/Q2.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Q2"
             }
           }
         ]
@@ -49,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#DDoS",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -77,7 +95,7 @@
               "type": "rag-test-view",
               "state": {},
               "icon": "lucide-file",
-              "title": "Test Dashboard"
+              "title": "Plugin no longer active"
             }
           }
         ]
@@ -167,7 +185,6 @@
   "left-ribbon": {
     "hiddenItems": {
       "quiz-generator:Open generator": false,
-      "llm-test-gen:Test Dashboard": false,
       "switcher:Open quick switcher": true,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -176,41 +193,45 @@
       "command-palette:Open command palette": true
     }
   },
-  "active": "2ea5cf93b4635bcc",
+  "active": "df44f7a14adb9111",
   "lastOpenFiles": [
-    "Chapter 3/5 - SQL Injections.md",
-    "Chapter 3/5.1 - SQL Injections.md",
+    "Chapter 3/1 - SQL.md",
+    "Chapter 3/0 - Threats and Attacks.md",
+    "Chapter 3/2 - ARP Spoofing.md",
+    "Chapter 3/3 - XSS.md",
+    "Chapter 2/2.0 Cryptography.md",
+    "Chapter 1/Introduction.md",
+    "Chapter 2/2.3 Symmetric.md",
+    "Chapter 2/2.1 Kasiski.md",
+    "Quiz/Q4.md",
+    "Chapter 2/2.5 Certificate.md",
+    "Chapter 2/2.4 Asymmetric.md",
+    "Quiz/Q1.md",
+    "Chapter 2/2.6 PGP.md",
+    "Chapter 2/2.7 Email.md",
+    "Chapter 2/2.8 N group of people.md",
+    "Chapter 2/Untitled.md",
+    "Quiz/Possible Questions.md",
+    "Quiz/Possible Questions.pdf",
+    "Quiz/Q5.md",
+    "Quiz/Q3.md",
+    "Quiz/Q2.md",
+    "Quiz/Q15.md",
+    "Quiz/Q10.md",
+    "Quiz/Q14.md",
+    "Quiz/Q13.md",
+    "Quiz/Q12.md",
+    "Quiz/Q11.md",
     "Picture/Screenshot From 2025-04-29 07-05-04.png",
-    "Picture",
+    "Untitled",
     "Picture/Pasted image 20250429073355.png",
     "Picture/Pasted image 20250429073348.png",
-    "Chapter 3/4 - ARP Spoofing.md",
-    "Quiz/Chapter 1/Q10.md",
-    "Chapter 1/TD exercises.md",
-    "Chapter 1/1.1 - PDCA.md",
-    "Chapter 1/1 - Introduction.md",
-    "Chapter 1/0 - Introduction.md",
-    "Chapter 1/Overview/Intro.md",
-    "Quiz/Chapter 2/Q22.md",
-    "Quiz/Chapter 2/Q21.md",
-    "Quiz/Chapter 2/Q20.md",
-    "Quiz/Chapter 1/Q13.md",
+    "Chapter 3/Untitled",
+    "Picture",
     "Quiz/Chapter 2",
-    "Quiz/Chapter 1/Untitled 2.md",
-    "Quiz/Chapter 1/Q11.md",
-    "Quiz/Chapter 1/Untitled 4.md",
-    "Quiz/Chapter 1/Untitled 3.md",
     "Quiz/Chapter 1",
-    "Quiz/Chapter 3/Q1.md",
     "Chapter 1/Overview",
-    "Quiz/Chapter 3/Q5.md",
-    "Chapter 3/2 - Attackss.md",
-    "Quiz/Chapter 3/Q4.md",
-    "Chapter 3/1 - Threats and Attacks.md",
-    "Quiz/Chapter 3/Q9.md",
     "Quiz/Chapter 3",
-    "Quiz/Chapter 3/Q3.md",
-    "Quiz/Chapter 3/Q8.md",
     "Chapter 3/output.pdf",
     "Chapter 2/Crypto 1 -.canvas",
     "images/Pasted image 20250415201730.png",
@@ -218,9 +239,6 @@
     "images/image - 1.png",
     "images/Pasted image 20250415202245.png",
     "Chapter 3",
-    "Chapter 2",
-    "Chapter 1",
-    "Chapter/Chapter 3",
     "img 1.png",
     "TDs/Autres Univs/Univ Msila/TD/Psudo-Code chiffrement.png",
     "TDs/Autres Univs/Univ Alger 1/Exercices faites en cours avec Mr Rahmani/1.jpg"

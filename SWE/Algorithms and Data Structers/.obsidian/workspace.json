@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "d709683911c83af9",
+    "id": "63d8eae32ab04f44",
     "type": "split",
     "children": [
       {
-        "id": "62da7194a83b31c4",
+        "id": "6740eae0117bd823",
         "type": "tabs",
         "children": [
           {
-            "id": "4c28948a2d5d9377",
+            "id": "abc4f30011ceeb17",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tests/Test - 8.md",
+                "file": "01.Arrays/Concepts.1D.Arrays.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Test - 8"
+              "title": "Concepts.1D.Arrays"
             }
           }
         ]
@@ -27,27 +27,28 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "ab7b351fd76f8edd",
+    "id": "b4ed9c194ea3ac88",
     "type": "split",
     "children": [
       {
-        "id": "3a783735a65aaea3",
+        "id": "6b89ad8d60e8962b",
         "type": "tabs",
         "children": [
           {
-            "id": "7c568ac7f0c3c686",
+            "id": "6154e2e7d3467b67",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
             }
           },
           {
-            "id": "0037d0752d0ac162",
+            "id": "26d6117ced1bb17a",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -64,7 +65,7 @@
             }
           },
           {
-            "id": "e69bac690001ea18",
+            "id": "8cce57f87b0af538",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -80,20 +81,20 @@
     "width": 300
   },
   "right": {
-    "id": "cd2693498f69ae64",
+    "id": "2e46b8967fd75c40",
     "type": "split",
     "children": [
       {
-        "id": "55da2062d0969275",
+        "id": "e096b4a734309e61",
         "type": "tabs",
         "children": [
           {
-            "id": "e373d1bd08e7b8f5",
+            "id": "5e7b1a33cc3bcbed",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Index/8 - Stack.md",
+                "file": "01.Arrays/Concepts.1D.Arrays.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,54 +104,69 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 8 - Stack"
+              "title": "Backlinks for Concepts.1D.Arrays"
             }
           },
           {
-            "id": "35202bd6a3ea1a85",
+            "id": "7d3dcc4fa0a6c075",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Index/8 - Stack.md",
+                "file": "01.Arrays/Concepts.1D.Arrays.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 8 - Stack"
+              "title": "Outgoing links from Concepts.1D.Arrays"
             }
           },
           {
-            "id": "058fcd49c31de7c2",
+            "id": "e854de5fa7862188",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
               "title": "Tags"
             }
           },
           {
-            "id": "7a9575e7b90a6179",
+            "id": "2808e1a6de5026a5",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Index/8 - Stack.md"
+                "file": "01.Arrays/Concepts.1D.Arrays.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 8 - Stack"
+              "title": "Outline of Concepts.1D.Arrays"
+            }
+          },
+          {
+            "id": "059ac14600dc4c48",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -158,50 +174,27 @@
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
+      "obsidian-git:Open Git source control": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false
     }
   },
-  "active": "4c28948a2d5d9377",
+  "active": "6154e2e7d3467b67",
   "lastOpenFiles": [
-    "Tests/Test - 2.md",
-    "Tests/Test - 1.md",
-    "1 - Linked Lists/3 - Linked Lists.md",
-    "Tests/Test - 8.md",
-    "Tests/Test - 9.md",
-    "Tests/Test - 10.md",
-    "Tests/Test - 11.md",
-    "Tests/Test - 4.md",
-    "Tests/Test - 3.md",
-    "2 - Piles/Untitled.md",
-    "other/2 D Multiplication.md",
-    "other/Polynomial Addition Using Singly Linked Lists**.md",
-    "other/sort linked list.md",
-    "other/Tips.md",
-    "1 - Linked Lists/4 - Node Structure.md",
-    "1 - Linked Lists/Untitled 1.md",
-    "1 - Linked Lists/Untitled.md",
-    "1 - Linked Lists/Untitled 2.md",
-    "3 - Files/Untitled.md",
-    "other",
-    "Tests/Test - 7.md",
-    "Tests/Test - 5.md",
-    "Tests/Test - 6.md",
-    "Tests",
-    "4 - Arbres/Untitled.md",
-    "4 - Arbres",
-    "3 - Files",
-    "2 - Piles",
-    "1 - Linked Lists/Untitled 3.md",
-    "0 - Intro/2 - Double Dimension Arrays.md",
-    "0 - Intro/1 - C++ Parameter Passing.md",
-    "assets/Picture - 3.png",
-    "assets/Picture - 2.png",
-    "assets/Picture - 1.png",
-    "assets",
-    "0 - Intro/Pointers/Lessons",
-    "0 - Intro/Pointers/Active Recall Test",
-    "0 - Intro/Pointers",
-    "0 - Intro"
+    "01.Arrays/2 - Double Dimension Arrays.md",
+    "01.Arrays/1 - C++ Parameter Passing.md",
+    "01.Arrays/0 - C++ Dynamic Allocation & Functions.md",
+    "00.Foundations/01.Language.Specifics.CandCpp/11 - pointers to function.md",
+    "00.Foundations/01.Language.Specifics.CandCpp/10 - Constant Pointer.md",
+    "00.Foundations/01.Language.Specifics.CandCpp/9 - int a vs int a.md",
+    "00.Foundations/01.Language.Specifics.CandCpp/8 - How to read pointers declaration.md",
+    "00.Foundations/01.Language.Specifics.CandCpp/5 - Dynamic Array Allocation.md",
+    "00.Foundations/01.Language.Specifics.CandCpp/4 - malloc.md",
+    "00.Foundations/01.Language.Specifics.CandCpp/3 - pointers inside function.md",
+    "00.Foundations/01.Language.Specifics.CandCpp/2 - Referencing and Dereferencing.md",
+    "00.Foundations/01.Language.Specifics.CandCpp/1 - Difference Between Memory Address and Pointe.md",
+    "00.Foundations/01.Language.Specifics.CandCpp/0 - Introduction to Pointers in C.md",
+    "00.Foundations/01.Language.Specifics.CandCpp/Concepts.Pointers.md",
+    "00.Foundations/01.Language.Specifics.CandCpp/Concepts.Dynamic.Memory.md"
   ]
 }
