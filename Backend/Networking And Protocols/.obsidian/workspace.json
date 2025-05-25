@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "Networking Roadmap"
             }
+          },
+          {
+            "id": "6ab746e5d5ff63c7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Networking Roadmap.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Networking Roadmap"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -165,17 +180,22 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "030d55bbd0b2c1f2",
+  "active": "6ab746e5d5ff63c7",
   "lastOpenFiles": [
-    "Concepts/http.md",
+    "Concepts/HTTP HTTPS.md",
+    "Concepts/XHR.md",
+    "Concepts/SNI Injector Explained.md",
     "Concepts/WebSockets.md",
+    "Networking Roadmap.md",
+    "5. Network Security/5. Authentication and Authorization.md",
+    "5. Network Security/6. Security Best Practices.md",
+    "5. Network Security/3. Virtual Private Networks (VPNs).md",
+    "2. Core Protocols and Tools/12. TCP-IP Suite.md",
+    "Untitled",
     "Concepts/WebSocket Connections.md",
     "Concepts/Untitled.md",
-    "Networking Roadmap.md",
     "5. Network Security/2. Intrusion Detection and Prevention Systems (IDPS).md",
     "5. Network Security/1. Firewalls.md",
-    "5. Network Security/3. Virtual Private Networks (VPNs).md",
-    "5. Network Security/5. Authentication and Authorization.md",
     "2. Core Protocols and Tools/20. VPN Fundamentals.md",
     "1. Fundamentals/8. Network Devices.md",
     "1. Fundamentals/7. Basic Networking Commands.md",
@@ -185,14 +205,10 @@
     "1. Fundamentals/1. Network Models.md",
     "1. Fundamentals/2. OSI and TCP/IP Models.md",
     "5. Network Security/4. Encryption and Cryptography.md",
-    "5. Network Security/6. Security Best Practices.md",
     "2. Core Protocols and Tools/19. Packet Analysis.md",
     "2. Core Protocols and Tools/14. DNS and DHCP.md",
     "2. Core Protocols and Tools/13. ARP and RARP.md",
-    "2. Core Protocols and Tools/12. TCP-IP Suite.md",
     "2. Core Protocols and Tools/11. Ethernet and Wi-Fi.md",
-    "2. Core Protocols and Tools/15. DHCP and DNS.md",
-    "2. Core Protocols and Tools/18. FTP, SFTP, and TFTP.md",
     "2. Core Protocols and Tools",
     "5. Network Security",
     "3. Core Protocols and Tools",
@@ -201,7 +217,6 @@
     "1. Fundamentals/2. OSI and TCP",
     "1. Fundamentals",
     "task",
-    "1. Fundamentals/OSI and TCP",
-    "Network Protocols"
+    "1. Fundamentals/OSI and TCP"
   ]
 }

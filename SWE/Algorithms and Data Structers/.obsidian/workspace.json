@@ -8,17 +8,31 @@
         "type": "tabs",
         "children": [
           {
+            "id": "13b9103f57f4864d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "LeetCode.Top.150/242.Valid Anagram.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "242.Valid Anagram"
+            }
+          },
+          {
             "id": "abc4f30011ceeb17",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01.Arrays/Concepts.1D.Arrays.md",
+                "file": "Roadmap.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Concepts.1D.Arrays"
+              "title": "Roadmap"
             }
           }
         ]
@@ -53,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "big",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,7 +92,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 432.5026054382324
   },
   "right": {
     "id": "2e46b8967fd75c40",
@@ -94,7 +108,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "01.Arrays/Concepts.1D.Arrays.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +117,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Concepts.1D.Arrays"
+              "title": "Backlinks"
             }
           },
           {
@@ -176,11 +189,46 @@
       "daily-notes:Open today's daily note": false,
       "obsidian-git:Open Git source control": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "6154e2e7d3467b67",
+  "active": "13b9103f57f4864d",
   "lastOpenFiles": [
+    "00.Foundations/02.Complexity.Analysis/Concepts.Big.O.Notation.md",
+    "LeetCode.Top.150/242.Valid Anagram.md",
+    "assets/Picture - 4.png",
+    "08.Hashing/Hash Tables Maps.md",
+    "08.Hashing/Concepts.Collision.Resolution.md",
+    "Roadmap.md",
+    "08.Hashing/Concepts.Hash.Functions.md",
+    "08.Hashing/Problems.Hashing.md",
+    "00.Foundations/01.Language.Specifics.CandCpp/0 - Introduction to Pointers in C.md",
+    "Pasted image 20250522185912.png",
+    "Screenshot From 2025-05-22 15-39-26.png",
+    "Screenshot From 2025-05-22 15-39-03 1.png",
+    "Screenshot From 2025-05-22 15-39-03.png",
+    "Screenshot From 2025-05-22 15-38-28.png",
+    "Recording 2025052215/Recording 20250522154254.mp3",
+    "Recording 2025052215/Recording 20250522154250.mp3",
+    "Recording 2025052215/Recording 20250522154131.mp3",
+    "Recording 2025052215/Recording 20250522153953.mp3",
+    "Recording 2025052215/Recording 20250522153908.mp3",
+    "Recording 2025052215/Recording 20250522153848.mp3",
+    "Recording 2025052215/Recording 20250522153750.mp3",
+    "Recording 2025052215",
+    "Recording 20250522154254.mp3",
+    "Recording 20250522154250.mp3",
+    "2025-05-22.md",
+    "99.Problem.Solving.Patterns.General/Concepts.Pattern.Recognition.md",
+    "99.Problem.Solving.Patterns.General/Concepts.Debugging.Tips.md",
+    "99.Problem.Solving.Patterns.General/Common.Algorithms.Template.md",
+    "assets/README.md",
+    "00.Foundations/02.Complexity.Analysis/Concepts.Time.Space.Tradeoffs.md",
+    "00.Foundations/01.Language.Specifics.CandCpp/2 - Referencing and Dereferencing.md",
+    "00.Foundations/01.Language.Specifics.CandCpp/4 - malloc.md",
+    "00.Foundations/01.Language.Specifics.CandCpp/1 - Difference Between Memory Address and Pointe.md",
+    "01.Arrays/Concepts.1D.Arrays.md",
     "01.Arrays/2 - Double Dimension Arrays.md",
     "01.Arrays/1 - C++ Parameter Passing.md",
     "01.Arrays/0 - C++ Dynamic Allocation & Functions.md",
@@ -188,13 +236,6 @@
     "00.Foundations/01.Language.Specifics.CandCpp/10 - Constant Pointer.md",
     "00.Foundations/01.Language.Specifics.CandCpp/9 - int a vs int a.md",
     "00.Foundations/01.Language.Specifics.CandCpp/8 - How to read pointers declaration.md",
-    "00.Foundations/01.Language.Specifics.CandCpp/5 - Dynamic Array Allocation.md",
-    "00.Foundations/01.Language.Specifics.CandCpp/4 - malloc.md",
-    "00.Foundations/01.Language.Specifics.CandCpp/3 - pointers inside function.md",
-    "00.Foundations/01.Language.Specifics.CandCpp/2 - Referencing and Dereferencing.md",
-    "00.Foundations/01.Language.Specifics.CandCpp/1 - Difference Between Memory Address and Pointe.md",
-    "00.Foundations/01.Language.Specifics.CandCpp/0 - Introduction to Pointers in C.md",
-    "00.Foundations/01.Language.Specifics.CandCpp/Concepts.Pointers.md",
-    "00.Foundations/01.Language.Specifics.CandCpp/Concepts.Dynamic.Memory.md"
+    "00.Foundations/01.Language.Specifics.CandCpp/5 - Dynamic Array Allocation.md"
   ]
 }
