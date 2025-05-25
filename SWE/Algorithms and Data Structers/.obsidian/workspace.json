@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LeetCode.Top.150/242. Valid Anagram.md",
+                "file": "LeetCode.Top.150/49. group anagrams.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "242. Valid Anagram"
+              "title": "49. group anagrams"
             }
           },
           {
@@ -92,7 +92,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 432.5026054382324
+    "width": 432.5026054382324,
+    "collapsed": true
   },
   "right": {
     "id": "2e46b8967fd75c40",
@@ -195,8 +196,9 @@
   },
   "active": "13b9103f57f4864d",
   "lastOpenFiles": [
-    "LeetCode.Top.150/1. Two Sum.md",
     "LeetCode.Top.150/242. Valid Anagram.md",
+    "LeetCode.Top.150/49. group anagrams.md",
+    "LeetCode.Top.150/1. Two Sum.md",
     "00.Foundations/02.Complexity.Analysis/Concepts.Big.O.Notation.md",
     "assets/Picture - 4.png",
     "08.Hashing/Hash Tables Maps.md",
@@ -235,7 +237,6 @@
     "01.Arrays/0 - C++ Dynamic Allocation & Functions.md",
     "00.Foundations/01.Language.Specifics.CandCpp/11 - pointers to function.md",
     "00.Foundations/01.Language.Specifics.CandCpp/10 - Constant Pointer.md",
-    "00.Foundations/01.Language.Specifics.CandCpp/9 - int a vs int a.md",
-    "00.Foundations/01.Language.Specifics.CandCpp/8 - How to read pointers declaration.md"
+    "00.Foundations/01.Language.Specifics.CandCpp/9 - int a vs int a.md"
   ]
 }
