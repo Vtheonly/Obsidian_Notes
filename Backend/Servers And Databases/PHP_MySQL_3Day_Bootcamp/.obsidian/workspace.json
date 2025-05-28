@@ -1,24 +1,20 @@
 {
   "main": {
-    "id": "a2cda86f18dd965d",
+    "id": "be72a06ddc1817cb",
     "type": "split",
     "children": [
       {
-        "id": "578ccab68bf2cfb6",
+        "id": "92058576b8983e89",
         "type": "tabs",
         "children": [
           {
-            "id": "5c11273b37d4fa13",
+            "id": "7fa809232db00f97",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "16. Java Wise Tricks/1. PriorityQueue.md",
-                "mode": "preview",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "1. PriorityQueue"
+              "title": "New tab"
             }
           }
         ]
@@ -27,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "ce8d9e8ba4292655",
+    "id": "88f1219dfa528c24",
     "type": "split",
     "children": [
       {
-        "id": "35f9a9a70b62e725",
+        "id": "320de81867c316a5",
         "type": "tabs",
         "children": [
           {
-            "id": "9893b5498fe3433b",
+            "id": "728935b36dfee2c4",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +44,7 @@
             }
           },
           {
-            "id": "e6e868e301c898f7",
+            "id": "27d5b3587733321a",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +61,7 @@
             }
           },
           {
-            "id": "df6bf606f99cdbff",
+            "id": "1618199ac11414a4",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -81,20 +77,19 @@
     "width": 300
   },
   "right": {
-    "id": "9f39b428658f509d",
+    "id": "f4187950d26854f7",
     "type": "split",
     "children": [
       {
-        "id": "cc8224fad683c204",
+        "id": "a1656bcc83608207",
         "type": "tabs",
         "children": [
           {
-            "id": "8052e6c39b762beb",
+            "id": "6d28835857598628",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "LeetCode Top 150/347. Top K Frequent Elements.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,25 +99,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 347. Top K Frequent Elements"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "3cc42e6287a8de16",
+            "id": "1d98bd7eccd299db",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "LeetCode Top 150/347. Top K Frequent Elements.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 347. Top K Frequent Elements"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "3a9204d4edd22bdf",
+            "id": "cfb8e79afd2cf620",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,22 +131,21 @@
             }
           },
           {
-            "id": "bafd10a1e080c729",
+            "id": "2e6bca49f4cb769a",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "LeetCode Top 150/347. Top K Frequent Elements.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 347. Top K Frequent Elements"
+              "title": "Outline"
             }
           },
           {
-            "id": "421e03dba9dba984",
+            "id": "b184f2005f58598f",
             "type": "leaf",
             "state": {
               "type": "git-view",
@@ -166,8 +159,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -177,22 +169,37 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
+      "quiz-generator:Open generator": false,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "5c11273b37d4fa13",
+  "active": "b184f2005f58598f",
   "lastOpenFiles": [
-    "Pasted image 20250526121520.png",
-    "00. Foundations/02. Complexity Analysis/Concepts Time Space Tradeoffs.md",
-    "16. Java Wise Tricks/1. PriorityQueue.md",
-    "16. Java Wise Tricks",
-    "LeetCode Top 150/347. Top K Frequent Elements.md",
-    "15. Python Wise Tricks/Untitled.md",
-    "15. Python Wise Tricks/3. heapq.md",
-    "01. Arrays/1 - C++ Parameter Passing.md",
-    "01. Arrays/Concepts 1D Arrays.md",
-    "01. Arrays/Concepts 2D Arrays Matrices.md",
-    "01. Arrays/0 - C++ Dynamic Allocation & Functions.md",
-    "00. Foundations/02. Complexity Analysis/Concepts Big O Notation.md"
+    "Reference_Materials/Resources_Links.md",
+    "Reference_Materials/PHP_Quick_Reference.md",
+    "Reference_Materials/MySQL_Commands_Cheatsheet.md",
+    "Reference_Materials/Common_Interview_Questions.md",
+    "Practical_Projects/Realtime Live Updates.md",
+    "Practical_Projects/Uploading Images.md",
+    "Practical_Projects/Chat App.md",
+    "Day_2_Advanced_PHP_MySQL/2.1_MySQL_Setup_Basics.md",
+    "Day_1_PHP_Fundamentals/1.7 Form Handling.md",
+    "Day_1_PHP_Fundamentals/1.6 Arrays Manipulation.md",
+    "Day_1_PHP_Fundamentals/1.5 Functions Basics.md",
+    "Day_1_PHP_Fundamentals/1.4 Control Structures.md",
+    "Day_1_PHP_Fundamentals/1.1 Environment Setup.md",
+    "Day_1_PHP_Fundamentals/1.2.1 ob_start();.md",
+    "Day_1_PHP_Fundamentals/ 1.8 1 Review Checklist.md",
+    "Day_1_PHP_Fundamentals/ 1.6 Arrays Manipulation.md",
+    "Day_1_PHP_Fundamentals/ 1.5 Functions Basics.md",
+    "Day_1_PHP_Fundamentals/ 1.4 Control Structures.md",
+    "Day_1_PHP_Fundamentals/1.2 Syntax Essentials.md",
+    "Day_1_PHP_Fundamentals/1.3 Variables Data Types.md",
+    "Day_1_PHP_Fundamentals/ 11.8 1 Review Checklist.md",
+    "Day_1_PHP_Fundamentals/ 11.7 Form Handling.md",
+    "Day_1_PHP_Fundamentals/ 11.6 Arrays Manipulation.md",
+    "Day_1_PHP_Fundamentals/ 11.5 Functions Basics.md",
+    "Day_1_PHP_Fundamentals/ 11.4 Control Structures.md",
+    "Day_1_PHP_Fundamentals/ 11.3 Variables Data Types.md"
   ]
 }

@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "a2cda86f18dd965d",
+    "id": "3abb4db65278d948",
     "type": "split",
     "children": [
       {
-        "id": "578ccab68bf2cfb6",
+        "id": "42867ceaa99e625c",
         "type": "tabs",
         "children": [
           {
-            "id": "5c11273b37d4fa13",
+            "id": "86d5d7a9bfc5ed95",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "16. Java Wise Tricks/1. PriorityQueue.md",
-                "mode": "preview",
+                "file": "5 - Extras/Building.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. PriorityQueue"
+              "title": "Building"
             }
           }
         ]
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "ce8d9e8ba4292655",
+    "id": "ce08b6d2b770f55f",
     "type": "split",
     "children": [
       {
-        "id": "35f9a9a70b62e725",
+        "id": "0ae62a98949d42ec",
         "type": "tabs",
         "children": [
           {
-            "id": "9893b5498fe3433b",
+            "id": "9ed16bb0ea9313e0",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +48,7 @@
             }
           },
           {
-            "id": "e6e868e301c898f7",
+            "id": "1d278c7c4fd8d84d",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "df6bf606f99cdbff",
+            "id": "d6cb9a84d027a518",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -78,23 +78,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 320.5004348754883
   },
   "right": {
-    "id": "9f39b428658f509d",
+    "id": "763e711f339bef1f",
     "type": "split",
     "children": [
       {
-        "id": "cc8224fad683c204",
+        "id": "d9c765650f80c0a9",
         "type": "tabs",
         "children": [
           {
-            "id": "8052e6c39b762beb",
+            "id": "69e173dcfd43cc79",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "LeetCode Top 150/347. Top K Frequent Elements.md",
+                "file": "0 - React/Level 0 - Basics/1.2  - node_modules.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,25 +104,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 347. Top K Frequent Elements"
+              "title": "Backlinks for 1.2  - node_modules"
             }
           },
           {
-            "id": "3cc42e6287a8de16",
+            "id": "098fce2205b65375",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "LeetCode Top 150/347. Top K Frequent Elements.md",
+                "file": "0 - React/Level 0 - Basics/1.2  - node_modules.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 347. Top K Frequent Elements"
+              "title": "Outgoing links from 1.2  - node_modules"
             }
           },
           {
-            "id": "3a9204d4edd22bdf",
+            "id": "bfa2663afb610988",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,32 +137,21 @@
             }
           },
           {
-            "id": "bafd10a1e080c729",
+            "id": "981e39d651538d86",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "LeetCode Top 150/347. Top K Frequent Elements.md",
+                "file": "0 - React/Level 0 - Basics/1.2  - node_modules.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 347. Top K Frequent Elements"
-            }
-          },
-          {
-            "id": "421e03dba9dba984",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
+              "title": "Outline of 1.2  - node_modules"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
@@ -171,28 +160,33 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
+      "audio-recorder:Start/stop recording": false,
+      "switcher:Open quick switcher": true,
       "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
+      "canvas:Create new canvas": true,
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true,
+      "quiz-generator:Open generator": false,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "5c11273b37d4fa13",
+  "active": "86d5d7a9bfc5ed95",
   "lastOpenFiles": [
-    "Pasted image 20250526121520.png",
-    "00. Foundations/02. Complexity Analysis/Concepts Time Space Tradeoffs.md",
-    "16. Java Wise Tricks/1. PriorityQueue.md",
-    "16. Java Wise Tricks",
-    "LeetCode Top 150/347. Top K Frequent Elements.md",
-    "15. Python Wise Tricks/Untitled.md",
-    "15. Python Wise Tricks/3. heapq.md",
-    "01. Arrays/1 - C++ Parameter Passing.md",
-    "01. Arrays/Concepts 1D Arrays.md",
-    "01. Arrays/Concepts 2D Arrays Matrices.md",
-    "01. Arrays/0 - C++ Dynamic Allocation & Functions.md",
-    "00. Foundations/02. Complexity Analysis/Concepts Big O Notation.md"
+    "0 - React/Level 0 - Basics/0 - intro.md",
+    "5 - Extras/Building.md",
+    "0 - React/Level 0 - Basics/1.2  - node_modules.md",
+    "0 - React/Level 0 - Basics/1.3 - Using React with CDNs.md",
+    "5 - Extras/React Development Tools & Extensions.md",
+    "5 - Extras",
+    "Extras/React Development Tools & Extensions.md",
+    "Extras",
+    "4 - Quiz/Node/Test - 6.md",
+    "4 - Quiz/React/Test - 0.md",
+    "4 - Quiz/React",
+    "2 - Node/Level 1 - Basics/0 - introduction.md",
+    "1 - ExpressJS/Level 1/3 - req.query.name.md",
+    "1 - ExpressJS/Level 1/0 - First app.md",
+    "1 - ExpressJS/Level 0/installing Express.js.md"
   ]
 }
