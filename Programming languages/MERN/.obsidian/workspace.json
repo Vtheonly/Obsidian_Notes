@@ -20,6 +20,20 @@
               "icon": "lucide-file",
               "title": "Building"
             }
+          },
+          {
+            "id": "820759e0b3b27245",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0 - React/CodeBro/Untitled.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Untitled"
+            }
           }
         ]
       }
@@ -94,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "0 - React/Level 0 - Basics/1.2  - node_modules.md",
+                "file": "5 - Extras/Building.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +118,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 1.2  - node_modules"
+              "title": "Backlinks for Building"
             }
           },
           {
@@ -150,13 +164,23 @@
               "icon": "lucide-list",
               "title": "Outline of 1.2  - node_modules"
             }
+          },
+          {
+            "id": "b4d28a9321fc0e68",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -173,10 +197,18 @@
   },
   "active": "86d5d7a9bfc5ed95",
   "lastOpenFiles": [
-    "0 - React/Level 0 - Basics/0 - intro.md",
+    "5 - Extras/Untitled.md",
     "5 - Extras/Building.md",
+    "0 - React/Level 0 - Basics/1.4 assets and public.md",
+    "0 - React/CodeBro/Untitled.md",
+    "0 - React/Level 0 - Basics/0 - intro.md",
     "0 - React/Level 0 - Basics/1.2  - node_modules.md",
     "0 - React/Level 0 - Basics/1.3 - Using React with CDNs.md",
+    "0 - React/Level 0 - Basics/2.1 - Props.md",
+    "0 - React/Level 0 - Basics/1 - Project Structure.md",
+    "0 - React/Level 0 - Basics/2 - Components.md",
+    "0 - React/CodeBro/Untitled 1.md",
+    "0 - React/CodeBro",
     "5 - Extras/React Development Tools & Extensions.md",
     "5 - Extras",
     "Extras/React Development Tools & Extensions.md",
