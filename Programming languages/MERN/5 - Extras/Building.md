@@ -4,7 +4,7 @@ Okay, let's clarify "build," "running," and "compiling" in the context of a MERN
 
 *   **Definition:** The process of transforming code written in one language (or a version of a language) into another language (or another version).
 *   **Frontend (React):**
-    *   **JSX to JavaScript:** React components are often written using JSX (JavaScript XML), which looks like HTML embedded in JavaScript. Browsers don't understand JSX directly. A tool like **Babel** (often included in build tools like Vite or Create React App) *compiles* (or more accurately, *transpiles*) JSX into regular JavaScript function calls (e.g., `React.createElement()`).
+    *   **JSX to JavaScript:** React components are often written using JSX (JavaScript XML), which looks like HTML embedded in JavaScript. Browsers don't understand JSX directly. A tool like #Babel (often included in build tools like Vite or Create React App) *compiles* (or more accurately, *transpiles*) JSX into regular JavaScript function calls (e.g., `React.createElement()`).
     *   **Modern JavaScript (ES6+) to Older JavaScript (ES5):** To ensure broader browser compatibility, modern JavaScript features (ES6, ES7, etc.) might be transpiled by Babel into older ES5 JavaScript that more browsers understand.
     *   **TypeScript to JavaScript:** If you're using TypeScript with React, the TypeScript code (`.ts` or `.tsx` files) must be *compiled* into JavaScript by the TypeScript compiler (`tsc`).
     *   **Sass/LESS to CSS:** If you're using CSS preprocessors like Sass or LESS, their code needs to be *compiled* into standard CSS.

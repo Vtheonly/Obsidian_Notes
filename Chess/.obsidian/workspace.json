@@ -1,0 +1,177 @@
+{
+  "main": {
+    "id": "d969f97780985401",
+    "type": "split",
+    "children": [
+      {
+        "id": "8249b23e9272ba18",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "25c7a904216a1c85",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "80da63717123a101",
+    "type": "split",
+    "children": [
+      {
+        "id": "5ea15bcf9b153ea5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8d5629457ac50952",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "43de91c5c3942bba",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "1d4d1d48e14a0b0f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b21612c6ee627c61",
+    "type": "split",
+    "children": [
+      {
+        "id": "8862c514bc766203",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f7ee8712e051f755",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Untitled.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Untitled"
+            }
+          },
+          {
+            "id": "f34bfa9b23ca6bd4",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Untitled.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Untitled"
+            }
+          },
+          {
+            "id": "d9ad5d635b01bfee",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "df9d4c2b2ad3ae86",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Untitled.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Untitled"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "25c7a904216a1c85",
+  "lastOpenFiles": [
+    "salam 3likoum.md",
+    "subtitles/playlist 1/Chess_Lesson__5_Practice__Your_1st_Chess_Game__How_to_play_Chess_the_right_way.txt",
+    "subtitles/playlist 1/Chess_Lesson__4_Check__Checkmate__How_to_play_Chess_the_right_way.txt",
+    "subtitles/playlist 1/Chess_Lesson__3_How_the_Chess_pieces_capture__How_to_play_Chess_the_right_way.txt",
+    "subtitles/playlist 1/Chess_Lesson__2_How_the_Chess_pieces_move__How_to_play_Chess_the_right_way.txt",
+    "subtitles/playlist 1",
+    "subtitles"
+  ]
+}

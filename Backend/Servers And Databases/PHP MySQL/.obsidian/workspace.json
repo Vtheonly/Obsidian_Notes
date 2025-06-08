@@ -1,70 +1,37 @@
 {
   "main": {
-    "id": "7e704d2973e14ac7",
+    "id": "01f4f0942c9357f0",
     "type": "split",
     "children": [
       {
-        "id": "725812a8bdec4710",
+        "id": "af27f3c6991d5b72",
         "type": "tabs",
         "children": [
           {
-            "id": "e6abcc82df789bcb",
+            "id": "4f4eb1c7716802f3",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Docker/Level 0/Lessons/2. Installing Docker.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "2. Installing Docker"
-            }
-          },
-          {
-            "id": "f42b3b3c83278890",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Docker/Level 0/Lessons/3. Images and Containers.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "3. Images and Containers"
-            }
-          },
-          {
-            "id": "962d96424e11fe02",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Docker/Level 0/Lessons/3. Images and Containers.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "3. Images and Containers"
+              "title": "New tab"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "bb85c451c5017f8a",
+    "id": "63ca57faaf5b1488",
     "type": "split",
     "children": [
       {
-        "id": "8c3faf2f2e0148aa",
+        "id": "1b96e7a4f07917e7",
         "type": "tabs",
         "children": [
           {
-            "id": "17bc40549c391232",
+            "id": "36c6453079e6dae7",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -77,12 +44,12 @@
             }
           },
           {
-            "id": "8e1806616ea5abe1",
+            "id": "b45995b7ea8934cf",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "appim",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -94,7 +61,7 @@
             }
           },
           {
-            "id": "6d8d5b27a8c81ad7",
+            "id": "42bbe923c142ae87",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -107,18 +74,18 @@
       }
     ],
     "direction": "horizontal",
-    "width": 462.5026054382324
+    "width": 300
   },
   "right": {
-    "id": "9c07cb0f11004622",
+    "id": "55e7c5cee40285fe",
     "type": "split",
     "children": [
       {
-        "id": "1488a84c40ec8d2b",
+        "id": "f65b580905b00997",
         "type": "tabs",
         "children": [
           {
-            "id": "12175efd6c24334f",
+            "id": "27f654edca1793df",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -136,7 +103,7 @@
             }
           },
           {
-            "id": "24526581858512c7",
+            "id": "638ef8a33d1cd01e",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -149,7 +116,7 @@
             }
           },
           {
-            "id": "83bd60a6165bf2e4",
+            "id": "6280592d93e23841",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -164,7 +131,7 @@
             }
           },
           {
-            "id": "337f358a94dcf4cd",
+            "id": "be46c6b1971229f5",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -191,44 +158,9 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "quiz-generator:Open generator": false
+      "command-palette:Open command palette": false
     }
   },
-  "active": "962d96424e11fe02",
-  "lastOpenFiles": [
-    "Untitled.md",
-    "Docker/Level 0/Lessons/3. Images and Containers.md",
-    "Docker/Level 0/Untitled/Docker Q3.md",
-    "Docker/Level 0/Lessons/4. Parent Images and Docker Hub.md",
-    "Docker/Level 0/Lessons/5. The Dockerfile.md",
-    "Docker/Level 0/Untitled/Docker Q4.md",
-    "Docker/Level 0/Untitled/Docker Q2.md",
-    "Docker/Level 0/Lessons/2. Installing Docker.md",
-    "Docker/Level 0/Untitled/Docker Q8.md",
-    "Docker/Level 0/Untitled/Docker Q7.md",
-    "Docker/Level 0/Untitled/Docker Q6.md",
-    "Docker/Level 0/Untitled/Docker Q5.md",
-    "Docker/Level 0/Untitled/Untitled",
-    "Docker/Level 0/Lessons/1. What is Docker.md",
-    "Docker/Level 0/Untitled/Docker Q1.md",
-    "Docker/Level 0/Untitled",
-    "Docker/Level 0/Lessons/1/Summery.md",
-    "Docker/Level 0/Lessons/6. The .dockerignore file.md",
-    "Docker/Level 0/Lessons/7. Starting and Stopping Containers.md",
-    "Docker/Level 0/Lessons/What is Docker (Crash Course 1).md",
-    "Docker/Level 0/Lessons/The Dockerfile (Crash Course 5).md",
-    "Docker/Level 0/Lessons/The .dockerignore file (Crash Course 6).md",
-    "Docker/Level 0/Lessons/Starting and Stopping Containers (Crash Course 7).md",
-    "Docker/Level 0/Lessons/Parent Images and Docker Hub (Crash Course 4).md",
-    "Docker/Level 0/Lessons/Installing Docker (Crash Course 2).md",
-    "Docker/Level 0/Lessons/Images and Containers (Crash Course 3).md",
-    "Docker/Level 0/Lessons/Summery.md",
-    "Docker/Level 0/Lessons/docker.md",
-    "Servers And Databases/Untitled",
-    "Networking And Protocols/IDK",
-    "Quiz",
-    "WebRTC",
-    "Backend"
-  ]
+  "active": "4f4eb1c7716802f3",
+  "lastOpenFiles": []
 }
