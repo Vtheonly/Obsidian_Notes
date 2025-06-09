@@ -3,7 +3,7 @@
 In this section, we'll delve deeper into the `useState` hook in React, providing additional details, examples, and use cases to help you understand how to effectively manage state in functional components.
 
 #### Overview of `useState`
-[[6.1 - state]]
+[[6.1 - State]]
 `useState` is a hook that lets you add state to functional components in React. Before hooks were introduced, state management in React was only possible in class components. With `useState`, functional components can now hold and manage state, making the code more concise and easier to read.
 
 **Basic Syntax:**
