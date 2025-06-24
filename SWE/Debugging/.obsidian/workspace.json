@@ -1,24 +1,20 @@
 {
   "main": {
-    "id": "672369894e62c234",
+    "id": "7e704d2973e14ac7",
     "type": "split",
     "children": [
       {
-        "id": "30f3fa1a482e42c8",
+        "id": "7e8ac6a61ef8f8bb",
         "type": "tabs",
         "children": [
           {
-            "id": "330babc24d2eb0d1",
+            "id": "879665fd7cf1f3f5",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Getting Started.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Getting Started"
+              "title": "New tab"
             }
           }
         ]
@@ -27,33 +23,33 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "66be47ce8009d669",
+    "id": "bb85c451c5017f8a",
     "type": "split",
     "children": [
       {
-        "id": "7f7bf6a02a197b7c",
+        "id": "8c3faf2f2e0148aa",
         "type": "tabs",
         "children": [
           {
-            "id": "68286a25c1cec20a",
+            "id": "17bc40549c391232",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
             }
           },
           {
-            "id": "31cdc7ac96b07117",
+            "id": "8e1806616ea5abe1",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "appim",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,7 +61,7 @@
             }
           },
           {
-            "id": "274661a82d15814b",
+            "id": "6d8d5b27a8c81ad7",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -78,23 +74,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 462.5026054382324
   },
   "right": {
-    "id": "42632ff01c7e3c2d",
+    "id": "9c07cb0f11004622",
     "type": "split",
     "children": [
       {
-        "id": "37ffa1039747fa81",
+        "id": "1488a84c40ec8d2b",
         "type": "tabs",
         "children": [
           {
-            "id": "52dad6ea305a797f",
+            "id": "12175efd6c24334f",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Continue\" and \"Step Over\".md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,25 +99,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Continue\" and \"Step Over\""
+              "title": "Backlinks"
             }
           },
           {
-            "id": "569c1137dc364a20",
+            "id": "24526581858512c7",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Continue\" and \"Step Over\".md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Continue\" and \"Step Over\""
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "e42d4f5ec124c17e",
+            "id": "83bd60a6165bf2e4",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,21 +131,31 @@
             }
           },
           {
-            "id": "9be7add44ab56f22",
+            "id": "337f358a94dcf4cd",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Continue\" and \"Step Over\".md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Continue\" and \"Step Over\""
+              "title": "Outline"
+            }
+          },
+          {
+            "id": "dd3c82aba9488fd4",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -162,28 +166,50 @@
     "hiddenItems": {
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "audio-recorder:Start/stop recording": false
+      "canvas:Create new canvas": true,
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true,
+      "quiz-generator:Open generator": false,
+      "audio-recorder:Start/stop recording": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "330babc24d2eb0d1",
+  "active": "879665fd7cf1f3f5",
   "lastOpenFiles": [
-    "Continue and Step Over.md",
+    "System Design/Chapter 4.md",
+    "System Design/Chapter 3.md",
     "Untitled.md",
-    "Untitled.canvas",
-    "Step Over built-in files.md",
-    "Recording 20250621223349.webm",
-    "Recording 20250621223358.webm",
-    "Pasted image/Pasted image 1.png",
-    "Pasted image/Pasted image 2.png",
-    "inner breakpoints.md",
-    "where to use a break point.md",
-    "Pasted image",
-    "Watch.md",
-    "Debug Toolbar.md",
-    "Getting Started.md"
+    "System Design/Extras/Scalability.md",
+    "System Design/Extras",
+    "System Design/Extras/Asynchronous and Multi-Threaded.md",
+    "System Design/Chapter 1.md",
+    "System Design/Chapter 2.md",
+    "Networking And Protocols/3.2 Private IP vs. Public IP.md",
+    "Docker/Level 0/Lessons/3. Images and Containers.md",
+    "Docker/Level 0/Untitled/Docker Q3.md",
+    "Docker/Level 0/Lessons/4. Parent Images and Docker Hub.md",
+    "Docker/Level 0/Lessons/5. The Dockerfile.md",
+    "Docker/Level 0/Untitled/Docker Q4.md",
+    "Docker/Level 0/Untitled/Docker Q2.md",
+    "Docker/Level 0/Lessons/2. Installing Docker.md",
+    "Docker/Level 0/Untitled/Docker Q8.md",
+    "Docker/Level 0/Untitled/Docker Q7.md",
+    "Docker/Level 0/Untitled/Docker Q6.md",
+    "Docker/Level 0/Untitled/Docker Q5.md",
+    "Docker/Level 0/Untitled/Untitled",
+    "Docker/Level 0/Lessons/1. What is Docker.md",
+    "Docker/Level 0/Untitled/Docker Q1.md",
+    "Docker/Level 0/Untitled",
+    "Docker/Level 0/Lessons/1/Summery.md",
+    "Docker/Level 0/Lessons/6. The .dockerignore file.md",
+    "Docker/Level 0/Lessons/7. Starting and Stopping Containers.md",
+    "Docker/Level 0/Lessons/What is Docker (Crash Course 1).md",
+    "Docker/Level 0/Lessons/The Dockerfile (Crash Course 5).md",
+    "Servers And Databases/Untitled",
+    "Networking And Protocols/IDK",
+    "Quiz",
+    "WebRTC",
+    "Backend"
   ]
 }

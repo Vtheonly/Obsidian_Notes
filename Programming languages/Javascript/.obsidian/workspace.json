@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "308deefd054d3722",
+    "id": "7e704d2973e14ac7",
     "type": "split",
     "children": [
       {
-        "id": "7bc1a8d205cc3bec",
+        "id": "7e8ac6a61ef8f8bb",
         "type": "tabs",
         "children": [
           {
-            "id": "922996e796a6e631",
+            "id": "879665fd7cf1f3f5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Level 0/Lessons/3 - Arrays.md",
+                "file": "Level 0/Lessons/5 - If else statement.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3 - Arrays"
+              "title": "5 - If else statement"
             }
           }
         ]
@@ -27,33 +27,33 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "b63c96ca28db4b02",
+    "id": "bb85c451c5017f8a",
     "type": "split",
     "children": [
       {
-        "id": "1838c8c8f0f7bcb6",
+        "id": "8c3faf2f2e0148aa",
         "type": "tabs",
         "children": [
           {
-            "id": "f5d36d4cd6c1b085",
+            "id": "17bc40549c391232",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
             }
           },
           {
-            "id": "dc46c18453518b9f",
+            "id": "8e1806616ea5abe1",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "event loop",
+                "query": "appim",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "0fc76c05fd59a55e",
+            "id": "6d8d5b27a8c81ad7",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -78,23 +78,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 371.5004348754883
+    "width": 462.5026054382324
   },
   "right": {
-    "id": "275bf1f6c1e32571",
+    "id": "9c07cb0f11004622",
     "type": "split",
     "children": [
       {
-        "id": "c8a89ea9a3cfabe6",
+        "id": "1488a84c40ec8d2b",
         "type": "tabs",
         "children": [
           {
-            "id": "74a95ceee9eb25be",
+            "id": "12175efd6c24334f",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Level 0/Lessons/15 - Template literal.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,25 +103,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 15 - Template literal"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "b951e8b1df6bc057",
+            "id": "24526581858512c7",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Level 0/Lessons/15 - Template literal.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 15 - Template literal"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "05d5de92c60ce5e5",
+            "id": "83bd60a6165bf2e4",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,21 +135,31 @@
             }
           },
           {
-            "id": "d3047e3ee9788e59",
+            "id": "337f358a94dcf4cd",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Level 0/Lessons/15 - Template literal.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 15 - Template literal"
+              "title": "Outline"
+            }
+          },
+          {
+            "id": "dd3c82aba9488fd4",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -162,60 +170,50 @@
     "hiddenItems": {
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
+      "canvas:Create new canvas": true,
       "daily-notes:Open today's daily note": true,
       "templates:Insert template": true,
       "command-palette:Open command palette": true,
-      "zk-prefixer:Create new unique note": true,
-      "publish:Publish changes...": true,
-      "markdown-importer:Open format converter": true,
-      "quiz-generator:Open generator": false
+      "quiz-generator:Open generator": false,
+      "audio-recorder:Start/stop recording": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "922996e796a6e631",
+  "active": "879665fd7cf1f3f5",
   "lastOpenFiles": [
-    "Level 0/Lessons/2 - Comparison operators.md",
-    "Level 0/Lessons/1 - Linking.md",
-    "Level 8 Async API/Lesson/61 - Event Loop and Callback Queue.md",
-    "Level 8 Async API/Lesson/60 - Single-Threaded Execution.md",
-    "Level 1/Lessons/21 - Functions.md",
-    "Quiz 2.md",
-    "Level 1/Lessons/22 - Rest Default Params.md",
-    "Level 8 Async API/Lesson/56 - JSON.md",
-    "Level 8 Async API/Lesson/57 - POST and GET.md",
-    "Level 0/Lessons/15 - Template literal.md",
-    "Quiz 1.md",
-    "Level 0/Lessons/9 - Temporal Dead Zone (TDZ).md",
-    "Level 0/Lessons/10 - Console.md",
-    "Level 0/Lessons/4 - Syntax tricks.md",
-    "Level 0/Lessons/3 - Arrays.md",
-    "Level 2/Lessons/31 - DOM.md",
-    "Level 8 Async API/Active Recall Test/Test - 56.md",
-    "Level 1/Active Recall Test/Test - 21 - Functions.md",
-    "Level 10 Interview Test/README.md",
-    "Level 7/Active Recall Test/Test - 55 - and exporting.md",
-    "Level 7/Active Recall Test/Test - 54 - Generator.md",
-    "Level 6/Active Recall Test/Test - 53 - and new.md",
-    "Level 6/Active Recall Test/Test - 52 - static.md",
-    "Level 6/Active Recall Test/Test - 51 - OOP.md",
-    "Level 6/Active Recall Test/Test - 50 - Metadata and Property Descriptors.md",
-    "Level 6/Active Recall Test/Test - 49 - Functions.md",
-    "makeTest.sh",
-    "Node/makeTest.sh",
-    "Node/Lesson",
-    "Node/Active Recall Test",
-    "Node",
-    "organize.sh",
-    "Untitled",
-    "Untitled/Level 8 Async",
-    "Level API",
-    "Level 7",
-    "Untitled.canvas",
-    "Pasted image 20240718011535.png",
-    "Pasted image 20240718015935.png",
-    "Pasted image 20240717212523.png",
-    "Pasted image 20240717212353.png",
-    "Pasted image 20240718011130.png",
-    "21 - functions/Untitled.canvas"
+    "System Design/Chapter 4.md",
+    "System Design/Chapter 3.md",
+    "Untitled.md",
+    "System Design/Extras/Scalability.md",
+    "System Design/Extras",
+    "System Design/Extras/Asynchronous and Multi-Threaded.md",
+    "System Design/Chapter 1.md",
+    "System Design/Chapter 2.md",
+    "Networking And Protocols/3.2 Private IP vs. Public IP.md",
+    "Docker/Level 0/Lessons/3. Images and Containers.md",
+    "Docker/Level 0/Untitled/Docker Q3.md",
+    "Docker/Level 0/Lessons/4. Parent Images and Docker Hub.md",
+    "Docker/Level 0/Lessons/5. The Dockerfile.md",
+    "Docker/Level 0/Untitled/Docker Q4.md",
+    "Docker/Level 0/Untitled/Docker Q2.md",
+    "Docker/Level 0/Lessons/2. Installing Docker.md",
+    "Docker/Level 0/Untitled/Docker Q8.md",
+    "Docker/Level 0/Untitled/Docker Q7.md",
+    "Docker/Level 0/Untitled/Docker Q6.md",
+    "Docker/Level 0/Untitled/Docker Q5.md",
+    "Docker/Level 0/Untitled/Untitled",
+    "Docker/Level 0/Lessons/1. What is Docker.md",
+    "Docker/Level 0/Untitled/Docker Q1.md",
+    "Docker/Level 0/Untitled",
+    "Docker/Level 0/Lessons/1/Summery.md",
+    "Docker/Level 0/Lessons/6. The .dockerignore file.md",
+    "Docker/Level 0/Lessons/7. Starting and Stopping Containers.md",
+    "Docker/Level 0/Lessons/What is Docker (Crash Course 1).md",
+    "Docker/Level 0/Lessons/The Dockerfile (Crash Course 5).md",
+    "Servers And Databases/Untitled",
+    "Networking And Protocols/IDK",
+    "Quiz",
+    "WebRTC",
+    "Backend"
   ]
 }

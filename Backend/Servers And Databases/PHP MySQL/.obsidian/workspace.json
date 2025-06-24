@@ -1,37 +1,56 @@
 {
   "main": {
-    "id": "01f4f0942c9357f0",
+    "id": "7e704d2973e14ac7",
     "type": "split",
     "children": [
       {
-        "id": "af27f3c6991d5b72",
+        "id": "7e8ac6a61ef8f8bb",
         "type": "tabs",
         "children": [
           {
-            "id": "4f4eb1c7716802f3",
+            "id": "879665fd7cf1f3f5",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "All Concepts.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "All Concepts"
+            }
+          },
+          {
+            "id": "7ea3dbdb38879231",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "the PHP server.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "the PHP server"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "63ca57faaf5b1488",
+    "id": "bb85c451c5017f8a",
     "type": "split",
     "children": [
       {
-        "id": "1b96e7a4f07917e7",
+        "id": "8c3faf2f2e0148aa",
         "type": "tabs",
         "children": [
           {
-            "id": "36c6453079e6dae7",
+            "id": "17bc40549c391232",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -44,12 +63,12 @@
             }
           },
           {
-            "id": "b45995b7ea8934cf",
+            "id": "8e1806616ea5abe1",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#Apache",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,7 +80,7 @@
             }
           },
           {
-            "id": "42bbe923c142ae87",
+            "id": "6d8d5b27a8c81ad7",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -70,22 +89,24 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 462.5026054382324,
+    "collapsed": true
   },
   "right": {
-    "id": "55e7c5cee40285fe",
+    "id": "9c07cb0f11004622",
     "type": "split",
     "children": [
       {
-        "id": "f65b580905b00997",
+        "id": "1488a84c40ec8d2b",
         "type": "tabs",
         "children": [
           {
-            "id": "27f654edca1793df",
+            "id": "12175efd6c24334f",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -103,7 +124,7 @@
             }
           },
           {
-            "id": "638ef8a33d1cd01e",
+            "id": "24526581858512c7",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -116,7 +137,7 @@
             }
           },
           {
-            "id": "6280592d93e23841",
+            "id": "83bd60a6165bf2e4",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -131,7 +152,7 @@
             }
           },
           {
-            "id": "be46c6b1971229f5",
+            "id": "337f358a94dcf4cd",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -143,24 +164,72 @@
               "icon": "lucide-list",
               "title": "Outline"
             }
+          },
+          {
+            "id": "dd3c82aba9488fd4",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "canvas:Create new canvas": true,
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true,
+      "quiz-generator:Open generator": false,
+      "audio-recorder:Start/stop recording": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4f4eb1c7716802f3",
-  "lastOpenFiles": []
+  "active": "7ea3dbdb38879231",
+  "lastOpenFiles": [
+    "All Concepts.md",
+    "the PHP server.md",
+    "System Design/Chapter 4.md",
+    "System Design/Chapter 3.md",
+    "System Design/Extras/Scalability.md",
+    "System Design/Extras",
+    "System Design/Extras/Asynchronous and Multi-Threaded.md",
+    "System Design/Chapter 1.md",
+    "System Design/Chapter 2.md",
+    "Networking And Protocols/3.2 Private IP vs. Public IP.md",
+    "Docker/Level 0/Lessons/3. Images and Containers.md",
+    "Docker/Level 0/Untitled/Docker Q3.md",
+    "Docker/Level 0/Lessons/4. Parent Images and Docker Hub.md",
+    "Docker/Level 0/Lessons/5. The Dockerfile.md",
+    "Docker/Level 0/Untitled/Docker Q4.md",
+    "Docker/Level 0/Untitled/Docker Q2.md",
+    "Docker/Level 0/Lessons/2. Installing Docker.md",
+    "Docker/Level 0/Untitled/Docker Q8.md",
+    "Docker/Level 0/Untitled/Docker Q7.md",
+    "Docker/Level 0/Untitled/Docker Q6.md",
+    "Docker/Level 0/Untitled/Docker Q5.md",
+    "Docker/Level 0/Untitled/Untitled",
+    "Docker/Level 0/Lessons/1. What is Docker.md",
+    "Docker/Level 0/Untitled/Docker Q1.md",
+    "Docker/Level 0/Untitled",
+    "Docker/Level 0/Lessons/1/Summery.md",
+    "Docker/Level 0/Lessons/6. The .dockerignore file.md",
+    "Docker/Level 0/Lessons/7. Starting and Stopping Containers.md",
+    "Docker/Level 0/Lessons/What is Docker (Crash Course 1).md",
+    "Servers And Databases/Untitled",
+    "Networking And Protocols/IDK",
+    "Quiz",
+    "WebRTC",
+    "Backend"
+  ]
 }

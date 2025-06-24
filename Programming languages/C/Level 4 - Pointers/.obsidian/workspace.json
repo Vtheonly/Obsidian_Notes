@@ -1,104 +1,95 @@
 {
   "main": {
-    "id": "c0eb17cc328e5382",
+    "id": "7e704d2973e14ac7",
     "type": "split",
     "children": [
       {
-        "id": "4f1e066b64c00200",
+        "id": "7e8ac6a61ef8f8bb",
         "type": "tabs",
         "children": [
           {
-            "id": "ce6b27cf390a2b21",
+            "id": "879665fd7cf1f3f5",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "5 - pointers to function.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "febb4d9d19d9ca89",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "4 - pointers inside function.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "579d7c770037648b",
+    "id": "bb85c451c5017f8a",
     "type": "split",
     "children": [
       {
-        "id": "1773cc66cccf74e4",
+        "id": "8c3faf2f2e0148aa",
         "type": "tabs",
         "children": [
           {
-            "id": "f874e5cc47af7b8c",
+            "id": "17bc40549c391232",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
-            "id": "6a7044a0b0f59891",
+            "id": "8e1806616ea5abe1",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "appim",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
-            "id": "aef8eb921d661dc6",
+            "id": "6d8d5b27a8c81ad7",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 462.5026054382324
   },
   "right": {
-    "id": "b571dd80d23c877a",
+    "id": "9c07cb0f11004622",
     "type": "split",
     "children": [
       {
-        "id": "0efb56a6fcb17c05",
+        "id": "1488a84c40ec8d2b",
         "type": "tabs",
         "children": [
           {
-            "id": "09215c9b1a180631",
+            "id": "12175efd6c24334f",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "4 - pointers inside function.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -106,48 +97,61 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
             }
           },
           {
-            "id": "2d33910d2d2c779a",
+            "id": "24526581858512c7",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "4 - pointers inside function.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "dfc0e8c29be6ea06",
+            "id": "83bd60a6165bf2e4",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
-              }
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
-            "id": "4b136e560fef268d",
+            "id": "337f358a94dcf4cd",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "4 - pointers inside function.md"
-              }
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
             }
           },
           {
-            "id": "ec0bb7e3355cdb5f",
+            "id": "dd3c82aba9488fd4",
             "type": "leaf",
             "state": {
-              "type": "mermaid-toolbar-view",
-              "state": {}
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
         ],
@@ -162,24 +166,50 @@
     "hiddenItems": {
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "mermaid-tools:Open Mermaid Toolbar": false
+      "canvas:Create new canvas": true,
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true,
+      "quiz-generator:Open generator": false,
+      "audio-recorder:Start/stop recording": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "febb4d9d19d9ca89",
+  "active": "879665fd7cf1f3f5",
   "lastOpenFiles": [
-    "5 - pointers to function.md",
-    "4 - pointers inside function.md",
-    "1 - Referencing and Dereferencing.md",
-    "0 - Introduction to Pointers in C.md",
-    "malloc.md",
-    "1 - Difference Between Memory Address and Pointe.md",
-    "Assetes/Picture - 2.png",
-    "Assetes/Picture - 3.png",
-    "Assetes",
-    "Assetes/Picture - 1.png"
+    "System Design/Chapter 4.md",
+    "System Design/Chapter 3.md",
+    "Untitled.md",
+    "System Design/Extras/Scalability.md",
+    "System Design/Extras",
+    "System Design/Extras/Asynchronous and Multi-Threaded.md",
+    "System Design/Chapter 1.md",
+    "System Design/Chapter 2.md",
+    "Networking And Protocols/3.2 Private IP vs. Public IP.md",
+    "Docker/Level 0/Lessons/3. Images and Containers.md",
+    "Docker/Level 0/Untitled/Docker Q3.md",
+    "Docker/Level 0/Lessons/4. Parent Images and Docker Hub.md",
+    "Docker/Level 0/Lessons/5. The Dockerfile.md",
+    "Docker/Level 0/Untitled/Docker Q4.md",
+    "Docker/Level 0/Untitled/Docker Q2.md",
+    "Docker/Level 0/Lessons/2. Installing Docker.md",
+    "Docker/Level 0/Untitled/Docker Q8.md",
+    "Docker/Level 0/Untitled/Docker Q7.md",
+    "Docker/Level 0/Untitled/Docker Q6.md",
+    "Docker/Level 0/Untitled/Docker Q5.md",
+    "Docker/Level 0/Untitled/Untitled",
+    "Docker/Level 0/Lessons/1. What is Docker.md",
+    "Docker/Level 0/Untitled/Docker Q1.md",
+    "Docker/Level 0/Untitled",
+    "Docker/Level 0/Lessons/1/Summery.md",
+    "Docker/Level 0/Lessons/6. The .dockerignore file.md",
+    "Docker/Level 0/Lessons/7. Starting and Stopping Containers.md",
+    "Docker/Level 0/Lessons/What is Docker (Crash Course 1).md",
+    "Docker/Level 0/Lessons/The Dockerfile (Crash Course 5).md",
+    "Servers And Databases/Untitled",
+    "Networking And Protocols/IDK",
+    "Quiz",
+    "WebRTC",
+    "Backend"
   ]
 }

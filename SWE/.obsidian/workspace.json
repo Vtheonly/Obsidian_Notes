@@ -1,14 +1,14 @@
 {
   "main": {
-    "id": "8ae13f7f56c1008c",
+    "id": "7e704d2973e14ac7",
     "type": "split",
     "children": [
       {
-        "id": "dac132385af7caf4",
+        "id": "7e8ac6a61ef8f8bb",
         "type": "tabs",
         "children": [
           {
-            "id": "1d80f5df1be8dd27",
+            "id": "879665fd7cf1f3f5",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -23,33 +23,33 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "90904228cfe8b68c",
+    "id": "bb85c451c5017f8a",
     "type": "split",
     "children": [
       {
-        "id": "4351bb8a8e980422",
+        "id": "8c3faf2f2e0148aa",
         "type": "tabs",
         "children": [
           {
-            "id": "d973fbe430a37b65",
+            "id": "17bc40549c391232",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
             }
           },
           {
-            "id": "c8304bfb4668c2df",
+            "id": "8e1806616ea5abe1",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "appim",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,7 +61,7 @@
             }
           },
           {
-            "id": "8dd234cefdbe80eb",
+            "id": "6d8d5b27a8c81ad7",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -74,18 +74,18 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 462.5026054382324
   },
   "right": {
-    "id": "d8d62478667c9af5",
+    "id": "9c07cb0f11004622",
     "type": "split",
     "children": [
       {
-        "id": "10b66ef677a451c4",
+        "id": "1488a84c40ec8d2b",
         "type": "tabs",
         "children": [
           {
-            "id": "29d03d9ae73b3616",
+            "id": "12175efd6c24334f",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -103,7 +103,7 @@
             }
           },
           {
-            "id": "81a13bfd6aa4fc74",
+            "id": "24526581858512c7",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -116,7 +116,7 @@
             }
           },
           {
-            "id": "7eab321ecc6ad36b",
+            "id": "83bd60a6165bf2e4",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -131,7 +131,7 @@
             }
           },
           {
-            "id": "78454bda39052f67",
+            "id": "337f358a94dcf4cd",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -143,8 +143,19 @@
               "icon": "lucide-list",
               "title": "Outline"
             }
+          },
+          {
+            "id": "dd3c82aba9488fd4",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -155,12 +166,50 @@
     "hiddenItems": {
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "canvas:Create new canvas": true,
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true,
+      "quiz-generator:Open generator": false,
+      "audio-recorder:Start/stop recording": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1d80f5df1be8dd27",
-  "lastOpenFiles": []
+  "active": "879665fd7cf1f3f5",
+  "lastOpenFiles": [
+    "System Design/Chapter 4.md",
+    "System Design/Chapter 3.md",
+    "Untitled.md",
+    "System Design/Extras/Scalability.md",
+    "System Design/Extras",
+    "System Design/Extras/Asynchronous and Multi-Threaded.md",
+    "System Design/Chapter 1.md",
+    "System Design/Chapter 2.md",
+    "Networking And Protocols/3.2 Private IP vs. Public IP.md",
+    "Docker/Level 0/Lessons/3. Images and Containers.md",
+    "Docker/Level 0/Untitled/Docker Q3.md",
+    "Docker/Level 0/Lessons/4. Parent Images and Docker Hub.md",
+    "Docker/Level 0/Lessons/5. The Dockerfile.md",
+    "Docker/Level 0/Untitled/Docker Q4.md",
+    "Docker/Level 0/Untitled/Docker Q2.md",
+    "Docker/Level 0/Lessons/2. Installing Docker.md",
+    "Docker/Level 0/Untitled/Docker Q8.md",
+    "Docker/Level 0/Untitled/Docker Q7.md",
+    "Docker/Level 0/Untitled/Docker Q6.md",
+    "Docker/Level 0/Untitled/Docker Q5.md",
+    "Docker/Level 0/Untitled/Untitled",
+    "Docker/Level 0/Lessons/1. What is Docker.md",
+    "Docker/Level 0/Untitled/Docker Q1.md",
+    "Docker/Level 0/Untitled",
+    "Docker/Level 0/Lessons/1/Summery.md",
+    "Docker/Level 0/Lessons/6. The .dockerignore file.md",
+    "Docker/Level 0/Lessons/7. Starting and Stopping Containers.md",
+    "Docker/Level 0/Lessons/What is Docker (Crash Course 1).md",
+    "Docker/Level 0/Lessons/The Dockerfile (Crash Course 5).md",
+    "Servers And Databases/Untitled",
+    "Networking And Protocols/IDK",
+    "Quiz",
+    "WebRTC",
+    "Backend"
+  ]
 }

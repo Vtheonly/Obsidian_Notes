@@ -1,20 +1,20 @@
 {
   "main": {
-    "id": "0c04e7d9f8a92ca6",
+    "id": "7e704d2973e14ac7",
     "type": "split",
     "children": [
       {
-        "id": "bf60b70ab6a43128",
+        "id": "7e8ac6a61ef8f8bb",
         "type": "tabs",
         "children": [
           {
-            "id": "5f119c58f4829012",
+            "id": "879665fd7cf1f3f5",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -23,33 +23,33 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "657508e860bbd66d",
+    "id": "bb85c451c5017f8a",
     "type": "split",
     "children": [
       {
-        "id": "ed689d3d9aa65eb8",
+        "id": "8c3faf2f2e0148aa",
         "type": "tabs",
         "children": [
           {
-            "id": "7cce8262e09f0a5d",
+            "id": "17bc40549c391232",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
             }
           },
           {
-            "id": "501f11dbc1ecab79",
+            "id": "8e1806616ea5abe1",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#configuration",
+                "query": "appim",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,7 +61,7 @@
             }
           },
           {
-            "id": "237bcc468c18a17b",
+            "id": "6d8d5b27a8c81ad7",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -74,23 +74,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 414.5086555480957
+    "width": 462.5026054382324
   },
   "right": {
-    "id": "c6409cf33d7bd90a",
+    "id": "9c07cb0f11004622",
     "type": "split",
     "children": [
       {
-        "id": "5e94872c04ca8bc8",
+        "id": "1488a84c40ec8d2b",
         "type": "tabs",
         "children": [
           {
-            "id": "8387586337e3c84d",
+            "id": "12175efd6c24334f",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "4 - Application Components & Lifecycles/4.2 - Services/4.2.0 - Services Overview.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,25 +99,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 4.2.0 - Services Overview"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "caad7858cfc17249",
+            "id": "24526581858512c7",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "4 - Application Components & Lifecycles/4.2 - Services/4.2.0 - Services Overview.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 4.2.0 - Services Overview"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "18dab0569bff5e3e",
+            "id": "83bd60a6165bf2e4",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -133,21 +131,31 @@
             }
           },
           {
-            "id": "51af6870721a4c6b",
+            "id": "337f358a94dcf4cd",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "4 - Application Components & Lifecycles/4.2 - Services/4.2.0 - Services Overview.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 4.2.0 - Services Overview"
+              "title": "Outline"
+            }
+          },
+          {
+            "id": "dd3c82aba9488fd4",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -158,61 +166,50 @@
     "hiddenItems": {
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
+      "canvas:Create new canvas": true,
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true,
+      "quiz-generator:Open generator": false,
       "audio-recorder:Start/stop recording": false,
-      "daily-notes:Open today's daily note": false,
-      "quiz-generator:Open generator": false
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "5f119c58f4829012",
+  "active": "879665fd7cf1f3f5",
   "lastOpenFiles": [
-    "7 - Android Programming (Data - SQLite, JSON, Adapters)/7.2 - SQLite Introduction.md",
-    "7 - Android Programming (Data - SQLite, JSON, Adapters)/7.1 - ListView Overview.md",
-    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.3 - Menus/5.3.0 - Menus Overview & Creation (XML).md",
-    "4 - Application Components & Lifecycles/4.3 - Intents Overview.md",
-    "6 - Resources/6.1 - Resources.md",
-    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.6 - Action Bar.md",
-    "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.5 - Handling Click Events.md",
-    "4 - Application Components & Lifecycles/4.5 - Publish an Android app.md",
-    "4 - Application Components & Lifecycles/4.4 - Classes.dex.md",
-    "4 - Application Components & Lifecycles/4.1 - Activities Overview.md",
-    "4 - Application Components & Lifecycles/4.2 - Services Overview.md",
-    "4 - Application Components & Lifecycles/4.0 - Application Components Overview.md",
-    "6 - Resources/6.2 - String Resources.md",
-    "6 - Resources/6.0 - Resources Overview & R Class.md",
-    "6 - Resources/6.1 - Using Resources (Syntax).md",
-    "6 - Resources/6.3 - Drawable Resources.md",
-    "6 - Resources/6.4 - Mipmap Resources.md",
-    "6 - Resources/6.5 - Color Resources.md",
-    "6 - Resources/6.6 - Dimension Resources.md",
-    "6 - Resources/6.7 - Style Resources.md",
-    "4 - Application Components & Lifecycles/4.7 - Application Context.md",
-    "4 - Application Components & Lifecycles/4.1.3 - Activity Lifecycle Callbacks.md",
-    "4 - Application Components & Lifecycles/4.1/4.1.5 - Saving & Restoring Activity State.md",
-    "4 - Application Components & Lifecycles/4.1/4.1.4 - Finishing Activities.md",
-    "4 - Application Components & Lifecycles/4.1/4.1.2 - Activity Lifecycle.md",
-    "4 - Application Components & Lifecycles/4.1/4.1.1 - Declaring Activities (Manifest).md",
-    "Possible Questions/Vocal/Recording 20250513181126.webm",
-    "Possible Questions/Vocal/22.webm",
-    "Possible Questions/Vocal/Recording 20250513180619.webm",
-    "Possible Questions/Vocal/Recording 20250513145747.webm",
-    "Possible Questions/Vocal",
-    "Possible Questions/Vocal/V -.webm",
-    "Possible Questions/Vocal/Recording 20250513145901.webm",
-    "Possible Questions/Vocal/Recording 20250513145850.webm",
-    "Possible Questions",
-    "7 - Android Programming (Data - SQLite, JSON, Adapters)/7.3 - JSON",
-    "Possible Questions/Picture/9.png",
-    "Possible Questions/Picture/8.png",
-    "Possible Questions/Picture/7.png",
-    "Possible Questions/Picture/6.png",
-    "Possible Questions/Picture/5.png",
-    "Possible Questions/Picture/41.png",
-    "Possible Questions/Picture/40.png",
-    "Possible Questions/Picture/4.png",
-    "Possible Questions/Picture/39.png",
-    "Possible Questions/Picture/38.png"
+    "System Design/Chapter 4.md",
+    "System Design/Chapter 3.md",
+    "Untitled.md",
+    "System Design/Extras/Scalability.md",
+    "System Design/Extras",
+    "System Design/Extras/Asynchronous and Multi-Threaded.md",
+    "System Design/Chapter 1.md",
+    "System Design/Chapter 2.md",
+    "Networking And Protocols/3.2 Private IP vs. Public IP.md",
+    "Docker/Level 0/Lessons/3. Images and Containers.md",
+    "Docker/Level 0/Untitled/Docker Q3.md",
+    "Docker/Level 0/Lessons/4. Parent Images and Docker Hub.md",
+    "Docker/Level 0/Lessons/5. The Dockerfile.md",
+    "Docker/Level 0/Untitled/Docker Q4.md",
+    "Docker/Level 0/Untitled/Docker Q2.md",
+    "Docker/Level 0/Lessons/2. Installing Docker.md",
+    "Docker/Level 0/Untitled/Docker Q8.md",
+    "Docker/Level 0/Untitled/Docker Q7.md",
+    "Docker/Level 0/Untitled/Docker Q6.md",
+    "Docker/Level 0/Untitled/Docker Q5.md",
+    "Docker/Level 0/Untitled/Untitled",
+    "Docker/Level 0/Lessons/1. What is Docker.md",
+    "Docker/Level 0/Untitled/Docker Q1.md",
+    "Docker/Level 0/Untitled",
+    "Docker/Level 0/Lessons/1/Summery.md",
+    "Docker/Level 0/Lessons/6. The .dockerignore file.md",
+    "Docker/Level 0/Lessons/7. Starting and Stopping Containers.md",
+    "Docker/Level 0/Lessons/What is Docker (Crash Course 1).md",
+    "Docker/Level 0/Lessons/The Dockerfile (Crash Course 5).md",
+    "Servers And Databases/Untitled",
+    "Networking And Protocols/IDK",
+    "Quiz",
+    "WebRTC",
+    "Backend"
   ]
 }

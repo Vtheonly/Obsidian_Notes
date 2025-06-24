@@ -22,9 +22,10 @@
   "outline": true,
   "word-count": true,
   "slides": false,
-  "audio-recorder": false,
+  "audio-recorder": true,
   "workspaces": false,
   "file-recovery": true,
   "publish": false,
-  "sync": false
+  "sync": true,
+  "webviewer": false
 }
