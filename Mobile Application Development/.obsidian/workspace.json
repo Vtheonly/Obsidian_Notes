@@ -11,14 +11,10 @@
             "id": "5f119c58f4829012",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "7 - Android Programming (Data - SQLite, JSON, Adapters)/7.2 - SQLite Introduction.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "7.2 - SQLite Introduction"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -165,13 +161,14 @@
       "canvas:Create new canvas": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "quiz-generator:Open generator": false,
       "audio-recorder:Start/stop recording": false,
-      "daily-notes:Open today's daily note": false
+      "daily-notes:Open today's daily note": false,
+      "quiz-generator:Open generator": false
     }
   },
   "active": "5f119c58f4829012",
   "lastOpenFiles": [
+    "7 - Android Programming (Data - SQLite, JSON, Adapters)/7.2 - SQLite Introduction.md",
     "7 - Android Programming (Data - SQLite, JSON, Adapters)/7.1 - ListView Overview.md",
     "5 - UI Construction (Layouts, Widgets, Menus, Dialogs)/5.3 - Menus/5.3.0 - Menus Overview & Creation (XML).md",
     "4 - Application Components & Lifecycles/4.3 - Intents Overview.md",
@@ -197,7 +194,6 @@
     "4 - Application Components & Lifecycles/4.1/4.1.4 - Finishing Activities.md",
     "4 - Application Components & Lifecycles/4.1/4.1.2 - Activity Lifecycle.md",
     "4 - Application Components & Lifecycles/4.1/4.1.1 - Declaring Activities (Manifest).md",
-    "4 - Application Components & Lifecycles/4.8 - Application Permissions.md",
     "Possible Questions/Vocal/Recording 20250513181126.webm",
     "Possible Questions/Vocal/22.webm",
     "Possible Questions/Vocal/Recording 20250513180619.webm",

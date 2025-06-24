@@ -1,0 +1,13 @@
+{
+	"nodes":[
+		{"id":"d5b29080dcb0b301","type":"text","text":"only for breakpoint","x":-527,"y":210,"width":250,"height":60},
+		{"id":"71dd381dd08ec689","type":"text","text":"it wroks from breakpoit to breakpoint ","x":-257,"y":210,"width":250,"height":60},
+		{"id":"80429005fba613fe","type":"text","text":"doesnt go throuhg lines or innner lines ","x":13,"y":210,"width":250,"height":60},
+		{"id":"0d8a04cefe2efb94","type":"text","text":"contiune ","x":-257,"y":-20,"width":250,"height":60}
+	],
+	"edges":[
+		{"id":"977316fc7c80fb2e","fromNode":"0d8a04cefe2efb94","fromSide":"bottom","toNode":"d5b29080dcb0b301","toSide":"top"},
+		{"id":"c1d227e1e781cd68","fromNode":"0d8a04cefe2efb94","fromSide":"bottom","toNode":"71dd381dd08ec689","toSide":"top"},
+		{"id":"219b40a79366f6e2","fromNode":"0d8a04cefe2efb94","fromSide":"bottom","toNode":"80429005fba613fe","toSide":"top"}
+	]
+}

@@ -11,10 +11,14 @@
             "id": "08f5d70cbd751a3a",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "0 - React/Level 0 - Basics/5 - Handling Click Events.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "5 - Handling Click Events"
             }
           }
         ]
@@ -74,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 320.5004348754883
+    "width": 216.50043487548828
   },
   "right": {
     "id": "763e711f339bef1f",
@@ -162,7 +166,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 564.5
+    "width": 564.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -177,34 +182,36 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9ed16bb0ea9313e0",
+  "active": "08f5d70cbd751a3a",
   "lastOpenFiles": [
+    "5 - Extras/Untitled.md",
+    "0 - React/Level 0 - Basics/UseRef.md",
+    "0 - React/Level 0 - Basics/5 - Handling Click Events.md",
+    "0 - React/Level 0 - Basics/5.1 - Handling Arguments.md",
+    "0 - React/Level 0 - Basics/6 - UseState.md",
+    "0 - React/Level 0 - Basics/6 - UseState Count.md",
+    "0 - React/Level 0 - Basics/6.1 - State.md",
+    "0 - React/Level 0 - Basics/0 - intro.md",
+    "0 - React/CodeBro/9. Learn_the_React_onChange_event_handler_.txt",
+    "0 - React/CodeBro/Learn_the_React_onChange_event_handler_.txt",
+    "0 - React/CodeBro/8. React_useState_hook_introduction_.txt",
+    "0 - React/CodeBro/React_useState_hook_introduction_.txt",
+    "0 - React/CodeBro/7. Learn_React_Click_Events_.txt",
+    "0 - React/Level 0 - Basics/2.1 - CSS Modules.md",
+    "0 - React/Level 0 - Basics/2 - Components.md",
+    "Recording 20250608133229.webm",
     "Recording 20250608133519.webm",
     "t.webm",
     "Recording 20250608133530.webm",
     "Recording 20250608133458.webm",
-    "Recording 20250608133453.webm",
-    "Recording 20250608133229.webm",
-    "0 - React/Level 0 - Basics/6.1 - State.md",
-    "0 - React/Level 0 - Basics/6 - UseState Count.md",
-    "0 - React/Level 0 - Basics/6 - UseState.md",
-    "0 - React/Level 0 - Basics/5 - Handling Click Events.md",
-    "0 - React/Level 0 - Basics/5.1 - Handling Arguments.md",
     "4 - Quiz/React/Test - 6.md",
     "4 - Quiz/React/Test - 5.md",
     "4 - Quiz/React/Test - 3.md",
     "4 - Quiz/React/Test - 2.md",
     "4 - Quiz/React/Test - 0.md",
     "0 - React/Level 0 - Basics/4 -  Rendering Lists in ReactJS.md",
-    "0 - React/CodeBro/Learn_React_Click_Events_.txt",
-    "0 - React/CodeBro/youtube_subtitles_1749329776.txt",
     "0 - React/Level 0 - Basics/3 - Conditional Rendering in React.md",
-    "0 - React/CodeBro/6. How_to_render_LISTS_in_React_.txt",
-    "0 - React/CodeBro/How_to_render_LISTS_in_React_.txt",
-    "0 - React/CodeBro/5. How_to_CONDITIONAL_RENDER_in_React_.txt",
     "0 - React/Level 0 - Basics/2.2 - Props.md",
-    "0 - React/Level 0 - Basics/2.1 - CSS Modules.md",
-    "0 - React/Level 0 - Basics/2 - Components.md",
     "0 - React/Level 0 - Basics/1 - Project Structure.md",
     "0 - React/Level 0 - Basics/1.1 - What is Vite?.md",
     "0 - React/Level 0 - Basics/1.2  - Node modules.md",
@@ -212,8 +219,6 @@
     "0 - React/CodeBro/Untitled.md",
     "5 - Extras/Building.md",
     "5 - Extras/Babel.md",
-    "0 - React/Level 0 - Basics/1.4 assets and public.md",
-    "0 - React/Level 0 - Basics/0 - intro.md",
-    "0 - React/Level 0 - Basics/1.3 - Using React with CDNs.md"
+    "0 - React/Level 0 - Basics/1.4 assets and public.md"
   ]
 }

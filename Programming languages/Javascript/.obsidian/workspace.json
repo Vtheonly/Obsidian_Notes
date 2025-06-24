@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Level 1/Lessons/21 - Functions.md",
+                "file": "Level 0/Lessons/3 - Arrays.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "21 - Functions"
+              "title": "3 - Arrays"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "event loop",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -169,12 +169,16 @@
       "zk-prefixer:Create new unique note": true,
       "publish:Publish changes...": true,
       "markdown-importer:Open format converter": true,
-      "llm-test-gen:Test Dashboard": false,
       "quiz-generator:Open generator": false
     }
   },
   "active": "922996e796a6e631",
   "lastOpenFiles": [
+    "Level 0/Lessons/2 - Comparison operators.md",
+    "Level 0/Lessons/1 - Linking.md",
+    "Level 8 Async API/Lesson/61 - Event Loop and Callback Queue.md",
+    "Level 8 Async API/Lesson/60 - Single-Threaded Execution.md",
+    "Level 1/Lessons/21 - Functions.md",
     "Quiz 2.md",
     "Level 1/Lessons/22 - Rest Default Params.md",
     "Level 8 Async API/Lesson/56 - JSON.md",
@@ -184,13 +188,10 @@
     "Level 0/Lessons/9 - Temporal Dead Zone (TDZ).md",
     "Level 0/Lessons/10 - Console.md",
     "Level 0/Lessons/4 - Syntax tricks.md",
-    "Level 0/Lessons/2 - Comparison operators.md",
     "Level 0/Lessons/3 - Arrays.md",
-    "Level 0/Lessons/1 - Linking.md",
     "Level 2/Lessons/31 - DOM.md",
     "Level 8 Async API/Active Recall Test/Test - 56.md",
     "Level 1/Active Recall Test/Test - 21 - Functions.md",
-    "Level 1/Lessons/21 - Functions.md",
     "Level 10 Interview Test/README.md",
     "Level 7/Active Recall Test/Test - 55 - and exporting.md",
     "Level 7/Active Recall Test/Test - 54 - Generator.md",
@@ -199,8 +200,6 @@
     "Level 6/Active Recall Test/Test - 51 - OOP.md",
     "Level 6/Active Recall Test/Test - 50 - Metadata and Property Descriptors.md",
     "Level 6/Active Recall Test/Test - 49 - Functions.md",
-    "Level 5/Active Recall Test/Test - 48 - Array.copyWithin.md",
-    "Level 4/Active Recall Test/Test - 47 - Use WeakSet.md",
     "makeTest.sh",
     "Node/makeTest.sh",
     "Node/Lesson",

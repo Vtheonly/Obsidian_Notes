@@ -1,0 +1,189 @@
+{
+  "main": {
+    "id": "672369894e62c234",
+    "type": "split",
+    "children": [
+      {
+        "id": "30f3fa1a482e42c8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "330babc24d2eb0d1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Getting Started.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Getting Started"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "66be47ce8009d669",
+    "type": "split",
+    "children": [
+      {
+        "id": "7f7bf6a02a197b7c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "68286a25c1cec20a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "31cdc7ac96b07117",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "274661a82d15814b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "42632ff01c7e3c2d",
+    "type": "split",
+    "children": [
+      {
+        "id": "37ffa1039747fa81",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "52dad6ea305a797f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Continue\" and \"Step Over\".md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Continue\" and \"Step Over\""
+            }
+          },
+          {
+            "id": "569c1137dc364a20",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Continue\" and \"Step Over\".md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Continue\" and \"Step Over\""
+            }
+          },
+          {
+            "id": "e42d4f5ec124c17e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "9be7add44ab56f22",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Continue\" and \"Step Over\".md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Continue\" and \"Step Over\""
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "audio-recorder:Start/stop recording": false
+    }
+  },
+  "active": "330babc24d2eb0d1",
+  "lastOpenFiles": [
+    "Continue and Step Over.md",
+    "Untitled.md",
+    "Untitled.canvas",
+    "Step Over built-in files.md",
+    "Recording 20250621223349.webm",
+    "Recording 20250621223358.webm",
+    "Pasted image/Pasted image 1.png",
+    "Pasted image/Pasted image 2.png",
+    "inner breakpoints.md",
+    "where to use a break point.md",
+    "Pasted image",
+    "Watch.md",
+    "Debug Toolbar.md",
+    "Getting Started.md"
+  ]
+}
