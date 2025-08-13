@@ -1,20 +1,24 @@
 {
   "main": {
-    "id": "7e704d2973e14ac7",
+    "id": "eaa932cb2d1e2b21",
     "type": "split",
     "children": [
       {
-        "id": "7e8ac6a61ef8f8bb",
+        "id": "859100bb45aab397",
         "type": "tabs",
         "children": [
           {
-            "id": "879665fd7cf1f3f5",
+            "id": "ebe16f5b859d9e32",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "readme.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "readme"
             }
           }
         ]
@@ -23,33 +27,33 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "bb85c451c5017f8a",
+    "id": "ace061cac26b49c0",
     "type": "split",
     "children": [
       {
-        "id": "8c3faf2f2e0148aa",
+        "id": "a8f61f8b44d0ae6c",
         "type": "tabs",
         "children": [
           {
-            "id": "17bc40549c391232",
+            "id": "23e0629f77ed220d",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": true
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
             }
           },
           {
-            "id": "8e1806616ea5abe1",
+            "id": "6af2f5642cf572db",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "appim",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,7 +65,7 @@
             }
           },
           {
-            "id": "6d8d5b27a8c81ad7",
+            "id": "484e9580f5fb6844",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -74,18 +78,18 @@
       }
     ],
     "direction": "horizontal",
-    "width": 462.5026054382324
+    "width": 300
   },
   "right": {
-    "id": "9c07cb0f11004622",
+    "id": "659d5a038b310e8d",
     "type": "split",
     "children": [
       {
-        "id": "1488a84c40ec8d2b",
+        "id": "e82c06ebc10e2701",
         "type": "tabs",
         "children": [
           {
-            "id": "12175efd6c24334f",
+            "id": "e5e2265b9aaf7b4f",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -103,7 +107,7 @@
             }
           },
           {
-            "id": "24526581858512c7",
+            "id": "18a54fbc06d4b42c",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -116,7 +120,7 @@
             }
           },
           {
-            "id": "83bd60a6165bf2e4",
+            "id": "b3cca0ff09211607",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -131,7 +135,7 @@
             }
           },
           {
-            "id": "337f358a94dcf4cd",
+            "id": "06faf9669145a61b",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -143,75 +147,28 @@
               "icon": "lucide-list",
               "title": "Outline"
             }
-          },
-          {
-            "id": "dd3c82aba9488fd4",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
-            }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
-      "canvas:Create new canvas": true,
-      "daily-notes:Open today's daily note": true,
-      "templates:Insert template": true,
-      "command-palette:Open command palette": true,
-      "audio-recorder:Start/stop recording": false,
-      "quiz-generator:Open generator": false,
-      "obsidian-git:Open Git source control": false
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
-  "active": "879665fd7cf1f3f5",
+  "active": "23e0629f77ed220d",
   "lastOpenFiles": [
-    "Out Of Context/Invalid username or token. Password authentication is not supported.md",
-    "Out Of Context/Making a Branch The Default And Single Timeline.md",
-    "Out Of Context/origin HEAD Not a Symbolic Ref.md",
-    "Out Of Context/Why a Folder Might Appear Green in Git Tools.md",
-    "images",
-    "images/image_1.png",
-    "Out Of Context",
-    "System Design/Chapter 4.md",
-    "System Design/Chapter 3.md",
-    "Untitled.md",
-    "System Design/Extras/Scalability.md",
-    "System Design/Extras",
-    "System Design/Extras/Asynchronous and Multi-Threaded.md",
-    "System Design/Chapter 1.md",
-    "System Design/Chapter 2.md",
-    "Networking And Protocols/3.2 Private IP vs. Public IP.md",
-    "Docker/Level 0/Lessons/3. Images and Containers.md",
-    "Docker/Level 0/Untitled/Docker Q3.md",
-    "Docker/Level 0/Lessons/4. Parent Images and Docker Hub.md",
-    "Docker/Level 0/Lessons/5. The Dockerfile.md",
-    "Docker/Level 0/Untitled/Docker Q4.md",
-    "Docker/Level 0/Untitled/Docker Q2.md",
-    "Docker/Level 0/Lessons/2. Installing Docker.md",
-    "Docker/Level 0/Untitled/Docker Q8.md",
-    "Docker/Level 0/Untitled/Docker Q7.md",
-    "Docker/Level 0/Untitled/Docker Q6.md",
-    "Docker/Level 0/Untitled/Docker Q5.md",
-    "Docker/Level 0/Untitled/Untitled",
-    "Docker/Level 0/Lessons/1. What is Docker.md",
-    "Docker/Level 0/Untitled/Docker Q1.md",
-    "Docker/Level 0/Untitled",
-    "Docker/Level 0/Lessons/1/Summery.md",
-    "Servers And Databases/Untitled",
-    "Networking And Protocols/IDK",
-    "Quiz",
-    "WebRTC",
-    "Backend"
+    "SWE/GitHub/Out Of Context/Making a Branch The Default And Single Timeline.md",
+    "SWE/GitHub/Out Of Context/Making Pizza2 The Default And Single Timeline.md",
+    "SWE/GitHub/Out Of Context/Untitled.md"
   ]
 }
