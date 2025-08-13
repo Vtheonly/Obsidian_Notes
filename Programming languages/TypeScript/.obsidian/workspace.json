@@ -1,24 +1,20 @@
 {
   "main": {
-    "id": "7e704d2973e14ac7",
+    "id": "a035f93cac587ada",
     "type": "split",
     "children": [
       {
-        "id": "7e8ac6a61ef8f8bb",
+        "id": "91ebe9508c0aef81",
         "type": "tabs",
         "children": [
           {
-            "id": "879665fd7cf1f3f5",
+            "id": "23766361908d4440",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Kotlin/Chapter 3.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Chapter 3"
+              "title": "New tab"
             }
           }
         ]
@@ -27,33 +23,33 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "bb85c451c5017f8a",
+    "id": "270cb1e28ec0ece2",
     "type": "split",
     "children": [
       {
-        "id": "8c3faf2f2e0148aa",
+        "id": "8db65e188bca71e2",
         "type": "tabs",
         "children": [
           {
-            "id": "17bc40549c391232",
+            "id": "1373c53d28d7f738",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": true
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
             }
           },
           {
-            "id": "8e1806616ea5abe1",
+            "id": "7d23567d3e153b73",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "path:\"Possible Questions/\" ",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,7 +61,7 @@
             }
           },
           {
-            "id": "6d8d5b27a8c81ad7",
+            "id": "46c8cb5488146113",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -78,18 +74,18 @@
       }
     ],
     "direction": "horizontal",
-    "width": 462.5026054382324
+    "width": 300
   },
   "right": {
-    "id": "9c07cb0f11004622",
+    "id": "e1bca6f51c5272cf",
     "type": "split",
     "children": [
       {
-        "id": "1488a84c40ec8d2b",
+        "id": "7754ac0f20838d83",
         "type": "tabs",
         "children": [
           {
-            "id": "12175efd6c24334f",
+            "id": "05844d3b4d576ebe",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -107,7 +103,7 @@
             }
           },
           {
-            "id": "24526581858512c7",
+            "id": "0f0b11100502be8f",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -120,7 +116,7 @@
             }
           },
           {
-            "id": "83bd60a6165bf2e4",
+            "id": "59f9ed448b9b554f",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -135,7 +131,7 @@
             }
           },
           {
-            "id": "337f358a94dcf4cd",
+            "id": "dad7ce9bce6d1b06",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -147,19 +143,8 @@
               "icon": "lucide-list",
               "title": "Outline"
             }
-          },
-          {
-            "id": "dd3c82aba9488fd4",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
-            }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
@@ -170,52 +155,12 @@
     "hiddenItems": {
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
-      "canvas:Create new canvas": true,
-      "daily-notes:Open today's daily note": true,
-      "templates:Insert template": true,
-      "command-palette:Open command palette": true,
-      "quiz-generator:Open generator": false,
-      "audio-recorder:Start/stop recording": false,
-      "obsidian-git:Open Git source control": false
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
-  "active": "879665fd7cf1f3f5",
-  "lastOpenFiles": [
-    "Kotlin/Chapter 2.md",
-    "Kotlin/Chapter 3.md",
-    "Kotlin/Chapter 1.md",
-    "Java/7 - Android Programming (Data - SQLite, JSON, Adapters)/7.2 - SQLite Introduction.md",
-    "Kotlin",
-    "Java",
-    "Java/7 - Android Programming (Data - SQLite, JSON, Adapters)/7.1 - ListView Overview.md",
-    "Java/2 - Android Platform Architecture/2.1 Android Architecture.md",
-    "System Design/Chapter 4.md",
-    "System Design/Chapter 3.md",
-    "Untitled.md",
-    "System Design/Extras/Scalability.md",
-    "System Design/Extras",
-    "System Design/Extras/Asynchronous and Multi-Threaded.md",
-    "System Design/Chapter 1.md",
-    "System Design/Chapter 2.md",
-    "Networking And Protocols/3.2 Private IP vs. Public IP.md",
-    "Docker/Level 0/Lessons/3. Images and Containers.md",
-    "Docker/Level 0/Untitled/Docker Q3.md",
-    "Docker/Level 0/Lessons/4. Parent Images and Docker Hub.md",
-    "Docker/Level 0/Lessons/5. The Dockerfile.md",
-    "Docker/Level 0/Untitled/Docker Q4.md",
-    "Docker/Level 0/Untitled/Docker Q2.md",
-    "Docker/Level 0/Lessons/2. Installing Docker.md",
-    "Docker/Level 0/Untitled/Docker Q8.md",
-    "Docker/Level 0/Untitled/Docker Q7.md",
-    "Docker/Level 0/Untitled/Docker Q6.md",
-    "Docker/Level 0/Untitled/Docker Q5.md",
-    "Docker/Level 0/Untitled/Untitled",
-    "Docker/Level 0/Lessons/1. What is Docker.md",
-    "Docker/Level 0/Untitled",
-    "Servers And Databases/Untitled",
-    "Networking And Protocols/IDK",
-    "Quiz",
-    "WebRTC",
-    "Backend"
-  ]
+  "active": "23766361908d4440",
+  "lastOpenFiles": []
 }

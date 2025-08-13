@@ -4,95 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "4258990c70f940d6",
+        "id": "a47252c66aac82cc",
         "type": "tabs",
         "children": [
           {
-            "id": "7a491f8ceface159",
+            "id": "f2b5acd1839b86b9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "6. Indexed Array.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "6. Indexed Array"
-            }
-          },
-          {
-            "id": "f50257272df15a29",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "6.1 Associative Arrays.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "6.1 Associative Arrays"
-            }
-          },
-          {
-            "id": "0040a37c297d62bc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "6.2 Multi-Dimensional Arrays.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "6.2 Multi-Dimensional Arrays"
-            }
-          },
-          {
-            "id": "28b7a0f40b8fb35a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Level 1/6.2 Multi-Dimensional Arrays.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "6.2 Multi-Dimensional Arrays"
-            }
-          },
-          {
-            "id": "4bbdd0d003ed502c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Level 1/10. Conditions.md",
+                "file": "Level 1/0.1 Apache Server.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "10. Conditions"
-            }
-          },
-          {
-            "id": "ce242b66c91dd6bc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Level 1/0.4 PHP Architectures.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "0.4 PHP Architectures"
+              "title": "0.1 Apache Server"
             }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "vertical"
@@ -124,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "include",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -234,7 +163,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -249,11 +179,19 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ce242b66c91dd6bc",
+  "active": "f2b5acd1839b86b9",
   "lastOpenFiles": [
-    "Untitled.md",
-    "Level 1/0.4 PHP Architectures.md",
+    "Level 1/1.1 echo vs. print vs. print_r.md",
+    "Level 1/5. Index.md",
+    "Level 2/3. Include and Require.md",
+    "Level 2/2. Variable scope.md",
+    "Level 2/1. Functions.md",
+    "Level 1/0.3 MariaDB VS MySQL.md",
+    "Level 1/11. break and continue.md",
+    "Level 2",
     "Level 1/10. Conditions.md",
+    "Level 1/0.4 PHP Architectures.md",
+    "Untitled.md",
     "Level 1/9. Boolean and Comparison.md",
     "Level 1/8. Loops.md",
     "Level 1/7. strings and numbers.md",
@@ -263,29 +201,21 @@
     "Level 1",
     "Level 1/3. Errors.md",
     "Level 1/6. Indexed Array.md",
-    "Level 1/1.1 echo vs. print vs. print_r.md",
     "Level 1/1. echo.md",
-    "Level 1/5. Index.md",
     "Level 1/4. define.md",
     "Level 1/2. Mixing PHP and HTML.md",
     "Level 1/0.2 PHP server.md",
     "Level 1/0.1 Apache Server.md",
     "Apache/0.2 Apache Server.md",
-    "Level 1/0.3 MariaDB VS MySQL.md",
     "Level 1/0.1 Apache",
     "Production Mode Practices/0. Docker vs Apache.md",
     "Level 1/0. Execution Models of PHP.md",
     "Production Mode Practices",
-    "All Concepts.md",
-    "System Design/Chapter 4.md",
-    "System Design/Chapter 3.md",
-    "System Design/Extras/Scalability.md",
     "System Design/Extras",
     "Docker/Level 0/Untitled/Untitled",
     "Docker/Level 0/Untitled",
     "Servers And Databases/Untitled",
     "Networking And Protocols/IDK",
-    "Quiz",
-    "WebRTC"
+    "Quiz"
   ]
 }

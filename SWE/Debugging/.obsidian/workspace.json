@@ -150,8 +150,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
             }
           }
         ],
@@ -170,8 +170,8 @@
       "daily-notes:Open today's daily note": true,
       "templates:Insert template": true,
       "command-palette:Open command palette": true,
-      "quiz-generator:Open generator": false,
       "audio-recorder:Start/stop recording": false,
+      "quiz-generator:Open generator": false,
       "obsidian-git:Open Git source control": false
     }
   },

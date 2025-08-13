@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0 - React/Level 0 - Basics/2.1 - CSS Modules.md",
+                "file": "2 - Node/9 - Extras/fetch.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2.1 - CSS Modules"
+              "title": "fetch"
             }
           }
         ]
@@ -41,7 +41,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": true
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -176,11 +176,21 @@
       "command-palette:Open command palette": true,
       "quiz-generator:Open generator": false,
       "audio-recorder:Start/stop recording": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "gnome-terminal-loader:Gnome Terminal": false,
+      "gnome-terminal-loader:main.py (Gnome Terminal)": true
     }
   },
-  "active": "879665fd7cf1f3f5",
+  "active": "17bc40549c391232",
   "lastOpenFiles": [
+    "2 - Node/9 - Extras",
+    "2 - Node/Level 1 - Basics/2 - Working with Modules.md",
+    "2 - Node/9 - Extras/fetch.md",
+    "2 - Node/Level 1 - Basics/1 - Require vs. Import.md",
+    "2 - Node/Level 1 - Basics/0 - introduction.md",
+    "main.py",
+    "1 - ExpressJS/Level 1/0 - First app.md",
+    "0 - React/Level 0 - Basics/2.1 - CSS Modules.md",
     "System Design/Chapter 4.md",
     "System Design/Chapter 3.md",
     "Untitled.md",
@@ -202,14 +212,7 @@
     "Docker/Level 0/Untitled/Docker Q6.md",
     "Docker/Level 0/Untitled/Docker Q5.md",
     "Docker/Level 0/Untitled/Untitled",
-    "Docker/Level 0/Lessons/1. What is Docker.md",
-    "Docker/Level 0/Untitled/Docker Q1.md",
     "Docker/Level 0/Untitled",
-    "Docker/Level 0/Lessons/1/Summery.md",
-    "Docker/Level 0/Lessons/6. The .dockerignore file.md",
-    "Docker/Level 0/Lessons/7. Starting and Stopping Containers.md",
-    "Docker/Level 0/Lessons/What is Docker (Crash Course 1).md",
-    "Docker/Level 0/Lessons/The Dockerfile (Crash Course 5).md",
     "Servers And Databases/Untitled",
     "Networking And Protocols/IDK",
     "Quiz",

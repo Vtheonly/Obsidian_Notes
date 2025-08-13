@@ -11,10 +11,14 @@
             "id": "879665fd7cf1f3f5",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Out Of Context/Invalid username or token. Password authentication is not supported.md",
+                "mode": "preview",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Invalid username or token. Password authentication is not supported"
             }
           }
         ]
@@ -159,8 +163,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -170,13 +173,19 @@
       "daily-notes:Open today's daily note": true,
       "templates:Insert template": true,
       "command-palette:Open command palette": true,
-      "quiz-generator:Open generator": false,
       "audio-recorder:Start/stop recording": false,
+      "quiz-generator:Open generator": false,
       "obsidian-git:Open Git source control": false
     }
   },
   "active": "879665fd7cf1f3f5",
   "lastOpenFiles": [
+    "Out Of Context/origin HEAD Not a Symbolic Ref.md",
+    "Out Of Context/Invalid username or token. Password authentication is not supported.md",
+    "Out Of Context/Why a Folder Might Appear Green in Git Tools.md",
+    "images",
+    "images/image_1.png",
+    "Out Of Context",
     "System Design/Chapter 4.md",
     "System Design/Chapter 3.md",
     "Untitled.md",
@@ -203,9 +212,6 @@
     "Docker/Level 0/Untitled",
     "Docker/Level 0/Lessons/1/Summery.md",
     "Docker/Level 0/Lessons/6. The .dockerignore file.md",
-    "Docker/Level 0/Lessons/7. Starting and Stopping Containers.md",
-    "Docker/Level 0/Lessons/What is Docker (Crash Course 1).md",
-    "Docker/Level 0/Lessons/The Dockerfile (Crash Course 5).md",
     "Servers And Databases/Untitled",
     "Networking And Protocols/IDK",
     "Quiz",
