@@ -143,3 +143,6 @@ The error indicates:
 ---
 
 If you want, I can make you a **one-command fix** that both clears your old credentials and pushes with a fresh PAT prompt. That way you won’t keep hitting this error.
+
+---
+**Tags**: #git #github #authentication #pat #ssh

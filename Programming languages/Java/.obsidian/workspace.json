@@ -164,6 +164,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": true,
@@ -177,9 +178,9 @@
   },
   "active": "879665fd7cf1f3f5",
   "lastOpenFiles": [
+    "Untitled.md",
     "System Design/Chapter 4.md",
     "System Design/Chapter 3.md",
-    "Untitled.md",
     "System Design/Extras/Scalability.md",
     "System Design/Extras",
     "System Design/Extras/Asynchronous and Multi-Threaded.md",

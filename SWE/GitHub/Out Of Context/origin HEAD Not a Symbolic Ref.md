@@ -78,4 +78,3 @@ refs/remotes/origin/main
 ```
 
 ---
-

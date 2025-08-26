@@ -335,3 +335,6 @@ git push origin --delete main
         
 
 That gives you the “one and only head” you wanted, with a clean history and no surprises.
+
+---
+**Tags**: #git #branching #github #workflow #cli

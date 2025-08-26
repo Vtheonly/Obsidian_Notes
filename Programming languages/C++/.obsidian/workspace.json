@@ -1,0 +1,219 @@
+{
+  "main": {
+    "id": "7e704d2973e14ac7",
+    "type": "split",
+    "children": [
+      {
+        "id": "7e8ac6a61ef8f8bb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "879665fd7cf1f3f5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Level 10 - Extras/1 - C++ Specific Features Reference Card.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "1 - C++ Specific Features Reference Card"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "bb85c451c5017f8a",
+    "type": "split",
+    "children": [
+      {
+        "id": "8c3faf2f2e0148aa",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "17bc40549c391232",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "8e1806616ea5abe1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "appim",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "6d8d5b27a8c81ad7",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 462.5026054382324
+  },
+  "right": {
+    "id": "9c07cb0f11004622",
+    "type": "split",
+    "children": [
+      {
+        "id": "1488a84c40ec8d2b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "12175efd6c24334f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "24526581858512c7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "83bd60a6165bf2e4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "337f358a94dcf4cd",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          },
+          {
+            "id": "dd3c82aba9488fd4",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Create new base": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": true,
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true,
+      "audio-recorder:Start/stop recording": false,
+      "quiz-generator:Open generator": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "17bc40549c391232",
+  "lastOpenFiles": [
+    "Level 1 - Basics/Lessons/3 - Strings/4 - From C-Style Strings to std::string.md",
+    "Level 5 - Memory/Lessons/2 - C++ Memory Management - From C to C++.md",
+    "Level 10 - Extras/0 - C Reference Card.md",
+    "Level 3 - Structs/Lessons/0 - Structs.md",
+    "Level 5 - Memory/Lessons/1 - Bit-Fields.md",
+    "Level 1 - Basics/Lessons/4 - size_t.md",
+    "Level 1 - Basics/Active Recall Test/Test - 4 - size_t.md",
+    "Level 1 - Basics/Lessons/2 - Comments.md",
+    "Level 1 - Basics/Lessons/7 - Literals.md",
+    "Level 1 - Basics/Lessons/5 - Operators.md",
+    "Level 1 - Basics/Lessons/1 - Hello World in C.md",
+    "Level 1 - Basics/Lessons/0 - Introduction.md",
+    "Level 0 - Compiler/Lessons/0 - GNU.md",
+    "Level 0 - Compiler/Lessons/1 - GCC.md",
+    "Level 0 - Compiler/Lessons/2 - Clang.md",
+    "Level 0 - Compiler/Lessons/3 - Compile-time and Runtime.md",
+    "Level 0 - Compiler/Lessons/4 - Memory When a Program Ends.md",
+    "Level 10 - Extras/1 - C++ Specific Features Reference Card.md",
+    "Kanban Board.md",
+    "Obsidian Preview.md",
+    "System Design/Chapter 4.md",
+    "System Design/Chapter 3.md",
+    "Untitled.md",
+    "System Design/Extras/Scalability.md",
+    "System Design/Extras",
+    "System Design/Extras/Asynchronous and Multi-Threaded.md",
+    "System Design/Chapter 1.md",
+    "Docker/Level 0/Untitled/Untitled",
+    "Docker/Level 0/Untitled",
+    "Servers And Databases/Untitled",
+    "Networking And Protocols/IDK",
+    "Quiz",
+    "WebRTC",
+    "Backend"
+  ]
+}
