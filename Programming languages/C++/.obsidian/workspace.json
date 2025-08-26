@@ -41,7 +41,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": true
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -179,7 +179,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "879665fd7cf1f3f5",
+  "active": "17bc40549c391232",
   "lastOpenFiles": [
     "Level 1 - Basics/Lessons/4 - size_t.md",
     "Level 3 - Structs/Lessons/0 - Structs.md",
