@@ -4,21 +4,55 @@
     "type": "split",
     "children": [
       {
-        "id": "8d3c3e4cb56e16b6",
+        "id": "789fbc7a922a3e5c",
         "type": "tabs",
         "children": [
           {
-            "id": "912229cb72bf88c9",
+            "id": "cf811ac7320d0b23",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Mini-Cours Frontend Débutant (3 Sessions).md",
-                "mode": "preview",
-                "source": true
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
               "title": "Mini-Cours Frontend Débutant (3 Sessions)"
+            }
+          },
+          {
+            "id": "387c4a8ceec0c727",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Untitled 1.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Untitled 1"
+            }
+          },
+          {
+            "id": "79c956052b20224e",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Untitled 1.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Untitled 1"
             }
           }
         ]
@@ -160,29 +194,35 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "marp:Marp: Open Preview": false
     }
   },
-  "active": "912229cb72bf88c9",
+  "active": "cf811ac7320d0b23",
   "lastOpenFiles": [
-    "Setup-Guide.md",
-    "JavaScript-Core-Concepts.md",
-    "HTML-Tag-Reference.md",
-    "Git-Workflow.md",
-    "CSS-Property-Cheatsheet.md",
+    "Untitled.md",
+    "Untitled.canvas",
+    "Untitled 1.canvas",
+    "Untitled.pptx",
+    "Mini-Cours Frontend Débutant (3 Sessions).md",
     "Course-Outline.md",
+    "CSS-Property-Cheatsheet.md",
+    "Git-Workflow.md",
+    "HTML-Tag-Reference.md",
+    "JavaScript-Core-Concepts.md",
+    "Setup-Guide.md",
     "obsidian-notes/Setup-Guide.md",
     "obsidian-notes/JavaScript-Core-Concepts.md",
     "obsidian-notes/HTML-Tag-Reference.md",
     "obsidian-notes/Git-Workflow.md",
     "obsidian-notes/Course-Outline.md",
     "obsidian-notes/CSS-Property-Cheatsheet.md",
-    "obsidian-notes",
-    "Mini-Cours Frontend Débutant (3 Sessions).md"
+    "obsidian-notes"
   ]
 }

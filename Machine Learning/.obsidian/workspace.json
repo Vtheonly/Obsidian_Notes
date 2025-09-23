@@ -11,10 +11,14 @@
             "id": "879665fd7cf1f3f5",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Math/Statistics/Laws.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Laws"
             }
           }
         ]
@@ -49,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "appim",
+                "query": "path:\"NNFS/\" ",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -150,8 +154,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
+              "icon": "lucide-ghost",
+              "title": "git-view"
             }
           }
         ],
@@ -164,19 +168,31 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": true,
       "daily-notes:Open today's daily note": true,
       "templates:Insert template": true,
       "command-palette:Open command palette": true,
-      "quiz-generator:Open generator": false,
       "audio-recorder:Start/stop recording": false,
+      "quiz-generator:Open generator": false,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "879665fd7cf1f3f5",
+  "active": "17bc40549c391232",
   "lastOpenFiles": [
+    "Math/Discrete Mathmatics/Math Logic/6 - Conjunctive Normal Form (CNF).md",
+    "Math/Discrete Mathmatics/Math Logic/7 - Complete Connector Sets.md",
+    "Math/Discrete Mathmatics/Math Logic/Sequent Calculus/1 - Axioms and Inference Rules.md",
+    "Math/Discrete Mathmatics/Math Logic/Sequent Calculus/0 - Understanding a Sequent.md",
+    "assets/flowchart - 1.png",
+    "Math/Algebra/Linear Programming/Untitled.md",
+    "Math/Algebra/Linear Programming/the Simplex Method.md",
+    "Math/Statistics/Laws.md",
+    "Math/Untitled.md",
+    "ML4D/Untitled.md",
+    "AI MAP.canvas",
     "System Design/Chapter 4.md",
     "System Design/Chapter 3.md",
     "Untitled.md",
@@ -195,17 +211,8 @@
     "Docker/Level 0/Lessons/2. Installing Docker.md",
     "Docker/Level 0/Untitled/Docker Q8.md",
     "Docker/Level 0/Untitled/Docker Q7.md",
-    "Docker/Level 0/Untitled/Docker Q6.md",
-    "Docker/Level 0/Untitled/Docker Q5.md",
     "Docker/Level 0/Untitled/Untitled",
-    "Docker/Level 0/Lessons/1. What is Docker.md",
-    "Docker/Level 0/Untitled/Docker Q1.md",
     "Docker/Level 0/Untitled",
-    "Docker/Level 0/Lessons/1/Summery.md",
-    "Docker/Level 0/Lessons/6. The .dockerignore file.md",
-    "Docker/Level 0/Lessons/7. Starting and Stopping Containers.md",
-    "Docker/Level 0/Lessons/What is Docker (Crash Course 1).md",
-    "Docker/Level 0/Lessons/The Dockerfile (Crash Course 5).md",
     "Servers And Databases/Untitled",
     "Networking And Protocols/IDK",
     "Quiz",

@@ -1,4 +1,4 @@
-#  Mini-Cours Frontend Débutant (3 Sessions)
+
 
 > Basé sur : *Plan de Cours Complet - Développement Web Moderne*  
 > Objectif : Maîtriser les bases de **HTML**, **CSS visuel**, et **JavaScript interactif**  

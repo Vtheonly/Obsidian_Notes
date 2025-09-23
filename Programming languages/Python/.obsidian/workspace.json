@@ -11,14 +11,17 @@
             "id": "879665fd7cf1f3f5",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Sockets/socket Module.md",
-                "mode": "source",
-                "source": false
+                "file": "AI MAP 1.canvas",
+                "viewState": {
+                  "x": -570,
+                  "y": -340,
+                  "zoom": -2.1238285868528584
+                }
               },
-              "icon": "lucide-file",
-              "title": "socket Module"
+              "icon": "lucide-layout-dashboard",
+              "title": "AI MAP 1"
             }
           }
         ]
@@ -154,8 +157,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
         ],
@@ -168,9 +171,10 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
-      "canvas:Create new canvas": true,
+      "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": true,
       "templates:Insert template": true,
       "command-palette:Open command palette": true,
@@ -179,14 +183,18 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "17bc40549c391232",
+  "active": "879665fd7cf1f3f5",
   "lastOpenFiles": [
+    "AI MAP.canvas",
+    "AI MAP 1.canvas",
+    "DSA/Decorators.md",
+    "DSA/Python List Operations and Functions.md",
+    "DSA",
+    "Sockets/socket Module.md",
     "Django/Quiz/Q1.md",
     "Django/Quiz",
     "Sockets/Quiz",
     "Sockets/Quiz/Q1.md",
-    "Sockets/socket Module.md",
-    "decorator.md",
     "System Design/Chapter 4.md",
     "System Design/Chapter 3.md",
     "System Design/Extras/Scalability.md",
@@ -210,8 +218,6 @@
     "Docker/Level 0/Lessons/1. What is Docker.md",
     "Docker/Level 0/Untitled/Docker Q1.md",
     "Docker/Level 0/Untitled",
-    "Docker/Level 0/Lessons/1/Summery.md",
-    "Docker/Level 0/Lessons/6. The .dockerignore file.md",
     "Servers And Databases/Untitled",
     "Networking And Protocols/IDK",
     "WebRTC",

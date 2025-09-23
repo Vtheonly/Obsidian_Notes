@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Laravel Notes/03 - Eloquent ORM.md",
-                "mode": "source",
+                "file": "Laravel Notes/02 - MVC Architecture.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "03 - Eloquent ORM"
+              "title": "02 - MVC Architecture"
             }
           }
         ]
@@ -94,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Laravel Notes/02 - MVC Architecture.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for 02 - MVC Architecture"
             }
           },
           {
@@ -168,14 +169,15 @@
       "bases:Create new base": true
     }
   },
-  "active": "8aa6c9833ba3ae41",
+  "active": "2d0683c08ba4cc21",
   "lastOpenFiles": [
-    "Untitled.md",
-    "Laravel Notes/03 - Eloquent ORM.md",
+    "Laravel Notes/05 - Blade Templating.md",
+    "Laravel Notes/11 - API Development.md",
     "Laravel Notes/02 - MVC Architecture.md",
     "Laravel Notes/01 - What is Laravel.md",
     "Laravel Notes/00 - Introduction to Laravel.md",
-    "Laravel Notes/11 - API Development.md",
+    "Laravel Notes/03 - Eloquent ORM.md",
+    "Untitled.md",
     "Laravel Notes/08 - Installation and Setup.md",
     "Laravel Notes/09 - Database Migrations and Seeding.md",
     "Laravel Notes/10 - Authentication and Authorization.md",
@@ -183,7 +185,6 @@
     "Laravel Notes/06 - Middleware.md",
     "Laravel Notes/07 - Artisan CLI.md",
     "Laravel.md",
-    "Laravel Notes/05 - Blade Templating.md",
     "Laravel Notes",
     "Welcome.md"
   ]

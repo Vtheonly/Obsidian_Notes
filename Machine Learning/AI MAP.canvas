@@ -1,0 +1,38 @@
+{
+	"nodes":[
+		{"id":"node_generative","type":"text","text":"Generative Models\n- GANs, VAEs, Diffusion Models\n- Task: generate new realistic samples (images, text, audio)\n- Use-cases: image synthesis, data augmentation","x":-1675,"y":505,"width":360,"height":375},
+		{"id":"node_autoencoder","type":"text","text":"Autoencoders\n- Learn compressed representations (encoding/decoding)\n- Use-cases: denoising, representation learning","x":-854,"y":505,"width":292,"height":375},
+		{"id":"node_cnn","type":"text","text":"CNN\n(Convolutional Neural Network)\n- Designed for spatial data (images)\n- Key ops: convolution, pooling\n- Use-cases: image classification, segmentation, detection","x":-540,"y":505,"width":292,"height":375},
+		{"id":"node_feedforward","type":"text","text":"Feedforward / MLP\n- Simple dense networks\n- Good for tabular data and baseline models","x":-225,"y":505,"width":292,"height":375},
+		{"id":"node_deeprl","type":"text","text":"Deep Reinforcement Learning\n- Combines DL (function approximators) with RL algorithms\n- Example: DQN (uses CNN to represent Q-values), PPO for continuous control","x":90,"y":505,"width":360,"height":375},
+		{"id":"node_dl","type":"text","text":"DL\n(Deep Learning)\n- Subset of ML using multi-layer neural networks\n- Excels at representation learning from raw data\n- Key families: CNNs, RNNs, Transformers, Generative Models, Autoencoders, Deep RL","x":-1237,"y":-610,"width":300,"height":410},
+		{"id":"node_semisupervised","type":"text","text":"Semi-Supervised Learning\n- Mix of labeled + large unlabeled data\n- Useful when labels are expensive; leverages structure in unlabeled data\n- Methods: pseudo-labeling, consistency regularization, graph-based approaches","x":-343,"y":-610,"width":300,"height":410},
+		{"id":"node_ml","type":"text","text":"ML\n(Machine Learning)\n- Subset of AI: algorithms that learn patterns from data\n- Major families: Supervised, Unsupervised, Reinforcement, Semi-supervised, Self-supervised","x":-93,"y":-1060,"width":320,"height":260},
+		{"id":"node_selfsupervised","type":"text","text":"Self-Supervised Learning\n- Model generates its own labels from raw data (pretext tasks)\n- Examples: next-token prediction (language), masked patch prediction (vision)\n- Foundation for large pretrained models (e.g., language and vision models)","x":-800,"y":-610,"width":300,"height":410},
+		{"id":"node_transformer","type":"text","text":"Transformers\n- Attention-based architecture\n- State of the art for NLP; now used in vision and multimodal tasks\n- Advantages: parallelism, long-range context handling","x":-2460,"y":505,"width":360,"height":375},
+		{"id":"node_rnn","type":"text","text":"RNN / LSTM / GRU\n- Sequential models for time series and text\n- LSTM/GRU handle long-term dependencies\n- Use-cases: speech recognition, sequence labeling","x":-2060,"y":505,"width":315,"height":375},
+		{"id":"node_nn","type":"text","text":"NN\n(Neural Networks)\n- Building blocks of DL: neurons, weights, activations\n- Architectures: MLP, CNN, RNN, Transformer, Graph Neural Networks\n- Concepts: forward pass, backpropagation, loss, optimizer","x":-1260,"y":505,"width":360,"height":375},
+		{"id":"node_ai","type":"text","text":"AI\n(Artificial Intelligence)\n- Broadest field: methods to make machines behave intelligently\n- Includes rule-based systems, symbolic AI, and learning-based systems","x":-79,"y":-1560,"width":300,"height":320},
+		{"id":"node_reinforcement","type":"text","text":"Reinforcement Learning (RL)\n- Agent interacts with environment to maximize cumulative reward\n- Elements: state, action, reward, policy, value function, environment\n- Methods: Q-learning, SARSA, DQN, Policy Gradients, Actor-Critic, Proximal Policy Optimization (PPO)\n- Use-cases: robotics, games, recommendation (when sequential decisions matter)\n- Key properties: exploration vs exploitation, delayed reward, credit assignment","x":90,"y":-610,"width":360,"height":410},
+		{"id":"node_unsupervised","type":"text","text":"Unsupervised Learning\n- No labels; finds structure in data\n- Tasks/Methods: Clustering (k-means, hierarchical), Dimensionality Reduction (PCA, t-SNE, UMAP), Density/Anomaly Detection, Association Rules\n- Example: customer segmentation, anomaly detection in logs","x":560,"y":-610,"width":320,"height":410},
+		{"id":"node_supervised","type":"text","text":"Supervised Learning\n- Learns from labeled input→output pairs\n- Tasks: Regression (continuous output), Classification (discrete labels)\n- Algorithms: Linear/Logistic Regression, SVM, Decision Trees, Random Forests, Gradient Boosting, Neural Networks\n- Example: predict house price (regression); detect spam (classification)","x":1000,"y":-610,"width":320,"height":410}
+	],
+	"edges":[
+		{"id":"e_ai_ml","fromNode":"node_ai","fromSide":"bottom","toNode":"node_ml","toSide":"top"},
+		{"id":"e_ml_supervised","fromNode":"node_ml","fromSide":"bottom","toNode":"node_supervised","toSide":"top"},
+		{"id":"e_ml_unsupervised","fromNode":"node_ml","fromSide":"bottom","toNode":"node_unsupervised","toSide":"top"},
+		{"id":"e_ml_reinforcement","fromNode":"node_ml","fromSide":"bottom","toNode":"node_reinforcement","toSide":"top"},
+		{"id":"e_ml_semisup","fromNode":"node_ml","fromSide":"bottom","toNode":"node_semisupervised","toSide":"top"},
+		{"id":"e_ml_selfsup","fromNode":"node_ml","fromSide":"bottom","toNode":"node_selfsupervised","toSide":"top"},
+		{"id":"e_ml_dl","fromNode":"node_ml","fromSide":"bottom","toNode":"node_dl","toSide":"top"},
+		{"id":"e_dl_nn","fromNode":"node_dl","fromSide":"bottom","toNode":"node_nn","toSide":"top"},
+		{"id":"e_dl_feedf","fromNode":"node_dl","fromSide":"bottom","toNode":"node_feedforward","toSide":"top"},
+		{"id":"e_dl_cnn","fromNode":"node_dl","fromSide":"bottom","toNode":"node_cnn","toSide":"top"},
+		{"id":"e_dl_rnn","fromNode":"node_dl","fromSide":"bottom","toNode":"node_rnn","toSide":"top"},
+		{"id":"e_dl_transformer","fromNode":"node_dl","fromSide":"bottom","toNode":"node_transformer","toSide":"top"},
+		{"id":"e_dl_autoencoder","fromNode":"node_dl","fromSide":"bottom","toNode":"node_autoencoder","toSide":"top"},
+		{"id":"e_dl_deeprl","fromNode":"node_dl","fromSide":"bottom","toNode":"node_deeprl","toSide":"top"},
+		{"id":"e_reinforcement_deeprl","fromNode":"node_reinforcement","fromSide":"bottom","toNode":"node_deeprl","toSide":"top"},
+		{"id":"e_dl_generative","fromNode":"node_dl","fromSide":"bottom","toNode":"node_generative","toSide":"top"}
+	]
+}
