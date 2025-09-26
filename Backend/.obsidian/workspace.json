@@ -11,10 +11,14 @@
             "id": "879665fd7cf1f3f5",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "System Design/Chapter 1.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Chapter 1"
             }
           }
         ]
@@ -178,6 +182,10 @@
   },
   "active": "879665fd7cf1f3f5",
   "lastOpenFiles": [
+    "Cloud Computing/Concepts/What is a VPC.md",
+    "Cloud Computing/Basics/2 - Deployment Models for Cloud Computing.canvas",
+    "Cloud Computing/Basics/1 - Cloud Service Models.canvas",
+    "Networking And Protocols/Networking Roadmap.md",
     "System Design/Chapter 4.md",
     "System Design/Chapter 3.md",
     "Untitled.md",
@@ -205,8 +213,6 @@
     "Docker/Level 0/Lessons/1/Summery.md",
     "Docker/Level 0/Lessons/6. The .dockerignore file.md",
     "Docker/Level 0/Lessons/7. Starting and Stopping Containers.md",
-    "Docker/Level 0/Lessons/What is Docker (Crash Course 1).md",
-    "Docker/Level 0/Lessons/The Dockerfile (Crash Course 5).md",
     "Servers And Databases/Untitled",
     "Networking And Protocols/IDK",
     "Quiz",
