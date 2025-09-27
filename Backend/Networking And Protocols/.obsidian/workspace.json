@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter 1 - Introduction & Foundational Concepts/07 - Router.md",
-                "mode": "preview",
+                "file": "Chapter 1 - Introduction & Foundational Concepts/00 - Network Devices Overview.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "07 - Router"
+              "title": "00 - Network Devices Overview"
             }
           }
         ]
@@ -181,12 +181,12 @@
   },
   "active": "879665fd7cf1f3f5",
   "lastOpenFiles": [
+    "Chapter 1 - Introduction & Foundational Concepts/07 - Router.md",
     "Chapter 1 - Introduction & Foundational Concepts/08 - Wireless Access Point (AP).md",
     "Chapter 1 - Introduction & Foundational Concepts/06 - Network Switch.md",
     "Chapter 1 - Introduction & Foundational Concepts/04 - Network Hub.md",
     "Networking Roadmap.md",
     "Chapter 1 - Introduction & Foundational Concepts/01 - Comparison of Network Devices.md",
-    "Chapter 1 - Introduction & Foundational Concepts/07 - Router.md",
     "Chapter 4 - Layer 3 - Network Layer (IP & Routing)/3.2 Private IP vs. Public IP.md",
     "Chapter 1 - Introduction & Foundational Concepts/05 - Network Bridge.md",
     "Chapter 1 - Introduction & Foundational Concepts/03 - Repeater.md",
