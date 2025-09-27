@@ -4,17 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "7e8ac6a61ef8f8bb",
+        "id": "0580024f12a1160a",
         "type": "tabs",
         "children": [
           {
-            "id": "879665fd7cf1f3f5",
+            "id": "223d2ea999202112",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
+              "type": "image",
+              "state": {
+                "file": "assets/Picture - 2.png"
+              },
+              "icon": "lucide-image",
+              "title": "Picture - 2"
             }
           }
         ]
@@ -49,7 +51,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "appim",
+                "query": "path:",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -164,6 +166,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": true,
@@ -175,11 +178,23 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "879665fd7cf1f3f5",
+  "active": "223d2ea999202112",
   "lastOpenFiles": [
+    "15. Python Wise Tricks/3. heapq.md",
+    "LeetCode Top 150/49. group anagrams.md",
+    "15. Python Wise Tricks/4. Tuples as Dictionary Keys.md",
+    "Roadmap.md",
+    "Pasted image 20250526121520.png",
+    "99. Problem Solving Patterns General/Concepts Debugging (LeetCode) Tips.md",
+    "99. Problem Solving Patterns General/Concepts Pattern Recognition.md",
+    "99. Problem Solving Patterns General/Efficient Validation and Pattern Generalization.md",
+    "15. Python Wise Tricks/2. ord(letter).md",
+    "15. Python Wise Tricks/1. collections.defaultdict(list).md",
+    "99. Problem Solving Patterns General/Common Algorithms Template.md",
+    "LeetCode Top 150/242. Valid Anagram.md",
+    "00. Foundations/01. Language Specifics CandCpp/1 - Difference Between Memory Address and Pointe.md",
     "System Design/Chapter 4.md",
     "System Design/Chapter 3.md",
-    "Untitled.md",
     "System Design/Extras/Scalability.md",
     "System Design/Extras",
     "System Design/Extras/Asynchronous and Multi-Threaded.md",
@@ -193,19 +208,8 @@
     "Docker/Level 0/Untitled/Docker Q4.md",
     "Docker/Level 0/Untitled/Docker Q2.md",
     "Docker/Level 0/Lessons/2. Installing Docker.md",
-    "Docker/Level 0/Untitled/Docker Q8.md",
-    "Docker/Level 0/Untitled/Docker Q7.md",
-    "Docker/Level 0/Untitled/Docker Q6.md",
-    "Docker/Level 0/Untitled/Docker Q5.md",
     "Docker/Level 0/Untitled/Untitled",
-    "Docker/Level 0/Lessons/1. What is Docker.md",
-    "Docker/Level 0/Untitled/Docker Q1.md",
     "Docker/Level 0/Untitled",
-    "Docker/Level 0/Lessons/1/Summery.md",
-    "Docker/Level 0/Lessons/6. The .dockerignore file.md",
-    "Docker/Level 0/Lessons/7. Starting and Stopping Containers.md",
-    "Docker/Level 0/Lessons/What is Docker (Crash Course 1).md",
-    "Docker/Level 0/Lessons/The Dockerfile (Crash Course 5).md",
     "Servers And Databases/Untitled",
     "Networking And Protocols/IDK",
     "Quiz",
