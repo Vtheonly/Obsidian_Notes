@@ -26,5 +26,5 @@ This allows two devices to communicate over a distance that would otherwise be t
 ---
 
 > [!Note] Foundation of the Hub
-> A [[Network Hub]] is functionally a **multi-port repeater**. It takes an incoming signal and regenerates it out of all its other ports.
+> A [[04 - Network Hub|Network Hub]] is functionally a **multi-port repeater**. It takes an incoming signal and regenerates it out of all its other ports.
 

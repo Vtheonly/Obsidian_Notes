@@ -9,7 +9,7 @@ A **network switch** is an intelligent device used to create a local area networ
 
 ## How a Switch Works
 
-A switch is an intelligent device that combines the multi-port design of a [[Network Hub]] with the learning capability of a [[Network Bridge]], but on a per-port basis.
+A switch is an intelligent device that combines the multi-port design of a [[04 - Network Hub|Network Hub]] with the learning capability of a [[05 - Network Bridge|Network Bridge]], but on a per-port basis.
 
 1.  It learns the unique **MAC (Media Access Control) address** of every device connected to each of its ports.
 2.  This information is stored in a **MAC address table**.
