@@ -11,10 +11,14 @@
             "id": "3be6e94082222cee",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Labs/TP4 - Mathematical Morphology.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "TP4 - Mathematical Morphology"
             }
           }
         ]
@@ -177,6 +181,10 @@
   },
   "active": "3be6e94082222cee",
   "lastOpenFiles": [
+    "Labs/TP3 - Nagao Filter and Performance.md",
+    "Labs/TP2 - Noise Generation and Filtering.md",
+    "Labs/TP1 - Setup and Basic Image Manipulation.md",
+    "Labs/TP4 - Mathematical Morphology.md",
     "Level 0 - Baseics/Lessons/2 - Classes.md",
     "Level 0 - Baseics/Lessons/1 - How to run Java.md",
     "Level 0 - Baseics/Active Recall Test/Test - 21 - Exceptions.md",
@@ -199,11 +207,7 @@
     "Untitled.md",
     "System Design/Chapter 4.md",
     "System Design/Chapter 3.md",
-    "System Design/Extras/Scalability.md",
     "System Design/Extras",
-    "System Design/Extras/Asynchronous and Multi-Threaded.md",
-    "System Design/Chapter 1.md",
-    "System Design/Chapter 2.md",
     "Docker/Level 0/Untitled/Untitled",
     "Docker/Level 0/Untitled",
     "Servers And Databases/Untitled",
