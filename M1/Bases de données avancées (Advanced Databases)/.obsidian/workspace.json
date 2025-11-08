@@ -4,33 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "385c4b68e76fc04b",
+        "id": "5e7ac7fc72b546a9",
         "type": "tabs",
         "children": [
           {
-            "id": "2c4bfee02358c674",
+            "id": "4ef572c43a5b8ea7",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "TD 1/Exercice 1.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
-            }
-          }
-        ]
-      },
-      {
-        "id": "b60d0ff5fac44b8f",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "341b22c79702cb91",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "title": "Exercice 1"
             }
           }
         ]
@@ -178,8 +166,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "2c4bfee02358c674",
+  "active": "4ef572c43a5b8ea7",
   "lastOpenFiles": [
+    "Chapter 0 Intro.md",
+    "TD 1/Exercice 1.md",
+    "TD 1",
+    "Heuristic.md",
+    "Database heuristics.canvas",
     "Welcome.md"
   ]
 }

@@ -1,0 +1,370 @@
+Kind: captions
+Language: en-GB
+Hello everyone, 
+I welcome you all to this wonderful
+course on computer networks.
+I am your instructor here
+to take you throughout this
+journey on computer networks.
+Before we start,
+let's figure out
+to whom this course
+is actually intended to.
+This course is mainly for
+the undergraduate students.
+And this course is
+useful for the students
+who are preparing for
+their GATE exams.
+And not only GATE exams,
+this course will surely help
+the students to crack
+networking based interviews.
+This course can be
+a prerequisite course
+to CCNA international
+certification course.
+And if you want to demystify all
+the networking technologies
+and jargons used in
+the networking field,     
+this course will surely
+fulfill your expectation.               
+In a nutshell, this course
+will surely quench
+the thirst of
+computer networking.
+And coming to the
+scope of this course,
+trust me guys, networking
+is everywhere.
+Because network supports
+the way we learn,
+network supports the
+way we communicate,
+network supports the way we work
+and the way we play.
+I shall explain you how
+network supports the way we learn.
+I am the instructor
+of this course
+and I am teaching in
+one part of the world.
+And the learners are in
+different parts of the world.
+Still teaching and learning is
+happening very seamlessly.
+That's the power of networking.
+Network supports the way we communicate.
+Think of a traditional
+land-line phone communication.
+We used to send only
+our voice data, but now
+the communication pattern
+has entirely changed.
+Think of an example
+mobile application Whatsapp.
+We are able to send text, images,
+animations, videos, audios,
+and even voice calls and video calls
+which are real time communication.
+We are able to do all this
+communication seamlessly
+and perfectly with the
+help of computer networks.
+Isn't the computer network awesome guys?
+Network supports the way we work.
+Yes, one can work from home by
+accessing the files and softwares
+actually available
+in the company.
+And network supports the way we play too.
+Talking about the pedagogy,
+we need to understand
+the theoretical background
+of all the concepts.
+Hence we go with the
+traditional lecturing methods
+and the contemporary
+lecturing methods.
+As I already mentioned to you
+that we will be solving
+many GATE examination related
+problems here in this course.
+And to understand
+the things practically,
+world's one of the most powerful
+simulation and learning tools,
+the CISCO packet
+tracer is used.
+And talking about the syllabi, in the first 
+phase of the computer networking course
+the fundamentals are
+dealt elaborately.
+Actually computer
+networks follows layering
+to send data from
+one computer to another
+and each layer is addressed
+separately as a separate chapters
+and it is dealt in a
+very detailed manner.
+And security is very
+important not only in real life
+even for computer
+networks too.
+And in the last phase of
+the computer networks
+will cover the
+need for security
+and how security is provided
+in computer networks.
+Now let's talk about the
+outcomes of today's lecture.
+Upon the completion of this lecture,
+the learner will be
+able to understand
+What is computer network?
+and they will be able to
+identify end devices
+and intermediary devices
+if the scenario is given.
+We will start with the definition
+of a computer network.
+A computer network is a set of nodes
+connected by communication links.
+I repeat -- A computer
+network is a set of nodes
+connected by
+communication links.
+To understand this definition,
+I shall highlight the important words.
+They are the keywords
+of this definition.
+The keywords are - nodes
+and communication links.
+Firstly, we will concentrate on nodes.
+A node can be a computer,
+printer or any other device
+capable of sending or receiving data.
+Say you have a device, if that device
+can send data or receive data
+or both send and
+receive data,
+then we can call that
+device as a node.
+So a node can be a computer,
+printer or any device
+but the important point
+to note here is that
+device should be capable enough
+in sending or receiving the data.
+We shall see some
+examples for nodes.
+Obviously, a computer
+is a node because
+a computer can send data
+as well as receive data.
+A server, printer,
+security camera
+and many devices like
+switches, bridges
+and routers are also
+called as nodes.
+We will be dealing
+about switches,
+bridges and routers in
+the upcoming lectures.
+Now we are done with nodes.
+We will concentrate on
+what are communication links.
+A communication link can be
+a wired link or a wireless link. 
+The important point to
+note about a link is that
+this link only carries the information.
+If you don't understand
+anything out of this,
+just wait for
+this example.
+See this example now,
+there are two
+computers.
+We can call these two computers as nodes.
+Why? Because these
+two computers
+can send data as
+well as receive data.
+Now these nodes are going to
+exchange their information,
+but for exchanging
+the information,
+they are depending upon this cable.
+Here this cable
+is the link.
+Obviously, a cable is
+a physical medium,
+so it comes under
+wired category.
+So wired link carries
+the information
+from this computer to this
+computer or vice-versa.
+But there are scenarios where,
+two devices wants to
+communicate with each other
+but not with the
+help of cables.
+Say in this scenario, these two
+smart-phones wants to exchange data.
+Say, this phone wants to
+give some data to this phone.
+In this case there is
+no physical connectivity.
+Then how can that
+communication be established?
+This is possible through
+wireless technologies,
+if that is the case, who is
+going to carry the signals?
+Obviously, air is going
+to carry the data.
+So here, air is
+the link that
+carries the data from
+one place to another place.
+So we have two kinds
+of communication links
+one is a wired link and
+another one is a wireless link.
+And the link only
+carries the information.
+We shall see some examples.
+Cable is a best example for wired link
+and air is the best example for wireless link.
+Now let's take this
+example, where this example
+involves lots of nodes
+and so many links.
+If you observe, certain
+links are wired links
+and certain links
+are wireless links.
+So this is a perfect example of
+a sample computer network.
+Now what are all the devices
+or nodes involved in the network?
+This printer is a node,
+desktop computers are nodes,
+tablet is a node,
+this smart-phone is a node,
+cellphone tower is a node,
+this wireless router is a node,
+router, internet cloud, et cetera.
+See there are lots of nodes
+involved in this internet cloud.
+In reality, internet contains lots of intermediary devices,
+these all are intermediary devices
+and these all are end devices.
+Why we call this as end device?
+Because this will be either the
+starting point of the communication
+or the end point in
+the communication.
+Say for example, if this computer wants
+to access www.nesoacademy.org,
+so here, the link between this computer
+and this device- this switch is the wired link.
+But communication can happen
+through this intermediary devices.
+Similarly, if this
+smart-phone also wants
+to get some data
+from nesoacademy.org,
+this can also give the
+request but this request
+can be carried out either
+this way or this way.
+But if you observe both in the ways, they are wireless.
+So the same server can be
+accessed with the help of wires
+as well as with the
+help of wireless.
+Now, the important point to note
+about a computer network
+is that, it is mainly used
+for resource sharing.
+A computer network is mainly
+used for resource sharing.
+Say, there are four
+computers here,
+if all four computers
+wants a printer,
+it is definitely not an
+ideal solution to purchase
+four printers for
+all computers.
+Think of the scenario this way,
+I have brought
+in a printer
+and connected this
+printer to my network.
+Now all these four computers
+can use this printer.
+So thus, networks save a
+lot of infrastructure cost as well.
+And there is an interesting
+scenario for you.
+You have to find out
+what are all the end devices
+used in the scenario
+and what are the
+intermediary devices.
+After finding out all the end
+devices and the intermediary devices,
+just list out like this
+on your paper.
+So I am showing this
+scenario for you.
+Please take a piece of
+paper and note down
+all the end devices and
+intermediary devices.
+Please pause this video for
+a while and carry out this task.
+Once done, you compare
+this with the actual result.
+Now if your result is
+matching with this result,
+congratulations to you.
+You are progressing
+in a right direction.
+If not, no problem guys.
+We are in the initial stage,
+it will take some lectures
+to understand the
+details about networking.
+Upon the completion
+of this lecture,
+the learner will be
+able to understand
+what is computer network?
+And given a scenario, the learner
+will be able to identify
+what are end devices and
+what are intermediary devices.
+I hope you are all very clear with
+the definition of a computer network.
+It is a set of nodes connected
+by communication links,
+where that link can be
+a wired link or a wireless link.
+The devices which are the
+source or the destination
+in the communication are
+called as end devices.
+The devices which
+forwards the data
+from one side to another side
+are called as intermediary devices.
+Thank you for watching.

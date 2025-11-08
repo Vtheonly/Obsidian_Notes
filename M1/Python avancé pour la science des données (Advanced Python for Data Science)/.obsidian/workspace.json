@@ -4,33 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "d8853e40d0eb1f77",
+        "id": "e0da545d66cb22ec",
         "type": "tabs",
         "children": [
           {
-            "id": "78f7446d9bbed082",
+            "id": "965b967873ad2d63",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Readme Lab4.md",
+                "mode": "preview",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
-            }
-          }
-        ]
-      },
-      {
-        "id": "24d51b6d9cba07b1",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "ced6b6d6bbe2b122",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "title": "Readme Lab4"
             }
           }
         ]
@@ -178,8 +166,15 @@
       "bases:Create new base": false
     }
   },
-  "active": "78f7446d9bbed082",
+  "active": "965b967873ad2d63",
   "lastOpenFiles": [
+    "Readme Lab3.md",
+    "intro.md",
+    "Mask Is in NumPy.md",
+    "d.md",
+    "Readme Lab1.md",
+    "Readme Lab2.md",
+    "Readme Lab4.md",
     "Welcome.md"
   ]
 }

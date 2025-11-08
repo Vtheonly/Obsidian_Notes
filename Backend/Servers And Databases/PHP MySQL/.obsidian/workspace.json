@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Level 1/0.1 Apache Server.md",
-                "mode": "preview",
+                "file": "Production Mode Practices/0. Docker vs Apache.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "0.1 Apache Server"
+              "title": "0. Docker vs Apache"
             }
           }
         ]
@@ -182,6 +182,9 @@
   },
   "active": "f2b5acd1839b86b9",
   "lastOpenFiles": [
+    "Level 1/6.2 Multi-Dimensional Arrays.md",
+    "Level 1/0.2 PHP server.md",
+    "Level 1/0.1 Apache Server.md",
     "Level 1/1.1 echo vs. print vs. print_r.md",
     "Level 1/5. Index.md",
     "Level 2/3. Include and Require.md",
@@ -196,7 +199,6 @@
     "Level 1/9. Boolean and Comparison.md",
     "Level 1/8. Loops.md",
     "Level 1/7. strings and numbers.md",
-    "Level 1/6.2 Multi-Dimensional Arrays.md",
     "Level 1/6.1 Associative Arrays.md",
     "Level 1/6.3 htmlspecialchars.md",
     "Level 1",
@@ -205,8 +207,6 @@
     "Level 1/1. echo.md",
     "Level 1/4. define.md",
     "Level 1/2. Mixing PHP and HTML.md",
-    "Level 1/0.2 PHP server.md",
-    "Level 1/0.1 Apache Server.md",
     "Apache/0.2 Apache Server.md",
     "Level 1/0.1 Apache",
     "Production Mode Practices/0. Docker vs Apache.md",

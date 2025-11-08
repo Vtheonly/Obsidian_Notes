@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Level 0 - Baseics/Lessons/2 - Classes.md",
-                "mode": "preview",
+                "file": "Level 2 - OOP/Active Recall Test/Test - 0 - OOP basics.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2 - Classes"
+              "title": "Test - 0 - OOP basics"
             }
           }
         ]
@@ -163,8 +163,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -182,6 +181,7 @@
   },
   "active": "3be6e94082222cee",
   "lastOpenFiles": [
+    "Level 0 - Baseics/Lessons/2 - Classes.md",
     "Level 0 - Baseics/Lessons/1 - How to run Java.md",
     "Level 0 - Baseics/Active Recall Test/Test - 21 - Exceptions.md",
     "Level 0 - Baseics/Active Recall Test/Test - 7 - Specifying packages.md",
@@ -208,7 +208,6 @@
     "System Design/Extras/Asynchronous and Multi-Threaded.md",
     "System Design/Chapter 1.md",
     "System Design/Chapter 2.md",
-    "Networking And Protocols/3.2 Private IP vs. Public IP.md",
     "Docker/Level 0/Untitled/Untitled",
     "Docker/Level 0/Untitled",
     "Servers And Databases/Untitled",

@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "d887a4878612207c",
+    "id": "7e704d2973e14ac7",
     "type": "split",
     "children": [
       {
-        "id": "3742db74b0ec66e6",
+        "id": "c2d5f9c3514261dd",
         "type": "tabs",
         "children": [
           {
-            "id": "04718d74b63ba81d",
+            "id": "3be6e94082222cee",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter 1: Foundations of Machine Learning/1.6. The Curse of Dimensionality.md",
+                "file": "Level 2 - OOP/Active Recall Test/Test - 0 - OOP basics.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1.6. The Curse of Dimensionality"
+              "title": "Test - 0 - OOP basics"
             }
           }
         ]
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "6ac2a4dad04e2f1b",
+    "id": "bb85c451c5017f8a",
     "type": "split",
     "children": [
       {
-        "id": "66cebf9da36eb2af",
+        "id": "8c3faf2f2e0148aa",
         "type": "tabs",
         "children": [
           {
-            "id": "7907d33ca1e422bb",
+            "id": "17bc40549c391232",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,12 +48,12 @@
             }
           },
           {
-            "id": "9f5f3fcbb84da99c",
+            "id": "8e1806616ea5abe1",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "appim",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "0cc60056350939b1",
+            "id": "6d8d5b27a8c81ad7",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -78,18 +78,18 @@
       }
     ],
     "direction": "horizontal",
-    "width": 476.5
+    "width": 305.5004348754883
   },
   "right": {
-    "id": "210720cc44d44940",
+    "id": "9c07cb0f11004622",
     "type": "split",
     "children": [
       {
-        "id": "e04e0e3f2c4b3f7b",
+        "id": "1488a84c40ec8d2b",
         "type": "tabs",
         "children": [
           {
-            "id": "99e427eee30abc0e",
+            "id": "12175efd6c24334f",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -107,7 +107,7 @@
             }
           },
           {
-            "id": "3b68badef7ad7c20",
+            "id": "24526581858512c7",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -120,7 +120,7 @@
             }
           },
           {
-            "id": "fe6e7817f2759766",
+            "id": "83bd60a6165bf2e4",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -135,7 +135,7 @@
             }
           },
           {
-            "id": "033a4bf32a2351e2",
+            "id": "337f358a94dcf4cd",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -147,50 +147,73 @@
               "icon": "lucide-list",
               "title": "Outline"
             }
+          },
+          {
+            "id": "dd3c82aba9488fd4",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "canvas:Create new canvas": true,
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true,
+      "quiz-generator:Open generator": false,
+      "audio-recorder:Start/stop recording": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "04718d74b63ba81d",
+  "active": "3be6e94082222cee",
   "lastOpenFiles": [
-    "Chapter 1: Foundations of Machine Learning/1.8. Evaluating Models: A Comparison Framework.md",
-    "Chapter 1: Foundations of Machine Learning/1.7. Practical Steps: Data Preprocessing.md",
-    "Chapter 1: Foundations of Machine Learning/1.1. Motivation & Core Concepts.md",
-    "Chapter 1: Foundations of Machine Learning/1.6. The Curse of Dimensionality.md",
-    "Chapter 1: Foundations of Machine Learning/1.5. Controlling Capacity with Regularization.md",
-    "Chapter 1: Foundations of Machine Learning/1.4. Core Challenges: Overfitting & Underfitting.md",
-    "Chapter 1: Foundations of Machine Learning/1.3. Types of Machine Learning (Supervised, Unsupervised).md",
-    "Chapter 1: Foundations of Machine Learning/1.2. Fundamental Terminology & Notation.md",
-    "Chapter 10: Advanced Topics/10.2. Appendix: Eigen-decomposition.md",
-    "Chapter 10: Advanced Topics/10.1. Sampling Methods (MCMC, Gibbs Sampling).md",
-    "Chapter 9: Bayesian Learning/9.3. Gaussian Processes.md",
-    "Chapter 9: Bayesian Learning/9.2. Bayesian Linear Regression.md",
-    "Chapter 9: Bayesian Learning/9.1. The Bayesian Approach to Machine Learning.md",
-    "Chapter 8: Ensemble Methods (Combining Models)/8.3. Boosting: The AdaBoost Algorithm.md",
-    "Chapter 8: Ensemble Methods (Combining Models)/8.2. Bagging: Bootstrap Aggregating.md",
-    "Chapter 8: Ensemble Methods (Combining Models)/8.1. Motivation for Combining Models.md",
-    "Chapter 7: Unsupervised Learning Techniques/7.4. The Expectation-Maximization (EM) Algorithm.md",
-    "Chapter 7: Unsupervised Learning Techniques/7.3. Clustering with Gaussian Mixture Models (GMMs).md",
-    "Chapter 7: Unsupervised Learning Techniques/7.2. Non-Linear Projections with Kernel PCA.md",
-    "Chapter 7: Unsupervised Learning Techniques/7.1. Dimensionality Reduction with PCA.md",
-    "Chapter 6: Kernel Methods for Non-Linearity/6.3. Constructing Valid Kernels.md",
-    "Chapter 6: Kernel Methods for Non-Linearity/6.2. Dual Representations.md",
-    "Chapter 6: Kernel Methods for Non-Linearity/6.1. Motivation: The Kernel Trick.md",
-    "Welcome.md"
+    "Level 0 - Baseics/Lessons/2 - Classes.md",
+    "Level 0 - Baseics/Lessons/1 - How to run Java.md",
+    "Level 0 - Baseics/Active Recall Test/Test - 21 - Exceptions.md",
+    "Level 0 - Baseics/Active Recall Test/Test - 7 - Specifying packages.md",
+    "Level 0 - Baseics/Active Recall Test/Test - 1 - How to run Java.md",
+    "Level 0 - Baseics/Active Recall Test/Test - 0 - Intro How Java Works.md",
+    "Level 0 - Baseics/Lessons/0 - Intro How Java Works.md",
+    "Level 2 - OOP/Active Recall Test/Test - 15 - Generics.md",
+    "Level 2 - OOP/Lessons/15 - Generics.md",
+    "Level 1 - Library/Active Recall Test/Test - 5 - Math Library.md",
+    "Level 1 - Library/Active Recall Test/Test - 6 - Random Library.md",
+    "Level 2 - OOP/Lessons/13 - Copying Objects.md",
+    "Level 2 - OOP/Lessons/5 - Static keyword.md",
+    "Level 2 - OOP/Active Recall Test/Test - 14 - Compile time vs Run time.md",
+    "Level 2 - OOP/Active Recall Test/Test - 3 - final keyword.md",
+    "Level 2 - OOP/Active Recall Test/Test - 1 - Object.md",
+    "Level 2 - OOP/Active Recall Test/Test - 0 - OOP basics.md",
+    "Level 2 - OOP/Active Recall Test/Test - 13 - Copying Objects.md",
+    "Level 2 - OOP/Active Recall Test/Test - 7 - inheritance.md",
+    "Untitled.md",
+    "System Design/Chapter 4.md",
+    "System Design/Chapter 3.md",
+    "System Design/Extras/Scalability.md",
+    "System Design/Extras",
+    "System Design/Extras/Asynchronous and Multi-Threaded.md",
+    "System Design/Chapter 1.md",
+    "System Design/Chapter 2.md",
+    "Docker/Level 0/Untitled/Untitled",
+    "Docker/Level 0/Untitled",
+    "Servers And Databases/Untitled",
+    "Networking And Protocols/IDK",
+    "Quiz",
+    "WebRTC",
+    "Backend"
   ]
 }

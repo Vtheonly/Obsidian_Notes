@@ -1,0 +1,770 @@
+WEBVTT
+Kind: captions
+Language: en-GB
+
+00:00:00.000 --> 00:00:01.680
+Hello everyone, 
+
+00:00:01.680 --> 00:00:04.840
+I welcome you all to this wonderful
+course on computer networks.
+
+00:00:04.840 --> 00:00:06.280
+I am your instructor here
+
+00:00:06.280 --> 00:00:08.780
+to take you throughout this
+journey on computer networks.
+
+00:00:08.780 --> 00:00:10.640
+Before we start,
+let's figure out
+
+00:00:10.660 --> 00:00:13.200
+to whom this course
+is actually intended to.
+
+00:00:13.200 --> 00:00:16.160
+This course is mainly for
+the undergraduate students.
+
+00:00:16.160 --> 00:00:18.520
+And this course is
+useful for the students
+
+00:00:18.520 --> 00:00:20.480
+who are preparing for
+their GATE exams.
+
+00:00:20.480 --> 00:00:23.680
+And not only GATE exams,
+this course will surely help
+
+00:00:23.680 --> 00:00:26.480
+the students to crack
+networking based interviews.
+
+00:00:26.480 --> 00:00:28.460
+This course can be
+a prerequisite course
+
+00:00:28.460 --> 00:00:31.360
+to CCNA international
+certification course.
+
+00:00:31.360 --> 00:00:34.520
+And if you want to demystify all
+the networking technologies
+
+00:00:34.520 --> 00:00:36.460
+and jargons used in
+the networking field,     
+
+00:00:36.460 --> 00:00:39.020
+this course will surely
+fulfill your expectation.               
+
+00:00:39.020 --> 00:00:42.060
+In a nutshell, this course
+will surely quench
+
+00:00:42.060 --> 00:00:43.800
+the thirst of
+computer networking.
+
+00:00:44.600 --> 00:00:46.400
+And coming to the
+scope of this course,
+
+00:00:46.400 --> 00:00:49.060
+trust me guys, networking
+is everywhere.
+
+00:00:49.060 --> 00:00:51.460
+Because network supports
+the way we learn,
+
+00:00:51.460 --> 00:00:53.640
+network supports the
+way we communicate,
+
+00:00:53.640 --> 00:00:56.620
+network supports the way we work
+and the way we play.
+
+00:00:56.620 --> 00:00:59.980
+I shall explain you how
+network supports the way we learn.
+
+00:00:59.980 --> 00:01:02.000
+I am the instructor
+of this course
+
+00:01:02.000 --> 00:01:04.080
+and I am teaching in
+one part of the world.
+
+00:01:04.080 --> 00:01:06.380
+And the learners are in
+different parts of the world.
+
+00:01:06.380 --> 00:01:09.160
+Still teaching and learning is
+happening very seamlessly.
+
+00:01:09.160 --> 00:01:11.000
+That's the power of networking.
+
+00:01:11.000 --> 00:01:13.620
+Network supports the way we communicate.
+
+00:01:13.620 --> 00:01:16.400
+Think of a traditional
+land-line phone communication.
+
+00:01:16.400 --> 00:01:19.120
+We used to send only
+our voice data, but now
+
+00:01:19.120 --> 00:01:21.780
+the communication pattern
+has entirely changed.
+
+00:01:21.780 --> 00:01:24.500
+Think of an example
+mobile application Whatsapp.
+
+00:01:24.500 --> 00:01:29.860
+We are able to send text, images,
+animations, videos, audios,
+
+00:01:29.860 --> 00:01:34.220
+and even voice calls and video calls
+which are real time communication.
+
+00:01:34.220 --> 00:01:37.720
+We are able to do all this
+communication seamlessly
+
+00:01:37.720 --> 00:01:40.300
+and perfectly with the
+help of computer networks.
+
+00:01:40.300 --> 00:01:42.520
+Isn't the computer network awesome guys?
+
+00:01:43.120 --> 00:01:45.200
+Network supports the way we work.
+
+00:01:45.200 --> 00:01:49.200
+Yes, one can work from home by
+accessing the files and softwares
+
+00:01:49.200 --> 00:01:51.000
+actually available
+in the company.
+
+00:01:51.000 --> 00:01:53.460
+And network supports the way we play too.
+
+00:01:54.500 --> 00:01:57.380
+Talking about the pedagogy,
+we need to understand
+
+00:01:57.380 --> 00:01:59.740
+the theoretical background
+of all the concepts.
+
+00:01:59.740 --> 00:02:02.260
+Hence we go with the
+traditional lecturing methods
+
+00:02:02.260 --> 00:02:04.260
+and the contemporary
+lecturing methods.
+
+00:02:05.300 --> 00:02:07.700
+As I already mentioned to you
+that we will be solving
+
+00:02:07.700 --> 00:02:11.120
+many GATE examination related
+problems here in this course.
+
+00:02:11.120 --> 00:02:13.460
+And to understand
+the things practically,
+
+00:02:13.460 --> 00:02:16.760
+world's one of the most powerful
+simulation and learning tools,
+
+00:02:16.760 --> 00:02:18.600
+the CISCO packet
+tracer is used.
+
+00:02:19.460 --> 00:02:23.760
+And talking about the syllabi, in the first 
+phase of the computer networking course
+
+00:02:23.760 --> 00:02:26.300
+the fundamentals are
+dealt elaborately.
+
+00:02:27.020 --> 00:02:29.420
+Actually computer
+networks follows layering
+
+00:02:29.420 --> 00:02:31.760
+to send data from
+one computer to another
+
+00:02:31.760 --> 00:02:35.540
+and each layer is addressed
+separately as a separate chapters
+
+00:02:35.540 --> 00:02:37.940
+and it is dealt in a
+very detailed manner.
+
+00:02:38.560 --> 00:02:41.540
+And security is very
+important not only in real life
+
+00:02:41.540 --> 00:02:43.260
+even for computer
+networks too.
+
+00:02:43.260 --> 00:02:45.540
+And in the last phase of
+the computer networks
+
+00:02:45.540 --> 00:02:47.680
+will cover the
+need for security
+
+00:02:47.680 --> 00:02:50.820
+and how security is provided
+in computer networks.
+
+00:02:51.840 --> 00:02:54.560
+Now let's talk about the
+outcomes of today's lecture.
+
+00:02:54.560 --> 00:02:56.700
+Upon the completion of this lecture,
+
+00:02:56.700 --> 00:02:58.640
+the learner will be
+able to understand
+
+00:02:58.640 --> 00:02:59.960
+What is computer network?
+
+00:02:59.960 --> 00:03:02.820
+and they will be able to
+identify end devices
+
+00:03:02.820 --> 00:03:05.600
+and intermediary devices
+if the scenario is given.
+
+00:03:06.500 --> 00:03:08.980
+We will start with the definition
+of a computer network.
+
+00:03:09.480 --> 00:03:13.820
+A computer network is a set of nodes
+connected by communication links.
+
+00:03:13.820 --> 00:03:17.220
+I repeat -- A computer
+network is a set of nodes
+
+00:03:17.220 --> 00:03:18.920
+connected by
+communication links.
+
+00:03:19.620 --> 00:03:23.480
+To understand this definition,
+I shall highlight the important words.
+
+00:03:23.480 --> 00:03:25.560
+They are the keywords
+of this definition.
+
+00:03:25.560 --> 00:03:28.920
+The keywords are - nodes
+and communication links.
+
+00:03:28.920 --> 00:03:31.060
+Firstly, we will concentrate on nodes.
+
+00:03:31.720 --> 00:03:36.240
+A node can be a computer,
+printer or any other device
+
+00:03:36.240 --> 00:03:38.320
+capable of sending or receiving data.
+
+00:03:38.320 --> 00:03:43.700
+Say you have a device, if that device
+can send data or receive data
+
+00:03:43.700 --> 00:03:45.700
+or both send and
+receive data,
+
+00:03:45.700 --> 00:03:48.220
+then we can call that
+device as a node.
+
+00:03:48.220 --> 00:03:52.220
+So a node can be a computer,
+printer or any device
+
+00:03:52.220 --> 00:03:54.920
+but the important point
+to note here is that
+
+00:03:54.920 --> 00:03:58.440
+device should be capable enough
+in sending or receiving the data.
+
+00:03:59.240 --> 00:04:01.380
+We shall see some
+examples for nodes.
+
+00:04:01.780 --> 00:04:04.080
+Obviously, a computer
+is a node because
+
+00:04:04.080 --> 00:04:07.000
+a computer can send data
+as well as receive data.
+
+00:04:07.840 --> 00:04:10.920
+A server, printer,
+security camera
+
+00:04:10.920 --> 00:04:13.480
+and many devices like
+switches, bridges
+
+00:04:13.480 --> 00:04:15.400
+and routers are also
+called as nodes.
+
+00:04:15.400 --> 00:04:17.440
+We will be dealing
+about switches,
+
+00:04:17.440 --> 00:04:19.680
+bridges and routers in
+the upcoming lectures.
+
+00:04:20.480 --> 00:04:21.800
+Now we are done with nodes.
+
+00:04:21.800 --> 00:04:24.680
+We will concentrate on
+what are communication links.
+
+00:04:24.680 --> 00:04:28.580
+A communication link can be
+a wired link or a wireless link. 
+
+00:04:29.160 --> 00:04:31.800
+The important point to
+note about a link is that
+
+00:04:31.800 --> 00:04:34.580
+this link only carries the information.
+
+00:04:34.580 --> 00:04:36.920
+If you don't understand
+anything out of this,
+
+00:04:36.920 --> 00:04:38.460
+just wait for
+this example.
+
+00:04:38.460 --> 00:04:39.920
+See this example now,
+
+00:04:39.920 --> 00:04:41.520
+there are two
+computers.
+
+00:04:41.520 --> 00:04:43.920
+We can call these two computers as nodes.
+
+00:04:43.920 --> 00:04:46.100
+Why? Because these
+two computers
+
+00:04:46.100 --> 00:04:48.260
+can send data as
+well as receive data.
+
+00:04:48.260 --> 00:04:51.360
+Now these nodes are going to
+exchange their information,
+
+00:04:51.360 --> 00:04:53.280
+but for exchanging
+the information,
+
+00:04:53.280 --> 00:04:55.040
+they are depending upon this cable.
+
+00:04:55.040 --> 00:04:56.680
+Here this cable
+is the link.
+
+00:04:56.680 --> 00:04:59.600
+Obviously, a cable is
+a physical medium,
+
+00:04:59.600 --> 00:05:01.660
+so it comes under
+wired category.
+
+00:05:01.660 --> 00:05:04.320
+So wired link carries
+the information
+
+00:05:04.320 --> 00:05:07.400
+from this computer to this
+computer or vice-versa.
+
+00:05:07.400 --> 00:05:09.440
+But there are scenarios where,
+
+00:05:09.440 --> 00:05:12.180
+two devices wants to
+communicate with each other
+
+00:05:12.180 --> 00:05:13.900
+but not with the
+help of cables.
+
+00:05:13.900 --> 00:05:17.900
+Say in this scenario, these two
+smart-phones wants to exchange data.
+
+00:05:17.900 --> 00:05:20.940
+Say, this phone wants to
+give some data to this phone.
+
+00:05:20.940 --> 00:05:23.520
+In this case there is
+no physical connectivity.
+
+00:05:23.520 --> 00:05:26.280
+Then how can that
+communication be established?
+
+00:05:26.280 --> 00:05:29.000
+This is possible through
+wireless technologies,
+
+00:05:29.000 --> 00:05:32.160
+if that is the case, who is
+going to carry the signals?
+
+00:05:32.640 --> 00:05:35.020
+Obviously, air is going
+to carry the data.
+
+00:05:35.020 --> 00:05:37.780
+So here, air is
+the link that
+
+00:05:37.780 --> 00:05:40.900
+carries the data from
+one place to another place.
+
+00:05:41.780 --> 00:05:44.300
+So we have two kinds
+of communication links
+
+00:05:44.300 --> 00:05:47.080
+one is a wired link and
+another one is a wireless link.
+
+00:05:47.080 --> 00:05:49.220
+And the link only
+carries the information.
+
+00:05:49.220 --> 00:05:50.560
+We shall see some examples.
+
+00:05:51.060 --> 00:05:53.580
+Cable is a best example for wired link
+
+00:05:53.580 --> 00:05:55.900
+and air is the best example for wireless link.
+
+00:05:57.580 --> 00:06:00.480
+Now let's take this
+example, where this example
+
+00:06:00.480 --> 00:06:04.340
+involves lots of nodes
+and so many links.
+
+00:06:04.340 --> 00:06:07.420
+If you observe, certain
+links are wired links
+
+00:06:07.420 --> 00:06:09.480
+and certain links
+are wireless links.
+
+00:06:09.480 --> 00:06:13.100
+So this is a perfect example of
+a sample computer network.
+
+00:06:13.100 --> 00:06:16.620
+Now what are all the devices
+or nodes involved in the network?
+
+00:06:16.620 --> 00:06:20.260
+This printer is a node,
+desktop computers are nodes,
+
+00:06:20.260 --> 00:06:23.420
+tablet is a node,
+this smart-phone is a node,
+
+00:06:23.420 --> 00:06:26.720
+cellphone tower is a node,
+this wireless router is a node,
+
+00:06:26.720 --> 00:06:28.660
+router, internet cloud, et cetera.
+
+00:06:28.660 --> 00:06:32.440
+See there are lots of nodes
+involved in this internet cloud.
+
+00:06:32.440 --> 00:06:36.480
+In reality, internet contains lots of intermediary devices,
+
+00:06:36.480 --> 00:06:40.440
+these all are intermediary devices
+and these all are end devices.
+
+00:06:40.440 --> 00:06:42.440
+Why we call this as end device?
+
+00:06:42.440 --> 00:06:45.980
+Because this will be either the
+starting point of the communication
+
+00:06:45.980 --> 00:06:48.080
+or the end point in
+the communication.
+
+00:06:48.080 --> 00:06:54.440
+Say for example, if this computer wants
+to access www.nesoacademy.org,
+
+00:06:54.440 --> 00:07:00.020
+so here, the link between this computer
+and this device- this switch is the wired link.
+
+00:07:00.020 --> 00:07:03.840
+But communication can happen
+through this intermediary devices.
+
+00:07:04.260 --> 00:07:06.940
+Similarly, if this
+smart-phone also wants
+
+00:07:06.940 --> 00:07:10.300
+to get some data
+from nesoacademy.org,
+
+00:07:10.300 --> 00:07:13.000
+this can also give the
+request but this request
+
+00:07:13.000 --> 00:07:15.680
+can be carried out either
+this way or this way.
+
+00:07:15.680 --> 00:07:18.580
+But if you observe both in the ways, they are wireless.
+
+00:07:18.580 --> 00:07:22.100
+So the same server can be
+accessed with the help of wires
+
+00:07:22.100 --> 00:07:23.960
+as well as with the
+help of wireless.
+
+00:07:24.680 --> 00:07:27.920
+Now, the important point to note
+about a computer network
+
+00:07:27.920 --> 00:07:31.580
+is that, it is mainly used
+for resource sharing.
+
+00:07:32.020 --> 00:07:35.260
+A computer network is mainly
+used for resource sharing.
+
+00:07:35.260 --> 00:07:38.200
+Say, there are four
+computers here,
+
+00:07:38.200 --> 00:07:40.940
+if all four computers
+wants a printer,
+
+00:07:40.940 --> 00:07:44.420
+it is definitely not an
+ideal solution to purchase
+
+00:07:44.420 --> 00:07:47.060
+four printers for
+all computers.
+
+00:07:48.340 --> 00:07:50.180
+Think of the scenario this way,
+
+00:07:50.200 --> 00:07:51.620
+I have brought
+in a printer
+
+00:07:51.620 --> 00:07:54.020
+and connected this
+printer to my network.
+
+00:07:54.020 --> 00:07:58.080
+Now all these four computers
+can use this printer.
+
+00:07:58.080 --> 00:08:02.920
+So thus, networks save a
+lot of infrastructure cost as well.
+
+00:08:04.340 --> 00:08:06.560
+And there is an interesting
+scenario for you.
+
+00:08:06.560 --> 00:08:07.940
+You have to find out
+
+00:08:07.940 --> 00:08:10.520
+what are all the end devices
+used in the scenario
+
+00:08:10.520 --> 00:08:12.800
+and what are the
+intermediary devices.
+
+00:08:12.800 --> 00:08:17.160
+After finding out all the end
+devices and the intermediary devices,
+
+00:08:17.160 --> 00:08:19.680
+just list out like this
+on your paper.
+
+00:08:21.040 --> 00:08:23.260
+So I am showing this
+scenario for you.
+
+00:08:23.260 --> 00:08:25.600
+Please take a piece of
+paper and note down
+
+00:08:25.600 --> 00:08:28.360
+all the end devices and
+intermediary devices.
+
+00:08:28.360 --> 00:08:31.500
+Please pause this video for
+a while and carry out this task.
+
+00:08:34.960 --> 00:08:38.180
+Once done, you compare
+this with the actual result.
+
+00:08:39.040 --> 00:08:41.800
+Now if your result is
+matching with this result,
+
+00:08:41.800 --> 00:08:43.260
+congratulations to you.
+
+00:08:43.260 --> 00:08:45.520
+You are progressing
+in a right direction.
+
+00:08:45.520 --> 00:08:49.000
+If not, no problem guys.
+We are in the initial stage,
+
+00:08:49.000 --> 00:08:50.520
+it will take some lectures
+
+00:08:50.520 --> 00:08:52.940
+to understand the
+details about networking.
+
+00:08:54.060 --> 00:08:56.160
+Upon the completion
+of this lecture,
+
+00:08:56.160 --> 00:08:58.160
+the learner will be
+able to understand
+
+00:08:58.160 --> 00:08:59.600
+what is computer network?
+
+00:08:59.600 --> 00:09:03.420
+And given a scenario, the learner
+will be able to identify
+
+00:09:03.420 --> 00:09:06.740
+what are end devices and
+what are intermediary devices.
+
+00:09:06.740 --> 00:09:10.800
+I hope you are all very clear with
+the definition of a computer network.
+
+00:09:10.800 --> 00:09:14.280
+It is a set of nodes connected
+by communication links,
+
+00:09:14.280 --> 00:09:17.540
+where that link can be
+a wired link or a wireless link.
+
+00:09:17.540 --> 00:09:20.660
+The devices which are the
+source or the destination
+
+00:09:20.660 --> 00:09:23.080
+in the communication are
+called as end devices.
+
+00:09:23.080 --> 00:09:25.180
+The devices which
+forwards the data
+
+00:09:25.180 --> 00:09:28.920
+from one side to another side
+are called as intermediary devices.
+
+00:09:29.920 --> 00:09:31.160
+Thank you for watching.
+

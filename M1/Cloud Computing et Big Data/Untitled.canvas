@@ -1,0 +1,20 @@
+{
+	"nodes":[
+		{"id":"d490f6a227cf78b8","type":"group","x":-820,"y":-380,"width":340,"height":545,"color":"1","label":"PaaS Layer"},
+		{"id":"7b454737c7b79ade","type":"group","x":-140,"y":40,"width":340,"height":410,"color":"4","label":"IaaS Layer"},
+		{"id":"citizen","type":"text","text":"User","x":-190,"y":-320,"width":90,"height":50,"color":"6"},
+		{"id":"iaas_verify","type":"text","text":"Verification Logic & Database","x":-120,"y":210,"width":300,"height":70},
+		{"id":"iaas_storage","type":"text","text":"Document Archive (Storage)","x":-120,"y":360,"width":300,"height":70},
+		{"id":"iaas_ocr","type":"text","text":"OCR Engine","x":-120,"y":95,"width":300,"height":70},
+		{"id":"paas_api","type":"text","text":"API 'Connector'\n(Manages the process)","x":-800,"y":75,"width":300,"height":70},
+		{"id":"paas_website","type":"text","text":"AADL Website & Forms","x":-800,"y":-160,"width":300,"height":70}
+	],
+	"edges":[
+		{"id":"flow1","fromNode":"citizen","fromSide":"left","toNode":"paas_website","toSide":"top","label":"1. User Enters"},
+		{"id":"flow3","fromNode":"paas_website","fromSide":"bottom","toNode":"paas_api","toSide":"top","label":"2. Fills the inputs"},
+		{"id":"flow4_send","fromNode":"paas_api","fromSide":"bottom","toNode":"iaas_ocr","toSide":"top","label":"3. Send ID for OCR"},
+		{"id":"flow6_submit","fromNode":"paas_api","fromSide":"bottom","toNode":"iaas_verify","toSide":"left","label":"5. Final Submit"},
+		{"id":"flow7_archive","fromNode":"iaas_verify","fromSide":"bottom","toNode":"iaas_storage","toSide":"top"},
+		{"id":"flow5_receive","fromNode":"iaas_ocr","fromSide":"left","toNode":"paas_api","toSide":"top","label":"4. Return result"}
+	]
+}

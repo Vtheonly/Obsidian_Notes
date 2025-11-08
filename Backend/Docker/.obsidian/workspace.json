@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "NeuralNet/03 - Interacting with Running Containers (docker exec).md",
+                "file": "NeuralNet/01 - Docker Layers and Images.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "03 - Interacting with Running Containers (docker exec)"
+              "title": "01 - Docker Layers and Images"
             }
           }
         ]
@@ -171,11 +171,17 @@
   },
   "active": "3183511fa2265b86",
   "lastOpenFiles": [
-    "Net Ninga/1. What is Docker.md",
+    "NeuralNet/03 - Interacting with Running Containers (docker exec).md",
     "NeuralNet/04 - Docker Volumes.md",
     "NeuralNet/02 - Docker Core Commands.md",
     "NeuralNet/01 - Docker Layers and Images.md",
-    "NeuralNet/03 - Interacting with Running Containers (docker exec).md",
+    "Net Ninga/7. Starting and Stopping Containers.md",
+    "Net Ninga/6. The .dockerignore file.md",
+    "Net Ninga/5. The Dockerfile.md",
+    "Net Ninga/4. Parent Images and Docker Hub.md",
+    "Net Ninga/3. Images and Containers.md",
+    "Net Ninga/2. Installing Docker.md",
+    "Net Ninga/1. What is Docker.md",
     "NeuralNet/Detached Mode.md",
     "NeuralNet/Docker Basic Commands.md",
     "NeuralNet/sleep.md",
@@ -184,12 +190,6 @@
     "Quiz/Docker Q3.md",
     "NeuralNet",
     "Quiz/Docker Q4.md",
-    "Quiz/Docker Q1.md",
-    "Net Ninga/3. Images and Containers.md",
-    "Net Ninga/2. Installing Docker.md",
-    "Net Ninga/4. Parent Images and Docker Hub.md",
-    "Net Ninga/5. The Dockerfile.md",
-    "Net Ninga/6. The .dockerignore file.md",
-    "Net Ninga/7. Starting and Stopping Containers.md"
+    "Quiz/Docker Q1.md"
   ]
 }

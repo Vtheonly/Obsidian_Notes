@@ -1,40 +1,20 @@
 {
   "main": {
-    "id": "ac0844c216725fa8",
+    "id": "7e704d2973e14ac7",
     "type": "split",
     "children": [
       {
-        "id": "e85d025da15235f8",
+        "id": "c2d5f9c3514261dd",
         "type": "tabs",
         "children": [
           {
-            "id": "608f34d9ca9600b0",
+            "id": "3be6e94082222cee",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Welcome.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Welcome"
-            }
-          }
-        ]
-      },
-      {
-        "id": "ce1ffc0071a88582",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "e84c85cf9e185404",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -43,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "1003a9fc23700b83",
+    "id": "bb85c451c5017f8a",
     "type": "split",
     "children": [
       {
-        "id": "be37175fb36276e7",
+        "id": "8c3faf2f2e0148aa",
         "type": "tabs",
         "children": [
           {
-            "id": "f14eed190ce1cfe9",
+            "id": "17bc40549c391232",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -64,12 +44,12 @@
             }
           },
           {
-            "id": "bd230ff1460c67ae",
+            "id": "8e1806616ea5abe1",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "appim",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -81,7 +61,7 @@
             }
           },
           {
-            "id": "b4d3eacf6da722db",
+            "id": "6d8d5b27a8c81ad7",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -94,23 +74,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 305.5004348754883
   },
   "right": {
-    "id": "1ace7506675ee807",
+    "id": "9c07cb0f11004622",
     "type": "split",
     "children": [
       {
-        "id": "1023e9e0ec8e7689",
+        "id": "1488a84c40ec8d2b",
         "type": "tabs",
         "children": [
           {
-            "id": "6b3c4079f513ed00",
+            "id": "12175efd6c24334f",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Welcome.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,25 +99,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Welcome"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "6f0224f3bbf18dbf",
+            "id": "24526581858512c7",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Welcome.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Welcome"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "f7cfccec0150605a",
+            "id": "83bd60a6165bf2e4",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -153,40 +131,85 @@
             }
           },
           {
-            "id": "444131f3413cbbc5",
+            "id": "337f358a94dcf4cd",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Welcome.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Welcome"
+              "title": "Outline"
+            }
+          },
+          {
+            "id": "dd3c82aba9488fd4",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "canvas:Create new canvas": true,
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true,
+      "audio-recorder:Start/stop recording": false,
+      "quiz-generator:Open generator": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "608f34d9ca9600b0",
+  "active": "3be6e94082222cee",
   "lastOpenFiles": [
-    "Welcome.md"
+    "Level 0 - Baseics/Lessons/2 - Classes.md",
+    "Level 0 - Baseics/Lessons/1 - How to run Java.md",
+    "Level 0 - Baseics/Active Recall Test/Test - 21 - Exceptions.md",
+    "Level 0 - Baseics/Active Recall Test/Test - 7 - Specifying packages.md",
+    "Level 0 - Baseics/Active Recall Test/Test - 1 - How to run Java.md",
+    "Level 0 - Baseics/Active Recall Test/Test - 0 - Intro How Java Works.md",
+    "Level 0 - Baseics/Lessons/0 - Intro How Java Works.md",
+    "Level 2 - OOP/Active Recall Test/Test - 15 - Generics.md",
+    "Level 2 - OOP/Lessons/15 - Generics.md",
+    "Level 1 - Library/Active Recall Test/Test - 5 - Math Library.md",
+    "Level 1 - Library/Active Recall Test/Test - 6 - Random Library.md",
+    "Level 2 - OOP/Lessons/13 - Copying Objects.md",
+    "Level 2 - OOP/Lessons/5 - Static keyword.md",
+    "Level 2 - OOP/Active Recall Test/Test - 14 - Compile time vs Run time.md",
+    "Level 2 - OOP/Active Recall Test/Test - 3 - final keyword.md",
+    "Level 2 - OOP/Active Recall Test/Test - 1 - Object.md",
+    "Level 2 - OOP/Active Recall Test/Test - 0 - OOP basics.md",
+    "Level 2 - OOP/Active Recall Test/Test - 13 - Copying Objects.md",
+    "Level 2 - OOP/Active Recall Test/Test - 7 - inheritance.md",
+    "Untitled.md",
+    "System Design/Chapter 4.md",
+    "System Design/Chapter 3.md",
+    "System Design/Extras/Scalability.md",
+    "System Design/Extras",
+    "System Design/Extras/Asynchronous and Multi-Threaded.md",
+    "System Design/Chapter 1.md",
+    "System Design/Chapter 2.md",
+    "Docker/Level 0/Untitled/Untitled",
+    "Docker/Level 0/Untitled",
+    "Servers And Databases/Untitled",
+    "Networking And Protocols/IDK",
+    "Quiz",
+    "WebRTC",
+    "Backend"
   ]
 }

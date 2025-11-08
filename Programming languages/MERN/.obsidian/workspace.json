@@ -11,14 +11,10 @@
             "id": "879665fd7cf1f3f5",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2 - Node/9 - Extras/fetch.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "fetch"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -168,6 +164,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": true,
@@ -176,16 +173,18 @@
       "command-palette:Open command palette": true,
       "quiz-generator:Open generator": false,
       "audio-recorder:Start/stop recording": false,
-      "obsidian-git:Open Git source control": false,
-      "gnome-terminal-loader:Gnome Terminal": false,
-      "gnome-terminal-loader:main.py (Gnome Terminal)": true
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "17bc40549c391232",
+  "active": "879665fd7cf1f3f5",
   "lastOpenFiles": [
+    "4 - Quiz/React/Test - 3.md",
+    "4 - Quiz/React/Test - 6.md",
+    "4 - Quiz/React/Test - 1.md",
+    "4 - Quiz/Node/Test - 3.md",
+    "2 - Node/9 - Extras/fetch.md",
     "2 - Node/9 - Extras",
     "2 - Node/Level 1 - Basics/2 - Working with Modules.md",
-    "2 - Node/9 - Extras/fetch.md",
     "2 - Node/Level 1 - Basics/1 - Require vs. Import.md",
     "2 - Node/Level 1 - Basics/0 - introduction.md",
     "main.py",
@@ -208,9 +207,6 @@
     "Docker/Level 0/Untitled/Docker Q2.md",
     "Docker/Level 0/Lessons/2. Installing Docker.md",
     "Docker/Level 0/Untitled/Docker Q8.md",
-    "Docker/Level 0/Untitled/Docker Q7.md",
-    "Docker/Level 0/Untitled/Docker Q6.md",
-    "Docker/Level 0/Untitled/Docker Q5.md",
     "Docker/Level 0/Untitled/Untitled",
     "Docker/Level 0/Untitled",
     "Servers And Databases/Untitled",

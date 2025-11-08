@@ -4,36 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "f7dab9205b197530",
+        "id": "a69b1d6fd3aca41b",
         "type": "tabs",
         "children": [
           {
-            "id": "2b3a6e1803d4e79e",
+            "id": "3c247e470a2348f3",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Mersel Fares Cloud Report.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Mersel Fares Cloud Report"
             }
-          }
-        ]
-      },
-      {
-        "id": "58ba4e9750ea4551",
-        "type": "tabs",
-        "children": [
+          },
           {
-            "id": "ee802fa186baf469",
+            "id": "bd4a2e13b2076f01",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Untitled.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Untitled"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -65,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "broker",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -181,8 +184,29 @@
       "bases:Create new base": false
     }
   },
-  "active": "2b3a6e1803d4e79e",
+  "active": "bd4a2e13b2076f01",
   "lastOpenFiles": [
+    "Mersel Fares Cloud Report.md",
+    "Untitled.md",
+    "Report/Report.md",
+    "Pasted image 20251022232036.png",
+    "Untitled.canvas",
+    "EDa.md",
+    "Report",
+    "6 - What is a broker.md",
+    "13 - What are Message Queues and Event-driven patterns.md",
+    "12 - What are Microservices.md",
+    "11 - What is VPS and EC2.md",
+    "10 - Why Node.js Fits Serverless So Well.md",
+    "9 - What is Serverless.md",
+    "8 - What is a Workload.md",
+    "7 - Understanding Cloud Providers, Hosting Services, and VPS.md",
+    "0 - Intro.md",
+    "4 - What a “Rack Unit” Really Means.md",
+    "2 - Hypervisor.md",
+    "5 - A server is not the rack.md",
+    "3 - The Physical Machine.md",
+    "1 - What is a VM.md",
     "Welcome.md"
   ]
 }
