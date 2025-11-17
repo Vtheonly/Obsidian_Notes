@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Labs/TP4 - Mathematical Morphology.md",
+                "file": "root/In-Depth/Histogram.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TP4 - Mathematical Morphology"
+              "title": "Histogram"
             }
           }
         ]
@@ -163,7 +163,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -181,39 +182,41 @@
   },
   "active": "3be6e94082222cee",
   "lastOpenFiles": [
-    "Labs/TP3 - Nagao Filter and Performance.md",
-    "Labs/TP2 - Noise Generation and Filtering.md",
-    "Labs/TP1 - Setup and Basic Image Manipulation.md",
-    "Labs/TP4 - Mathematical Morphology.md",
-    "Level 0 - Baseics/Lessons/2 - Classes.md",
-    "Level 0 - Baseics/Lessons/1 - How to run Java.md",
-    "Level 0 - Baseics/Active Recall Test/Test - 21 - Exceptions.md",
-    "Level 0 - Baseics/Active Recall Test/Test - 7 - Specifying packages.md",
-    "Level 0 - Baseics/Active Recall Test/Test - 1 - How to run Java.md",
-    "Level 0 - Baseics/Active Recall Test/Test - 0 - Intro How Java Works.md",
-    "Level 0 - Baseics/Lessons/0 - Intro How Java Works.md",
-    "Level 2 - OOP/Active Recall Test/Test - 15 - Generics.md",
-    "Level 2 - OOP/Lessons/15 - Generics.md",
-    "Level 1 - Library/Active Recall Test/Test - 5 - Math Library.md",
-    "Level 1 - Library/Active Recall Test/Test - 6 - Random Library.md",
-    "Level 2 - OOP/Lessons/13 - Copying Objects.md",
-    "Level 2 - OOP/Lessons/5 - Static keyword.md",
-    "Level 2 - OOP/Active Recall Test/Test - 14 - Compile time vs Run time.md",
-    "Level 2 - OOP/Active Recall Test/Test - 3 - final keyword.md",
-    "Level 2 - OOP/Active Recall Test/Test - 1 - Object.md",
-    "Level 2 - OOP/Active Recall Test/Test - 0 - OOP basics.md",
-    "Level 2 - OOP/Active Recall Test/Test - 13 - Copying Objects.md",
-    "Level 2 - OOP/Active Recall Test/Test - 7 - inheritance.md",
-    "Untitled.md",
-    "System Design/Chapter 4.md",
-    "System Design/Chapter 3.md",
-    "System Design/Extras",
-    "Docker/Level 0/Untitled/Untitled",
-    "Docker/Level 0/Untitled",
-    "Servers And Databases/Untitled",
-    "Networking And Protocols/IDK",
-    "Quiz",
-    "WebRTC",
-    "Backend"
+    "root/01 Introduction to Digital Images/1.4 Image Formats (JPG, PNG, DICOM).md",
+    "root/In-Depth/Histogram.md",
+    "root/01 Introduction to Digital Images/1.3 Color Spaces (RGB, Grayscale, HSL).md",
+    "root/01 Introduction to Digital Images/1.2 Resolution and Color Depth.md",
+    "Chapter.md",
+    "01 Introduction to Digital Images/1.2 Resolution and Color Depth.md",
+    "root/Labs/TP4 - Mathematical Morphology.md",
+    "root/Labs/TP3 - Nagao Filter and Performance.md",
+    "root/Labs/TP2 - Noise Generation and Filtering.md",
+    "root/Labs/TP1 - Setup and Basic Image Manipulation.md",
+    "root/In-Depth/The Fourier Transform in Imaging.md",
+    "root/In-Depth/Mathematical Morphology.md",
+    "root/In-Depth/Image Quality Metrics (PSNR, MSE).md",
+    "root/In-Depth/Gabor Filters.md",
+    "root/In-Depth/Convolution.md",
+    "root/02 Image Preprocessing and Filtering/2.4 Frequency Domain Filtering.md",
+    "root/02 Image Preprocessing and Filtering/2.3 Non-Linear Spatial Filters (Median, Nagao).md",
+    "root/02 Image Preprocessing and Filtering/2.2 Linear Spatial Filters (Mean, Gaussian).md",
+    "root/02 Image Preprocessing and Filtering/2.1 Spatial Domain vs Frequency Domain.md",
+    "root/02 Image Preprocessing and Filtering/2.0 Image Noise and Degradation.md",
+    "root/00 Course Overview/Course Plan.md",
+    "root/00 Course Overview/Course Objectives.md",
+    "root/01 Introduction to Digital Images/1.6 Pixel Relationships and Distance.md",
+    "root/01 Introduction to Digital Images/1.5 The Image Histogram.md",
+    "root/01 Introduction to Digital Images/1.1 Image Representation (Bitmap vs Vector).md",
+    "root/01 Introduction to Digital Images/1.0 What is a Digital Image.md",
+    "root/Resources",
+    "root/Labs",
+    "root/In-Depth",
+    "root/05 Image Similarity and Matching",
+    "root/04 Feature Extraction",
+    "root/03 Image Segmentation",
+    "root/02 Image Preprocessing and Filtering",
+    "root/01 Introduction to Digital Images",
+    "root/00 Course Overview",
+    "root"
   ]
 }

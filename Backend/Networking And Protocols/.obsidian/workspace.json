@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter 1 - Introduction & Foundational Concepts/00 - Network Devices Overview.md",
+                "file": "Chapter 4 - Layer 3 - Network Layer (IP & Routing)/02 - Private IP vs. Public IP.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "00 - Network Devices Overview"
+              "title": "02 - Private IP vs. Public IP"
             }
           },
           {
@@ -35,7 +35,8 @@
               "title": "PDU"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -88,8 +89,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -178,8 +178,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -195,17 +194,18 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "879665fd7cf1f3f5",
+  "active": "17bc40549c391232",
   "lastOpenFiles": [
+    "Chapter 4 - Layer 3 - Network Layer (IP & Routing)/02 - Private IP vs. Public IP.md",
+    "Chapter 4 - Layer 3 - Network Layer (IP & Routing)/01 - Computer Networking Fundamentals IP, MAC, and Port Addressing.md",
+    "Networking Roadmap.md",
+    "Chapter 2 - Network Models & Data Encapsulation/A Deep Dive into Network Models OSI and TCP IP.md",
+    "Chapter 1 - Introduction & Foundational Concepts/00 - Network Devices Overview.md",
+    "Chapter 2 - Network Models & Data Encapsulation/PDU.md",
     "Chapter 1 - Introduction & Foundational Concepts/05 - Network Bridge.md",
     "Chapter 1 - Introduction & Foundational Concepts/06 - Network Switch.md",
-    "Chapter 4 - Layer 3 - Network Layer (IP & Routing)/01 - Computer Networking Fundamentals IP, MAC, and Port Addressing.md",
     "Chapter 1 - Introduction & Foundational Concepts/08 - Wireless Access Point (AP).md",
-    "Chapter 1 - Introduction & Foundational Concepts/00 - Network Devices Overview.md",
-    "Chapter 2 - Network Models & Data Encapsulation/A Deep Dive into Network Models OSI and TCP IP.md",
-    "Chapter 2 - Network Models & Data Encapsulation/PDU.md",
     "Extra Concepts",
-    "Networking Roadmap.md",
     "merged_subtitles.txt",
     "Introduction to Computer Networks.en-GB.txt",
     "Introduction to Computer Networks.en-GB.vtt",
@@ -214,7 +214,6 @@
     "Chapter 1 - Introduction & Foundational Concepts/07 - Router.md",
     "Chapter 1 - Introduction & Foundational Concepts/04 - Network Hub.md",
     "Chapter 1 - Introduction & Foundational Concepts/01 - Comparison of Network Devices.md",
-    "Chapter 4 - Layer 3 - Network Layer (IP & Routing)/02 - Private IP vs. Public IP.md",
     "Chapter 1 - Introduction & Foundational Concepts/03 - Repeater.md",
     "Chapter 1 - Introduction & Foundational Concepts/02 - Modem.md",
     "Chapter 9 - Practical Skills & Tools",
