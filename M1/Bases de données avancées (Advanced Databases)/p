@@ -1,0 +1,112 @@
+.:
+.
+..
+00_Course_Info
+01_Fundamentals
+02_Integrity_Management
+03_Transactions_and_Security
+04_Exercises_and_Scenarios
+Assets
+Context
+Labs
+p
+Quiz
+Relataed Concept
+
+./00_Course_Info:
+.
+..
+Course Syllabus Advanced Databases.md
+Evaluation_Criteria.md
+
+./01_Fundamentals:
+.
+..
+01_Relational_Model_Recap.md
+02_Database_Types_NoSQL_OODB.md
+03_Architectures_ClientServer_Distributed.md
+
+./02_Integrity_Management:
+.
+..
+01_Static_Constraints.md
+02_Foreign_Key_Behaviors.md
+03_Dynamic_Constraints_Triggers.md
+
+./03_Transactions_and_Security:
+.
+..
+01_ACID_Properties.md
+02_Concurrency_Control_and_Isolation.md
+03_Crash_Recovery_Mechanisms.md
+
+./04_Exercises_and_Scenarios:
+.
+..
+Ex01_Foreign_Key_Design.md
+Ex02_Trigger_Implementation.md
+Ex03_Concurrency_Analysis.md
+
+./Assets:
+.
+..
+
+./Context:
+.
+..
+Chapitre 01.pdf
+Chapitre 02.pdf
+Chapitre 03.pdf
+Chapitre 0 - Présentation du cours.pdf
+Chapitre 1-Introduction aux bases de données.pdf
+Chapitre 2- Gestion de l_intégrité.pdf
+Labs and excercises
+
+./Context/Labs and excercises:
+.
+..
+Ch1_P2- Gestion de l_intégrité - TD&TP - Corrigé.pdf
+Corrigé_TD0.pdf
+Corrigé_TD1.pdf
+Corrigé_TD2 (1).pdf
+Corrigé_TD3.pdf
+TD 01 (Correction).pdf
+TD 01 + Correction.pdf
+TD 01.pdf
+TD 02 (Correction).pdf
+TD 02 + Correction.pdf
+TD 02 (Optionnel) + Correction.pdf
+TD 02.pdf
+TD 03 (2).pdf
+TD 03 (Correction).pdf
+TD 03.pdf
+TD 04 (Correction).pdf
+TD 04 + Correction.pdf
+TD 04.pdf
+TD 05 + Correction.pdf
+TD0.pdf
+TD1.pdf
+TD2.pdf
+TD3.pdf
+TD4.pdf
+TD n° 5.pdf
+
+./Labs:
+.
+..
+TD 1
+
+./Labs/TD 1:
+.
+..
+Exercice 1.md
+
+./Quiz:
+.
+..
+
+./Relataed Concept:
+.
+..
+Heuristic.md
+Index.md
