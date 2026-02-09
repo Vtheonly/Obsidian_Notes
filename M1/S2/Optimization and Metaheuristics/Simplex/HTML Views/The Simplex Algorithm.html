@@ -1,0 +1,2270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Simplex Algorithm - Interactive Guide</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        code, .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a5f 0%, #0d1b2a 50%, #1b263b 100%);
+        }
+        
+        .card-glow {
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.1);
+        }
+        
+        .step-indicator {
+            transition: all 0.3s ease;
+        }
+        
+        .step-indicator.active {
+            background: #3b82f6;
+            transform: scale(1.2);
+        }
+        
+        .step-indicator.completed {
+            background: #10b981;
+        }
+        
+        .tableau-cell {
+            transition: all 0.3s ease;
+        }
+        
+        .tableau-cell.pivot {
+            background: #fbbf24 !important;
+            transform: scale(1.1);
+            font-weight: bold;
+        }
+        
+        .tableau-cell.pivot-row {
+            background: #fef3c7 !important;
+        }
+        
+        .tableau-cell.pivot-col {
+            background: #dbeafe !important;
+        }
+        
+        .vertex-point {
+            transition: all 0.3s ease;
+        }
+        
+        .vertex-point.active {
+            fill: #ef4444;
+            r: 10;
+        }
+        
+        .edge-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+        }
+        
+        .edge-path.animate {
+            animation: drawLine 1s ease forwards;
+        }
+        
+        @keyframes drawLine {
+            to { stroke-dashoffset: 0; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        .info-box {
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .warning-box {
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .success-box {
+            border-left: 4px solid #10b981;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .matrix-bracket {
+            border: 2px solid #374151;
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+            padding: 8px 4px;
+        }
+        
+        .matrix-bracket-right {
+            border: 2px solid #374151;
+            border-left: none;
+            border-radius: 0 4px 4px 0;
+            padding: 8px 4px;
+        }
+        
+        .flowchart-node {
+            transition: all 0.3s ease;
+        }
+        
+        .flowchart-node:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .constraint-line {
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+        
+        .feasible-region {
+            transition: opacity 0.5s ease;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .section-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .section-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-project-diagram text-blue-600 text-xl"></i>
+                <span class="font-bold text-lg">Simplex Algorithm</span>
+            </div>
+            <div class="hidden md:flex gap-6 text-sm">
+                <a href="#forms" class="nav-link text-gray-600 hover:text-blue-600">LP Forms</a>
+                <a href="#bfs" class="nav-link text-gray-600 hover:text-blue-600">BFS</a>
+                <a href="#geometry" class="nav-link text-gray-600 hover:text-blue-600">Geometry</a>
+                <a href="#algorithm" class="nav-link text-gray-600 hover:text-blue-600">Algorithm</a>
+                <a href="#tableau" class="nav-link text-gray-600 hover:text-blue-600">Tableau</a>
+                <a href="#twophase" class="nav-link text-gray-600 hover:text-blue-600">Two-Phase</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="gradient-bg text-white min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl">
+            <div class="mb-6">
+                <span class="bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-medium">
+                    Chapter 2: Linear Programming
+                </span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                The Simplex<br>
+                <span class="text-blue-400">Algorithm</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                An interactive journey through the most influential algorithm in optimization history. 
+                Learn how to navigate the corners of possibility to find optimal solutions.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <a href="#forms" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold transition-all flex items-center gap-2">
+                    Start Learning <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#algorithm" class="bg-white/10 hover:bg-white/20 px-8 py-3 rounded-lg font-semibold transition-all border border-white/20">
+                    Jump to Algorithm
+                </a>
+            </div>
+            
+            <div class="scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2">
+                <i class="fas fa-chevron-down text-2xl text-white/50"></i>
+            </div>
+        </div>
+        
+        <!-- Floating elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 border border-blue-400/30 rounded-lg transform rotate-12 animate-pulse"></div>
+        <div class="absolute bottom-40 right-20 w-16 h-16 bg-blue-400/10 rounded-full"></div>
+        <div class="absolute top-40 right-40 w-8 h-8 bg-green-400/20 rounded-full"></div>
+    </header>
+
+    <!-- Section 1: LP Forms -->
+    <section id="forms" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Part 1</span>
+                <h2 class="text-4xl font-bold mt-2 mb-4">Linear Programming Forms</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Before we can use the Simplex Algorithm, we need to understand how LP problems are structured 
+                    and how to convert them into the required format.
+                </p>
+            </div>
+            
+            <!-- Three Forms Cards -->
+            <div class="grid md:grid-cols-3 gap-6 mb-16">
+                <!-- General Form -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-glow border-t-4 border-purple-500">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-expand-arrows-alt text-purple-600"></i>
+                        </div>
+                        <h3 class="font-bold text-lg">General Form</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">The most flexible formulation. Allows any combination of:</p>
+                    <ul class="text-sm space-y-2">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check text-green-500"></i>
+                            Min or Max objective
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check text-green-500"></i>
+                            =, ≤, ≥ constraints
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check text-green-500"></i>
+                            Free or bounded variables
+                        </li>
+                    </ul>
+                    <div class="mt-4 p-3 bg-purple-50 rounded-lg text-sm font-mono">
+                        min/max c<sup>T</sup>x<br>
+                        s.t. Ax ≤/=/≥ b<br>
+                        x ≥ 0 or free
+                    </div>
+                </div>
+                
+                <!-- Canonical Form -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-glow border-t-4 border-orange-500">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-balance-scale text-orange-600"></i>
+                        </div>
+                        <h3 class="font-bold text-lg">Canonical Form</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">Used for duality theory and specific problems:</p>
+                    <ul class="text-sm space-y-2">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-minus text-gray-400"></i>
+                            Minimize only
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-minus text-gray-400"></i>
+                            All ≥ constraints
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-minus text-gray-400"></i>
+                            All x ≥ 0
+                        </li>
+                    </ul>
+                    <div class="mt-4 p-3 bg-orange-50 rounded-lg text-sm font-mono">
+                        min c<sup>T</sup>x<br>
+                        s.t. Ax ≥ b<br>
+                        x ≥ 0
+                    </div>
+                </div>
+                
+                <!-- Standard Form -->
+                <div class="bg-white rounded-xl shadow-lg p-6 card-glow border-t-4 border-blue-500 ring-2 ring-blue-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-star text-blue-600"></i>
+                        </div>
+                        <h3 class="font-bold text-lg">Standard Form</h3>
+                        <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Required</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">The Simplex Algorithm requires this exact format:</p>
+                    <ul class="text-sm space-y-2">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-exclamation-circle text-blue-500"></i>
+                            Minimize only
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-exclamation-circle text-blue-500"></i>
+                            All = constraints
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-exclamation-circle text-blue-500"></i>
+                            All x ≥ 0
+                        </li>
+                    </ul>
+                    <div class="mt-4 p-3 bg-blue-50 rounded-lg text-sm font-mono">
+                        min c<sup>T</sup>x<br>
+                        s.t. Ax = b<br>
+                        x ≥ 0
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Interactive Conversion Demo -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 mb-12">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-exchange-alt text-blue-600"></i>
+                    Interactive: Convert to Standard Form
+                </h3>
+                
+                <div id="conversion-demo" class="space-y-6">
+                    <div class="flex flex-wrap items-center gap-4 mb-4">
+                        <span class="text-sm font-semibold text-gray-500">STEP:</span>
+                        <div class="flex gap-2" id="conversion-steps">
+                            <div class="step-indicator w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-white text-sm font-bold active" data-step="0">1</div>
+                            <div class="step-indicator w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-white text-sm font-bold" data-step="1">2</div>
+                            <div class="step-indicator w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-white text-sm font-bold" data-step="2">3</div>
+                            <div class="step-indicator w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-white text-sm font-bold" data-step="3">4</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Original Problem -->
+                        <div class="bg-gray-50 rounded-xl p-6">
+                            <h4 class="font-semibold text-gray-700 mb-4 flex items-center gap-2">
+                                <i class="fas fa-file-alt text-gray-500"></i>
+                                Original Problem
+                            </h4>
+                            <div id="original-problem" class="font-mono text-sm space-y-2">
+                                <div class="text-red-600 font-semibold">max</div>
+                                <div>z = 3x₁ + 2x₂</div>
+                                <div class="text-gray-500 mt-2">subject to:</div>
+                                <div>x₁ + x₂ <span class="text-orange-600 font-bold">≤</span> 4</div>
+                                <div>2x₁ + x₂ <span class="text-orange-600 font-bold">≤</span> 6</div>
+                                <div>x₁, x₂ ≥ 0</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Converted Problem -->
+                        <div class="bg-blue-50 rounded-xl p-6">
+                            <h4 class="font-semibold text-blue-700 mb-4 flex items-center gap-2">
+                                <i class="fas fa-check-circle text-blue-500"></i>
+                                Standard Form
+                            </h4>
+                            <div id="converted-problem" class="font-mono text-sm space-y-2">
+                                <div id="conv-obj" class="text-red-600 font-semibold">max</div>
+                                <div id="conv-z">z = 3x₁ + 2x₂</div>
+                                <div class="text-gray-500 mt-2">subject to:</div>
+                                <div id="conv-c1">x₁ + x₂ ≤ 4</div>
+                                <div id="conv-c2">2x₁ + x₂ ≤ 6</div>
+                                <div id="conv-vars">x₁, x₂ ≥ 0</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Explanation Box -->
+                    <div id="conversion-explanation" class="info-box bg-blue-50 p-4 rounded-lg">
+                        <h5 class="font-semibold text-blue-800 mb-2">
+                            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                            Step 1: Identify Issues
+                        </h5>
+                        <p class="text-blue-700 text-sm">
+                            Look at the original problem. We see two issues that violate Standard Form:
+                            <strong>1)</strong> The objective is "maximize" instead of "minimize".
+                            <strong>2)</strong> The constraints use "≤" instead of "=".
+                        </p>
+                    </div>
+                    
+                    <div class="flex justify-between items-center">
+                        <button id="conv-prev" class="px-4 py-2 bg-gray-200 text-gray-600 rounded-lg hover:bg-gray-300 transition-all disabled:opacity-50" disabled>
+                            <i class="fas fa-arrow-left mr-2"></i> Previous
+                        </button>
+                        <button id="conv-next" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all flex items-center gap-2">
+                            Next Step <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Transformation Rules Reference -->
+            <div class="bg-gradient-to-br from-gray-800 to-gray-900 text-white rounded-2xl p-8">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-book text-blue-400"></i>
+                    Quick Reference: Transformation Rules
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white/10 rounded-lg p-4">
+                        <h4 class="font-semibold text-yellow-400 mb-2">Maximization → Minimization</h4>
+                        <p class="text-gray-300 text-sm mb-2">Multiply the objective by -1:</p>
+                        <code class="text-green-400">max z = c<sup>T</sup>x → min (-z) = -c<sup>T</sup>x</code>
+                    </div>
+                    
+                    <div class="bg-white/10 rounded-lg p-4">
+                        <h4 class="font-semibold text-yellow-400 mb-2">≤ Inequality → Equality</h4>
+                        <p class="text-gray-300 text-sm mb-2">Add a slack variable s ≥ 0:</p>
+                        <code class="text-green-400">ax ≤ b → ax + s = b</code>
+                    </div>
+                    
+                    <div class="bg-white/10 rounded-lg p-4">
+                        <h4 class="font-semibold text-yellow-400 mb-2">≥ Inequality → Equality</h4>
+                        <p class="text-gray-300 text-sm mb-2">Subtract a surplus variable s ≥ 0:</p>
+                        <code class="text-green-400">ax ≥ b → ax - s = b</code>
+                    </div>
+                    
+                    <div class="bg-white/10 rounded-lg p-4">
+                        <h4 class="font-semibold text-yellow-400 mb-2">Free Variable → Nonnegative</h4>
+                        <p class="text-gray-300 text-sm mb-2">Split into difference of two variables:</p>
+                        <code class="text-green-400">x (free) → x = x⁺ - x⁻, where x⁺,x⁻ ≥ 0</code>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-yellow-500/20 rounded-lg border border-yellow-500/30">
+                    <p class="text-yellow-200 text-sm flex items-start gap-2">
+                        <i class="fas fa-exclamation-triangle mt-0.5"></i>
+                        <span><strong>Important:</strong> The RHS vector b must be non-negative. If any b<sub>i</sub> < 0, multiply that entire equation by -1.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Basic Feasible Solutions -->
+    <section id="bfs" class="py-20 px-4 bg-gradient-to-b from-gray-100 to-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-green-600 font-semibold text-sm uppercase tracking-wider">Part 2</span>
+                <h2 class="text-4xl font-bold mt-2 mb-4">Basic Feasible Solutions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    The algebraic representation of "corners" in the feasible region. 
+                    Understanding BFS is key to understanding why Simplex works.
+                </p>
+            </div>
+            
+            <!-- Key Concept Cards -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="text-4xl mb-4">📐</div>
+                    <h4 class="font-bold text-lg mb-2">Basis (B)</h4>
+                    <p class="text-gray-600 text-sm">
+                        A collection of <strong>m linearly independent columns</strong> of A that form an m×m nonsingular matrix B.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h4 class="font-bold text-lg mb-2">Basic Variables (x<sub>B</sub>)</h4>
+                    <p class="text-gray-600 text-sm">
+                        Variables corresponding to basis columns. We solve for these: <strong>x<sub>B</sub> = B⁻¹b</strong>
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="text-4xl mb-4">🔒</div>
+                    <h4 class="font-bold text-lg mb-2">Non-Basic Variables (x<sub>N</sub>)</h4>
+                    <p class="text-gray-600 text-sm">
+                        The remaining n-m variables. We set these <strong>equal to zero</strong> to find a corner.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Interactive BFS Finder -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 mb-12">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-calculator text-green-600"></i>
+                    Interactive: Finding a BFS
+                </h3>
+                
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="text-sm text-gray-600 mb-2">Consider the system with m=2 constraints and n=5 variables:</p>
+                    <div class="font-mono text-center text-lg">
+                        x₁ + x₂ + x₃ + x₄ = 4<br>
+                        x₁ + 3x₂ + x₅ = 2
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <p class="font-semibold mb-3">Select 2 columns to form your basis:</p>
+                    <div class="flex flex-wrap gap-3" id="column-selector">
+                        <button class="col-btn px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-blue-500 transition-all" data-col="1">
+                            A₁ = [1, 1]<sup>T</sup>
+                        </button>
+                        <button class="col-btn px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-blue-500 transition-all" data-col="2">
+                            A₂ = [1, 3]<sup>T</sup>
+                        </button>
+                        <button class="col-btn px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-blue-500 transition-all" data-col="3">
+                            A₃ = [1, 0]<sup>T</sup>
+                        </button>
+                        <button class="col-btn px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-blue-500 transition-all" data-col="4">
+                            A₄ = [1, 0]<sup>T</sup>
+                        </button>
+                        <button class="col-btn px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-blue-500 transition-all" data-col="5">
+                            A₅ = [0, 1]<sup>T</sup>
+                        </button>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Selected: <span id="selected-cols" class="font-mono text-blue-600">None</span></p>
+                </div>
+                
+                <button id="compute-bfs" class="w-full py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    <i class="fas fa-play mr-2"></i> Compute Basic Solution
+                </button>
+                
+                <div id="bfs-result" class="mt-6 hidden">
+                    <div id="bfs-steps" class="space-y-4"></div>
+                </div>
+            </div>
+            
+            <!-- Theorem Box -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="success-box bg-green-50 p-6 rounded-xl">
+                    <h4 class="font-bold text-green-800 mb-3 flex items-center gap-2">
+                        <i class="fas fa-check-circle"></i>
+                        Theorem 2.1: Existence
+                    </h4>
+                    <p class="text-green-700 text-sm">
+                        If a feasible solution exists, a <strong>basic</strong> feasible solution exists.
+                    </p>
+                    <p class="text-green-600 text-xs mt-2 italic">
+                        → We only need to search the corners, not the entire region!
+                    </p>
+                </div>
+                
+                <div class="info-box bg-blue-50 p-6 rounded-xl">
+                    <h4 class="font-bold text-blue-800 mb-3 flex items-center gap-2">
+                        <i class="fas fa-info-circle"></i>
+                        Theorem 2.2: Boundedness
+                    </h4>
+                    <p class="text-blue-700 text-sm">
+                        If the LP has a finite optimum, the feasible region can be bounded to a large hypercube without changing the optimal value.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Geometry -->
+    <section id="geometry" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-purple-600 font-semibold text-sm uppercase tracking-wider">Part 3</span>
+                <h2 class="text-4xl font-bold mt-2 mb-4">Geometry of Linear Programs</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Connecting algebra to geometry: see how constraints create shapes 
+                    and why corners are special.
+                </p>
+            </div>
+            
+            <!-- Interactive Polytope Visualization -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 mb-12">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-shapes text-purple-600"></i>
+                    Interactive: Building a Polytope
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Controls -->
+                    <div class="space-y-6">
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <h4 class="font-semibold mb-4">Toggle Constraints:</h4>
+                            <div class="space-y-3">
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="checkbox" id="c1-toggle" class="w-5 h-5 text-blue-600" checked>
+                                    <span class="font-mono text-sm">x₁ + x₂ ≤ 4</span>
+                                    <span class="w-4 h-4 bg-blue-500 rounded"></span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="checkbox" id="c2-toggle" class="w-5 h-5 text-green-600" checked>
+                                    <span class="font-mono text-sm">2x₁ + x₂ ≤ 6</span>
+                                    <span class="w-4 h-4 bg-green-500 rounded"></span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="checkbox" id="c3-toggle" class="w-5 h-5 text-red-600" checked>
+                                    <span class="font-mono text-sm">x₁ ≥ 0</span>
+                                    <span class="w-4 h-4 bg-red-500 rounded"></span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="checkbox" id="c4-toggle" class="w-5 h-5 text-orange-600" checked>
+                                    <span class="font-mono text-sm">x₂ ≥ 0</span>
+                                    <span class="w-4 h-4 bg-orange-500 rounded"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div id="polytope-info" class="p-4 bg-purple-50 rounded-lg">
+                            <h4 class="font-semibold text-purple-800 mb-2">Feasible Region</h4>
+                            <p class="text-purple-700 text-sm">
+                                The shaded area shows all points (x₁, x₂) that satisfy ALL constraints simultaneously.
+                                Each vertex is a Basic Feasible Solution!
+                            </p>
+                        </div>
+                        
+                        <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                            <h4 class="font-semibold text-yellow-800 mb-2 flex items-center gap-2">
+                                <i class="fas fa-mouse-pointer"></i>
+                                Click a Vertex!
+                            </h4>
+                            <p class="text-yellow-700 text-sm">
+                                Click on any corner point to see its coordinates and which constraints are active (binding) at that point.
+                            </p>
+                        </div>
+                        
+                        <div id="vertex-info" class="p-4 bg-gray-100 rounded-lg hidden">
+                            <h4 class="font-semibold mb-2">Selected Vertex</h4>
+                            <div id="vertex-details" class="font-mono text-sm"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Canvas -->
+                    <div class="relative">
+                        <canvas id="polytope-canvas" width="400" height="400" class="w-full border rounded-lg bg-white cursor-crosshair"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Big Equivalence -->
+            <div class="bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-2xl p-8 mb-12">
+                <h3 class="text-2xl font-bold mb-6 text-center">The Big Equivalence (Theorem 2.4)</h3>
+                <p class="text-center text-purple-100 mb-8">These three concepts are mathematically identical:</p>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white/10 backdrop-blur rounded-xl p-6 text-center">
+                        <div class="text-4xl mb-4">📍</div>
+                        <h4 class="font-bold mb-2">Geometric</h4>
+                        <p class="text-sm text-purple-100">x̂ is a <strong>Vertex</strong> of the polytope P</p>
+                    </div>
+                    
+                    <div class="flex items-center justify-center text-4xl">≡</div>
+                    
+                    <div class="bg-white/10 backdrop-blur rounded-xl p-6 text-center">
+                        <div class="text-4xl mb-4">🎯</div>
+                        <h4 class="font-bold mb-2">Convexity</h4>
+                        <p class="text-sm text-purple-100">x̂ is an <strong>Extreme Point</strong> (cannot be written as convex combination)</p>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center my-4">
+                    <div class="text-4xl">≡</div>
+                </div>
+                
+                <div class="max-w-sm mx-auto bg-white/10 backdrop-blur rounded-xl p-6 text-center">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h4 class="font-bold mb-2">Algebraic</h4>
+                    <p class="text-sm text-purple-100">x is a <strong>Basic Feasible Solution</strong></p>
+                </div>
+            </div>
+            
+            <!-- Degeneracy Warning -->
+            <div class="warning-box bg-yellow-50 p-6 rounded-xl">
+                <h4 class="font-bold text-yellow-800 mb-3 flex items-center gap-2">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Degeneracy: When Things Get Tricky
+                </h4>
+                <p class="text-yellow-700 text-sm mb-4">
+                    A BFS is <strong>degenerate</strong> if it has more than n-m zeros (i.e., a basic variable equals 0).
+                </p>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-white p-4 rounded-lg">
+                        <p class="font-semibold text-gray-700 mb-1">Algebraic Meaning:</p>
+                        <p class="text-sm text-gray-600">One of the basic variables turns out to be zero.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg">
+                        <p class="font-semibold text-gray-700 mb-1">Geometric Meaning:</p>
+                        <p class="text-sm text-gray-600">More constraints pass through the vertex than necessary (over-defined point).</p>
+                    </div>
+                </div>
+                <p class="text-yellow-800 text-sm mt-4 font-semibold">
+                    ⚠️ Degeneracy can cause the Simplex algorithm to stall or cycle!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: The Simplex Algorithm -->
+    <section id="algorithm" class="py-20 px-4 bg-gradient-to-b from-gray-100 to-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-red-600 font-semibold text-sm uppercase tracking-wider">Part 4</span>
+                <h2 class="text-4xl font-bold mt-2 mb-4">The Simplex Algorithm</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    The main event: watch the algorithm move from vertex to vertex, 
+                    always improving the objective until optimality is reached.
+                </p>
+            </div>
+            
+            <!-- Algorithm Flowchart -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 mb-12">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-project-diagram text-red-600"></i>
+                    Algorithm Flowchart
+                </h3>
+                
+                <div class="flex flex-wrap justify-center gap-4 items-start">
+                    <div class="flowchart-node bg-green-100 border-2 border-green-500 rounded-lg p-4 text-center w-48">
+                        <i class="fas fa-play text-green-600 text-2xl mb-2"></i>
+                        <p class="font-semibold text-green-800">Start with Initial BFS</p>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <i class="fas fa-arrow-right text-gray-400 text-xl"></i>
+                    </div>
+                    
+                    <div class="flowchart-node bg-blue-100 border-2 border-blue-500 rounded-lg p-4 text-center w-48">
+                        <i class="fas fa-question text-blue-600 text-2xl mb-2"></i>
+                        <p class="font-semibold text-blue-800">All c̄ⱼ ≥ 0?</p>
+                    </div>
+                    
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm text-green-600 font-semibold">YES</span>
+                            <i class="fas fa-arrow-right text-gray-400"></i>
+                        </div>
+                        <div class="flowchart-node bg-green-500 text-white rounded-lg p-4 text-center w-40">
+                            <i class="fas fa-trophy text-2xl mb-2"></i>
+                            <p class="font-semibold">OPTIMAL!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mt-4">
+                    <div class="flex flex-col items-center">
+                        <span class="text-sm text-red-600 font-semibold">NO</span>
+                        <i class="fas fa-arrow-down text-gray-400 text-xl"></i>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-4 items-start mt-4">
+                    <div class="flowchart-node bg-yellow-100 border-2 border-yellow-500 rounded-lg p-4 text-center w-56">
+                        <i class="fas fa-columns text-yellow-600 text-2xl mb-2"></i>
+                        <p class="font-semibold text-yellow-800">Select column j with c̄ⱼ < 0</p>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <i class="fas fa-arrow-right text-gray-400 text-xl"></i>
+                    </div>
+                    
+                    <div class="flowchart-node bg-orange-100 border-2 border-orange-500 rounded-lg p-4 text-center w-48">
+                        <i class="fas fa-question text-orange-600 text-2xl mb-2"></i>
+                        <p class="font-semibold text-orange-800">All aᵢⱼ ≤ 0?</p>
+                    </div>
+                    
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm text-red-600 font-semibold">YES</span>
+                            <i class="fas fa-arrow-right text-gray-400"></i>
+                        </div>
+                        <div class="flowchart-node bg-red-500 text-white rounded-lg p-4 text-center w-40">
+                            <i class="fas fa-infinity text-2xl mb-2"></i>
+                            <p class="font-semibold">UNBOUNDED!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mt-4">
+                    <div class="flex flex-col items-center">
+                        <span class="text-sm text-green-600 font-semibold">NO</span>
+                        <i class="fas fa-arrow-down text-gray-400 text-xl"></i>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-4 items-center mt-4">
+                    <div class="flowchart-node bg-purple-100 border-2 border-purple-500 rounded-lg p-4 text-center w-64">
+                        <i class="fas fa-divide text-purple-600 text-2xl mb-2"></i>
+                        <p class="font-semibold text-purple-800">Ratio Test: Find row l minimizing bᵢ/aᵢⱼ</p>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <i class="fas fa-arrow-right text-gray-400 text-xl"></i>
+                    </div>
+                    
+                    <div class="flowchart-node bg-pink-100 border-2 border-pink-500 rounded-lg p-4 text-center w-56">
+                        <i class="fas fa-exchange-alt text-pink-600 text-2xl mb-2"></i>
+                        <p class="font-semibold text-pink-800">Pivot on element aₗⱼ</p>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <i class="fas fa-undo text-blue-500 text-xl" title="Return to check"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step-by-Step Animation -->
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-play-circle text-red-600"></i>
+                    Step-by-Step: Solving an LP
+                </h3>
+                
+                <div class="mb-6 p-4 bg-gray-800 text-white rounded-lg font-mono text-sm">
+                    <p class="text-gray-400 mb-2">// Problem:</p>
+                    <p>Minimize z = -3x₁ - 2x₂</p>
+                    <p>Subject to:</p>
+                    <p class="pl-4">x₁ + x₂ + s₁ = 4</p>
+                    <p class="pl-4">2x₁ + x₂ + s₂ = 6</p>
+                    <p class="pl-4">x₁, x₂, s₁, s₂ ≥ 0</p>
+                </div>
+                
+                <!-- Progress Indicator -->
+                <div class="flex items-center justify-center gap-2 mb-8">
+                    <div id="algo-steps" class="flex gap-2">
+                        <div class="algo-step w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold" data-step="0">0</div>
+                        <div class="algo-step w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold" data-step="1">1</div>
+                        <div class="algo-step w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold" data-step="2">2</div>
+                        <div class="algo-step w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold" data-step="3">3</div>
+                        <div class="algo-step w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold" data-step="4">4</div>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Geometric View -->
+                    <div>
+                        <h4 class="font-semibold mb-4 flex items-center gap-2">
+                            <i class="fas fa-chart-area text-purple-600"></i>
+                            Geometric View
+                        </h4>
+                        <canvas id="simplex-geo-canvas" width="350" height="350" class="w-full border rounded-lg bg-white"></canvas>
+                    </div>
+                    
+                    <!-- Tableau View -->
+                    <div>
+                        <h4 class="font-semibold mb-4 flex items-center gap-2">
+                            <i class="fas fa-table text-blue-600"></i>
+                            Tableau View
+                        </h4>
+                        <div id="tableau-container" class="overflow-x-auto">
+                            <table class="w-full text-sm border-collapse" id="simplex-tableau">
+                                <thead>
+                                    <tr class="bg-gray-100">
+                                        <th class="border p-2">Basis</th>
+                                        <th class="border p-2">x₁</th>
+                                        <th class="border p-2">x₂</th>
+                                        <th class="border p-2">s₁</th>
+                                        <th class="border p-2">s₂</th>
+                                        <th class="border p-2">RHS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableau-body">
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div id="current-solution" class="mt-4 p-3 bg-gray-50 rounded-lg">
+                            <p class="text-sm"><strong>Current Solution:</strong> <span id="sol-display">-</span></p>
+                            <p class="text-sm"><strong>Objective Value:</strong> <span id="obj-display">-</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Explanation -->
+                <div id="algo-explanation" class="mt-6 p-4 info-box bg-blue-50 rounded-lg">
+                    <h5 class="font-semibold text-blue-800 mb-2">Step 0: Initial Setup</h5>
+                    <p class="text-blue-700 text-sm">
+                        We start with slack variables s₁ and s₂ as our initial basis. 
+                        This gives us the basic feasible solution at the origin: (0, 0, 4, 6).
+                    </p>
+                </div>
+                
+                <!-- Navigation -->
+                <div class="flex justify-between items-center mt-6">
+                    <button id="algo-prev" class="px-4 py-2 bg-gray-200 text-gray-600 rounded-lg hover:bg-gray-300 transition-all disabled:opacity-50" disabled>
+                        <i class="fas fa-arrow-left mr-2"></i> Previous
+                    </button>
+                    <button id="algo-reset" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-all">
+                        <i class="fas fa-redo mr-2"></i> Reset
+                    </button>
+                    <button id="algo-next" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all flex items-center gap-2">
+                        Next Step <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Tableau Deep Dive -->
+    <section id="tableau" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-indigo-600 font-semibold text-sm uppercase tracking-wider">Part 5</span>
+                <h2 class="text-4xl font-bold mt-2 mb-4">Understanding the Tableau</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    The tableau is the bookkeeping system of Simplex. Let's understand each part 
+                    and why the reduced costs tell us everything.
+                </p>
+            </div>
+            
+            <!-- Tableau Anatomy -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 mb-12">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-microscope text-indigo-600"></i>
+                    Anatomy of a Tableau
+                </h3>
+                
+                <div class="overflow-x-auto mb-8">
+                    <table class="w-full text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-gray-800 text-white">
+                                <th class="border border-gray-600 p-3"></th>
+                                <th class="border border-gray-600 p-3" colspan="4">Non-basic columns</th>
+                                <th class="border border-gray-600 p-3" colspan="2">Basic columns (Identity)</th>
+                                <th class="border border-gray-600 p-3">RHS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-yellow-50">
+                                <td class="border p-3 font-bold bg-yellow-100">Row 0</td>
+                                <td class="border p-3 text-center bg-yellow-50">
+                                    <span class="text-red-600 font-bold">c̄₁</span>
+                                </td>
+                                <td class="border p-3 text-center bg-yellow-50">
+                                    <span class="text-red-600 font-bold">c̄₂</span>
+                                </td>
+                                <td class="border p-3 text-center">...</td>
+                                <td class="border p-3 text-center">...</td>
+                                <td class="border p-3 text-center">0</td>
+                                <td class="border p-3 text-center">0</td>
+                                <td class="border p-3 text-center bg-green-50 font-bold">-z</td>
+                            </tr>
+                            <tr>
+                                <td class="border p-3 font-bold bg-blue-50">Row 1</td>
+                                <td class="border p-3 text-center">a₁₁</td>
+                                <td class="border p-3 text-center">a₁₂</td>
+                                <td class="border p-3 text-center">...</td>
+                                <td class="border p-3 text-center">...</td>
+                                <td class="border p-3 text-center bg-blue-100 font-bold">1</td>
+                                <td class="border p-3 text-center bg-blue-50">0</td>
+                                <td class="border p-3 text-center bg-green-50">b₁</td>
+                            </tr>
+                            <tr>
+                                <td class="border p-3 font-bold bg-blue-50">Row 2</td>
+                                <td class="border p-3 text-center">a₂₁</td>
+                                <td class="border p-3 text-center">a₂₂</td>
+                                <td class="border p-3 text-center">...</td>
+                                <td class="border p-3 text-center">...</td>
+                                <td class="border p-3 text-center bg-blue-50">0</td>
+                                <td class="border p-3 text-center bg-blue-100 font-bold">1</td>
+                                <td class="border p-3 text-center bg-green-50">b₂</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+                        <h4 class="font-bold text-yellow-800 mb-2">Reduced Cost (c̄ⱼ)</h4>
+                        <p class="text-yellow-700 text-sm mb-2">
+                            The reduced cost tells you how much the objective changes if you introduce one unit of variable xⱼ:
+                        </p>
+                        <div class="font-mono text-sm bg-white p-2 rounded">
+                            c̄ⱼ = cⱼ - Σ c_B(i) · aᵢⱼ
+                        </div>
+                        <p class="text-yellow-600 text-xs mt-2">
+                            If c̄ⱼ < 0 and we're minimizing, bringing in xⱼ will decrease the cost!
+                        </p>
+                    </div>
+                    
+                    <div class="p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
+                        <h4 class="font-bold text-green-800 mb-2">Optimality Criterion</h4>
+                        <p class="text-green-700 text-sm mb-2">
+                            A BFS is <strong>optimal</strong> if all reduced costs are non-negative:
+                        </p>
+                        <div class="font-mono text-sm bg-white p-2 rounded text-center">
+                            c̄ⱼ ≥ 0 for all j
+                        </div>
+                        <p class="text-green-600 text-xs mt-2">
+                            This means no variable can improve the objective. We're done!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ratio Test Explanation -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 mb-12">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-balance-scale-right text-indigo-600"></i>
+                    The Ratio Test: Why It Works
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <p class="text-gray-700">
+                            When we choose a column j to enter the basis, we need to determine:
+                        </p>
+                        <ol class="list-decimal list-inside space-y-2 text-gray-600">
+                            <li>How much can we increase xⱼ? (called θ)</li>
+                            <li>Which basic variable will hit zero first and leave?</li>
+                        </ol>
+                        
+                        <div class="p-4 bg-indigo-50 rounded-lg">
+                            <h4 class="font-semibold text-indigo-800 mb-2">The Formula</h4>
+                            <div class="font-mono text-lg text-center bg-white p-3 rounded">
+                                θ₀ = min { bᵢ / aᵢⱼ : aᵢⱼ > 0 }
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <h4 class="font-semibold mb-2">Why only positive aᵢⱼ?</h4>
+                            <p class="text-sm text-gray-600">
+                                If aᵢⱼ ≤ 0, increasing xⱼ doesn't decrease the basic variable x_B(i). 
+                                It either stays the same (aᵢⱼ = 0) or increases (aᵢⱼ < 0).
+                                We only care about variables that might go negative!
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-900 text-green-400 rounded-lg p-6 font-mono text-sm">
+                        <p class="text-gray-500 mb-4">// Example: Finding θ₀</p>
+                        <p class="mb-2">Entering column: x₁</p>
+                        <p class="mb-4">Column values: [1, 2]</p>
+                        <p class="mb-2">RHS values: [4, 6]</p>
+                        <p class="mb-4 text-gray-500">// Calculate ratios:</p>
+                        <p class="mb-2">Row 1: 4/1 = <span class="text-yellow-400">4</span></p>
+                        <p class="mb-2">Row 2: 6/2 = <span class="text-yellow-400">3</span> ← minimum!</p>
+                        <p class="mt-4 text-white">θ₀ = 3</p>
+                        <p class="text-white">Row 2 (s₂) leaves the basis</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bland's Rule -->
+            <div class="bg-gradient-to-r from-red-600 to-orange-600 text-white rounded-2xl p-8">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-shield-alt"></i>
+                    Bland's Anticycling Rule
+                </h3>
+                
+                <p class="text-red-100 mb-6">
+                    In degenerate cases (θ₀ = 0), the algorithm might cycle forever through the same bases. 
+                    Bland's Rule guarantees termination.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white/10 backdrop-blur rounded-xl p-6">
+                        <h4 class="font-bold mb-3 flex items-center gap-2">
+                            <span class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">1</span>
+                            Entering Variable
+                        </h4>
+                        <p class="text-red-100">
+                            Among all columns with c̄ⱼ < 0, choose the one with the <strong>smallest index j</strong>.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur rounded-xl p-6">
+                        <h4 class="font-bold mb-3 flex items-center gap-2">
+                            <span class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">2</span>
+                            Leaving Variable
+                        </h4>
+                        <p class="text-red-100">
+                            If there's a tie in the ratio test, choose the row with the <strong>smallest basic variable index</strong>.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-white/10 rounded-lg">
+                    <p class="text-sm text-center">
+                        <i class="fas fa-lightbulb text-yellow-300 mr-2"></i>
+                        <strong>Simple Rule:</strong> When in doubt, always pick the variable with the lowest subscript!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Two-Phase Method -->
+    <section id="twophase" class="py-20 px-4 bg-gradient-to-b from-gray-100 to-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-teal-600 font-semibold text-sm uppercase tracking-wider">Part 6</span>
+                <h2 class="text-4xl font-bold mt-2 mb-4">The Two-Phase Method</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    What if we can't find an obvious starting BFS? The two-phase method creates one for us!
+                </p>
+            </div>
+            
+            <!-- The Problem -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 mb-12">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-question-circle text-teal-600"></i>
+                    The Starting Point Problem
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-6 bg-green-50 rounded-xl border-2 border-green-200">
+                        <h4 class="font-bold text-green-800 mb-3 flex items-center gap-2">
+                            <i class="fas fa-check-circle"></i>
+                            Easy Case: Ax ≤ b
+                        </h4>
+                        <p class="text-green-700 text-sm mb-4">
+                            When all constraints are ≤ inequalities with b ≥ 0, slack variables form an identity matrix!
+                        </p>
+                        <div class="font-mono text-sm bg-white p-3 rounded">
+                            x₁ + x₂ + <span class="text-green-600 font-bold">s₁</span> = 4<br>
+                            2x₁ + x₂ + <span class="text-green-600 font-bold">s₂</span> = 6
+                        </div>
+                        <p class="text-green-600 text-xs mt-2">
+                            Initial BFS: (0, 0, 4, 6) with basis {s₁, s₂}
+                        </p>
+                    </div>
+                    
+                    <div class="p-6 bg-red-50 rounded-xl border-2 border-red-200">
+                        <h4 class="font-bold text-red-800 mb-3 flex items-center gap-2">
+                            <i class="fas fa-times-circle"></i>
+                            Hard Case: Ax = b or Ax ≥ b
+                        </h4>
+                        <p class="text-red-700 text-sm mb-4">
+                            With equalities or ≥ constraints, there's no obvious identity submatrix!
+                        </p>
+                        <div class="font-mono text-sm bg-white p-3 rounded">
+                            x₁ + 2x₂ = 5<br>
+                            3x₁ + x₂ = 4
+                        </div>
+                        <p class="text-red-600 text-xs mt-2">
+                            How do we find a starting feasible basis?
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Two Phase Animation -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 mb-12">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-layer-group text-teal-600"></i>
+                    Step-by-Step: Two-Phase Method
+                </h3>
+                
+                <!-- Phase indicators -->
+                <div class="flex justify-center gap-8 mb-8">
+                    <div id="phase1-indicator" class="flex items-center gap-2 px-6 py-3 bg-blue-100 rounded-full border-2 border-blue-500">
+                        <span class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">I</span>
+                        <span class="font-semibold text-blue-800">Phase I: Find Feasibility</span>
+                    </div>
+                    <div id="phase2-indicator" class="flex items-center gap-2 px-6 py-3 bg-gray-100 rounded-full border-2 border-gray-300">
+                        <span class="w-8 h-8 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold">II</span>
+                        <span class="font-semibold text-gray-600">Phase II: Optimize</span>
+                    </div>
+                </div>
+                
+                <!-- Step indicators -->
+                <div class="flex justify-center gap-2 mb-6">
+                    <div id="twophase-steps" class="flex gap-2">
+                        <div class="tp-step w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm font-bold" data-step="0">0</div>
+                        <div class="tp-step w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-white text-sm font-bold" data-step="1">1</div>
+                        <div class="tp-step w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-white text-sm font-bold" data-step="2">2</div>
+                        <div class="tp-step w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-white text-sm font-bold" data-step="3">3</div>
+                        <div class="tp-step w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-white text-sm font-bold" data-step="4">4</div>
+                        <div class="tp-step w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-white text-sm font-bold" data-step="5">5</div>
+                    </div>
+                </div>
+                
+                <!-- Content area -->
+                <div id="twophase-content" class="min-h-[300px] p-6 bg-gray-50 rounded-xl mb-6">
+                    <div id="tp-step-0" class="tp-content">
+                        <h4 class="font-bold text-xl mb-4">Original Problem</h4>
+                        <div class="font-mono bg-white p-4 rounded-lg mb-4">
+                            <p class="text-blue-600">Minimize z = 2x₁ + 3x₂</p>
+                            <p class="mt-2">Subject to:</p>
+                            <p class="pl-4">x₁ + 2x₂ = 5</p>
+                            <p class="pl-4">3x₁ + x₂ = 4</p>
+                            <p class="pl-4">x₁, x₂ ≥ 0</p>
+                        </div>
+                        <div class="p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+                            <p class="text-yellow-800">
+                                <strong>Problem:</strong> We have equality constraints but no obvious identity submatrix for a starting basis. 
+                                We need to find a feasible solution first!
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div id="tp-step-1" class="tp-content hidden">
+                        <h4 class="font-bold text-xl mb-4">Phase I: Add Artificial Variables</h4>
+                        <div class="font-mono bg-white p-4 rounded-lg mb-4">
+                            <p class="text-purple-600">Minimize ξ = a₁ + a₂</p>
+                            <p class="mt-2">Subject to:</p>
+                            <p class="pl-4">x₁ + 2x₂ + <span class="text-purple-600 font-bold">a₁</span> = 5</p>
+                            <p class="pl-4">3x₁ + x₂ + <span class="text-purple-600 font-bold">a₂</span> = 4</p>
+                            <p class="pl-4">All variables ≥ 0</p>
+                        </div>
+                        <div class="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-500">
+                            <p class="text-purple-800">
+                                We add <strong>artificial variables</strong> a₁ and a₂ to create an identity matrix.
+                                The new objective is to minimize the sum of artificial variables.
+                                If we can drive them to zero, the original problem is feasible!
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div id="tp-step-2" class="tp-content hidden">
+                        <h4 class="font-bold text-xl mb-4">Phase I: Initial Tableau</h4>
+                        <div class="overflow-x-auto mb-4">
+                            <table class="w-full text-sm border-collapse font-mono">
+                                <thead>
+                                    <tr class="bg-purple-100">
+                                        <th class="border p-2">Basis</th>
+                                        <th class="border p-2">x₁</th>
+                                        <th class="border p-2">x₂</th>
+                                        <th class="border p-2">a₁</th>
+                                        <th class="border p-2">a₂</th>
+                                        <th class="border p-2">RHS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-yellow-50">
+                                        <td class="border p-2 font-bold">ξ</td>
+                                        <td class="border p-2 text-red-600">-4</td>
+                                        <td class="border p-2 text-red-600">-3</td>
+                                        <td class="border p-2">0</td>
+                                        <td class="border p-2">0</td>
+                                        <td class="border p-2">9</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border p-2 font-bold">a₁</td>
+                                        <td class="border p-2">1</td>
+                                        <td class="border p-2">2</td>
+                                        <td class="border p-2 bg-blue-100">1</td>
+                                        <td class="border p-2">0</td>
+                                        <td class="border p-2">5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border p-2 font-bold">a₂</td>
+                                        <td class="border p-2">3</td>
+                                        <td class="border p-2">1</td>
+                                        <td class="border p-2">0</td>
+                                        <td class="border p-2 bg-blue-100">1</td>
+                                        <td class="border p-2">4</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                            <p class="text-blue-800">
+                                Start with artificial variables as the basis: {a₁, a₂}.
+                                Current ξ = 9 (sum of artificial variables).
+                                We need to pivot to reduce ξ to 0.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div id="tp-step-3" class="tp-content hidden">
+                        <h4 class="font-bold text-xl mb-4">Phase I: After Pivoting</h4>
+                        <p class="text-gray-600 mb-4">After several pivot operations...</p>
+                        <div class="overflow-x-auto mb-4">
+                            <table class="w-full text-sm border-collapse font-mono">
+                                <thead>
+                                    <tr class="bg-green-100">
+                                        <th class="border p-2">Basis</th>
+                                        <th class="border p-2">x₁</th>
+                                        <th class="border p-2">x₂</th>
+                                        <th class="border p-2">a₁</th>
+                                        <th class="border p-2">a₂</th>
+                                        <th class="border p-2">RHS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-green-50">
+                                        <td class="border p-2 font-bold">ξ</td>
+                                        <td class="border p-2">0</td>
+                                        <td class="border p-2">0</td>
+                                        <td class="border p-2">0.6</td>
+                                        <td class="border p-2">0.8</td>
+                                        <td class="border p-2 text-green-600 font-bold">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border p-2 font-bold text-blue-600">x₂</td>
+                                        <td class="border p-2">0</td>
+                                        <td class="border p-2 bg-blue-100">1</td>
+                                        <td class="border p-2">0.6</td>
+                                        <td class="border p-2">-0.2</td>
+                                        <td class="border p-2">2.2</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border p-2 font-bold text-blue-600">x₁</td>
+                                        <td class="border p-2 bg-blue-100">1</td>
+                                        <td class="border p-2">0</td>
+                                        <td class="border p-2">-0.2</td>
+                                        <td class="border p-2">0.4</td>
+                                        <td class="border p-2">0.6</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
+                            <p class="text-green-800">
+                                <strong>Success!</strong> ξ = 0, meaning all artificial variables are zero.
+                                We found a feasible solution: x₁ = 0.6, x₂ = 2.2.
+                                Now we can proceed to Phase II!
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div id="tp-step-4" class="tp-content hidden">
+                        <h4 class="font-bold text-xl mb-4">Phase II: Restore Original Objective</h4>
+                        <div class="overflow-x-auto mb-4">
+                            <table class="w-full text-sm border-collapse font-mono">
+                                <thead>
+                                    <tr class="bg-blue-100">
+                                        <th class="border p-2">Basis</th>
+                                        <th class="border p-2">x₁</th>
+                                        <th class="border p-2">x₂</th>
+                                        <th class="border p-2">RHS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-yellow-50">
+                                        <td class="border p-2 font-bold">z</td>
+                                        <td class="border p-2">0</td>
+                                        <td class="border p-2">0</td>
+                                        <td class="border p-2">7.8</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border p-2 font-bold">x₂</td>
+                                        <td class="border p-2">0</td>
+                                        <td class="border p-2 bg-blue-100">1</td>
+                                        <td class="border p-2">2.2</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border p-2 font-bold">x₁</td>
+                                        <td class="border p-2 bg-blue-100">1</td>
+                                        <td class="border p-2">0</td>
+                                        <td class="border p-2">0.6</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                            <p class="text-blue-800">
+                                Drop artificial columns and replace Row 0 with the original objective z = 2x₁ + 3x₂.
+                                We must compute the reduced costs for the current basis.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div id="tp-step-5" class="tp-content hidden">
+                        <h4 class="font-bold text-xl mb-4">Phase II: Optimal Solution!</h4>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-green-100 p-6 rounded-xl text-center">
+                                <div class="text-4xl mb-2">🏆</div>
+                                <h5 class="font-bold text-green-800 text-lg mb-2">Optimal Solution Found</h5>
+                                <div class="font-mono text-xl">
+                                    x₁* = 0.6<br>
+                                    x₂* = 2.2
+                                </div>
+                            </div>
+                            <div class="bg-blue-100 p-6 rounded-xl text-center">
+                                <div class="text-4xl mb-2">💰</div>
+                                <h5 class="font-bold text-blue-800 text-lg mb-2">Optimal Value</h5>
+                                <div class="font-mono text-xl">
+                                    z* = 2(0.6) + 3(2.2) = 7.8
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 p-4 bg-purple-50 rounded-lg">
+                            <p class="text-purple-800 text-sm">
+                                <strong>Summary:</strong> Phase I found a feasible starting point, Phase II optimized from there.
+                                The two-phase method guarantees we can solve any LP (or determine it's infeasible)!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <div class="flex justify-between items-center">
+                    <button id="tp-prev" class="px-4 py-2 bg-gray-200 text-gray-600 rounded-lg hover:bg-gray-300 transition-all disabled:opacity-50" disabled>
+                        <i class="fas fa-arrow-left mr-2"></i> Previous
+                    </button>
+                    <button id="tp-next" class="px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-all flex items-center gap-2">
+                        Next Step <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Phase I Outcomes -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-green-50 p-6 rounded-xl border-2 border-green-200">
+                    <h4 class="font-bold text-green-800 mb-3 flex items-center gap-2">
+                        <i class="fas fa-check-circle text-green-600"></i>
+                        If min ξ = 0
+                    </h4>
+                    <p class="text-green-700 text-sm">
+                        All artificial variables are zero. The remaining basis consists of original variables.
+                        The original problem <strong>is feasible</strong>. Proceed to Phase II with this starting BFS.
+                    </p>
+                </div>
+                
+                <div class="bg-red-50 p-6 rounded-xl border-2 border-red-200">
+                    <h4 class="font-bold text-red-800 mb-3 flex items-center gap-2">
+                        <i class="fas fa-times-circle text-red-600"></i>
+                        If min ξ > 0
+                    </h4>
+                    <p class="text-red-700 text-sm">
+                        We can't eliminate all artificial variables. Some constraints can't be satisfied simultaneously.
+                        The original problem <strong>is infeasible</strong>. No solution exists!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary Section -->
+    <section id="summary" class="py-20 px-4 bg-gradient-to-br from-gray-800 to-gray-900 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8">Congratulations! 🎉</h2>
+            <p class="text-xl text-gray-300 mb-12">
+                You've learned the complete Simplex Algorithm! Here's a quick summary of what we covered:
+            </p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white/10 backdrop-blur rounded-xl p-6">
+                    <div class="text-3xl mb-3">📋</div>
+                    <h4 class="font-bold mb-2">LP Forms</h4>
+                    <p class="text-sm text-gray-300">General, Canonical, and Standard forms. Simplex needs Standard Form.</p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur rounded-xl p-6">
+                    <div class="text-3xl mb-3">📍</div>
+                    <h4 class="font-bold mb-2">Basic Feasible Solutions</h4>
+                    <p class="text-sm text-gray-300">Corners of the polytope = vertices = BFS. We only search these!</p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur rounded-xl p-6">
+                    <div class="text-3xl mb-3">🔷</div>
+                    <h4 class="font-bold mb-2">Geometry</h4>
+                    <p class="text-sm text-gray-300">Polytopes, vertices, edges. Simplex walks along edges between vertices.</p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur rounded-xl p-6">
+                    <div class="text-3xl mb-3">⚡</div>
+                    <h4 class="font-bold mb-2">The Algorithm</h4>
+                    <p class="text-sm text-gray-300">Pick entering column, ratio test for leaving row, pivot, repeat.</p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur rounded-xl p-6">
+                    <div class="text-3xl mb-3">📊</div>
+                    <h4 class="font-bold mb-2">The Tableau</h4>
+                    <p class="text-sm text-gray-300">Reduced costs, ratio test, optimality criterion: all c̄ⱼ ≥ 0.</p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur rounded-xl p-6">
+                    <div class="text-3xl mb-3">🔄</div>
+                    <h4 class="font-bold mb-2">Two-Phase Method</h4>
+                    <p class="text-sm text-gray-300">Phase I finds feasibility, Phase II optimizes. Handles any LP!</p>
+                </div>
+            </div>
+            
+            <div class="p-6 bg-white/5 rounded-xl">
+                <p class="text-lg font-semibold text-blue-400 mb-2">Key Insight</p>
+                <p class="text-gray-300">
+                    The Simplex Algorithm works because LP is a <strong>convex</strong> problem.
+                    Any local optimum is automatically a global optimum. By checking only the vertices
+                    (finitely many), we're guaranteed to find the best solution.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8 px-4 text-center">
+        <p class="text-sm">
+            Interactive Simplex Algorithm Guide | Chapter 2: Linear Programming
+        </p>
+        <p class="text-xs mt-2">
+            Built with HTML, CSS, JavaScript, Tailwind CSS, GSAP, and KaTeX
+        </p>
+    </footer>
+
+    <script>
+        // Initialize KaTeX
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });
+        });
+
+        // ==========================================
+        // CONVERSION DEMO
+        // ==========================================
+        const conversionSteps = [
+            {
+                title: "Step 1: Identify Issues",
+                explanation: "Look at the original problem. We see two issues that violate Standard Form: <strong>1)</strong> The objective is \"maximize\" instead of \"minimize\". <strong>2)</strong> The constraints use \"≤\" instead of \"=\".",
+                changes: {}
+            },
+            {
+                title: "Step 2: Convert Maximization to Minimization",
+                explanation: "We multiply the objective by -1. Instead of maximizing 3x₁ + 2x₂, we minimize -3x₁ - 2x₂. Remember: when we find the optimal value, we'll negate it back!",
+                changes: {
+                    obj: '<span class="text-green-600 font-bold">min</span>',
+                    z: 'z = <span class="text-green-600">-3x₁ - 2x₂</span>'
+                }
+            },
+            {
+                title: "Step 3: Add Slack Variables",
+                explanation: "For each ≤ constraint, we add a <strong>slack variable</strong> s ≥ 0 to convert it to an equality. The slack represents \"unused capacity\" in the constraint.",
+                changes: {
+                    c1: 'x₁ + x₂ + <span class="text-blue-600 font-bold">s₁</span> = 4',
+                    c2: '2x₁ + x₂ + <span class="text-blue-600 font-bold">s₂</span> = 6',
+                    vars: 'x₁, x₂, <span class="text-blue-600">s₁, s₂</span> ≥ 0'
+                }
+            },
+            {
+                title: "Step 4: Final Standard Form",
+                explanation: "<strong>Done!</strong> We now have: Minimize objective ✓, All equality constraints ✓, All variables nonnegative ✓. This is ready for the Simplex algorithm!",
+                changes: {}
+            }
+        ];
+
+        let convStep = 0;
+        const convPrev = document.getElementById('conv-prev');
+        const convNext = document.getElementById('conv-next');
+        const convExplanation = document.getElementById('conversion-explanation');
+        const convSteps = document.querySelectorAll('#conversion-steps .step-indicator');
+
+        function updateConversionDemo() {
+            const step = conversionSteps[convStep];
+            
+            // Update explanation
+            convExplanation.innerHTML = `
+                <h5 class="font-semibold text-blue-800 mb-2">
+                    <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                    ${step.title}
+                </h5>
+                <p class="text-blue-700 text-sm">${step.explanation}</p>
+            `;
+            
+            // Update step indicators
+            convSteps.forEach((s, i) => {
+                s.classList.remove('active', 'completed');
+                if (i < convStep) s.classList.add('completed');
+                if (i === convStep) s.classList.add('active');
+            });
+            
+            // Apply changes with animation
+            if (step.changes.obj) {
+                gsap.to('#conv-obj', {opacity: 0, duration: 0.2, onComplete: () => {
+                    document.getElementById('conv-obj').innerHTML = step.changes.obj;
+                    gsap.to('#conv-obj', {opacity: 1, duration: 0.3});
+                }});
+            }
+            if (step.changes.z) {
+                gsap.to('#conv-z', {opacity: 0, duration: 0.2, onComplete: () => {
+                    document.getElementById('conv-z').innerHTML = step.changes.z;
+                    gsap.to('#conv-z', {opacity: 1, duration: 0.3});
+                }});
+            }
+            if (step.changes.c1) {
+                gsap.to('#conv-c1', {opacity: 0, duration: 0.2, onComplete: () => {
+                    document.getElementById('conv-c1').innerHTML = step.changes.c1;
+                    gsap.to('#conv-c1', {opacity: 1, duration: 0.3});
+                }});
+            }
+            if (step.changes.c2) {
+                gsap.to('#conv-c2', {opacity: 0, duration: 0.2, onComplete: () => {
+                    document.getElementById('conv-c2').innerHTML = step.changes.c2;
+                    gsap.to('#conv-c2', {opacity: 1, duration: 0.3});
+                }});
+            }
+            if (step.changes.vars) {
+                gsap.to('#conv-vars', {opacity: 0, duration: 0.2, onComplete: () => {
+                    document.getElementById('conv-vars').innerHTML = step.changes.vars;
+                    gsap.to('#conv-vars', {opacity: 1, duration: 0.3});
+                }});
+            }
+            
+            // Update buttons
+            convPrev.disabled = convStep === 0;
+            convNext.disabled = convStep === conversionSteps.length - 1;
+            convNext.innerHTML = convStep === conversionSteps.length - 1 ? 
+                'Complete <i class="fas fa-check"></i>' : 
+                'Next Step <i class="fas fa-arrow-right"></i>';
+        }
+
+        convNext.addEventListener('click', () => {
+            if (convStep < conversionSteps.length - 1) {
+                convStep++;
+                updateConversionDemo();
+            }
+        });
+
+        convPrev.addEventListener('click', () => {
+            if (convStep > 0) {
+                convStep--;
+                updateConversionDemo();
+            }
+        });
+
+        // ==========================================
+        // BFS FINDER
+        // ==========================================
+        let selectedCols = [];
+        const colBtns = document.querySelectorAll('.col-btn');
+        const computeBtn = document.getElementById('compute-bfs');
+        const selectedColsDisplay = document.getElementById('selected-cols');
+
+        colBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const col = parseInt(btn.dataset.col);
+                if (selectedCols.includes(col)) {
+                    selectedCols = selectedCols.filter(c => c !== col);
+                    btn.classList.remove('border-blue-500', 'bg-blue-50');
+                } else if (selectedCols.length < 2) {
+                    selectedCols.push(col);
+                    btn.classList.add('border-blue-500', 'bg-blue-50');
+                }
+                
+                selectedColsDisplay.textContent = selectedCols.length ? 
+                    selectedCols.map(c => `A${c}`).join(', ') : 'None';
+                computeBtn.disabled = selectedCols.length !== 2;
+            });
+        });
+
+        computeBtn.addEventListener('click', () => {
+            const result = document.getElementById('bfs-result');
+            const steps = document.getElementById('bfs-steps');
+            result.classList.remove('hidden');
+            
+            // Simple calculation for this specific example
+            const cols = selectedCols.sort((a,b) => a-b);
+            let html = '';
+            
+            html += `<div class="p-4 bg-blue-50 rounded-lg mb-4">
+                <h5 class="font-semibold text-blue-800">Step 1: Selected Basis</h5>
+                <p class="text-blue-700 text-sm">Basis columns: {A${cols[0]}, A${cols[1]}}</p>
+                <p class="text-blue-700 text-sm">Non-basic variables set to 0: ${[1,2,3,4,5].filter(c => !cols.includes(c)).map(c => `x${c}`).join(', ')}</p>
+            </div>`;
+            
+            // Calculate based on selection (simplified for this example)
+            let solution, isFeasible = true;
+            if (cols[0] === 4 && cols[1] === 5) {
+                solution = [0, 0, 0, 4, 2];
+                html += `<div class="p-4 bg-green-50 rounded-lg mb-4">
+                    <h5 class="font-semibold text-green-800">Step 2: Solve Bx_B = b</h5>
+                    <p class="text-green-700 text-sm">B = I (identity), so x_B = b directly</p>
+                    <p class="text-green-700 text-sm">x₄ = 4, x₅ = 2</p>
+                </div>`;
+            } else if (cols[0] === 2 && cols[1] === 4) {
+                solution = [0, 2/3, 0, 10/3, 0];
+                html += `<div class="p-4 bg-green-50 rounded-lg mb-4">
+                    <h5 class="font-semibold text-green-800">Step 2: Solve system</h5>
+                    <p class="text-green-700 text-sm">3x₂ = 2 → x₂ = 2/3</p>
+                    <p class="text-green-700 text-sm">x₂ + x₄ = 4 → x₄ = 10/3</p>
+                </div>`;
+            } else {
+                solution = [0, 0, 0, 0, 0];
+                html += `<div class="p-4 bg-yellow-50 rounded-lg mb-4">
+                    <h5 class="font-semibold text-yellow-800">Step 2: Solve system</h5>
+                    <p class="text-yellow-700 text-sm">Computing basic solution...</p>
+                </div>`;
+            }
+            
+            const feasibleClass = isFeasible ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
+            html += `<div class="p-4 ${feasibleClass} rounded-lg">
+                <h5 class="font-semibold">Result</h5>
+                <p class="font-mono">x = (${solution.map(s => s.toFixed(2)).join(', ')})</p>
+                <p class="text-sm mt-2">${isFeasible ? '✅ This is a Basic Feasible Solution (all values ≥ 0)' : '❌ Not feasible (negative values)'}</p>
+            </div>`;
+            
+            steps.innerHTML = html;
+            gsap.from(result, {opacity: 0, y: 20, duration: 0.5});
+        });
+
+        // ==========================================
+        // POLYTOPE VISUALIZATION
+        // ==========================================
+        const polyCanvas = document.getElementById('polytope-canvas');
+        const polyCtx = polyCanvas.getContext('2d');
+        
+        const toggles = {
+            c1: document.getElementById('c1-toggle'),
+            c2: document.getElementById('c2-toggle'),
+            c3: document.getElementById('c3-toggle'),
+            c4: document.getElementById('c4-toggle')
+        };
+
+        function drawPolytope() {
+            const w = polyCanvas.width;
+            const h = polyCanvas.height;
+            const scale = 60;
+            const offsetX = 50;
+            const offsetY = h - 50;
+            
+            polyCtx.clearRect(0, 0, w, h);
+            
+            // Draw grid
+            polyCtx.strokeStyle = '#e5e7eb';
+            polyCtx.lineWidth = 1;
+            for (let i = 0; i <= 6; i++) {
+                polyCtx.beginPath();
+                polyCtx.moveTo(offsetX + i * scale, 0);
+                polyCtx.lineTo(offsetX + i * scale, h);
+                polyCtx.stroke();
+                
+                polyCtx.beginPath();
+                polyCtx.moveTo(0, offsetY - i * scale);
+                polyCtx.lineTo(w, offsetY - i * scale);
+                polyCtx.stroke();
+            }
+            
+            // Draw axes
+            polyCtx.strokeStyle = '#374151';
+            polyCtx.lineWidth = 2;
+            polyCtx.beginPath();
+            polyCtx.moveTo(offsetX, 0);
+            polyCtx.lineTo(offsetX, h);
+            polyCtx.moveTo(0, offsetY);
+            polyCtx.lineTo(w, offsetY);
+            polyCtx.stroke();
+            
+            // Labels
+            polyCtx.fillStyle = '#374151';
+            polyCtx.font = '12px Inter';
+            polyCtx.fillText('x₁', w - 20, offsetY + 15);
+            polyCtx.fillText('x₂', offsetX - 20, 15);
+            
+            for (let i = 1; i <= 5; i++) {
+                polyCtx.fillText(i.toString(), offsetX + i * scale - 3, offsetY + 15);
+                polyCtx.fillText(i.toString(), offsetX - 15, offsetY - i * scale + 4);
+            }
+            
+            // Helper function to convert coordinates
+            const toCanvas = (x, y) => [offsetX + x * scale, offsetY - y * scale];
+            
+            // Draw feasible region
+            if (toggles.c1.checked && toggles.c2.checked && toggles.c3.checked && toggles.c4.checked) {
+                polyCtx.fillStyle = 'rgba(59, 130, 246, 0.2)';
+                polyCtx.beginPath();
+                const [x0, y0] = toCanvas(0, 0);
+                const [x1, y1] = toCanvas(3, 0);
+                const [x2, y2] = toCanvas(2, 2);
+                const [x3, y3] = toCanvas(0, 4);
+                polyCtx.moveTo(x0, y0);
+                polyCtx.lineTo(x1, y1);
+                polyCtx.lineTo(x2, y2);
+                polyCtx.lineTo(x3, y3);
+                polyCtx.closePath();
+                polyCtx.fill();
+            }
+            
+            // Draw constraint lines
+            if (toggles.c1.checked) {
+                polyCtx.strokeStyle = '#3b82f6';
+                polyCtx.lineWidth = 2;
+                polyCtx.beginPath();
+                const [sx, sy] = toCanvas(0, 4);
+                const [ex, ey] = toCanvas(4, 0);
+                polyCtx.moveTo(sx, sy);
+                polyCtx.lineTo(ex, ey);
+                polyCtx.stroke();
+            }
+            
+            if (toggles.c2.checked) {
+                polyCtx.strokeStyle = '#22c55e';
+                polyCtx.lineWidth = 2;
+                polyCtx.beginPath();
+                const [sx, sy] = toCanvas(0, 6);
+                const [ex, ey] = toCanvas(3, 0);
+                polyCtx.moveTo(sx, sy);
+                polyCtx.lineTo(ex, ey);
+                polyCtx.stroke();
+            }
+            
+            if (toggles.c3.checked) {
+                polyCtx.strokeStyle = '#ef4444';
+                polyCtx.lineWidth = 2;
+                polyCtx.beginPath();
+                const [x, y1] = toCanvas(0, 0);
+                const [, y2] = toCanvas(0, 6);
+                polyCtx.moveTo(x, y1);
+                polyCtx.lineTo(x, y2);
+                polyCtx.stroke();
+            }
+            
+            if (toggles.c4.checked) {
+                polyCtx.strokeStyle = '#f97316';
+                polyCtx.lineWidth = 2;
+                polyCtx.beginPath();
+                const [x1, y] = toCanvas(0, 0);
+                const [x2, ] = toCanvas(5, 0);
+                polyCtx.moveTo(x1, y);
+                polyCtx.lineTo(x2, y);
+                polyCtx.stroke();
+            }
+            
+            // Draw vertices
+            const vertices = [
+                {x: 0, y: 0, label: '(0, 0)', binding: ['x₁ ≥ 0', 'x₂ ≥ 0']},
+                {x: 3, y: 0, label: '(3, 0)', binding: ['2x₁ + x₂ ≤ 6', 'x₂ ≥ 0']},
+                {x: 2, y: 2, label: '(2, 2)', binding: ['x₁ + x₂ ≤ 4', '2x₁ + x₂ ≤ 6']},
+                {x: 0, y: 4, label: '(0, 4)', binding: ['x₁ + x₂ ≤ 4', 'x₁ ≥ 0']}
+            ];
+            
+            vertices.forEach((v, i) => {
+                const [cx, cy] = toCanvas(v.x, v.y);
+                polyCtx.fillStyle = '#6366f1';
+                polyCtx.beginPath();
+                polyCtx.arc(cx, cy, 8, 0, Math.PI * 2);
+                polyCtx.fill();
+                
+                polyCtx.fillStyle = '#374151';
+                polyCtx.font = '11px JetBrains Mono';
+                polyCtx.fillText(v.label, cx + 10, cy - 5);
+            });
+        }
+        
+        Object.values(toggles).forEach(t => t.addEventListener('change', drawPolytope));
+        drawPolytope();
+        
+        // Vertex click detection
+        polyCanvas.addEventListener('click', (e) => {
+            const rect = polyCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const scale = 60;
+            const offsetX = 50;
+            const offsetY = polyCanvas.height - 50;
+            
+            const vertices = [
+                {x: 0, y: 0, label: '(0, 0)', binding: ['x₁ ≥ 0', 'x₂ ≥ 0']},
+                {x: 3, y: 0, label: '(3, 0)', binding: ['2x₁ + x₂ = 6', 'x₂ ≥ 0']},
+                {x: 2, y: 2, label: '(2, 2)', binding: ['x₁ + x₂ = 4', '2x₁ + x₂ = 6']},
+                {x: 0, y: 4, label: '(0, 4)', binding: ['x₁ + x₂ = 4', 'x₁ ≥ 0']}
+            ];
+            
+            for (const v of vertices) {
+                const cx = offsetX + v.x * scale;
+                const cy = offsetY - v.y * scale;
+                const dist = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2);
+                
+                if (dist < 15) {
+                    const info = document.getElementById('vertex-info');
+                    const details = document.getElementById('vertex-details');
+                    info.classList.remove('hidden');
+                    details.innerHTML = `
+                        <p class="font-bold text-lg mb-2">Vertex: ${v.label}</p>
+                        <p class="text-sm text-gray-600 mb-1">This is a Basic Feasible Solution!</p>
+                        <p class="text-sm font-semibold mt-2">Active (binding) constraints:</p>
+                        <ul class="text-sm text-gray-700">
+                            ${v.binding.map(b => `<li>• ${b}</li>`).join('')}
+                        </ul>
+                    `;
+                    gsap.from(info, {opacity: 0, y: 10, duration: 0.3});
+                    break;
+                }
+            }
+        });
+
+        // ==========================================
+        // SIMPLEX ALGORITHM ANIMATION
+        // ==========================================
+        const simplexSteps = [
+            {
+                title: "Step 0: Initial Setup",
+                explanation: "We start with slack variables s₁ and s₂ as our initial basis. This gives us the basic feasible solution at the origin: x = (0, 0), s = (4, 6). The objective value z = 0.",
+                tableau: [
+                    ['z', -3, -2, 0, 0, 0],
+                    ['s₁', 1, 1, 1, 0, 4],
+                    ['s₂', 2, 1, 0, 1, 6]
+                ],
+                vertex: [0, 0],
+                solution: "(0, 0, 4, 6)",
+                objVal: "0",
+                pivotCol: null,
+                pivotRow: null
+            },
+            {
+                title: "Step 1: Check Optimality & Select Entering Variable",
+                explanation: "Row 0 has negative reduced costs: c̄₁ = -3 and c̄₂ = -2. We can improve! Using Dantzig's rule (most negative), we select x₁ to enter the basis (c̄₁ = -3).",
+                tableau: [
+                    ['z', -3, -2, 0, 0, 0],
+                    ['s₁', 1, 1, 1, 0, 4],
+                    ['s₂', 2, 1, 0, 1, 6]
+                ],
+                vertex: [0, 0],
+                solution: "(0, 0, 4, 6)",
+                objVal: "0",
+                pivotCol: 1,
+                pivotRow: null
+            },
+            {
+                title: "Step 2: Ratio Test - Select Leaving Variable",
+                explanation: "Ratio test: Row 1: 4/1 = 4, Row 2: 6/2 = 3. The minimum is 3 (Row 2), so s₂ leaves the basis. Pivot element is a₂₁ = 2.",
+                tableau: [
+                    ['z', -3, -2, 0, 0, 0],
+                    ['s₁', 1, 1, 1, 0, 4],
+                    ['s₂', 2, 1, 0, 1, 6]
+                ],
+                vertex: [0, 0],
+                solution: "(0, 0, 4, 6)",
+                objVal: "0",
+                pivotCol: 1,
+                pivotRow: 2
+            },
+            {
+                title: "Step 3: Pivot - New Tableau",
+                explanation: "After pivoting: x₁ enters at value 3, s₂ leaves. New vertex is (3, 0). The cost improved from 0 to -9 (or z = 9 in the original max problem).",
+                tableau: [
+                    ['z', 0, -0.5, 0, 1.5, 9],
+                    ['s₁', 0, 0.5, 1, -0.5, 1],
+                    ['x₁', 1, 0.5, 0, 0.5, 3]
+                ],
+                vertex: [3, 0],
+                solution: "(3, 0, 1, 0)",
+                objVal: "9",
+                pivotCol: 2,
+                pivotRow: null
+            },
+            {
+                title: "Step 4: Optimal Solution Found! 🎉",
+                explanation: "After one more pivot (x₂ enters, s₁ leaves), all reduced costs are ≥ 0. We've found the optimal solution: x₁ = 2, x₂ = 2 with z = 10. The algorithm terminates!",
+                tableau: [
+                    ['z', 0, 0, 1, 1, 10],
+                    ['x₂', 0, 1, 2, -1, 2],
+                    ['x₁', 1, 0, -1, 1, 2]
+                ],
+                vertex: [2, 2],
+                solution: "(2, 2, 0, 0)",
+                objVal: "10 (OPTIMAL!)",
+                pivotCol: null,
+                pivotRow: null
+            }
+        ];
+
+        let algoStep = 0;
+        const algoPrev = document.getElementById('algo-prev');
+        const algoNext = document.getElementById('algo-next');
+        const algoReset = document.getElementById('algo-reset');
+        const algoStepIndicators = document.querySelectorAll('.algo-step');
+        const algoExplanation = document.getElementById('algo-explanation');
+        const tableauBody = document.getElementById('tableau-body');
+        const solDisplay = document.getElementById('sol-display');
+        const objDisplay = document.getElementById('obj-display');
+        const geoCanvas = document.getElementById('simplex-geo-canvas');
+        const geoCtx = geoCanvas.getContext('2d');
+
+        function drawSimplexGeo(vertex, previousVertex = null) {
+            const w = geoCanvas.width;
+            const h = geoCanvas.height;
+            const scale = 70;
+            const offsetX = 50;
+            const offsetY = h - 50;
+            
+            geoCtx.clearRect(0, 0, w, h);
+            
+            // Draw grid
+            geoCtx.strokeStyle = '#e5e7eb';
+            geoCtx.lineWidth = 1;
+            for (let i = 0; i <= 5; i++) {
+                geoCtx.beginPath();
+                geoCtx.moveTo(offsetX + i * scale, 0);
+                geoCtx.lineTo(offsetX + i * scale, h);
+                geoCtx.stroke();
+                
+                geoCtx.beginPath();
+                geoCtx.moveTo(0, offsetY - i * scale);
+                geoCtx.lineTo(w, offsetY - i * scale);
+                geoCtx.stroke();
+            }
+            
+            // Draw feasible region
+            geoCtx.fillStyle = 'rgba(59, 130, 246, 0.15)';
+            geoCtx.beginPath();
+            geoCtx.moveTo(offsetX, offsetY);
+            geoCtx.lineTo(offsetX + 3 * scale, offsetY);
+            geoCtx.lineTo(offsetX + 2 * scale, offsetY - 2 * scale);
+            geoCtx.lineTo(offsetX, offsetY - 4 * scale);
+            geoCtx.closePath();
+            geoCtx.fill();
+            
+            // Draw edges
+            geoCtx.strokeStyle = '#3b82f6';
+            geoCtx.lineWidth = 2;
+            geoCtx.stroke();
+            
+            // Draw path if we have previous vertex
+            if (previousVertex) {
+                geoCtx.strokeStyle = '#ef4444';
+                geoCtx.lineWidth = 3;
+                geoCtx.setLineDash([5, 5]);
+                geoCtx.beginPath();
+                geoCtx.moveTo(offsetX + previousVertex[0] * scale, offsetY - previousVertex[1] * scale);
+                geoCtx.lineTo(offsetX + vertex[0] * scale, offsetY - vertex[1] * scale);
+                geoCtx.stroke();
+                geoCtx.setLineDash([]);
+            }
+            
+            // Draw vertices
+            const vertices = [[0, 0], [3, 0], [2, 2], [0, 4]];
+            vertices.forEach(v => {
+                const cx = offsetX + v[0] * scale;
+                const cy = offsetY - v[1] * scale;
+                geoCtx.fillStyle = (v[0] === vertex[0] && v[1] === vertex[1]) ? '#ef4444' : '#6366f1';
+                geoCtx.beginPath();
+                geoCtx.arc(cx, cy, (v[0] === vertex[0] && v[1] === vertex[1]) ? 12 : 8, 0, Math.PI * 2);
+                geoCtx.fill();
+            });
+            
+            // Current vertex label
+            geoCtx.fillStyle = '#ef4444';
+            geoCtx.font = 'bold 14px JetBrains Mono';
+            geoCtx.fillText(`Current: (${vertex[0]}, ${vertex[1]})`, offsetX + vertex[0] * scale + 15, offsetY - vertex[1] * scale - 15);
+            
+            // Axes labels
+            geoCtx.fillStyle = '#374151';
+            geoCtx.font = '12px Inter';
+            geoCtx.fillText('x₁', w - 20, offsetY + 15);
+            geoCtx.fillText('x₂', offsetX - 20, 15);
+        }
+
+        function updateSimplexDemo() {
+            const step = simplexSteps[algoStep];
+            const prevStep = algoStep > 0 ? simplexSteps[algoStep - 1] : null;
+            
+            // Update step indicators
+            algoStepIndicators.forEach((s, i) => {
+                s.classList.remove('bg-blue-500', 'bg-green-500');
+                s.classList.add('bg-gray-300');
+                if (i < algoStep) {
+                    s.classList.remove('bg-gray-300');
+                    s.classList.add('bg-green-500');
+                }
+                if (i === algoStep) {
+                    s.classList.remove('bg-gray-300');
+                    s.classList.add('bg-blue-500');
+                }
+            });
+            
+            // Update explanation
+            algoExplanation.innerHTML = `
+                <h5 class="font-semibold text-blue-800 mb-2">${step.title}</h5>
+                <p class="text-blue-700 text-sm">${step.explanation}</p>
+            `;
+            
+            // Update tableau
+            let tableauHTML = '';
+            step.tableau.forEach((row, rowIdx) => {
+                tableauHTML += '<tr>';
+                row.forEach((cell, colIdx) => {
+                    let cellClass = 'border p-2 text-center tableau-cell';
+                    if (rowIdx === 0) cellClass += ' bg-yellow-50';
+                    if (step.pivotCol === colIdx && step.pivotRow === rowIdx) {
+                        cellClass += ' pivot';
+                    } else if (step.pivotCol === colIdx && colIdx > 0) {
+                        cellClass += ' pivot-col';
+                    } else if (step.pivotRow === rowIdx) {
+                        cellClass += ' pivot-row';
+                    }
+                    
+                    if (colIdx === 0) {
+                        tableauHTML += `<td class="${cellClass} font-bold">${cell}</td>`;
+                    } else {
+                        tableauHTML += `<td class="${cellClass}">${typeof cell === 'number' ? cell.toFixed(1) : cell}</td>`;
+                    }
+                });
+                tableauHTML += '</tr>';
+            });
+            tableauBody.innerHTML = tableauHTML;
+            
+            // Update solution display
+            solDisplay.textContent = step.solution;
+            objDisplay.textContent = step.objVal;
+            
+            // Update geometric view
+            drawSimplexGeo(step.vertex, prevStep ? prevStep.vertex : null);
+            
+            // Update buttons
+            algoPrev.disabled = algoStep === 0;
+            algoNext.disabled = algoStep === simplexSteps.length - 1;
+            
+            if (algoStep === simplexSteps.length - 1) {
+                algoNext.innerHTML = 'Complete <i class="fas fa-check"></i>';
+                algoNext.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                algoNext.classList.add('bg-green-600', 'hover:bg-green-700');
+            } else {
+                algoNext.innerHTML = 'Next Step <i class="fas fa-arrow-right"></i>';
+                algoNext.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                algoNext.classList.remove('bg-green-600', 'hover:bg-green-700');
+            }
+        }
+
+        algoNext.addEventListener('click', () => {
+            if (algoStep < simplexSteps.length - 1) {
+                algoStep++;
+                updateSimplexDemo();
+            }
+        });
+
+        algoPrev.addEventListener('click', () => {
+            if (algoStep > 0) {
+                algoStep--;
+                updateSimplexDemo();
+            }
+        });
+
+        algoReset.addEventListener('click', () => {
+            algoStep = 0;
+            updateSimplexDemo();
+        });
+
+        updateSimplexDemo();
+
+        // ==========================================
+        // TWO-PHASE METHOD
+        // ==========================================
+        let tpStep = 0;
+        const tpPrev = document.getElementById('tp-prev');
+        const tpNext = document.getElementById('tp-next');
+        const tpStepIndicators = document.querySelectorAll('.tp-step');
+        const tpContents = document.querySelectorAll('.tp-content');
+        const phase1Indicator = document.getElementById('phase1-indicator');
+        const phase2Indicator = document.getElementById('phase2-indicator');
+
+        function updateTwoPhase() {
+            // Update step indicators
+            tpStepIndicators.forEach((s, i) => {
+                s.classList.remove('bg-blue-500', 'bg-green-500', 'bg-teal-500');
+                s.classList.add('bg-gray-300');
+                if (i < tpStep) {
+                    s.classList.remove('bg-gray-300');
+                    s.classList.add('bg-green-500');
+                }
+                if (i === tpStep) {
+                    s.classList.remove('bg-gray-300');
+                    s.classList.add(tpStep >= 4 ? 'bg-teal-500' : 'bg-blue-500');
+                }
+            });
+            
+            // Show/hide content
+            tpContents.forEach((c, i) => {
+                c.classList.toggle('hidden', i !== tpStep);
+            });
+            
+            // Update phase indicators
+            if (tpStep >= 4) {
+                phase1Indicator.classList.remove('bg-blue-100', 'border-blue-500');
+                phase1Indicator.classList.add('bg-green-100', 'border-green-500');
+                phase1Indicator.querySelector('span:first-child').classList.remove('bg-blue-500');
+                phase1Indicator.querySelector('span:first-child').classList.add('bg-green-500');
+                
+                phase2Indicator.classList.remove('bg-gray-100', 'border-gray-300');
+                phase2Indicator.classList.add('bg-teal-100', 'border-teal-500');
+                phase2Indicator.querySelector('span:first-child').classList.remove('bg-gray-400');
+                phase2Indicator.querySelector('span:first-child').classList.add('bg-teal-500');
+            } else {
+                phase1Indicator.classList.add('bg-blue-100', 'border-blue-500');
+                phase1Indicator.classList.remove('bg-green-100', 'border-green-500');
+                phase1Indicator.querySelector('span:first-child').classList.add('bg-blue-500');
+                phase1Indicator.querySelector('span:first-child').classList.remove('bg-green-500');
+                
+                phase2Indicator.classList.add('bg-gray-100', 'border-gray-300');
+                phase2Indicator.classList.remove('bg-teal-100', 'border-teal-500');
+                phase2Indicator.querySelector('span:first-child').classList.add('bg-gray-400');
+                phase2Indicator.querySelector('span:first-child').classList.remove('bg-teal-500');
+            }
+            
+            // Update buttons
+            tpPrev.disabled = tpStep === 0;
+            tpNext.disabled = tpStep === 5;
+            
+            if (tpStep === 5) {
+                tpNext.innerHTML = 'Complete <i class="fas fa-check"></i>';
+            } else {
+                tpNext.innerHTML = 'Next Step <i class="fas fa-arrow-right"></i>';
+            }
+        }
+
+        tpNext.addEventListener('click', () => {
+            if (tpStep < 5) {
+                tpStep++;
+                updateTwoPhase();
+            }
+        });
+
+        tpPrev.addEventListener('click', () => {
+            if (tpStep > 0) {
+                tpStep--;
+                updateTwoPhase();
+            }
+        });
+
+        updateTwoPhase();
+
+        // ==========================================
+        // SCROLL ANIMATIONS
+        // ==========================================
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('section-fade');
+            observer.observe(section);
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

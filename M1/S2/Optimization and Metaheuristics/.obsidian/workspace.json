@@ -1,0 +1,226 @@
+{
+  "main": {
+    "id": "278d314d89cb1d0f",
+    "type": "split",
+    "children": [
+      {
+        "id": "c70ac83ba250998a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "554957a67f349724",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Simplex/Unified Simplex Theory/1. The Unified Simplex Theory.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "1. The Unified Simplex Theory"
+            }
+          },
+          {
+            "id": "274f9045e734bad1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Tarrot.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Tarrot"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "348f81777ad9261a",
+    "type": "split",
+    "children": [
+      {
+        "id": "d91dd6f72b2ac089",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "44c8e1d9f3cb09ff",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "a2ad4a1ba7a0db7d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "af643d6aafd482bc",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "00c28435696e42c6",
+    "type": "split",
+    "children": [
+      {
+        "id": "06c1cb0e3b925c96",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4ed8f11f790e7702",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Unified Simplex Theory/Unified Simplex Theory.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Unified Simplex Theory"
+            }
+          },
+          {
+            "id": "3fe52c435979e45f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Unified Simplex Theory/Unified Simplex Theory.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Unified Simplex Theory"
+            }
+          },
+          {
+            "id": "baf8063d9f76642c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "b4b0ea11d3eda7cb",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "12dc72221ce5d070",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Unified Simplex Theory/Unified Simplex Theory.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Unified Simplex Theory"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "274f9045e734bad1",
+  "lastOpenFiles": [
+    "Screencast From 2026-01-30 22-09-13.mp4",
+    "Simplex/Unified Simplex Theory/1. The Unified Simplex Theory.md",
+    "Tarrot.md",
+    "Simplex/Questions/Qs2.md",
+    "Simplex/Formal Simplex/The Simplex Algorithm.md",
+    "Simplex/Questions/Qs1.md",
+    "Simplex",
+    "Simplex/HTML Views/The Simplex Algorithm.html",
+    "Simplex/HTML Views/Unified Simplex Theory.html",
+    "Simplex/Questions",
+    "Unified Simplex Theory/Unified Simplex Theory.md",
+    "Simplex/Formal Simplex",
+    "Simplex/Unified Simplex Theory/3. The Algorithm and Pivot Logic.md",
+    "Simplex/HTML Views",
+    "Simplex/Unified Simplex Theory/6. Special Cases and Geometry.md",
+    "Simplex/Unified Simplex Theory/4. The Rosetta Stone of Simplex Variations.md",
+    "Simplex/Unified Simplex Theory/5. Handling Minimization and Constraints.md",
+    "Simplex/Unified Simplex Theory/2. The Canonical Tableau Structure.md",
+    "Unified Simplex Theory/5. Handling Minimization and Constraints.mdt",
+    "Unified Simplex Theory/4. The Rosetta Stone of Simplex Variations.mdt",
+    "Unified Simplex Theory/3. The Algorithm and Pivot Logic.mdt",
+    "Unified Simplex Theory/2. The Canonical Tableau Structure.mdt"
+  ]
+}
