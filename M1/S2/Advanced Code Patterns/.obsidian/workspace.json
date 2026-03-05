@@ -1,0 +1,222 @@
+{
+  "main": {
+    "id": "7e704d2973e14ac7",
+    "type": "split",
+    "children": [
+      {
+        "id": "e78f560466109f64",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "186882ae037913d6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Book 1/3.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "3"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "bb85c451c5017f8a",
+    "type": "split",
+    "children": [
+      {
+        "id": "8c3faf2f2e0148aa",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "17bc40549c391232",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "8e1806616ea5abe1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "ker",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "6d8d5b27a8c81ad7",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 305.5004348754883
+  },
+  "right": {
+    "id": "9c07cb0f11004622",
+    "type": "split",
+    "children": [
+      {
+        "id": "1488a84c40ec8d2b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "12175efd6c24334f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "24526581858512c7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "83bd60a6165bf2e4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "337f358a94dcf4cd",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          },
+          {
+            "id": "dd3c82aba9488fd4",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "git-view"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Create new base": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": true,
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true,
+      "audio-recorder:Start/stop recording": false,
+      "quiz-generator:Open generator": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "17bc40549c391232",
+  "lastOpenFiles": [
+    "In Detial/Chapter 2.4: Advanced Class Diagram Extras/6. Slide Annotations & Leftover Rules.md",
+    "In Detial/Chapter 2.4: Advanced Class Diagram Extras/5. TD Deep Dive - Reading Complex Diagrams (TD 3 Ex 1).md",
+    "In Detial/Chapter 2.4: Advanced Class Diagram Extras/4. TD Deep Dive - The File System and Shortcuts (TD 4 Ex 5).md",
+    "In Detial/Chapter 2.4: Advanced Class Diagram Extras/3. TD Deep Dive - The Arithmetic Expression Trap.md",
+    "In Detial/Chapter 2.4: Advanced Class Diagram Extras/2. The TD Identification Exercise (Rattrapage 2014-2015).md",
+    "In Detial/Chapter 2.4: Advanced Class Diagram Extras/1. Theoretical Exam Questions (The Free Points Bank).md",
+    "In Detial/Chapter 2.4: Advanced Class Diagram Extras",
+    "In Detial/Chapter 2.3: Advanced Class Diagram Extras/5. Recursive Composition (The Composite Pattern Trap).md",
+    "In Detial/Chapter 2.3: Advanced Class Diagram Extras/4. Advanced OCL Constraints (addOnly, frozen, unique).md",
+    "In Detial/Chapter 2.3: Advanced Class Diagram Extras/3. Masterclass on Qualified Associations (Dictionaries Maps).md",
+    "In Detial/Chapter 2.3: Advanced Class Diagram Extras/2. Constructors, Destructors, and Method Stereotypes.md",
+    "In Detial/Chapter 2.3: Advanced Class Diagram Extras/1. Generic and Parametrized Classes (Templates).md",
+    "In Detial/Chapter 2.3: Advanced Class Diagram Extras",
+    "In Detial/Chapter 2.2: Advanced Relationships and Object Diagrams/5. From Class Diagrams to Object Diagrams (DOB).md",
+    "In Detial/Chapter 2.2: Advanced Relationships and Object Diagrams/4. Abstract Classes, Interfaces, and Realization.md",
+    "In Detial/Chapter 2.2: Advanced Relationships and Object Diagrams/3. Advanced Inheritance Constraints.md",
+    "In Detial/Chapter 2.2: Advanced Relationships and Object Diagrams/2. Inheritance and Generalization (Is-A Relationship).md",
+    "In Detial/Chapter 2.2: Advanced Relationships and Object Diagrams/1. Aggregation vs Composition (The Whole-Part Relationships).md",
+    "In Detial/Chapter 2.2: Advanced Relationships and Object Diagrams",
+    "In Detial/Chapter 2.1: Class Diagram Relationships/6. Association Classes and Qualification.md",
+    "In Detial/Chapter 2.1: Class Diagram Relationships/5. Association Constraints (XOR, Subset, Total).md",
+    "In Detial/Chapter 2.1: Class Diagram Relationships/4. Advanced Associations (Reflexive and N-ary).md",
+    "In Detial/Chapter 2.1: Class Diagram Relationships/3. Multiplicity and Cardinality in Depth.md",
+    "In Detial/Chapter 2.1: Class Diagram Relationships/2. Associations, Roles, and Navigability.md",
+    "In Detial/Chapter 2.1: Class Diagram Relationships/1. Introduction to Class Relationships and Dependencies.md",
+    "In Detial/Chapter 2.1: Class Diagram Relationships",
+    "Book 1/3.md",
+    "Book 1/2.md",
+    "Book 1/1.md",
+    "Book 1/5.md",
+    "In Detial/Chapter 2.99: Advanced Class Diagram Extras",
+    "In Detial/Chapter 2.9: Advanced Class Diagram Extras",
+    "In Detial/Chapter 2.5: Advanced Relationships and Object Diagrams",
+    "In Detial/Chapter 2: Class Diagram Relationships",
+    "In Detial/Chapter 1: Class Diagram Fundamentals",
+    "In Detial/2.5"
+  ]
+}
