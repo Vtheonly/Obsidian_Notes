@@ -1,0 +1,213 @@
+{
+  "main": {
+    "id": "ef03881dff405e17",
+    "type": "split",
+    "children": [
+      {
+        "id": "0e2eb464abc5e5cc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "131643301493a84d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Chapter 1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Chapter 1"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "6fd1a56ff1117df0",
+    "type": "split",
+    "children": [
+      {
+        "id": "7c4976eea7226658",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f3c015d1d6fe97bf",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "db210470bda69ebe",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "850588bd0f14a66f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "2315a92692d5ec60",
+    "type": "split",
+    "children": [
+      {
+        "id": "59af389752798dfd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6ccbac4bf82b6684",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Chapter 1.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Chapter 1"
+            }
+          },
+          {
+            "id": "5a066d6301dfc2ea",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Chapter 1.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Chapter 1"
+            }
+          },
+          {
+            "id": "189b2582373f0686",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "f81c6978b5589c18",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "2b1e910062ceb19d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Chapter 1.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Chapter 1"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "131643301493a84d",
+  "lastOpenFiles": [
+    "Untitled 1.md",
+    "Chapter 1.md",
+    "Chapter 2.md",
+    "Chapter 3.md",
+    "Chapter 5.md",
+    "Chapter 4.md",
+    "Untitled.md",
+    "chapter 5.md",
+    "chapter 4.md",
+    "chapter 3.md",
+    "chapter 2.md",
+    "chapter 1.md",
+    "5.md",
+    "4.md",
+    "3.md",
+    "2.md",
+    "1.md",
+    "chapter",
+    "chapter5.md",
+    "chapter4.md",
+    "chapter3.md",
+    "chapter2.md",
+    "chapter1.md",
+    "Welcome.md"
+  ]
+}
