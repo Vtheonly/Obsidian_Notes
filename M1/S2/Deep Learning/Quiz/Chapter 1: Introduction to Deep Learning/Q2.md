@@ -1,0 +1,14 @@
+# Quiz Question 2
+
+**Question:** What is the primary reason Mini-Batch Gradient Descent is preferred over Batch Gradient Descent?
+
+A) It is perfectly mathematically stable with no noise.
+B) It allows the model to fit entirely in memory while still providing a relatively stable and fast gradient estimation.
+C) It guarantees finding a local minimum faster than any other method.
+D) It removes the need for a Learning Rate.
+
+---
+
+**Correct Answer:** B
+
+**Explanation:** Batch GD calculates the gradient on the _entire_ dataset at once, which usually exceeds GPU RAM limits for modern datasets. SGD uses 1 sample, which is erratic. Mini-batch (e.g., 32 samples) fits neatly into GPU memory (VRAM), allows for parallel matrix multiplication, and provides a stable enough gradient with just enough noise to help escape shallow local minima.

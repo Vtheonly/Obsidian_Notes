@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "In Detial/Chapter 1: Class Diagram Fundamentals/2. Anatomy of a Class.md",
+                "file": "In Detial/Chapter 1: Class Diagram Fundamentals/4. Advanced Attribute and Method Properties.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2. Anatomy of a Class"
+              "title": "4. Advanced Attribute and Method Properties"
             }
           }
         ]
@@ -181,6 +181,8 @@
   },
   "active": "186882ae037913d6",
   "lastOpenFiles": [
+    "In Detial/Chapter 1: Class Diagram Fundamentals/3. Visibility and Encapsulation.md",
+    "In Detial/Chapter 1: Class Diagram Fundamentals/2. Anatomy of a Class.md",
     "In Detial/Chapter 1: Class Diagram Fundamentals/1. Static vs Dynamic Views.md",
     "Book 1/Class Modeling Master Note.md",
     "In Detial/Chapter 2.5: Advanced Relationships and Object Diagrams/3. Advanced Inheritance Constraints.md",
@@ -208,9 +210,7 @@
     "In Detial/Chapter 2.1: Class Diagram Relationships/4. Advanced Associations (Reflexive and N-ary).md",
     "In Detial/Chapter 2.1: Class Diagram Relationships/3. Multiplicity and Cardinality in Depth.md",
     "In Detial/Chapter 2.1: Class Diagram Relationships/2. Associations, Roles, and Navigability.md",
-    "In Detial/Chapter 2.1: Class Diagram Relationships/1. Introduction to Class Relationships and Dependencies.md",
     "In Detial/Chapter 2.1: Class Diagram Relationships",
-    "Book 1/3.md",
     "In Detial/Chapter 2.99: Advanced Class Diagram Extras",
     "In Detial/Chapter 2.9: Advanced Class Diagram Extras",
     "In Detial/Chapter 2.5: Advanced Relationships and Object Diagrams",

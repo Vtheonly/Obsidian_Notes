@@ -1,0 +1,14 @@
+# Quiz Question 1
+
+**Question:** Which of the following activation functions is most appropriate for the hidden layers of a deep neural network to avoid the vanishing gradient problem?
+
+A) Sigmoid
+B) Softmax
+C) ReLU
+D) Linear
+
+---
+
+**Correct Answer:** C) ReLU
+
+**Explanation:** The Sigmoid function (A) squashes values between 0 and 1, meaning its derivative is at most 0.25. When multiplied together across many deep layers (Chain Rule), the gradient becomes infinitesimally small (vanishes), stopping learning. ReLU (Rectified Linear Unit) has a derivative of 1 for all positive numbers, allowing gradients to flow freely through deep networks.
