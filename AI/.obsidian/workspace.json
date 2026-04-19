@@ -1,0 +1,247 @@
+{
+  "main": {
+    "id": "745d8ed1fca8ace7",
+    "type": "split",
+    "children": [
+      {
+        "id": "42f53f7a44fc437c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a92e23d13b9be0a4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Academic/Deep Learning/Cours/Chapter 2 - CNN/1. Introduction and Foundations of CNNs.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "1. Introduction and Foundations of CNNs"
+            }
+          },
+          {
+            "id": "1c4e91660e65a9fc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Academic/Deep Learning/Cours/Chapter 1 - Introduction to Deep Learning/10. Activation Functions in Deep Learning.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "10. Activation Functions in Deep Learning"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c9e2a98a8fc7660e",
+    "type": "split",
+    "children": [
+      {
+        "id": "228db1c49f909814",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "342bca1bd8af81d1",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "fbc1e1fc97d6fb4b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "embe",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "ac7c1c07c1381281",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 465.5026054382324
+  },
+  "right": {
+    "id": "d031b997357b8a07",
+    "type": "split",
+    "children": [
+      {
+        "id": "73785944b3f64e47",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "21cc692fa984b754",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Academic/Deep Learning/Questions/Qs4.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Qs4"
+            }
+          },
+          {
+            "id": "da4296b320eab43d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Academic/Course/Chapter 1: Introduction to Deep Learning/4. Loss Functions in Machine Learning.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 4. Loss Functions in Machine Learning"
+            }
+          },
+          {
+            "id": "b5149ef5c9a8b7a4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "32c2ed5419ff5797",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-ghost",
+              "title": "all-properties"
+            }
+          },
+          {
+            "id": "fa8d445152d53c77",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Academic/Course/Chapter 1: Introduction to Deep Learning/4. Loss Functions in Machine Learning.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 4. Loss Functions in Machine Learning"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "audio-recorder:Start/stop recording": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "quiz-generator:Open generator": false
+    }
+  },
+  "active": "1c4e91660e65a9fc",
+  "lastOpenFiles": [
+    "Academic/Deep Learning/Cours/Chapter 1 - Introduction to Deep Learning/11. Multi-Layer Perceptron and Backpropagation.md",
+    "Academic/Deep Learning/Cours/Chapter 1 - Introduction to Deep Learning/12. Data Preparation and MLP Implementation.md",
+    "Non Academic/assets/Pasted image 20260112174914.png",
+    "Non Academic/Deep Learning/CNN/Chapter 7/7.1 CNN Mastery Roadmap.md",
+    "Non Academic/Deep Learning/CNN/Course Overview.md",
+    "Non Academic/Deep Learning/Backpropagation/02 - Foundations/4. Forward Propagation and Activation Functions.md",
+    "Non Academic/Deep Learning/Backpropagation/02 - Foundations/3. Neural Network Architecture and Notation.md",
+    "Non Academic/Deep Learning/Backpropagation/02 - Foundations/3. fundamentals of Neural Networks.md",
+    "Non Academic/Deep Learning/Backpropagation/01 - Prerequisites/2. Gradients and Gradient Descent.md",
+    "Non Academic/Deep Learning/Backpropagation/01 - Prerequisites/1. Derivatives, Power Rule, and the Chain Rule.md",
+    "Non Academic/Deep Learning/CNN/Chapter 6/6.2 Backpropagation Part 2 - Error Routing.md",
+    "Non Academic/Deep Learning/Backpropagation/01 - Prerequisites/fundamentals of Neural Networks.md",
+    "Non Academic/Deep Learning/Backpropagation/04 - Backpropagation/9. Matrix Implementation and the Delta Weight Formula.md",
+    "Non Academic/Deep Learning/Backpropagation/04 - Backpropagation/8. Backpropagating to the Hidden Layer.md",
+    "Non Academic/Deep Learning/Backpropagation/04 - Backpropagation/7. Backpropagating to the Output Layer.md",
+    "Non Academic/Deep Learning/Backpropagation/03 - Error and Optimization/6. Gradient Descent - The Update Rule and Convergence.md",
+    "Non Academic/Deep Learning/Backpropagation/03 - Error and Optimization/5. Loss Functions and Error Calculation.md",
+    "Non Academic/Deep Learning/Backpropagation/README.md",
+    "Non Academic/Deep Learning/Backpropagation/04 - Backpropagation",
+    "Non Academic/Deep Learning/Backpropagation/03 - Error and Optimization",
+    "Non Academic/Deep Learning/Backpropagation/02 - Foundations",
+    "Non Academic/Deep Learning/Backpropagation/01 - Prerequisites",
+    "Non Academic/Deep Learning/Backpropagation",
+    "Non Academic/Deep Learning/Backpropagation Vault/04 - Backpropagation/7. Backpropagating to the Output Layer.md",
+    "Non Academic/Deep Learning/Backpropagation Vault/04 - Backpropagation/9. Matrix Implementation and the Delta Weight Formula.md",
+    "Non Academic/Deep Learning/Backpropagation Vault/04 - Backpropagation/8. Backpropagating to the Hidden Layer.md",
+    "Non Academic/Deep Learning/Backpropagation Vault/03 - Error and Optimization/6. Gradient Descent - The Update Rule and Convergence.md",
+    "Non Academic/Deep Learning/Backpropagation Vault/03 - Error and Optimization/5. Loss Functions and Error Calculation.md",
+    "Non Academic/Deep Learning/Backpropagation Vault/02 - Foundations/4. Forward Propagation and Activation Functions.md",
+    "Non Academic/Deep Learning/Backpropagation Vault/02 - Foundations/3. Neural Network Architecture and Notation.md",
+    "Non Academic/Deep Learning/Backpropagation Vault/01 - Prerequisites/2. Gradients and Gradient Descent.md",
+    "Non Academic/Deep Learning/Backpropagation Vault/01 - Prerequisites/1. Derivatives, Power Rule, and the Chain Rule.md",
+    "Non Academic/Deep Learning/Backpropagation Vault/04 - Backpropagation",
+    "Non Academic/Deep Learning/Backpropagation Vault/03 - Error and Optimization",
+    "Non Academic/Deep Learning/Backpropagation Vault/02 - Foundations",
+    "Non Academic/Deep Learning/Backpropagation Vault/01 - Prerequisites",
+    "Non Academic/Deep Learning/Backpropagation Vault",
+    "Projects/2D3D/my_go_to_approach.png",
+    "Non Academic/assets/Pasted image 20260112175926.png",
+    "Non Academic/assets/Pasted image 20260112175914.png",
+    "Non Academic/assets/Pasted image 20260112175852.png"
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "main": {
+    "id": "ee247ea69816bb5d",
+    "type": "split",
+    "children": [
+      {
+        "id": "be4f0723483daaa3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6ba583bf3afb4dc4",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "my_go_to_approach.png"
+              },
+              "icon": "lucide-image",
+              "title": "my_go_to_approach"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3f4f2b3aaf0d52d3",
+    "type": "split",
+    "children": [
+      {
+        "id": "183da2b2f342b9b5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "256a3fe8c284ae55",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "18e7a6260578520b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "nerf",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "0a39ca5dbd95f30d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 669.5
+  },
+  "right": {
+    "id": "e9131f1beda269ee",
+    "type": "split",
+    "children": [
+      {
+        "id": "7c5668341df02f4d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8e9d6d2c30b83f0d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Chapter 1: Camera and Epipolar Geometry/1.3 Projection Matrices and Coordinate Transformations.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 1.3 Projection Matrices and Coordinate Transformations"
+            }
+          },
+          {
+            "id": "17bd24164a4324cd",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Chapter 1: Camera and Epipolar Geometry/1.3 Projection Matrices and Coordinate Transformations.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 1.3 Projection Matrices and Coordinate Transformations"
+            }
+          },
+          {
+            "id": "ccfcb7e932523a79",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "8616136b130f8b1d",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "25e29d151cb2cfe2",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Chapter 1: Camera and Epipolar Geometry/1.3 Projection Matrices and Coordinate Transformations.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 1.3 Projection Matrices and Coordinate Transformations"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "256a3fe8c284ae55",
+  "lastOpenFiles": [
+    "Chapter 6: Practical Implementation Guide/6.2 Computational and Dataset Requirements.md",
+    "Chapter 5: Advanced Neural Representations/5.1 Neural Radiance Fields (NeRF).md",
+    "In Depth/Chapter 7 - Advanced Data Engineering and Training/1. Curriculum Learning Strategy.md",
+    "In Depth/Chapter 8 - The Video to 3D Ingestion Pipeline/3. Monocular Depth with Depth Anything V3.md",
+    "In Depth/Chapter 8 - The Video to 3D Ingestion Pipeline/1. Video Downloading and Extraction.md",
+    "In Depth/Chapter 8 - The Video to 3D Ingestion Pipeline/2. System Orchestrator and Architecture.md",
+    "In Depth/Chapter 9 - The Open3D Compatibility Layer/1. Motivation and Design.md",
+    "In Depth/Chapter 1 - Fundamentals of 3D Computer Vision/1. Camera Models and Coordinate Systems.md",
+    "In Depth/Chapter 10 - The MVE Pipeline Research/1. The MVE Pipeline Overview.md",
+    "Chapter 1: Camera and Epipolar Geometry/1.3 Projection Matrices and Coordinate Transformations.md",
+    "Chapter 1: Camera and Epipolar Geometry/1.2 Intrinsic and Extrinsic Parameters.md",
+    "Chapter 1: Camera and Epipolar Geometry/1.1 Camera Models and Pinhole Geometry.md",
+    "Chapter 3: Depth Estimation Approaches/3.5 Deep Dive Cascade-Attention Architecture.md",
+    "Chapter 3: Depth Estimation Approaches/3.1 Classical Multi-View Stereo (MVS).md",
+    "Chapter 3: Depth Estimation Approaches/3.4 Deep Learning Multi-View Stereo (MVSNet).md",
+    "Chapter 3: Depth Estimation Approaches/3.3 Training Requirements for Depth Models.md",
+    "Chapter 1: Camera and Epipolar Geometry/1.4 Epipolar and Multi-View Geometry.md",
+    "Chapter 2: Structure from Motion/2.2 Bundle Adjustment and Optimization.md",
+    "Chapter 2: Structure from Motion/2.1 Feature Detection and Matching.md",
+    "Chapter 6: Practical Implementation Guide/6.1 Feasibility What a Solo Developer Can Build.md"
+  ]
+}
