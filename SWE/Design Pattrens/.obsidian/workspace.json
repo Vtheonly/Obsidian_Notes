@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "Fundamental/OOP/01. Core Concepts/1. Introduction to Objects and Classes.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -183,8 +183,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "1dc7223e4fa7ab74",
+  "active": "f004e99ffff1cc32",
   "lastOpenFiles": [
+    "Fundamental/Collections/1. The Big Picture and Hierarchy.md",
+    "Fundamental/OOP/01. Core Concepts/1. Introduction to Objects and Classes.md",
     "Design Pattren",
     "OOP/02. Principles of OOP/2. Inheritance Hierarchy.md",
     "Fundamental/Collections/9. Best Practices - Coding to Interfaces.md",
@@ -195,7 +197,6 @@
     "Fundamental/Collections/4. The List Interface and Implementations.md",
     "Fundamental/Collections/3. The Collection Interface.md",
     "Fundamental/Collections/2. Arrays - The Native Container.md",
-    "Fundamental/Collections/1. The Big Picture and Hierarchy.md",
     "Fundamental/Collections",
     "Fundamental/OOP/04. Applied Projects/3. Project Walkthrough - Calculator (Interfaces).md",
     "Fundamental/OOP/04. Applied Projects/2. Project Walkthrough - ATM Machine.md",
@@ -219,7 +220,6 @@
     "Fundamental/OOP",
     "Fundamental",
     "Collections",
-    "Java Collections Framework",
-    "h copy"
+    "Java Collections Framework"
   ]
 }

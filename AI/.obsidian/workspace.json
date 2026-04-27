@@ -4,39 +4,36 @@
     "type": "split",
     "children": [
       {
-        "id": "42f53f7a44fc437c",
+        "id": "2589c21216a1eaa9",
         "type": "tabs",
         "children": [
           {
-            "id": "a92e23d13b9be0a4",
+            "id": "124b7cd13e514f49",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Academic/Deep Learning/Cours/Chapter 2 - CNN/1. Introduction and Foundations of CNNs.md",
-                "mode": "source",
+                "file": "Tamer/full.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. Introduction and Foundations of CNNs"
+              "title": "full"
             }
           },
           {
-            "id": "1c4e91660e65a9fc",
+            "id": "6319a2e062636233",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "surfing-view",
               "state": {
-                "file": "Academic/Deep Learning/Cours/Chapter 1 - Introduction to Deep Learning/10. Activation Functions in Deep Learning.md",
-                "mode": "source",
-                "source": false
+                "url": "https://chatgpt.com/c/69ee89e0-ab34-83ea-b883-9ff0a7acb326"
               },
               "icon": "lucide-file",
-              "title": "10. Activation Functions in Deep Learning"
+              "title": "Regularization L1 L2 Dropout"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -68,7 +65,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "embe",
+                "query": "positional enc",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -200,45 +197,48 @@
       "quiz-generator:Open generator": false
     }
   },
-  "active": "1c4e91660e65a9fc",
+  "active": "124b7cd13e514f49",
   "lastOpenFiles": [
-    "Academic/Deep Learning/Cours/Chapter 1 - Introduction to Deep Learning/11. Multi-Layer Perceptron and Backpropagation.md",
-    "Academic/Deep Learning/Cours/Chapter 1 - Introduction to Deep Learning/12. Data Preparation and MLP Implementation.md",
+    "Tamer/full.md",
+    "4.png",
+    "3.png",
+    "mermaid-diagram2.png",
+    "mermaid-diagram.png",
+    "Tamer/More.md",
+    "Tamer/TAMER.md",
+    "Tamer/Chapter 9 - System Reliability/Part_1.md",
+    "Tamer/Chapter 2 - Computer Vision/Part_2.md",
+    "Tamer/Chapter 2 - Computer Vision/Part_3.md",
+    "Tamer/Chapter 2 - Computer Vision/Part_4.md",
+    "Tamer/Chapter 2 - Computer Vision/Part_1.md",
+    "Tamer/Chapter 1 - Deep Learning/Part_1.md",
+    "Tamer/Chapter 2 - Computer Vision/Part_5.md",
+    "Tamer/Chapter 3 - Sequence Modeling/Part_5.md",
+    "Tamer/Chapter 3 - Sequence Modeling/Part_4.md",
+    "Tamer/Outlines/Outline_Part5.md",
+    "Tamer/Meta/AI_Transition_4.md",
+    "Tamer/Chapter 7 - Context and SOTA/Part_2.md",
+    "Tamer/Chapter 3 - Sequence Modeling/Part_3.md",
+    "Tamer/Outlines/Outline_Part4.md",
+    "Tamer/Meta/AI_Transition_3.md",
+    "Tamer/split_more.py",
+    "Tamer/Outlines/Outline_Part3.md",
+    "Tamer/Outlines",
+    "Tamer/Meta/AI_Transition_2.md",
+    "Tamer/Meta",
+    "Tamer/More.nd",
+    "Tamer/force_writer.py",
+    "Projects/TAMER Project/TAMER 3/09_The_Complete_Architecture_Blueprint/01_Chapter_Intro.md",
+    "Projects/TAMER Project/TAMER 3/03_Vision_Encoders_The_Eyes/01_Chapter_Intro.md",
+    "Tamer/Outlines/Outline_Part2.md",
+    "Tamer/Outlines/Outline_Part1.md",
+    "Tamer/Meta/AI_Transition_1.md",
+    "Tamer/Chapter 9 - System Reliability",
+    "Tamer/Chapter 8 - Data Engineering",
+    "Tamer/Chapter 7 - Context and SOTA",
+    "Tamer/Chapter 6 - Inference and Evaluation",
+    "Tamer/Chapter 5 - Advanced Training Strategies",
     "Non Academic/assets/Pasted image 20260112174914.png",
-    "Non Academic/Deep Learning/CNN/Chapter 7/7.1 CNN Mastery Roadmap.md",
-    "Non Academic/Deep Learning/CNN/Course Overview.md",
-    "Non Academic/Deep Learning/Backpropagation/02 - Foundations/4. Forward Propagation and Activation Functions.md",
-    "Non Academic/Deep Learning/Backpropagation/02 - Foundations/3. Neural Network Architecture and Notation.md",
-    "Non Academic/Deep Learning/Backpropagation/02 - Foundations/3. fundamentals of Neural Networks.md",
-    "Non Academic/Deep Learning/Backpropagation/01 - Prerequisites/2. Gradients and Gradient Descent.md",
-    "Non Academic/Deep Learning/Backpropagation/01 - Prerequisites/1. Derivatives, Power Rule, and the Chain Rule.md",
-    "Non Academic/Deep Learning/CNN/Chapter 6/6.2 Backpropagation Part 2 - Error Routing.md",
-    "Non Academic/Deep Learning/Backpropagation/01 - Prerequisites/fundamentals of Neural Networks.md",
-    "Non Academic/Deep Learning/Backpropagation/04 - Backpropagation/9. Matrix Implementation and the Delta Weight Formula.md",
-    "Non Academic/Deep Learning/Backpropagation/04 - Backpropagation/8. Backpropagating to the Hidden Layer.md",
-    "Non Academic/Deep Learning/Backpropagation/04 - Backpropagation/7. Backpropagating to the Output Layer.md",
-    "Non Academic/Deep Learning/Backpropagation/03 - Error and Optimization/6. Gradient Descent - The Update Rule and Convergence.md",
-    "Non Academic/Deep Learning/Backpropagation/03 - Error and Optimization/5. Loss Functions and Error Calculation.md",
-    "Non Academic/Deep Learning/Backpropagation/README.md",
-    "Non Academic/Deep Learning/Backpropagation/04 - Backpropagation",
-    "Non Academic/Deep Learning/Backpropagation/03 - Error and Optimization",
-    "Non Academic/Deep Learning/Backpropagation/02 - Foundations",
-    "Non Academic/Deep Learning/Backpropagation/01 - Prerequisites",
-    "Non Academic/Deep Learning/Backpropagation",
-    "Non Academic/Deep Learning/Backpropagation Vault/04 - Backpropagation/7. Backpropagating to the Output Layer.md",
-    "Non Academic/Deep Learning/Backpropagation Vault/04 - Backpropagation/9. Matrix Implementation and the Delta Weight Formula.md",
-    "Non Academic/Deep Learning/Backpropagation Vault/04 - Backpropagation/8. Backpropagating to the Hidden Layer.md",
-    "Non Academic/Deep Learning/Backpropagation Vault/03 - Error and Optimization/6. Gradient Descent - The Update Rule and Convergence.md",
-    "Non Academic/Deep Learning/Backpropagation Vault/03 - Error and Optimization/5. Loss Functions and Error Calculation.md",
-    "Non Academic/Deep Learning/Backpropagation Vault/02 - Foundations/4. Forward Propagation and Activation Functions.md",
-    "Non Academic/Deep Learning/Backpropagation Vault/02 - Foundations/3. Neural Network Architecture and Notation.md",
-    "Non Academic/Deep Learning/Backpropagation Vault/01 - Prerequisites/2. Gradients and Gradient Descent.md",
-    "Non Academic/Deep Learning/Backpropagation Vault/01 - Prerequisites/1. Derivatives, Power Rule, and the Chain Rule.md",
-    "Non Academic/Deep Learning/Backpropagation Vault/04 - Backpropagation",
-    "Non Academic/Deep Learning/Backpropagation Vault/03 - Error and Optimization",
-    "Non Academic/Deep Learning/Backpropagation Vault/02 - Foundations",
-    "Non Academic/Deep Learning/Backpropagation Vault/01 - Prerequisites",
-    "Non Academic/Deep Learning/Backpropagation Vault",
     "Projects/2D3D/my_go_to_approach.png",
     "Non Academic/assets/Pasted image 20260112175926.png",
     "Non Academic/assets/Pasted image 20260112175914.png",
