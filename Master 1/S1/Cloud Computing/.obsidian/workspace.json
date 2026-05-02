@@ -1,0 +1,210 @@
+{
+  "main": {
+    "id": "fe7e27d22d058c21",
+    "type": "split",
+    "children": [
+      {
+        "id": "d0c61fca81196d6d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "53194e6e87bd3b45",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Home.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Home"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7fe183cd9b7e06cc",
+    "type": "split",
+    "children": [
+      {
+        "id": "49d3f580635bdf02",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e3d4c12deb1c3c73",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "293af43323863650",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "1232db6ef4d266cc",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "a9ba6d006cf546c4",
+    "type": "split",
+    "children": [
+      {
+        "id": "f73b41163fc8bac5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ff2ae0d9441c2919",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Home.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Home"
+            }
+          },
+          {
+            "id": "4c8537781e088b32",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Home.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Home"
+            }
+          },
+          {
+            "id": "1e067a739e77e6f2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "3eb8dae79490ef6d",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "a3c3f386c8347ce0",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Home.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Home"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "e3d4c12deb1c3c73",
+  "lastOpenFiles": [
+    "Chapter 6 - Virtual Storage/6.2 RAID, Datastores, and Advanced Storage Features.md",
+    "Chapter 6 - Virtual Storage/6.1 Block vs File Access and SAN vs NAS Architectures.md",
+    "Chapter 6 - Virtual Storage/6.3 Solving Storage Silos with Virtualization and Pooling.md",
+    "Chapter 4 - Architecture and Communication Patterns/4.3 What is a Broker.md",
+    "Chapter 4 - Architecture and Communication Patterns/4.5 The Publisher-Subscriber Model.md",
+    "Chapter 4 - Architecture and Communication Patterns/4.6 Why Node.js Fits Serverless So Well.md",
+    "Chapter 4 - Architecture and Communication Patterns/4.1 What are Microservices.md",
+    "Chapter 3 - Virtualization/3.9 Hardware Emulation vs System Virtualization.md",
+    "Chapter 3 - Virtualization/3.8 Virtualization Security Risks and Threat Vectors.md",
+    "Chapter 3 - Virtualization/3.7 Anatomy of a Virtual Machine and File Structures.md",
+    "Chapter 3 - Virtualization/3.6 A Server is Not the Rack.md",
+    "Chapter 3 - Virtualization/3.1 Hypervisor Internals and Execution Types.md",
+    "Chapter 2 - Service and Deployment Models/2.4 What is a VPC.md",
+    "Chapter 2 - Service and Deployment Models/2.3 What is VPS and EC2.md",
+    "Chapter 2 - Service and Deployment Models/2.2 Cloud Deployment Architectures and Network Trade-offs.md",
+    "Chapter 2 - Service and Deployment Models/2.1 Cloud Architecture Layers and Responsibility Boundaries.md",
+    "Chapter 1 - Introduction to Cloud Computing/1.5 Understanding Cloud Providers, Hosting Services, and VPS.md",
+    "Chapter 1 - Introduction to Cloud Computing/1.4 What The Cloud Means.md",
+    "Chapter 1 - Introduction to Cloud Computing/1.3 The Historical Paradigm Shifts Preceding Cloud Computing.md",
+    "Chapter 1 - Introduction to Cloud Computing/1.2 The Five Essential NIST Characteristics and Financial Models.md",
+    "Chapter 1 - Introduction to Cloud Computing/1.1 Evolution, Elasticity, and Scalability Mechanics.md"
+  ]
+}

@@ -160,10 +160,6 @@
 
 - **Benefits:**
   - Polymorphism enhances flexibility and maintainability in code by allowing methods to work with objects of different types, enabling developers to write more generic and reusable code.
----
-
-These core concepts—classes, objects, attributes, methods, constructors, encapsulation, and inheritance—lay the foundation for object-oriented programming in Java. As you delve deeper into Java, you'll explore more complex features that build on these basics, enabling you to create sophisticated and scalable applications.
-
 
 
 ### Abstraction
