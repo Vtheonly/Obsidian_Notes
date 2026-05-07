@@ -14,11 +14,25 @@
               "type": "markdown",
               "state": {
                 "file": "Chapter 1.1: Fundamentals/0 - OOP basics.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
               "title": "0 - OOP basics"
+            }
+          },
+          {
+            "id": "89bb799c0f29bd79",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Chapter 2.4: Advanced Class Diagram Extras/5. TD Deep Dive - Reading Complex Diagrams (TD 3 Ex 1).md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "5. TD Deep Dive - Reading Complex Diagrams (TD 3 Ex 1)"
             }
           },
           {
@@ -35,7 +49,8 @@
               "title": "3. Static Members"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -205,35 +220,36 @@
       "command-palette:Open command palette": true
     }
   },
-  "active": "e31b1a48c6131d92",
+  "active": "17bc40549c391232",
   "lastOpenFiles": [
-    "Exams/Part 1.md",
-    "Chapter 1.1: Fundamentals/3. Static Members.md",
-    "Chapter 1.1: Fundamentals/3. Advanced Keywords & Modifiers.md",
-    "Chapter 1.1: Fundamentals/3 - final keyword.md",
-    "Chapter 1.1: Fundamentals/2 - Constructors and Destructors.md",
-    "Chapter 1.2: Class Diagram Fundamentals/1. Static vs Dynamic Views.md",
-    "Chapter 1.1: Fundamentals/1. Introduction to Objects and Classes.md",
-    "Chapter 1.1: Fundamentals/0 - OOP basics.md",
-    "Chapter 1.1: Fundamentals/1 - Object.md",
+    "Chapter 1.1: Fundamentals/093 Project Calculator.md",
+    "Chapter 1.1: Fundamentals/092 Project ATM.md",
+    "Chapter 1.1: Fundamentals/091 Project Inventory.md",
+    "Chapter 1.1: Fundamentals/070 Coding to Interfaces.md",
+    "Chapter 1.1: Fundamentals/063 Exceptions and Varargs.md",
+    "Chapter 1.1: Fundamentals/062 Generics.md",
+    "Chapter 1.1: Fundamentals/061 Copying Objects.md",
+    "Chapter 1.1: Fundamentals/060 Object Lifecycle.md",
+    "Chapter 1.1: Fundamentals/058 Legacy Collections.md",
+    "Chapter 1.1: Fundamentals/057 Map Interface.md",
+    "Chapter 1.1: Fundamentals/056 Queues and Deques.md",
+    "Chapter 1.1: Fundamentals/055 Set Interface.md",
+    "Chapter 1.1: Fundamentals/054 List Interface.md",
+    "Chapter 1.1: Fundamentals/053 Collection Interface.md",
+    "Chapter 1.1: Fundamentals/052 Collection Framework.md",
+    "Chapter 1.1: Fundamentals/051 Arrays.md",
+    "Chapter 1.1: Fundamentals/050 Collections Overview.md",
+    "Chapter 1.1: Fundamentals/044 Interfaces.md",
+    "Chapter 1.1: Fundamentals/043 Polymorphism Types.md",
+    "Chapter 1.1: Fundamentals/042 Polymorphism Summary.md",
+    "Chapter 1.1: Fundamentals/041 Abstraction Details.md",
+    "Chapter 1.1: Fundamentals/040 Abstraction.md",
+    "Chapter 1.1: Fundamentals/034 Multiple Inheritance and The Diamond Problem.md",
+    "Chapter 1.1: Fundamentals/033 Super Keyword.md",
+    "Chapter 1.1: Fundamentals/032 Upcasting and Downcasting.md",
+    "Chapter 1.1: Fundamentals/031 Inheritance Hierarchy.md",
+    "Chapter 1.1: Fundamentals/rename_files.py",
     "Exams",
-    "Chapter 1.1: Class Diagram Fundamentals/1. Static vs Dynamic Views.md",
-    "Chapter 1.1: Fundamentals/9. Best Practices - Coding to Interfaces.md",
-    "Chapter 1.1: Fundamentals/9 - Abstraction.md",
-    "Chapter 1.1: Fundamentals/8. Legacy Collections.md",
-    "Chapter 1.1: Fundamentals/8 - Encapsulation.md",
-    "Chapter 1.1: Fundamentals/7. The Map Interface.md",
-    "Chapter 1.1: Fundamentals/7 - inheritance.md",
-    "Chapter 1.1: Fundamentals/6. Queues and Deques.md",
-    "Chapter 1.1: Fundamentals/6. Enums (Enumerations).md",
-    "Chapter 1.1: Fundamentals/6 - Upcasting and Downcasting.md",
-    "Chapter 1.1: Fundamentals/5. The Set Interface.md",
-    "Chapter 1.1: Fundamentals/5. Multiple Inheritance & The Diamond Problem.md",
-    "Chapter 1.1: Fundamentals/5 - Static keyword.md",
-    "Chapter 1.1: Fundamentals/4. The List Interface and Implementations.md",
-    "Chapter 1.1: Fundamentals/4. Robustness: Exceptions & Varargs.md",
-    "Chapter 1.1: Fundamentals/4. Abstraction (Abstract Classes vs Interfaces).md",
-    "Chapter 1.1: Fundamentals/4 - New keyword.md",
     "Chapter 1.1: Fundamentals",
     "Chapter 1.2: Class Diagram Fundamentals",
     "Chapter 1.1:Fundamentals",
@@ -241,7 +257,6 @@
     "Chapter 2.3: Advanced Class Diagram Extras",
     "Chapter 2.2: Advanced Relationships and Object Diagrams",
     "Chapter 2.1: Class Diagram Relationships",
-    "Chapter 1.2:Fundamentals",
-    "Chapter 1.1: Class Diagram Fundamentals"
+    "Chapter 1.2:Fundamentals"
   ]
 }

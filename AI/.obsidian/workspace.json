@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tamer/full.md",
+                "file": "Projects/TAMER Project/Tamer/Academic Project Report.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "full"
+              "title": "Academic Project Report"
             }
           },
           {
@@ -27,10 +27,10 @@
             "state": {
               "type": "surfing-view",
               "state": {
-                "url": "https://chatgpt.com/c/69ee89e0-ab34-83ea-b883-9ff0a7acb326"
+                "url": "https://chatgpt.com/c/69fccc2f-a850-83ea-b70b-9a7e38f4d0fa"
               },
               "icon": "lucide-file",
-              "title": "Regularization L1 L2 Dropout"
+              "title": "LaTeX and Mermaid Diagrams"
             }
           }
         ]
@@ -199,45 +199,45 @@
   },
   "active": "124b7cd13e514f49",
   "lastOpenFiles": [
-    "Tamer/full.md",
-    "4.png",
-    "3.png",
-    "mermaid-diagram2.png",
     "mermaid-diagram.png",
+    "Projects/TAMER Project/Tamer/Academic Project Report.md",
+    "Projects/TAMER Project/TAMER: Tree-Aware Transformer for Handwritten Mathematical Expression.pdf",
+    "Projects/TAMER Project/TAMER 1/Chapter 2/2.2 Swin Transformer V2.md",
+    "Projects/TAMER Project/TAMER 1/Chapter 1/1.3 Tokenization and Mathematical Grammar.md",
+    "Projects/TAMER Project/TAMER 1/Chapter 1/1.2 Sequence vs Tree Decoding.md",
+    "Projects/TAMER Project/TAMER 1/Chapter 1/1.1 HMER Overview and Challenges.md",
+    "Projects/TAMER Project/Tamer/full.md",
+    "Tamer/archi.md",
+    "mermaid-diagram2.png",
+    "3.png",
+    "4.png",
+    "Projects/TAMER Project/Tamer/full.md.bak",
     "Tamer/More.md",
     "Tamer/TAMER.md",
-    "Tamer/Chapter 9 - System Reliability/Part_1.md",
-    "Tamer/Chapter 2 - Computer Vision/Part_2.md",
-    "Tamer/Chapter 2 - Computer Vision/Part_3.md",
-    "Tamer/Chapter 2 - Computer Vision/Part_4.md",
-    "Tamer/Chapter 2 - Computer Vision/Part_1.md",
-    "Tamer/Chapter 1 - Deep Learning/Part_1.md",
-    "Tamer/Chapter 2 - Computer Vision/Part_5.md",
-    "Tamer/Chapter 3 - Sequence Modeling/Part_5.md",
-    "Tamer/Chapter 3 - Sequence Modeling/Part_4.md",
+    "Projects/TAMER Project/Tamer/Chapter 9 - System Reliability/Part_1.md",
+    "Projects/TAMER Project/Tamer/Chapter 2 - Computer Vision/Part_2.md",
+    "Projects/TAMER Project/Tamer/Chapter 2 - Computer Vision/Part_3.md",
+    "Projects/TAMER Project/Tamer/Chapter 2 - Computer Vision/Part_4.md",
+    "Projects/TAMER Project/Tamer/Chapter 2 - Computer Vision/Part_1.md",
+    "Projects/TAMER Project/Tamer/Chapter 1 - Deep Learning/Part_1.md",
+    "Projects/TAMER Project/Tamer/Chapter 2 - Computer Vision/Part_5.md",
+    "Projects/TAMER Project/Tamer/Chapter 3 - Sequence Modeling/Part_5.md",
+    "Projects/TAMER Project/Tamer/Chapter 3 - Sequence Modeling/Part_4.md",
     "Tamer/Outlines/Outline_Part5.md",
     "Tamer/Meta/AI_Transition_4.md",
-    "Tamer/Chapter 7 - Context and SOTA/Part_2.md",
-    "Tamer/Chapter 3 - Sequence Modeling/Part_3.md",
+    "Projects/TAMER Project/Tamer/Chapter 7 - Context and SOTA/Part_2.md",
+    "Projects/TAMER Project/Tamer/Chapter 3 - Sequence Modeling/Part_3.md",
     "Tamer/Outlines/Outline_Part4.md",
     "Tamer/Meta/AI_Transition_3.md",
-    "Tamer/split_more.py",
+    "Projects/TAMER Project/Tamer/split_more.py",
     "Tamer/Outlines/Outline_Part3.md",
     "Tamer/Outlines",
-    "Tamer/Meta/AI_Transition_2.md",
     "Tamer/Meta",
     "Tamer/More.nd",
-    "Tamer/force_writer.py",
-    "Projects/TAMER Project/TAMER 3/09_The_Complete_Architecture_Blueprint/01_Chapter_Intro.md",
-    "Projects/TAMER Project/TAMER 3/03_Vision_Encoders_The_Eyes/01_Chapter_Intro.md",
-    "Tamer/Outlines/Outline_Part2.md",
-    "Tamer/Outlines/Outline_Part1.md",
-    "Tamer/Meta/AI_Transition_1.md",
-    "Tamer/Chapter 9 - System Reliability",
-    "Tamer/Chapter 8 - Data Engineering",
-    "Tamer/Chapter 7 - Context and SOTA",
-    "Tamer/Chapter 6 - Inference and Evaluation",
-    "Tamer/Chapter 5 - Advanced Training Strategies",
+    "Projects/TAMER Project/Tamer/force_writer.py",
+    "Projects/TAMER Project/Tamer/Chapter 9 - System Reliability",
+    "Projects/TAMER Project/Tamer/Chapter 8 - Data Engineering",
+    "Projects/TAMER Project/Tamer/Chapter 7 - Context and SOTA",
     "Non Academic/assets/Pasted image 20260112174914.png",
     "Projects/2D3D/my_go_to_approach.png",
     "Non Academic/assets/Pasted image 20260112175926.png",

@@ -1,0 +1,196 @@
+{
+  "main": {
+    "id": "5147225af957c83f",
+    "type": "split",
+    "children": [
+      {
+        "id": "24b686510f6c5225",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8f2279e9162fd04c",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "db53ae7e0ceaddeb",
+    "type": "split",
+    "children": [
+      {
+        "id": "db40e90369990942",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c0b073bbb23f3c46",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "ea7e1f166574f12c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "315d350a925d48f6",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e454f96a871f7b8d",
+    "type": "split",
+    "children": [
+      {
+        "id": "db858d68c10bc0eb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f14d49d40e02086b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Untitled.canvas",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Untitled"
+            }
+          },
+          {
+            "id": "0f763d17bf6923f2",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Untitled.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Untitled"
+            }
+          },
+          {
+            "id": "b536a05fb81e5524",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "e9bfdea165710cf7",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "2159b064af988a00",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Untitled.canvas",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Untitled"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "c0b073bbb23f3c46",
+  "lastOpenFiles": [
+    "Untitled.canvas",
+    "HPC Course Overview.md",
+    "Chapter 2 - Cluster Computing and SSH/2.2 Remote Execution and File Transfer.md",
+    "Chapter 2 - Cluster Computing and SSH/2.1 SSH and HPC Environments.md",
+    "Chapter 3 - Shared-Memory Parallelism with OpenMP/3.1 OpenMP and the Fork-Join Model.md",
+    "Chapter 1 - Performance Measurement/1.4 Classic Optimization Exercises and Python DSA Speed Kit.md",
+    "Chapter 1 - Performance Measurement/1.4 Classic Optimization Exercises and Python DSA Speed Kit (1).md",
+    "Chapter 2 - Cluster Computing and SSH/2.3 Hardware vs Software — Fairness in Comparison.md",
+    "Chapter 1 - Performance Measurement/1.3 Algorithmic Optimization Exercises.md",
+    "Chapter 1 - Performance Measurement/1.2 Profiling and Timing Tools.md",
+    "Chapter 1 - Performance Measurement/1.1 HPC Basics and Speedup.md"
+  ]
+}

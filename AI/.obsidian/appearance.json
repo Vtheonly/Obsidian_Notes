@@ -1,3 +1,7 @@
 {
-  "theme": "system"
+  "theme": "system",
+  "cssTheme": "",
+  "enabledCssSnippets": [
+    "mermaid-fix"
+  ]
 }
