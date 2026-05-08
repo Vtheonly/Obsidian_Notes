@@ -1,15 +1,20 @@
+---
+tags: [polymorphism, dynamic-polymorphism, static-polymorphism]
+aliases: [polymorphism, dynamic polymorphism, static polymorphism]
+keywords: [polymorphism, dynamic polymorphism, static polymorphism]
+---
 ### Summary of Polymorphism in Java
 
 ---
 
-In this video, we dive into **polymorphism**, a fundamental concept in object-oriented programming, specifically in Java. Here's a breakdown of the key points:
+In this video, we dive into **polymorphism**, a fundamental concept in [[001 OOP Basics]] ,  [[002 Object]], specifically in Java. Here's a breakdown of the key points:
 
 ### 1. **What is Polymorphism?**
 - **Definition**: Polymorphism comes from the Greek words *poly* (meaning many) and *morph* (meaning form). In Java, it refers to the **ability of an object to identify as more than one type**. 
-- Example: A `Car` object can identify as both a `Car` and a `Vehicle`, because `Car` is a subclass of `Vehicle`.
+- Example: A `Car` object can identify as both a `Car` and a `Vehicle`, because `Car` is a [[030 Inheritance|subclass]] of `Vehicle`.
 
 ### 2. **Setting Up a Polymorphic Example**
-- We create a **parent class** `Vehicle` and several **child classes** that extend it:
+- We create a **parent [[005 Intro to Classes|class]]** `Vehicle` and several **child classes** that extend it:
   ```java
   class Vehicle { }
   class Car extends Vehicle { }
@@ -17,7 +22,7 @@ In this video, we dive into **polymorphism**, a fundamental concept in object-or
   class Boat extends Vehicle { }
   ```
 
-- **Problem**: If we want to store instances of `Car`, `Bicycle`, and `Boat` in an array, we can't do that with arrays of their specific types (e.g., `Car[]`). 
+- **Problem**: If we want to store instances of `Car`, `Bicycle`, and `Boat` in an [[051 Arrays|array]], we can't do that with arrays of their specific types (e.g., `Car[]`). 
 - **Solution**: Use polymorphism by making an array of the **parent type** (`Vehicle[]`). Since `Car`, `Bicycle`, and `Boat` all extend `Vehicle`, they can be stored in this array:
   ```java
   Vehicle[] racers = { new Car(), new Bicycle(), new Boat() };
@@ -114,7 +119,7 @@ That’s a great way to explain dynamic polymorphism in Java! Below, I’ll summ
 
 ## Introduction
 - **Polymorphism**: Derived from the Greek words "poly" (many) and "morph" (shape/form), polymorphism means "many shapes/forms."
-- **Dynamic Polymorphism**: Refers to the ability of an object to take many shapes/forms **after** the program has been compiled, during runtime.
+- **Dynamic Polymorphism**: Refers to the ability of an object to take many shapes/forms **after** the program has been compiled, during [[004 Compile Time vs Run Time|runtime]].
 
 ## Key Concepts
 - **Parent and Child Classes**: In this example, we create an `Animal` class (parent) and two child classes, `Dog` and `Cat`.
@@ -194,3 +199,7 @@ public class Main {
 
 ## Conclusion
 Dynamic polymorphism allows for flexible code that can handle multiple object types at runtime, enhancing the reusability and maintainability of code.
+
+
+---
+**Keywords:** #polymorphism, #dynamic-polymorphism, #static-polymorphism

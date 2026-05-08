@@ -1,7 +1,12 @@
+---
+tags: [array, arrays]
+aliases: [array, arrays]
+keywords: [array, arrays]
+---
 
 ## Arrays (The Low-Level Foundation)
 
-Arrays are **not** part of the Collections Framework. They are a feature built directly into the Java language syntax.
+Arrays are **not** part of the [[050 Collections Overview|Collections]] Framework. They are a feature built directly into the Java language syntax.
 
 ### Declaration and instantiation
 ```java
@@ -36,10 +41,14 @@ System.out.println(arr.length); // Prints 10 (capacity), not how many slots you 
 
 > [!WARNING]
 > **The Null Pitfall**
-> When you create an object array like `String[] arr = new String[5];`, Java fills it with `null` by default. If you try to access `arr[0].toUpperCase()` before putting a string in there, you will get a `NullPointerException`.
+> When you create an [[002 Object|object]] array like `String[] arr = new String[5];`, Java fills it with `null` by default. If you try to access `arr[0].toUpperCase()` before putting a string in there, you will get a `NullPointerException`.
 
 ### When to use Arrays?
 Use arrays only when:
 1.  You know the exact number of elements in advance.
 2.  You need maximum performance for primitive number crunching (e.g., image processing, matrices).
-3.  You are implementing a low-level data structure (like building your own ArrayList).
+3.  You are implementing a low-level data structure (like building your own [[054 List Interface|ArrayList]]).
+
+
+---
+**Keywords:** #array, #arrays

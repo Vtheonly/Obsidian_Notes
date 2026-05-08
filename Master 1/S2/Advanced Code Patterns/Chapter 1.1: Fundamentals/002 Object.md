@@ -1,5 +1,10 @@
+---
+tags: [object, objects, instance]
+aliases: [object, objects, instance]
+keywords: [object, objects, instance]
+---
 
-Object-Oriented Programming (OOP) is a paradigm in Java that uses "objects" to model real-world entities. In this tutorial, we explore the fundamentals of OOP in Java, including classes, objects, attributes, and methods. The example revolves around creating a `Car` class to illustrate these concepts.
+Object-Oriented Programming ([[001 OOP Basics|OOP]]) is a paradigm in Java that uses "objects" to model real-world entities. In this tutorial, we explore the fundamentals of OOP in Java, including classes, objects, attributes, and methods. The example revolves around creating a `Car` [[005 Intro to Classes|class]] to illustrate these concepts.
 
 ## Key Concepts
 
@@ -67,3 +72,7 @@ System.out.println(myCar2.model); // Corvette
 ## Conclusion
 This introduction to OOP in Java covered the basics of objects, classes, attributes, and methods. The example of the `Car` class provided a hands-on approach to understanding how objects are created and manipulated in Java. The next step is to learn about constructors to create more varied and realistic objects.
 
+
+
+---
+**Keywords:** #object, #objects, #instance

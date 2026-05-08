@@ -1,6 +1,11 @@
+---
+tags: [class, classes, blueprint]
+aliases: [class, classes, blueprint]
+keywords: [class, classes, blueprint]
+---
 ### 1. The Paradigm Shift: From Primitives to Objects
 
-Before understanding Object-Oriented Programming (OOP), we must look at **Primitive Data Types**. In early programming (and in Java basics), we use primitives like `int`, `double`, `boolean`, and `char`. These store single, simple values.
+Before understanding [[002 Object|Object]]-Oriented Programming ([[001 OOP Basics|OOP]]), we must look at **Primitive Data Types**. In early programming (and in Java basics), we use primitives like `int`, `double`, `boolean`, and `char`. These store single, simple values.
 
 **The Problem with Primitives:**
 As programs grow complex, primitives fail to group related data.
@@ -89,3 +94,7 @@ public static void main(String[] args) {
 
 > [!TIP] **The `null` Trap**
 > When you declare a reference variable like `User u;` without assigning it `new User();`, the value is `null`. If you try to do `u.name = "Caleb"`, you will get a **NullPointerException**. Always ensure you have instantiated the object with `new` before accessing it.
+
+
+---
+**Keywords:** #class, #classes, #blueprint

@@ -1,7 +1,12 @@
+---
+tags: [set-interface, hashset, treeset]
+aliases: [set interface, hashset, treeset]
+keywords: [set interface, hashset, treeset]
+---
 
-## The Set Interface (`java.util.Set`)
+## The Set [[044 Interfaces|Interface]] (`java.util.Set`)
 
-A **Set** is a collection that contains **no duplicate elements**. It models the mathematical set abstraction.
+A **Set** is a collection that contains **no duplicate elements**. It models the mathematical set [[040 Abstraction|abstraction]].
 
 **Key Properties:**
 1.  **Unique**: `set.add("A"); set.add("A");` -> The second add is ignored.
@@ -29,9 +34,13 @@ A **Set** is a collection that contains **no duplicate elements**. It models the
 | :--- | :--- | :--- | :--- |
 | **Duplicates** | No | No | No |
 | **Ordering** | None (Chaos) | Insertion Order | Sorted (Natural/Comparator) |
-| **Null allowed?** | Yes | Yes | No (usually throws exception) |
+| **Null allowed?** | Yes | Yes | No (usually throws [[063 Exceptions and Varargs|exception]]) |
 | **Speed** | Fastest ($O(1)$) | Fast ($O(1)$) | Medium ($O(\log n)$) |
 
 > [!WARNING]
 > **Mutable Objects in Sets**
-> Be very careful putting mutable objects (like a `Person` object where fields can change) into a `HashSet`. If you change the fields of the object *after* putting it in the set, its Hash Code changes, and the Set might "lose" it (it won't find it even if it's there).
+> Be very careful putting mutable objects (like a `Person` [[002 Object|object]] where fields can change) into a `HashSet`. If you change the fields of the object *after* putting it in the set, its Hash Code changes, and the Set might "lose" it (it won't find it even if it's there).
+
+
+---
+**Keywords:** #set-interface, #hashset, #treeset

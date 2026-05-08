@@ -1,3 +1,8 @@
+---
+tags: [compile-time, run-time, runtime]
+aliases: [compile time, run time, runtime]
+keywords: [compile time, run time, runtime]
+---
 In Java (and programming in general), tasks can be divided into two categories: **compile-time** and **run-time**. Understanding the difference between these can help you optimize your code and debug more effectively. Below, I will outline the common tasks that are handled at compile-time versus those that occur at run-time.
 
 ### Compile-Time Tasks
@@ -34,7 +39,7 @@ These tasks are performed when the code is compiled. The Java compiler checks th
    public void display(String b) { ... }
    ```
 
-6. **Array Declaration**:
+6. **[[051 Arrays|Array]] Declaration**:
    - The array's size can be determined at compile time when declared with a fixed size.
    ```java
    int[] numbers = new int[5]; // Compile-time size declaration
@@ -73,7 +78,7 @@ These tasks are performed when the program is executed. This is when the actual 
    }
    ```
 
-5. **Exception Handling**:
+5. **[[063 Exceptions and Varargs|Exception]] Handling**:
    - Exception handling mechanisms, such as try-catch blocks, are resolved during run time when an exception occurs.
    ```java
    try {
@@ -95,7 +100,7 @@ Understanding the distinction between compile-time and run-time tasks is crucial
 
 | **Compile-Time Tasks**          | **Run-Time Tasks**                |
 |---------------------------------|-----------------------------------|
-| Variable Declaration            | Object Instantiation              |
+| Variable Declaration            | [[002 Object|Object]] Instantiation              |
 | Variable Initialization         | Dynamic Binding                   |
 | Constant Checking               | Array Filling                     |
 | Type Checking                   | Array Iteration                   |
@@ -103,3 +108,6 @@ Understanding the distinction between compile-time and run-time tasks is crucial
 | Array Declaration               | User Input                        |
 
 If you have any further questions or need clarification on any specific points, feel free to ask!
+
+---
+**Keywords:** #compile-time, #run-time, #runtime

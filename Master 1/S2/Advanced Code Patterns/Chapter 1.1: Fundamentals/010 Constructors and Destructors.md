@@ -1,9 +1,14 @@
+---
+tags: [constructor, destructor]
+aliases: [constructor, destructor]
+keywords: [constructor, destructor]
+---
 
 
 ### 1. **Constructors in Java**
 
 #### **Description:**
-A constructor in Java is a special method that is automatically called when an object of a class is created. It is used to initialize the newly created object and allocate resources if necessary. Constructors set the initial state of an object and often involve assigning values to the object's attributes.
+A constructor in Java is a special method that is automatically called when an [[002 Object|object]] of a [[005 Intro to Classes|class]] is created. It is used to initialize the newly created object and allocate resources if necessary. Constructors set the initial state of an object and often involve assigning values to the object's attributes.
 
 #### **Key Features:**
 - **Name:** The constructor must have the same name as the class.
@@ -70,7 +75,7 @@ public class Main {
 
 #### **Notes:**
 - A constructor cannot be `abstract`, `final`, `static`, or `synchronized`.
-- Constructors are not inherited by subclasses, but a subclass can call a superclass's constructor using the `super()` keyword.
+- Constructors are not inherited by subclasses, but a [[030 Inheritance|subclass]] can call a superclass's constructor using the `super()` keyword.
 
 ### 2. **Destructors in Java**
 
@@ -149,3 +154,7 @@ try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
 - **Constructors** are essential for initializing objects with specific attributes, while **destructors** in Java are replaced by garbage collection, with explicit cleanup methods used for resource management.
 
 
+
+
+---
+**Keywords:** #constructor, #destructor

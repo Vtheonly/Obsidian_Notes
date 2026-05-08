@@ -1,14 +1,19 @@
+---
+tags: [generics, type-erasure]
+aliases: [generics, type erasure]
+keywords: [generics, type erasure]
+---
 
-Generics enable types (classes and interfaces) to be parameters when defining classes, interfaces, and methods. This feature eliminates the need to create multiple versions of methods or classes for various data types, allowing for a more efficient and cleaner codebase.
+Generics enable types (classes and [[044 Interfaces|interfaces]]) to be parameters when defining classes, interfaces, and methods. This feature eliminates the need to create multiple versions of methods or classes for various data types, allowing for a more efficient and cleaner codebase.
 
 ## Benefits of Generics
-- **Code Reusability**: One version of a method or class can handle multiple data types.
+- **Code Reusability**: One version of a method or [[005 Intro to Classes|class]] can handle multiple data types.
 - **Type Safety**: Compile-time checks ensure type correctness.
 
 ## Example: Generic Methods
 
 ### Non-Generic Method
-Initially, if we want to display elements from different arrays (e.g., integers, doubles, characters, strings), we would need separate methods for each type:
+Initially, if we want to display elements from different [[051 Arrays|arrays]] (e.g., integers, doubles, characters, strings), we would need separate methods for each type:
 
 ```java
 public void displayIntArray(int[] arr) { ... }
@@ -113,3 +118,7 @@ MyNumber<Double> doubleNum = new MyNumber<>(3.14);
 
 ## Conclusion
 Generics in Java allow for creating flexible and reusable code while maintaining type safety. By leveraging generic methods and classes, you can significantly reduce code duplication and improve readability.
+
+
+---
+**Keywords:** #generics, #type-erasure

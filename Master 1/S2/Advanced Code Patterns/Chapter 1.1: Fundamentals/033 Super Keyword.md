@@ -1,7 +1,12 @@
-In this video transcript, the creator explains the **super keyword** in Java with an example involving superheroes, showcasing how to use it to access the properties and methods of a superclass (or parent class). Let's summarize the key points of the explanation and example.
+---
+tags: [super-keyword]
+aliases: [super keyword]
+keywords: [super keyword]
+---
+In this video transcript, the creator explains the **super keyword** in Java with an example involving superheroes, showcasing how to use it to access the properties and methods of a superclass (or parent [[005 Intro to Classes|class]]). Let's summarize the key points of the explanation and example.
 
 ### The `super` Keyword in Java
-The `super` keyword in Java is used to refer to the superclass (or parent class) of the current object. It is similar to the `this` keyword, which refers to the current class, but `super` focuses on the parent class. This is particularly important when working with inheritance, as it allows access to the superclass's methods, constructors, or variables.
+The `super` keyword in Java is used to refer to the superclass (or parent class) of the current [[002 Object|object]]. It is similar to the `this` keyword, which refers to the current class, but `super` focuses on the parent class. This is particularly important when working with [[030 Inheritance|inheritance]], as it allows access to the superclass's methods, constructors, or variables.
 
 ### Example Overview
 
@@ -9,7 +14,7 @@ In this example, the instructor sets up two classes:
 - **Person**: The superclass that holds general attributes for a person (name, age).
 - **Hero**: A subclass that extends `Person` and adds an extra attribute (power) specific to superheroes.
 
-The use of `super` demonstrates how to call the constructor and methods of the `Person` class when creating a `Hero` object.
+The use of `super` demonstrates how to call the [[010 Constructors and Destructors|constructor]] and methods of the `Person` class when creating a `Hero` object.
 
 ### Step-by-Step Breakdown
 
@@ -83,4 +88,7 @@ Everything
 
 The **`super` keyword** allows subclasses to access properties and methods from the superclass, simplifying code reuse and ensuring that superclass attributes are initialized or methods are called as needed. This is particularly useful in hierarchical class structures like the `Person` and `Hero` example above.
 
-By using `super`, you ensure that common attributes or behaviors (such as `name` and `age` in this case) are managed in the parent class and reused in the child class, avoiding code duplication and adhering to best practices in object-oriented programming.
+By using `super`, you ensure that common attributes or behaviors (such as `name` and `age` in this case) are managed in the parent class and reused in the child class, avoiding code duplication and adhering to best practices in [[001 OOP Basics|object-oriented programming]].
+
+---
+**Keywords:** #super-keyword

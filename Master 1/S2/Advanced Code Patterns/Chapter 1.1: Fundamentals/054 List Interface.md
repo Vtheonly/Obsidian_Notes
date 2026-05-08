@@ -1,5 +1,10 @@
+---
+tags: [list-interface, arraylist, linkedlist]
+aliases: [list interface, arraylist, linkedlist]
+keywords: [list interface, arraylist, linkedlist]
+---
 
-## The List Interface (`java.util.List`)
+## The List [[044 Interfaces|Interface]] (`java.util.List`)
 
 A **List** is an **ordered collection** (sometimes called a "sequence").
 
@@ -12,7 +17,7 @@ A **List** is an **ordered collection** (sometimes called a "sequence").
 
 This is the default "go-to" implementation for 90% of use cases.
 
-*   **Under the hood**: It uses a standard array (`Object[] elementData`).
+*   **Under the hood**: It uses a standard [[051 Arrays|array]] (`Object[] elementData`).
 *   **Dynamic**: When the internal array gets full, `ArrayList` creates a new array that is **50% larger** and copies everything over automatically.
 
 **Performance (Big O):**
@@ -57,10 +62,13 @@ graph LR
 | `get(i)` | Fast ($O(1)$) | Slow ($O(n)$) | **ArrayList** |
 | `add()` (at end) | Fast | Fast | Tie |
 | `add(i, val)` (middle) | Slow (Shifting) | Fast (Pointer change)* | **LinkedList** (mostly) |
-| Memory Overhead | Low | High (Node objects) | **ArrayList** |
+| Memory Overhead | Low | High (Node [[002 Object|objects]]) | **ArrayList** |
 
 > [!TIP]
 > **Modern Hardware Tip**
 > Even if you insert in the middle, `ArrayList` is often practically faster than `LinkedList` for small-to-medium datasets because of **CPU Cache Locality**. Arrays are contiguous in memory; Linked Lists are scattered. The CPU hates jumping around memory. **Default to ArrayList unless you have a specific reason not to.**
 
 ---
+
+---
+**Keywords:** #list-interface, #arraylist, #linkedlist

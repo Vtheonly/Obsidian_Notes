@@ -1,8 +1,13 @@
+---
+tags: [static-member, static-method, static-variable]
+aliases: [static member, static method, static variable]
+keywords: [static member, static method, static variable]
+---
 ### 1. Instance vs. Static
 
-- **Instance (Non-static):** Belongs to the specific object. Every object has its own copy.
+- **Instance (Non-static):** Belongs to the specific [[002 Object|object]]. Every object has its own copy.
   - _Example:_ `name`. Caleb has a name, Sally has a different name.
-- **Static:** Belongs to the **Class** itself. There is only one copy shared by _all_ objects.
+- **Static:** Belongs to the **[[005 Intro to Classes|Class]]** itself. There is only one copy shared by _all_ objects.
 
 ### 2. Static Variables
 
@@ -28,3 +33,7 @@ A method that can run without creating an object.
 
 > [!NOTE] **Main Method**
 > `public static void main` is static because the Java Virtual Machine (JVM) needs to run it to start the program _before_ any objects exist.
+
+
+---
+**Keywords:** #static-member, #static-method, #static-variable

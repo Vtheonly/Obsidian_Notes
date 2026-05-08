@@ -1,3 +1,8 @@
+---
+tags: [abstraction]
+aliases: [abstraction]
+keywords: [abstraction]
+---
 It looks like you're sharing a video or tutorial script explaining the **`abstract` keyword in Java**. I'll summarize and break down the key concepts:
 
 ---
@@ -6,14 +11,14 @@ It looks like you're sharing a video or tutorial script explaining the **`abstra
 
 #### **1. What is the `abstract` keyword?**
 - The `abstract` keyword in Java can be applied to both **classes** and **methods**.
-- An **abstract class**:
+- An **abstract [[005 Intro to Classes|class]]**:
   - **Cannot be instantiated** (you cannot create objects of this class directly).
   - Can have **subclasses** (child classes) that extend it.
 - An **abstract method**:
   - Is declared without a body (no implementation), meaning it forces subclasses to provide the implementation.
 
-#### **2. Example of Abstract Class**
-- **Scenario**: You have a `Vehicle` class and a `Car` class that extends `Vehicle`.
+#### **2. Example of [[041 Abstraction Details|Abstract Class]]**
+- **Scenario**: You have a `Vehicle` class and a `Car` class that [[030 Inheritance|extends]] `Vehicle`.
   ```java
   class Vehicle { }
   class Car extends Vehicle { }
@@ -30,7 +35,7 @@ It looks like you're sharing a video or tutorial script explaining the **`abstra
   abstract class Vehicle { }
   ```
 
-- Now, trying to create a `Vehicle` object will give an error:
+- Now, trying to create a `Vehicle` [[002 Object|object]] will give an error:
   ```java
   Vehicle vehicle = new Vehicle(); // Error: Cannot instantiate the type Vehicle
   ```
@@ -69,3 +74,6 @@ It looks like you're sharing a video or tutorial script explaining the **`abstra
 ---
 
 That's the basics of how the `abstract` keyword works in Java. If you want more detailed explanations or examples, feel free to ask!
+
+---
+**Keywords:** #abstraction

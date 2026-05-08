@@ -1,8 +1,13 @@
+---
+tags: [best-practices, design-principles]
+aliases: [best practices, design principles]
+keywords: [best practices, design principles]
+---
 9. Best Practices - Coding to Interfaces.md
 
 ## The Golden Rule: Code to Interfaces
 
-This is the hallmark of a professional Java developer. You should almost never declare a variable using the specific class implementation.
+This is the hallmark of a professional Java developer. You should almost never declare a variable using the specific [[005 Intro to Classes|class]] implementation.
 
 ### The Wrong Way
 ```java
@@ -17,7 +22,7 @@ List<String> users = new ArrayList<>();
 ```
 
 ### Why? "Dependency Inversion"
-By using the Interface (`List`) on the left side:
+By using the [[044 Interfaces|Interface]] (`List`) on the left side:
 1.  **Flexibility**: You can change the implementation later without breaking the rest of your code.
     *   If you realize you need faster inserts, you simply change `new ArrayList<>()` to `new LinkedList<>()`. Because the rest of your code only knows it's a `List`, nothing else needs to change.
 2.  **API Design**: If you write a method, accept the interface:
@@ -39,5 +44,8 @@ List<String> list = new ArrayList<>();
 1.  **Always** use the interface type for variable declarations (`List`, `Set`, `Map`).
 2.  **Prefer** `ArrayList` over `LinkedList` generally.
 3.  **Prefer** `ArrayDeque` over `Stack`.
-4.  **Use Generics** strictly (no raw types like `List list = new ArrayList()`).
-5.  **Understand** the difference between `==` (reference check) and `.equals()` (content check) when searching collections.
+4.  **Use [[062 Generics|Generics]]** strictly (no raw types like `List list = new ArrayList()`).
+5.  **Understand** the difference between `==` (reference check) and `.equals()` (content check) when searching [[050 Collections Overview|collections]].
+
+---
+**Keywords:** #best-practices, #design-principles

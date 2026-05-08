@@ -1,13 +1,18 @@
+---
+tags: [copying-objects, deep-copy, shallow-copy]
+aliases: [copying objects, deep copy, shallow copy]
+keywords: [copying objects, deep copy, shallow copy]
+---
 
 # Copying Objects in Java
 
 ## Introduction
-In this video, we explore how to copy objects in Java, specifically focusing on a `Car` class. We will cover the concepts of references, memory addresses, and how to properly copy object attributes without losing the integrity of the original object.
+In this video, we explore how to copy objects in Java, specifically focusing on a `Car` [[005 Intro to Classes|class]]. We will cover the concepts of references, memory addresses, and how to properly copy [[002 Object|object]] attributes without losing the integrity of the original object.
 
 ## Class Setup
 We define a `Car` class with the following features:
-- **Private Variables:** `make`, `model`, and `year`
-- **Constructor:** Initializes the car object and assigns values to the private variables using setter methods.
+- **[[020 Encapsulation and Access Control|Private]] Variables:** `make`, `model`, and `year`
+- **[[010 Constructors and Destructors|Constructor]]:** Initializes the car object and assigns values to the private variables using setter methods.
 - **Getter Methods:** Retrieve the values of the private variables.
 
 ### Example Car Class
@@ -121,3 +126,6 @@ If you found this helpful, please consider liking, commenting, and subscribing!
 ---
 
 Feel free to modify any sections or add more details as you see fit!
+
+---
+**Keywords:** #copying-objects, #deep-copy, #shallow-copy

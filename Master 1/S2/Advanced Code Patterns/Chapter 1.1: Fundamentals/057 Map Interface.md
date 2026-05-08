@@ -1,5 +1,10 @@
+---
+tags: [map-interface, hashmap, treemap]
+aliases: [map interface, hashmap, treemap]
+keywords: [map interface, hashmap, treemap]
+---
 
-## The Map Interface (`java.util.Map`)
+## The Map [[044 Interfaces|Interface]] (`java.util.Map`)
 
 **Map is NOT a Collection.** It does not extend the `Collection` interface. It is a distinct data structure mapping **Keys** to **Values**.
 
@@ -38,3 +43,7 @@ for (Map.Entry<String, Integer> entry : scores.entrySet()) {
 ```
 
 ---
+
+
+---
+**Keywords:** #map-interface, #hashmap, #treemap

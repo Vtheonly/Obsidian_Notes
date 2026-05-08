@@ -1,3 +1,8 @@
+---
+tags: [exception, exceptions, varargs]
+aliases: [exception, exceptions, varargs]
+keywords: [exception, exceptions, varargs]
+---
 ### 1. Exception Handling (The Safety Net)
 
 In the ATM Project (File 4), user input is unpredictable. A user might type "Hello" when the ATM asks for a numeric PIN.
@@ -19,11 +24,11 @@ try {
 **Checked vs. Unchecked Exceptions:**
 
 - **Checked (Compile-time):** Java forces you to handle these (e.g., `IOException` when reading a file). The code won't compile without a try-catch.
-- **Unchecked (Runtime):** Errors logic (e.g., `NullPointerException`, `IndexOutOfBounds`). Java doesn't force you to catch these, but you should prevent them.
+- **Unchecked ([[004 Compile Time vs Run Time|Runtime]]):** Errors logic (e.g., `NullPointerException`, `IndexOutOfBounds`). Java doesn't force you to catch these, but you should prevent them.
 
 ### 2. Variable Arguments (Varargs)
 
-In Project 3 (Calculator), the `Operate` interface uses a special syntax:
+In Project 3 (Calculator), the `Operate` [[044 Interfaces|interface]] uses a special syntax:
 
 ```java
 public interface Operate {
@@ -33,7 +38,11 @@ public interface Operate {
 
 **The `...` Syntax:**
 
-- This is "Syntactic Sugar" for an array.
+- This is "Syntactic Sugar" for an [[051 Arrays|array]].
 - It allows the method to accept **zero or more** arguments.
 - Internally, Java treats `numbers` as `Double[] numbers`.
 - **Benefit:** Flexibility. You can call `getResult(1.0, 2.0)` or `getResult(1.0, 2.0, 3.0, 4.0)` without overloading the method 10 times.
+
+
+---
+**Keywords:** #exception, #exceptions, #varargs

@@ -1,14 +1,19 @@
+---
+tags: [interface, interfaces, implements]
+aliases: [interface, interfaces, implements]
+keywords: [interface, interfaces, implements]
+---
 ### Overview of Java Interfaces
 
-In this explanation, we'll discuss the concept of **interfaces** in Java, which are an important part of object-oriented programming. The content comes from a tutorial video on interfaces in Java, and the structure follows the flow of how to create, implement, and utilize interfaces in different classes.
+In this explanation, we'll discuss the concept of **interfaces** in Java, which are an important part of [[001 OOP Basics|[[002 Object|object]]-oriented programming]]. The content comes from a tutorial video on interfaces in Java, and the structure follows the flow of how to create, implement, and utilize interfaces in different classes.
 
 ---
 
 ### Key Concepts
 
 #### 1. **What is an Interface?**
-- **Definition**: An interface is like a **template** or **contract** that defines methods a class must implement. It specifies what a class must do without defining how to do it. 
-- **Difference from Inheritance**: While classes can only inherit from **one superclass**, they can **implement multiple interfaces**.
+- **Definition**: An interface is like a **template** or **contract** that defines methods a [[005 Intro to Classes|class]] must implement. It specifies what a class must do without defining how to do it. 
+- **Difference from [[030 Inheritance|Inheritance]]**: While classes can only inherit from **one superclass**, they can **implement multiple interfaces**.
 
 #### 2. **Creating Interfaces**
 - **Example**: Let's say we have different animals in our program: `Rabbit`, `Hawk`, and `Fish`.
@@ -152,3 +157,6 @@ public class Main {
 ```
 
 Interfaces provide flexibility and are a powerful tool for designing software that can be extended and maintained more easily. You can implement multiple interfaces to define different aspects of behavior and share those behaviors across unrelated classes.
+
+---
+**Keywords:** #interface, #interfaces, #implements

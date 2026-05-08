@@ -1,4 +1,9 @@
-### Class
+---
+tags: [oop, object-oriented-programming]
+aliases: [OOP, Object-Oriented Programming]
+keywords: [OOP, Object-Oriented Programming]
+---
+### [[005 Intro to Classes|Class]]
 
 - **Definition:**
   - A class serves as a blueprint or a template for creating objects. It encapsulates the attributes (properties) and behaviors (methods) that define the objects instantiated from it.
@@ -17,7 +22,7 @@
   ```
   - In this example, `MyClass` is a class with an attribute `myAttribute` and a method `myMethod()`.
 
-### Object
+### [[002 Object|Object]]
 
 - **Definition:**
   - An object is an instance of a class, representing a specific entity with defined attributes and behaviors. Objects are the actual entities that interact in your program, following the structure laid out by their respective classes.
@@ -56,7 +61,7 @@
   ```
   - To invoke a method on an object, use the dot (`.`) operator followed by the method name.
 
-### Constructor
+### [[010 Constructors and Destructors|Constructor]]
 
 - **Definition:**
   - A constructor is a special method used to initialize objects of a class. It sets up the initial state of an object when it is created.
@@ -71,7 +76,7 @@
   }
   ```
   - Constructors have the same name as the class and no return type. They are automatically called when an object is instantiated.
-  - One of the important property of java constructor is that **it can not be static**. We know static keyword belongs to a class rather than the object of a class. A constructor is called when an object of a class is created, so no use of the static constructor.
+  - One of the important property of java constructor is that **it can not be static**. We know [[013 Static Keyword|static keyword]] belongs to a class rather than the object of a class. A constructor is called when an object of a class is created, so no use of the static constructor.
 
 - **Creating an Object with Constructor:**
   ```java
@@ -80,7 +85,7 @@
   ```
   - In this example, the constructor `MyClass()` initializes `myObject`.
 
-### Encapsulation
+### [[020 Encapsulation and Access Control|Encapsulation]]
 
 - **Definition:**
   - Encapsulation is the practice of bundling the data (attributes) and the methods that manipulate that data within a single unit or class. It also involves restricting access to some of the object's components to protect the integrity of the object's state.
@@ -102,7 +107,7 @@
   ```
   - Here, `myAttribute` is private, meaning it can only be accessed through the public methods `setAttribute` and `getAttribute`.
 
-### Inheritance
+### [[030 Inheritance|Inheritance]]
 
 - **Definition:**
   - Inheritance allows one class (the subclass) to inherit fields and methods from another class (the superclass). This promotes code reuse and establishes a relationship between the classes.
@@ -118,10 +123,10 @@
 
 
 
-### Polymorphism
+### [[042 Polymorphism Summary|Polymorphism]]
 
 - **Definition:**
-  - Polymorphism is the ability of objects of different classes to be treated as objects of a common superclass. It allows one interface to be used for a general class of actions, with specific actions being determined by the exact nature of the object that is being acted upon.
+  - Polymorphism is the ability of objects of different classes to be treated as objects of a common superclass. It allows one [[044 Interfaces|interface]] to be used for a general class of actions, with specific actions being determined by the exact nature of the object that is being acted upon.
 
 - **Types of Polymorphism:**
   - **Compile-time Polymorphism (Method Overloading):**
@@ -139,7 +144,7 @@
       }
       ```
 
-  - **Runtime Polymorphism (Method Overriding):**
+  - **[[004 Compile Time vs Run Time|Runtime]] Polymorphism (Method Overriding):**
     - Achieved when a subclass provides a specific implementation of a method that is already defined in its superclass.
     - Example:
       ```java
@@ -162,7 +167,7 @@
   - Polymorphism enhances flexibility and maintainability in code by allowing methods to work with objects of different types, enabling developers to write more generic and reusable code.
 
 
-### Abstraction
+### [[040 Abstraction|Abstraction]]
 
 - **Definition:**
   - Abstraction is the concept of hiding the complex implementation details of a system and exposing only the essential features to the user. It focuses on what an object does rather than how it does it.
@@ -172,7 +177,7 @@
 
 - **How to Achieve Abstraction:**
   - **Abstract Classes:**
-    - An abstract class is a class that cannot be instantiated on its own and is meant to be subclassed. It can have both abstract methods (without implementation) and concrete methods (with implementation).
+    - An [[041 Abstraction Details|abstract class]] is a class that cannot be instantiated on its own and is meant to be subclassed. It can have both abstract methods (without implementation) and concrete methods (with implementation).
     - Example:
       ```java
       abstract class Animal {
@@ -185,7 +190,7 @@
       ```
 
   - **Interfaces:**
-    - An interface is a contract that defines a set of methods that a class must implement. It provides a way to achieve abstraction and multiple inheritance.
+    - An interface is a contract that defines a set of methods that a class must implement. It provides a way to achieve abstraction and [[034 Multiple Inheritance and The Diamond Problem|multiple inheritance]].
     - Example:
       ```java
       interface Movable {
@@ -202,3 +207,6 @@
 - **Benefits:**
   - Abstraction simplifies the interaction with objects by providing a clear and simplified interface, making it easier to manage and maintain code. It also allows for flexibility in the implementation, as the internal details can be changed without affecting the user's interaction with the object.
 [[Qs1]]
+
+---
+**Keywords:** #oop, #object-oriented-programming

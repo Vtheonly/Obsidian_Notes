@@ -1,3 +1,8 @@
+---
+tags: [encapsulation, access-control, access-modifier, private, public, protected]
+aliases: [encapsulation, access control, access modifier, private, public, protected]
+keywords: [encapsulation, access control, access modifier, private, public, protected]
+---
 ### 1. The Core Philosophy of Encapsulation
 
 Encapsulation is often defined as "data hiding," but that definition is superficial. A deeper, more accurate definition is **bundling data and behavior into a single unit (the capsule) and establishing a controlled boundary.**
@@ -6,10 +11,10 @@ Encapsulation is often defined as "data hiding," but that definition is superfic
 
 Think of a medical capsule.
 
-1.  **The Shell:** This is the Class definition and the Access Modifiers. It dictates what part of the contents interacts with the outside world (the patient's stomach).
+1.  **The Shell:** This is the [[005 Intro to Classes|Class]] definition and the Access Modifiers. It dictates what part of the contents interacts with the outside world (the patient's stomach).
 2.  **The Contents:** These are your data fields (variables) and internal logic. They are potent and sensitive.
 
-If you break the shell and access the contents directly, the medicine might dissolve too fast or interact poorly with the environment. Similarly, if you access an object's variables directly, you bypass the logic intended to keep that object functioning correctly.
+If you break the shell and access the contents directly, the medicine might dissolve too fast or interact poorly with the environment. Similarly, if you access an [[002 Object|object]]'s variables directly, you bypass the logic intended to keep that object functioning correctly.
 
 #### **The "Cell" Analogy**
 
@@ -31,8 +36,8 @@ Java provides four distinct levels of visibility. Understanding the interaction 
 | :------------ | :----------------------------------------------------------- | :-------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
 | **Private**   | Only inside the **same class file**.                         | `private`       | **Internal State:** Variables like `password`, `balance`, or helper methods like `calculateInternalTax()`.                         |
 | **Default**   | Inside the class + **Same Package** (Folder).                | _(No keyword)_  | **Module Internal:** Classes that help other classes in the same library but shouldn't be exposed to the user of the library.      |
-| **Protected** | Inside the class + Package + **Child Classes** (Subclasses). | `protected`     | **Inheritance:** When you want a child class to modify a parent's variable directly, but still hide it from the rest of the world. |
-| **Public**    | **Everywhere**.                                              | `public`        | **Interface:** The methods you want the world to use (`login()`, `withdraw()`, `move()`).                                          |
+| **Protected** | Inside the class + Package + **Child Classes** (Subclasses). | `protected`     | **[[030 Inheritance|Inheritance]]:** When you want a child class to modify a parent's variable directly, but still hide it from the rest of the world. |
+| **Public**    | **Everywhere**.                                              | `public`        | **[[044 Interfaces|Interface]]:** The methods you want the world to use (`login()`, `withdraw()`, `move()`).                                          |
 
 #### **B. Deep Dive: The "Default" Modifier Trap**
 
@@ -117,3 +122,7 @@ public void setName(String name) {
     this.name = name; // Assign parameter to instance variable
 }
 ```
+
+
+---
+**Keywords:** #encapsulation, #access-control, #access-modifier, #private, #public, #protected

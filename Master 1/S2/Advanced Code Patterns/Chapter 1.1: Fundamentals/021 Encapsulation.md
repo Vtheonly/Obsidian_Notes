@@ -1,11 +1,11 @@
-Here's a structured and informative summary of your video content on encapsulation in Java:
+Here's a structured and informative summary of your video content on [[020 Encapsulation and Access Control|encapsulation]] in Java:
 
 ---
 
 # Encapsulation in Java
 
 ## **Introduction**
-Encapsulation is one of the fundamental concepts in object-oriented programming (OOP) in Java. It involves wrapping the data (attributes) and the code (methods) that manipulates the data into a single unit or class. This ensures that the internal representation of an object is hidden from the outside, exposing only the necessary parts.
+Encapsulation is one of the fundamental concepts in [[002 Object|object]]-oriented programming ([[001 OOP Basics|OOP]]) in Java. It involves wrapping the data (attributes) and the code (methods) that manipulates the data into a single unit or [[005 Intro to Classes|class]]. This ensures that the internal representation of an object is hidden from the outside, exposing only the necessary parts.
 
 ## **Why Encapsulation Matters**
 Encapsulation provides several benefits, including:
@@ -22,7 +22,7 @@ private String model;
 private int year;
 ```
 
-### **Creating a Constructor**
+### **Creating a [[010 Constructors and Destructors|Constructor]]**
 A constructor is used to initialize the attributes of the class when a new object is created.
 
 ```java

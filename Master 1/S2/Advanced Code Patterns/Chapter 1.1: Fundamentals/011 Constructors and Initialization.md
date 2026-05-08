@@ -1,12 +1,12 @@
-### 1. What is a Constructor?
+### 1. What is a [[010 Constructors and Destructors|Constructor]]?
 
 A Constructor is a **special method** used to initialize objects. It is called immediately when you use the `new` keyword.
 
 **Key Characteristics:**
 
-1.  **Name:** Must match the Class name exactly.
+1.  **Name:** Must match the [[005 Intro to Classes|Class]] name exactly.
 2.  **Return Type:** It has **no return type** (not even `void`).
-3.  **Execution:** Runs only once per object creation.
+3.  **Execution:** Runs only once per [[002 Object|object]] creation.
 
 ---
 

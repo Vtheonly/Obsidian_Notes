@@ -1,17 +1,22 @@
+---
+tags: [collections, data-structures]
+aliases: [collections, data structures]
+keywords: [collections, data structures]
+---
 
 ## Overview: The Java Container Landscape
 
-When storing data in Java, beginners often confuse terms like "Array", "List", and "Collection". It is crucial to separate these into three distinct "worlds".
+When storing data in Java, beginners often confuse terms like "[[051 Arrays|Array]]", "List", and "Collection". It is crucial to separate these into three distinct "worlds".
 
 Java divides data containers into three main categories:
 
 1.  **Arrays**: Low-level, language-integrated features.
-2.  **The Collections Framework**: A modern set of Interfaces and Classes (List, Set, Map).
+2.  **The Collections Framework**: A modern set of [[044 Interfaces|Interfaces]] and [[005 Intro to Classes|Classes]] (List, Set, Map).
 3.  **Legacy Collections**: Old classes (Vector, Hashtable) that are mostly obsolete.
 
 ### The Mental Model
 
-The most important distinction is between **Arrays** (fixed, fast, primitive) and **Collections** (dynamic, object-oriented, flexible).
+The most important distinction is between **Arrays** (fixed, fast, primitive) and **Collections** (dynamic, [[002 Object|object]]-oriented, flexible).
 
 ```mermaid
 graph TD
@@ -46,7 +51,7 @@ graph TD
 
 ### Key Differences Summary
 
-| Feature | **Array** | **Collection (e.g., ArrayList)** |
+| Feature | **Array** | **Collection (e.g., [[054 List Interface|ArrayList]])** |
 | :--- | :--- | :--- |
 | **Size** | Fixed at creation. | Dynamic (grows automatically). |
 | **Performance** | Fastest (no overhead). | Slightly slower (wrapper overhead). |
@@ -57,3 +62,7 @@ graph TD
 > [!TIP]
 > **Map is NOT a Collection.**
 > Notice in the diagram that `Map` does not extend `Collection`. This is a common interview question. A `Collection` stores individual elements (like a bag of marbles), whereas a `Map` stores pairs (Key-Value).
+
+
+---
+**Keywords:** #collections, #data-structures

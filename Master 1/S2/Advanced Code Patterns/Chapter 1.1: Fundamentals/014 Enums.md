@@ -1,12 +1,17 @@
+---
+tags: [enum, enumerations, enumeration]
+aliases: [enum, enumerations, enumeration]
+keywords: [enum, enumerations, enumeration]
+---
 ### 1. More than just Constants
 
 From File 2, we see `enum Membership { Bronze, Silver, Gold }`.
 
-In C++, enums are basically integers (0, 1, 2). In Java, Enums are **full-blown Classes**.
+In C++, enums are basically integers (0, 1, 2). In Java, Enums are **full-blown [[005 Intro to Classes|Classes]]**.
 
 - They can have constructors.
 - They can have methods.
-- They can have instance variables.
+- They can have [[002 Object|instance]] variables.
 
 ### 2. Type Safety
 
@@ -19,3 +24,7 @@ Using Enums prevents "Magic Strings" or "Magic Numbers."
 
 - `.name()`: Returns the string name ("Gold").
 - `.ordinal()`: Returns the numerical index (0, 1, or 2). This is useful for sorting tiers (Gold > Silver).
+
+
+---
+**Keywords:** #enum, #enumerations, #enumeration

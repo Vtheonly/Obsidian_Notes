@@ -1,6 +1,11 @@
+---
+tags: [new-keyword, new-operator]
+aliases: [new keyword, new operator]
+keywords: [new keyword, new operator]
+---
 
 
-The `new` keyword in Java is used to create a new instance of a class. When you want to instantiate a class, you use the `new` keyword followed by the class constructor. Here's an example using the `Random` class from the `java.util` package:
+The `new` keyword in Java is used to create a new instance of a [[005 Intro to Classes|class]]. When you want to instantiate a class, you use the `new` keyword followed by the class [[010 Constructors and Destructors|constructor]]. Here's an example using the `Random` class from the `java.util` package:
 
 ```java
 Random random = new Random();
@@ -10,7 +15,7 @@ Random random = new Random();
 
 - `random`: This is the name you give to the instance of the `Random` class. You can choose any valid identifier as the name.
 
-- `new Random()`: This part creates a new instance of the `Random` class. The `new` keyword allocates memory for a new object, and `Random()` is a constructor call that initializes the new object.
+- `new Random()`: This part creates a new instance of the `Random` class. The `new` keyword allocates memory for a new [[002 Object|object]], and `Random()` is a constructor call that initializes the new object.
 
 Once you've created the `Random` object, you can use its methods to generate random numbers. For example:
 
@@ -23,3 +28,6 @@ In this example, `nextInt(100)` generates a random integer between 0 (inclusive)
 In summary, the `new` keyword is crucial for creating new instances of classes in Java, and it is used to allocate memory and initialize objects. In the given example, it is used to create a new instance of the `Random` class for generating random numbers.
 
 --- 
+
+---
+**Keywords:** #new-keyword, #new-operator

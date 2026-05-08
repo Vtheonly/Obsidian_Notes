@@ -1,6 +1,11 @@
+---
+tags: [static-keyword]
+aliases: [static keyword]
+keywords: [static keyword]
+---
 ### What Does `static` Mean in Methods in Java?
 
-In Java, the `static` keyword is used to define a method or variable that belongs to the class itself rather than to instances (objects) of the class. When a method or variable is declared as `static`, it can be accessed without creating an instance of the class.
+In Java, the `static` keyword is used to define a method or variable that belongs to the [[005 Intro to Classes|class]] itself rather than to instances (objects) of the class. When a method or variable is declared as `static`, it can be accessed without creating an instance of the class.
 
 ### How Does It Affect Variables and Methods?
 
@@ -21,7 +26,7 @@ Changing static variable values outside the class where they are defined is gene
 - Other classes that access the static variable will see the updated value.
 
 2. **Static Methods:**
-   - A static method is a method that belongs to the class rather than to instances of the class. It can be called directly on the class itself without creating an instance.
+   - A [[012 Static Members|static method]] is a method that belongs to the class rather than to instances of the class. It can be called directly on the class itself without creating an instance.
    ```java
    public class MyClass {
        static void staticMethod() {
@@ -101,5 +106,9 @@ class MyClass {
 
 The restriction on static methods accessing instance members directly is a design choice in Java that helps maintain clear separation between class-level and instance-level functionality. It prevents confusion and potential bugs that could arise from trying to access instance-specific state in a context where no instance exists.
 
-While it may seem limiting, this rule encourages good object-oriented design principles and helps programmers avoid common pitfalls associated with mixing static and instance contexts.
+While it may seem limiting, this rule encourages good [[002 Object|object]]-oriented design principles and helps programmers avoid common pitfalls associated with mixing static and instance contexts.
 
+
+
+---
+**Keywords:** #static-keyword

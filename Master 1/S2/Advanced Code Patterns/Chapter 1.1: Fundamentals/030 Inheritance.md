@@ -1,7 +1,12 @@
+---
+tags: [inheritance, extends, subclass, superclass]
+aliases: [inheritance, extends, subclass, superclass]
+keywords: [inheritance, extends, subclass, superclass]
+---
 
 ## Java Inheritance Notes
 
-Inheritance in Java allows a **subclass** (child class) to derive or inherit properties (fields) and behaviors (methods) from a **superclass** (parent class). This feature promotes **code reuse**, **polymorphism**, and **extensibility**.
+Inheritance in Java allows a **subclass** (child [[005 Intro to Classes|class]]) to derive or inherit properties (fields) and behaviors (methods) from a **superclass** (parent class). This feature promotes **code reuse**, **[[042 Polymorphism Summary|polymorphism]]**, and **extensibility**.
 
 ---
 
@@ -63,7 +68,7 @@ Bicycle has 2 pedals.
 ---
 
 ### Key Terminology:
-- **Class**: A blueprint from which objects are created, containing data and methods.
+- **Class**: A blueprint from which [[002 Object|objects]] are created, containing data and methods.
 - **Super Class**: The parent class from which other classes inherit.
 - **Sub Class**: The child class that inherits properties and methods from the superclass.
 - **`extends` Keyword**: Indicates that a class is inheriting from another class.
@@ -191,7 +196,7 @@ Seat height: 25
 1. **Single Inheritance**: A subclass inherits from one superclass.
 2. **Multilevel Inheritance**: A subclass inherits from another subclass.
 3. **Hierarchical Inheritance**: Multiple subclasses inherit from the same superclass.
-4. **Multiple Inheritance**: Achieved through interfaces in Java.
+4. **[[034 Multiple Inheritance and The Diamond Problem|Multiple Inheritance]]**: Achieved through [[044 Interfaces|interfaces]] in Java.
 5. **Hybrid Inheritance**: A combination of single, multiple, and hierarchical inheritance, using interfaces.
 
 ### Example: Single Inheritance
@@ -244,7 +249,7 @@ class Moon extends Earth {}
 
 ### Advantages of Inheritance:
 - **Code Reusability**: Reduces redundancy and promotes cleaner code.
-- **Abstraction**: Provides a level of abstraction where subclasses implement specific details.
+- **[[040 Abstraction|Abstraction]]**: Provides a level of abstraction where subclasses implement specific details.
 - **Polymorphism**: Allows objects to take multiple forms.
 - **Class Hierarchy**: Mimics real-world hierarchical structures.
 
@@ -257,16 +262,19 @@ class Moon extends Earth {}
 ### Key Points:
 - All classes have one direct superclass, except `Object`, which is the root class in Java.
 - A subclass inherits methods and fields but not constructors from the superclass.
-- **Private members** of a superclass are not inherited but can be accessed through public or protected methods.
+- **[[020 Encapsulation and Access Control|Private]] members** of a superclass are not inherited but can be accessed through public or protected methods.
 
 ---
 
 ### Tips and Tricks:
 1. **DRY Principle**: Use inheritance to avoid code repetition across classes with common behaviors.
 2. **Method Overriding**: Subclasses can customize behavior by overriding superclass methods.
-3. **Constructor Calls**: Use `super()` to invoke the superclass constructor from the subclass constructor.
+3. **[[010 Constructors and Destructors|Constructor]] Calls**: Use `super()` to invoke the superclass constructor from the subclass constructor.
 4. **Avoid Overusing Inheritance**: Only use inheritance when there's a clear **"is-a"** relationship. If not, consider composition instead.
 
 ---
 
 This unified note should give you a comprehensive understanding of Java inheritance, including examples, practical uses, and common pitfalls!
+
+---
+**Keywords:** #inheritance, #extends, #subclass, #superclass

@@ -1,0 +1,60 @@
+---
+tags: [qualified-association, dictionary, map]
+aliases: [qualified association, dictionary, map]
+keywords: [qualified association, dictionary, map]
+---
+
+# 3. Masterclass on Qualified [[202 Associations Roles and Navigability|Associations]] (Dictionaries/Maps)
+
+We briefly touched on this at the end of Chapter 2, but slides 41-43 and your [[502 [[503 [[504 [[505 TD Deep Dive Reading Complex Diagrams|TD]] Deep Dive File System and Shortcuts|TD]] Deep Dive Arithmetic Expression Trap|TD]] Identification Exercise|TD]] exercises demand a deep dive. **[[206 Association Classes and Qualification|Qualification]]** is the UML way of modeling Maps, Dictionaries, and HashTables.
+
+### 1. The Concept of the "Qualifier"
+Imagine a `Catalogue` that contains thousands of `Produit` objects. 
+Normally, the [[107 UML Associations Navigability Roles and [[203 Multiplicity and Cardinality in Depth|Multiplicity]]|multiplicity]] is `Catalogue "1" --> "*" Produit`.
+If you want to find *one specific* product, you have to search through the entire `*` list.
+
+But what if you use a **Code Article**? If you provide the Code Article to the Catalogue, it instantly hands you exactly `0..1` Product. The Code Article acts as an index or a key.
+
+### 2. Graphical Representation (The "Key" Box)
+* You draw the association line.
+* At the end of the line attached to the **Class that does the searching** (the Container, e.g., Catalogue), you draw a small rectangle.
+* Inside this small rectangle, you write the attribute used as the key (e.g., `codeArticle : String`).
+* **The Magic Step:** The multiplicity on the target class (Produit) drops from `*` to `0..1` or `1`.
+
+```mermaid
+classDiagram
+    class Catalogue {
+        +ajouterProduit()
+    }
+    class Produit {
+        -description : String
+        -prix : double
+    }
+    
+    %% Approximation of a Qualifier in Mermaid.
+    %% On paper, [codeArticle] is inside a small box attached to Catalogue.
+    Catalogue "1 [codeArticle]" --> "0..1" Produit : Contient
+```
+
+### 3. Code Translation (Why this matters for your 20/20)
+If the professor asks you to generate the Java code for a Qualified Association, you **CANNOT use an ArrayList**. You MUST use a `Map` or `HashMap`.
+
+```java
+public class Catalogue {
+    // The Qualifier (codeArticle: String) becomes the Key.
+    // The Target (Produit) becomes the Value.
+    private Map<String, Produit> produits = new HashMap<>();
+    
+    public Produit getProduit(String codeArticle) {
+        return produits.get(codeArticle);
+    }
+}
+```
+
+> [!TIP] Exam Context (Flight Reservation)
+> [[106 Parameter Directions and Enumerations|In]] one of your exams, a `Compagnie` proposes multiple `Vols` (Flights). A Flight is open to reservation and is "referenced by a flight number". 
+> While an [[109 [[302 Inheritance and Generalization|Inheritance]] [[301 Aggregation vs Composition|Aggregation]] and Composition|aggregation]] `Compagnie o-- "*" Vol` is acceptable, a **Qualified Association** `Compagnie [numeroVol] --> "0..1" Vol` proves you understand that the flight number is the [[402 Advanced OCL Constraints|unique]] search key within that company. This secures maximum points.
+
+
+---
+**Keywords:** #qualified-association, #dictionary, #map

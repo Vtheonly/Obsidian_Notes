@@ -1,8 +1,13 @@
+---
+tags: [hierarchy, parent, child]
+aliases: [hierarchy, parent, child]
+keywords: [hierarchy, parent, child]
+---
 
 
 ### **1. The Core Philosophy: The "Is-A" Relationship**
 
-Inheritance is the mechanism where a new class derives properties and characteristics from an existing class. It is the architectural backbone of Object-Oriented Programming, designed strictly for **hierarchical classification**.
+[[030 Inheritance|Inheritance]] is the mechanism where a new [[005 Intro to Classes|class]] derives properties and characteristics from an existing class. It is the architectural backbone of [[001 OOP Basics|[[002 Object|Object]]-Oriented Programming]], designed strictly for **hierarchical classification**.
 
 *   **Superclass (Parent/Base):** The general concept (e.g., `Vehicle`).
 *   **Subclass (Child/Derived):** The specialized version (e.g., `Car`).
@@ -96,7 +101,7 @@ This is the most critical technical detail of inheritance.
 #### **The Execution Order**
 When you call `new MountainBike()`, the execution flow flows **UP** the hierarchy to `Object`, and initialization flows **DOWN**.
 
-1.  `MountainBike` constructor starts.
+1.  `MountainBike` [[010 Constructors and Destructors|constructor]] starts.
 2.  It immediately pauses and calls `super()` (Bicycle constructor).
 3.  `Bicycle` constructor starts.
 4.  It immediately pauses and calls `super()` (Object constructor).
@@ -171,7 +176,7 @@ public class MountainBike extends Bicycle {
 
 ### **4. The `protected` Modifier**
 
-As detailed in the **Encapsulation** note, `protected` is a special key specifically for inheritance.
+As detailed in the **[[020 Encapsulation and Access Control|Encapsulation]]** note, `protected` is a special key specifically for inheritance.
 
 *   **`private`:** Only the Base class can touch it. The Child has it in memory but can't touch it.
 *   **`protected`:** The Base class shares it with the Child (and classes in the same package).
@@ -185,7 +190,7 @@ As detailed in the **Encapsulation** note, `protected` is a special key specific
 
 ---
 
-### **5. Single Inheritance & The Diamond Problem**
+### **5. Single Inheritance & The [[034 Multiple Inheritance and The Diamond Problem|Diamond Problem]]**
 
 Java enforces **Single Inheritance**.
 *   A Child can extend only **one** Parent.
@@ -220,7 +225,10 @@ graph TD
     style Error fill:#ff0000,color:#fff
 ```
 
-#### **Java's Solution: Interfaces**
+#### **Java's Solution: [[044 Interfaces|Interfaces]]**
 Java allows you to implement multiple **Interfaces** because interfaces (historically) did not have implementation code.
 *   If `Tiger` and `Lion` were interfaces, they would just say "I require an `eat()` method."
 *   The `Liger` class would then be forced to write its **own** `eat()` method, resolving the ambiguity manually.
+
+---
+**Keywords:** #hierarchy, #parent, #child

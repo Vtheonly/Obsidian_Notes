@@ -1,7 +1,12 @@
+---
+tags: [overloading, overriding, binding]
+aliases: [overloading, overriding, binding]
+keywords: [overloading, overriding, binding]
+---
 ### 1. Definition and Etymology
 
-Polymorphism comes from Greek: _Poly_ (Many) + _Morph_ (Forms).
-In Java, it allows an object to take on many forms. A `Student` object is a `Student`. It is also a `User`. It is also an `Object`.
+[[042 Polymorphism Summary|Polymorphism]] comes from Greek: _Poly_ (Many) + _Morph_ (Forms).
+In Java, it allows an [[002 Object|object]] to take on many forms. A `Student` object is a `Student`. It is also a `User`. It is also an `Object`.
 
 Polymorphism allows us to write flexible code. We can write code that handles the _general_ type (`User`), and it will automatically handle any new _specific_ types (`Student`, `Teacher`, `Admin`) we invent in the future without changing the original code.
 
@@ -28,13 +33,13 @@ It improves code readability. You don't need `addInts()`, `addDoubles()`, `addSt
 
 ### 3. Run-Time Polymorphism (Method Overriding)
 
-This is the "True" polymorphism in OOP. It happens when the program is actually running.
+This is the "True" polymorphism in [[001 OOP Basics|OOP]]. It happens when the program is actually running.
 
 #### **A. The Mechanics**
 
-1.  **Inheritance:** You must have a Parent and Child.
+1.  **[[030 Inheritance|Inheritance]]:** You must have a Parent and Child.
 2.  **Override:** The Child must re-declare a method that exists in the Parent with the **exact same signature**.
-3.  **Upcasting:** You reference the Child object using a Parent variable.
+3.  **[[032 Upcasting and Downcasting|Upcasting]]:** You reference the Child object using a Parent variable.
 
 #### **B. The `@Override` Annotation**
 
@@ -50,7 +55,7 @@ User u = new Student();
 u.login();
 ```
 
-- **Compile Time:** The compiler looks at reference `u` (Type `User`). It checks: "Does `User` have a `login()` method?" Yes. It passes compilation.
+- **[[004 Compile Time vs Run Time|Compile Time]]:** The compiler looks at reference `u` (Type `User`). It checks: "Does `User` have a `login()` method?" Yes. It passes compilation.
 - **Run Time:** The JVM looks at the **Heap Memory**. It sees that the actual object created is a `Student` object. It ignores the `User` version of `login()` and executes the `Student` version.
 
 **Visualizing Dynamic Binding**
@@ -65,7 +70,7 @@ graph TD
 
 ---
 
-### 4. Polymorphism in Collections (The Ultimate Use Case)
+### 4. Polymorphism in [[050 Collections Overview|Collections]] (The Ultimate Use Case)
 
 The most powerful application of polymorphism is grouping different objects together.
 
@@ -91,4 +96,8 @@ for (Employee e : staff) {
 }
 ```
 
-If we add a new class `Intern` next year, this loop **does not need to change**. This is the "Open-Closed Principle" (Open for extension, closed for modification).
+If we add a new [[005 Intro to Classes|class]] `Intern` next year, this loop **does not need to change**. This is the "Open-Closed Principle" (Open for extension, closed for modification).
+
+
+---
+**Keywords:** #overloading, #overriding, #binding

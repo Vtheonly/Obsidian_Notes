@@ -1,4 +1,9 @@
-### 1. The Concept of Abstraction
+---
+tags: [abstract-class, abstract-method]
+aliases: [abstract class, abstract method]
+keywords: [abstract class, abstract method]
+---
+### 1. The Concept of [[040 Abstraction|Abstraction]]
 
 Abstraction is the process of stripping away complexity.
 
@@ -11,13 +16,13 @@ In Java, Abstraction allows us to define **templates** for classes. We force chi
 
 ### 2. Abstract Classes
 
-An `abstract class` is a class that is "half-complete."
+An `abstract class` is a [[005 Intro to Classes|class]] that is "half-complete."
 
 #### **A. Rules of Abstract Classes**
 
 1.  **Keyword:** `public abstract class Item`.
 2.  **Instantiation:** You **cannot** say `new Item()`. It is an incomplete blueprint. You can only instantiate concrete subclasses (e.g., `new Weapon()`).
-3.  **Constructors:** Even though you can't instantiate it, it **can** have a constructor. This constructor is called by the child class via `super()` to initialize the variables defined in the abstract class (like `name` or `id`).
+3.  **Constructors:** Even though you can't instantiate it, it **can** have a [[010 Constructors and Destructors|constructor]]. This constructor is called by the child class via `super()` to initialize the variables defined in the abstract class (like `name` or `id`).
 4.  **Mixture of Methods:** It can contain:
     - **Concrete Methods:** Fully written methods (e.g., `getName()`) that children inherit as-is.
     - **Abstract Methods:** Methods with no body (e.g., `abstract void use();`).
@@ -39,10 +44,10 @@ An `interface` is a pure abstraction (historically). It is a contract of capabil
 
 1.  **Keyword:** `interface`.
 2.  **Relationships:** Classes `implement` interfaces.
-3.  **Variables:** All variables declared in an interface are implicitly `public static final` (Constants). You cannot have instance variables like `int x` in an interface.
-4.  **Methods:** All methods are implicitly `public abstract`. (Java 8/9 added `default` and `static` methods, but conceptually, stick to the abstract idea for core OOP).
+3.  **Variables:** All variables declared in an [[044 Interfaces|interface]] are implicitly `public static final` (Constants). You cannot have instance variables like `int x` in an interface.
+4.  **Methods:** All methods are implicitly `public abstract`. (Java 8/9 added `default` and `static` methods, but conceptually, stick to the abstract idea for core [[001 OOP Basics|OOP]]).
 
-#### **B. Multiple Inheritance (The Solution)**
+#### **B. Multiple [[030 Inheritance|Inheritance]] (The Solution)**
 
 While a class can only extend **one** parent class, it can implement **unlimited** interfaces.
 `public class Amphibian implements Swimmable, Walkable`
@@ -71,9 +76,13 @@ This is a classic interview question and architectural decision.
     - You need to control the initialization via constructors.
 
 2.  **Use Interface when:**
-    - You want to define a capability that applies to unrelated objects (e.g., `Serializable`, `Cloneable`, `Flyable`).
+    - You want to define a capability that applies to unrelated [[002 Object|objects]] (e.g., `Serializable`, `Cloneable`, `Flyable`).
       - A `Bird` is an animal that can fly.
       - A `Airplane` is a vehicle that can fly.
       - They share no parent class, but they both implement `Flyable`.
-    - You need to simulate multiple inheritance.
+    - You need to simulate [[034 Multiple Inheritance and The Diamond Problem|multiple inheritance]].
     - You want to decouple your system (Dependency Injection often relies on interfaces).
+
+
+---
+**Keywords:** #abstract-class, #abstract-method

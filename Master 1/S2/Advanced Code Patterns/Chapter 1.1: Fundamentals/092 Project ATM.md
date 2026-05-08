@@ -1,10 +1,15 @@
+---
+tags: [atm-machine, project]
+aliases: [atm machine, project]
+keywords: [atm machine, project]
+---
 ### 1. The Goal
 
-A console-based banking application using **Exception Handling** and **HashMaps**.
+A console-based banking application using **[[063 Exceptions and Varargs|Exception]] Handling** and **HashMaps**.
 
 ### 2. Key Components
 
-- **HashMap:** Used as a database to store `Customer Number (Key)` -> `PIN (Value)`.
+- **[[057 Map Interface|HashMap]]:** Used as a database to store `Customer Number (Key)` -> `PIN (Value)`.
   - `HashMap<Integer, Integer> data = new HashMap<>();`
 - **Exception Handling:**
   - Used in the login flow. If the user enters a letter instead of a number for the PIN, the program catches the error inside a `try-catch` block to prevent a crash.
@@ -25,4 +30,8 @@ The project emphasizes logic validation inside Setters/Methods.
         System.out.println("Balance cannot be negative.");
     }
     `
-  This ensures the object (Account) never enters an invalid state.
+  This ensures the [[002 Object|object]] (Account) never enters an invalid state.
+
+
+---
+**Keywords:** #atm-machine, #project

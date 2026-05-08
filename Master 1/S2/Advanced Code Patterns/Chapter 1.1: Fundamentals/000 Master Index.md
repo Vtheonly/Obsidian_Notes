@@ -1,0 +1,62 @@
+# 📚 Master Index: Advanced Code Patterns
+
+This file acts as a Map of Content, linking to all topics and their main keywords.
+
+- **[[001 OOP Basics]]**
+  - *Keywords*: OOP, Object-Oriented Programming
+- **[[002 Object]]**
+  - *Keywords*: object, objects, instance
+- **[[003 New Keyword]]**
+  - *Keywords*: new keyword, new operator
+- **[[004 Compile Time vs Run Time]]**
+  - *Keywords*: compile time, run time, runtime
+- **[[005 Intro to Classes]]**
+  - *Keywords*: class, classes, blueprint
+- **[[010 Constructors and Destructors]]**
+  - *Keywords*: constructor, destructor
+- **[[012 Static Members]]**
+  - *Keywords*: static member, static method, static variable
+- **[[013 Static Keyword]]**
+  - *Keywords*: static keyword
+- **[[014 Enums]]**
+  - *Keywords*: enum, enumerations, enumeration
+- **[[015 Final Keyword]]**
+  - *Keywords*: final keyword
+- **[[020 Encapsulation and Access Control]]**
+  - *Keywords*: encapsulation, access control, access modifier, private, public, protected
+- **[[030 Inheritance]]**
+  - *Keywords*: inheritance, extends, subclass, superclass
+- **[[032 Upcasting and Downcasting]]**
+  - *Keywords*: upcasting, downcasting, type casting
+- **[[033 Super Keyword]]**
+  - *Keywords*: super keyword
+- **[[034 Multiple Inheritance and The Diamond Problem]]**
+  - *Keywords*: multiple inheritance, diamond problem
+- **[[040 Abstraction]]**
+  - *Keywords*: abstraction
+- **[[041 Abstraction Details]]**
+  - *Keywords*: abstract class, abstract method
+- **[[042 Polymorphism Summary]]**
+  - *Keywords*: polymorphism, dynamic polymorphism, static polymorphism
+- **[[044 Interfaces]]**
+  - *Keywords*: interface, interfaces, implements
+- **[[050 Collections Overview]]**
+  - *Keywords*: collections, data structures
+- **[[051 Arrays]]**
+  - *Keywords*: array, arrays
+- **[[052 Collection Framework]]**
+  - *Keywords*: collection framework, java collections
+- **[[054 List Interface]]**
+  - *Keywords*: list interface, arraylist, linkedlist
+- **[[055 Set Interface]]**
+  - *Keywords*: set interface, hashset, treeset
+- **[[056 Queues and Deques]]**
+  - *Keywords*: queue, deque, fifo, lifo
+- **[[057 Map Interface]]**
+  - *Keywords*: map interface, hashmap, treemap
+- **[[061 Copying Objects]]**
+  - *Keywords*: copying objects, deep copy, shallow copy
+- **[[062 Generics]]**
+  - *Keywords*: generics, type erasure
+- **[[063 Exceptions and Varargs]]**
+  - *Keywords*: exception, exceptions, varargs

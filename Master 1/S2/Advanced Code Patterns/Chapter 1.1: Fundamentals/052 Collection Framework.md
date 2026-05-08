@@ -1,6 +1,11 @@
+---
+tags: [collection-framework, java-collections]
+aliases: [collection framework, java collections]
+keywords: [collection framework, java collections]
+---
 Arrays in Java (`User[] users = new User[10]`) are **fixed-size**. Once created, they cannot grow. This is inefficient for real-world applications where data is dynamic. The **Collection Framework** solves this.
 
-### 1. ArrayList (The Resizable Array)
+### 1. [[054 List Interface|ArrayList]] (The Resizable [[051 Arrays|Array]])
 
 - **Concept:** A wrapper around a standard array that automatically handles resizing.
 - **How it works:**
@@ -8,7 +13,7 @@ Arrays in Java (`User[] users = new User[10]`) are **fixed-size**. Once created,
   2.  When you add the 11th item, the ArrayList internally creates a _new_, larger array (usually 50% larger).
   3.  It copies all old items to the new array.
   4.  It dumps the old array.
-- **Generics `<Type>`:** Java collections are generic. You must specify what goes inside using angle brackets. `ArrayList<Item>` ensures you don't accidentally put a `Horse` into an `Inventory` of `Items`.
+- **[[062 Generics|Generics]] `<Type>`:** Java [[050 Collections Overview|collections]] are generic. You must specify what goes inside using angle brackets. `ArrayList<Item>` ensures you don't accidentally put a `Horse` into an `Inventory` of `Items`.
 
 ```java
 // From File 1: Inventory System
@@ -20,7 +25,7 @@ private ArrayList<Item> items = new ArrayList<>(); // Only accepts Item or subcl
 - **Concept:** Data is not stored contiguously in memory. Each element (Node) holds data and a pointer (address) to the next node.
 - **Usage in Project 3 (Calculator):**
   - The calculator parses "4 + 5". It needs to process these in order.
-  - It uses a `LinkedList` acting as a **Queue**.
+  - It uses a `LinkedList` acting as a **[[056 Queues and Deques|Queue]]**.
 
 #### **Queue Mechanics: `poll()`**
 
@@ -30,7 +35,7 @@ The Calculator project uses the method `.poll()`.
 - **`.poll()`:** Retrieves the element at the "head" (front) of the line and **removes** it from the list.
 - **Why use this?** It allows the calculator to "consume" the numbers and operators one by one until the list is empty.
 
-### 3. HashMap (The Key-Value Store)
+### 3. [[057 Map Interface|HashMap]] (The Key-Value Store)
 
 - **Concept:** Stores data in pairs. You look up a value using a unique Key, rather than an index number (0, 1, 2).
 - **Usage in Project 2 (ATM):**
@@ -48,3 +53,7 @@ if (data.containsKey(inputID) && data.get(inputID) == inputPin) {
     // Login Success
 }
 ```
+
+
+---
+**Keywords:** #collection-framework, #java-collections

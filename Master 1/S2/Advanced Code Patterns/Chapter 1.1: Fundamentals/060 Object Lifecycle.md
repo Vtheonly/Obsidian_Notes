@@ -1,9 +1,14 @@
-### 1. The `Object` Class
+---
+tags: [lifecycle, garbage-collection]
+aliases: [lifecycle, garbage collection]
+keywords: [lifecycle, garbage collection]
+---
+### 1. The `Object` [[005 Intro to Classes|Class]]
 
-In Java, inheritance is not optional. Every single class you create implicitly extends a specific class called `java.lang.Object`. If you write `class User {}`, the compiler treats it as `class User extends Object {}`.
+In Java, [[030 Inheritance|inheritance]] is not optional. Every single class you create implicitly extends a specific class called `java.lang.Object`. If you write `class User {}`, the compiler treats it as `class User extends Object {}`.
 
 **Implications:**
-Because everything "is-a" Object, every class inherits a specific set of methods that define how objects behave in memory. The two most critical methods you must often take control of are `toString()` and `equals()`.
+Because everything "is-a" [[002 Object|Object]], every class inherits a specific set of methods that define how objects behave in memory. The two most critical methods you must often take control of are `toString()` and `equals()`.
 
 ---
 
@@ -19,7 +24,7 @@ When you print an object (e.g., `System.out.println(myUser);`), Java automatical
 
 #### **Overriding for Clarity**
 
-To make logs readable, you must apply **Polymorphism (Overriding)**. By defining your own `toString`, you intercept the call.
+To make logs readable, you must apply **[[042 Polymorphism Summary|Polymorphism]] (Overriding)**. By defining your own `toString`, you intercept the call.
 
 ```java
 @Override
@@ -34,7 +39,7 @@ public String toString() {
 >
 > - If the object is a `Weapon`, Java runs `Weapon.toString()`.
 > - If the object is a `Fruit`, Java runs `Fruit.toString()`.
-> - This decision happens at **Runtime** (Runtime Polymorphism).
+> - This decision happens at **[[004 Compile Time vs Run Time|Runtime]]** (Runtime Polymorphism).
 
 ---
 
@@ -84,5 +89,9 @@ graph TD
 > [!CRITICAL] **The Rule of HashMaps**
 > If you override `equals()`, you **must** override `hashCode()`.
 >
-> - **Reason:** Collections like `HashMap` and `HashSet` use the hash code to organize storage buckets.
+> - **Reason:** [[050 Collections Overview|Collections]] like `HashMap` and `HashSet` use the hash code to organize storage buckets.
 > - **The Contract:** If `A.equals(B)` is true, then `A.hashCode()` **must** equal `B.hashCode()`. If you break this, your objects will get lost inside HashMaps.
+
+
+---
+**Keywords:** #lifecycle, #garbage-collection

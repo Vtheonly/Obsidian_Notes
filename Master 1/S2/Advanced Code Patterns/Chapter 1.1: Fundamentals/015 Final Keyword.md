@@ -1,3 +1,8 @@
+---
+tags: [final-keyword]
+aliases: [final keyword]
+keywords: [final keyword]
+---
 In Java, the `const` keyword is not used as it is in some other programming languages like C++ or JavaScript. Instead, Java uses the `final` keyword for similar purposes, but it is used in a different context.
 
 ### `final` Keyword in Java:
@@ -11,7 +16,7 @@ In Java, the `const` keyword is not used as it is in some other programming lang
    ```
 
 2. **Final Methods:**
-   - When you declare a method as `final` in a class, you indicate that the method cannot be overridden by subclasses.
+   - When you declare a method as `final` in a [[005 Intro to Classes|class]], you indicate that the method cannot be overridden by subclasses.
 
    ```java
    public class MyClass {
@@ -32,7 +37,7 @@ In Java, the `const` keyword is not used as it is in some other programming lang
 
 ### final in Arrays :
 
-When it comes to arrays in Java, the `final` keyword can be used in a different way. If a variable is declared as `final` and it is a reference to an array, the reference cannot be changed to point to a different array. However, the content of the array itself can still be modified.
+When it comes to arrays in Java, the `final` keyword can be used in a different way. If a variable is declared as `final` and it is a reference to an [[051 Arrays|array]], the reference cannot be changed to point to a different array. However, the content of the array itself can still be modified.
 
 Example:
 
@@ -58,4 +63,7 @@ public class ArrayExample {
 
 In this example, `numbers` is declared as `final`, so you cannot reassign it to point to a different array. However, you can still modify the content of the array itself.
 
-It's important to note that while the `final` keyword prevents reassignment of the reference for object types (like arrays), it does not make the object itself immutable. If you need an immutable array-like structure in Java, you might consider using `java.util.Collections.unmodifiableList` or similar approaches.
+It's important to note that while the `final` keyword prevents reassignment of the reference for [[002 Object|object]] types (like arrays), it does not make the object itself immutable. If you need an immutable array-like structure in Java, you might consider using `java.util.Collections.unmodifiableList` or similar approaches.
+
+---
+**Keywords:** #final-keyword

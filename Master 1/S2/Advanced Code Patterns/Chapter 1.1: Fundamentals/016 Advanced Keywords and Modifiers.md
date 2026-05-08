@@ -1,8 +1,8 @@
-### 1. Static: Class-Level vs. Object-Level
+### 1. Static: [[005 Intro to Classes|Class]]-Level vs. [[002 Object|Object]]-Level
 
 The `static` keyword changes the _scope_ and _memory allocation_ of a member.
 
-| Feature        | Instance Member (No static)           | Static Member                      |
+| Feature        | Instance Member (No static)           | [[012 Static Members|Static Member]]                      |
 | :------------- | :------------------------------------ | :--------------------------------- |
 | **Belongs To** | The specific Object (e.g., User A)    | The Class (User Class blueprint)   |
 | **Memory**     | Allocation per object created         | Allocation happens once at startup |
@@ -24,22 +24,22 @@ A static method **cannot** access instance variables (non-static fields).
 - **Final Method:** Cannot be overridden by a subclass. This is used for security (preventing hackers from changing critical logic in a subclass).
 - **Final Class:** Cannot be inherited from (e.g., the `String` class in Java is final).
 
-### 3. Abstract vs. Interface (The Deep Dive)
+### 3. Abstract vs. [[044 Interfaces|Interface]] (The Deep Dive)
 
-Both provide abstraction, but the mechanics differ.
+Both provide [[040 Abstraction|abstraction]], but the mechanics differ.
 
-#### **Abstract Class**
+#### **[[041 Abstraction Details|Abstract Class]]**
 
 - **The "Partial Blueprint":** Can have fully working methods _and_ abstract methods (methods with no body).
 - **State:** Can hold member variables (state) like `int speed` or `String name`.
-- **Constructor:** Can have a constructor (called via `super()`), even though you can't instantiate it directly.
+- **[[010 Constructors and Destructors|Constructor]]:** Can have a constructor (called via `super()`), even though you can't instantiate it directly.
 - **Usage:** Use when classes share a core identity ("Is-A"). A `Weapon` _is an_ `Item`.
 
 #### **Interface**
 
 - **The "Contract":** Traditionally contains _only_ method signatures (Java 8+ allows `default` methods).
 - **No State:** Cannot hold instance variables (only constants).
-- **Multiple Inheritance:** A class can implement **multiple** interfaces. This solves the "Diamond Problem" (where a class doesn't know which parent's method to inherit). Since interfaces have no implementation, there is no conflict.
+- **Multiple [[030 Inheritance|Inheritance]]:** A class can implement **multiple** interfaces. This solves the "[[034 Multiple Inheritance and The Diamond Problem|Diamond Problem]]" (where a class doesn't know which parent's method to inherit). Since interfaces have no implementation, there is no conflict.
 - **Usage:** Use to define capabilities ("Can-Do"). A `Bird` and an `Airplane` are unrelated, but both implement `Flyable`.
 
 **Project 3 (Calculator) Strategy:**

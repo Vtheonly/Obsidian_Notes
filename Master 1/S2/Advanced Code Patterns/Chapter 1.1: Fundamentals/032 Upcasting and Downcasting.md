@@ -1,8 +1,13 @@
+---
+tags: [upcasting, downcasting, type-casting]
+aliases: [upcasting, downcasting, type casting]
+keywords: [upcasting, downcasting, type casting]
+---
 
 ### 1. Upcasting:
 
 - **Definition:**
-  - Upcasting refers to casting an object of a subclass to its superclass. It happens implicitly, and no explicit casting is required.
+  - Upcasting refers to casting an [[002 Object|object]] of a subclass to its superclass. It happens implicitly, and no explicit casting is required.
 
 - **Example:**
   ```java
@@ -37,7 +42,7 @@
 
 1. **Safety Concerns:**
    - Upcasting is generally safe and implicit.
-   - Downcasting is explicit and may lead to runtime errors (ClassCastException) if not done carefully.
+   - Downcasting is explicit and may lead to [[004 Compile Time vs Run Time|runtime]] errors (ClassCastException) if not done carefully.
 
 2. **Type Checking:**
    - Use `instanceof` to check the type before downcasting:
@@ -47,10 +52,10 @@
      }
      ```
 
-3. **Inheritance Hierarchy:**
-   - Upcasting and downcasting are meaningful in the context of class inheritance.
+3. **[[030 Inheritance|Inheritance]] Hierarchy:**
+   - Upcasting and downcasting are meaningful in the context of [[005 Intro to Classes|class]] inheritance.
 
-4. **Polymorphism:**
+4. **[[042 Polymorphism Summary|Polymorphism]]:**
    - These concepts contribute to achieving polymorphism in Java, where an object can take multiple forms.
 
 ### Example with Inheritance Hierarchy:
@@ -86,3 +91,6 @@ public class Main {
 ```
 
 In this example, `myAnimal` is upcast to `Animal` and then downcast to `Dog` to access `bark()`. The `makeSound()` method demonstrates polymorphism by calling the overridden method in the subclass.
+
+---
+**Keywords:** #upcasting, #downcasting, #type-casting
