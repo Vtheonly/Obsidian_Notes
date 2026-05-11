@@ -8,17 +8,31 @@
         "type": "tabs",
         "children": [
           {
-            "id": "da0e2117846de059",
+            "id": "05094a9667c48769",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Series/Turing/Exercise Solutions/Exercise 4 String Copying.md",
+                "file": "Course/Chapter 2. Complexity/2. Average Case Calculation using Probability.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Exercise 4 String Copying"
+              "title": "2. Average Case Calculation using Probability"
+            }
+          },
+          {
+            "id": "9f695c1a1b2ef2d9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Questions/Qs1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Qs1"
             }
           }
         ]
@@ -94,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Series/Turing/Exercise Solutions/Exercise 4 String Copying.md",
+                "file": "Course/Chapter 1. Calculability/Calculabilite-Vault/1. Finite Automata and Regular Languages/1. Finite Automata and Regular Languages.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +118,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Exercise 4 String Copying"
+              "title": "Backlinks for 1. Finite Automata and Regular Languages"
             }
           },
           {
@@ -169,7 +183,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -182,45 +197,45 @@
       "bases:Create new base": false
     }
   },
-  "active": "f3b5db156a9ef6ec",
+  "active": "05094a9667c48769",
   "lastOpenFiles": [
-    "Series/Turing/Exercise Solutions/Exercise 3 Binary Successor.md",
-    "Series/Turing/Exercise Solutions/Exercise 4 String Copying.md",
-    "Series/Turing/Exercise Solutions/Exercise 5 TM Tracing and Halting.md",
-    "Series/Turing/Exercise Solutions/Exercise 7 Matrix Mortality.md",
-    "Series/Turing/Exercise Solutions/Exercise 2 Unary Successor.md",
-    "Series/Turing/Exercise Solutions/Exercise 1 Ones Complement.md",
-    "Series/Turing/Lesson Concepts/06 Master Patterns and Antipatterns.md",
-    "Series/Turing/Lesson Concepts/05 Formal Tracing and Halting.md",
-    "Questions/Qs1.md",
-    "Series/Turing/Lesson_Concepts/04_Memory_and_Advanced_Patterns.md",
-    "Series/Turing/Exercise Solutions/Exercise 6 Completing Reject State.md",
-    "Series/Turing/Exercise Solutions",
-    "Series/Turing/Lesson Concepts/04 Memory and Advanced Patterns.md",
-    "Series/Turing/Lesson Concepts/03 Data Representations and Arithmetic.md",
-    "Series/Turing/Lesson Concepts/02 Methodology for Solving Exercises.md",
-    "Series/Turing/Lesson Concepts/01 Turing Machine Foundations.md",
-    "Series/Turing/Lesson Concepts",
-    "Series/Turing/Lesson_Concepts/05_Formal_Tracing_and_Halting.md",
-    "Series/Turing/Lesson_Concepts/06_Master_Patterns_and_Antipatterns.md",
-    "Series/Turing/Lesson_Concepts/03_Data_Representations_and_Arithmetic.md",
-    "Series/Turing/Lesson_Concepts/02_Methodology_for_Solving_Exercises.md",
-    "Series/Turing/Lesson_Concepts/01_Turing_Machine_Foundations.md",
-    "Course/Chapter 1. Calculability/6. Undecidable Problems (PCP and MMP).md",
-    "Course/Chapter 1. Calculability/5. Decidability and The Halting Problem.md",
-    "Course/Chapter 1. Calculability/4. Configurations and Terminology.md",
-    "Course/Chapter 1. Calculability/3. Formal Definition and Execution of a TM.md",
-    "Course/Chapter 1. Calculability/2. The Turing Machine - Model and Architecture.md",
+    "Course/Chapter 2. Complexity/5. Additional Big O Mathematical Proofs.md",
+    "Course/Chapter 2. Complexity/4. Mathematical Proofs of Big O Notation.md",
+    "Course/Chapter 2. Complexity/3. Complexity Lookup Table for Standard Operations.md",
+    "Course/Chapter 2. Complexity/2. Average Case Calculation using Probability.md",
+    "Course/Chapter 2. Complexity/1. Matrix Search Complexity and Operation Counting.md",
+    "Course/Chapter 2. Complexity/0. Complexity Analysis Methodology and Summary.md",
+    "Series/Serie 2 Complexity/Chapter 1 - Mathematical Foundations for Algorithm Analysis/1. Summation Rules and Properties.md",
+    "Series/serise 2/s2.md",
+    "Series/Serie 2 Complexity/Chapter 4 - Recursive Algorithms Analysis/1. Merge Sort Recurrence Relation.md",
+    "Series/Serie 2 Complexity/Chapter 4 - Recursive Algorithms Analysis",
+    "Series/Serie 2 Complexity/Chapter 3 - Common Algorithmic Operations and Complexities/2. Deducing Complexity from Execution Times.md",
+    "Series/Serie 2 Complexity/Chapter 3 - Common Algorithmic Operations and Complexities/1. Standard Data Structures and Mathematical Operations.md",
+    "Series/Serie 2 Complexity/Chapter 3 - Common Algorithmic Operations and Complexities",
+    "Series/Serie 2 Complexity/Chapter 2 - Iterative Algorithms Analysis/4. Decidability and Finite Search Spaces.md",
+    "Series/Serie 2 Complexity/Chapter 2 - Iterative Algorithms Analysis/3. Pyramid Function Exact Operation Counting.md",
+    "Series/Serie 2 Complexity/Chapter 2 - Iterative Algorithms Analysis/2. Matrix Search Algorithm Analysis.md",
+    "Series/Serie 2 Complexity/Chapter 2 - Iterative Algorithms Analysis/1. Basic Nested Loops Complexity.md",
+    "Series/Serie 2 Complexity/Chapter 2 - Iterative Algorithms Analysis",
+    "Series/Serie 2 Complexity/Chapter 1 - Mathematical Foundations for Algorithm Analysis/2. Asymptotic Notations and Big-O Proofs.md",
+    "Series/Serie 2 Complexity/Chapter 1 - Mathematical Foundations for Algorithm Analysis",
+    "Series/Serie 2 Complexity/split_vault.py",
+    "Course/Chapter 1. Calculability/02 Countability and Pushdown Automata.md",
+    "Series/Serie 2 Complexity",
+    "Course/Chapter 1. Calculability/01 Finite Automata and Regular Languages.md",
+    "Course/Chapter 1. Calculability/00 Introduction and Notion of Algorithm.md",
     "Course/Chapter 1. Calculability/1. Introduction and Notion of Algorithm.md",
-    "Series/Turing/Exercise_Solutions",
-    "Series/Turing/Lesson_Concepts",
-    "Series/Turing",
+    "Course/Chapter 1. Calculability/13 Advanced Turing Machine Variants.md",
+    "Course/Chapter 1. Calculability/12 Non-Deterministic Turing Machines.md",
+    "Course/Chapter 1. Calculability/11 Undecidable Problems (PCP and MMP).md",
+    "Course/Chapter 1. Calculability/10 Turing Machines as Language Recognizers.md",
+    "Course/Chapter 1. Calculability/09 Turing Machines as Transducers.md",
+    "Course/Chapter 1. Calculability/08 Decidability and The Halting Problem.md",
+    "Course/Chapter 1. Calculability/rename_vault.py",
+    "Course/Chapter 2. Complexity/rebuild.py",
+    "Course/Chapter 2. Complexity/organize.py",
+    "Course/Chapter 2. Complexity",
     "assets/image 1.png",
-    "assets/image 1.png",
-    "assets",
-    "Questions",
-    "Series",
-    "Labs",
-    "Course/Chapter 1. Calculability"
+    "assets/image 1.png"
   ]
 }
