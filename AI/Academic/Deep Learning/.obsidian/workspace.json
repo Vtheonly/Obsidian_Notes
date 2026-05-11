@@ -11,14 +11,17 @@
             "id": "e7015a51fe1e78d6",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Quiz/Chapter 2 : CNN/Q21_Model_Evaluation_Metrics_Beyond_Accuracy.md",
-                "mode": "preview",
-                "source": false
+                "file": "TP Graph.canvas",
+                "viewState": {
+                  "x": 1262.5,
+                  "y": 505,
+                  "zoom": -0.2975074672696181
+                }
               },
-              "icon": "lucide-file",
-              "title": "Q21_Model_Evaluation_Metrics_Beyond_Accuracy"
+              "icon": "lucide-layout-dashboard",
+              "title": "TP Graph"
             }
           }
         ]
@@ -78,7 +81,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "5859523bb9016068",
@@ -195,8 +199,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ffcc30bef40db1bd",
+  "active": "e7015a51fe1e78d6",
   "lastOpenFiles": [
+    "Untitled 1.canvas",
+    "TP Graph.canvas",
+    "Quiz/Chapter 2 : CNN/Q21_Model_Evaluation_Metrics_Beyond_Accuracy.md",
     "Cours/Chapter 1 - Introduction to Deep Learning/6. Loss Functions and Cost Optimization.md",
     "Cours/Chapter 1 - Introduction to Deep Learning/5. Gradient Descent Optimization.md",
     "Cours/Chapter 1 - Introduction to Deep Learning/4. Applications of Deep Learning.md",
@@ -204,8 +211,6 @@
     "Deep Learning.md",
     "Cours/Chapter 2 - CNN/2. Core Architecture and Philosophy.md",
     "Cours/Chapter 2 - CNN/1. Introduction and Foundations of CNNs.md",
-    "Untitled 1.canvas",
-    "Untitled.canvas",
     "Cours/Chapter 2 - CNN/5. Activation and Pooling Layers.md",
     "Cours/Chapter 1 - Introduction to Deep Learning/3. Evolution and History of Deep Learning.md",
     "Cours/Chapter 1 - Introduction to Deep Learning/2. Machine Learning vs Deep Learning.md",
