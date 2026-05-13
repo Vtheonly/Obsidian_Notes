@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter 1 - Performance Measurement/1.2 Profiling and Timing Tools.md",
-                "mode": "preview",
+                "file": "Part 4/Untitled.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1.2 Profiling and Timing Tools"
+              "title": "Untitled"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 379.5
   },
   "right": {
     "id": "e454f96a871f7b8d",
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Untitled.canvas",
+                "file": "Part 2/1. Introduction to Parallel Computing Fundamentals.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Untitled"
+              "title": "Backlinks for 1. Introduction to Parallel Computing Fundamentals"
             }
           },
           {
@@ -197,20 +197,39 @@
   },
   "active": "8f2279e9162fd04c",
   "lastOpenFiles": [
-    "Chapter 1 - Performance Measurement/1.2 Profiling and Timing Tools.md",
+    "Part 3/Untitled.md",
+    "Part 2/6. Program Profiling and Bottleneck Identification.md",
+    "Part 1/Chapter 1 - Performance Measurement/1.3 Algorithmic Optimization Exercises.md",
+    "Part 1/Chapter 1 - Performance Measurement/1.2 Profiling and Timing Tools.md",
+    "Part 1/Chapter 2 - Cluster Computing and SSH/2.2 Remote Execution and File Transfer.md",
+    "Part 1/Chapter 2 - Cluster Computing and SSH/2.3 Hardware vs Software — Fairness in Comparison.md",
+    "Part 1/Chapter 2 - Cluster Computing and SSH/2.1 SSH and HPC Environments.md",
+    "Part 1/Chapter 3 - Shared-Memory Parallelism with OpenMP/3.1 OpenMP and the Fork-Join Model.md",
+    "Part 2/3. Data and Task Parallelism.md",
+    "Part 2/2. Parallel Memory Models.md",
+    "Part 2/1. Introduction to Parallel Computing Fundamentals.md",
+    "Part 4/Untitled.md",
+    "Part 3/split_notes.py",
+    "Part 2/5. Fundamental Limits to Parallel Scaling.md",
+    "Part 2/4. Quantifying Parallel Performance and Scaling.md",
+    "Part 2/split_notes.py",
+    "Part 2/Quiz/Q1.md",
+    "Part 2/Quiz/Q2.md",
+    "Part 2/Quiz",
+    "Part 2/Untitled.md",
+    "Part 4",
+    "Part 3",
+    "Part 2",
+    "Part 1/Chapter 1 - Performance Measurement/1.4 Classic Optimization Exercises and Python DSA Speed Kit.md",
+    "Part 1/Chapter 1 - Performance Measurement/1.1 HPC Basics and Speedup.md",
+    "Part 1",
+    "Part 1/Chapter 3 - Shared-Memory Parallelism with OpenMP/3.2 Synchronization and Race Conditions.md",
+    "Part 1/Chapter 3 - Shared-Memory Parallelism with OpenMP/3.3 Loop Scheduling and Load Balancing.md",
+    "Part 1/Chapter 3 - Shared-Memory Parallelism with OpenMP/3.4 OpenMP Applied Exercises.md",
     "Quiz/Q2.md",
     "Quiz",
-    "Chapter 1 - Performance Measurement/1.1 HPC Basics and Speedup.md",
-    "Chapter 2 - Cluster Computing and SSH/2.2 Remote Execution and File Transfer.md",
-    "Chapter 2 - Cluster Computing and SSH/2.1 SSH and HPC Environments.md",
-    "Chapter 3 - Shared-Memory Parallelism with OpenMP/3.3 Loop Scheduling and Load Balancing.md",
-    "Chapter 3 - Shared-Memory Parallelism with OpenMP/3.4 OpenMP Applied Exercises.md",
-    "Chapter 1 - Performance Measurement/1.3 Algorithmic Optimization Exercises.md",
-    "Chapter 1 - Performance Measurement/1.4 Classic Optimization Exercises and Python DSA Speed Kit.md",
     "Untitled.canvas",
     "HPC Course Overview.md",
-    "Chapter 3 - Shared-Memory Parallelism with OpenMP/3.1 OpenMP and the Fork-Join Model.md",
-    "Chapter 1 - Performance Measurement/1.4 Classic Optimization Exercises and Python DSA Speed Kit (1).md",
-    "Chapter 2 - Cluster Computing and SSH/2.3 Hardware vs Software — Fairness in Comparison.md"
+    "Chapter 1 - Performance Measurement/1.4 Classic Optimization Exercises and Python DSA Speed Kit (1).md"
   ]
 }
