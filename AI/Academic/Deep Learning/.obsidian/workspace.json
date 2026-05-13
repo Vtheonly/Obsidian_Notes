@@ -28,14 +28,17 @@
             "id": "282fbb27a596bb5e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Cours/Chapter 1 - Introduction to Deep Learning/6. Loss Functions and Cost Optimization.md",
-                "mode": "source",
-                "source": false
+                "file": "TP Graph.canvas",
+                "viewState": {
+                  "x": 362.5,
+                  "y": 240,
+                  "zoom": -2.0065726539234863
+                }
               },
-              "icon": "lucide-file",
-              "title": "6. Loss Functions and Cost Optimization"
+              "icon": "lucide-layout-dashboard",
+              "title": "TP Graph"
             }
           }
         ],
@@ -112,7 +115,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Cours/Chapter 1 - Introduction to Deep Learning/5. Gradient Descent Optimization.md",
+                "file": "TP Graph.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +125,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 5. Gradient Descent Optimization"
+              "title": "Backlinks for TP Graph"
             }
           },
           {
@@ -193,8 +196,7 @@
               "title": "Source Control"
             }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "horizontal",
@@ -215,10 +217,12 @@
   },
   "active": "282fbb27a596bb5e",
   "lastOpenFiles": [
+    "Quiz/Chapter 1: Introduction to Deep Learning/Q6 - Loss Functions and Cost Optimization.md",
+    "<!DOCTYPE html>.html",
+    "Cours/Chapter 1 - Introduction to Deep Learning/6. Loss Functions and Cost Optimization.md",
     "TP Graph.canvas",
     "Untitled 1.canvas",
     "Quiz/Chapter 2 : CNN/Q21_Model_Evaluation_Metrics_Beyond_Accuracy.md",
-    "Cours/Chapter 1 - Introduction to Deep Learning/6. Loss Functions and Cost Optimization.md",
     "Cours/Chapter 1 - Introduction to Deep Learning/5. Gradient Descent Optimization.md",
     "Cours/Chapter 1 - Introduction to Deep Learning/4. Applications of Deep Learning.md",
     "Cours/Chapter 1 - Introduction to Deep Learning/7. Linear Regression.md",

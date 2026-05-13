@@ -11,10 +11,14 @@
             "id": "8f2279e9162fd04c",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Chapter 1 - Performance Measurement/1.2 Profiling and Timing Tools.md",
+                "mode": "preview",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "1.2 Profiling and Timing Tools"
             }
           }
         ]
@@ -160,13 +164,23 @@
               "icon": "lucide-list",
               "title": "Outline of Untitled"
             }
+          },
+          {
+            "id": "2f2efb69a04a0e6d",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -176,21 +190,27 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "obsidian-git:Open Git source control": false,
+      "quiz-generator:Open generator": false
     }
   },
-  "active": "c0b073bbb23f3c46",
+  "active": "8f2279e9162fd04c",
   "lastOpenFiles": [
-    "Untitled.canvas",
-    "HPC Course Overview.md",
+    "Chapter 1 - Performance Measurement/1.2 Profiling and Timing Tools.md",
+    "Quiz/Q2.md",
+    "Quiz",
+    "Chapter 1 - Performance Measurement/1.1 HPC Basics and Speedup.md",
     "Chapter 2 - Cluster Computing and SSH/2.2 Remote Execution and File Transfer.md",
     "Chapter 2 - Cluster Computing and SSH/2.1 SSH and HPC Environments.md",
-    "Chapter 3 - Shared-Memory Parallelism with OpenMP/3.1 OpenMP and the Fork-Join Model.md",
-    "Chapter 1 - Performance Measurement/1.4 Classic Optimization Exercises and Python DSA Speed Kit.md",
-    "Chapter 1 - Performance Measurement/1.4 Classic Optimization Exercises and Python DSA Speed Kit (1).md",
-    "Chapter 2 - Cluster Computing and SSH/2.3 Hardware vs Software — Fairness in Comparison.md",
+    "Chapter 3 - Shared-Memory Parallelism with OpenMP/3.3 Loop Scheduling and Load Balancing.md",
+    "Chapter 3 - Shared-Memory Parallelism with OpenMP/3.4 OpenMP Applied Exercises.md",
     "Chapter 1 - Performance Measurement/1.3 Algorithmic Optimization Exercises.md",
-    "Chapter 1 - Performance Measurement/1.2 Profiling and Timing Tools.md",
-    "Chapter 1 - Performance Measurement/1.1 HPC Basics and Speedup.md"
+    "Chapter 1 - Performance Measurement/1.4 Classic Optimization Exercises and Python DSA Speed Kit.md",
+    "Untitled.canvas",
+    "HPC Course Overview.md",
+    "Chapter 3 - Shared-Memory Parallelism with OpenMP/3.1 OpenMP and the Fork-Join Model.md",
+    "Chapter 1 - Performance Measurement/1.4 Classic Optimization Exercises and Python DSA Speed Kit (1).md",
+    "Chapter 2 - Cluster Computing and SSH/2.3 Hardware vs Software — Fairness in Comparison.md"
   ]
 }
