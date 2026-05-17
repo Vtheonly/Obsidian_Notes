@@ -13,12 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Part 4/Untitled.md",
+                "file": "Part 2/2. Parallel Memory Models.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2. Parallel Memory Models"
+            }
+          },
+          {
+            "id": "ca4da67e93ade9df",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Qs1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Untitled"
+              "title": "Qs1"
             }
           }
         ]
@@ -180,7 +194,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -195,41 +210,44 @@
       "quiz-generator:Open generator": false
     }
   },
-  "active": "8f2279e9162fd04c",
+  "active": "c0b073bbb23f3c46",
   "lastOpenFiles": [
-    "Part 3/Untitled.md",
-    "Part 2/6. Program Profiling and Bottleneck Identification.md",
-    "Part 1/Chapter 1 - Performance Measurement/1.3 Algorithmic Optimization Exercises.md",
-    "Part 1/Chapter 1 - Performance Measurement/1.2 Profiling and Timing Tools.md",
-    "Part 1/Chapter 2 - Cluster Computing and SSH/2.2 Remote Execution and File Transfer.md",
-    "Part 1/Chapter 2 - Cluster Computing and SSH/2.3 Hardware vs Software — Fairness in Comparison.md",
-    "Part 1/Chapter 2 - Cluster Computing and SSH/2.1 SSH and HPC Environments.md",
-    "Part 1/Chapter 3 - Shared-Memory Parallelism with OpenMP/3.1 OpenMP and the Fork-Join Model.md",
-    "Part 2/3. Data and Task Parallelism.md",
     "Part 2/2. Parallel Memory Models.md",
-    "Part 2/1. Introduction to Parallel Computing Fundamentals.md",
-    "Part 4/Untitled.md",
-    "Part 3/split_notes.py",
+    "Untitled.canvas",
+    "Part 4/Chapter 6 - Synchronization and Process Control.md",
+    "Part 4/Chapter 2 - MPI Fundamentals.md",
     "Part 2/5. Fundamental Limits to Parallel Scaling.md",
+    "Part 2/3. Data and Task Parallelism.md",
+    "Part 4/Chapter 3 - Point to Point Communication.md",
+    "Part 4/Chapter 4 - Collective Communication.md",
+    "Part 4/Chapter 1 - Foundations of Parallel Computing.md",
+    "Part 3/Chapter 6. Advanced Topics and Optimization.md",
+    "Part 3/Chapter 5. Task Parallelism.md",
+    "Part 3/Chapter 4. Synchronization and Mutual Exclusion.md",
+    "Part 3/Chapter 3. Work-Sharing Constructs.md",
+    "Qs1.md",
+    "Part 3/Chapter 2. Data Environment and Variable Scoping.md",
+    "Part 3/Chapter 1. Foundations and Concepts.md",
+    "Part 2/6. Program Profiling and Bottleneck Identification.md",
     "Part 2/4. Quantifying Parallel Performance and Scaling.md",
-    "Part 2/split_notes.py",
-    "Part 2/Quiz/Q1.md",
+    "Part 2/1. Introduction to Parallel Computing Fundamentals.md",
+    "Part 1/Chapter 3 - Shared-Memory Parallelism with OpenMP/3.1 OpenMP and the Fork-Join Model.md",
+    "Part 1/Chapter 2 - Cluster Computing and SSH/2.3 Hardware vs Software — Fairness in Comparison.md",
+    "Part 1/Chapter 1 - Performance Measurement/1.2 Profiling and Timing Tools.md",
+    "Part 4/Quiz/Q1.md",
+    "Part 4/Quiz/Q2.md",
+    "Part 3/Quiz/Q2.md",
+    "Part 3/Quiz/Q1.md",
     "Part 2/Quiz/Q2.md",
+    "Part 4/Quiz",
+    "Part 3/Quiz",
+    "Part 1/Quiz",
+    "Part 4/split_notes.py",
+    "Part 3/split_notes.py",
+    "Part 2/split_notes.py",
     "Part 2/Quiz",
-    "Part 2/Untitled.md",
     "Part 4",
     "Part 3",
-    "Part 2",
-    "Part 1/Chapter 1 - Performance Measurement/1.4 Classic Optimization Exercises and Python DSA Speed Kit.md",
-    "Part 1/Chapter 1 - Performance Measurement/1.1 HPC Basics and Speedup.md",
-    "Part 1",
-    "Part 1/Chapter 3 - Shared-Memory Parallelism with OpenMP/3.2 Synchronization and Race Conditions.md",
-    "Part 1/Chapter 3 - Shared-Memory Parallelism with OpenMP/3.3 Loop Scheduling and Load Balancing.md",
-    "Part 1/Chapter 3 - Shared-Memory Parallelism with OpenMP/3.4 OpenMP Applied Exercises.md",
-    "Quiz/Q2.md",
-    "Quiz",
-    "Untitled.canvas",
-    "HPC Course Overview.md",
-    "Chapter 1 - Performance Measurement/1.4 Classic Optimization Exercises and Python DSA Speed Kit (1).md"
+    "Part 2"
   ]
 }

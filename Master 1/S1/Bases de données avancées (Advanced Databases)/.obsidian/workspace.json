@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 Fundamentals/1. Relational Algebra/2. Relational Algebra Operators.md",
+                "file": "01 Fundamentals/1. Relational Algebra/1. Relational Model Fundamentals.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2. Relational Algebra Operators"
+              "title": "1. Relational Model Fundamentals"
             }
           }
         ]
@@ -198,7 +198,9 @@
   },
   "active": "1593c8d2d37c5fda",
   "lastOpenFiles": [
+    "Exams/2008/2008 Retake Jun 15/2008 Retake Jun 15.md",
     "01 Fundamentals/1. Relational Algebra/1. Relational Model Fundamentals.md",
+    "01 Fundamentals/1. Relational Algebra/2. Relational Algebra Operators.md",
     "Quiz/01 Fundamentals/Q1.md",
     "Quiz/01 Fundamentals/Q6.md",
     "Quiz/01 Fundamentals/Q8.md",
@@ -217,7 +219,6 @@
     "01 Fundamentals/3. Views/01 Views.md",
     "01 Fundamentals/2. Joints/7. Advanced Querying Joins Subqueries.md",
     "01 Fundamentals/2. Joints/8. Comprehensive Guide to Joins.md",
-    "01 Fundamentals/1. Relational Algebra/2. Relational Algebra Operators.md",
     "Exams/2021/2021 Exam Apr 19/2021 Exam Apr 19.md",
     "Vault2.md",
     "03 Transactions and Security/04 Transaction Control Syntax/Combined_Syntax.md",
@@ -225,7 +226,6 @@
     "02 Integrity Management/04 Advanced Triggers.md",
     "02 Integrity Management/03 Dynamic Constraints Triggers.md",
     "02 Integrity Management/01 Static Constraints.md",
-    "05 PLSQL and Database Programming/04 Exception Handling and Debugging.md",
     "01 Fundamentals/5. Exercises",
     "01 Fundamentals/4. Database Classifications & Ecosystem",
     "01 Fundamentals/3. Views",
