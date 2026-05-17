@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Quiz/Q3.md",
+                "file": "Quiz/Q1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Q3"
+              "title": "Q1"
             }
           },
           {
@@ -205,11 +205,12 @@
       "quiz-generator:Open generator": false
     }
   },
-  "active": "9f695c1a1b2ef2d9",
+  "active": "f3b5db156a9ef6ec",
   "lastOpenFiles": [
     "Quiz/Q2.md",
     "Quiz/Q1.md",
-    "Quiz/Q3.md",
+    "Quiz/Q1.md",
+    "Quiz/Q2.md",
     "old",
     "Questions/Qs1.md",
     "Untitled.canvas",
@@ -237,7 +238,6 @@
     "Series/Serie 2 Complexity/Chapter 3 - Common Algorithmic Operations and Complexities/1. Standard Data Structures and Mathematical Operations.md",
     "Series/Serie 2 Complexity/Chapter 3 - Common Algorithmic Operations and Complexities",
     "Series/Serie 2 Complexity/Chapter 2 - Iterative Algorithms Analysis/4. Decidability and Finite Search Spaces.md",
-    "Series/Serie 2 Complexity/Chapter 2 - Iterative Algorithms Analysis/3. Pyramid Function Exact Operation Counting.md",
     "Series/Serie 2 Complexity/Chapter 2 - Iterative Algorithms Analysis",
     "Series/Serie 2 Complexity/Chapter 1 - Mathematical Foundations for Algorithm Analysis",
     "Series/Serie 2 Complexity/split_vault.py",
