@@ -1,12 +1,12 @@
 
-# 🎯 CSS Media Queries – Deep Dive
+#  CSS Media Queries – Deep Dive
 
-## ✅ Clarifying the Focus
+##  Clarifying the Focus
 This note explores **CSS Media Queries**, which allow developers to apply styles based on specific **device conditions** like width, height, orientation, resolution, and more. This is **critical for responsive design** and is often asked in **interviews**.
 
 ---
 
-## 🧠 What Are Media Queries?
+##  What Are Media Queries?
 
 > **Definition**: Media Queries are a feature of CSS that allows **conditional application of styles** depending on the **characteristics of the user's device or viewport**.
 
@@ -14,7 +14,7 @@ They help in building interfaces that adapt to screen sizes, device capabilities
 
 ---
 
-## 🔧 Syntax Overview
+##  Syntax Overview
 
 ```css
 @media media-type and (media-feature) {
@@ -39,7 +39,7 @@ They help in building interfaces that adapt to screen sizes, device capabilities
 
 ---
 
-## 🧩 Media Types
+##  Media Types
 
 |Type|Purpose|
 |---|---|
@@ -50,7 +50,7 @@ They help in building interfaces that adapt to screen sizes, device capabilities
 
 ---
 
-## 📐 Common Media Features
+##  Common Media Features
 
 |Feature|Description|Example|
 |---|---|---|
@@ -65,9 +65,9 @@ They help in building interfaces that adapt to screen sizes, device capabilities
 
 ---
 
-## 🔄 Media Query Examples
+##  Media Query Examples
 
-### 📱 Mobile-First Design (Recommended)
+###  Mobile-First Design (Recommended)
 
 Start with base styles, then use `min-width` to progressively enhance.
 
@@ -92,7 +92,7 @@ Start with base styles, then use `min-width` to progressively enhance.
 }
 ```
 
-### 🌗 Dark Mode
+###  Dark Mode
 
 ```css
 @media (prefers-color-scheme: dark) {
@@ -103,7 +103,7 @@ Start with base styles, then use `min-width` to progressively enhance.
 }
 ```
 
-### 📄 Print Styles
+###  Print Styles
 
 ```css
 @media print {
@@ -116,7 +116,7 @@ Start with base styles, then use `min-width` to progressively enhance.
 
 ---
 
-## 🔍 Combining Multiple Conditions
+##  Combining Multiple Conditions
 
 ```css
 @media screen and (min-width: 600px) and (orientation: landscape) {
@@ -128,7 +128,7 @@ Start with base styles, then use `min-width` to progressively enhance.
 
 ---
 
-## 🚫 Inverse Media Queries
+##  Inverse Media Queries
 
 Use `not`, `only` for finer control:
 
@@ -144,9 +144,9 @@ Use `not`, `only` for finer control:
 
 ---
 
-## 🛠️ Debugging and Best Practices
+##  Debugging and Best Practices
 
-### ✅ Tips
+###  Tips
 
 - Always include the `<meta name="viewport" ...>` tag in HTML for mobile responsiveness.
     
@@ -157,7 +157,7 @@ Use `not`, `only` for finer control:
 - Use `em`-based breakpoints for scaling with user font settings.
     
 
-### ❌ Common Mistakes
+###  Common Mistakes
 
 - Using only `max-width` without accounting for `min-width` in mobile-first designs.
     
@@ -168,7 +168,7 @@ Use `not`, `only` for finer control:
 
 ---
 
-## 📎 Interview-Focused Questions
+##  Interview-Focused Questions
 
 ### Conceptual
 
@@ -192,7 +192,7 @@ Use `not`, `only` for finer control:
 
 ---
 
-## 📚 References
+##  References
 
 - [MDN Web Docs on Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries)
     
@@ -203,7 +203,7 @@ Use `not`, `only` for finer control:
 
 ---
 
-## 🏁 Summary
+##  Summary
 
 Media queries are the backbone of responsive CSS. Mastering them enables you to:
 

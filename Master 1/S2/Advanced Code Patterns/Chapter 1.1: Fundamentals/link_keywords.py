@@ -52,7 +52,7 @@ def generate_master_index():
     print("Generating Master Index...")
     
     with open(index_path, "w", encoding="utf-8") as f:
-        f.write("# 📚 Master Index: Advanced Code Patterns\n\n")
+        f.write("#  Master Index: Advanced Code Patterns\n\n")
         f.write("This file acts as a Map of Content, linking to all topics and their main keywords.\n\n")
         
         for target, keywords in KEYWORD_MAPPING.items():

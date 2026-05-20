@@ -2,10 +2,10 @@
 
 Welcome to the **TAMER (Tree-Aware Transformer for Handwritten Mathematical Expression Recognition)** comprehensive course. This vault is designed to take you from "vibe-coding" to a deep, rigorous understanding of the theory, mathematics, and implementation behind modern Math OCR.
 
-## 🎯 Course Objective
+##  Course Objective
 To master the end-to-end pipeline of recognizing handwritten mathematical expressions, moving beyond simple sequence models to structural, tree-aware architectures that ensure syntactic correctness.
 
-## 🗺️ Learning Path
+##  Learning Path
 ```mermaid
 graph TD
     A[Chapter 1: Foundations] --> B[Chapter 2: Vision Encoder]
@@ -29,7 +29,7 @@ graph TD
     end
 ```
 
-## 📂 Vault Structure
+##  Vault Structure
 The course is organized into seven logical chapters, providing a coherent and actionable learning path.
 
 ### [Chapter 1: Foundations of Mathematical OCR](1.1%20HMER%20Overview%20and%20Challenges.md)

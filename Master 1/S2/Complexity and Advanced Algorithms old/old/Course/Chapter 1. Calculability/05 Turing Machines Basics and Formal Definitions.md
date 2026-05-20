@@ -313,7 +313,7 @@ Let us trace the execution of M1 on several inputs to build thorough understandi
 | 4 | $a\, b\, q_1\, a\, B$ | $\delta(q_0, B) = (q_1, B, L)$: read `B`, go to $q_1$, move left |
 | 5 | **ACCEPT** | $\delta(q_1, a) = (q_{\text{accept}}, a, R)$: last char is `a`, accept! |
 
-**Result:** $aba \in L$ — Correct! ✓
+**Result:** $aba \in L$ — Correct! 
 
 **Trace 2: Input $w = ab$**
 
@@ -325,7 +325,7 @@ Let us trace the execution of M1 on several inputs to build thorough understandi
 | 3 | $a\, q_1\, b\, B$ | $\delta(q_0, B) = (q_1, B, L)$ |
 | 4 | **REJECT** | $\delta(q_1, b) = (q_{\text{reject}}, b, R)$: last char is `b`, reject |
 
-**Result:** $ab \notin L$ — Correct! ✓
+**Result:** $ab \notin L$ — Correct! 
 
 **Trace 3: Input $w = b$**
 
@@ -336,7 +336,7 @@ Let us trace the execution of M1 on several inputs to build thorough understandi
 | 2 | $q_1\, b\, B$ | $\delta(q_0, B) = (q_1, B, L)$ |
 | 3 | **REJECT** | $\delta(q_1, b) = (q_{\text{reject}}, b, R)$ |
 
-**Result:** $b \notin L$ — Correct! ✓
+**Result:** $b \notin L$ — Correct! 
 
 **Trace 4: Input $w = \varepsilon$ (empty word)**
 
@@ -360,7 +360,7 @@ Actually, after $\delta(q_0, B) = (q_1, B, L)$, the head moves left to another b
 | 1 | head moves left, state $q_1$, sees $B$ | $\delta(q_0, B) = (q_1, B, L)$ |
 | 2 | **REJECT** | $\delta(q_1, B) = (q_{\text{reject}}, B, R)$: empty word, reject |
 
-**Result:** $\varepsilon \notin L$ — Correct! ✓
+**Result:** $\varepsilon \notin L$ — Correct! 
 
 ### 3.3.6 Proof That M1 Decides L
 
@@ -482,8 +482,8 @@ The machine will never halt on input `ab`.
 > Students often create a machine that loops from the start. But M2 must still ACCEPT words in L correctly! The infinite loop only happens for words NOT in L. The machine must work perfectly for words in L — only its behavior on words outside L differs from a decider.
 
 **M2 accepts L:**
-- For $w \in L$ (words ending in `a`): M2 follows the same path as M1 and reaches $q_{\text{accept}}$. It halts and accepts. ✓
-- For $w \notin L$ (words ending in `b` or $\varepsilon$): M2 enters $q_{\text{loop}}$ and never halts. The machine does not accept these words. ✓
+- For $w \in L$ (words ending in `a`): M2 follows the same path as M1 and reaches $q_{\text{accept}}$. It halts and accepts. 
+- For $w \notin L$ (words ending in `b` or $\varepsilon$): M2 enters $q_{\text{loop}}$ and never halts. The machine does not accept these words. 
 
 **M2 does NOT decide L:**
 - A decider must halt on ALL inputs. But M2 loops forever on inputs not in L.
@@ -933,13 +933,13 @@ stateDiagram-v2
 When defining a Turing Machine on an exam, always specify ALL seven components:
 
 > [!important] TM Definition Checklist
-> 1. ☐ Q — finite set of states
-> 2. ☐ Γ — tape alphabet (must include B and all input symbols)
-> 3. ☐ Σ — input alphabet (must be a proper subset of Γ, must NOT include B)
-> 4. ☐ δ — complete transition function
-> 5. ☐ s — start state (must be in Q)
-> 6. ☐ B — blank symbol (must be in Γ but NOT in Σ)
-> 7. ☐ F — set of accepting states (subset of Q)
+> 1.  Q — finite set of states
+> 2.  Γ — tape alphabet (must include B and all input symbols)
+> 3.  Σ — input alphabet (must be a proper subset of Γ, must NOT include B)
+> 4.  δ — complete transition function
+> 5.  s — start state (must be in Q)
+> 6.  B — blank symbol (must be in Γ but NOT in Σ)
+> 7.  F — set of accepting states (subset of Q)
 
 ### 3.9.2 Acceptance vs Decidability Summary
 

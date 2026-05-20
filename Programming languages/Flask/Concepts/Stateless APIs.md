@@ -1,13 +1,13 @@
 
-## 📦 What Are Stateless APIs?
+##  What Are Stateless APIs?
 
 Now let's switch gears to your second question:
 
 ---
 
-## 🔄 Stateless vs Stateful APIs
+##  Stateless vs Stateful APIs
 
-### 🧊 Stateless API = Each request is **independent**.
+###  Stateless API = Each request is **independent**.
 
 > The server does **not store any memory of previous requests.**  
 > Every request contains **all the information** needed to complete it.
@@ -23,7 +23,7 @@ Even if the user just made another request a second ago, this new request is **f
 
 ---
 
-### ✅ Benefits of Stateless APIs:
+###  Benefits of Stateless APIs:
 
 - Easy to scale horizontally (no server memory)
     
@@ -34,7 +34,7 @@ Even if the user just made another request a second ago, this new request is **f
 
 ---
 
-### ❌ Drawbacks:
+###  Drawbacks:
 
 - Repetitive data sent in every request
     
@@ -43,7 +43,7 @@ Even if the user just made another request a second ago, this new request is **f
 
 ---
 
-## 🔁 Stateful APIs?
+##  Stateful APIs?
 
 > Server **remembers** something between requests.
 
@@ -58,7 +58,7 @@ Examples:
 
 ---
 
-## 🤝 So How Do Stateless APIs Handle Login?
+##  So How Do Stateless APIs Handle Login?
 
 With **tokens**, typically JWT (JSON Web Tokens):
 
@@ -73,7 +73,7 @@ No memory is kept on the server.
 
 ---
 
-## 🧠 TL;DR Summary
+##  TL;DR Summary
 
 |Concept|Meaning|
 |---|---|

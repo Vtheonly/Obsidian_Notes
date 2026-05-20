@@ -470,14 +470,14 @@ graph TD
 > 4. Read 'b', apply $(q_0, b, A) \to (q_1, \varepsilon)$: state $q_1$, stack = $AZ_0$, remaining = "b"
 > 5. Read 'b', apply $(q_1, b, A) \to (q_1, \varepsilon)$: state $q_1$, stack = $Z_0$, remaining = ""
 > 6. Apply $(q_1, \varepsilon, Z_0) \to (q_2, Z_0)$: state $q_2$, stack = $Z_0$, remaining = ""
-> 7. Input consumed, in accepting state $q_2$. **Accept!** ✓
+> 7. Input consumed, in accepting state $q_2$. **Accept!** 
 
 > [!info] Trace of the PDA on Input "abab"
 > 1. Start: state $q_0$, stack = $Z_0$, remaining input = "abab"
 > 2. Read 'a', apply $(q_0, a, Z_0) \to (q_0, AZ_0)$: state $q_0$, stack = $AZ_0$, remaining = "bab"
 > 3. Read 'b', apply $(q_0, b, A) \to (q_1, \varepsilon)$: state $q_1$, stack = $Z_0$, remaining = "ab"
-> 4. No transition from $q_1$ reads 'a' with $Z_0$ on stack. **Dead end!** ✗
-> 5. No other computation paths lead to acceptance. **Reject!** ✗
+> 4. No transition from $q_1$ reads 'a' with $Z_0$ on stack. **Dead end!** 
+> 5. No other computation paths lead to acceptance. **Reject!** 
 
 ### 2.5.3 Context-Free Languages
 
@@ -630,7 +630,7 @@ graph TD
     S3["Step 3<br/>State: q₀<br/>Stack: AAZ₀<br/>Input: bb"]
     S4["Step 4<br/>State: q₁<br/>Stack: AZ₀<br/>Input: b"]
     S5["Step 5<br/>State: q₁<br/>Stack: Z₀<br/>Input: ''"]
-    S6["Step 6<br/>State: q₂ ✓<br/>Stack: Z₀<br/>Input: ''"]
+    S6["Step 6<br/>State: q₂ <br/>Stack: Z₀<br/>Input: ''"]
     
     S1 -->|"a, Z₀ ; AZ₀"| S2
     S2 -->|"a, A ; AA"| S3

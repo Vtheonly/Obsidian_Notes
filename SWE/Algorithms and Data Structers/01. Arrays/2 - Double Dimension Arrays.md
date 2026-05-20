@@ -30,8 +30,8 @@ When declaring a multidimensional array in C++, only the last dimension must be 
 Example:
 
 ```cpp
-int a[][3];  // ✅ OK - first dimension can be omitted
-int a[3][];  // ❌ NOT OK - last dimension must be specified
+int a[][3];  //  OK - first dimension can be omitted
+int a[3][];  //  NOT OK - last dimension must be specified
 ```
 
 > **Note**: In C++, the second dimension (or last for higher dimensions) must always be specified for memory layout purposes. 
@@ -64,10 +64,10 @@ Each entry, `a[i][j]`, represents an integer at row `i` and column `j`.
 In function parameters, partially specified dimensions are allowed, but only for the first dimension:
 
 ```cpp
-void func(int a[][]);     // ❌ WRONG - last dimension must be specified
-void func(int a[3][]);    // ❌ WRONG - last dimension must be specified
-void func(int a[][3]);    // ✅ CORRECT - last dimension specified
-void func(int *a[]);      // ❌ WRONG for 2D arrays
+void func(int a[][]);     //  WRONG - last dimension must be specified
+void func(int a[3][]);    //  WRONG - last dimension must be specified
+void func(int a[][3]);    //  CORRECT - last dimension specified
+void func(int *a[]);      //  WRONG for 2D arrays
 ```
 
 For 2D arrays, `int a[][3]` is valid as a function parameter since C++ only requires the last dimension to be specified. However, `int a[3][];` is invalid, as C++ needs the last dimension size to determine memory layout. 
@@ -92,16 +92,16 @@ For 2D arrays, `int a[][3]` is valid as a function parameter since C++ only requ
    - **`int a[3][]`**: Invalid—last dimension is missing.
 
    ```cpp
-   int a[][3];  // ✅ OK - last dimension specified
-   int a[3][];  // ❌ NOT OK - last dimension required
+   int a[][3];  //  OK - last dimension specified
+   int a[3][];  //  NOT OK - last dimension required
    ```
 
 3. **Function Parameter Declaration**  
    When passing a 2D array to a function, you can omit the first dimension but must specify the second:
    ```cpp
-   void func(int a[][3]);    // ✅ Correct
-   void func(int a[][]);     // ❌ Incorrect - last dimension required
-   void func(int *a[]);      // ❌ Incorrect for 2D arrays
+   void func(int a[][3]);    //  Correct
+   void func(int a[][]);     //  Incorrect - last dimension required
+   void func(int *a[]);      //  Incorrect for 2D arrays
    ```
 
 4. **Memory Layout**  

@@ -38,7 +38,7 @@ Sometimes, you may add a fourth or fifth compartment at the bottom to indicate:
 * **Responsibilities:** Textual descriptions of what the class must do.
 * **Exceptions:** Errors the class handles.
 
-### 💡 Exam Tip & Common Pitfall
+###  Exam Tip & Common Pitfall
 > **Missing Types:** A common mistake in exams is writing `nom` instead of `-nom : string` in the attribute compartment. In university grading rubrics (as seen in the provided correction keys), missing the type (`: string`, `: int`, `: double`) or the [[104 Visibility and Encapsulation|visibility]] symbol immediately docks 0.25 points per class. **Always type your attributes!**
 
 

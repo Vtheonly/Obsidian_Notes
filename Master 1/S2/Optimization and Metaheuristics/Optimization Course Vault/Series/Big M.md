@@ -1,6 +1,6 @@
-# 📘 Complete Explanation: Big M Method
+#  Complete Explanation: Big M Method
 
-## 🎯 The Problem We're Solving
+##  The Problem We're Solving
 
 ### Original Problem:
 
@@ -15,7 +15,7 @@ x_1, x_2 &\geq 0
 
 ---
 
-## ❓ Why Do We Need the Big M Method?
+##  Why Do We Need the Big M Method?
 
 ### The Core Issue:
 
@@ -23,15 +23,15 @@ When converting inequalities to equalities, we need **basic variables** to start
 
 | Constraint Type | What We Add | Is It Basic? | Problem? |
 |---|---|---|---|
-| **$\leq$** | Slack variable $+s$ | ✅ Yes! | None |
-| **$\geq$** | Surplus variable $-s$ | ❌ No! | **Can't start** |
-| **$=$** | Nothing | ❌ No! | **Can't start** |
+| **$\leq$** | Slack variable $+s$ |  Yes! | None |
+| **$\geq$** | Surplus variable $-s$ |  No! | **Can't start** |
+| **$=$** | Nothing |  No! | **Can't start** |
 
 **The surplus variable has a NEGATIVE sign**, so it cannot be a basic variable in the initial solution!
 
 ---
 
-## 🔧 Step-by-Step Transformation
+##  Step-by-Step Transformation
 
 ### **Step 1: Handle Constraint 2 (The Easy One)**
 
@@ -40,7 +40,7 @@ $$x_1 + 3x_2 \leq 6$$
 **Add slack variable $x_4 \geq 0$:**
 $$x_1 + 3x_2 + x_4 = 6$$
 
-✅ **$x_4$ can be our initial basic variable** (coefficient is +1)
+ **$x_4$ can be our initial basic variable** (coefficient is +1)
 
 ---
 
@@ -53,7 +53,7 @@ $$x_1 + x_2 \geq 4$$
 **Add surplus variable $x_3 \geq 0$:**
 $$x_1 + x_2 - x_3 = 4$$
 
-❌ **Problem:** $x_3$ has coefficient $-1$, so it CANNOT be basic!
+ **Problem:** $x_3$ has coefficient $-1$, so it CANNOT be basic!
 
 #### Part B: Add Artificial Variable
 
@@ -61,11 +61,11 @@ To create a valid starting point, we add an **artificial variable $a_1 \geq 0$**
 
 $$x_1 + x_2 - x_3 + a_1 = 4$$
 
-✅ **Now $a_1$ can be our initial basic variable** (coefficient is +1)
+ **Now $a_1$ can be our initial basic variable** (coefficient is +1)
 
 ---
 
-## 💰 What is "Big M"?
+##  What is "Big M"?
 
 **Big M** is a **penalty method** to force artificial variables out of the solution.
 
@@ -85,7 +85,7 @@ Where **$M$ is a HUGE positive number** (like $M = 10,000$ or $M = 1,000,000$)
 
 ---
 
-## 📋 Complete Standard Form
+##  Complete Standard Form
 
 $$\boxed{\text{Maximize: } Z = 2x_1 + 3x_2 + 0x_3 + 0x_4 - Ma_1}$$
 
@@ -103,7 +103,7 @@ x_1, x_2, x_3, x_4, a_1 &\geq 0
 
 ---
 
-## 🔄 Step 3: Adjust the Z Row (The Tricky Part!)
+##  Step 3: Adjust the Z Row (The Tricky Part!)
 
 ### Why Do We Need This?
 
@@ -139,7 +139,7 @@ $$Z - (M+2)x_1 - (M+3)x_2 + Mx_3 - 0x_4 - 0a_1 = -4M$$
 
 ---
 
-### 📊 Showing the Calculation in Table Form
+###  Showing the Calculation in Table Form
 
 We need to update: **New Z row = Old Z row + $M \times$ Row 1**
 
@@ -222,10 +222,10 @@ They show: "New Z row = Old Z row + M × (Row 1)"
 
 And they get: $M-2, M-3, -M, 0, 0, 4M$
 
-So: $-2 + M = M-2$ ✓
-$-3 + M = M-3$ ✓
-$0 + M(-1) = -M$ ✓
-$0 + M(0) = 0$ ✓
+So: $-2 + M = M-2$ 
+$-3 + M = M-3$ 
+$0 + M(-1) = -M$ 
+$0 + M(0) = 0$ 
 $M + M(1) = 2M$ ... but they show 0?
 
 Let me look at their table more carefully:
@@ -294,9 +294,9 @@ Actually, you know what, let me just explain it the way the user has it. The key
 Let me just explain it as they have it.
 </thinking>
 
-# 📘 Complete Explanation: Big M Method Example
+#  Complete Explanation: Big M Method Example
 
-## 🎯 Part 1: Why Do We Need This?
+##  Part 1: Why Do We Need This?
 
 ### The Original Problem:
 
@@ -311,7 +311,7 @@ x_1, x_2 &\geq 0
 
 ---
 
-## 🔧 Part 2: Converting to Standard Form
+##  Part 2: Converting to Standard Form
 
 ### Constraint 1: $x_1 + x_2 \geq 4$
 
@@ -320,12 +320,12 @@ x_1, x_2 &\geq 0
 **Step 1:** Add surplus variable $x_3$ (with negative sign)
 $$x_1 + x_2 - x_3 = 4$$
 
-**Step 2:** ❌ **Can't use $x_3$ as basic variable!** (It has coefficient $-1$)
+**Step 2:**  **Can't use $x_3$ as basic variable!** (It has coefficient $-1$)
 
 **Step 3:** Add artificial variable $a_1$ (with positive sign)
 $$x_1 + x_2 - x_3 + a_1 = 4$$
 
-✅ Now $a_1$ can be our starting basic variable!
+ Now $a_1$ can be our starting basic variable!
 
 ---
 
@@ -334,11 +334,11 @@ $$x_1 + x_2 - x_3 + a_1 = 4$$
 **This is easy!** Just add slack variable $x_4$:
 $$x_1 + 3x_2 + x_4 = 6$$
 
-✅ $x_4$ can be basic (coefficient is $+1$)
+ $x_4$ can be basic (coefficient is $+1$)
 
 ---
 
-## 💰 Part 3: The Big M Penalty
+##  Part 3: The Big M Penalty
 
 We DON'T want $a_1$ in our final solution (it's artificial/fake), so we **penalize it heavily**:
 
@@ -353,7 +353,7 @@ Where $M$ is a **huge positive number** (like 1,000,000)
 
 ---
 
-## 📋 Part 4: Initial Standard Form System
+##  Part 4: Initial Standard Form System
 
 $$\text{Maximize: } Z = 2x_1 + 3x_2 + 0x_3 + 0x_4 - Ma_1$$
 
@@ -366,11 +366,11 @@ $$\begin{align}
 **Initial Basic Solution:**
 - Basic variables: $a_1 = 4, x_4 = 6$
 - Non-basic variables: $x_1 = 0, x_2 = 0, x_3 = 0$
-- Objective value: $Z = -M(4) = -4M$ 😱 (very negative!)
+- Objective value: $Z = -M(4) = -4M$  (very negative!)
 
 ---
 
-## 🔄 Part 5: The Z Row Adjustment (THE KEY STEP!)
+##  Part 5: The Z Row Adjustment (THE KEY STEP!)
 
 ### Why Do We Need This?
 
@@ -396,7 +396,7 @@ We need to **eliminate** the $M$ coefficient under $a_1$ in the Z row.
 
 ---
 
-### 📊 Detailed Calculation
+###  Detailed Calculation
 
 **Row 1 (repeated for reference):**
 $$\begin{array}{|c|c|c|c|c|c|c|}
@@ -417,15 +417,15 @@ $$\begin{array}{|c|c|c|c|c|c|c|}
 | **New Z row** | $M-2$ | $M-3$ | $-M$ | $0$ | $\color{green}{0}$ | $4M$ |
 
 **Verification of each column:**
-- $x_1$: $-2 + M = M - 2$ ✓
-- $x_2$: $-3 + M = M - 3$ ✓
-- $x_3$: $0 + (-M) = -M$ ✓
-- $x_4$: $0 + 0 = 0$ ✓
+- $x_1$: $-2 + M = M - 2$ 
+- $x_2$: $-3 + M = M - 3$ 
+- $x_3$: $0 + (-M) = -M$ 
+- $x_4$: $0 + 0 = 0$ 
 - $a_1$: $M + M = 2M$... wait, why does the table show $0$?
 
 ---
 
-### 🤔 Wait, Why Does $a_1$ Column Become 0?
+###  Wait, Why Does $a_1$ Column Become 0?
 
 **The key insight:** We're not just mechanically adding rows. We're doing a **row operation** to eliminate the basic variable from the Z row.
 
@@ -446,7 +446,7 @@ Let me recalculate:
 
 ---
 
-### 📝 Two Equivalent Ways to Write This
+###  Two Equivalent Ways to Write This
 
 The coefficients $-2-M$ and $M-2$ have **different meanings**:
 
@@ -461,7 +461,7 @@ In the table, they write it as $M-2$ using a different sign convention, but the 
 
 ---
 
-## 🎯 Part 6: The Complete Initial Tableau
+##  Part 6: The Complete Initial Tableau
 
 $$\begin{array}{c|ccccc|c|c}
 \text{Basis} & x_1 & x_2 & x_3 & x_4 & a_1 & \text{Solution} & \text{Ratio}\\
@@ -479,7 +479,7 @@ Z & M-2 & M-3 & -M & 0 & 0 & 4M & \\
 
 ---
 
-## 📚 Key Takeaways
+##  Key Takeaways
 
 | Concept | Explanation |
 |---|---|
@@ -492,7 +492,7 @@ Z & M-2 & M-3 & -M & 0 & 0 & 4M & \\
 
 ---
 
-## ✅ Summary
+##  Summary
 
 1. **≥ constraints** need surplus ($-s$) + artificial ($+a$)
 2. Artificial variables get **$-M$ penalty** in objective

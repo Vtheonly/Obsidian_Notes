@@ -40,7 +40,7 @@ We'll set our initial breakpoints as indicated: one on `Line 24` and another on 
 
 ---
 
-### 1. Continue (Play icon ▶️ / F5)
+### 1. Continue (Play icon  / F5)
 
 *   **What it does:** Resumes program execution from the current paused state. The program will run until it hits the *next* breakpoint, encounters an unhandled exception, or completes its execution.
 *   **In Detail:** If you're paused at a breakpoint and you've inspected everything you need at that specific point, "Continue" lets the program run freely. If there are other breakpoints set later in the code, it will stop at the very next one it encounters. If there are no more breakpoints, the program will run to completion (or until an error stops it).
@@ -54,7 +54,7 @@ We'll set our initial breakpoints as indicated: one on `Line 24` and another on 
 
 ---
 
-### 2. Step Over (Curved arrow over dot ↪️ / F10)
+### 2. Step Over (Curved arrow over dot  / F10)
 
 *   **What it does:** Executes the current highlighted line of code. If the current line contains a function call, "Step Over" will execute that *entire function* without stepping into its individual lines, and then pause on the *next line of code in the current scope*.
 *   **In Detail:** This is useful when you are confident that a particular function works correctly and you don't need to inspect its internal logic. You just want to execute it and see its result or side effects, then move to the next statement in the function you are currently in.
@@ -67,7 +67,7 @@ We'll set our initial breakpoints as indicated: one on `Line 24` and another on 
 
 ---
 
-### 3. Step Into (Downward arrow ⤵️ / F11)
+### 3. Step Into (Downward arrow  / F11)
 
 *   **What it does:** If the current highlighted line of code contains a function call, "Step Into" will move the debugger to the *first line inside that function*. If the current line is not a function call, it behaves like "Step Over" (executes the line and moves to the next).
 *   **In Detail:** Use this when you want to examine the internal workings of a function called on the current line. It's how you "drill down" into your code's execution path.
@@ -82,7 +82,7 @@ We'll set our initial breakpoints as indicated: one on `Line 24` and another on 
 
 ---
 
-### 4. Step Out (Upward arrow ⤴️ / Shift+F11)
+### 4. Step Out (Upward arrow  / Shift+F11)
 
 *   **What it does:** If you are currently paused inside a function, "Step Out" will execute the *remaining lines of the current function* and then pause on the line of code in the *calling function* immediately after the original function call.
 *   **In Detail:** This is useful when you've stepped into a function, perhaps looked at a few lines, and decided you've seen enough of its internal details. "Step Out" quickly finishes the current function's execution and takes you back to where it was called from, saving you from stepping over many remaining lines within that function.
@@ -94,7 +94,7 @@ We'll set our initial breakpoints as indicated: one on `Line 24` and another on 
 
 ---
 
-### 5. Restart (Curved arrow 🔄 / Ctrl+Shift+F5 or Cmd+Shift+F5)
+### 5. Restart (Curved arrow  / Ctrl+Shift+F5 or Cmd+Shift+F5)
 
 *   **What it does:** Stops the current debugging session and immediately starts a new debugging session from the very beginning of your program. All existing breakpoints will remain active.
 *   **In Detail:** This is handy if:
@@ -112,7 +112,7 @@ We'll set our initial breakpoints as indicated: one on `Line 24` and another on 
 
 ---
 
-### 6. Stop (Red square ⏹️ / Shift+F5)
+### 6. Stop (Red square  / Shift+F5)
 
 *   **What it does:** Completely terminates the current debugging session and the program being debugged.
 *   **In Detail:** Use this when you are finished debugging or if the program is stuck in an infinite loop or a state from which you want to forcefully exit. The program execution halts, and the debug toolbar disappears.

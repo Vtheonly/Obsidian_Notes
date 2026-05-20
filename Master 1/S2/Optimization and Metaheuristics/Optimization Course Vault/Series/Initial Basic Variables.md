@@ -2,7 +2,7 @@ Here is the complete, easy-to-understand guide on exactly how to determine which
 
 ---
 
-# 🏗️ Choosing Initial Basic Variables
+#  Choosing Initial Basic Variables
 
 ## 1. The Golden Rule of Basic Variables
 To start the Simplex algorithm, you need an **Initial Basic Feasible Solution (IBFS)**. This corresponds to starting at the origin (zero) on a graph. 
@@ -21,7 +21,7 @@ This means it must have a coefficient of **`+1`** in its own row, and **`0`** in
 
 Let's look at the "Who's Who" of variables to see who passes this test.
 
-### ❌ Who CANNOT be an initial Basic Variable?
+###  Who CANNOT be an initial Basic Variable?
 
 #### 1. The Original Decision Variables ($x_1, x_2$)
 * **Why:** They represent the products you are making. At the very beginning of the problem (before you start optimizing), you assume you are making *nothing*. Therefore, $x_1 = 0$ and $x_2 = 0$. Because they are zero, they are **non-basic**.
@@ -33,7 +33,7 @@ Let's look at the "Who's Who" of variables to see who passes this test.
 
 ---
 
-### ✅ Who CAN be an initial Basic Variable?
+###  Who CAN be an initial Basic Variable?
 
 #### 1. Slack Variables ($+s_i$ or $+x_i$) from $\le$ constraints
 * **Why:** If a constraint is $x_1 + x_2 + s_1 = 10$, and you set $x_1=0, x_2=0$, you are left with exactly **$s_1 = 10$**. It is positive, it is legal, and its coefficient is $+1$. 

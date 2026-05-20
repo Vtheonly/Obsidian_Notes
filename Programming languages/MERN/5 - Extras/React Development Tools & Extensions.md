@@ -1,6 +1,6 @@
 
 
-### 🔍 **Debugging & Inspection**
+###  **Debugging & Inspection**
 
 #### 1. **React Developer Tools** (Browser Extension)
 
@@ -33,7 +33,7 @@
 
 ---
 
-### 🛠️ **Linting & Type Checking**
+###  **Linting & Type Checking**
 
 #### 4. **ESLint + eslint-plugin-react + eslint-plugin-react-hooks**
 
@@ -76,7 +76,7 @@ npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 
 ---
 
-### 🔧 **Component/Hook-Level Debugging**
+###  **Component/Hook-Level Debugging**
 
 #### 7. **why-did-you-render**
 
@@ -100,7 +100,7 @@ npm install @welldone-software/why-did-you-render --save-dev
 
 ---
 
-### 🧪 **Testing & Error Reporting**
+###  **Testing & Error Reporting**
 
 #### 9. **React Testing Library**
 
@@ -126,7 +126,7 @@ npm install --save-dev @testing-library/react
 
 ---
 
-### 🧩 **IDE Extensions (VS Code)**
+###  **IDE Extensions (VS Code)**
 
 #### 11. **ES7+ React/Redux Snippets**
 
@@ -152,7 +152,7 @@ npm install --save-dev @testing-library/react
 
 ---
 
-### 🧭 **Code Quality & Architecture Helpers**
+###  **Code Quality & Architecture Helpers**
 
 #### 15. **Bit.dev**
 
@@ -175,7 +175,7 @@ npm install --save-dev @testing-library/react
 
 ---
 
-### ⚙️ Bonus: Boilerplate Generators
+###  Bonus: Boilerplate Generators
 
 #### 18. **Create React App + ESLint + Prettier + TypeScript Template**
 
@@ -190,7 +190,7 @@ Then add ESLint and Prettier.
 
 ---
 
-## 🧠 Tips for Using These Tools Effectively
+##  Tips for Using These Tools Effectively
 
 - Keep **type checking and linting always running** in your editor.
     

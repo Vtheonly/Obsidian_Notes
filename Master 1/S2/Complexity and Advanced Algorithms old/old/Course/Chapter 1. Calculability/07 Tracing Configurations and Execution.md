@@ -254,13 +254,13 @@ A Turing Machine is deterministic if and only if for every pair (state, symbol),
 
 Let us check every state systematically:
 
-**State $q_0$:** Transitions defined for symbols $a$ and $b$. These are two distinct symbols. No symbol appears more than once. ✓
+**State $q_0$:** Transitions defined for symbols $a$ and $b$. These are two distinct symbols. No symbol appears more than once. 
 
-**State $q_1$:** Transitions defined for symbols $a$, $b$, $A$, $B$, and $\#$. These are five distinct symbols. No symbol appears more than once. ✓
+**State $q_1$:** Transitions defined for symbols $a$, $b$, $A$, $B$, and $\#$. These are five distinct symbols. No symbol appears more than once. 
 
-**State $q_3$:** Transitions defined for symbols $a$, $b$, $A$, $B$, and $\#$. These are five distinct symbols. No symbol appears more than once. ✓
+**State $q_3$:** Transitions defined for symbols $a$, $b$, $A$, $B$, and $\#$. These are five distinct symbols. No symbol appears more than once. 
 
-**State $q_2$:** Transitions defined for symbols $a$, $b$, $A$, $B$, $A'$, and $B'$. These are six distinct symbols. No symbol appears more than once. ✓
+**State $q_2$:** Transitions defined for symbols $a$, $b$, $A$, $B$, $A'$, and $B'$. These are six distinct symbols. No symbol appears more than once. 
 
 Since every (state, symbol) pair has at most one transition, the machine is deterministic.
 

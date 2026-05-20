@@ -1,7 +1,7 @@
 
-## 🧱 What is an ORM?
+##  What is an ORM?
 
-> 📖 **Definition**  
+>  **Definition**  
 **ORM** stands for **Object-Relational Mapping**.  
 It’s a programming technique used to interact with a **relational database** (like SQLite, MySQL, or PostgreSQL) using **Python classes and objects instead of raw SQL**.
 
@@ -12,9 +12,9 @@ In simple terms, an ORM lets you:
 
 ---
 
-## 💡 Why Use an ORM?
+##  Why Use an ORM?
 
-> 🔧 Without ORM (raw SQL):
+>  Without ORM (raw SQL):
 ```python
 import sqlite3
 conn = sqlite3.connect("users.db")
@@ -23,13 +23,13 @@ cursor.execute("SELECT * FROM users WHERE age > ?", (25,))
 rows = cursor.fetchall()
 ````
 
-> 🏗 With ORM (SQLAlchemy):
+>  With ORM (SQLAlchemy):
 
 ```python
 users = db.session.query(User).filter(User.age > 25).all()
 ```
 
-> ✅ **Benefits**:
+>  **Benefits**:
 
 - Avoids repetitive SQL syntax
     
@@ -42,7 +42,7 @@ users = db.session.query(User).filter(User.age > 25).all()
 - Prevents SQL injection when done right
     
 
-> ❌ **Drawbacks**:
+>  **Drawbacks**:
 
 - Slightly slower than raw SQL for heavy queries
     
@@ -53,7 +53,7 @@ users = db.session.query(User).filter(User.age > 25).all()
 
 ---
 
-## 🧰 Common ORMs Used with Flask
+##  Common ORMs Used with Flask
 
 |ORM Tool|Description|
 |---|---|
@@ -65,7 +65,7 @@ users = db.session.query(User).filter(User.age > 25).all()
 
 ---
 
-## 📦 SQLAlchemy Model Example
+##  SQLAlchemy Model Example
 
 Here’s how you'd define a table called `User` with Flask-SQLAlchemy:
 
@@ -83,7 +83,7 @@ class User(db.Model):
         return f"<User {self.username}>"
 ```
 
-> 🔍 This defines a `User` table with:
+>  This defines a `User` table with:
 
 - `id`: Primary key (auto-increment)
     
@@ -92,7 +92,7 @@ class User(db.Model):
 - `email`: Required and unique
     
 
-### 🔄 Create & Query
+###  Create & Query
 
 ```python
 new_user = User(username="marshal", email="marshal@example.com")
@@ -104,7 +104,7 @@ users = User.query.filter_by(username="marshal").all()
 
 ---
 
-## 🔗 Relationships in ORM
+##  Relationships in ORM
 
 ORMs support **relationships** like foreign keys and joins:
 
@@ -121,17 +121,17 @@ Now `Post.user` gives you the author object, and `User.posts` gives you all post
 
 ---
 
-## 🧠 Summary
+##  Summary
 
-✅ ORM = A tool that maps Python classes to database tables.  
-✅ Makes code cleaner, more maintainable, and more Pythonic.  
-✅ SQLAlchemy is the go-to ORM for Flask.
+ ORM = A tool that maps Python classes to database tables.  
+ Makes code cleaner, more maintainable, and more Pythonic.  
+ SQLAlchemy is the go-to ORM for Flask.
 
 ---
 
-## 🧭 Tips
+##  Tips
 
-> 💡 Use ORM for:
+>  Use ORM for:
 
 - Apps that grow over time
     
@@ -140,28 +140,28 @@ Now `Post.user` gives you the author object, and `User.posts` gives you all post
 - Cleaner code structure
     
 
-> ⚠️ Learn SQL too!
+>  Learn SQL too!
 
 - ORM doesn't eliminate the need for understanding SQL.
     
 - Knowing JOINs, indexing, transactions, etc., is still vital.
     
 
-## ❓ Does the class (e.g. `User`) need to exist in the database?
+##  Does the class (e.g. `User`) need to exist in the database?
 
-### 👉 No — the class in your code **defines** the table.
+###  No — the class in your code **defines** the table.
 
 You don't _write the table manually_ in the database. The ORM **creates it for you** based on your Python class.
 
-> ✅ You define the table **structure** in Python.  
-> ✅ SQLAlchemy then creates or updates the corresponding SQL table using this class.  
-> ❌ The class doesn’t have to exist in the database before — the ORM makes it real in the DB.
+>  You define the table **structure** in Python.  
+>  SQLAlchemy then creates or updates the corresponding SQL table using this class.  
+>  The class doesn’t have to exist in the database before — the ORM makes it real in the DB.
 
 ---
 
-## 🔨 Example
+##  Example
 
-### 🧱 Python Model:
+###  Python Model:
 
 ```python
 class User(db.Model):
@@ -173,7 +173,7 @@ This defines what the **`users`** table _should_ look like in the DB.
 
 Now to make it real:
 
-### ⚙️ You run:
+###  You run:
 
 ```python
 db.create_all()
@@ -185,29 +185,29 @@ This tells SQLAlchemy:
 
 ---
 
-## 🧩 What If a Table Already Exists?
+##  What If a Table Already Exists?
 
 - If you already have a table in the database with the same name, SQLAlchemy **will not overwrite or modify it** automatically — `create_all()` only creates tables if they don’t exist.
     
 - The class **must match** the table's structure _if_ the table already exists, or things will break (e.g., querying rows will fail or give incorrect data).
     
 
-> ⚠️ SQLAlchemy doesn’t auto-sync changes like column renames or type changes. That’s why we use tools like **Alembic** for migrations.
+>  SQLAlchemy doesn’t auto-sync changes like column renames or type changes. That’s why we use tools like **Alembic** for migrations.
 
 ---
 
-## 🎯 Summary
+##  Summary
 
 |Question|Answer|
 |---|---|
-|Does the table need to exist before?|❌ No — the class _creates_ the table.|
-|Do the class and DB table need to match?|✅ Yes — otherwise queries break.|
-|What if the table exists and doesn't match the model?|⚠️ Errors or unexpected behavior.|
-|Does `create_all()` update existing tables?|❌ No — it only creates new ones.|
+|Does the table need to exist before?| No — the class _creates_ the table.|
+|Do the class and DB table need to match?| Yes — otherwise queries break.|
+|What if the table exists and doesn't match the model?| Errors or unexpected behavior.|
+|Does `create_all()` update existing tables?| No — it only creates new ones.|
 
 ---
 
-## 🛠 Tip: Use Migrations for Real Projects
+##  Tip: Use Migrations for Real Projects
 
 Once your app evolves (and the schema changes), use:
 

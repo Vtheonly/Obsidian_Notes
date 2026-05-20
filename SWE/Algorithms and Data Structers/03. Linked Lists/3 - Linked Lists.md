@@ -19,7 +19,7 @@ graph LR
     style D fill:#fff,stroke:#333,stroke-width:2px
 ```
 
-## 1. Singly Linked Lists 🔗
+## 1. Singly Linked Lists 
 
 ### Node Structure
 ```cpp
@@ -95,7 +95,7 @@ void inserer_Fin(element*& debut, int x) {
 }
 ```
 
-## 2. Circular Linked Lists ⭕
+## 2. Circular Linked Lists 
 
 ```mermaid
 graph LR
@@ -110,7 +110,7 @@ graph LR
 > [!info] Key Difference
 > The last node points back to the first node instead of NULL
 
-## 3. Doubly Linked Lists ⬅️➡️
+## 3. Doubly Linked Lists 
 
 ### Node Structure
 ```cpp
@@ -154,7 +154,7 @@ graph LR
 > - **Circular Linked**: For round-robin scheduling or circular buffer implementations
 > - **Doubly Linked**: When you need bi-directional traversal or quick deletions given a node
 
-### Memory Management Tips 🧠
+### Memory Management Tips 
 
 1. Always delete nodes when removing them
 2. Set pointers to NULL after deletion
@@ -176,7 +176,7 @@ graph LR
 - [[Dynamic Memory Management]]
 - [[Data Structures Basics]]
 
-## Practice Exercises 📝
+## Practice Exercises 
 1. Implement a function to detect cycles in a linked list
 2. Reverse a linked list iteratively and recursively
 3. Find the middle element of a linked list
@@ -295,9 +295,9 @@ void inserer_Fin(element*& debut, int x) {
 
 ### **Warnings**
 
-> **⚠️ Warning:** While inserting nodes at the end, ensure the `courant->suivant` check is implemented correctly to avoid null pointer dereferencing.
+> ** Warning:** While inserting nodes at the end, ensure the `courant->suivant` check is implemented correctly to avoid null pointer dereferencing.
 
-> **⚠️ Warning:** When deleting nodes, freeing pointers without correct memory handling may lead to memory leaks.
+> ** Warning:** When deleting nodes, freeing pointers without correct memory handling may lead to memory leaks.
 
 ---
 

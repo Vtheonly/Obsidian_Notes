@@ -8,27 +8,27 @@ is **essential for responsive design** on mobile and other devices. Here's a det
 
 ---
 
-## ✅ What Does It Do?
+##  What Does It Do?
 
 This tag **tells the browser how to control the page's dimensions and scaling** on different screen sizes—especially mobile devices.
 
 ---
 
-## 📖 Explanation of Each Part
+##  Explanation of Each Part
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
 
-### 🔹 `name="viewport"`
+###  `name="viewport"`
 
 Specifies that this `<meta>` tag is defining the **viewport settings**.
 
-### 🔹 `content="..."`
+###  `content="..."`
 
 Contains a **list of key-value pairs** that control how the page should be displayed.
 
-### 🔸 `width=device-width`
+###  `width=device-width`
 
 - Sets the **viewport width** equal to the **device’s screen width** in CSS pixels.
     
@@ -37,7 +37,7 @@ Contains a **list of key-value pairs** that control how the page should be displ
 
 > Example: On an iPhone, `device-width` might be ~375px. This ensures that the layout uses that actual width instead of a fake desktop width.
 
-### 🔸 `initial-scale=1.0`
+###  `initial-scale=1.0`
 
 - Sets the **initial zoom level** of the page.
     
@@ -46,7 +46,7 @@ Contains a **list of key-value pairs** that control how the page should be displ
 
 ---
 
-## 🚫 What Happens Without It?
+##  What Happens Without It?
 
 If you leave out this tag:
 
@@ -59,7 +59,7 @@ If you leave out this tag:
 
 ---
 
-## ✅ Why It's Required for Responsive Design
+##  Why It's Required for Responsive Design
 
 - **Media queries** and **relative units** (like `%`, `vw`) depend on the viewport being correctly set.
     
@@ -68,7 +68,7 @@ If you leave out this tag:
 
 ---
 
-## 🧠 Optional Properties You Might See
+##  Optional Properties You Might See
 
 |Property|Description|
 |---|---|
@@ -85,7 +85,7 @@ Example:
 
 ---
 
-## ✅ Final Takeaway
+##  Final Takeaway
 
 > The `meta viewport` tag is the **foundation of mobile-responsive design**. Without it, your layout won’t adapt to the screen size correctly—regardless of how good your CSS is.
 

@@ -1,5 +1,5 @@
 
-## 🎯 1. Lab Objectives
+##  1. Lab Objectives
 This practical session bridges the gap between theoretical algorithmic complexity and physical execution time. The main goals are:
 1. **Understand and implement** three basic iterative sorting algorithms: Selection Sort, Insertion Sort, and Bubble Sort.
 2. **Benchmark performance** by measuring execution time on arrays of vastly different sizes ($N=100$ to $N=100,000$).
@@ -8,7 +8,7 @@ This practical session bridges the gap between theoretical algorithmic complexit
 
 ---
 
-## 🧠 2. Theoretical Background & Pseudocode Translation
+##  2. Theoretical Background & Pseudocode Translation
 
 > [!warning] CRITICAL PITFALL: 1-Based vs 0-Based Indexing
 > The pseudocode provided in the lab uses **1-based indexing** (arrays start at index 1 and end at index $n$). However, the **C programming language uses 0-based indexing** (arrays start at 0 and end at $n-1$). 
@@ -39,7 +39,7 @@ This practical session bridges the gap between theoretical algorithmic complexit
 
 ---
 
-## ⚙️ 3. Essential C Mechanisms for Benchmarking
+##  3. Essential C Mechanisms for Benchmarking
 
 To build a rigorous scientific benchmark, you need to understand two C libraries thoroughly:
 
@@ -71,7 +71,7 @@ If you write `int T[100000];` inside a function, the compiler tries to put it on
 
 ---
 
-## 💻 4. The Complete, Bug-Free C Implementation
+##  4. The Complete, Bug-Free C Implementation
 
 This code satisfies all parts of the lab: it implements the algorithms, generates random data, executes 30 times for sizes 100, 1000, 10000, and 100000, and calculates the true average.
 
@@ -223,7 +223,7 @@ int main() {
 
 ---
 
-## 📈 5. Empirical vs. Theoretical Complexity Analysis
+##  5. Empirical vs. Theoretical Complexity Analysis
 
 Once you run the program, your output will look something like this (exact numbers depend on your CPU speed):
 

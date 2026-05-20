@@ -199,7 +199,7 @@ Let me be more precise. After step 10, the configuration is $q_{\text{back}} \, 
 
 **Final configuration:** $B \, q_{\text{accept}} \, 1 \, 1 \, 1 \, 1 \, 1 \, B$
 
-**Output:** "11111" ✓ (All zeros replaced with ones)
+**Output:** "11111"  (All zeros replaced with ones)
 
 The head is on the first '1', and reading rightward gives "11111". The function has been computed correctly.
 
@@ -234,7 +234,7 @@ Wait, step 1 needs more care. From $q_0 \, B$, the head is on a blank. After $\d
 
 **Input: $w = 111$ (no zeros to replace)**
 
-The machine scans right through all three 1s (writing 1 over each, which changes nothing), hits the blank, rewinds, and halts. Output: "111" ✓
+The machine scans right through all three 1s (writing 1 over each, which changes nothing), hits the blank, rewinds, and halts. Output: "111" 
 
 ---
 
@@ -351,7 +351,7 @@ stateDiagram-v2
 | 9 | $q_{\text{rewind}} \, B \, 1 \, 1 \, 0 \, 0 \, B$ | $\delta(q_{\text{rewind}}, 1) = (q_{\text{rewind}}, 1, L)$ | Rewind past leading 1 |
 | 10 | $B \, q_{\text{accept}} \, 1 \, 1 \, 0 \, 0 \, B$ | $\delta(q_{\text{rewind}}, B) = (q_{\text{accept}}, B, R)$ | At start, position on '1' |
 
-**Output:** "1100" ✓ (binary 1100 = 12 = 11 + 1)
+**Output:** "1100"  (binary 1100 = 12 = 11 + 1)
 
 > [!tip] Understanding the Carry
 > Let us verify the carry propagation on "1011" + 1:
@@ -359,7 +359,7 @@ stateDiagram-v2
 > - The next bit is 1: 1 + 1 = 10 (write 0, carry 1)
 > - The next bit is 0: 0 + 1 = 01 (write 1, carry 0 — resolved!)
 > - The leftmost bit stays 1
-> - Result: 1100 ✓
+> - Result: 1100 
 >
 > The Turing Machine performs exactly this computation, but in reverse order: it encounters the rightmost 1 first (changing it to 0), then the second 1 (changing it to 0), then the 0 (changing it to 1 and stopping).
 
@@ -381,7 +381,7 @@ This trace demonstrates the special case where all bits are 1 and the carry prop
 | 9 | $q_{\text{rewind}} \, B \, 1 \, 0 \, 0 \, 0 \, B$ | Move left to blank | |
 | 10 | $B \, q_{\text{accept}} \, 1 \, 0 \, 0 \, 0 \, B$ | $\delta(q_{\text{rewind}}, B) = (q_{\text{accept}}, B, R)$ | Position on first char |
 
-**Output:** "1000" ✓ (binary 1000 = 8 = 7 + 1)
+**Output:** "1000"  (binary 1000 = 8 = 7 + 1)
 
 ### 5.3.9 Complete Trace 3: Input "1100" (decimal 12, expected output "1101" = 13)
 
@@ -401,7 +401,7 @@ This trace demonstrates the simplest case: the carry resolves at the rightmost 0
 | 9 | $q_{\text{rewind}} \, B \, 1 \, 1 \, 0 \, 1 \, B$ | $\delta(q_{\text{rewind}}, 1)$ | Rewind to blank |
 | 10 | $B \, q_{\text{accept}} \, 1 \, 1 \, 0 \, 1 \, B$ | $\delta(q_{\text{rewind}}, B)$ | Position on first char |
 
-**Output:** "1101" ✓ (binary 1101 = 13 = 12 + 1)
+**Output:** "1101"  (binary 1101 = 13 = 12 + 1)
 
 ### 5.3.10 Common Pitfalls
 
@@ -624,7 +624,7 @@ That's too quick! The head just went from the first '1' one step left (to blank)
 | 46 | $B \, B \, q_{\text{seek}} \, B \, 1 \, 1 \, 1 \, 1 \, 1 \, 1 \, B$ | $\delta(q_{\text{seek}},1)$ → move left past the first 1 |
 | 47 | $B \, q_{\text{accept}} \, B \, B \, 1 \, 1 \, 1 \, 1 \, 1 \, 1 \, B$ | $\delta(q_{\text{seek}},B)=(q_{\text{accept}},B,R)$ → position on first 1 |
 
-**Final: head on first '1', state $q_{\text{accept}}$. Output: "111111" ✓ (6 ones = 2 × 3)**
+**Final: head on first '1', state $q_{\text{accept}}$. Output: "111111"  (6 ones = 2 × 3)**
 
 ### 5.4.8 Why This Approach Works
 
@@ -731,7 +731,7 @@ stateDiagram-v2
 | 7 | $q_{\text{rewind}} \, B \, 1 \, 0 \, 1 \, 0$ | $\delta(q_{\text{rewind}},1)$ | Rewind past leftmost 1 |
 | 8 | $B \, q_{\text{accept}} \, 1 \, 0 \, 1 \, 0$ | $\delta(q_{\text{rewind}},B)=(q_{\text{accept}},B,R)$ | Position on first char |
 
-**Output:** "1010" ✓ (binary 1010 = 10 = 2 × 5)
+**Output:** "1010"  (binary 1010 = 10 = 2 × 5)
 
 ### 5.5.8 Comparison: Unary vs Binary Doubling
 
@@ -773,11 +773,11 @@ The algorithm is based on a simple observation: to divide by 2 in unary, we keep
 - **Delete** the first '1' of each pair
 - **Keep** the second '1' of each pair
 
-For input "11111": Delete(1) Keep(1) Delete(1) Keep(1) Delete(1) → result: "11" ✓
-For input "1111": Delete(1) Keep(1) Delete(1) Keep(1) → result: "11" ✓
-For input "111": Delete(1) Keep(1) Delete(1) → result: "1" ✓
-For input "11": Delete(1) Keep(1) → result: "1" ✓
-For input "1": Delete(1) → result: "" ✓
+For input "11111": Delete(1) Keep(1) Delete(1) Keep(1) Delete(1) → result: "11" 
+For input "1111": Delete(1) Keep(1) Delete(1) Keep(1) → result: "11" 
+For input "111": Delete(1) Keep(1) Delete(1) → result: "1" 
+For input "11": Delete(1) Keep(1) → result: "1" 
+For input "1": Delete(1) → result: "" 
 
 After the delete-keep pass, the tape has a pattern of blanks and 1s: "B 1 B 1 B 1 ..." with gaps where 1s were deleted. We then need to **compact** the remaining 1s to the left so they form a contiguous string.
 
@@ -1117,7 +1117,7 @@ $\delta(q_{\text{seek}}, B) = (q_{\text{accept}}, B, R)$: move right onto the fi
 | 36 | $B \, B \, B \, B \, q_{\text{seek}} \, B \, 1 \, 1 \, B$ | Move left from first 1 to blank |
 | 37 | $B \, B \, B \, B \, B \, q_{\text{accept}} \, 1 \, 1 \, B$ | $\delta(q_{\text{seek}},B)=(q_{\text{accept}},B,R)$ |
 
-**Output:** "11" ✓ (5 div 2 = 2)
+**Output:** "11"  (5 div 2 = 2)
 
 ---
 
@@ -1222,32 +1222,32 @@ When $y = 0$:
 **Iteration 1:** $y = 011 = 3 \neq 0$
 - Decrement $y$: 011 → 010 (rightmost 1 → 0, no 0s to the right to change)
 
-  Wait, 011 - 1 = 010? In binary: 3 - 1 = 2 = 010. Let me verify: decrement 011. The rightmost '1' is at position 2 (of $y$). Change it to '0'. No 0s to the right. So $y$ becomes 010. ✓
+  Wait, 011 - 1 = 010? In binary: 3 - 1 = 2 = 010. Let me verify: decrement 011. The rightmost '1' is at position 2 (of $y$). Change it to '0'. No 0s to the right. So $y$ becomes 010. 
 
-- Increment $x$: 101 → 110. (5 + 1 = 6 = 110) ✓
+- Increment $x$: 101 → 110. (5 + 1 = 6 = 110) 
 - Tape: 1 1 0 $ 0 1 0
 
 **Iteration 2:** $y = 010 = 2 \neq 0$
 - Decrement $y$: 010 → 001 (rightmost '1' at position 1 of $y$, change to '0', change '0' at position 2 to '1')
 
-  Wait, 010 - 1 = 001 = 1. Let me verify with the algorithm: rightmost '1' in "010" is at the middle position. Change it to '0'. The '0' to the right changes to '1'. Result: "001". ✓
+  Wait, 010 - 1 = 001 = 1. Let me verify with the algorithm: rightmost '1' in "010" is at the middle position. Change it to '0'. The '0' to the right changes to '1'. Result: "001". 
 
-- Increment $x$: 110 → 111 (6 + 1 = 7 = 111) ✓
+- Increment $x$: 110 → 111 (6 + 1 = 7 = 111) 
 - Tape: 1 1 1 $ 0 0 1
 
 **Iteration 3:** $y = 001 = 1 \neq 0$
 - Decrement $y$: 001 → 000 (rightmost '1' at position 2 of $y$, change to '0'. No 0s to the right.)
 
-  001 - 1 = 000 = 0. ✓
+  001 - 1 = 000 = 0. 
 
-- Increment $x$: 111 → 1000 (7 + 1 = 8 = 1000) ✓
+- Increment $x$: 111 → 1000 (7 + 1 = 8 = 1000) 
 - Tape: 1 0 0 0 $ 0 0 0
 
 **Iteration 4:** $y = 000 = 0$. Done!
 - Cleanup: erase $\$$ and $y$
 - Tape: 1 0 0 0 B B B B B B B
 - Reposition head on first '1'
-- Output: "1000" ✓ (8 in binary)
+- Output: "1000"  (8 in binary)
 
 ### 5.7.7 Comparison of Methods
 

@@ -30,7 +30,7 @@ classDiagram
 ```
 *Notice how the sensitive data (`-solde`) is private, the [[304 Abstract Classes Interfaces and Realization|interface]] the user uses (`+deposer`) is public, and internal mechanisms (`-verifierSecurite`) remain private.*
 
-### 💡 Exam Tip & Common Pitfall
+###  Exam Tip & Common Pitfall
 > **The Getter/Setter Trap:** If an exam text says "The system must allow a user to read the total amount", do NOT make the total amount attribute `+public`. Keep it `-private` and add a `+getTotal() : double` (getter) method in the operations compartment. Strict adherence to encapsulation demonstrates mastery to the grader.
 
 ---

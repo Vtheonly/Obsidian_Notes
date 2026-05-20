@@ -130,9 +130,9 @@ graph TD
 
 | Method | Syntax | Modifies Original | Performance | Use Case |
 |--------|---------|-------------------|-------------|-----------|
-| By Value | `void func(int x)` | ❌ | Copy overhead | Small objects |
-| By Reference | `void func(int& x)` | ✅ | No copy | Large objects, need to modify |
-| By Address | `void func(int* x)` | ✅ | No copy | Optional parameters (nullptr) |
+| By Value | `void func(int x)` |  | Copy overhead | Small objects |
+| By Reference | `void func(int& x)` |  | No copy | Large objects, need to modify |
+| By Address | `void func(int* x)` |  | No copy | Optional parameters (nullptr) |
 
 ### Examples
 

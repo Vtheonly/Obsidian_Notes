@@ -1,7 +1,7 @@
 
-## 🧭 What Are Sessions in Flask?
+##  What Are Sessions in Flask?
 
-### 📦 In a web context:
+###  In a web context:
 
 A **session** is a way to **store data across multiple requests** from the same user.
 
@@ -9,7 +9,7 @@ HTTP is **stateless** by design:
 
 > The server doesn’t remember anything between two requests.
 
-### 🧠 So why do we need sessions?
+###  So why do we need sessions?
 
 Because you often want to **track the user**:
 
@@ -20,7 +20,7 @@ Because you often want to **track the user**:
 - What page were they on?
     
 
-### 🧰 Flask `session` object:
+###  Flask `session` object:
 
 Flask provides a special `session` object — basically a Python dictionary — to store user-specific data **on the server or via cookies**.
 
@@ -36,7 +36,7 @@ print(session['username'])  # marshal
 
 ---
 
-## 🔒 Is the session stored in memory or the browser?
+##  Is the session stored in memory or the browser?
 
 By default, Flask uses **signed cookies** to store session data.  
 That means:
@@ -48,7 +48,7 @@ That means:
 - But it’s not private — only secure from modification.
     
 
-### 🔐 You need a secret key:
+###  You need a secret key:
 
 ```python
 app.secret_key = 'some_super_secret_key'
@@ -58,7 +58,7 @@ You can also plug in **server-side session systems** (like Redis or a DB) if you
 
 ---
 
-## 🗃️ Common Use-Cases of Flask Sessions:
+##  Common Use-Cases of Flask Sessions:
 
 |Use Case|Example|
 |---|---|
@@ -69,7 +69,7 @@ You can also plug in **server-side session systems** (like Redis or a DB) if you
 
 ---
 
-## 🔁 When do sessions expire?
+##  When do sessions expire?
 
 - When the **browser closes** (default)
     

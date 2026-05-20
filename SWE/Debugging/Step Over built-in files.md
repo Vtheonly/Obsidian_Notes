@@ -4,7 +4,7 @@ Let me explain **why this happens**, and how to **prevent it or control it** in 
 
 ---
 
-## 🧠 Why does "Step Over" go into complex built-in or external files?
+##  Why does "Step Over" go into complex built-in or external files?
 
 Even though you pressed **Step Over**, sometimes:
 
@@ -19,7 +19,7 @@ Sometimes the function is **async** or **wrapped**, and the debugger doesn't cle
 
 ---
 
-## 🔧 How to fix or reduce this:
+##  How to fix or reduce this:
 
 Here’s how to keep the debugger focused on **your own code only**.
 
@@ -67,7 +67,7 @@ To avoid stepping into that, either:
 
 ---
 
-## ✅ Pro Tips
+##  Pro Tips
 
 - **F10 (Step Over)** will still enter files **if the function behaves asynchronously**, unless guarded by `skipFiles`.
     
@@ -78,7 +78,7 @@ To avoid stepping into that, either:
 
 ---
 
-## 🧪 Example Behavior
+##  Example Behavior
 
 ```js
 function customLogger(message) {

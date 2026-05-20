@@ -1,6 +1,6 @@
-# 🔍 Detailed Explanation: Initial Basic Feasible Solution
+#  Detailed Explanation: Initial Basic Feasible Solution
 
-## 📊 What We're Working With
+##  What We're Working With
 
 **Our system after transformation:**
 
@@ -14,7 +14,7 @@ x_1 + 3x_2 + 0x_3 + x_4 + 0a_1 &= 6 \quad \text{(Equation 2)}
 
 ---
 
-## 🧮 The Mathematics: Variables vs. Equations
+##  The Mathematics: Variables vs. Equations
 
 **We have:**
 - **5 variables:** $x_1, x_2, x_3, x_4, a_1$
@@ -28,7 +28,7 @@ x_1 + 3x_2 + 0x_3 + x_4 + 0a_1 &= 6 \quad \text{(Equation 2)}
 
 ---
 
-## 🎯 Why These Specific Variables?
+##  Why These Specific Variables?
 
 ### Which Variables Should Be Basic?
 
@@ -51,7 +51,7 @@ These form an **identity matrix**! This makes them perfect for basic variables.
 
 ---
 
-## 🔢 Step-by-Step Calculation
+##  Step-by-Step Calculation
 
 ### Step 1: Set Non-Basic Variables to Zero
 
@@ -72,7 +72,7 @@ Substitute $x_1 = 0, x_2 = 0, x_3 = 0$:
 
 $$\begin{align}
 0 + 0 - 0 + a_1 &= 4\\
-a_1 &= 4 \quad ✓
+a_1 &= 4 \quad 
 \end{align}$$
 
 #### From Equation 2:
@@ -82,7 +82,7 @@ Substitute $x_1 = 0, x_2 = 0$:
 
 $$\begin{align}
 0 + 3(0) + x_4 &= 6\\
-x_4 &= 6 \quad ✓
+x_4 &= 6 \quad 
 \end{align}$$
 
 ---
@@ -106,7 +106,7 @@ Z &= -4M
 
 ---
 
-## 📋 Summary Table
+##  Summary Table
 
 | Variable | Type | Value | Why? |
 |:---:|:---:|:---:|---|
@@ -120,21 +120,21 @@ Z &= -4M
 
 ---
 
-## 🤔 Why Is This Called "Feasible"?
+##  Why Is This Called "Feasible"?
 
 A solution is **feasible** if:
-1. ✅ All constraints are satisfied
-2. ✅ All variables are non-negative
+1.  All constraints are satisfied
+2.  All variables are non-negative
 
-**Check Constraint 1:** $x_1 + x_2 - x_3 + a_1 = 0 + 0 - 0 + 4 = 4$ ✓
+**Check Constraint 1:** $x_1 + x_2 - x_3 + a_1 = 0 + 0 - 0 + 4 = 4$ 
 
-**Check Constraint 2:** $x_1 + 3x_2 + x_4 = 0 + 0 + 6 = 6$ ✓
+**Check Constraint 2:** $x_1 + 3x_2 + x_4 = 0 + 0 + 6 = 6$ 
 
-**Check non-negativity:** $x_1=0≥0$, $x_2=0≥0$, $x_3=0≥0$, $x_4=6≥0$, $a_1=4≥0$ ✓
+**Check non-negativity:** $x_1=0≥0$, $x_2=0≥0$, $x_3=0≥0$, $x_4=6≥0$, $a_1=4≥0$ 
 
 ---
 
-## 💡 Visual Understanding
+##  Visual Understanding
 
 Think of it like this:
 
@@ -156,7 +156,7 @@ We have 5 variables and 2 equations.
 
 ---
 
-## 😱 Why Is Z = -4M So Bad?
+##  Why Is Z = -4M So Bad?
 
 If $M = 1{,}000{,}000$, then:
 $$Z = -4(1{,}000{,}000) = -4{,}000{,}000$$
@@ -171,17 +171,17 @@ $$Z = -4(1{,}000{,}000) = -4{,}000{,}000$$
 
 ---
 
-## 🎯 The Big Picture
+##  The Big Picture
 
 | Stage | Basic Variables | Non-Basic Variables | Z Value |
 |---|---|---|---|
-| **Initial** (now) | $a_1=4, x_4=6$ | $x_1=0, x_2=0, x_3=0$ | $-4M$ 😱 |
+| **Initial** (now) | $a_1=4, x_4=6$ | $x_1=0, x_2=0, x_3=0$ | $-4M$  |
 | **After iteration 1** | $x_2=?, x_4=?$ | $x_1=0, x_3=0, a_1=0$ | Better! |
-| **Optimal** | Real variables only | $a_1=0$ (artificial gone!) | Maximum ✓ |
+| **Optimal** | Real variables only | $a_1=0$ (artificial gone!) | Maximum  |
 
 ---
 
-## ✅ Key Takeaways
+##  Key Takeaways
 
 1. **Why zero some variables?** 
    - We have more variables (5) than equations (2)

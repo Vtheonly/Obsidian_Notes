@@ -43,7 +43,7 @@ classDiagram
   * `- temperatures : double[100]`
   * `- emails : string[1..*]`
 
-### 💡 Exam Tip & Common Pitfall
+###  Exam Tip & Common Pitfall
 > **Static Method Missing Link:** In one of your exams (PDF 11), you are asked to implement the *Abstract Factory* or *Composite* pattern. In Design Patterns, things like the `getInstance()` method in a Singleton MUST be underlined because they are static. Forgetting the underline on a static method costs points!
 
 

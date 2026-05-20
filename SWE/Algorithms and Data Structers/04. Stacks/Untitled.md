@@ -113,8 +113,8 @@ graph TD
 
 ## 1.1 Memory Representation
 > [!info] Two Possible Methods
-> 1. ✅ Using Arrays (contiguous representation)
-> 2. ✅ Using Linear Linked Lists
+> 1.  Using Arrays (contiguous representation)
+> 2.  Using Linear Linked Lists
 
 ## 1.2 Basic Structure
 ```cpp

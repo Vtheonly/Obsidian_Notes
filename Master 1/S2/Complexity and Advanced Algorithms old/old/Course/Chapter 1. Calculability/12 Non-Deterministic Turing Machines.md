@@ -99,9 +99,9 @@ graph TD
     C1b["Config: q₁, tape=..."]
     C2a["Config: q₀, tape=..."]
     C2b["Config: q₂, tape=..."]
-    C2c["Config: q_accept ✓"]
+    C2c["Config: q_accept "]
     C3a["Config: ... (loop)"]
-    C3b["Config: ... (reject ✗)"]
+    C3b["Config: ... (reject )"]
 
     C0 -->|"δ₁"| C1a
     C0 -->|"δ₂"| C1b
@@ -229,12 +229,12 @@ Since $\delta(q_0, B) = \emptyset$, there are no transitions. The tree has only 
 ```mermaid
 graph TD
     E0["q₀, B (head on blank)"]
-    E0 -->|"No transition"| REJECT1["✗ REJECT"]
+    E0 -->|"No transition"| REJECT1[" REJECT"]
 
     style REJECT1 fill:#FFB6C1
 ```
 
-**Result: $\varepsilon \notin L$** — Correct! The empty word does not end in "ab". ✓
+**Result: $\varepsilon \notin L$** — Correct! The empty word does not end in "ab". 
 
 ### 7.3.7 Execution Tree for Input "a"
 
@@ -248,8 +248,8 @@ graph TD
 
     A0 -->|"keep scanning"| A1
     A0 -->|"guess"| A2
-    A1 -->|"No transition"| R1["✗ REJECT"]
-    A2 -->|"No transition"| R2["✗ REJECT"]
+    A1 -->|"No transition"| R1[" REJECT"]
+    A2 -->|"No transition"| R2[" REJECT"]
 
     style R1 fill:#FFB6C1
     style R2 fill:#FFB6C1
@@ -259,7 +259,7 @@ graph TD
 
 **Branch 2** ($q_0$ guesses): $q_0$ reads `a`, transitions to $q_1$, moves right. Now $q_1$ reads $B$. No transition for $\delta(q_1, B)$. Branch rejects.
 
-**Result: "a" $\notin L$** — Correct! A single `a` does not end in "ab". ✓
+**Result: "a" $\notin L$** — Correct! A single `a` does not end in "ab". 
 
 ### 7.3.8 Execution Tree for Input "ab"
 
@@ -275,8 +275,8 @@ graph TD
     AB0 -->|"guess"| AB2
     AB1 -->|"q₀ reads B"| AB3["q₀ reads B"]
     AB2 -->|"q₂ reads B"| AB4["q₂ reads B"]
-    AB3 -->|"No transition"| R1["✗ REJECT"]
-    AB4 -->|"ACCEPT!"| ACC1["✓ ACCEPT!"]
+    AB3 -->|"No transition"| R1[" REJECT"]
+    AB4 -->|"ACCEPT!"| ACC1[" ACCEPT!"]
 
     style R1 fill:#FFB6C1
     style ACC1 fill:#90EE90
@@ -284,9 +284,9 @@ graph TD
 
 **Branch 1** ($q_0$ keeps scanning on first `a`): $q_0$ reads `a`, stays $q_0$, moves R. $q_0$ reads `b`, stays $q_0$, moves R. $q_0$ reads $B$, no transition. Branch rejects.
 
-**Branch 2** ($q_0$ guesses on first `a`): $q_0$ reads `a`, goes to $q_1$, moves R. $q_1$ reads `b`, goes to $q_2$, moves R. $q_2$ reads $B$, goes to $q_{\text{accept}}$. **Branch accepts!** ✓
+**Branch 2** ($q_0$ guesses on first `a`): $q_0$ reads `a`, goes to $q_1$, moves R. $q_1$ reads `b`, goes to $q_2$, moves R. $q_2$ reads $B$, goes to $q_{\text{accept}}$. **Branch accepts!** 
 
-**Result: "ab" $\in L$** — Correct! At least one branch accepts. ✓
+**Result: "ab" $\in L$** — Correct! At least one branch accepts. 
 
 > [!important] Key Observation
 > Branch 1 rejected, but the word is still accepted because Branch 2 succeeded. This perfectly illustrates the existential nature of MTND acceptance: **one successful branch is all it takes**.
@@ -316,9 +316,9 @@ graph TD
     ABA2 -->|"confirm b"| ABA4
     ABA3 -->|"keep scanning"| ABA6
     ABA3 -->|"guess"| ABA7
-    ABA4 -->|"q₁ expects b, sees a"| R1["✗ REJECT"]
-    ABA6 -->|"No transition"| R2["✗ REJECT"]
-    ABA7 -->|"No transition"| R3["✗ REJECT"]
+    ABA4 -->|"q₁ expects b, sees a"| R1[" REJECT"]
+    ABA6 -->|"No transition"| R2[" REJECT"]
+    ABA7 -->|"No transition"| R3[" REJECT"]
 
     style R1 fill:#FFB6C1
     style R2 fill:#FFB6C1
@@ -331,7 +331,7 @@ graph TD
 
 **Branch C** ($q_0 \xrightarrow{a} q_1 \xrightarrow{b} q_2 \xrightarrow{a} \text{fail}$): The machine guesses on the first `a`. Then $q_1$ confirms `b`, goes to $q_2$. Then $q_2$ reads `a` (expected $B$). No transition. Reject.
 
-All branches reject. **Result: "aba" $\notin L$** — Correct! "aba" ends in `a`, not "ab". ✓
+All branches reject. **Result: "aba" $\notin L$** — Correct! "aba" ends in `a`, not "ab". 
 
 ### 7.3.10 Execution Tree for Input "bab"
 
@@ -351,8 +351,8 @@ graph TD
     BAB1 -->|"guess"| BAB3
     BAB2 -->|"q₀ reads B"| BAB5
     BAB3 -->|"confirm b, go q₂"| BAB4
-    BAB5 -->|"No transition"| R1["✗ REJECT"]
-    BAB4 -->|"ACCEPT!"| ACC["✓ ACCEPT!"]
+    BAB5 -->|"No transition"| R1[" REJECT"]
+    BAB4 -->|"ACCEPT!"| ACC[" ACCEPT!"]
 
     style R1 fill:#FFB6C1
     style ACC fill:#90EE90
@@ -360,9 +360,9 @@ graph TD
 
 **Branch A** ($q_0 \xrightarrow{b} q_0 \xrightarrow{a} q_0 \xrightarrow{b} q_0 \xrightarrow{B} \text{fail}$): Keeps scanning all the way, hits $B$ in $q_0$. No transition. Reject.
 
-**Branch B** ($q_0 \xrightarrow{b} q_0 \xrightarrow{a} q_1 \xrightarrow{b} q_2 \xrightarrow{B} q_{\text{accept}}$): Guesses on the `a` at position 2. Confirms `b` at position 3. Sees $B$ (end of word). **Accept!** ✓
+**Branch B** ($q_0 \xrightarrow{b} q_0 \xrightarrow{a} q_1 \xrightarrow{b} q_2 \xrightarrow{B} q_{\text{accept}}$): Guesses on the `a` at position 2. Confirms `b` at position 3. Sees $B$ (end of word). **Accept!** 
 
-**Result: "bab" $\in L$** — Correct! ✓
+**Result: "bab" $\in L$** — Correct! 
 
 ### 7.3.11 Execution Tree for Input "aab"
 
@@ -382,10 +382,10 @@ graph TD
     AAB0 -->|"guess"| AAB2
     AAB1 -->|"keep scanning"| AAB3
     AAB1 -->|"guess"| AAB4
-    AAB2 -->|"q₁ expects b, sees a"| R1["✗ REJECT"]
-    AAB3 -->|"q₀ reads B"| R2["✗ REJECT"]
+    AAB2 -->|"q₁ expects b, sees a"| R1[" REJECT"]
+    AAB3 -->|"q₀ reads B"| R2[" REJECT"]
     AAB4 -->|"confirm b, go q₂"| AAB6
-    AAB6 -->|"ACCEPT!"| ACC["✓ ACCEPT!"]
+    AAB6 -->|"ACCEPT!"| ACC[" ACCEPT!"]
 
     style R1 fill:#FFB6C1
     style R2 fill:#FFB6C1
@@ -394,22 +394,22 @@ graph TD
 
 **Branch A** ($q_0 \xrightarrow{a} q_0 \xrightarrow{a} q_0 \xrightarrow{b} q_0 \xrightarrow{B} \text{fail}$): All scanning, reaches end. Reject.
 
-**Branch B** ($q_0 \xrightarrow{a} q_0 \xrightarrow{a} q_1 \xrightarrow{b} q_2 \xrightarrow{B} q_{\text{accept}}$): Guesses on the second `a`. This is the correct guess! Accept. ✓
+**Branch B** ($q_0 \xrightarrow{a} q_0 \xrightarrow{a} q_1 \xrightarrow{b} q_2 \xrightarrow{B} q_{\text{accept}}$): Guesses on the second `a`. This is the correct guess! Accept. 
 
-**Branch C** ($q_0 \xrightarrow{a} q_1 \xrightarrow{a} \text{fail}$): Guesses on the first `a`. Then $q_1$ reads `a` (expected `b`). Reject. ✗
+**Branch C** ($q_0 \xrightarrow{a} q_1 \xrightarrow{a} \text{fail}$): Guesses on the first `a`. Then $q_1$ reads `a` (expected `b`). Reject. 
 
-**Result: "aab" $\in L$** — Correct! ✓
+**Result: "aab" $\in L$** — Correct! 
 
 ### 7.3.12 Summary of Results
 
 | Input | In $L$? | Accepting Branch Exists? | All Branches Reject? | Result |
 |:---:|:---:|:---:|:---:|:---:|
-| $\varepsilon$ | No | No | Yes | REJECT ✓ |
-| `a` | No | No | Yes | REJECT ✓ |
-| `ab` | Yes | Yes | No | ACCEPT ✓ |
-| `aba` | No | No | Yes | REJECT ✓ |
-| `bab` | Yes | Yes | No | ACCEPT ✓ |
-| `aab` | Yes | Yes | No | ACCEPT ✓ |
+| $\varepsilon$ | No | No | Yes | REJECT  |
+| `a` | No | No | Yes | REJECT  |
+| `ab` | Yes | Yes | No | ACCEPT  |
+| `aba` | No | No | Yes | REJECT  |
+| `bab` | Yes | Yes | No | ACCEPT  |
+| `aab` | Yes | Yes | No | ACCEPT  |
 
 > [!tip] The Power of Guessing
 > This 4-state MTND elegantly solves the problem by leveraging non-determinism to "guess" the correct position. A deterministic TM for the same language would need to systematically check each `a` position one by one (scan to the end, back up, check, repeat), requiring more states and a more complex algorithm. The MTND achieves the same result with a simpler, more intuitive design.
@@ -482,7 +482,7 @@ graph TD
         L2b["Level 2: Config D"]
         L2c["Level 2: Config E"]
         L3a["Level 3: ..."]
-        L3b["Level 3: ACCEPT ✓"]
+        L3b["Level 3: ACCEPT "]
     end
 
     L0 --> L1a

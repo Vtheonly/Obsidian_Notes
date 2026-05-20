@@ -646,7 +646,7 @@ graph TD
     S1b -->|"a"| dead1["∅ (dead)"]
     S2a -->|"b"| S3a
     S2b -->|"b"| S3b
-    S3b -->|"ε"| S3c["q3 ✓ ACCEPT"]
+    S3b -->|"ε"| S3c["q3  ACCEPT"]
 
     style S3c fill:#90EE90
     style dead1 fill:#FFB6C1

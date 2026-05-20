@@ -96,7 +96,7 @@ The `event.target` property is particularly useful as it refers to the DOM eleme
 *   **Modify the element:**
     ```javascript
     const changeButtonText = (event) => {
-        event.target.textContent = "Ouch! 🤕";
+        event.target.textContent = "Ouch! ";
     };
     <button onClick={changeButtonText}>Click to Change Text</button>
     ```

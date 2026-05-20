@@ -380,13 +380,13 @@
 
 <!-- HERO -->
 <div class="hero">
-  <h1>🪟 Swin Transformer Encoder</h1>
+  <h1> Swin Transformer Encoder</h1>
   <p>A complete interactive deep-dive into every component of the Swin Encoder — from patch partitioning to hierarchical feature maps, window attention to shifted windows, and everything in between.</p>
 </div>
 
 <!-- TABLE OF CONTENTS -->
 <div class="toc">
-  <h2>📚 Table of Contents</h2>
+  <h2> Table of Contents</h2>
   <ol>
     <li><a href="#s0">Why Swin? The Problem with ViT</a></li>
     <li><a href="#s1">Step 1 — Patch Partitioning & Linear Embedding</a></li>
@@ -414,7 +414,7 @@
 
   <div class="two-col">
     <div class="card warning">
-      <h3 class="warning">⚠️ ViT Problems</h3>
+      <h3 class="warning"> ViT Problems</h3>
       <ul style="padding-left:18px;color:var(--text2)">
         <li style="margin:8px 0"><strong style="color:var(--accent2)">Quadratic complexity:</strong> Every patch attends to every other patch. For a 224×224 image with 16×16 patches → 196 tokens → 196² = 38,416 attention pairs.</li>
         <li style="margin:8px 0"><strong style="color:var(--accent2)">Fixed scale:</strong> ViT only produces one feature map resolution — no hierarchy like CNNs. Dense prediction tasks (detection, segmentation) need multi-scale features.</li>
@@ -422,7 +422,7 @@
       </ul>
     </div>
     <div class="card success">
-      <h3 class="success">✅ Swin Solutions</h3>
+      <h3 class="success"> Swin Solutions</h3>
       <ul style="padding-left:18px;color:var(--text2)">
         <li style="margin:8px 0"><strong style="color:var(--accent3)">Linear complexity:</strong> Attention only within small local windows → complexity is O(N) not O(N²).</li>
         <li style="margin:8px 0"><strong style="color:var(--accent3)">Hierarchical features:</strong> Like ResNet, Swin produces multi-scale feature maps (1/4, 1/8, 1/16, 1/32 of input) — perfect for FPN, dense tasks.</li>
@@ -432,13 +432,13 @@
   </div>
 
   <div class="card highlight">
-    <h3 class="accent">🎯 The Core Idea in One Sentence</h3>
+    <h3 class="accent"> The Core Idea in One Sentence</h3>
     <p>Swin Transformer = <strong>local windowed self-attention</strong> (for efficiency) + <strong>shifted windows</strong> (for cross-window communication) + <strong>patch merging</strong> (for hierarchy) — giving you a general-purpose backbone that works like ResNet but is powered by Transformers.</p>
   </div>
 
   <!-- COMPLEXITY CHART -->
   <div class="anim-container">
-    <div class="anim-title">📊 Complexity: ViT vs Swin</div>
+    <div class="anim-title"> Complexity: ViT vs Swin</div>
     <p style="font-size:0.9rem;color:var(--text2);margin-bottom:12px">See how self-attention complexity grows with image size. Move the slider to change resolution.</p>
     <div class="slider-row">
       <label>Image Size (N patches):</label>
@@ -456,14 +456,14 @@
   </div>
 
   <div class="anim-container" id="vitVsSwinAnim">
-    <div class="anim-title">🎬 Animation: ViT vs Swin Attention Pattern</div>
+    <div class="anim-title"> Animation: ViT vs Swin Attention Pattern</div>
     <div class="anim-step-info" id="vsa-step-info">Step 1 of 4</div>
     <div class="step-explanation" id="vsa-explanation">Click "Next Step" to begin the animation and see how ViT's global attention compares to Swin's windowed approach.</div>
     <div class="canvas-wrap">
       <canvas id="vsaCanvas" width="560" height="280"></canvas>
     </div>
     <div class="anim-controls">
-      <button class="btn btn-primary" id="vsa-next">▶ Next Step</button>
+      <button class="btn btn-primary" id="vsa-next"> Next Step</button>
       <button class="btn btn-secondary" id="vsa-reset">↺ Reset</button>
       <div class="progress-dots" id="vsa-dots"></div>
     </div>
@@ -499,7 +499,7 @@
   </div>
 
   <div class="callout">
-    <div class="callout-icon">💡</div>
+    <div class="callout-icon"></div>
     <div class="callout-text">
       <strong>Why 4×4 patches?</strong> ViT uses 16×16. Swin uses smaller 4×4 patches to preserve more spatial detail — critical for dense prediction tasks like segmentation where pixel-level accuracy matters.
     </div>
@@ -507,14 +507,14 @@
 
   <!-- PATCH ANIMATION -->
   <div class="anim-container">
-    <div class="anim-title">🎬 Animation: Patch Partitioning Process</div>
+    <div class="anim-title"> Animation: Patch Partitioning Process</div>
     <div class="anim-step-info" id="patch-step-info">Step 0 of 6</div>
     <div class="step-explanation" id="patch-explanation">Click "Next Step" to watch how an image gets partitioned into patches.</div>
     <div class="canvas-wrap">
       <canvas id="patchCanvas" width="580" height="300"></canvas>
     </div>
     <div class="anim-controls">
-      <button class="btn btn-primary" id="patch-next">▶ Next Step</button>
+      <button class="btn btn-primary" id="patch-next"> Next Step</button>
       <button class="btn btn-secondary" id="patch-reset">↺ Reset</button>
       <div class="progress-dots" id="patch-dots"></div>
     </div>
@@ -565,13 +565,13 @@
       <p>Each window of M×M tokens attends within itself only.</p>
       <div class="formula-box" style="font-size:0.9rem;">
         \[ \text{Complexity} = O\left(N \cdot M^2 \cdot d\right) \]
-        <p style="margin-top:8px;font-size:0.8rem;color:var(--text2)">Linear in N! M is fixed (e.g., 7×7=49). 🚀</p>
+        <p style="margin-top:8px;font-size:0.8rem;color:var(--text2)">Linear in N! M is fixed (e.g., 7×7=49). </p>
       </div>
     </div>
   </div>
 
   <div class="card">
-    <h3 class="accent">📐 How Windows are Created</h3>
+    <h3 class="accent"> How Windows are Created</h3>
     <p>Given a feature map of <code>(H/4) × (W/4)</code> tokens and window size M=7:</p>
     <ol style="padding-left:20px;color:var(--text2)">
       <li style="margin:8px 0">Reshape the 2D token grid into windows: <code>num_windows = (H/4/M) × (W/4/M)</code></li>
@@ -587,21 +587,21 @@
 
   <!-- W-MSA ANIMATION -->
   <div class="anim-container">
-    <div class="anim-title">🎬 Animation: Window Partitioning & Local Attention</div>
+    <div class="anim-title"> Animation: Window Partitioning & Local Attention</div>
     <div class="anim-step-info" id="wmsa-step-info">Step 0 of 7</div>
     <div class="step-explanation" id="wmsa-explanation">Click "Next Step" to see how the token grid is partitioned into windows and how attention works within each.</div>
     <div class="canvas-wrap">
       <canvas id="wmsaCanvas" width="580" height="320"></canvas>
     </div>
     <div class="anim-controls">
-      <button class="btn btn-primary" id="wmsa-next">▶ Next Step</button>
+      <button class="btn btn-primary" id="wmsa-next"> Next Step</button>
       <button class="btn btn-secondary" id="wmsa-reset">↺ Reset</button>
       <div class="progress-dots" id="wmsa-dots"></div>
     </div>
   </div>
 
   <div class="callout">
-    <div class="callout-icon">⚠️</div>
+    <div class="callout-icon"></div>
     <div class="callout-text">
       <strong>The Isolation Problem:</strong> Windows are completely isolated. A token in window A has <em>zero</em> information about tokens in window B. This means no cross-window communication — fixed in the next section with Shifted Windows.
     </div>
@@ -620,7 +620,7 @@
   <p>The ingenious solution to the isolation problem. In <em>alternating</em> Transformer blocks, the window partition is <strong>shifted by (M/2, M/2)</strong> tokens (i.e., half the window size in each direction). This creates new windows that span boundaries of the previous windows — enabling cross-window information flow.</p>
 
   <div class="card highlight">
-    <h3 class="accent">🔀 The Shift Operation</h3>
+    <h3 class="accent"> The Shift Operation</h3>
     <p>If M=7, the shift is (3, 3). This means:</p>
     <ul style="padding-left:20px;color:var(--text2)">
       <li style="margin:6px 0">New windows straddle old boundaries</li>
@@ -631,35 +631,35 @@
 
   <!-- SW-MSA ANIMATION -->
   <div class="anim-container">
-    <div class="anim-title">🎬 Animation: Shifted Window Mechanism</div>
+    <div class="anim-title"> Animation: Shifted Window Mechanism</div>
     <div class="anim-step-info" id="sw-step-info">Step 0 of 8</div>
     <div class="step-explanation" id="sw-explanation">Click "Next Step" to see the shifted window mechanism unfold step by step.</div>
     <div class="canvas-wrap">
       <canvas id="swCanvas" width="580" height="340"></canvas>
     </div>
     <div class="anim-controls">
-      <button class="btn btn-primary" id="sw-next">▶ Next Step</button>
+      <button class="btn btn-primary" id="sw-next"> Next Step</button>
       <button class="btn btn-secondary" id="sw-reset">↺ Reset</button>
       <div class="progress-dots" id="sw-dots"></div>
     </div>
   </div>
 
   <div class="card warning">
-    <h3 class="warning">⚡ Problem: Shifted Windows Create Irregular Sizes</h3>
+    <h3 class="warning"> Problem: Shifted Windows Create Irregular Sizes</h3>
     <p>After shifting, windows near the <strong>edges and corners</strong> are smaller than M×M — they get "cropped" by the image boundary. You'd need to <em>pad</em> them back to M×M and then <em>mask</em> out the padded positions during attention.</p>
     <p style="margin-top:8px">The paper proposes an efficient solution: <strong>Cyclic Shift</strong> — rolling the entire feature map so that boundary pieces wrap around, forming complete M×M windows. An attention mask ensures only valid positions within each logical window attend to each other.</p>
   </div>
 
   <!-- CYCLIC SHIFT ANIMATION -->
   <div class="anim-container">
-    <div class="anim-title">🎬 Animation: Cyclic Shift Trick</div>
+    <div class="anim-title"> Animation: Cyclic Shift Trick</div>
     <div class="anim-step-info" id="cyc-step-info">Step 0 of 6</div>
     <div class="step-explanation" id="cyc-explanation">Click "Next Step" to understand the cyclic shift and masking strategy.</div>
     <div class="canvas-wrap">
       <canvas id="cycCanvas" width="580" height="310"></canvas>
     </div>
     <div class="anim-controls">
-      <button class="btn btn-primary" id="cyc-next">▶ Next Step</button>
+      <button class="btn btn-primary" id="cyc-next"> Next Step</button>
       <button class="btn btn-secondary" id="cyc-reset">↺ Reset</button>
       <div class="progress-dots" id="cyc-dots"></div>
     </div>
@@ -679,11 +679,11 @@
 
   <div class="two-col">
     <div class="card warning">
-      <h3 class="warning">❌ Absolute Position (ViT)</h3>
+      <h3 class="warning"> Absolute Position (ViT)</h3>
       <p>Add fixed or learned vectors to each token embedding. Position info is encoded in the token itself, but gets mixed with content through layers. Doesn't transfer well across resolutions.</p>
     </div>
     <div class="card success">
-      <h3 class="success">✅ Relative Position Bias (Swin)</h3>
+      <h3 class="success"> Relative Position Bias (Swin)</h3>
       <p>For each query-key pair (i,j) inside a window, compute their relative position (Δrow, Δcol) and look up a learned bias B[Δrow, Δcol]. Added to attention logits before softmax.</p>
     </div>
   </div>
@@ -695,21 +695,21 @@
 
   <!-- POSITION BIAS ANIMATION -->
   <div class="anim-container">
-    <div class="anim-title">🎬 Animation: Relative Position Bias Table</div>
+    <div class="anim-title"> Animation: Relative Position Bias Table</div>
     <div class="anim-step-info" id="pos-step-info">Step 0 of 5</div>
     <div class="step-explanation" id="pos-explanation">Click "Next Step" to see how relative positions are indexed for the bias table.</div>
     <div class="canvas-wrap">
       <canvas id="posCanvas" width="540" height="300"></canvas>
     </div>
     <div class="anim-controls">
-      <button class="btn btn-primary" id="pos-next">▶ Next Step</button>
+      <button class="btn btn-primary" id="pos-next"> Next Step</button>
       <button class="btn btn-secondary" id="pos-reset">↺ Reset</button>
       <div class="progress-dots" id="pos-dots"></div>
     </div>
   </div>
 
   <div class="callout">
-    <div class="callout-icon">🔑</div>
+    <div class="callout-icon"></div>
     <div class="callout-text">
       <strong>Key benefit:</strong> The bias table can be interpolated to support different window sizes during fine-tuning on higher resolution images — making Swin more flexible than absolute position embeddings.
     </div>
@@ -728,7 +728,7 @@
   <p>A Swin Transformer Block is a standard Transformer block with <em>windowed</em> self-attention instead of global. Crucially, blocks come in <strong>pairs</strong>: one W-MSA block followed by one SW-MSA block, to enable cross-window communication.</p>
 
   <div class="card highlight">
-    <h3 class="accent">🔢 Block Equations</h3>
+    <h3 class="accent"> Block Equations</h3>
     <div class="formula-box">
       \[ \hat{z}^l = \text{W-MSA}(\text{LN}(z^{l-1})) + z^{l-1} \]
       \[ z^l = \text{MLP}(\text{LN}(\hat{z}^l)) + \hat{z}^l \]
@@ -739,14 +739,14 @@
   </div>
 
   <div class="anim-container">
-    <div class="anim-title">🎬 Animation: Full Swin Block Data Flow</div>
+    <div class="anim-title"> Animation: Full Swin Block Data Flow</div>
     <div class="anim-step-info" id="block-step-info">Step 0 of 8</div>
     <div class="step-explanation" id="block-explanation">Click "Next Step" to trace data through a complete Swin Transformer block pair.</div>
     <div class="canvas-wrap">
       <canvas id="blockCanvas" width="560" height="380"></canvas>
     </div>
     <div class="anim-controls">
-      <button class="btn btn-primary" id="block-next">▶ Next Step</button>
+      <button class="btn btn-primary" id="block-next"> Next Step</button>
       <button class="btn btn-secondary" id="block-reset">↺ Reset</button>
       <div class="progress-dots" id="block-dots"></div>
     </div>
@@ -782,7 +782,7 @@
   <p>At the end of each stage (except the last), <strong>Patch Merging</strong> reduces spatial resolution by 2× while doubling the feature dimension. This is Swin's equivalent of stride-2 convolution in CNNs — it builds the hierarchy.</p>
 
   <div class="card highlight">
-    <h3 class="accent">🔀 How Patch Merging Works</h3>
+    <h3 class="accent"> How Patch Merging Works</h3>
     <ol style="padding-left:20px;color:var(--text2)">
       <li style="margin:8px 0">Take the H×W×C feature map</li>
       <li style="margin:8px 0">Sample every 2nd patch in each spatial dimension → creates 4 grids of (H/2)×(W/2)×C</li>
@@ -796,21 +796,21 @@
 
   <!-- PATCH MERGE ANIMATION -->
   <div class="anim-container">
-    <div class="anim-title">🎬 Animation: Patch Merging Step by Step</div>
+    <div class="anim-title"> Animation: Patch Merging Step by Step</div>
     <div class="anim-step-info" id="merge-step-info">Step 0 of 6</div>
     <div class="step-explanation" id="merge-explanation">Click "Next Step" to see exactly how patch merging reduces resolution while increasing features.</div>
     <div class="canvas-wrap">
       <canvas id="mergeCanvas" width="580" height="320"></canvas>
     </div>
     <div class="anim-controls">
-      <button class="btn btn-primary" id="merge-next">▶ Next Step</button>
+      <button class="btn btn-primary" id="merge-next"> Next Step</button>
       <button class="btn btn-secondary" id="merge-reset">↺ Reset</button>
       <div class="progress-dots" id="merge-dots"></div>
     </div>
   </div>
 
   <div class="callout">
-    <div class="callout-icon">💡</div>
+    <div class="callout-icon"></div>
     <div class="callout-text">
       <strong>Why this produces hierarchy:</strong> After Stage 1: tokens at 1/4 resolution. After Stage 2: 1/8. After Stage 3: 1/16. After Stage 4: 1/32. This exactly matches ResNet's feature pyramid — so Swin can directly replace ResNet as backbone in any detection/segmentation framework.
     </div>
@@ -830,69 +830,69 @@
 
   <div class="arch-flow" id="archFlow">
     <div class="arch-block" style="background:#1a2a40;border:1px solid var(--accent);">
-      📸 Input Image: H×W×3
+       Input Image: H×W×3
     </div>
     <div class="arch-arrow">↓</div>
     <div class="arch-block" style="background:#1a3040;border:1px solid #79b8ff;">
-      🔲 Patch Partition + Linear Embed<br>
+       Patch Partition + Linear Embed<br>
       <span class="badge badge-blue">H/4 × W/4 × 96</span>
     </div>
     <div class="arch-arrow">↓</div>
     <div class="arch-block" style="background:#1a3a20;border:1px solid var(--accent3);">
-      🟩 Stage 1: 2× Swin Blocks (W-MSA + SW-MSA)<br>
+       Stage 1: 2× Swin Blocks (W-MSA + SW-MSA)<br>
       <span class="badge badge-green">H/4 × W/4 × 96</span>
       <span class="badge badge-blue">Resolution: 1/4</span>
     </div>
     <div class="arch-arrow">↓</div>
     <div class="arch-block" style="background:#2a2040;border:1px solid var(--accent4);">
-      🔀 Patch Merging<br>
+       Patch Merging<br>
       <span class="badge badge-purple">H/8 × W/8 × 192</span>
     </div>
     <div class="arch-arrow">↓</div>
     <div class="arch-block" style="background:#1a3a20;border:1px solid var(--accent3);">
-      🟩 Stage 2: 2× Swin Blocks<br>
+       Stage 2: 2× Swin Blocks<br>
       <span class="badge badge-green">H/8 × W/8 × 192</span>
       <span class="badge badge-blue">Resolution: 1/8</span>
     </div>
     <div class="arch-arrow">↓</div>
     <div class="arch-block" style="background:#2a2040;border:1px solid var(--accent4);">
-      🔀 Patch Merging<br>
+       Patch Merging<br>
       <span class="badge badge-purple">H/16 × W/16 × 384</span>
     </div>
     <div class="arch-arrow">↓</div>
     <div class="arch-block" style="background:#1a3a20;border:1px solid var(--accent3);">
-      🟩 Stage 3: 6× Swin Blocks<br>
+       Stage 3: 6× Swin Blocks<br>
       <span class="badge badge-green">H/16 × W/16 × 384</span>
       <span class="badge badge-blue">Resolution: 1/16</span>
     </div>
     <div class="arch-arrow">↓</div>
     <div class="arch-block" style="background:#2a2040;border:1px solid var(--accent4);">
-      🔀 Patch Merging<br>
+       Patch Merging<br>
       <span class="badge badge-purple">H/32 × W/32 × 768</span>
     </div>
     <div class="arch-arrow">↓</div>
     <div class="arch-block" style="background:#1a3a20;border:1px solid var(--accent3);">
-      🟩 Stage 4: 2× Swin Blocks<br>
+       Stage 4: 2× Swin Blocks<br>
       <span class="badge badge-green">H/32 × W/32 × 768</span>
       <span class="badge badge-blue">Resolution: 1/32</span>
     </div>
     <div class="arch-arrow">↓</div>
     <div class="arch-block" style="background:#3a2a10;border:1px solid var(--accent5);">
-      🎯 Multi-scale Feature Maps (C1,C2,C3,C4)<br>
+       Multi-scale Feature Maps (C1,C2,C3,C4)<br>
       <span class="badge" style="background:#3a2a10;color:var(--accent5)">Ready for FPN / Head</span>
     </div>
   </div>
 
   <!-- FULL ENCODER ANIMATION -->
   <div class="anim-container">
-    <div class="anim-title">🎬 Animation: Full Encoder Data Flow</div>
+    <div class="anim-title"> Animation: Full Encoder Data Flow</div>
     <div class="anim-step-info" id="enc-step-info">Step 0 of 9</div>
     <div class="step-explanation" id="enc-explanation">Click "Next Step" to trace a feature map through all 4 stages of the Swin Encoder.</div>
     <div class="canvas-wrap">
       <canvas id="encCanvas" width="580" height="360"></canvas>
     </div>
     <div class="anim-controls">
-      <button class="btn btn-primary" id="enc-next">▶ Next Step</button>
+      <button class="btn btn-primary" id="enc-next"> Next Step</button>
       <button class="btn btn-secondary" id="enc-reset">↺ Reset</button>
       <div class="progress-dots" id="enc-dots"></div>
     </div>
@@ -900,7 +900,7 @@
 
   <!-- Swin variants table -->
   <div class="card">
-    <h3 class="accent">📊 Swin Transformer Variants</h3>
+    <h3 class="accent"> Swin Transformer Variants</h3>
     <table>
       <tr>
         <th>Model</th><th>C (embed)</th><th>Blocks per stage</th><th>Heads per stage</th><th>Params</th><th>ImageNet Top-1</th>
@@ -968,7 +968,7 @@
   </div>
 
   <div class="anim-container">
-    <div class="anim-title">📊 Interactive Complexity Comparison</div>
+    <div class="anim-title"> Interactive Complexity Comparison</div>
     <p style="font-size:0.9rem;color:var(--text2);margin-bottom:12px">Adjust parameters to see how complexity scales.</p>
     <div class="slider-row">
       <label>Feature map size (h=w):</label>
@@ -1150,7 +1150,7 @@ attn_mask = attn_mask.masked_fill(attn_mask == <span class="num">0</span>, <span
 <!-- ============================================================ -->
 <div class="section">
   <div class="card purple">
-    <h3 class="purple">🎓 Complete Summary: The Swin Encoder in 7 Points</h3>
+    <h3 class="purple"> Complete Summary: The Swin Encoder in 7 Points</h3>
     <ol style="padding-left:20px;color:var(--text2)">
       <li style="margin:10px 0"><strong style="color:var(--accent4)">Patch Partition (4×4):</strong> Image → non-overlapping 4×4 pixel patches → linear embed to C-dim tokens. Produces (H/4)×(W/4) token grid.</li>
       <li style="margin:10px 0"><strong style="color:var(--accent4)">W-MSA:</strong> Partition tokens into M×M windows, run self-attention inside each window. O(N) complexity.</li>
@@ -1164,7 +1164,7 @@ attn_mask = attn_mask.masked_fill(attn_mask == <span class="num">0</span>, <span
 </div>
 
 <div style="text-align:center;padding:40px 20px;color:var(--text2);border-top:1px solid var(--border);">
-  <p>📄 Based on: <strong style="color:var(--accent)">Liu et al., "Swin Transformer: Hierarchical Vision Transformer using Shifted Windows" (ICCV 2021 Best Paper)</strong></p>
+  <p> Based on: <strong style="color:var(--accent)">Liu et al., "Swin Transformer: Hierarchical Vision Transformer using Shifted Windows" (ICCV 2021 Best Paper)</strong></p>
   <p style="margin-top:8px">arXiv: 2103.14030</p>
 </div>
 
@@ -1702,7 +1702,7 @@ updateComplexChart();
       ctx.fillStyle=C.accent2; ctx.font='bold 13px Segoe UI';
       ctx.fillText('Global: 64 × 64 = 4096 pairs', bx, by+24);
       ctx.fillStyle=C.accent4; ctx.font='bold 13px Segoe UI';
-      ctx.fillText('⚡ 4× fewer computations!', bx, by+48);
+      ctx.fillText(' 4× fewer computations!', bx, by+48);
     }
     else if(step===6) {
       // Reconstructed grid
@@ -1712,7 +1712,7 @@ updateComplexChart();
         roundRect(ctx,ox+c*CS,oy+r*CS,CS-1,CS-1,3,winCols[wi]+'dd',winBord[wi]);
       }
       ctx.fillStyle=C.accent3; ctx.font='bold 12px Segoe UI'; ctx.textAlign='center';
-      ctx.fillText('✓ Tokens enriched with local context', ox+G*CS/2, oy+G*CS+20);
+      ctx.fillText(' Tokens enriched with local context', ox+G*CS/2, oy+G*CS+20);
       ctx.fillStyle=C.text2; ctx.font='10px Segoe UI';
       ctx.fillText('Output reshaped back to 8×8 spatial layout', ox+G*CS/2, oy+G*CS+36);
     }
@@ -1812,7 +1812,7 @@ updateComplexChart();
       ctx.beginPath(); ctx.moveTo(ox1+4*CS,oy1); ctx.lineTo(ox1+4*CS,oy1+G*CS); ctx.stroke();
       ctx.setLineDash([]);
       ctx.fillStyle=C.accent2; ctx.font='bold 11px Segoe UI'; ctx.textAlign='center';
-      ctx.fillText('⚡ No cross-boundary communication!', ox1+G*CS/2, oy1+G*CS+32);
+      ctx.fillText(' No cross-boundary communication!', ox1+G*CS/2, oy1+G*CS+32);
     }
     else if(step===1) {
       drawRegularWindows(ox1,oy1,'W-MSA: Original Windows');
@@ -1840,7 +1840,7 @@ updateComplexChart();
       drawShiftedWindows(ox1,oy1,'Shifted Windows',SH);
       // Draw edge windows with hatching
       ctx.fillStyle=C.accent2; ctx.font='bold 11px Segoe UI'; ctx.textAlign='center';
-      ctx.fillText('⚠ Edge windows are incomplete!', ox1+G*CS/2, oy1+G*CS+32);
+      ctx.fillText(' Edge windows are incomplete!', ox1+G*CS/2, oy1+G*CS+32);
       // Draw partial windows
       const sx=ox2, sy=oy2;
       const edgeWindows=[[0,0,SH*CS,SH*CS],[0,SH*CS,SH*CS,(G-SH)*CS],[SH*CS,0,(G-SH)*CS,SH*CS],[SH*CS,SH*CS,(G-SH)*CS,(G-SH)*CS]];
@@ -1880,7 +1880,7 @@ updateComplexChart();
       ctx.beginPath(); ctx.moveTo(bef_x+G*CS+8,gy+G*CS/2); ctx.lineTo(aft_x-8,gy+G*CS/2); ctx.stroke();
       ctx.setLineDash([]);
       ctx.fillStyle=C.accent3; ctx.font='bold 10px Segoe UI'; ctx.textAlign='center';
-      ctx.fillText('✓ All windows now M×M!', aft_x+G*CS/2, gy+G*CS+18);
+      ctx.fillText(' All windows now M×M!', aft_x+G*CS/2, gy+G*CS+18);
     }
     else if(step===6) {
       // Masking
@@ -2036,7 +2036,7 @@ updateComplexChart();
         ctx.strokeRect(x,y,M*CS,M*CS);
       });
       ctx.fillStyle=C.accent2; ctx.font='10px Segoe UI'; ctx.textAlign='center';
-      ctx.fillText('⚠ Windows span multiple regions!',ox+G*CS/2,oy+G*CS+16);
+      ctx.fillText(' Windows span multiple regions!',ox+G*CS/2,oy+G*CS+16);
     }
     else if(step===2) {
       const ox2=300;
@@ -2079,7 +2079,7 @@ updateComplexChart();
         ctx.strokeRect(ox3+wc*M*CS,oy+wr*M*CS,M*CS,M*CS);
       }
       ctx.fillStyle=C.accent3; ctx.font='10px Segoe UI'; ctx.textAlign='center';
-      ctx.fillText('✓ All windows are exactly M×M = 9 tokens',W/2,oy+G*CS+16);
+      ctx.fillText(' All windows are exactly M×M = 9 tokens',W/2,oy+G*CS+16);
     }
     else if(step===4) {
       ctx.fillStyle=C.accent; ctx.font='bold 11px Segoe UI'; ctx.textAlign='center';
@@ -2104,14 +2104,14 @@ updateComplexChart();
         roundRect(ctx,mmx+j*ms,mmy+i*ms,ms-1,ms-1,1,ctx.fillStyle,null);
         ctx.fillStyle=same?C.accent3:C.accent2;
         ctx.font='7px Segoe UI'; ctx.textAlign='center';
-        ctx.fillText(same?'✓':'✗',mmx+j*ms+ms/2,mmy+i*ms+ms/2+2.5);
+        ctx.fillText(same?'':'',mmx+j*ms+ms/2,mmy+i*ms+ms/2+2.5);
       }
       ctx.fillStyle=C.text2; ctx.font='9px Segoe UI'; ctx.textAlign='left';
       ctx.fillText('Green=attend, Red=masked', mmx, mmy+M*M*ms+16);
     }
     else if(step===5) {
       ctx.fillStyle=C.accent3; ctx.font='bold 13px Segoe UI'; ctx.textAlign='center';
-      ctx.fillText('✅ Full Pipeline: Cyclic Shift + Mask + Reverse Roll', W/2, 22);
+      ctx.fillText(' Full Pipeline: Cyclic Shift + Mask + Reverse Roll', W/2, 22);
       const steps2=[
         {l:'1. Feature Map x',c:C.accent},
         {l:'2. Roll: torch.roll(x, (-sh,-sh))',c:C.accent4},
@@ -2119,7 +2119,7 @@ updateComplexChart();
         {l:'4. W-Attn with Mask (same region only)',c:C.accent5},
         {l:'5. Reverse Partition',c:C.accent3},
         {l:'6. Reverse Roll: torch.roll(y, (sh,sh))',c:C.accent4},
-        {l:'7. Output = SW-MSA result! ✓',c:C.accent}
+        {l:'7. Output = SW-MSA result! ',c:C.accent}
       ];
       steps2.forEach((s,i) => {
         roundRect(ctx,60,40+i*34,W-120,26,6,s.c+'22',s.c);
@@ -2268,7 +2268,7 @@ updateComplexChart();
       ctx.fillText('Why Relative is Better than Absolute', W/2, 22);
       const rows=[
         {l:'Absolute (ViT)', p1:'Fixed positional embedding added to input', p2:'Cannot transfer to new image sizes', c:C.accent2},
-        {l:'Relative (Swin)', p1:'Learned bias indexed by (Δrow, Δcol)', p2:'Can interpolate for different window sizes ✓', c:C.accent3}
+        {l:'Relative (Swin)', p1:'Learned bias indexed by (Δrow, Δcol)', p2:'Can interpolate for different window sizes ', c:C.accent3}
       ];
       rows.forEach((r,i) => {
         roundRect(ctx,30,50+i*100,W-60,85,10,r.c+'11',r.c);
@@ -2386,7 +2386,7 @@ updateComplexChart();
     }
     if(step===7) {
       ctx.fillStyle=C.accent3; ctx.font='bold 12px Segoe UI'; ctx.textAlign='center';
-      ctx.fillText('✓ Block pair complete: z^(l+1) ready!', W/2, H-16);
+      ctx.fillText(' Block pair complete: z^(l+1) ready!', W/2, H-16);
     }
   }
 
@@ -2573,7 +2573,7 @@ updateComplexChart();
       ctx.fillStyle=C.accent3; ctx.font='9px Segoe UI'; ctx.textAlign='center';
       ctx.fillText('2×2 tokens × 2C', ox2+2*cs2/2, oy2+2*cs2+14);
       ctx.fillStyle=C.text; ctx.font='bold 10px Segoe UI'; ctx.textAlign='center';
-      ctx.fillText('✓ 2× smaller spatially, 2× richer features', W/2, H-16);
+      ctx.fillText(' 2× smaller spatially, 2× richer features', W/2, H-16);
     }
   }
 
@@ -2675,7 +2675,7 @@ updateComplexChart();
 
     if(step>=8) {
       ctx.fillStyle=C.accent3; ctx.font='bold 11px Segoe UI'; ctx.textAlign='center';
-      ctx.fillText('✅ Full Swin Encoder complete! 4-scale hierarchical features ready.', W/2, H-14);
+      ctx.fillText(' Full Swin Encoder complete! 4-scale hierarchical features ready.', W/2, H-14);
     }
   }
 

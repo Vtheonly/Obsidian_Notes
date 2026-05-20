@@ -1,4 +1,4 @@
-# 📚 Master Index: Advanced Code Patterns
+#  Master Index: Advanced Code Patterns
 
 This file acts as a Map of Content, linking to all topics and their main keywords.
 

@@ -31,9 +31,9 @@ You can set the level using: `SET TRANSACTION ISOLATION LEVEL [LEVEL];`
 
 | Isolation Level | Dirty Read? | Non-Repeatable Read? | Phantom Read? | Locking Strategy |
 | :--- | :---: | :---: | :---: | :--- |
-| **READ UNCOMMITTED** | ️ Yes | ️ Yes | ️ Yes | No shared locks. Fastest but dangerous. |
-| **READ COMMITTED** |  No | ️ Yes | ️ Yes | Locks rows only while reading. (Default in many DBs). |
-| **REPEATABLE READ** |  No |  No | ️ Yes | Locks rows found in the first read until commit. (MySQL Default). |
+| **READ UNCOMMITTED** |  Yes |  Yes |  Yes | No shared locks. Fastest but dangerous. |
+| **READ COMMITTED** |  No |  Yes |  Yes | Locks rows only while reading. (Default in many DBs). |
+| **REPEATABLE READ** |  No |  No |  Yes | Locks rows found in the first read until commit. (MySQL Default). |
 | **SERIALIZABLE** |  No |  No |  No | Locks the entire range/table. Safest but slowest. |
 
 ---

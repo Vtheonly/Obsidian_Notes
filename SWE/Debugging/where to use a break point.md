@@ -59,8 +59,8 @@ Now, let's break down where to put breakpoints and what you'll learn:
     *   The debugger will pause *before* the function call.
     *   **Inspect `itemPrice` and `discount`:** You'll see they are 100 and 20.
     *   **Now you have options:**
-        *   Press "Step Into" (🚶‍♂️): This will take you inside the `calculateDiscountedPrice` function, landing you at **Line A** (or wherever the first executable line is).
-        *   Press "Step Over" (🦧): This will execute the *entire* `calculateDiscountedPrice` function, assign the result to `salePrice`, and the debugger will pause at **Line F** (`console.log(...)`). You won't see the steps *inside* the function.
+        *   Press "Step Into" (): This will take you inside the `calculateDiscountedPrice` function, landing you at **Line A** (or wherever the first executable line is).
+        *   Press "Step Over" (): This will execute the *entire* `calculateDiscountedPrice` function, assign the result to `salePrice`, and the debugger will pause at **Line F** (`console.log(...)`). You won't see the steps *inside* the function.
 
 ---
 
@@ -76,7 +76,7 @@ Now, let's break down where to put breakpoints and what you'll learn:
 *   **Example Scenario:** You want to see the final `salePrice` after the `calculateDiscountedPrice` function has completed.
 
     If you set a breakpoint at **Line F** (`console.log("The sale price is:", salePrice);`):
-    *   You would likely have previously hit "Continue" (▶️) from a breakpoint at **Line E** (the call site) or "Step Over" from Line E.
+    *   You would likely have previously hit "Continue" () from a breakpoint at **Line E** (the call site) or "Step Over" from Line E.
     *   The debugger will pause at **Line F**.
     *   **Inspect `salePrice`:** You'll see that `salePrice` holds the returned value (e.g., 80).
     *   You can then use "Step Over" on **Line F** to see that the `console.log` statement correctly prints the sale price.

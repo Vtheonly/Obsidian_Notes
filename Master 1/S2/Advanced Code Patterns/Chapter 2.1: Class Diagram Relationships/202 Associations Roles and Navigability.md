@@ -12,13 +12,13 @@ keywords: [associations, roles, navigability]
 ### 1. Graphical Representation & Name
 An association is represented by a **solid continuous line** connecting two classes. 
 
-To make the diagram readable, you can (and often should) name the association. To indicate how to read the name, we use a small black triangle `▶`. 
+To make the diagram readable, you can (and often should) name the association. To indicate how to read the name, we use a small black triangle ``. 
 
 ```mermaid
 classDiagram
     class Personne
     class Voiture
-    Personne -- Voiture : Possède ▶
+    Personne -- Voiture : Possède 
 ```
 *Read as: "Personne possède Voiture" (Person owns Car).*
 

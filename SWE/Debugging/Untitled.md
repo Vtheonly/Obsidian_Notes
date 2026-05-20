@@ -1,5 +1,5 @@
 
-### 1. Continue (▶️)
+### 1. Continue ()
 
 *   **What it does:** This button tells your program to run until it reaches the next breakpoint, or until the program finishes if there are no more breakpoints. Think of it as saying, "Okay, keep going until I tell you to stop again."
 
@@ -22,7 +22,7 @@
 
 ---
 
-### 2. Step Over (🦧)
+### 2. Step Over ()
 
 *   **What it does:** This button executes the current line of code and then pauses on the *next* line. Crucially, if the current line calls a function, "Step Over" will run that entire function to completion and then pause on the line *after* the function call. It *doesn't* go inside the function.
 
@@ -47,7 +47,7 @@
 
 ---
 
-### 3. Step Into (🚶‍♂️)
+### 3. Step Into ()
 
 *   **What it does:** This button executes the current line of code. If the current line contains a function call, "Step Into" will take you *inside* that function and pause on its *first* line. If the current line is not a function call, it behaves like "Step Over" – it just moves to the next line.
 
@@ -74,7 +74,7 @@
 
 ---
 
-### 4. Step Out (🚀)
+### 4. Step Out ()
 
 *   **What it does:** This button allows you to finish executing the *rest of the current function* that you are currently inside. Once the function finishes, the debugger will pause on the line *after* where the function was originally called.
 
@@ -100,7 +100,7 @@
 
 ---
 
-### 5. Restart (↩️)
+### 5. Restart ()
 
 *   **What it does:** This button stops the current debugging session and immediately starts a new one, running your program from the very beginning.
 
@@ -123,7 +123,7 @@
 
 ---
 
-### 6. Stop (⏹️)
+### 6. Stop ()
 
 *   **What it does:** This button completely terminates the current debugging session. Your program will stop running, and the debugger will detach.
 

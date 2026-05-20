@@ -33,7 +33,7 @@ console.log("Script finished."); // Line 29
 
 ---
 
-### Step Over (↪️ / F10)
+### Step Over ( / F10)
 
 *   **What it does:** It executes the *entire current line* (Line 11).
     *   Because Line 11 contains a call to the `greet()` function, "Step Over" will:
@@ -47,7 +47,7 @@ console.log("Script finished."); // Line 29
 
 ---
 
-### Continue (▶️ / F5)
+### Continue ( / F5)
 
 *   **What it does:** It resumes program execution and tells the debugger to run freely **until it hits the next breakpoint you've set, OR until the program finishes.**
     *   When you're paused at Line 11 and press "Continue":
@@ -81,7 +81,7 @@ Imagine you're following a recipe (your program).
 
 **Key Differences Summarized:**
 
-| Feature         | Step Over (↪️ / F10)                                                              | Continue (▶️ / F5)                                        |
+| Feature         | Step Over ( / F10)                                                              | Continue ( / F5)                                        |
 | :-------------- | :--------------------------------------------------------------------------------- | :-------------------------------------------------------- |
 | **Function Call** | Executes the entire function *without* stepping into its lines.                    | Executes the function and keeps going.                    |
 | **Stopping Point**| The **very next line** in the current function/scope.                              | The **next breakpoint** or the **end of the program**.      |

@@ -1,6 +1,6 @@
 # Complete Guide: Which Rows Change and Why
 
-## 📋 The Universal Formula for ALL Rows
+##  The Universal Formula for ALL Rows
 
 During each pivot operation, **every row follows one of these formulas**:
 
@@ -13,7 +13,7 @@ Where **c** = coefficient in the pivot column for that row
 
 ---
 
-## 🔑 Key Insight: Why Some Rows "Don't Change"
+##  Key Insight: Why Some Rows "Don't Change"
 
 **They actually DO follow the formula, but:**
 
@@ -23,7 +23,7 @@ $$\text{If } c = 0, \text{ then: New Row} = \text{Old Row} - (0 \times \text{New
 
 ---
 
-## 📚 Detailed Example: Example 1, Iteration 1→2
+##  Detailed Example: Example 1, Iteration 1→2
 
 ### Setup
 - **Pivot Column:** $x_2$ 
@@ -49,7 +49,7 @@ $$\text{New } x_3 = \text{Old } x_3 - (2 \times \text{New } x_2)$$
 $$\begin{align}
 &= [3, 2, 1, 0, 0 \mid 1800] - 2 \times [0, 1, 0, 0, 1 \mid 600]\\
 &= [3, 2, 1, 0, 0 \mid 1800] - [0, 2, 0, 0, 2 \mid 1200]\\
-&= [3, 0, 1, 0, -2 \mid 600] \quad ✓ \text{ CHANGED}
+&= [3, 0, 1, 0, -2 \mid 600] \quad  \text{ CHANGED}
 \end{align}$$
 
 ---
@@ -63,7 +63,7 @@ $$\text{New } x_4 = \text{Old } x_4 - (0 \times \text{New } x_2)$$
 $$\begin{align}
 &= [1, 0, 0, 1, 0 \mid 400] - 0 \times [0, 1, 0, 0, 1 \mid 600]\\
 &= [1, 0, 0, 1, 0 \mid 400] - [0, 0, 0, 0, 0 \mid 0]\\
-&= [1, 0, 0, 1, 0 \mid 400] \quad ✓ \text{ UNCHANGED}
+&= [1, 0, 0, 1, 0 \mid 400] \quad  \text{ UNCHANGED}
 \end{align}$$
 
 **This row appears unchanged because we subtracted zero!**
@@ -79,12 +79,12 @@ $$\text{New } Z = \text{Old } Z - (50 \times \text{New } x_2)$$
 $$\begin{align}
 &= [30, 50, 0, 0, 0 \mid 0] - 50 \times [0, 1, 0, 0, 1 \mid 600]\\
 &= [30, 50, 0, 0, 0 \mid 0] - [0, 50, 0, 0, 50 \mid 30000]\\
-&= [30, 0, 0, 0, -50 \mid -30000] \quad ✓ \text{ CHANGED}
+&= [30, 0, 0, 0, -50 \mid -30000] \quad  \text{ CHANGED}
 \end{align}$$
 
 ---
 
-## 📊 Summary Table for Example 1, Iteration 1→2
+##  Summary Table for Example 1, Iteration 1→2
 
 | Row | Coefficient in Pivot Column (x₂) | Formula Used | Result |
 |---|:---:|---|---|
@@ -95,7 +95,7 @@ $$\begin{align}
 
 ---
 
-## 🎯 Another Example: Example 5, Iteration 2→3
+##  Another Example: Example 5, Iteration 2→3
 
 ### Setup
 - **Pivot Column:** $x_1$
@@ -114,13 +114,13 @@ $$\text{New } x_1 = \frac{[3, 0, 0, -1, 1 \mid 6]}{3} = [1, 0, 0, -1/3, 1/3 \mid
 
 | Old Row | Coefficient in x₁ | Calculation | Changed? |
 |---|:---:|---|:---:|
-| **x₃** | **1** | [1,0,1,0,0\|4] − 1×[1,0,0,−1/3,1/3\|2] = [0,0,1,1/3,−1/3\|2] | ✅ YES |
-| **x₂** | **0** | [0,1,0,1/2,0\|6] − 0×[1,0,0,−1/3,1/3\|2] = [0,1,0,1/2,0\|6] | ❌ NO |
-| **Z** | **3** | [3,0,0,−5/2,0\|−30] − 3×[1,0,0,−1/3,1/3\|2] = [0,0,0,−3/2,−1\|−36] | ✅ YES |
+| **x₃** | **1** | [1,0,1,0,0\|4] − 1×[1,0,0,−1/3,1/3\|2] = [0,0,1,1/3,−1/3\|2] |  YES |
+| **x₂** | **0** | [0,1,0,1/2,0\|6] − 0×[1,0,0,−1/3,1/3\|2] = [0,1,0,1/2,0\|6] |  NO |
+| **Z** | **3** | [3,0,0,−5/2,0\|−30] − 3×[1,0,0,−1/3,1/3\|2] = [0,0,0,−3/2,−1\|−36] |  YES |
 
 ---
 
-## 🧮 General Algorithm
+##  General Algorithm
 
 For **every** iteration:
 
@@ -136,12 +136,12 @@ For **every** iteration:
    a. Find coefficient c in pivot column
    b. New Row = Old Row − (c × New Pivot Row)
    
-   ⚠️ If c = 0, the row stays the same!
+    If c = 0, the row stays the same!
 ```
 
 ---
 
-## 💡 Visual Pattern Recognition
+##  Visual Pattern Recognition
 
 **Look at the pivot column before updating:**
 
@@ -156,7 +156,7 @@ Pivot Column (x₂)
 
 ---
 
-## ✅ Quick Reference: Formula Cheat Sheet
+##  Quick Reference: Formula Cheat Sheet
 
 | Situation | Formula | Example |
 |---|---|---|
@@ -167,7 +167,7 @@ Pivot Column (x₂)
 
 ---
 
-## 🎓 Pro Tip
+##  Pro Tip
 
 **You can predict which rows change before calculating:**
 - Count non-zero entries in the pivot column

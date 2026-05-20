@@ -27,7 +27,7 @@ UML (Unified Modeling Language) allows us to build models of software systems fr
      * **Activity Diagram** (Diagramme d'activités)
      * State Machine Diagram (Diagramme d'états-transitions)
 
-### 💡 Exam Tip & Common Pitfall
+###  Exam Tip & Common Pitfall
 > **Exam Trick:** In textual analysis exercises (like the *RQV vehicle theft* or the *Telemedicine* exams), professors will ask you to *"Elaborer la vue logique"* (Elaborate the logical view). **Logical View is synonymous with Static View**, which means they are asking for a **Class Diagram**. Do not draw a Sequence Diagram when asked for the "Logical View"!
 
 

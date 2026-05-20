@@ -4,7 +4,7 @@ Let’s unpack the **concept of `commit()`** in ORM/SQL with extreme clarity:
 
 ---
 
-## 🔁 What is `commit()`?
+##  What is `commit()`?
 
 > **Committing** means **saving your changes to the database permanently**.
 
@@ -26,7 +26,7 @@ db.session.commit()
 
 ---
 
-## ⚠️ What Happens If You Don’t Commit?
+##  What Happens If You Don’t Commit?
 
 If you **don’t call `commit()`**, any of the following will happen:
 
@@ -37,12 +37,12 @@ If you **don’t call `commit()`**, any of the following will happen:
 |You inspect the DB directly|Your new data **won’t be there**|
 |You query the table|The inserted row **won’t show up**|
 
-> ❗ Transactions are not permanent until committed.  
+>  Transactions are not permanent until committed.  
 > Think of `session.add()` as saying _"prepare to insert this"_, and `commit()` as _"actually write it to the file/database engine."_
 
 ---
 
-## 🔁 Is `commit()` like a checkpoint?
+##  Is `commit()` like a checkpoint?
 
 Yes — but more precisely, it’s like a **manual "save" operation** in your code. It's similar to a **Git commit**, or a **save file** in a game.
 
@@ -54,7 +54,7 @@ Yes — but more precisely, it’s like a **manual "save" operation** in your co
 
 ---
 
-## 🔄 Apply / Revert / Commit (GUI analogy)
+##  Apply / Revert / Commit (GUI analogy)
 
 In GUI database tools (like SQLiteStudio or DBeaver), you might see:
 
@@ -69,7 +69,7 @@ These are just UI ways to interact with the same underlying SQL concepts.
 
 ---
 
-## 🔍 What If You Change the DB Outside the App?
+##  What If You Change the DB Outside the App?
 
 If you manually edit the DB (say with a GUI tool or raw SQL) but **don’t commit** your transaction:
 
@@ -82,7 +82,7 @@ Conversely, **if you make changes in the app but don’t commit**, they won't sh
 
 ---
 
-## 🧠 Mental Model: Think Like a Scratchpad
+##  Mental Model: Think Like a Scratchpad
 
 ```text
 | Action                  | What happens                 |
@@ -95,7 +95,7 @@ Conversely, **if you make changes in the app but don’t commit**, they won't sh
 
 ---
 
-## 🧭 TL;DR
+##  TL;DR
 
 - `commit()` saves your data permanently in the database.
     

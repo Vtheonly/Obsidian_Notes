@@ -165,4 +165,4 @@ If something didn’t work as expected, here’s how you can debug:
 
 ---
 
-Let me know exactly what you tried with `curl`, and I can help analyze or extend your test further! 😊
+Let me know exactly what you tried with `curl`, and I can help analyze or extend your test further! 

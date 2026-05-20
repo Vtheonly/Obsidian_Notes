@@ -71,9 +71,9 @@ rename_items() {
         if [[ "$dry_run" != "true" && -n "$new_name" ]]; then
             local new_path="$parent_dir/$new_name"
             if mv "$item" "$new_path" 2>/dev/null; then
-                echo "  ✓ Renamed successfully"
+                echo "   Renamed successfully"
             else
-                echo "  ✗ Failed to rename"
+                echo "   Failed to rename"
             fi
         fi
     done
@@ -134,9 +134,9 @@ simple_rename() {
             if [[ "$dry_run" != "true" ]]; then
                 local new_path="$dirname_item/$new_name"
                 if mv "$item" "$new_path" 2>/dev/null; then
-                    echo "  ✓ Success"
+                    echo "   Success"
                 else
-                    echo "  ✗ Failed"
+                    echo "   Failed"
                 fi
             fi
         fi

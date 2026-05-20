@@ -47,8 +47,8 @@ In **Test N°1 (MCA)**, you are given this text:
 *"Une équipe ... est composée de développeurs ... Un développeur peut être un programmeur spécialisé ... ou un concepteur expert..."*
 
 How do you translate this?
-* "équipe est composée de développeurs" ➔ **Composition / Aggregation** (Has-A).
-* "Un développeur peut être un programmeur ou un concepteur" ➔ **Inheritance** (Is-A). The Superclass is `Developpeur`, and the Subclasses are `Programmeur` and `Concepteur`.
+* "équipe est composée de développeurs"  **Composition / Aggregation** (Has-A).
+* "Un développeur peut être un programmeur ou un concepteur"  **Inheritance** (Is-A). The Superclass is `Developpeur`, and the Subclasses are `Programmeur` and `Concepteur`.
 
 ---
 **Keywords:** #inheritance, #generalization, #is-a

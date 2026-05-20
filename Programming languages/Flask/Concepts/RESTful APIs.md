@@ -13,7 +13,7 @@ Let’s break this down systematically.
 
 ---
 
-## 🌐 What is an API?
+##  What is an API?
 
 An **API (Application Programming Interface)** is a contract that allows different software components to **communicate with each other**.
 
@@ -28,13 +28,13 @@ And receive structured responses — usually in **JSON**.
 
 ---
 
-## 📦 REST vs RESTful vs Normal APIs
+##  REST vs RESTful vs Normal APIs
 
 Let’s define them precisely:
 
 ---
 
-## 1. 🧩 What is a REST API?
+## 1.  What is a REST API?
 
 **REST** stands for **REpresentational State Transfer** — a set of **architectural constraints** introduced by Roy Fielding in 2000.
 
@@ -60,11 +60,11 @@ A REST API uses **standard HTTP methods** to operate on **resources**:
 
 ---
 
-## 2. 🧠 What is a RESTful API?
+## 2.  What is a RESTful API?
 
 This term gets used **interchangeably with REST API**, but strictly speaking:
 
-> ✅ A **RESTful API** is an API that **conforms to REST principles**.
+>  A **RESTful API** is an API that **conforms to REST principles**.
 
 So the difference is mostly **semantic**:
 
@@ -84,7 +84,7 @@ So unless someone is being hyper-specific, **REST API and RESTful API mean the s
 
 ---
 
-## 3. 🔧 What Is a “Normal Web API”?
+## 3.  What Is a “Normal Web API”?
 
 This term is vague — people use it to refer to **any API exposed over the web**, regardless of whether it follows REST or not.
 
@@ -108,20 +108,20 @@ So:
 
 ---
 
-## 🧪 Comparison Table
+##  Comparison Table
 
 |Feature|RESTful API|Non-REST API (e.g., RPC)|Web API (General)|
 |---|---|---|---|
-|Stateless|✅ Yes|❌ Maybe|✅/❌ Depends|
-|URL = Resource|✅ Yes (`/users/123`)|❌ Often RPC-style (`/getUser`)|✅/❌ Depends|
-|Uses HTTP Methods|✅ Yes (GET, POST, PUT, DELETE)|❌ Often just POST|✅ Usually|
+|Stateless| Yes| Maybe|/ Depends|
+|URL = Resource| Yes (`/users/123`)| Often RPC-style (`/getUser`)|/ Depends|
+|Uses HTTP Methods| Yes (GET, POST, PUT, DELETE)| Often just POST| Usually|
 |Data Format|JSON (common), XML|JSON, XML, or binary|JSON, XML, anything|
-|Schema Flexibility|✅ Structured but flexible|Often rigid|Depends|
-|Self-Descriptive URLs|✅|❌|Depends|
+|Schema Flexibility| Structured but flexible|Often rigid|Depends|
+|Self-Descriptive URLs|||Depends|
 
 ---
 
-## 🧠 Visual Analogy
+##  Visual Analogy
 
 ```
                      ┌─────────────┐
@@ -139,7 +139,7 @@ So:
 
 ---
 
-## ✅ Final Summary
+##  Final Summary
 
 |Term|Meaning|
 |---|---|
@@ -159,9 +159,9 @@ If you'd like, I can give you code examples showing:
     
 
 
-## 🔧 REST API Example — Pure Conceptual Walkthrough
+##  REST API Example — Pure Conceptual Walkthrough
 
-### 📦 Resource: `Book`
+###  Resource: `Book`
 
 Let’s say we are building an API to manage a book collection.
 
@@ -183,7 +183,7 @@ Each book is represented as:
 
 ---
 
-## 🧭 REST Endpoints Design
+##  REST Endpoints Design
 
 |Action|HTTP Method|Endpoint|Description|
 |---|---|---|---|
@@ -195,9 +195,9 @@ Each book is represented as:
 
 ---
 
-## 🧪 How to Use It (Raw `curl` Examples)
+##  How to Use It (Raw `curl` Examples)
 
-### 🔍 Get all books
+###  Get all books
 
 ```bash
 curl http://example.com/books
@@ -214,7 +214,7 @@ curl http://example.com/books
 
 ---
 
-### 📘 Create a new book
+###  Create a new book
 
 ```bash
 curl -X POST http://example.com/books \
@@ -230,7 +230,7 @@ curl -X POST http://example.com/books \
 
 ---
 
-### 🛠 Update a book
+###  Update a book
 
 ```bash
 curl -X PUT http://example.com/books/3 \
@@ -246,7 +246,7 @@ curl -X PUT http://example.com/books/3 \
 
 ---
 
-### ❌ Delete a book
+###  Delete a book
 
 ```bash
 curl -X DELETE http://example.com/books/3
@@ -260,7 +260,7 @@ curl -X DELETE http://example.com/books/3
 
 ---
 
-## 🧠 Key REST Concepts Reflected Here
+##  Key REST Concepts Reflected Here
 
 1. **Resource-Oriented**  
     Everything is centered around `books`, accessed via `/books`.
@@ -293,7 +293,7 @@ curl -X DELETE http://example.com/books/3
 
 ---
 
-## 📌 REST Is Just a Convention
+##  REST Is Just a Convention
 
 REST is not limited to any tech stack.
 
@@ -316,7 +316,7 @@ You can build RESTful APIs in:
 
 ---
 
-## 🧰 Summary
+##  Summary
 
 - REST = **Representational State Transfer**
     

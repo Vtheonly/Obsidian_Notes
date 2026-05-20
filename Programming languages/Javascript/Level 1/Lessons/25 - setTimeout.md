@@ -20,4 +20,4 @@ In this example, even though there's a `setTimeout` with a 2-second delay, the p
 
 JavaScript is designed to be asynchronous, meaning it can handle multiple tasks concurrently without waiting for one to finish before starting the next.
 
-If you have more questions about asynchronous programming, timers, or anything else, feel free to ask. Happy coding! 🚀
+If you have more questions about asynchronous programming, timers, or anything else, feel free to ask. Happy coding! 

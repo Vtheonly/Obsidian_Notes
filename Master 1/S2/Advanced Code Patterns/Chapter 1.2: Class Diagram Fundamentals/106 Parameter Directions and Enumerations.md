@@ -40,7 +40,7 @@ classDiagram
     Commande --> EtatCommande
 ```
 
-### 💡 Exam Tip & Common Pitfall
+###  Exam Tip & Common Pitfall
 > **Textual clues for Enumerations:** In your E-commerce exam (Test N°2 - Design pattern), a command has states: `"En Cours"`, `"En attente de payement"`, `"Expédiée"`. While that specific exam wanted the State Design Pattern, in a standard [[101 Static vs Dynamic Views|[[102 Anatomy of a Class|[[404 From Class Diagrams to Object Diagrams|Class Diagram]]]]]] exercise, whenever a text gives you a strict, finite list of text values (like "A gender can be Male or Female" or "A vehicle is either a Car or a Bicycle"), you should **create an enumeration**. It shows advanced understanding of type safety.
 
 ---

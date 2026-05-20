@@ -14,7 +14,7 @@ x_2 &\geq 0
 
 ---
 
-## 🔄 Step-by-Step Transformation
+##  Step-by-Step Transformation
 
 ### **Step 1: Fix Minimization** → Maximization
 
@@ -74,7 +74,7 @@ x_1', x_1'', x_2 &\geq 0
 
 ---
 
-## 🎯 Step 4: Add Slack/Surplus Variables (Convert to Equalities)
+##  Step 4: Add Slack/Surplus Variables (Convert to Equalities)
 
 ### Understanding the Two Types of Constraints:
 
@@ -100,16 +100,16 @@ x_1' - x_1'' + x_2 - s_1 &= 5
 **Interpretation:**
 - If $x_1' - x_1'' + x_2 = 7$, then we have **2 units excess** over the minimum of 5
 - So $s_1 = 2$ (the surplus)
-- Check: $7 - 2 = 5$ ✓
+- Check: $7 - 2 = 5$ 
 
 **Example values:**
 $$\begin{array}{c|c|c|c}
 x_1' - x_1'' + x_2 & \text{Surplus } s_1 & \text{Check: LHS} - s_1 & \text{Valid?}\\
 \hline
-7 & 2 & 7 - 2 = 5 & ✓\\
-5 & 0 & 5 - 0 = 5 & ✓\\
-10 & 5 & 10 - 5 = 5 & ✓\\
-4 & ? & \text{Can't work!} & ✗
+7 & 2 & 7 - 2 = 5 & \\
+5 & 0 & 5 - 0 = 5 & \\
+10 & 5 & 10 - 5 = 5 & \\
+4 & ? & \text{Can't work!} & 
 \end{array}$$
 
 ---
@@ -129,21 +129,21 @@ $$\begin{align}
 **Interpretation:**
 - If $2x_1' - 2x_1'' - x_2 = 6$, we're using **6 out of 8 available**
 - So $s_2 = 2$ (the slack/unused amount)
-- Check: $6 + 2 = 8$ ✓
+- Check: $6 + 2 = 8$ 
 
 **Example values:**
 $$\begin{array}{c|c|c|c}
 2x_1' - 2x_1'' - x_2 & \text{Slack } s_2 & \text{Check: LHS} + s_2 & \text{Valid?}\\
 \hline
-6 & 2 & 6 + 2 = 8 & ✓\\
-8 & 0 & 8 + 0 = 8 & ✓\\
-3 & 5 & 3 + 5 = 8 & ✓\\
-10 & ? & \text{Can't work!} & ✗
+6 & 2 & 6 + 2 = 8 & \\
+8 & 0 & 8 + 0 = 8 & \\
+3 & 5 & 3 + 5 = 8 & \\
+10 & ? & \text{Can't work!} & 
 \end{array}$$
 
 ---
 
-## 📋 Final Standard Form
+##  Final Standard Form
 
 $$\boxed{\text{Maximize: } W = -2x_1' + 2x_1'' + 3x_2 + 0s_1 + 0s_2}$$
 
@@ -156,7 +156,7 @@ x_1', x_1'', x_2, s_1, s_2 &\geq 0
 
 ---
 
-## 🔍 Visual Comparison: Before and After
+##  Visual Comparison: Before and After
 
 | **Aspect** | **Original** | **Final Standard Form** |
 |---|---|---|
@@ -168,7 +168,7 @@ x_1', x_1'', x_2, s_1, s_2 &\geq 0
 
 ---
 
-## 📐 Understanding the Sign Pattern
+##  Understanding the Sign Pattern
 
 ### For $\geq$ constraints:
 
@@ -186,7 +186,7 @@ $$\text{LHS} = \text{RHS} - s \quad \text{(LHS is at most RHS, possibly less)}$$
 
 ---
 
-## 🧮 Memory Aid
+##  Memory Aid
 
 | Symbol | Type | Sign in Equation | Meaning |
 |:---:|---|:---:|---|
@@ -196,7 +196,7 @@ $$\text{LHS} = \text{RHS} - s \quad \text{(LHS is at most RHS, possibly less)}$$
 
 ---
 
-## ✅ Now Ready for Tableau!
+##  Now Ready for Tableau!
 
 The initial tableau would look like:
 
@@ -213,10 +213,10 @@ W & -2 & 2 & 3 & 0 & 0 & 0
 
 ---
 
-## 🎓 Key Takeaways
+##  Key Takeaways
 
 1. **$\leq$ constraints** → Add slack variable (+)
 2. **$\geq$ constraints** → Add surplus variable (−)  
-   ⚠️ *Usually requires artificial variables too!*
+    *Usually requires artificial variables too!*
 3. **$=$ constraints** → No slack/surplus, but need artificial variable
 4. All slack, surplus, and artificial variables have **coefficient 0** in objective function
