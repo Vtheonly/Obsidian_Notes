@@ -23,12 +23,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Quiz/Untitled.md",
-                "mode": "source",
+                "file": "Quiz/Q1.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Untitled"
+              "title": "Q1"
             }
           }
         ],
@@ -203,10 +203,11 @@
       "quiz-generator:Open generator": false
     }
   },
-  "active": "17bc40549c391232",
+  "active": "59d043b24f59606f",
   "lastOpenFiles": [
+    "Encapsulation and Access Modifiers.md",
+    "Quiz/Q1.md",
     "Chapter 1.1: Fundamentals/020 Encapsulation and Access Control.md",
-    "Quiz/Untitled.md",
     "Quiz",
     "Chapter 1.1: Fundamentals/016 Advanced Keywords and Modifiers.md",
     "Chapter 1.1: Fundamentals/002 Object.md",
@@ -233,7 +234,6 @@
     "Chapter 1.2: Class Diagram Fundamentals/104 Visibility and Encapsulation.md",
     "Chapter 1.2: Class Diagram Fundamentals/109 Inheritance Aggregation and Composition.md",
     "Chapter 1.2: Class Diagram Fundamentals/108 Association Class.md",
-    "Chapter 1.2: Class Diagram Fundamentals/102 Anatomy of a Class.md",
     "rename_ch1.py",
     "rename_ch2.py",
     "Chapter 1.1: Fundamentals/add_keywords.py",
