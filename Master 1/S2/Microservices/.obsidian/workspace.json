@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01. Microservices Architecture and Systems Design/01.3. Microservices Core Characteristics.md",
+                "file": "03. Django Model Layer and ORM Engine/03.5. Model Relationships One-to-Many Relationships.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01.3. Microservices Core Characteristics"
+              "title": "03.5. Model Relationships One-to-Many Relationships"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "01. Microservices Architecture and Systems Design/01.3. Microservices Core Characteristics.md",
+                "file": "03. Django Model Layer and ORM Engine/03.5. Model Relationships One-to-Many Relationships.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 01.3. Microservices Core Characteristics"
+              "title": "Backlinks for 03.5. Model Relationships One-to-Many Relationships"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "01. Microservices Architecture and Systems Design/01.3. Microservices Core Characteristics.md",
+                "file": "03. Django Model Layer and ORM Engine/03.5. Model Relationships One-to-Many Relationships.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 01.3. Microservices Core Characteristics"
+              "title": "Outgoing links from 03.5. Model Relationships One-to-Many Relationships"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "01. Microservices Architecture and Systems Design/01.3. Microservices Core Characteristics.md",
+                "file": "03. Django Model Layer and ORM Engine/03.5. Model Relationships One-to-Many Relationships.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 01.3. Microservices Core Characteristics"
+              "title": "Outline of 03.5. Model Relationships One-to-Many Relationships"
             }
           }
         ]
@@ -185,14 +185,21 @@
   },
   "active": "0597d228478e8045",
   "lastOpenFiles": [
+    "03. Django Model Layer and ORM Engine/03.3. Database Schema Field Options.md",
+    "03. Django Model Layer and ORM Engine/03.4. Django Database Configuration Settings.md",
+    "03. Django Model Layer and ORM Engine/03.5. Model Relationships One-to-Many Relationships.md",
+    "02. Django Framework Core Concepts/02.5. Best Practices for Secret Keys and Environments.md",
+    "02. Django Framework Core Concepts/02.4. Django Application Lifecycle and Modularity.md",
+    "00. Vault Overview and Navigation Map/00.1. Complete Curriculum Map.md",
+    "00. Vault Overview and Navigation Map/00.2. Glossary of Technical Terms.md",
+    "02. Django Framework Core Concepts/02.1. Python Virtual Environments and Dependency Management.md",
+    "01. Microservices Architecture and Systems Design/01.3. Microservices Core Characteristics.md",
     "01. Microservices Architecture and Systems Design/01.5. API Gateway Pattern and Responsibilities.md",
     "01. Microservices Architecture and Systems Design/01.4. Distributed Systems Component Overview.md",
     "01. Microservices Architecture and Systems Design/01.6. Service Layer and Microservice Replication.md",
     "01. Microservices Architecture and Systems Design/01.2. Monolithic Architecture Limitations.md",
     "Chapter 0 1 2.md",
     "Untitled.md",
-    "00. Vault Overview and Navigation Map/00.1. Complete Curriculum Map.md",
-    "00. Vault Overview and Navigation Map/00.2. Glossary of Technical Terms.md",
     "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.11. Programmatic Consul Integration using Python-Consul.md",
     "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.10. Django Application Health Check Endpoints.md",
     "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.9. Consul Service Registration JSON Schemas.md",
@@ -204,13 +211,6 @@
     "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.3. Consensus Protocol Raft and Server Quorums.md",
     "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.2. HashiCorp Consul Architecture Overview.md",
     "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.1. Dynamic Service Discovery Patterns.md",
-    "10. Advanced Authorization, RBAC, and Custom User Models/10.7. DRF Custom BasePermission Implementation.md",
-    "10. Advanced Authorization, RBAC, and Custom User Models/10.6. Method-Level Custom View Permissions.md",
-    "10. Advanced Authorization, RBAC, and Custom User Models/10.5. Automated Application Group Syncing.md",
-    "10. Advanced Authorization, RBAC, and Custom User Models/10.4. Project Integration for Custom User Models.md",
-    "10. Advanced Authorization, RBAC, and Custom User Models/10.3. BaseUserManager Custom Implementation.md",
-    "10. Advanced Authorization, RBAC, and Custom User Models/10.2. Custom User Models with AbstractBaseUser.md",
-    "10. Advanced Authorization, RBAC, and Custom User Models/10.1. Modifying Base Identities The AbstractBaseUser Class.md",
     "11. Distributed Infrastructure and HashiCorp Consul Discovery",
     "10. Advanced Authorization, RBAC, and Custom User Models",
     "09. Token-Based Authentication and JWT Architecture",
