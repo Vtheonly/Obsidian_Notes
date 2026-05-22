@@ -1,7 +1,16 @@
 ---
-tags: [compile-time, run-time, runtime]
-aliases: [compile time, run time, runtime]
-keywords: [compile time, run time, runtime]
+tags:
+  - compile-time
+  - run-time
+  - runtime
+aliases:
+  - compile time
+  - run time
+  - runtime
+keywords:
+  - compile time
+  - run time
+  - runtime
 ---
 In Java (and programming in general), tasks can be divided into two categories: **compile-time** and **run-time**. Understanding the difference between these can help you optimize your code and debug more effectively. Below, I will outline the common tasks that are handled at compile-time versus those that occur at run-time.
 

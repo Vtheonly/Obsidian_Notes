@@ -1,7 +1,13 @@
 ---
-tags: [new-keyword, new-operator]
-aliases: [new keyword, new operator]
-keywords: [new keyword, new operator]
+tags:
+  - new-keyword
+  - new-operator
+aliases:
+  - new keyword
+  - new operator
+keywords:
+  - new keyword
+  - new operator
 ---
 
 

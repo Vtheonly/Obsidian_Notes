@@ -1,0 +1,225 @@
+{
+  "main": {
+    "id": "ca21cf62c79336cb",
+    "type": "split",
+    "children": [
+      {
+        "id": "d12d54426bc09074",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0597d228478e8045",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "01. Microservices Architecture and Systems Design/01.3. Microservices Core Characteristics.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "01.3. Microservices Core Characteristics"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d2b4e98a5c8c39cd",
+    "type": "split",
+    "children": [
+      {
+        "id": "c3e6206c185b7626",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "671e0c5c30570b05",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "d86b9e547ff8c99e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "039134f30f22b1cf",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 420.5
+  },
+  "right": {
+    "id": "56ce183177dfad44",
+    "type": "split",
+    "children": [
+      {
+        "id": "e91bb90bcb972ec0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "698b89cf269bf674",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "01. Microservices Architecture and Systems Design/01.3. Microservices Core Characteristics.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 01.3. Microservices Core Characteristics"
+            }
+          },
+          {
+            "id": "10ac746f51f835e9",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "01. Microservices Architecture and Systems Design/01.3. Microservices Core Characteristics.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 01.3. Microservices Core Characteristics"
+            }
+          },
+          {
+            "id": "8641244c57c1f9af",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "2f5090d7d982934c",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "b2330a6c46466c1e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "01. Microservices Architecture and Systems Design/01.3. Microservices Core Characteristics.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 01.3. Microservices Core Characteristics"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "0597d228478e8045",
+  "lastOpenFiles": [
+    "01. Microservices Architecture and Systems Design/01.5. API Gateway Pattern and Responsibilities.md",
+    "01. Microservices Architecture and Systems Design/01.4. Distributed Systems Component Overview.md",
+    "01. Microservices Architecture and Systems Design/01.6. Service Layer and Microservice Replication.md",
+    "01. Microservices Architecture and Systems Design/01.2. Monolithic Architecture Limitations.md",
+    "Chapter 0 1 2.md",
+    "Untitled.md",
+    "00. Vault Overview and Navigation Map/00.1. Complete Curriculum Map.md",
+    "00. Vault Overview and Navigation Map/00.2. Glossary of Technical Terms.md",
+    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.11. Programmatic Consul Integration using Python-Consul.md",
+    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.10. Django Application Health Check Endpoints.md",
+    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.9. Consul Service Registration JSON Schemas.md",
+    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.8. Consul Agent Command Line Tools.md",
+    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.7. Managing Peer Consensus and Client Nodes.md",
+    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.6. Bootstrapping a Multi-Node Consul Cluster.md",
+    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.5. Consul Network Ports and Routing Configuration.md",
+    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.4. Gossip Protocol Serf and Local WAN Network Topology.md",
+    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.3. Consensus Protocol Raft and Server Quorums.md",
+    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.2. HashiCorp Consul Architecture Overview.md",
+    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.1. Dynamic Service Discovery Patterns.md",
+    "10. Advanced Authorization, RBAC, and Custom User Models/10.7. DRF Custom BasePermission Implementation.md",
+    "10. Advanced Authorization, RBAC, and Custom User Models/10.6. Method-Level Custom View Permissions.md",
+    "10. Advanced Authorization, RBAC, and Custom User Models/10.5. Automated Application Group Syncing.md",
+    "10. Advanced Authorization, RBAC, and Custom User Models/10.4. Project Integration for Custom User Models.md",
+    "10. Advanced Authorization, RBAC, and Custom User Models/10.3. BaseUserManager Custom Implementation.md",
+    "10. Advanced Authorization, RBAC, and Custom User Models/10.2. Custom User Models with AbstractBaseUser.md",
+    "10. Advanced Authorization, RBAC, and Custom User Models/10.1. Modifying Base Identities The AbstractBaseUser Class.md",
+    "11. Distributed Infrastructure and HashiCorp Consul Discovery",
+    "10. Advanced Authorization, RBAC, and Custom User Models",
+    "09. Token-Based Authentication and JWT Architecture",
+    "08. User Identity, Sessions, and Core Authentication",
+    "07. ViewSets and Routing Automations",
+    "06. Django REST Framework Core",
+    "05. Presentation Layer and Django Forms",
+    "04. RESTful Routing, Views, and CBVs",
+    "03. Django Model Layer and ORM Engine",
+    "02. Django Framework Core Concepts"
+  ]
+}
