@@ -79,7 +79,7 @@ sequenceDiagram
 
 ---
 
-## 3. Design Patterns: MVC vs. MVT (Django)
+## 3. Design Patterns: [[MVC vs. MVT]] (Django)
 
 Django uses the **MVT (Model-View-Template)** pattern, which is a variation of the traditional **MVC (Model-View-Controller)** pattern.
 

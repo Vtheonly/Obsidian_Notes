@@ -27,12 +27,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Final/Chapter 4.md",
+                "file": "Final/Chapter 1.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Chapter 1"
+            }
+          },
+          {
+            "id": "0a51ad81054fea8a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "MVC vs. MVT.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 4"
+              "title": "MVC vs. MVT"
             }
           },
           {
@@ -135,7 +149,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 420.5
+    "width": 420.5,
+    "collapsed": true
   },
   "right": {
     "id": "56ce183177dfad44",
@@ -244,6 +259,12 @@
   },
   "active": "ab731638c3f41008",
   "lastOpenFiles": [
+    "Final/Chapter 4.md",
+    "Final/Chapter 3.md",
+    "Final/Chapter 2.md",
+    "TLS (mTLS).md",
+    "Final/Chapter 1.md",
+    "MVC vs. MVT.md",
     "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.4. Gossip Protocol Serf and Local WAN Network Topology.md.bak",
     "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.2. HashiCorp Consul Architecture Overview.md.bak",
     "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.10. Django Application Health Check Endpoints.md.bak",
@@ -254,16 +275,10 @@
     "09. Token-Based Authentication and JWT Architecture/09.6. Session-Based Persistent Storage of JWT Tokens.md.bak",
     "08. User Identity, Sessions, and Core Authentication/08.5. Permissions and Group Management in Django Core.md.bak",
     "08. User Identity, Sessions, and Core Authentication/08.4. Session Engine Architecture and Cookie Lifetiming.md.bak",
-    "08. User Identity, Sessions, and Core Authentication/08.2. Django Contrib Auth Module and Built-In User Model.md.bak",
-    "Final/Chapter 3.md",
-    "Final/Chapter 4.md",
-    "Final/Chapter 2.md",
-    "TLS (mTLS).md",
     "asynchronous.md",
     "(ACLs)..md",
     "10. Advanced Authorization, RBAC, and Custom User Models/10.3. BaseUserManager Custom Implementation.md",
     "10. Advanced Authorization, RBAC, and Custom User Models/10.2. Custom User Models with AbstractBaseUser.md",
-    "Final/Chapter 1.md",
     "01. Microservices Architecture and Systems Design/01.3. Microservices Core Characteristics.md",
     "01. Microservices Architecture and Systems Design/01.2. Monolithic Architecture Limitations.md",
     "01. Microservices Architecture and Systems Design/01.1. Multi-Platform Systems Challenges.md",
