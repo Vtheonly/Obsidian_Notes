@@ -1,0 +1,94 @@
+
+# 5.2. Layout Inheritance and Block Architecture
+
+## 1. The DRY Principle in Django Templates
+The **DRY (Don't Repeat Yourself)** principle is a core philosophy of Django development. Standard web layouts often share common elements like headers, footers, meta tags, and navigation bars on every page. 
+
+Rather than copying and pasting this boilerplate HTML into each individual file, Django templates use **Layout Inheritance** to share a single base layout.
+
+```mermaid
+graph TD
+    Parent[base.html - Parent Layout] -->|Inherits Structure| Child[dashboard.html - Child Layout]
+    Parent -->|Inherits Structure| Detail[detail.html - Child Layout]
+    
+    subgraph "Parent Layout Blocks"
+        ParentBlockTitle[block title]
+        ParentBlockContent[block content]
+    end
+    
+    subgraph "Child Layout Overrides"
+        ChildBlockTitle[Overriding block title]
+        ChildBlockContent[Overriding block content]
+    end
+
+    ParentBlockTitle -.-> ChildBlockTitle
+    ParentBlockContent -.-> ChildBlockContent
+```
+
+## 2. Setting Up Layout Inheritance
+
+### Step 1: Create the Parent Template (`base.html`)
+The parent template defines the shared HTML layout structure. It uses `{% block <name> %}` tags to mark dynamic regions that child templates can override.
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Medical Management Portal{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Dashboard</a> | <a href="/patients/">Patient Lists</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Dynamic content region to be populated by child templates -->
+        {% block content %}
+            <p>Default content placeholder.</p>
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Enterprise Medical Systems Inc.</p>
+    </footer>
+</body>
+</html>
+```
+
+### Step 2: Create a Child Template (`dashboard.html`)
+The child template uses the `{% extends %}` tag to inherit from the parent layout. It then overrides specific blocks with page-specific content.
+```html
+<!-- Extends MUST be the first template tag in the file -->
+{% extends "base.html" %}
+
+<!-- Override the page title -->
+{% block title %}Dashboard Overview - Clinical Portal{% endblock %}
+
+<!-- Override the body content -->
+{% block content %}
+    <h1>Welcome to the Clinical Dashboard</h1>
+    <p>Operational status: Normal.</p>
+{% endblock %}
+```
+
+## 3. Reusable Subcomponents Using `include`
+While `extends` is used to inherit complete page structures, the `{% include %}` tag is used to embed smaller, reusable HTML fragments (like badges, charts, or alert boxes) inside other templates.
+
+### Example: Navigation Card Fragment (`_patient_card.html`)
+```html
+<div class="patient-card">
+    <h3>{{ patient.nom }}</h3>
+    <p>Email: {{ patient.email }}</p>
+</div>
+```
+
+### Including the Fragment in a Dashboard Template
+```html
+<div class="patients-grid">
+    {% for patient in patients %}
+        <!-- Inject the partial layout template into this section -->
+        {% include "partials/_patient_card.html" with patient=patient %}
+    {% endfor %}
+</div>

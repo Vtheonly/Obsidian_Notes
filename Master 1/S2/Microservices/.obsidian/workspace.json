@@ -13,15 +13,72 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.2. HashiCorp Consul Architecture Overview.md",
+                "file": "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.1. Dynamic Service Discovery Patterns.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "11.2. HashiCorp Consul Architecture Overview"
+              "title": "11.1. Dynamic Service Discovery Patterns"
+            }
+          },
+          {
+            "id": "ab731638c3f41008",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Final/Chapter 4.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Chapter 4"
+            }
+          },
+          {
+            "id": "b676d6a14b923c06",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "(ACLs)..md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "(ACLs)."
+            }
+          },
+          {
+            "id": "8cd9acd2f299d349",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "TLS (mTLS).md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "TLS (mTLS)"
+            }
+          },
+          {
+            "id": "2d8dba5135121d58",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "asynchronous.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "asynchronous"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -53,7 +110,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "gRPC",
+                "query": "Grpc",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -94,7 +151,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.2. HashiCorp Consul Architecture Overview.md",
+                "file": "Final/Chapter 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +161,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 11.2. HashiCorp Consul Architecture Overview"
+              "title": "Backlinks for Chapter 1"
             }
           },
           {
@@ -113,12 +170,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.2. HashiCorp Consul Architecture Overview.md",
+                "file": "Final/Chapter 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 11.2. HashiCorp Consul Architecture Overview"
+              "title": "Outgoing links from Chapter 1"
             }
           },
           {
@@ -156,13 +213,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.2. HashiCorp Consul Architecture Overview.md",
+                "file": "Final/Chapter 1.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 11.2. HashiCorp Consul Architecture Overview"
+              "title": "Outline of Chapter 1"
             }
           }
         ]
@@ -180,46 +237,48 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "quiz-generator:Open generator": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b6bd2f55269e0034",
+  "active": "ab731638c3f41008",
   "lastOpenFiles": [
-    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.11. Programmatic Consul Integration using Python-Consul.md",
-    "08. User Identity, Sessions, and Core Authentication/08.1. Authentication vs Authorization Core Concepts.md",
-    "09. Token-Based Authentication and JWT Architecture/09.1. JSON Web Token Architecture and Authentication Flow.md",
-    "09. Token-Based Authentication and JWT Architecture/09.2. SimpleJWT Installation and Project Configurations.md",
-    "03. Django Model Layer and ORM Engine/03.9. Django ORM CRUD Operations API.md",
-    "03. Django Model Layer and ORM Engine/03.2. Django Model Fields and Attribute Mappings.md",
-    "03. Django Model Layer and ORM Engine/03.5. Model Relationships One-to-Many Relationships.md",
-    "03. Django Model Layer and ORM Engine/03.3. Database Schema Field Options.md",
-    "03. Django Model Layer and ORM Engine/03.4. Django Database Configuration Settings.md",
-    "02. Django Framework Core Concepts/02.5. Best Practices for Secret Keys and Environments.md",
-    "02. Django Framework Core Concepts/02.4. Django Application Lifecycle and Modularity.md",
-    "00. Vault Overview and Navigation Map/00.1. Complete Curriculum Map.md",
-    "00. Vault Overview and Navigation Map/00.2. Glossary of Technical Terms.md",
-    "02. Django Framework Core Concepts/02.1. Python Virtual Environments and Dependency Management.md",
+    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.4. Gossip Protocol Serf and Local WAN Network Topology.md.bak",
+    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.2. HashiCorp Consul Architecture Overview.md.bak",
+    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.10. Django Application Health Check Endpoints.md.bak",
+    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.1. Dynamic Service Discovery Patterns.md.bak",
+    "10. Advanced Authorization, RBAC, and Custom User Models/10.7. DRF Custom BasePermission Implementation.md.bak",
+    "10. Advanced Authorization, RBAC, and Custom User Models/10.5. Automated Application Group Syncing.md.bak",
+    "10. Advanced Authorization, RBAC, and Custom User Models/10.3. BaseUserManager Custom Implementation.md.bak",
+    "09. Token-Based Authentication and JWT Architecture/09.6. Session-Based Persistent Storage of JWT Tokens.md.bak",
+    "08. User Identity, Sessions, and Core Authentication/08.5. Permissions and Group Management in Django Core.md.bak",
+    "08. User Identity, Sessions, and Core Authentication/08.4. Session Engine Architecture and Cookie Lifetiming.md.bak",
+    "08. User Identity, Sessions, and Core Authentication/08.2. Django Contrib Auth Module and Built-In User Model.md.bak",
+    "Final/Chapter 3.md",
+    "Final/Chapter 4.md",
+    "Final/Chapter 2.md",
+    "TLS (mTLS).md",
+    "asynchronous.md",
+    "(ACLs)..md",
+    "10. Advanced Authorization, RBAC, and Custom User Models/10.3. BaseUserManager Custom Implementation.md",
+    "10. Advanced Authorization, RBAC, and Custom User Models/10.2. Custom User Models with AbstractBaseUser.md",
+    "Final/Chapter 1.md",
     "01. Microservices Architecture and Systems Design/01.3. Microservices Core Characteristics.md",
-    "01. Microservices Architecture and Systems Design/01.5. API Gateway Pattern and Responsibilities.md",
-    "01. Microservices Architecture and Systems Design/01.4. Distributed Systems Component Overview.md",
-    "01. Microservices Architecture and Systems Design/01.6. Service Layer and Microservice Replication.md",
     "01. Microservices Architecture and Systems Design/01.2. Monolithic Architecture Limitations.md",
-    "Chapter 0 1 2.md",
-    "Untitled.md",
-    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.10. Django Application Health Check Endpoints.md",
-    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.9. Consul Service Registration JSON Schemas.md",
-    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.8. Consul Agent Command Line Tools.md",
-    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.7. Managing Peer Consensus and Client Nodes.md",
-    "11. Distributed Infrastructure and HashiCorp Consul Discovery/11.6. Bootstrapping a Multi-Node Consul Cluster.md",
-    "11. Distributed Infrastructure and HashiCorp Consul Discovery",
-    "10. Advanced Authorization, RBAC, and Custom User Models",
-    "09. Token-Based Authentication and JWT Architecture",
-    "08. User Identity, Sessions, and Core Authentication",
-    "07. ViewSets and Routing Automations",
-    "06. Django REST Framework Core",
-    "05. Presentation Layer and Django Forms",
-    "04. RESTful Routing, Views, and CBVs",
-    "03. Django Model Layer and ORM Engine",
-    "02. Django Framework Core Concepts"
+    "01. Microservices Architecture and Systems Design/01.1. Multi-Platform Systems Challenges.md",
+    "Quiz/Chapter 06/Quiz - Chapter 06 Part 2.md",
+    "Quiz/Chapter 11/Quiz - Chapter 11 Part 2.md",
+    "Quiz/Chapter 11/Quiz - Chapter 11 Part 1.md",
+    "Quiz/Chapter 10/Quiz - Chapter 10 Part 2.md",
+    "Quiz/Chapter 10/Quiz - Chapter 10 Part 1.md",
+    "Quiz/Chapter 09/Quiz - Chapter 09 Part 2.md",
+    "Quiz/Chapter 09/Quiz - Chapter 09 Part 1.md",
+    "Quiz/Chapter 08/Quiz - Chapter 08 Part 2.md",
+    "Quiz/Chapter 08/Quiz - Chapter 08 Part 1.md",
+    "Quiz/Chapter 07/Quiz - Chapter 07 Part 2.md",
+    "Quiz/Chapter 07/Quiz - Chapter 07 Part 1.md",
+    "Quiz/Chapter 06/Quiz - Chapter 06 Part 1.md",
+    "Quiz/Chapter 05/Quiz - Chapter 05 Part 2.md"
   ]
 }

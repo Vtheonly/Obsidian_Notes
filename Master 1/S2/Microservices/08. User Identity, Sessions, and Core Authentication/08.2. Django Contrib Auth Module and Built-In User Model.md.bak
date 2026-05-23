@@ -1,0 +1,49 @@
+
+# 8.2. Django Contrib Auth Module and Built-In User Model
+
+## 1. What is the `django.contrib.auth` Module?
+Django includes a built-in authentication system called **`django.contrib.auth`**. This module is a core part of the framework and provides a comprehensive, pre-configured solution for managing users, passwords, sessions, permissions, and groups.
+
+## 2. Schema of the Default User Model
+The default User model (`django.contrib.auth.models.User`) includes the following core fields:
+
+| Field Name | Data Type | Purpose / Description |
+| :--- | :--- | :--- |
+| **`username`** | `CharField` | Unique alphanumeric identifier used for login. |
+| **`email`** | `EmailField` | User's email address (Not unique by default). |
+| **`password`** | `CharField` | Stores a secure hash of the user's password (Never stored as plain text). |
+| **`is_active`** | `BooleanField` | Active status flag. Set to `False` instead of deleting a user to preserve database history. |
+| **`is_staff`** | `BooleanField` | Grants permission to log into the Django Admin Panel. |
+| **`is_superuser`** | `BooleanField` | Grants all permissions and full access to the application automatically. |
+
+## 3. Password Security and Hashing Algorithms
+Storing passwords as plain text is a critical security vulnerability. If your database is compromised, all user credentials would be exposed.
+
+To prevent this, Django's user engine automatically hashes passwords using **PBKDF2 with a SHA256** hash signature and a secure cryptographic salt.
+
+```mermaid
+graph LR
+    Plain[Plain Password: 'my_password'] --> Salt[Unique Salt Value]
+    Salt --> HashEngine[PBKDF2 SHA256 Hash Engine]
+    HashEngine --> FinalHash[Stored Hash String: 'pbkdf2_sha256$260000$...']
+```
+
+### Creating Users Safely in Python code
+Because Django needs to hash passwords before saving them, **never** create users using standard model constructors or the `.save()` method directly:
+```python
+# WRONG: Saves the password as plain text in the database. 
+# The user will never be able to log in because Django looks for a hashed password.
+user = User.objects.create(username="john", password="my_password")
+```
+
+Instead, use the model manager's **`create_user()`** method. This method automatically handles hashing your password strings before saving them to the database:
+```python
+from django.contrib.auth.models import User
+
+# CORRECT: Hashes the password string automatically
+user = User.objects.create_user(
+    username="john", 
+    email="john@email.com", 
+    password="my_password"
+)
+```
