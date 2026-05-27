@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "8e290fc1396d081e",
+    "id": "4dfda4eec62a623e",
     "type": "split",
     "children": [
       {
-        "id": "94123eab446b5f70",
+        "id": "6d7ff4ff1ae6786f",
         "type": "tabs",
         "children": [
           {
-            "id": "cc6921181b315d4b",
+            "id": "6d25648c0b159309",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Exo Solved.md",
-                "mode": "source",
+                "file": "Chapter 4: Solved University Exams and Practice Problems/4.2. Quality Control Doping and Bribes Applied Probability.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Exo Solved"
+              "title": "4.2. Quality Control Doping and Bribes Applied Probability"
             }
           }
         ]
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "328a4ffb4e291f10",
+    "id": "23731a6343df8f97",
     "type": "split",
     "children": [
       {
-        "id": "666b52eca095dc58",
+        "id": "f36f99dd78691922",
         "type": "tabs",
         "children": [
           {
-            "id": "6f248a7c9424ea1e",
+            "id": "45fbda7e4a7557f4",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +48,7 @@
             }
           },
           {
-            "id": "43ba0b16339ba8fb",
+            "id": "5bf18d899cca0c1b",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "4c06a66594379c28",
+            "id": "f59a76f6c86855dc",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -81,20 +81,20 @@
     "width": 300
   },
   "right": {
-    "id": "d8a1ce1b883f9002",
+    "id": "8a245302bb76269f",
     "type": "split",
     "children": [
       {
-        "id": "5938190b25e53453",
+        "id": "374291261dcdcb56",
         "type": "tabs",
         "children": [
           {
-            "id": "31cf58286a1117d4",
+            "id": "44f08e665fbc9c32",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Main.md",
+                "file": "Chapter 4: Solved University Exams and Practice Problems/4.2. Quality Control Doping and Bribes Applied Probability.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,25 +104,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Main"
+              "title": "Backlinks for 4.2. Quality Control Doping and Bribes Applied Probability"
             }
           },
           {
-            "id": "bf30661e75200dd6",
+            "id": "6378422b3ab1933a",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Main.md",
+                "file": "Chapter 4: Solved University Exams and Practice Problems/4.2. Quality Control Doping and Bribes Applied Probability.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Main"
+              "title": "Outgoing links from 4.2. Quality Control Doping and Bribes Applied Probability"
             }
           },
           {
-            "id": "df8bd334c6505220",
+            "id": "4c6e6ff5e0678b0b",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,7 +137,7 @@
             }
           },
           {
-            "id": "1d4216f5ecd5fcd5",
+            "id": "c90c3cc8824ef38d",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -151,18 +151,18 @@
             }
           },
           {
-            "id": "294058caab764b56",
+            "id": "b614478af3655b0a",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Main.md",
+                "file": "Chapter 4: Solved University Exams and Practice Problems/4.2. Quality Control Doping and Bribes Applied Probability.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Main"
+              "title": "Outline of 4.2. Quality Control Doping and Bribes Applied Probability"
             }
           }
         ]
@@ -183,9 +183,43 @@
       "bases:Create new base": false
     }
   },
-  "active": "cc6921181b315d4b",
+  "active": "6d25648c0b159309",
   "lastOpenFiles": [
-    "Main.md",
-    "Exo Solved.md"
+    "Chapter 4: Solved University Exams and Practice Problems/4.1. Continuous Distributions and Basic Poisson Processes.md",
+    "Chapter 3: Markov Chains/3.7. Comprehensive Exercise - The Worker Transit Problem.md",
+    "Chapter 3: Markov Chains/3.6. Absorbing States in Markov Chains.md",
+    "Chapter 3: Markov Chains/3.5. Multi Step Transitions and Chapman Kolmogorov.md",
+    "Chapter 3: Markov Chains/3.4. Regular Stochastic Matrices and Fixed Points.md",
+    "Chapter 3: Markov Chains/3.3. Transition Matrices and Diagram Representations.md",
+    "Chapter 3: Markov Chains/3.2. Discrete Time Markov Chains and the Markov Property.md",
+    "Chapter 3: Markov Chains/3.1. Introduction to Stochastic Processes.md",
+    "Stochastic Processes/Chapter 4: Solved University Exams and Practice Problems/4.3. Elementary Markov Chains Matrix Algebra and Diagonalization.md",
+    "Chapter 4: Solved University Exams and Practice Problems/4.5. Poisson Decomposition and Queueing Theory.md",
+    "Chapter 4: Solved University Exams and Practice Problems/4.4. Advanced Meteorological and Disease Modeling Chains.md",
+    "Chapter 4: Solved University Exams and Practice Problems/4.3. Elementary Markov Chains Matrix Algebra and Diagonalization.md",
+    "Chapter 4: Solved University Exams and Practice Problems/4.2. Quality Control Doping and Bribes Applied Probability.md",
+    "Chapter 4: Solved University Exams and Practice Problems",
+    "Chapter 3: Markov Chains",
+    "Chapter 2: Random Variables and Cumulative Distribution Functions/2.6. The Exponential Distribution.md",
+    "Chapter 2: Random Variables and Cumulative Distribution Functions/2.5. Continuous Random Variables and Probability Density Functions.md",
+    "Chapter 2: Random Variables and Cumulative Distribution Functions/2.4. Classical Discrete Distributions and Poisson Recurrence.md",
+    "Chapter 2: Random Variables and Cumulative Distribution Functions/2.3. Cumulative Distribution Function.md",
+    "Chapter 2: Random Variables and Cumulative Distribution Functions/2.2. Discrete Random Variables and Complete Systems.md",
+    "Chapter 2: Random Variables and Cumulative Distribution Functions/2.1. Definition and Classifications of Random Variables.md",
+    "Chapter 2: Random Variables and Cumulative Distribution Functions",
+    "Chapter 1: General Concepts on the Fundamental Notions of Probability/1.6. Law of Total Probability and Bayes Theorem.md",
+    "Chapter 1: General Concepts on the Fundamental Notions of Probability/1.5. Conditional Probability and Independence.md",
+    "Chapter 1: General Concepts on the Fundamental Notions of Probability/1.4. Probability Spaces and Fundamental Axioms.md",
+    "Chapter 1: General Concepts on the Fundamental Notions of Probability/1.3. Sigma Algebras and Measurable Spaces.md",
+    "Chapter 1: General Concepts on the Fundamental Notions of Probability/1.2. Set Theory and Probability Correspondence.md",
+    "Chapter 1: General Concepts on the Fundamental Notions of Probability/1.1. Introduction to Probability and Random Experiments.md",
+    "Chapter 1: General Concepts on the Fundamental Notions of Probability",
+    "Stochastic Processes/Chapter 4: Solved University Exams and Practice Problems/4.2. Quality Control Doping and Bribes Applied Probability.md",
+    "Stochastic Processes/Chapter 4: Solved University Exams and Practice Problems",
+    "Stochastic Processes/Chapter 1: General Concepts on the Fundamental Notions of Probability",
+    "Stochastic Processes/Chapter 3: Markov Chains",
+    "Stochastic Processes/Chapter 2: Random Variables and Cumulative Distribution Functions",
+    "Stochastic Processes",
+    "output/Chapter 1: General Concepts on the Fundamental Notions of Probability/Chapter 2: Random Variables and Cumulative Distribution Functions"
   ]
 }
