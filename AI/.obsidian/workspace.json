@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Projects/TAMER Project/Tamer/Academic Project Report.md",
+                "file": "Academic/Machine Learning/Labs/TP3  Data Cleaning, Normalization, and Encoding - Solution Guide.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Academic Project Report"
+              "title": "TP3  Data Cleaning, Normalization, and Encoding - Solution Guide"
             }
           },
           {
@@ -199,8 +199,11 @@
   },
   "active": "124b7cd13e514f49",
   "lastOpenFiles": [
-    "mermaid-diagram.png",
+    "Academic/Machine Learning/In Depth/Regression/Regression Fundamentals.md",
+    "Academic/Machine Learning/Cours/8. Model Evaluation & Metrics.md",
     "Projects/TAMER Project/Tamer/Academic Project Report.md",
+    "Projects/Chess",
+    "mermaid-diagram.png",
     "Projects/TAMER Project/TAMER: Tree-Aware Transformer for Handwritten Mathematical Expression.pdf",
     "Projects/TAMER Project/TAMER 1/Chapter 2/2.2 Swin Transformer V2.md",
     "Projects/TAMER Project/TAMER 1/Chapter 1/1.3 Tokenization and Mathematical Grammar.md",
@@ -230,14 +233,12 @@
     "Tamer/Outlines/Outline_Part4.md",
     "Tamer/Meta/AI_Transition_3.md",
     "Projects/TAMER Project/Tamer/split_more.py",
-    "Tamer/Outlines/Outline_Part3.md",
     "Tamer/Outlines",
     "Tamer/Meta",
     "Tamer/More.nd",
     "Projects/TAMER Project/Tamer/force_writer.py",
     "Projects/TAMER Project/Tamer/Chapter 9 - System Reliability",
     "Projects/TAMER Project/Tamer/Chapter 8 - Data Engineering",
-    "Projects/TAMER Project/Tamer/Chapter 7 - Context and SOTA",
     "Non Academic/assets/Pasted image 20260112174914.png",
     "Projects/2D3D/my_go_to_approach.png",
     "Non Academic/assets/Pasted image 20260112175926.png",

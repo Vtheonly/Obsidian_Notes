@@ -59,16 +59,32 @@
             "id": "7893a8309ad3dd6e",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.11.4"
+                "file": "02 Image Preprocessing and Filtering/2.16 Contrast Enhancement and Retinex.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.11.4"
+              "icon": "lucide-file",
+              "title": "2.16 Contrast Enhancement and Retinex"
+            }
+          },
+          {
+            "id": "f00a0a5f35821458",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "02 Image Preprocessing and Filtering/5. Advanced Filtering Techniques (Vault 1).md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "5. Advanced Filtering Techniques (Vault 1)"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -201,8 +217,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
+              "icon": "lucide-ghost",
+              "title": "git-view"
             }
           }
         ],
@@ -227,47 +243,47 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7893a8309ad3dd6e",
+  "active": "f00a0a5f35821458",
   "lastOpenFiles": [
-    "02 Image Preprocessing and Filtering/2.5 Advanced Non-Linear Filters.md",
+    "split merge/readme.md",
+    "split merge/run_vault_tool.py",
+    "split merge/vault_manager/utils/file_ops.py",
+    "split merge/vault_manager/utils/__init__.py",
+    "split merge/vault_manager/services/file_renamer.py",
+    "split merge/vault_manager/services/quiz_validator.py",
+    "split merge/vault_manager/services/mermaid_fixer.py",
+    "split merge/vault_manager/services/merger.py",
+    "split merge/vault_manager/services/splitter.py",
+    "split merge/vault_manager/services/__init__.py",
+    "split merge/vault_manager/core/models.py",
+    "Vault 1.md",
+    "Vault Architecture Map (Vault 1).md",
+    "Introduction (Vault 1).md",
+    "01 Introduction to Digital Images/Exercise 1. Computing 2D Convolution and Boundary Padding (Vault 1).md",
+    "01 Introduction to Digital Images/3. Pixel Neighborhoods and Distance Metrics (Vault 1).md",
+    "01 Introduction to Digital Images/1. Digital Image Definition and Representation (Vault 1).md",
+    "02 Image Preprocessing and Filtering/8. Morphological Filtering (Vault 1).md",
+    "02 Image Preprocessing and Filtering/7. Adaptive and Local Contrast Methods (Vault 1).md",
+    "02 Image Preprocessing and Filtering/6. Contrast Enhancement (Vault 1).md",
+    "02 Image Preprocessing and Filtering/5. Advanced Filtering Techniques (Vault 1).md",
+    "02 Image Preprocessing and Filtering/4. Frequency Domain Filtering (Vault 1).md",
+    "02 Image Preprocessing and Filtering/2. Linear Filtering in the Spatial Domain (Vault 1).md",
+    "02 Image Preprocessing and Filtering/1. Image Degradations and Noise Models (Vault 1).md",
+    "01 Introduction to Digital Images/6. Three Levels of Image Processing (Vault 1).md",
+    "01 Introduction to Digital Images/5. Image Convolution and Boundary Effects (Vault 1).md",
+    "01 Introduction to Digital Images/4. Image Histograms (Vault 1).md",
+    "01 Introduction to Digital Images/2. Spatial Resolution and Color Spaces (Vault 1).md",
+    "02 Image Preprocessing and Filtering/2.19 Deep Learning for Super-Resolution.md",
+    "02 Image Preprocessing and Filtering/2.18 Advanced Interpolation Strategies.md",
+    "02 Image Preprocessing and Filtering/2.17 Super-Resolution Fundamentals and Interpolation.md",
+    "Introduction.md",
     "02 Image Preprocessing and Filtering/2.6 Bilateral Filtering.md",
-    "02 Image Preprocessing and Filtering/2.4 Frequency Domain Filtering.md",
-    "02 Image Preprocessing and Filtering/2.15 Histogram Specification and Metrics.md",
-    "Recording 20260113225114.webm",
-    "01 Introduction to Digital Images/1.5 The Image Histogram.md",
-    "Quiz/Chapter 2/Q1.md",
-    "02 Image Preprocessing and Filtering/2.7 Anisotropic Diffusion.md",
-    "02 Image Preprocessing and Filtering/2.8 Meanshift and Clustering Based Filtering.md",
     "02 Image Preprocessing and Filtering/2.9 Gabor Filters.md",
-    "02 Image Preprocessing and Filtering/2.3 Non-Linear Spatial Filters (Median, Nagao).md",
-    "02 Image Preprocessing and Filtering/2.2 Linear Spatial Filters (Mean, Gaussian).md",
-    "02 Image Preprocessing and Filtering/Image Filters Mind Map.md",
-    "In-Depth/Outliers.md",
-    "02 Image Preprocessing and Filtering/2.1 Spatial Domain vs Frequency Domain.md",
-    "Quiz/Chapter 2",
-    "02 Image Preprocessing and Filtering/2.0 Image Noise and Degradation.md",
-    "Quiz/Chapter 1/Q2.md",
-    "01 Introduction to Digital Images/1.6 Pixel Relationships and Distance.md",
-    "Quiz/Chapter 1/Q1.md",
+    "02 Image Preprocessing and Filtering/2.13 Histogram Analysis and Modification.md",
     "images/Pasted image 20260112174914.png",
     "images/Pasted image 20260112175926.png",
     "images/Pasted image 20260112175935.png",
     "images/Pasted image 20260112175852.png",
-    "images",
-    "Quiz/OLD",
-    "Quiz/Chapter 1",
-    "images/Pasted image 20260112175914.png",
-    "01 Introduction to Digital Images/1.1 Image Representation (Bitmap vs Vector).md",
-    "In-Depth/Histogram.md",
-    "In-Depth/Image Quality Metrics (PSNR, MSE).md",
-    "In-Depth/Mathematical Morphology.md",
-    "In-Depth/Convolution.md",
-    "Labs/TP1 - Setup and Basic Image Manipulation.md",
-    "Quiz/OLD/Q1.md",
-    "Resources",
-    "Quiz",
-    "Labs",
-    "In-Depth",
-    "05 Image Similarity and Matching"
+    "images/Pasted image 20260112175914.png"
   ]
 }

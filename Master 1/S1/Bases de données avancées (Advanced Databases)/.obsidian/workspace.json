@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 Fundamentals/10. Aggregation Nuances and Subquery Optimization.md",
+                "file": "01 Fundamentals/1. Relational Algebra/2. Relational Algebra Operators.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "10. Aggregation Nuances and Subquery Optimization"
+              "title": "2. Relational Algebra Operators"
             }
           }
         ]
@@ -198,6 +198,9 @@
   },
   "active": "1593c8d2d37c5fda",
   "lastOpenFiles": [
+    "01 Fundamentals/1. Relational Algebra/1. Relational Model Fundamentals.md",
+    "01 Fundamentals/1. Relational Algebra/2. Relational Algebra Operators.md",
+    "01 Fundamentals/10. Aggregation Nuances and Subquery Optimization.md",
     "01 Fundamentals/5. Exercises/8. 20 simple query.md",
     "_merged_output/04 Query Optimization and Processing/15. Database Statistics and Selectivity Estimation.md",
     "04 Query Optimization and Processing/15. Database Statistics and Selectivity Estimation.md",
@@ -217,14 +220,11 @@
     "01 Fundamentals/4. Database Classifications & Ecosystem/05 Specialized Database Models Deep Dive.md",
     "01 Fundamentals/3. Views/03 Updatable Views and Check Options.md",
     "01 Fundamentals/2. Joints/9. Advanced Subquery Operators ANY ALL and SOME.md",
-    "01 Fundamentals/10. Aggregation Nuances and Subquery Optimization.md",
     "Vault2.md",
     "merged_vault2_files.zip",
     "_merged_output/01 Fundamentals/4. Database Classifications & Ecosystem/07 Wide Column Physical Layout and JSONiq Context.md",
     "_merged_output/01 Fundamentals/4. Database Classifications & Ecosystem/06 NoSQL Internal Storage Mechanics.md",
     "_merged_output/01 Fundamentals/4. Database Classifications & Ecosystem/05 Specialized Database Models Deep Dive.md",
-    "_merged_output/01 Fundamentals/3. Views/03 Updatable Views and Check Options.md",
-    "_merged_output/01 Fundamentals/2. Joints/9. Advanced Subquery Operators ANY ALL and SOME.md",
     "_merged_output/01 Fundamentals/4. Database Classifications & Ecosystem",
     "_merged_output/01 Fundamentals/3. Views",
     "_merged_output/01 Fundamentals/2. Joints",
