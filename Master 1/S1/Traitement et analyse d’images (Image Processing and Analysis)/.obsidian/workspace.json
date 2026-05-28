@@ -61,30 +61,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02 Image Preprocessing and Filtering/2.16 Contrast Enhancement and Retinex.md",
+                "file": "04 Image Super-Resolution/4.1 Image Super-Resolution.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2.16 Contrast Enhancement and Retinex"
-            }
-          },
-          {
-            "id": "f00a0a5f35821458",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02 Image Preprocessing and Filtering/5. Advanced Filtering Techniques (Vault 1).md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "5. Advanced Filtering Techniques (Vault 1)"
+              "title": "4.1 Image Super-Resolution"
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -243,44 +229,44 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f00a0a5f35821458",
+  "active": "7893a8309ad3dd6e",
   "lastOpenFiles": [
-    "split merge/vault_manager/services/__pycache__/purge_emojis.cpython-312.pyc",
-    "split merge/vault_manager/services/__pycache__",
-    "split merge/__pycache__/run_vault_tool.cpython-312.pyc",
-    "split merge/__pycache__",
-    "split merge/vault_manager/services/purge_emojis.py",
-    "split merge/vault_manager/purge_emojis.py",
-    "split merge/purge_emojis.py",
+    "03 Image Segmentation/3.4 Evaluation Metrics for Image Segmentation.md",
+    "04 Image Super-Resolution/Exercise 3. Bilinear Interpolation for Image Super-Resolution.md",
+    "04 Image Super-Resolution/4.1 Image Super-Resolution.md",
+    "01 Introduction to Digital Images/1.2 Image Representation (Bitmap vs Vector).md",
+    "01 Introduction to Digital Images/1.1 Digital Image Definition and Representation.md",
+    "01 Introduction to Digital Images/1.0 What is a Digital Image.md",
+    "01 Introduction to Digital Images/1.10 Image Histograms.md",
+    "01 Introduction to Digital Images/1.5 Image Formats (JPG, PNG, DICOM).md",
+    "01 Introduction to Digital Images/Exercise 1. Computing 2D Convolution and Boundary Padding.md",
+    "03 Image Segmentation/3.1 Foundations of Segmentation.md",
+    "03 Image Segmentation/7. Evaluation Metrics for Image Segmentation (Vault 1).md",
+    "03 Image Segmentation/Exercise 2. Implementing Otsu's Global Thresholding.md",
+    "03 Image Segmentation/3.3 Connected Components and Shape Extraction.md",
+    "03 Image Segmentation/3.2 Binarization and Advanced Thresholding.md",
+    "02 Image Preprocessing and Filtering/2.27 Image Filters Mind Map.md",
+    "02 Image Preprocessing and Filtering/2.26 Morphological Filtering.md",
+    "02 Image Preprocessing and Filtering/2.25 Adaptive and Local Contrast Methods.md",
+    "02 Image Preprocessing and Filtering/2.24 Contrast Enhancement.md",
+    "02 Image Preprocessing and Filtering/2.23 Advanced Filtering Techniques.md",
+    "02 Image Preprocessing and Filtering/2.22 Frequency Domain Filtering (Extended).md",
+    "02 Image Preprocessing and Filtering/2.21 Deep Learning for Super-Resolution.md",
+    "02 Image Preprocessing and Filtering/2.20 Advanced Interpolation Strategies.md",
+    "02 Image Preprocessing and Filtering/2.19 Super-Resolution Fundamentals and Interpolation.md",
+    "02 Image Preprocessing and Filtering/2.18 Contrast Enhancement and Retinex.md",
+    "02 Image Preprocessing and Filtering/2.17 Histogram Specification and Metrics.md",
+    "02 Image Preprocessing and Filtering/2.16 Histogram Equalization Techniques.md",
+    "split merge/run_all_renames.py",
+    "split merge/vault_manager/services/__pycache__/renamer.cpython-312.pyc",
     "split merge/vault_manager/services/__pycache__/validator.cpython-312.pyc",
     "split merge/vault_manager/services/__pycache__/transformer.cpython-312.pyc",
+    "split merge/vault_manager/services/__pycache__/merger.cpython-312.pyc",
     "split merge/vault_manager/services/__pycache__/splitter.cpython-312.pyc",
-    "split merge/vault_manager/services/__pycache__/renamer.cpython-312.pyc",
-    "split merge/readme.md",
-    "Vault 1.md",
-    "Vault Architecture Map (Vault 1).md",
-    "Introduction (Vault 1).md",
-    "01 Introduction to Digital Images/Exercise 1. Computing 2D Convolution and Boundary Padding (Vault 1).md",
-    "01 Introduction to Digital Images/3. Pixel Neighborhoods and Distance Metrics (Vault 1).md",
-    "01 Introduction to Digital Images/1. Digital Image Definition and Representation (Vault 1).md",
-    "02 Image Preprocessing and Filtering/8. Morphological Filtering (Vault 1).md",
-    "02 Image Preprocessing and Filtering/7. Adaptive and Local Contrast Methods (Vault 1).md",
-    "02 Image Preprocessing and Filtering/6. Contrast Enhancement (Vault 1).md",
-    "02 Image Preprocessing and Filtering/5. Advanced Filtering Techniques (Vault 1).md",
-    "02 Image Preprocessing and Filtering/4. Frequency Domain Filtering (Vault 1).md",
-    "02 Image Preprocessing and Filtering/2. Linear Filtering in the Spatial Domain (Vault 1).md",
-    "02 Image Preprocessing and Filtering/1. Image Degradations and Noise Models (Vault 1).md",
-    "01 Introduction to Digital Images/6. Three Levels of Image Processing (Vault 1).md",
-    "01 Introduction to Digital Images/5. Image Convolution and Boundary Effects (Vault 1).md",
-    "01 Introduction to Digital Images/4. Image Histograms (Vault 1).md",
-    "01 Introduction to Digital Images/2. Spatial Resolution and Color Spaces (Vault 1).md",
-    "02 Image Preprocessing and Filtering/2.19 Deep Learning for Super-Resolution.md",
-    "02 Image Preprocessing and Filtering/2.18 Advanced Interpolation Strategies.md",
-    "02 Image Preprocessing and Filtering/2.17 Super-Resolution Fundamentals and Interpolation.md",
-    "Introduction.md",
-    "02 Image Preprocessing and Filtering/2.6 Bilateral Filtering.md",
-    "02 Image Preprocessing and Filtering/2.9 Gabor Filters.md",
-    "02 Image Preprocessing and Filtering/2.13 Histogram Analysis and Modification.md",
+    "split merge/vault_manager/services/__pycache__/__init__.cpython-312.pyc",
+    "split merge/vault_manager/__pycache__/logging.cpython-312.pyc",
+    "split merge/vault_manager/__pycache__/exceptions.cpython-312.pyc",
+    "split merge/vault_manager/utils/__pycache__/file_ops.cpython-312.pyc",
     "images/Pasted image 20260112174914.png",
     "images/Pasted image 20260112175926.png",
     "images/Pasted image 20260112175935.png",

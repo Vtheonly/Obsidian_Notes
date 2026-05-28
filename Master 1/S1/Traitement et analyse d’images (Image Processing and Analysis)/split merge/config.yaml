@@ -1,95 +1,89 @@
 # =====================================================================
 # Centralized Vault Manager Declarative Configuration
-# Supports any numbering, directories, and structural conventions.
 # =====================================================================
 
 default:
-  workspace_path: "."
+  workspace_path: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S1/Traitement et analyse d’images (Image Processing and Analysis)"
   backup_archive: "Course_Backup.zip"
 
-# Split pipelines
-split:
-  image_processing_course:
-    input_file: "Vault 1.md"
-    output_dir: "Course"
-    zip_name: "Course.zip"
-    default_folder: "Course"
-    default_file: "Introduction.md"
-    rules:
-      - type: "chapter"
-        pattern: "^# Chapter (\\d+)\\.\\s*(.+)$"
-        folder_format: "Chapter {g1}. {g2}"
-        file_format: "Introduction"
-      - type: "section"
-        pattern: "^## (\\d+)\\.\\s*(.+)$"
-        file_format: "{g1}. {g2}"
-      - type: "exercise"
-        pattern: "^## Exercise (\\d+):\\s*(.+)$"
-        file_format: "Exercise {g1}. {g2}"
-      - type: "practice_header"
-        pattern: "^# Practice Exercises and Mathematical Derivations"
-        folder_format: "Practice Exercises and Mathematical Derivations"
-        file_format: "Exercises_Overview"
-
-# Merge pipelines
-merge:
-  image_processing_course:
-    input_file: "Vault 1.md"
-    workspace_path: "."
-    backup_zip: "Merged_Course.zip"
-    merge_mode: "side_by_side"      # Options: side_by_side, overwrite, skip
-    conflict_suffix: " (Vault 1)"
-
-# Renaming pipelines
 rename:
-  java_oop:
-    target_dir: "."
+  # ===================================================================
+  # 1. Introduction Subfolder
+  # ===================================================================
+  image_processing_intro:
+    target_dir: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S1/Traitement et analyse d’images (Image Processing and Analysis)/01 Introduction to Digital Images"
     strategy: "map"
     mapping:
-      "0 - OOP basics.md": "001 OOP Basics.md"
-      "1 - Object.md": "002 Object.md"
-      "4 - New keyword.md": "003 New Keyword.md"
-      "14 - Compile time vs Run time.md": "004 Compile Time vs Run Time.md"
-      "1. Introduction to Objects and Classes.md": "005 Intro to Classes.md"
-      "2 - Constructors and Destructors.md": "010 Constructors and Destructors.md"
-      "2. Constructors and Initialization.md": "011 Constructors and Initialization.md"
-      "3. Static Members.md": "012 Static Members.md"
-      "5 - Static keyword.md": "013 Static Keyword.md"
-      "6. Enums (Enumerations).md": "014 Enums.md"
-      "3 - final keyword.md": "015 Final Keyword.md"
-      "3. Advanced Keywords & Modifiers.md": "016 Advanced Keywords and Modifiers.md"
-      "1. Encapsulation and Access Control.md": "020 Encapsulation and Access Control.md"
-      "8 - Encapsulation.md": "021 Encapsulation.md"
-      "7 - inheritance.md": "030 Inheritance.md"
-      "2. Inheritance Hierarchy.md": "031 Inheritance Hierarchy.md"
-      "6 - Upcasting and Downcasting.md": "032 Upcasting and Downcasting.md"
-      "12 - super.md": "033 Super Keyword.md"
-      "5. Multiple Inheritance & The Diamond Problem.md": "034 Multiple Inheritance and The Diamond Problem.md"
-      "9 - Abstraction.md": "040 Abstraction.md"
-      "4. Abstraction (Abstract Classes vs Interfaces).md": "041 Abstraction Details.md"
-      "10 - Polymorphism.md": "042 Polymorphism Summary.md"
-      "3. Polymorphism.md": "043 Polymorphism Types.md"
-      "11 - Interfaces.md": "044 Interfaces.md"
-      "1. The Big Picture and Hierarchy.md": "050 Collections Overview.md"
-      "2. Arrays - The Native Container.md": "051 Arrays.md"
-      "2. Java Collection Framework.md": "052 Collection Framework.md"
-      "3. The Collection Interface.md": "053 Collection Interface.md"
-      "4. The List Interface and Implementations.md": "054 List Interface.md"
-      "5. The Set Interface.md": "055 Set Interface.md"
-      "6. Queues and Deques.md": "056 Queues and Deques.md"
-      "7. The Map Interface.md": "057 Map Interface.md"
-      "8. Legacy Collections.md": "058 Legacy Collections.md"
-      "1. The Object Lifecycle & The Cosmic Superclass.md": "060 Object Lifecycle.md"
-      "13 - Copying Objects.md": "061 Copying Objects.md"
-      "15 - Generics.md": "062 Generics.md"
-      "4. Robustness: Exceptions & Varargs.md": "063 Exceptions and Varargs.md"
-      "9. Best Practices - Coding to Interfaces.md": "070 Coding to Interfaces.md"
-      "1. Project Walkthrough - Inventory System.md": "091 Project Inventory.md"
-      "2. Project Walkthrough - ATM Machine.md": "092 Project ATM.md"
-      "3. Project Walkthrough - Calculator (Interfaces).md": "093 Project Calculator.md"
+      "1.0 What is a Digital Image.md": "1.0 What is a Digital Image.md"
+      "1. Digital Image Definition and Representation (Vault 1).md": "1.1 Digital Image Definition and Representation.md"
+      "1.1 Image Representation (Bitmap vs Vector).md": "1.2 Image Representation (Bitmap vs Vector).md"
+      "1.2 Resolution and Color Depth.md": "1.3 Resolution and Color Depth.md"
+      "1.3 Color Spaces (RGB, Grayscale, HSL).md": "1.4 Color Spaces (RGB, Grayscale, HSL).md"
+      "1.4 Image Formats (JPG, PNG, DICOM).md": "1.5 Image Formats (JPG, PNG, DICOM).md"
+      "1.5 The Image Histogram.md": "1.6 The Image Histogram.md"
+      "1.6 Pixel Relationships and Distance.md": "1.7 Pixel Relationships and Distance.md"
+      "2. Spatial Resolution and Color Spaces (Vault 1).md": "1.8 Spatial Resolution and Color Spaces.md"
+      "3. Pixel Neighborhoods and Distance Metrics (Vault 1).md": "1.9 Pixel Neighborhoods and Distance Metrics.md"
+      "4. Image Histograms (Vault 1).md": "1.10 Image Histograms.md"
+      "5. Image Convolution and Boundary Effects (Vault 1).md": "1.11 Image Convolution and Boundary Effects.md"
+      "6. Three Levels of Image Processing (Vault 1).md": "1.12 Three Levels of Image Processing.md"
+      "Exercise 1. Computing 2D Convolution and Boundary Padding (Vault 1).md": "Exercise 1. Computing 2D Convolution and Boundary Padding.md"
 
-  automata:
-    target_dir: "."
-    strategy: "regex_pattern"
-    pattern: "^(\\d+)\\.\\s*(.+)$"
-    format: "{g1:02d} {g2}"       # Auto pads single digits (e.g., 1. Intro -> 01 Intro)
+  # ===================================================================
+  # 2. Preprocessing Subfolder
+  # ===================================================================
+  image_processing_preprocessing:
+    target_dir: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S1/Traitement et analyse d’images (Image Processing and Analysis)/02 Image Preprocessing and Filtering"
+    strategy: "map"
+    mapping:
+      "2.0 Image Noise and Degradation.md": "2.0 Image Noise and Degradation.md"
+      "1. Image Degradations and Noise Models (Vault 1).md": "2.1 Image Degradations and Noise Models.md"
+      "2. Linear Filtering in the Spatial Domain (Vault 1).md": "2.2 Linear Filtering in the Spatial Domain.md"
+      "2.1 Spatial Domain vs Frequency Domain.md": "2.3 Spatial Domain vs Frequency Domain.md"
+      "2.2 Linear Spatial Filters (Mean, Gaussian).md": "2.4 Linear Spatial Filters (Mean, Gaussian).md"
+      "2.3 Non-Linear Spatial Filters (Median, Nagao).md": "2.5 Non-Linear Spatial Filters (Median, Nagao).md"
+      "2.4 Frequency Domain Filtering.md": "2.6 Frequency Domain Filtering.md"
+      "2.5 Advanced Non-Linear Filters.md": "2.7 Advanced Non-Linear Filters.md"
+      "2.6 Bilateral Filtering.md": "2.8 Bilateral Filtering.md"
+      "2.7 Anisotropic Diffusion.md": "2.9 Anisotropic Diffusion.md"
+      "2.8 Meanshift and Clustering Based Filtering.md": "2.10 Meanshift and Clustering Based Filtering.md"
+      "2.9 Gabor Filters.md": "2.11 Gabor Filters.md"
+      "2.10 Mathematical Morphology Basics.md": "2.12 Mathematical Morphology Basics.md"
+      "2.11 Advanced Morphological Operations.md": "2.13 Advanced Morphological Operations.md"
+      "2.12 Deep Learning for Image Denoising.md": "2.14 Deep Learning for Image Denoising.md"
+      "2.13 Histogram Analysis and Modification.md": "2.15 Histogram Analysis and Modification.md"
+      "2.14 Histogram Equalization Techniques.md": "2.16 Histogram Equalization Techniques.md"
+      "2.15 Histogram Specification and Metrics.md": "2.17 Histogram Specification and Metrics.md"
+      "2.16 Contrast Enhancement and Retinex.md": "2.18 Contrast Enhancement and Retinex.md"
+      "2.17 Super-Resolution Fundamentals and Interpolation.md": "2.19 Super-Resolution Fundamentals and Interpolation.md"
+      "2.18 Advanced Interpolation Strategies.md": "2.20 Advanced Interpolation Strategies.md"
+      "2.19 Deep Learning for Super-Resolution.md": "2.21 Deep Learning for Super-Resolution.md"
+      "4. Frequency Domain Filtering (Vault 1).md": "2.22 Frequency Domain Filtering (Extended).md"
+      "5. Advanced Filtering Techniques (Vault 1).md": "2.23 Advanced Filtering Techniques.md"
+      "6. Contrast Enhancement (Vault 1).md": "2.24 Contrast Enhancement.md"
+      "7. Adaptive and Local Contrast Methods (Vault 1).md": "2.25 Adaptive and Local Contrast Methods.md"
+      "8. Morphological Filtering (Vault 1).md": "2.26 Morphological Filtering.md"
+      "Image Filters Mind Map.md": "2.27 Image Filters Mind Map.md"
+
+  # ===================================================================
+  # 3. Segmentation Subfolder
+  # ===================================================================
+  image_processing_segmentation:
+    target_dir: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S1/Traitement et analyse d’images (Image Processing and Analysis)/03 Image Segmentation"
+    strategy: "map"
+    mapping:
+      "1. Foundations of Segmentation (Vault 1).md": "3.1 Foundations of Segmentation.md"
+      "4. Binarization and Advanced Thresholding (Vault 1).md": "3.2 Binarization and Advanced Thresholding.md"
+      "5. Connected Components and Shape Extraction (Vault 1).md": "3.3 Connected Components and Shape Extraction.md"
+      "7. Evaluation Metrics for Image Segmentation (Vault 1).md": "3.4 Evaluation Metrics for Image Segmentation.md"
+      "Exercise 2. Implementing Otsu's Global Thresholding (Vault 1).md": "Exercise 2. Implementing Otsu's Global Thresholding.md"
+
+  # ===================================================================
+  # 4. Super-Resolution Subfolder
+  # ===================================================================
+  image_processing_superres:
+    target_dir: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S1/Traitement et analyse d’images (Image Processing and Analysis)/04 Image Super-Resolution"
+    strategy: "map"
+    mapping:
+      "6. Image Super-Resolution (Vault 1).md": "4.1 Image Super-Resolution.md"
+      "Exercise 3. Bilinear Interpolation for Image Super-Resolution (Vault 1).md": "Exercise 3. Bilinear Interpolation for Image Super-Resolution.md"

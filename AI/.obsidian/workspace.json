@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Academic/Machine Learning/Labs/TP3  Data Cleaning, Normalization, and Encoding - Solution Guide.md",
-                "mode": "preview",
+                "file": "Projects/2D3D/In Depth/Chapter 5 - Depth Fusion Strategies/1. Volumetric TSDF Integration.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TP3  Data Cleaning, Normalization, and Encoding - Solution Guide"
+              "title": "1. Volumetric TSDF Integration"
             }
           },
           {
@@ -199,6 +199,13 @@
   },
   "active": "124b7cd13e514f49",
   "lastOpenFiles": [
+    "Projects/2D3D/In Depth/Chapter 10 - The MVE Pipeline Research/2. Multi Scale Depth Fusion Research.md",
+    "Projects/2D3D/In Depth/Chapter 10 - The MVE Pipeline Research/1. The MVE Pipeline Overview.md",
+    "Projects/2D3D/new/semantic and structural decomposition of architectural scenes.md",
+    "Projects/2D3D/new/disentangled learning.md",
+    "Projects/2D3D/my_go_to_approach.png",
+    "Academic/Machine Learning/Labs/TP3  Data Cleaning, Normalization, and Encoding - Solution Guide.md",
+    "Projects/2D3D/new",
     "Academic/Machine Learning/In Depth/Regression/Regression Fundamentals.md",
     "Academic/Machine Learning/Cours/8. Model Evaluation & Metrics.md",
     "Projects/TAMER Project/Tamer/Academic Project Report.md",
@@ -227,20 +234,13 @@
     "Projects/TAMER Project/Tamer/Chapter 3 - Sequence Modeling/Part_5.md",
     "Projects/TAMER Project/Tamer/Chapter 3 - Sequence Modeling/Part_4.md",
     "Tamer/Outlines/Outline_Part5.md",
-    "Tamer/Meta/AI_Transition_4.md",
-    "Projects/TAMER Project/Tamer/Chapter 7 - Context and SOTA/Part_2.md",
-    "Projects/TAMER Project/Tamer/Chapter 3 - Sequence Modeling/Part_3.md",
-    "Tamer/Outlines/Outline_Part4.md",
-    "Tamer/Meta/AI_Transition_3.md",
     "Projects/TAMER Project/Tamer/split_more.py",
     "Tamer/Outlines",
     "Tamer/Meta",
     "Tamer/More.nd",
     "Projects/TAMER Project/Tamer/force_writer.py",
     "Projects/TAMER Project/Tamer/Chapter 9 - System Reliability",
-    "Projects/TAMER Project/Tamer/Chapter 8 - Data Engineering",
     "Non Academic/assets/Pasted image 20260112174914.png",
-    "Projects/2D3D/my_go_to_approach.png",
     "Non Academic/assets/Pasted image 20260112175926.png",
     "Non Academic/assets/Pasted image 20260112175914.png",
     "Non Academic/assets/Pasted image 20260112175852.png"
