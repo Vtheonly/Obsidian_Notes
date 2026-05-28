@@ -1,6 +1,7 @@
 """
-Vault Manager package initialization.
-Provides clean APIs to run splitting, merging, renaming, validating, and fixing services.
+Vault Manager Package.
+A highly modular, extensible system designed to process, partition, merge,
+validate, and transform any arbitrary markdown vault structure.
 """
 
-__version__ = "1.0.0"
+__version__ = "2.0.0"

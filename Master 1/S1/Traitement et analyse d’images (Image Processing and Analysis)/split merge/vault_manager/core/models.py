@@ -1,37 +1,26 @@
 """
-Domain models and structured value objects.
-Promotes safe static typing and explicit object architectures.
+Domain models and structured data representations.
+Enforces static typing and encapsulation of system-wide data states.
 """
 
 from dataclasses import dataclass, field
-from typing import List, Dict
+from typing import List, Dict, Any, Optional
 
 
 @dataclass
-class ParsedSection:
-    """Value object representing a parsed markdown page or subsection."""
+class ParsedSegment:
+    """Encapsulates an extracted markdown file section ready for writing."""
     folder: str
     filename: str
     content: str
+    metadata: Dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass
-class QuizQuestionStats:
-    """Encapsulates question classification results for a quiz document."""
-    true_false: int = 0
-    multiple_choice: int = 0
-    matching: int = 0
-
-    def total(self) -> int:
-        """Computes structural sum of all questions classified."""
-        return self.true_false + self.multiple_choice + self.matching
-
-
-@dataclass
-class QuizValidationResult:
-    """Represents full diagnostic outputs of a single quiz evaluation."""
+class ValidationReport:
+    """Diagnostic metrics of a validated file."""
     filepath: str
     is_valid: bool
-    stats: QuizQuestionStats = field(default_factory=QuizQuestionStats)
-    errors: List[tuple] = field(default_factory=list)  # (line_number, error_message)
-    warnings: List[tuple] = field(default_factory=list)  # (line_number, warning_message)
+    errors: List[tuple] = field(default_factory=list)  # List of tuples (line_number, message)
+    warnings: List[tuple] = field(default_factory=list)  # List of tuples (line_number, message)
+    stats: Dict[str, int] = field(default_factory=dict)

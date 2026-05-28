@@ -1,28 +1,38 @@
 """
 Custom domain exceptions for the Vault Manager architecture.
-Used to enforce structured error handling and distinct traceback separation.
+Used to enforce robust error handling and precise fault diagnostics.
 """
 
-class VaultManagerError(Exception):
+class VaultManagerException(Exception):
     """Base exception class for all vault manager operations."""
     pass
 
 
-class FileOperationError(VaultManagerError):
-    """Raised when file I/O, directory creations, or backups fail."""
+class FileSystemError(VaultManagerException):
+    """Raised when low-level filesystem or I/O operations fail."""
     pass
 
 
-class ParsingError(VaultManagerError):
-    """Raised during document parsing, markdown decomposition, or extraction."""
+class ConfigurationError(VaultManagerException):
+    """Raised when invalid configuration schemas are supplied."""
     pass
 
 
-class ValidationError(VaultManagerError):
-    """Raised when an asset or quiz file violates formatting expectations."""
+class ParserError(VaultManagerException):
+    """Raised when parsing or tokenizing document formats fails."""
     pass
 
 
-class RenamingCollisionError(VaultManagerError):
-    """Raised when physical file renaming operations risk overwrites or collisions."""
+class ValidationError(VaultManagerException):
+    """Raised when validation constraints are violated."""
+    pass
+
+
+class RenamingError(VaultManagerException):
+    """Raised when renaming operations encounter unsafe states or collisions."""
+    pass
+
+
+class TransactionAborted(VaultManagerException):
+    """Raised when an active transaction is aborted and rolled back."""
     pass
