@@ -35,10 +35,14 @@
             "id": "7fa24cf93f5eb919",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "05 PLSQL and Database Programming/07 Delimiters and Procedural Parsing Mechanics.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "07 Delimiters and Procedural Parsing Mechanics"
             }
           },
           {
@@ -230,7 +234,7 @@
       "quiz-generator:Open generator": false
     }
   },
-  "active": "dd3c82aba9488fd4",
+  "active": "7fa24cf93f5eb919",
   "lastOpenFiles": [
     "Quiz/Chapter_06/Q2.md",
     "Quiz/Chapter_06/Q1.md",
