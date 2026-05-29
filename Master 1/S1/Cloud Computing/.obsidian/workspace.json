@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "b6feb9044f189139",
+        "id": "a2c6959aa944386a",
         "type": "tabs",
         "children": [
           {
-            "id": "e31b1a48c6131d92",
+            "id": "05f4b380c3331cb1",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -16,54 +16,8 @@
               "icon": "lucide-file",
               "title": "New tab"
             }
-          },
-          {
-            "id": "59d043b24f59606f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Exams/CC 01.pdf.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "CC 01.pdf"
-            }
-          },
-          {
-            "id": "7fa24cf93f5eb919",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Exams/CC 01.pdf.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "CC 01.pdf"
-            }
-          },
-          {
-            "id": "916b053db1f043ee",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "Class.canvas",
-                "viewState": {
-                  "x": -137.5,
-                  "y": 50,
-                  "zoom": -1.2496045784867105
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "Class"
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -219,8 +173,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -235,8 +188,9 @@
       "quiz-generator:Open generator": false
     }
   },
-  "active": "7fa24cf93f5eb919",
+  "active": "17bc40549c391232",
   "lastOpenFiles": [
+    "Quiz/Chapter 01/Chapter 01_Quiz_A.md",
     "Exams/CC 01 & 02 2023-2024.pdf.md",
     "Qs2.md",
     "Quiz/Q1.md",
