@@ -11,14 +11,10 @@
             "id": "2da7465004b7f976",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "07 Advanced - Routing Protocols & Algorithms/07.05 Link-State Routing & OSPF.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "07.05 Link-State Routing & OSPF"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -182,21 +178,23 @@
   },
   "active": "2da7465004b7f976",
   "lastOpenFiles": [
+    "07 Advanced - Routing Protocols & Algorithms/07.00 Introduction.md",
+    "07 Advanced - Routing Protocols & Algorithms/07.02 Longest Prefix Match (LPM) Algorithmic Routing.md",
     "07 Advanced - Routing Protocols & Algorithms/07.03 Static vs. Dynamic Routing Paradigms.md",
+    "07 Advanced - Routing Protocols & Algorithms/07.04 Distance Vector Protocols & RIPv2.md",
+    "07 Advanced - Routing Protocols & Algorithms/07.05 Link-State Routing & OSPF.md",
+    "07 Advanced - Routing Protocols & Algorithms/07.06 Path Vector Routing & BGP.md",
     "08 Advanced - Transport Layer Protocols & Mechanics/08.03 User Datagram Protocol (UDP) Architecture.md",
-    "08 Advanced - Transport Layer Protocols & Mechanics/08.02 Logical Ports & Socket Programming Architecture.md",
     "08 Advanced - Transport Layer Protocols & Mechanics/08.01 Transport Layer Role & Service Delivery Models.md",
+    "08 Advanced - Transport Layer Protocols & Mechanics/08.02 Logical Ports & Socket Programming Architecture.md",
+    "01 Physical & Data Link Layers/01.01 MAC Classification & Identification.md",
     "08 Advanced - Transport Layer Protocols & Mechanics/08.00 Introduction.md",
     "02 IPv4 Network Layer/02.04 Route Summarization (Aggregation).md",
     "02 IPv4 Network Layer/02.03 Variable-Length Subnet Masking (VLSM).md",
     "03 IP Datagram & Fragmentation/03.03 Practical Walkthrough - Fragmenting a 2000-byte Datagram.md",
     "03 IP Datagram & Fragmentation/03.02 Fragmentation Mathematics & Calculations.md",
-    "07 Advanced - Routing Protocols & Algorithms/07.06 Path Vector Routing & BGP.md",
-    "07 Advanced - Routing Protocols & Algorithms/07.05 Link-State Routing & OSPF.md",
-    "07 Advanced - Routing Protocols & Algorithms/07.04 Distance Vector Protocols & RIPv2.md",
     "06 Advanced - Network Fundamentals & L2-L3 Interfaces/06.01 Address Resolution Protocol (ARP) Deep Dive.md",
     "06 Advanced - Network Fundamentals & L2-L3 Interfaces/06.02 Network Address Translation (NAT) & Port Address Translation (PAT).md",
-    "07 Advanced - Routing Protocols & Algorithms/07.00 Introduction.md",
     "01 Physical & Data Link Layers/01.03 Layer 2 Network Infrastructure (Hubs vs. Switches).md",
     "01 Physical & Data Link Layers/01.02 Ethernet Frame Structure & Header Decoding.md",
     "01 Physical & Data Link Layers/01.01 MAC Address Classification & Identification.md",
@@ -207,8 +205,6 @@
     "04 Cisco IOS CLI Reference/04.03 Diagnostics, Verification, & File Management.md",
     "06 Advanced - Network Fundamentals & L2-L3 Interfaces/06.00 Introduction.md",
     "Vault.md",
-    "03 IP Datagram & Fragmentation/03.01 IP Header Fields.md",
-    "03 IP Datagram & Fragmentation/03.02 Logical Ports and Socket Programming Architecture.md",
     "08 Advanced - Transport Layer Protocols & Mechanics",
     "07 Advanced - Routing Protocols & Algorithms",
     "06 Advanced - Network Fundamentals & L2-L3 Interfaces",
