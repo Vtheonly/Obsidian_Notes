@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "70ebac96e091967c",
+    "id": "a6909933d467e6b0",
     "type": "split",
     "children": [
       {
-        "id": "20866c9d593504a6",
+        "id": "b3b8cdf64b55e658",
         "type": "tabs",
         "children": [
           {
-            "id": "356bd60477a61b27",
+            "id": "2da7465004b7f976",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 Calculability (Turing Machines & Automata)/01.09 Turing Machines as Transducers.md",
+                "file": "07 Advanced - Routing Protocols & Algorithms/07.05 Link-State Routing & OSPF.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01.09 Turing Machines as Transducers"
+              "title": "07.05 Link-State Routing & OSPF"
             }
           }
         ]
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "6ec9bd003b1eb08a",
+    "id": "e8e42ab128ae4627",
     "type": "split",
     "children": [
       {
-        "id": "3cdfa704ab929184",
+        "id": "3d9fdf5885826ab2",
         "type": "tabs",
         "children": [
           {
-            "id": "80df7cc826279052",
+            "id": "3445da590e99b1cb",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +48,7 @@
             }
           },
           {
-            "id": "604a388386b5cf12",
+            "id": "f8edf7ee1b8b7599",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "cce9da96d8ec1e68",
+            "id": "6164c7fb6eaa5206",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -78,23 +78,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 501.5
+    "width": 300
   },
   "right": {
-    "id": "a6d17f031d0ee5d0",
+    "id": "c3404a080183295a",
     "type": "split",
     "children": [
       {
-        "id": "57017c5239f10c73",
+        "id": "07231d2bbdbaaf62",
         "type": "tabs",
         "children": [
           {
-            "id": "730a0300c0bdcbfd",
+            "id": "3b6d65d66c564946",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "01 Calculability (Turing Machines & Automata)/01.13 Advanced Turing Machine Variants.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,25 +103,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 01.13 Advanced Turing Machine Variants"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "9ef62ea945323534",
+            "id": "3a0b0058b7ee5e94",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "01 Calculability (Turing Machines & Automata)/01.13 Advanced Turing Machine Variants.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 01.13 Advanced Turing Machine Variants"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "1c0b7bf55f86a225",
+            "id": "10a67ec1394d6e28",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,7 +135,7 @@
             }
           },
           {
-            "id": "6fb9b6d87cf6b7b6",
+            "id": "caadb390ad2faf58",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -151,18 +149,17 @@
             }
           },
           {
-            "id": "d59d7a30ad5cb578",
+            "id": "d7e74096b3fd2dbe",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "01 Calculability (Turing Machines & Automata)/01.13 Advanced Turing Machine Variants.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 01.13 Advanced Turing Machine Variants"
+              "title": "Outline"
             }
           }
         ]
@@ -183,36 +180,43 @@
       "bases:Create new base": false
     }
   },
-  "active": "356bd60477a61b27",
+  "active": "2da7465004b7f976",
   "lastOpenFiles": [
-    "01 Calculability (Turing Machines & Automata)/01.11 Undecidable Problems (PCP and MMP).md",
-    "01 Calculability (Turing Machines & Automata)/01.07 Tracing Configurations and Execution.md",
-    "01 Calculability (Turing Machines & Automata)/01.06 Configurations and Terminology.md",
-    "01 Calculability (Turing Machines & Automata)/01.13 Advanced Turing Machine Variants.md",
-    "05 Quizzes/05.01 Q1.md",
-    "split_merge/vault_manager/utils/__pycache__/file_ops.cpython-312.pyc",
-    "split_merge/vault_manager/utils/__pycache__/__init__.cpython-312.pyc",
-    "split_merge/vault_manager/services/__pycache__/validator.cpython-312.pyc",
-    "split_merge/vault_manager/services/__pycache__/transformer.cpython-312.pyc",
-    "split_merge/vault_manager/services/__pycache__/splitter.cpython-312.pyc",
-    "split_merge/vault_manager/services/__pycache__/renamer.cpython-312.pyc",
-    "split_merge/vault_manager/services/__pycache__/purge_emojis.cpython-312.pyc",
-    "split_merge/vault_manager/services/__pycache__/merger.cpython-312.pyc",
-    "split_merge/vault_manager/services/__pycache__/__init__.cpython-312.pyc",
-    "split_merge/vault_manager/core/__pycache__/models.cpython-312.pyc",
-    "split_merge/readme.md",
-    "04 Exercise Series/Serie 2 - Complexity/Chapter 2 - Iterative Algorithms/04.2.04 Matrix Search Algorithm Analysis.md",
-    "04 Exercise Series/Serie 2 - Complexity/Chapter 2 - Iterative Algorithms/04.2.03 Basic Nested Loops Complexity.md",
-    "04 Exercise Series/Serie 2 - Complexity/Chapter 3 - Common Algorithmic Operations/04.2.08 Deducing Complexity from Execution Times.md",
-    "04 Exercise Series/Serie 2 - Complexity/Chapter 3 - Common Algorithmic Operations/04.2.07 Standard Data Structures and Mathematical Operations.md",
-    "04 Exercise Series/Serie 2 - Complexity/Chapter 4 - Recursive Algorithms/04.2.09 Merge Sort Recurrence Relation.md",
-    "03 Practical Labs/03.01 Experimental Study of Simple Sorting Algorithms.md",
-    "02 Complexity/02.05 Additional Big O Mathematical Proofs.md",
-    "02 Complexity/02.04 Mathematical Proofs of Big O Notation.md",
-    "02 Complexity/02.03 Complexity Lookup Table for Standard Operations.md",
-    "02 Complexity/02.02 Average Case Calculation using Probability.md",
-    "02 Complexity/02.01 Matrix Search Complexity and Operation Counting.md",
-    "02 Complexity/02.00 Complexity Analysis Methodology and Summary.md",
-    "01 Calculability (Turing Machines & Automata)/01.12 Non-Deterministic Turing Machines.md"
+    "07 Advanced - Routing Protocols & Algorithms/07.03 Static vs. Dynamic Routing Paradigms.md",
+    "08 Advanced - Transport Layer Protocols & Mechanics/08.03 User Datagram Protocol (UDP) Architecture.md",
+    "08 Advanced - Transport Layer Protocols & Mechanics/08.02 Logical Ports & Socket Programming Architecture.md",
+    "08 Advanced - Transport Layer Protocols & Mechanics/08.01 Transport Layer Role & Service Delivery Models.md",
+    "08 Advanced - Transport Layer Protocols & Mechanics/08.00 Introduction.md",
+    "02 IPv4 Network Layer/02.04 Route Summarization (Aggregation).md",
+    "02 IPv4 Network Layer/02.03 Variable-Length Subnet Masking (VLSM).md",
+    "03 IP Datagram & Fragmentation/03.03 Practical Walkthrough - Fragmenting a 2000-byte Datagram.md",
+    "03 IP Datagram & Fragmentation/03.02 Fragmentation Mathematics & Calculations.md",
+    "07 Advanced - Routing Protocols & Algorithms/07.06 Path Vector Routing & BGP.md",
+    "07 Advanced - Routing Protocols & Algorithms/07.05 Link-State Routing & OSPF.md",
+    "07 Advanced - Routing Protocols & Algorithms/07.04 Distance Vector Protocols & RIPv2.md",
+    "06 Advanced - Network Fundamentals & L2-L3 Interfaces/06.01 Address Resolution Protocol (ARP) Deep Dive.md",
+    "06 Advanced - Network Fundamentals & L2-L3 Interfaces/06.02 Network Address Translation (NAT) & Port Address Translation (PAT).md",
+    "07 Advanced - Routing Protocols & Algorithms/07.00 Introduction.md",
+    "01 Physical & Data Link Layers/01.03 Layer 2 Network Infrastructure (Hubs vs. Switches).md",
+    "01 Physical & Data Link Layers/01.02 Ethernet Frame Structure & Header Decoding.md",
+    "01 Physical & Data Link Layers/01.01 MAC Address Classification & Identification.md",
+    "01 Physical & Data Link Layers/01.00 Introduction.md",
+    "01 Physical & Data Link Layers",
+    "03 IP Datagram & Fragmentation/03.00 Introduction.md",
+    "04 Cisco IOS CLI Reference/04.00 Introduction.md",
+    "04 Cisco IOS CLI Reference/04.03 Diagnostics, Verification, & File Management.md",
+    "06 Advanced - Network Fundamentals & L2-L3 Interfaces/06.00 Introduction.md",
+    "Vault.md",
+    "03 IP Datagram & Fragmentation/03.01 IP Header Fields.md",
+    "03 IP Datagram & Fragmentation/03.02 Logical Ports and Socket Programming Architecture.md",
+    "08 Advanced - Transport Layer Protocols & Mechanics",
+    "07 Advanced - Routing Protocols & Algorithms",
+    "06 Advanced - Network Fundamentals & L2-L3 Interfaces",
+    "05 IP Routing Architectures",
+    "04 Cisco IOS CLI Reference",
+    "03 IP Datagram & Fragmentation",
+    "02 IPv4 Network Layer",
+    "split_merge/run_restructure.py",
+    "split_merge/vault_manager/utils/__pycache__/file_ops.cpython-312.pyc"
   ]
 }
