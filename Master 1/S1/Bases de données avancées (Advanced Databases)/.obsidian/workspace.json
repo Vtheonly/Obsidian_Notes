@@ -1,41 +1,79 @@
 {
   "main": {
-    "id": "d132fdc0f85ebb09",
+    "id": "7e704d2973e14ac7",
     "type": "split",
     "children": [
       {
-        "id": "cf607c3f9f9b57a9",
+        "id": "b6feb9044f189139",
         "type": "tabs",
         "children": [
           {
-            "id": "1593c8d2d37c5fda",
+            "id": "e31b1a48c6131d92",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          },
+          {
+            "id": "59d043b24f59606f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 Fundamentals/1. Relational Algebra/2. Relational Algebra Operators.md",
-                "mode": "preview",
+                "file": "Exams/CC 01.pdf.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2. Relational Algebra Operators"
+              "title": "CC 01.pdf"
+            }
+          },
+          {
+            "id": "7fa24cf93f5eb919",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          },
+          {
+            "id": "916b053db1f043ee",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Class.canvas",
+                "viewState": {
+                  "x": -137.5,
+                  "y": 50,
+                  "zoom": -1.2496045784867105
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Class"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "3347028de33c004b",
+    "id": "bb85c451c5017f8a",
     "type": "split",
     "children": [
       {
-        "id": "2d3049575fe619cc",
+        "id": "8c3faf2f2e0148aa",
         "type": "tabs",
         "children": [
           {
-            "id": "f25c8dfa910f577c",
+            "id": "17bc40549c391232",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,12 +86,12 @@
             }
           },
           {
-            "id": "750f2818954b5058",
+            "id": "8e1806616ea5abe1",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "Heuristics",
+                "query": "tag:hierarchy",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,7 +103,7 @@
             }
           },
           {
-            "id": "e88d5b044bf225b0",
+            "id": "6d8d5b27a8c81ad7",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -78,23 +116,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 429.5
+    "width": 488.5
   },
   "right": {
-    "id": "07f283fce69c966d",
+    "id": "9c07cb0f11004622",
     "type": "split",
     "children": [
       {
-        "id": "457885241724caff",
+        "id": "1488a84c40ec8d2b",
         "type": "tabs",
         "children": [
           {
-            "id": "95b180829ca7920a",
+            "id": "12175efd6c24334f",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Handwritten Resumes/Source_1_Resume.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,25 +141,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Source_1_Resume"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "f99bc8f49165c8c2",
+            "id": "24526581858512c7",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Handwritten Resumes/Source_1_Resume.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Source_1_Resume"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "0bd18dba0210278f",
+            "id": "83bd60a6165bf2e4",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,7 +173,31 @@
             }
           },
           {
-            "id": "5565fe19dd81adc5",
+            "id": "337f358a94dcf4cd",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          },
+          {
+            "id": "dd3c82aba9488fd4",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          },
+          {
+            "id": "215a2f917ef8766e",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -149,90 +209,64 @@
               "icon": "lucide-archive",
               "title": "All properties"
             }
-          },
-          {
-            "id": "bd6a932a9642bb67",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "Handwritten Resumes/Source_1_Resume.md",
-                "followCursor": false,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-list",
-              "title": "Outline of Source_1_Resume"
-            }
-          },
-          {
-            "id": "a5f01ec2250922f2",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "lucide-ghost",
-              "title": "git-view"
-            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false,
-      "quiz-generator:Open generator": false,
-      "obsidian-git:Open Git source control": false
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true,
+      "obsidian-git:Open Git source control": false,
+      "quiz-generator:Open generator": false
     }
   },
-  "active": "1593c8d2d37c5fda",
+  "active": "7fa24cf93f5eb919",
   "lastOpenFiles": [
-    "01 Fundamentals/1. Relational Algebra/1. Relational Model Fundamentals.md",
-    "01 Fundamentals/1. Relational Algebra/2. Relational Algebra Operators.md",
-    "01 Fundamentals/10. Aggregation Nuances and Subquery Optimization.md",
-    "01 Fundamentals/5. Exercises/8. 20 simple query.md",
-    "_merged_output/04 Query Optimization and Processing/15. Database Statistics and Selectivity Estimation.md",
-    "04 Query Optimization and Processing/15. Database Statistics and Selectivity Estimation.md",
-    "04 Query Optimization and Processing/14. Join Algorithms Pseudocode and Memory Complexity.md",
-    "04 Query Optimization and Processing/13. Optimization Failure Mathematical Proof.md",
-    "04 Query Optimization and Processing/12. Physical Access Paths and Join Costs.md",
-    "04 Query Optimization and Processing/11. Algebraic Rewrite Rules and Heuristics.md",
-    "05 PLSQL and Database Programming/07 Delimiters and Procedural Parsing Mechanics.md",
-    "05 PLSQL and Database Programming/06 Procedural Control Structures and Handlers.md",
-    "03 Transactions and Security/09 Disaster Recovery Protocols.md",
-    "03 Transactions and Security/08 Concurrency Anomalies Deep Dive.md",
-    "02 Integrity Management/09 Metadata and the Information Schema.md",
-    "02 Integrity Management/08 Trigger Execution and Automation Scenarios.md",
-    "02 Integrity Management/07 Altering Constraints and Operational Behavior.md",
-    "01 Fundamentals/4. Database Classifications & Ecosystem/07 Wide Column Physical Layout and JSONiq Context.md",
-    "01 Fundamentals/4. Database Classifications & Ecosystem/06 NoSQL Internal Storage Mechanics.md",
-    "01 Fundamentals/4. Database Classifications & Ecosystem/05 Specialized Database Models Deep Dive.md",
-    "01 Fundamentals/3. Views/03 Updatable Views and Check Options.md",
-    "01 Fundamentals/2. Joints/9. Advanced Subquery Operators ANY ALL and SOME.md",
-    "Vault2.md",
-    "merged_vault2_files.zip",
-    "_merged_output/01 Fundamentals/4. Database Classifications & Ecosystem/07 Wide Column Physical Layout and JSONiq Context.md",
-    "_merged_output/01 Fundamentals/4. Database Classifications & Ecosystem/06 NoSQL Internal Storage Mechanics.md",
-    "_merged_output/01 Fundamentals/4. Database Classifications & Ecosystem/05 Specialized Database Models Deep Dive.md",
-    "_merged_output/01 Fundamentals/4. Database Classifications & Ecosystem",
-    "_merged_output/01 Fundamentals/3. Views",
-    "_merged_output/01 Fundamentals/2. Joints",
-    "_merged_output/05 PLSQL and Database Programming",
-    "_merged_output/04 Query Optimization and Processing",
-    "_merged_output/03 Transactions and Security",
-    "_merged_output/02 Integrity Management",
-    "_merged_output/01 Fundamentals",
-    "_merged_output"
+    "Exams/CC 01 & 02 2023-2024.pdf.md",
+    "Qs2.md",
+    "Quiz/Q1.md",
+    "Untitled.base",
+    "Chapter 1.1: Fundamentals/043 Polymorphism Types.md",
+    "Class.canvas",
+    "Exams/CC 01.pdf.md",
+    "Encapsulation and Access Modifiers.md",
+    "Chapter 1.1: Fundamentals/020 Encapsulation and Access Control.md",
+    "Quiz",
+    "Chapter 1.1: Fundamentals/016 Advanced Keywords and Modifiers.md",
+    "Chapter 1.1: Fundamentals/002 Object.md",
+    "Chapter 1.1: Fundamentals/003 New Keyword.md",
+    "Chapter 1.1: Fundamentals/001 OOP Basics.md",
+    "Chapter 1.1: Fundamentals/056 Queues and Deques.md",
+    "Chapter 1.1: Fundamentals/070 Coding to Interfaces.md",
+    "Chapter 1.1: Fundamentals/092 Project ATM.md",
+    "Chapter 1.1: Fundamentals/062 Generics.md",
+    "Chapter 1.1: Fundamentals/053 Collection Interface.md",
+    "Chapter 1.1: Fundamentals/052 Collection Framework.md",
+    "Chapter 2.1: Class Diagram Relationships/206 Association Classes and Qualification.md",
+    "Chapter 2.4: Advanced Class Diagram Extras/501 Theoretical Exam Questions.md",
+    "Chapter 2.4: Advanced Class Diagram Extras/504 TD Deep Dive File System and Shortcuts.md",
+    "Chapter 2.4: Advanced Class Diagram Extras/503 TD Deep Dive Arithmetic Expression Trap.md",
+    "Chapter 2.3: Advanced Class Diagram Extras/402 Advanced OCL Constraints.md",
+    "Chapter 2.1: Class Diagram Relationships/202 Associations Roles and Navigability.md",
+    "Chapter 2.3: Advanced Class Diagram Extras/306 Recursive Composition Pattern Trap.md",
+    "Chapter 2.4: Advanced Class Diagram Extras/403 Slide Annotations and Leftover Rules.md",
+    "link_keywords_ch12_ch2.py",
+    "add_keywords_ch12_ch2.py",
+    "rename_ch1.py",
+    "rename_ch2.py",
+    "Chapter 1.1: Fundamentals/add_keywords.py",
+    "Chapter 1.1: Fundamentals/link_keywords.py",
+    "Chapter 1.1: Fundamentals/rename_files.py",
+    "Exams"
   ]
 }

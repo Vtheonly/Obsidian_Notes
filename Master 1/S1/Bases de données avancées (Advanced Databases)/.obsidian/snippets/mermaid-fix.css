@@ -1,0 +1,25 @@
+/* Mermaid diagrams in preview */
+.mermaid svg {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* PDF export fix */
+.markdown-preview-view .mermaid svg,
+.print .mermaid svg {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Prevent huge diagrams */
+.mermaid {
+    overflow-x: auto;
+}
+
+/* Scale down large diagrams */
+@media print {
+    .mermaid svg {
+        transform: scale(0.9);
+        transform-origin: top left;
+    }
+}

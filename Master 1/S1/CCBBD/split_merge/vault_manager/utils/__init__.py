@@ -1,1 +1,0 @@
-"""Utility operations module initializer."""

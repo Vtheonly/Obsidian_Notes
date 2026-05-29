@@ -1,37 +1,83 @@
 {
   "main": {
-    "id": "a6909933d467e6b0",
+    "id": "7e704d2973e14ac7",
     "type": "split",
     "children": [
       {
-        "id": "b3b8cdf64b55e658",
+        "id": "b6feb9044f189139",
         "type": "tabs",
         "children": [
           {
-            "id": "2da7465004b7f976",
+            "id": "e31b1a48c6131d92",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          },
+          {
+            "id": "59d043b24f59606f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Exams/CC 01.pdf.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "CC 01.pdf"
+            }
+          },
+          {
+            "id": "7fa24cf93f5eb919",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Exams/CC 01.pdf.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "CC 01.pdf"
+            }
+          },
+          {
+            "id": "916b053db1f043ee",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Class.canvas",
+                "viewState": {
+                  "x": -137.5,
+                  "y": 50,
+                  "zoom": -1.2496045784867105
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Class"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "e8e42ab128ae4627",
+    "id": "bb85c451c5017f8a",
     "type": "split",
     "children": [
       {
-        "id": "3d9fdf5885826ab2",
+        "id": "8c3faf2f2e0148aa",
         "type": "tabs",
         "children": [
           {
-            "id": "3445da590e99b1cb",
+            "id": "17bc40549c391232",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -44,12 +90,12 @@
             }
           },
           {
-            "id": "f8edf7ee1b8b7599",
+            "id": "8e1806616ea5abe1",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:hierarchy",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,7 +107,7 @@
             }
           },
           {
-            "id": "6164c7fb6eaa5206",
+            "id": "6d8d5b27a8c81ad7",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -74,18 +120,18 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 488.5
   },
   "right": {
-    "id": "c3404a080183295a",
+    "id": "9c07cb0f11004622",
     "type": "split",
     "children": [
       {
-        "id": "07231d2bbdbaaf62",
+        "id": "1488a84c40ec8d2b",
         "type": "tabs",
         "children": [
           {
-            "id": "3b6d65d66c564946",
+            "id": "12175efd6c24334f",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -103,7 +149,7 @@
             }
           },
           {
-            "id": "3a0b0058b7ee5e94",
+            "id": "24526581858512c7",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -116,7 +162,7 @@
             }
           },
           {
-            "id": "10a67ec1394d6e28",
+            "id": "83bd60a6165bf2e4",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -131,21 +177,7 @@
             }
           },
           {
-            "id": "caadb390ad2faf58",
-            "type": "leaf",
-            "state": {
-              "type": "all-properties",
-              "state": {
-                "sortOrder": "frequency",
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-archive",
-              "title": "All properties"
-            }
-          },
-          {
-            "id": "d7e74096b3fd2dbe",
+            "id": "337f358a94dcf4cd",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -157,8 +189,33 @@
               "icon": "lucide-list",
               "title": "Outline"
             }
+          },
+          {
+            "id": "dd3c82aba9488fd4",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          },
+          {
+            "id": "215a2f917ef8766e",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -167,52 +224,54 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true,
+      "obsidian-git:Open Git source control": false,
+      "quiz-generator:Open generator": false
     }
   },
-  "active": "2da7465004b7f976",
+  "active": "7fa24cf93f5eb919",
   "lastOpenFiles": [
-    "07 Advanced - Routing Protocols & Algorithms/07.00 Introduction.md",
-    "07 Advanced - Routing Protocols & Algorithms/07.02 Longest Prefix Match (LPM) Algorithmic Routing.md",
-    "07 Advanced - Routing Protocols & Algorithms/07.03 Static vs. Dynamic Routing Paradigms.md",
-    "07 Advanced - Routing Protocols & Algorithms/07.04 Distance Vector Protocols & RIPv2.md",
-    "07 Advanced - Routing Protocols & Algorithms/07.05 Link-State Routing & OSPF.md",
-    "07 Advanced - Routing Protocols & Algorithms/07.06 Path Vector Routing & BGP.md",
-    "08 Advanced - Transport Layer Protocols & Mechanics/08.03 User Datagram Protocol (UDP) Architecture.md",
-    "08 Advanced - Transport Layer Protocols & Mechanics/08.01 Transport Layer Role & Service Delivery Models.md",
-    "08 Advanced - Transport Layer Protocols & Mechanics/08.02 Logical Ports & Socket Programming Architecture.md",
-    "01 Physical & Data Link Layers/01.01 MAC Classification & Identification.md",
-    "08 Advanced - Transport Layer Protocols & Mechanics/08.00 Introduction.md",
-    "02 IPv4 Network Layer/02.04 Route Summarization (Aggregation).md",
-    "02 IPv4 Network Layer/02.03 Variable-Length Subnet Masking (VLSM).md",
-    "03 IP Datagram & Fragmentation/03.03 Practical Walkthrough - Fragmenting a 2000-byte Datagram.md",
-    "03 IP Datagram & Fragmentation/03.02 Fragmentation Mathematics & Calculations.md",
-    "06 Advanced - Network Fundamentals & L2-L3 Interfaces/06.01 Address Resolution Protocol (ARP) Deep Dive.md",
-    "06 Advanced - Network Fundamentals & L2-L3 Interfaces/06.02 Network Address Translation (NAT) & Port Address Translation (PAT).md",
-    "01 Physical & Data Link Layers/01.03 Layer 2 Network Infrastructure (Hubs vs. Switches).md",
-    "01 Physical & Data Link Layers/01.02 Ethernet Frame Structure & Header Decoding.md",
-    "01 Physical & Data Link Layers/01.01 MAC Address Classification & Identification.md",
-    "01 Physical & Data Link Layers/01.00 Introduction.md",
-    "01 Physical & Data Link Layers",
-    "03 IP Datagram & Fragmentation/03.00 Introduction.md",
-    "04 Cisco IOS CLI Reference/04.00 Introduction.md",
-    "04 Cisco IOS CLI Reference/04.03 Diagnostics, Verification, & File Management.md",
-    "06 Advanced - Network Fundamentals & L2-L3 Interfaces/06.00 Introduction.md",
-    "Vault.md",
-    "08 Advanced - Transport Layer Protocols & Mechanics",
-    "07 Advanced - Routing Protocols & Algorithms",
-    "06 Advanced - Network Fundamentals & L2-L3 Interfaces",
-    "05 IP Routing Architectures",
-    "04 Cisco IOS CLI Reference",
-    "03 IP Datagram & Fragmentation",
-    "02 IPv4 Network Layer",
-    "split_merge/run_restructure.py",
-    "split_merge/vault_manager/utils/__pycache__/file_ops.cpython-312.pyc"
+    "Exams/CC 01 & 02 2023-2024.pdf.md",
+    "Qs2.md",
+    "Quiz/Q1.md",
+    "Untitled.base",
+    "Chapter 1.1: Fundamentals/043 Polymorphism Types.md",
+    "Class.canvas",
+    "Exams/CC 01.pdf.md",
+    "Encapsulation and Access Modifiers.md",
+    "Chapter 1.1: Fundamentals/020 Encapsulation and Access Control.md",
+    "Quiz",
+    "Chapter 1.1: Fundamentals/016 Advanced Keywords and Modifiers.md",
+    "Chapter 1.1: Fundamentals/002 Object.md",
+    "Chapter 1.1: Fundamentals/003 New Keyword.md",
+    "Chapter 1.1: Fundamentals/001 OOP Basics.md",
+    "Chapter 1.1: Fundamentals/056 Queues and Deques.md",
+    "Chapter 1.1: Fundamentals/070 Coding to Interfaces.md",
+    "Chapter 1.1: Fundamentals/092 Project ATM.md",
+    "Chapter 1.1: Fundamentals/062 Generics.md",
+    "Chapter 1.1: Fundamentals/053 Collection Interface.md",
+    "Chapter 1.1: Fundamentals/052 Collection Framework.md",
+    "Chapter 2.1: Class Diagram Relationships/206 Association Classes and Qualification.md",
+    "Chapter 2.4: Advanced Class Diagram Extras/501 Theoretical Exam Questions.md",
+    "Chapter 2.4: Advanced Class Diagram Extras/504 TD Deep Dive File System and Shortcuts.md",
+    "Chapter 2.4: Advanced Class Diagram Extras/503 TD Deep Dive Arithmetic Expression Trap.md",
+    "Chapter 2.3: Advanced Class Diagram Extras/402 Advanced OCL Constraints.md",
+    "Chapter 2.1: Class Diagram Relationships/202 Associations Roles and Navigability.md",
+    "Chapter 2.3: Advanced Class Diagram Extras/306 Recursive Composition Pattern Trap.md",
+    "Chapter 2.4: Advanced Class Diagram Extras/403 Slide Annotations and Leftover Rules.md",
+    "link_keywords_ch12_ch2.py",
+    "add_keywords_ch12_ch2.py",
+    "rename_ch1.py",
+    "rename_ch2.py",
+    "Chapter 1.1: Fundamentals/add_keywords.py",
+    "Chapter 1.1: Fundamentals/link_keywords.py",
+    "Chapter 1.1: Fundamentals/rename_files.py",
+    "Exams"
   ]
 }
