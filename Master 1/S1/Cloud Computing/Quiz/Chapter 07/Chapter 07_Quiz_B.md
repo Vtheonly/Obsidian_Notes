@@ -5,78 +5,138 @@ sources:
   - "[[Chapter 7 - Cloud Storage and Distributed Systems/7.3 Data Consistency Models and CAP Theorem.md]]"
 ---
 
-> [!question] Amazon S3 is an example of object storage.
+> [!question] Object storage uses a flat namespace with independent objects.
 >> [!success]- Answer
 >> True
 
-> [!question] File storage uses a hierarchical directory structure.
+> [!question] Block storage supports partial updates without rewriting the entire file.
 >> [!success]- Answer
 >> True
 
-> [!question] In the CAP theorem, Partition Tolerance is optional for distributed systems.
+> [!question] Object storage is best suited for low-latency database workloads.
 >> [!success]- Answer
 >> False
 
-> [!question] Object storage is ideal for unstructured data like images and videos.
+> [!question] The CAP Theorem states a distributed system can guarantee all three properties simultaneously.
+>> [!success]- Answer
+>> False
+
+> [!question] Strong consistency guarantees every read returns the most recent write.
 >> [!success]- Answer
 >> True
 
-> [!question] Strong consistency guarantees that all nodes return the most recent write.
+> [!question] Eventual consistency means updates propagate over time and all copies converge.
 >> [!success]- Answer
 >> True
 
-> [!question] File storage is organized as:
-> a) A flat list of objects
-> b) A hierarchical directory tree
-> c) A hash table
-> d) A relational database
+> [!question] Consistent hashing minimizes remapping when nodes are added or removed.
 >> [!success]- Answer
->> b) A hierarchical directory tree
+>> True
 
-> [!question] Which consistency model guarantees all nodes return the latest write?
-> a) Eventual consistency
-> b) Strong consistency
-> c) Weak consistency
-> d) Causal consistency
+> [!question] Amazon S3 is an example of block storage.
 >> [!success]- Answer
->> b) Strong consistency
+>> False
 
-> [!question] Object storage is ideal for:
-> a) Relational databases
-> b) Unstructured data like images and videos
-> c) Operating system files
-> d) Swap partitions
+> [!question] A distributed hash table (DHT) maps keys to nodes across a distributed system.
 >> [!success]- Answer
->> b) Unstructured data like images and videos
+>> True
 
-> [!question] When a node is added or removed, consistent hashing requires:
-> a) Complete rehashing of all keys
-> b) Minimal key redistribution
-> c) Database migration
-> d) Full system restart
+> [!question] In a CP system availability is sacrificed when a network partition occurs.
 >> [!success]- Answer
->> b) Minimal key redistribution
+>> True
 
-> [!question] Partition Tolerance in CAP means the system continues to function despite:
-> a) Hardware upgrades
-> b) Network communication failures between nodes
-> c) Software bugs
-> d) User errors
+> [!question] Which cloud storage type provides virtually unlimited scalability?
+> a) Block storage
+> b) File storage
+> c) Object storage
+> d) Local storage
 >> [!success]- Answer
->> b) Network communication failures between nodes
+>> c) Object storage
 
-> [!question] Match the distributed system concept with its use.
+> [!question] Which storage type supports the lowest latency for databases?
+> a) Object storage
+> b) File storage
+> c) Block storage
+> d) Archive storage
+>> [!success]- Answer
+>> c) Block storage
+
+> [!question] According to CAP theorem which property is sacrificed in AP systems?
+> a) Availability
+> b) Partition tolerance
+> c) Consistency
+> d) Performance
+>> [!success]- Answer
+>> c) Consistency
+
+> [!question] What does consistent hashing solve?
+> a) Data encryption
+> b) The remapping problem when nodes join or leave
+> c) Network routing
+> d) Resource allocation in Kubernetes
+>> [!success]- Answer
+>> b) The remapping problem when nodes join or leave
+
+> [!question] In cloud object storage how is an object updated?
+> a) Partially overwritten
+> b) The entire object must be rewritten (immutable)
+> c) Appended to
+> d) Only metadata changed
+>> [!success]- Answer
+>> b) The entire object must be rewritten (immutable)
+
+> [!question] Which represents a CP system?
+> a) DNS
+> b) Traditional RDBMS with replication
+> c) Amazon DynamoDB default
+> d) CDN cache
+>> [!success]- Answer
+>> b) Traditional RDBMS with replication
+
+> [!question] What does a Distributed Hash Table provide?
+> a) Centralized database storage
+> b) Key-based lookup across distributed nodes
+> c) File system hierarchy
+> d) Network routing
+>> [!success]- Answer
+>> b) Key-based lookup across distributed nodes
+
+> [!question] Which consistency model is typical for Cassandra?
+> a) Strong consistency
+> b) Eventual consistency
+> c) Strict consistency
+> d) Linearizable consistency
+>> [!success]- Answer
+>> b) Eventual consistency
+
+> [!question] What is a key advantage of object storage metadata?
+> a) Minimal and fixed-size
+> b) Highly customizable with unlimited key-value tags
+> c) Cannot be modified
+> d) Stored separately from object
+>> [!success]- Answer
+>> b) Highly customizable with unlimited key-value tags
+
+> [!question] Which is most suitable for backup and archival?
+> a) Block storage
+> b) File storage
+> c) Object storage
+> d) In-memory storage
+>> [!success]- Answer
+>> c) Object storage
+
+> [!question] Match storage paradigm with data structure.
 >> [!example] Group A
->> a) Replication
->> b) Sharding
->> c) Partitioning
->> d) Load balancing
+>> a) Block storage
+>> b) File storage
+>> c) Object storage
+>> d) In-memory storage
 >
 >> [!example] Group B
->> n) Copying data across multiple nodes
->> o) Splitting data across databases
->> p) Dividing the keyspace across nodes
->> q) Distributing requests across servers
+>> n) Raw sectors of fixed size
+>> o) Hierarchical folder tree
+>> p) Flat namespace with independent objects
+>> q) RAM-based data structures
 >
 >> [!success]- Answer
 >> a) -> n)
@@ -84,18 +144,18 @@ sources:
 >> c) -> p)
 >> d) -> q)
 
-> [!question] Match the distributed storage feature with its description.
+> [!question] Match CAP property with definition.
 >> [!example] Group A
->> a) Data durability
->> b) Data availability
->> c) Data consistency
->> d) Data integrity
+>> a) Consistency
+>> b) Availability
+>> c) Partition tolerance
+>> d) Durability
 >
 >> [!example] Group B
->> n) Protection against permanent data loss
->> o) Ensuring data is accessible when needed
->> p) All replicas return the same value
->> q) Protection against data corruption
+>> n) Every read receives most recent write
+>> o) Every non-failing node returns response
+>> p) System continues despite network failures
+>> q) Data persists after writes confirmed
 >
 >> [!success]- Answer
 >> a) -> n)
@@ -103,18 +163,18 @@ sources:
 >> c) -> p)
 >> d) -> q)
 
-> [!question] Match the hashing type with its property.
+> [!question] Match distributed systems concept with purpose.
 >> [!example] Group A
->> a) Traditional hashing
+>> a) Distributed Hash Table
 >> b) Consistent hashing
->> c) Rendezvous hashing
->> d) Distributed hashing
+>> c) Replication
+>> d) Partitioning
 >
 >> [!example] Group B
->> n) All keys remap when node count changes
->> o) Minimal key movement when nodes change
->> p) Each client independently computes target node
->> q) Hash function spreads keys across nodes
+>> n) Key-value lookup across distributed nodes
+>> o) Minimizes key remapping on node changes
+>> p) Data copying for fault tolerance
+>> q) Splitting data across multiple nodes
 >
 >> [!success]- Answer
 >> a) -> n)
@@ -122,18 +182,113 @@ sources:
 >> c) -> p)
 >> d) -> q)
 
-> [!question] Match the replication strategy with its approach.
+> [!question] Match cloud storage example with type.
+>> [!example] Group A
+>> a) AWS EBS
+>> b) AWS EFS
+>> c) AWS S3
+>> d) AWS Glacier
+>
+>> [!example] Group B
+>> n) Block storage for EC2 instances
+>> o) File storage for shared filesystems
+>> p) Object storage for scalable data
+>> q) Archive storage for long-term retention
+>
+>> [!success]- Answer
+>> a) -> n)
+>> b) -> o)
+>> c) -> p)
+>> d) -> q)
+
+> [!question] Match consistency model with characteristic.
+>> [!example] Group A
+>> a) Strong consistency
+>> b) Eventual consistency
+>> c) Read-your-writes
+>> d) Monotonic reads
+>
+>> [!example] Group B
+>> n) Guarantees latest data on every read
+>> o) Data converges over time
+>> p) User always sees their own writes
+>> q) Reads never return older values
+>
+>> [!success]- Answer
+>> a) -> n)
+>> b) -> o)
+>> c) -> p)
+>> d) -> q)
+
+> [!question] Match storage access method with protocol.
+>> [!example] Group A
+>> a) Block access
+>> b) File access
+>> c) Object access
+>> d) Stream access
+>
+>> [!example] Group B
+>> n) SCSI NVMe iSCSI
+>> o) NFS SMB/CIFS
+>> p) HTTP/S REST API (GET PUT POST)
+>> q) Kafka Kinesis Pulsar
+>
+>> [!success]- Answer
+>> a) -> n)
+>> b) -> o)
+>> c) -> p)
+>> d) -> q)
+
+> [!question] Match DHT concept with role.
+>> [!example] Group A
+>> a) Key
+>> b) Node
+>> c) Virtual node
+>> d) Ring topology
+>
+>> [!example] Group B
+>> n) Identifier used for data lookup
+>> o) Physical or logical server in the DHT
+>> p) Multiple virtual positions per physical node
+>> q) Circular arrangement of nodes for routing
+>
+>> [!success]- Answer
+>> a) -> n)
+>> b) -> o)
+>> c) -> p)
+>> d) -> q)
+
+> [!question] Match storage scenario with paradigm.
+>> [!example] Group A
+>> a) VM boot volume
+>> b) Shared team documents
+>> c) Media assets for website
+>> d) IoT sensor data archive
+>
+>> [!example] Group B
+>> n) Block storage (high performance)
+>> o) File storage (multi-user access)
+>> p) Object storage (scalable assets)
+>> q) Object storage (large volume low cost)
+>
+>> [!success]- Answer
+>> a) -> n)
+>> b) -> o)
+>> c) -> p)
+>> d) -> q)
+
+> [!question] Match replication strategy with consistency.
 >> [!example] Group A
 >> a) Synchronous replication
 >> b) Asynchronous replication
 >> c) Quorum-based replication
->> d) Chain replication
+>> d) Gossip protocol
 >
 >> [!example] Group B
->> n) Write completes only after all replicas confirm
->> o) Write completes before all replicas are updated
->> p) Requires majority consensus for reads/writes
->> q) Replicas are organized in a linear chain
+>> n) Strong consistency (all nodes must confirm)
+>> o) Eventual consistency (data syncs over time)
+>> p) Configurable consistency (R+W > N)
+>> q) Eventual consistency (epidemic-style propagation)
 >
 >> [!success]- Answer
 >> a) -> n)
@@ -141,18 +296,18 @@ sources:
 >> c) -> p)
 >> d) -> q)
 
-> [!question] Match the storage access pattern with its typical workload.
+> [!question] Match CAP system classification.
 >> [!example] Group A
->> a) Sequential access
->> b) Random access
->> c) Streaming access
->> d) Indexed access
+>> a) CP (Consistency + Partition)
+>> b) AP (Availability + Partition)
+>> c) CA (Consistency + Availability)
+>> d) Eventual Consistency system
 >
 >> [!example] Group B
->> n) Reading data in order, typical for logs
->> o) Reading data at arbitrary positions
->> p) Continuous flow of data, typical for video
->> q) Accessing data via lookup indexes
+>> n) Traditional RDBMS with primary-secondary
+>> o) Cassandra or DynamoDB default
+>> p) Not achievable during partitions
+>> q) DNS system
 >
 >> [!success]- Answer
 >> a) -> n)

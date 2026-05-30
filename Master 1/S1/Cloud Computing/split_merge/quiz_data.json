@@ -1,0 +1,6446 @@
+{
+  "01_A": {
+    "tf": [
+      [
+        "Cloud Computing enables on-demand network access to a shared pool of configurable computing resources.",
+        "True"
+      ],
+      [
+        "Cloud Computing requires users to purchase physical hardware assets before using services.",
+        "False"
+      ],
+      [
+        "The NIST definition of Cloud Computing includes five essential characteristics.",
+        "True"
+      ],
+      [
+        "Elasticity in cloud computing means resources can be automatically scaled up or down based on demand.",
+        "True"
+      ],
+      [
+        "On-premise infrastructure typically has lower upfront costs compared to cloud solutions.",
+        "False"
+      ],
+      [
+        "Serverless computing eliminates the need for any servers to run applications.",
+        "False"
+      ],
+      [
+        "Measured service in cloud computing provides metering and billing transparency.",
+        "True"
+      ],
+      [
+        "Resource pooling in cloud computing uses a single-tenant model for each customer.",
+        "False"
+      ],
+      [
+        "Broad network access restricts cloud resources to local area networks only.",
+        "False"
+      ],
+      [
+        "The pay-as-you-go model shifts capital expenditure to operational expenditure.",
+        "True"
+      ]
+    ],
+    "mcq": [
+      [
+        "Which organization published the standard definition of Cloud Computing?",
+        [
+          "NIST",
+          "ISO",
+          "IEEE",
+          "W3C"
+        ],
+        "a) NIST"
+      ],
+      [
+        "Which of the following is NOT a NIST essential characteristic of Cloud Computing?",
+        [
+          "On-demand self-service",
+          "Broad network access",
+          "Fixed pricing",
+          "Resource pooling"
+        ],
+        "c) Fixed pricing"
+      ],
+      [
+        "What does the pay-as-you-go model in cloud computing refer to?",
+        [
+          "Annual subscription",
+          "Usage-based billing",
+          "One-time payment",
+          "Freemium model"
+        ],
+        "b) Usage-based billing"
+      ],
+      [
+        "Which term describes automatically scaling resources based on demand?",
+        [
+          "Elasticity",
+          "Durability",
+          "Latency",
+          "Throughput"
+        ],
+        "a) Elasticity"
+      ],
+      [
+        "What is a workload in cloud computing?",
+        [
+          "A measure of CPU speed",
+          "An application or service running on resources",
+          "The physical server capacity",
+          "The network bandwidth"
+        ],
+        "b) An application or service running on resources"
+      ],
+      [
+        "Serverless computing means:",
+        [
+          "No servers exist at all",
+          "Servers are abstracted away from developers",
+          "Only physical servers are used",
+          "Servers are eliminated permanently"
+        ],
+        "b) Servers are abstracted away from developers"
+      ],
+      [
+        "Which computing paradigm preceded cloud computing historically?",
+        [
+          "Quantum computing",
+          "Edge computing",
+          "Mainframe and client-server computing",
+          "Neural computing"
+        ],
+        "c) Mainframe and client-server computing"
+      ],
+      [
+        "On-premise vs Cloud: Which statement is correct?",
+        [
+          "Cloud requires higher upfront CAPEX",
+          "On-premise has lower long-term OPEX",
+          "Cloud shifts CAPEX to OPEX",
+          "On-premise eliminates maintenance costs"
+        ],
+        "c) Cloud shifts CAPEX to OPEX"
+      ],
+      [
+        "Broad network access means cloud resources are:",
+        [
+          "Only accessible via Ethernet",
+          "Accessible over standard network protocols",
+          "Limited to VPN only",
+          "Restricted to local LAN"
+        ],
+        "b) Accessible over standard network protocols"
+      ],
+      [
+        "Rapid elasticity in cloud computing refers to:",
+        [
+          "Physical hardware replacement",
+          "Quick provisioning and release of resources",
+          "Network cable upgrades",
+          "Database optimization"
+        ],
+        "b) Quick provisioning and release of resources"
+      ]
+    ],
+    "matching": [
+      [
+        "Match the NIST characteristic with its description.",
+        [
+          "On-demand self-service",
+          "Broad network access",
+          "Resource pooling",
+          "Rapid elasticity"
+        ],
+        [
+          "User can provision resources without human interaction",
+          "Resources accessible over standard network protocols",
+          "Multi-tenant model serving multiple consumers",
+          "Resources can scale quickly up or down"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the computing paradigm with its era.",
+        [
+          "Mainframe computing",
+          "Client-Server computing",
+          "Cloud computing",
+          "Edge computing"
+        ],
+        [
+          "1960s-1970s: Centralized computing",
+          "1980s-1990s: Distributed personal computing",
+          "2000s-present: On-demand utility computing",
+          "Modern: Processing near data sources"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the financial model with its description.",
+        [
+          "CAPEX",
+          "OPEX",
+          "Pay-as-you-go",
+          "Reserved instance"
+        ],
+        [
+          "Upfront capital expenditure",
+          "Ongoing operational expenditure",
+          "Usage-based billing model",
+          "Pre-paid discounted commitment"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the cloud benefit with its explanation.",
+        [
+          "Elasticity",
+          "Scalability",
+          "High availability",
+          "Fault tolerance"
+        ],
+        [
+          "Automatic resource adjustment based on load",
+          "Ability to handle growing workloads",
+          "Minimal downtime through redundancy",
+          "System continues functioning despite component failures"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the workload type with its example.",
+        [
+          "Compute-intensive",
+          "Memory-intensive",
+          "Storage-intensive",
+          "Network-intensive"
+        ],
+        [
+          "Video rendering and scientific simulations",
+          "In-memory databases and caching",
+          "Data lakes and backup archives",
+          "Streaming services and real-time communications"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the cloud characteristic with its requirement.",
+        [
+          "Measured service",
+          "Resource pooling",
+          "On-demand self-service",
+          "Broad network access"
+        ],
+        [
+          "Metering and billing capabilities",
+          "Multi-tenant architecture support",
+          "Self-service portal or API",
+          "Internet connectivity"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the economic factor with its cloud impact.",
+        [
+          "Total Cost of Ownership (TCO)",
+          "Return on Investment (ROI)",
+          "Capital efficiency",
+          "Operational agility"
+        ],
+        [
+          "Overall cost including all direct and indirect expenses",
+          "Measure of profitability relative to investment",
+          "Reducing upfront spending while increasing flexibility",
+          "Speed of adapting to changing business needs"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the historical development with its contribution.",
+        [
+          "Virtualization technology",
+          "Utility computing concept",
+          "Web services",
+          "Grid computing"
+        ],
+        [
+          "Enabled resource abstraction and VM management",
+          "Metered service delivery like electricity",
+          "Standardized API communication",
+          "Distributed computing across multiple sites"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the deployment concern with its meaning.",
+        [
+          "Latency",
+          "Throughput",
+          "Availability",
+          "Durability"
+        ],
+        [
+          "Delay in data transmission",
+          "Data processing rate per unit time",
+          "Percentage of uptime",
+          "Long-term data preservation"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the service category with its focus.",
+        [
+          "Compute services",
+          "Storage services",
+          "Database services",
+          "Networking services"
+        ],
+        [
+          "Virtual machines and containers",
+          "Object and block storage solutions",
+          "Managed relational and NoSQL databases",
+          "VPCs, load balancers, DNS"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "01_B": {
+    "tf": [
+      [
+        "Serverless computing still requires the user to manage virtual machines.",
+        "False"
+      ],
+      [
+        "A workload is a specific application or service that runs on cloud resources.",
+        "True"
+      ],
+      [
+        "Scalability refers only to increasing resources, never decreasing them.",
+        "False"
+      ],
+      [
+        "Cloud providers follow a pay-as-you-go financial model.",
+        "True"
+      ],
+      [
+        "The evolution of cloud computing began with the invention of the internet in the 1990s.",
+        "False"
+      ],
+      [
+        "On-demand self-service allows users to provision resources without human interaction.",
+        "True"
+      ],
+      [
+        "Resource pooling means each customer gets dedicated physical hardware.",
+        "False"
+      ],
+      [
+        "Rapid elasticity makes cloud resources appear unlimited to the consumer.",
+        "True"
+      ],
+      [
+        "Measured service is optional and not required for cloud computing.",
+        "False"
+      ],
+      [
+        "Utility computing is a concept where computing resources are delivered like electricity.",
+        "True"
+      ]
+    ],
+    "mcq": [
+      [
+        "Which of the following best describes cloud computing?",
+        [
+          "Running apps on local desktops",
+          "On-demand access to shared configurable resources over the network",
+          "Storing files on USB drives",
+          "Installing software from physical media"
+        ],
+        "b) On-demand access to shared configurable resources over the network"
+      ],
+      [
+        "What is the primary difference between CAPEX and OPEX?",
+        [
+          "CAPEX is monthly, OPEX is yearly",
+          "CAPEX is upfront investment, OPEX is ongoing expense",
+          "CAPEX is for software, OPEX is for hardware",
+          "There is no difference"
+        ],
+        "b) CAPEX is upfront investment, OPEX is ongoing expense"
+      ],
+      [
+        "Which NIST characteristic ensures resources can be monitored and billed?",
+        [
+          "Rapid elasticity",
+          "Measured service",
+          "Resource pooling",
+          "Broad network access"
+        ],
+        "b) Measured service"
+      ],
+      [
+        "What does abstraction mean in cloud computing?",
+        [
+          "Physical hardware is hidden behind virtualized software layers",
+          "Data is encrypted during transmission",
+          "Users must know hardware details",
+          "Applications run on bare metal"
+        ],
+        "a) Physical hardware is hidden behind virtualized software layers"
+      ],
+      [
+        "Which of the following is an example of a workload?",
+        [
+          "A CPU core",
+          "A network cable",
+          "A payment processing application",
+          "A power supply unit"
+        ],
+        "c) A payment processing application"
+      ],
+      [
+        "What does multi-tenant refer to in cloud computing?",
+        [
+          "One customer uses multiple providers",
+          "Multiple customers share the same physical infrastructure securely",
+          "Tenant pays for multiple services",
+          "Multiple VMs run on separate hardware"
+        ],
+        "b) Multiple customers share the same physical infrastructure securely"
+      ],
+      [
+        "Which paradigm shift preceded the cloud computing era?",
+        [
+          "Mainframe to client-server",
+          "Quantum to neural computing",
+          "Edge to fog computing",
+          "Serverless to container computing"
+        ],
+        "a) Mainframe to client-server"
+      ],
+      [
+        "What is the main advantage of shifting from CAPEX to OPEX?",
+        [
+          "Higher long-term costs",
+          "Reduced financial risk and improved cash flow",
+          "More physical hardware control",
+          "Slower deployment times"
+        ],
+        "b) Reduced financial risk and improved cash flow"
+      ],
+      [
+        "Which of the following is NOT a benefit of cloud computing?",
+        [
+          "Elasticity",
+          "Pay-as-you-go pricing",
+          "Guaranteed zero downtime",
+          "Broad network access"
+        ],
+        "c) Guaranteed zero downtime"
+      ],
+      [
+        "What does rapid provisioning mean?",
+        [
+          "Slow manual setup of servers",
+          "Quick automated allocation of resources",
+          "Annual hardware refresh cycles",
+          "Weekly software updates"
+        ],
+        "b) Quick automated allocation of resources"
+      ]
+    ],
+    "matching": [
+      [
+        "Match the cloud deployment model with its description.",
+        [
+          "Public cloud",
+          "Private cloud",
+          "Hybrid cloud",
+          "Community cloud"
+        ],
+        [
+          "Services offered over the public internet",
+          "Dedicated cloud infrastructure for a single organization",
+          "Combination of public and private cloud",
+          "Shared infrastructure for organizations with common concerns"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the cloud computing pillar with its definition.",
+        [
+          "Abstraction",
+          "Orchestration",
+          "Utility billing",
+          "Virtualization"
+        ],
+        [
+          "Hiding physical hardware behind software layers",
+          "Automating deployment and scaling of resources",
+          "Fine-grained metering and usage tracking",
+          "Creating virtual instances from physical hardware"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the terminology with its correct meaning.",
+        [
+          "Cloud",
+          "Workload",
+          "Serverless",
+          "Elasticity"
+        ],
+        [
+          "Shared pool of configurable computing resources",
+          "Application or service running on resources",
+          "Abstracted server management for developers",
+          "Automatic scaling of resources based on demand"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the characteristic with its opposite.",
+        [
+          "Elasticity (Cloud)",
+          "CAPEX (Traditional)",
+          "Multi-tenant (Cloud)",
+          "Measured service (Cloud)"
+        ],
+        [
+          "Fixed capacity (On-premise)",
+          "OPEX (Cloud)",
+          "Single-tenant (Dedicated)",
+          "Flat rate billing (Traditional)"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the NIST essential characteristic with its technical enabler.",
+        [
+          "On-demand self-service",
+          "Broad network access",
+          "Resource pooling",
+          "Rapid elasticity"
+        ],
+        [
+          "API Gateway and automation platform",
+          "Standard protocols and CDNs",
+          "Hypervisors and container runtimes",
+          "Auto-scaling groups and orchestration"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the computing resource with its cloud abstraction.",
+        [
+          "Physical server",
+          "Storage device",
+          "Network switch",
+          "Operating system"
+        ],
+        [
+          "Virtual machine instance",
+          "Block or object storage volume",
+          "Virtual network and subnets",
+          "Container or VM image"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the business benefit with its cloud enabler.",
+        [
+          "Cost reduction",
+          "Business agility",
+          "Global reach",
+          "Disaster recovery"
+        ],
+        [
+          "Pay-as-you-go and elimination of idle resources",
+          "Rapid provisioning and experimentation",
+          "Global infrastructure and CDN networks",
+          "Automated backups and geo-redundancy"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the cloud service category with the provider example.",
+        [
+          "IaaS provider",
+          "PaaS provider",
+          "SaaS provider",
+          "FaaS provider"
+        ],
+        [
+          "Amazon Web Services (EC2)",
+          "Google App Engine",
+          "Salesforce CRM",
+          "AWS Lambda"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the historical era with its computing characteristic.",
+        [
+          "1960s-1970s",
+          "1980s-1990s",
+          "2000s",
+          "2010s-present"
+        ],
+        [
+          "Mainframe centralized computing",
+          "Client-server distributed computing",
+          "Virtualization and utility computing",
+          "Cloud-native, containers, and serverless"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the financial term with its cloud relevance.",
+        [
+          "TCO",
+          "ROI",
+          "CapEx to OpEx shift",
+          "FinOps"
+        ],
+        [
+          "Total cost including direct and indirect expenses",
+          "Measure of profitability from cloud investment",
+          "Moving from upfront to operational spending",
+          "Financial management practice for cloud spending"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "02_A": {
+    "tf": [
+      [
+        "IaaS provides users with virtual machines, storage, and networking resources.",
+        "True"
+      ],
+      [
+        "In PaaS, the user manages the operating system and middleware.",
+        "False"
+      ],
+      [
+        "SaaS delivers ready-to-use software applications over the internet.",
+        "True"
+      ],
+      [
+        "The Shared Responsibility Model means the provider is responsible for everything.",
+        "False"
+      ],
+      [
+        "A public cloud is deployed for exclusive use by a single organization.",
+        "False"
+      ],
+      [
+        "A private cloud can be hosted on-premises or by a third-party provider.",
+        "True"
+      ],
+      [
+        "A hybrid cloud combines public and private cloud infrastructures.",
+        "True"
+      ],
+      [
+        "A VPC is a physically isolated section of a cloud provider's network.",
+        "False"
+      ],
+      [
+        "In the IaaS model, the user has full control over the operating system.",
+        "True"
+      ],
+      [
+        "A community cloud is shared by several organizations with common concerns.",
+        "True"
+      ]
+    ],
+    "mcq": [
+      [
+        "Which cloud service model provides the highest level of user control?",
+        [
+          "SaaS",
+          "PaaS",
+          "IaaS",
+          "FaaS"
+        ],
+        "c) IaaS"
+      ],
+      [
+        "In the Shared Responsibility Model, who is responsible for physical security?",
+        [
+          "The customer",
+          "The cloud provider",
+          "Both equally",
+          "A third-party auditor"
+        ],
+        "b) The cloud provider"
+      ],
+      [
+        "Which deployment model offers the best balance of cost and control?",
+        [
+          "Public cloud only",
+          "Private cloud only",
+          "Hybrid cloud",
+          "Community cloud"
+        ],
+        "c) Hybrid cloud"
+      ],
+      [
+        "What does VPC stand for?",
+        [
+          "Virtual Private Cloud",
+          "Virtual Public Connection",
+          "Verified Private Channel",
+          "Variable Protocol Configuration"
+        ],
+        "a) Virtual Private Cloud"
+      ],
+      [
+        "Which service model abstracts the most infrastructure from the user?",
+        [
+          "IaaS",
+          "PaaS",
+          "SaaS",
+          "All equally"
+        ],
+        "c) SaaS"
+      ],
+      [
+        "What is the primary benefit of PaaS for developers?",
+        [
+          "Full control over hardware",
+          "Reduced management of underlying infrastructure",
+          "Lower network latency",
+          "Physical server access"
+        ],
+        "b) Reduced management of underlying infrastructure"
+      ],
+      [
+        "Which statement about the frontend of cloud architecture is correct?",
+        [
+          "It manages backend storage",
+          "It includes the client interface like browsers and CLIs",
+          "It handles physical security",
+          "It manages hypervisors"
+        ],
+        "b) It includes the client interface like browsers and CLIs"
+      ],
+      [
+        "What is the role of a load balancer in cloud architecture?",
+        [
+          "Store database records",
+          "Distribute incoming traffic across servers",
+          "Compile application code",
+          "Manage user authentication"
+        ],
+        "b) Distribute incoming traffic across servers"
+      ],
+      [
+        "Which of the following is an example of SaaS?",
+        [
+          "Amazon EC2",
+          "Google App Engine",
+          "Microsoft Office 365",
+          "OpenStack"
+        ],
+        "c) Microsoft Office 365"
+      ],
+      [
+        "What does the backend of cloud architecture include?",
+        [
+          "Only the user's browser",
+          "Application layer, service layer, and physical infrastructure",
+          "Just network cables",
+          "Only client applications"
+        ],
+        "b) Application layer, service layer, and physical infrastructure"
+      ]
+    ],
+    "matching": [
+      [
+        "Match the cloud service model with the level of control.",
+        [
+          "IaaS",
+          "PaaS",
+          "SaaS",
+          "FaaS"
+        ],
+        [
+          "User controls OS, middleware, and applications",
+          "User controls applications and data only",
+          "User only configures usage settings",
+          "User controls function code and triggers"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the deployment model with its access scope.",
+        [
+          "Public cloud",
+          "Private cloud",
+          "Hybrid cloud",
+          "Community cloud"
+        ],
+        [
+          "Open to the general public over the internet",
+          "Exclusive use by a single organization",
+          "Interconnected public and private environments",
+          "Shared by organizations with common goals"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the Shared Responsibility component with the responsible party.",
+        [
+          "Physical hardware security",
+          "Network configuration",
+          "Application code security",
+          "Data encryption at rest"
+        ],
+        [
+          "Cloud provider",
+          "Customer (in IaaS)",
+          "Customer",
+          "Customer"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the cloud architecture component with its function.",
+        [
+          "API Gateway",
+          "Load Balancer",
+          "Hypervisor",
+          "IAM"
+        ],
+        [
+          "Routes and manages API requests",
+          "Distributes traffic across instances",
+          "Manages virtual machines on physical hardware",
+          "Controls user access and permissions"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the IaaS component with its cloud equivalent.",
+        [
+          "Physical server",
+          "Storage array",
+          "Network switch",
+          "Data center"
+        ],
+        [
+          "EC2 instance or virtual machine",
+          "EBS volume or block storage",
+          "Virtual network or subnet",
+          "Availability zone or region"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the service model with its primary user.",
+        [
+          "IaaS",
+          "PaaS",
+          "SaaS",
+          "FaaS"
+        ],
+        [
+          "System administrators and DevOps engineers",
+          "Application developers",
+          "End users and business teams",
+          "Event-driven function developers"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the VPC component with its purpose.",
+        [
+          "Subnet",
+          "Route table",
+          "Security group",
+          "Internet gateway"
+        ],
+        [
+          "Logical partition of IP address range",
+          "Defines traffic routing rules",
+          "Virtual firewall for instances",
+          "Connects VPC to the internet"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the PaaS advantage with its benefit.",
+        [
+          "Built-in middleware",
+          "Auto-scaling",
+          "Managed databases",
+          "CI/CD integration"
+        ],
+        [
+          "Reduces configuration effort for developers",
+          "Handles load-based resource adjustments",
+          "Eliminates database administration tasks",
+          "Streamlines deployment pipelines"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the deployment consideration with its trade-off.",
+        [
+          "Public cloud cost",
+          "Private cloud control",
+          "Hybrid cloud complexity",
+          "Community cloud scope"
+        ],
+        [
+          "Lower upfront cost but less control",
+          "Maximum control but higher cost",
+          "Best features but complex integration",
+          "Shared cost but limited customization"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the client infrastructure with its typical use case.",
+        [
+          "Web browser",
+          "CLI terminal",
+          "Mobile app",
+          "Thick client application"
+        ],
+        [
+          "Accessing SaaS dashboards and portals",
+          "Managing cloud resources via scripts",
+          "Interacting with mobile-optimized services",
+          "Running resource-intensive enterprise software"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "02_B": {
+    "tf": [
+      [
+        "Hypervisors are a key technology enabling IaaS.",
+        "True"
+      ],
+      [
+        "In SaaS, the user is responsible for software updates and patches.",
+        "False"
+      ],
+      [
+        "A private cloud can only be hosted on the customer's premises.",
+        "False"
+      ],
+      [
+        "VPC allows users to define their own virtual network topology in the cloud.",
+        "True"
+      ],
+      [
+        "PaaS eliminates the need for developers to manage server hardware.",
+        "True"
+      ],
+      [
+        "In the Shared Responsibility Model, the customer always handles physical access controls.",
+        "False"
+      ],
+      [
+        "A hybrid cloud must include at least one public and one private cloud.",
+        "True"
+      ],
+      [
+        "Community clouds are typically more expensive than public clouds.",
+        "False"
+      ],
+      [
+        "EC2 is an example of a PaaS offering from AWS.",
+        "False"
+      ],
+      [
+        "Security groups act as virtual firewalls for cloud instances.",
+        "True"
+      ]
+    ],
+    "mcq": [
+      [
+        "Which cloud deployment model is best for organizations with strict regulatory requirements?",
+        [
+          "Public cloud",
+          "Private cloud",
+          "Community cloud",
+          "All equally"
+        ],
+        "b) Private cloud"
+      ],
+      [
+        "What is the main advantage of a hybrid cloud?",
+        [
+          "Lowest possible cost",
+          "Complete isolation from the internet",
+          "Flexibility to choose where workloads run",
+          "No need for internet connectivity"
+        ],
+        "c) Flexibility to choose where workloads run"
+      ],
+      [
+        "Which of the following is managed by the customer in all cloud service models?",
+        [
+          "Physical network infrastructure",
+          "Data and access management",
+          "Hypervisor software",
+          "Storage array hardware"
+        ],
+        "b) Data and access management"
+      ],
+      [
+        "What does a Virtual Private Cloud (VPC) provide?",
+        [
+          "Physical isolation from other cloud users",
+          "Logical isolation within a public cloud",
+          "Dedicated servers at the provider's data center",
+          "A private internet connection"
+        ],
+        "b) Logical isolation within a public cloud"
+      ],
+      [
+        "Which model gives the least flexibility but the most convenience?",
+        [
+          "IaaS",
+          "PaaS",
+          "SaaS",
+          "All equally"
+        ],
+        "c) SaaS"
+      ],
+      [
+        "What is the role of middleware in cloud architecture?",
+        [
+          "Manage physical cooling systems",
+          "Provide services like message queuing and databases",
+          "Compile application source code",
+          "Encrypt all network traffic"
+        ],
+        "b) Provide services like message queuing and databases"
+      ],
+      [
+        "Which statement about security groups is true?",
+        [
+          "They replace encryption",
+          "They control inbound and outbound traffic at the instance level",
+          "They manage physical server security",
+          "They are only in private clouds"
+        ],
+        "b) They control inbound and outbound traffic at the instance level"
+      ],
+      [
+        "In which cloud model does the provider manage the runtime environment?",
+        [
+          "IaaS",
+          "PaaS",
+          "On-premise",
+          "DAS"
+        ],
+        "b) PaaS"
+      ],
+      [
+        "What does a subnet define in a VPC?",
+        [
+          "A billing category",
+          "A range of IP addresses within the VPC",
+          "A type of VM",
+          "A storage volume type"
+        ],
+        "b) A range of IP addresses within the VPC"
+      ],
+      [
+        "Which cloud model keeps sensitive data on-premises while using cloud for less critical workloads?",
+        [
+          "Public cloud only",
+          "Private cloud only",
+          "Hybrid cloud",
+          "Multi-cloud"
+        ],
+        "c) Hybrid cloud"
+      ]
+    ],
+    "matching": [
+      [
+        "Match the responsibility with the correct party in IaaS.",
+        [
+          "OS patching",
+          "Application security",
+          "Physical hardware",
+          "Network firewall config"
+        ],
+        [
+          "Customer",
+          "Customer",
+          "Cloud provider",
+          "Customer"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the service model with management scope.",
+        [
+          "IaaS management",
+          "PaaS management",
+          "SaaS management",
+          "On-premise management"
+        ],
+        [
+          "User manages OS and above",
+          "User manages apps and data",
+          "User manages usage only",
+          "Organization manages everything"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the cloud term with its definition.",
+        [
+          "Tenant",
+          "Region",
+          "Availability Zone",
+          "Edge Location"
+        ],
+        [
+          "A single customer or organization",
+          "A geographic area with multiple data centers",
+          "An isolated data center within a region",
+          "A CDN endpoint for content delivery"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the deployment scenario with the best model.",
+        [
+          "Startup with minimal budget",
+          "Bank with strict compliance",
+          "E-commerce with variable traffic",
+          "Government research consortium"
+        ],
+        [
+          "Public cloud",
+          "Private cloud",
+          "Hybrid cloud",
+          "Community cloud"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the PaaS component with its function.",
+        [
+          "Runtime engine",
+          "Database service",
+          "Message queue",
+          "CI/CD pipeline"
+        ],
+        [
+          "Executes application code in managed environment",
+          "Provides managed relational database storage",
+          "Enables asynchronous service communication",
+          "Automates build, test, and deployment"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the cloud term with its real-world analogy.",
+        [
+          "IaaS",
+          "PaaS",
+          "SaaS",
+          "VPC"
+        ],
+        [
+          "Renting an empty apartment",
+          "Renting a furnished apartment with utilities",
+          "Staying at a fully serviced hotel",
+          "Having a private wing in an apartment building"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the VPC networking component with its role.",
+        [
+          "NAT gateway",
+          "VPN connection",
+          "Peering connection",
+          "Direct Connect"
+        ],
+        [
+          "Allows private subnets to access the internet",
+          "Encrypted tunnel from on-premises to cloud",
+          "Connects two VPCs privately",
+          "Dedicated private network link to cloud"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the cloud architecture layer with its example.",
+        [
+          "Client infrastructure",
+          "Application layer",
+          "Service layer",
+          "Physical infrastructure"
+        ],
+        [
+          "Web browser or mobile app",
+          "SaaS application like Gmail",
+          "API gateway and message queues",
+          "Servers, cooling, and power systems"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the security component with its purpose.",
+        [
+          "IAM roles",
+          "Encryption at rest",
+          "Encryption in transit",
+          "Security groups"
+        ],
+        [
+          "Define permissions for cloud resources",
+          "Protects stored data from unauthorized access",
+          "Secures data during network transmission",
+          "Acts as a virtual firewall for traffic control"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the cloud service with its category.",
+        [
+          "AWS Lambda",
+          "Google Compute Engine",
+          "Azure SQL Database",
+          "Salesforce"
+        ],
+        [
+          "FaaS (Function as a Service)",
+          "IaaS (Infrastructure as a Service)",
+          "PaaS (Platform as a Service)",
+          "SaaS (Software as a Service)"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "03_A": {
+    "tf": [
+      [
+        "Virtualization is the foundational technology that enables cloud computing.",
+        "True"
+      ],
+      [
+        "A Type 1 hypervisor runs on top of a host operating system.",
+        "False"
+      ],
+      [
+        "A hypervisor is also known as a Virtual Machine Monitor (VMM).",
+        "True"
+      ],
+      [
+        "Type 2 hypervisors provide near-native performance compared to Type 1.",
+        "False"
+      ],
+      [
+        "VMware ESXi is an example of a Type 1 hypervisor.",
+        "True"
+      ],
+      [
+        "A guest system refers to the physical machine running the hypervisor.",
+        "False"
+      ],
+      [
+        "Live migration allows a running VM to be moved between hosts without downtime.",
+        "True"
+      ],
+      [
+        "Hardware emulation virtualizes the CPU at the instruction level which is very fast.",
+        "False"
+      ],
+      [
+        "Containers share the host operating system kernel.",
+        "True"
+      ],
+      [
+        "Virtualization security risks include VM escape attacks.",
+        "True"
+      ]
+    ],
+    "mcq": [
+      [
+        "Which type of hypervisor installs directly on physical hardware?",
+        [
+          "Type 1 (Bare-metal)",
+          "Type 2 (Hosted)",
+          "Type 3 (Embedded)",
+          "Type 0 (Native)"
+        ],
+        "a) Type 1 (Bare-metal)"
+      ],
+      [
+        "What is the main advantage of a Type 1 hypervisor over Type 2?",
+        [
+          "Easier installation",
+          "Near-native performance",
+          "Broader hardware support",
+          "Lower cost"
+        ],
+        "b) Near-native performance"
+      ],
+      [
+        "Which of the following is a Type 2 hypervisor?",
+        [
+          "VMware ESXi",
+          "Microsoft Hyper-V",
+          "Oracle VM VirtualBox",
+          "Xen"
+        ],
+        "c) Oracle VM VirtualBox"
+      ],
+      [
+        "What is a host system in virtualization?",
+        [
+          "The guest operating system",
+          "The physical machine providing resources",
+          "The hypervisor management console",
+          "The virtual network switch"
+        ],
+        "b) The physical machine providing resources"
+      ],
+      [
+        "What does live migration enable?",
+        [
+          "Moving a VM while powered off",
+          "Moving a running VM to another host with minimal disruption",
+          "Creating a snapshot",
+          "Deleting a VM from storage"
+        ],
+        "b) Moving a running VM to another host with minimal disruption"
+      ],
+      [
+        "Which virtualization risk involves a guest OS accessing the hypervisor?",
+        [
+          "Resource exhaustion",
+          "VM escape",
+          "Snapshot sprawl",
+          "Network isolation failure"
+        ],
+        "b) VM escape"
+      ],
+      [
+        "What is the function of a hypervisor?",
+        [
+          "Compile application code",
+          "Manage and isolate virtual machines on physical hardware",
+          "Encrypt network traffic",
+          "Provide internet connectivity"
+        ],
+        "b) Manage and isolate virtual machines on physical hardware"
+      ],
+      [
+        "Which statement about containers vs VMs is correct?",
+        [
+          "Containers have their own kernel",
+          "VMs share the host kernel",
+          "Containers share the host kernel",
+          "VMs are lighter than containers"
+        ],
+        "c) Containers share the host kernel"
+      ],
+      [
+        "What is hardware emulation?",
+        [
+          "Running code natively on CPU",
+          "Simulating hardware components entirely in software",
+          "Using physical devices directly",
+          "Overclocking the processor"
+        ],
+        "b) Simulating hardware components entirely in software"
+      ],
+      [
+        "Which characteristic is unique to Type 2 hypervisors?",
+        [
+          "Direct hardware access",
+          "Requires a host operating system",
+          "Enterprise-grade scalability",
+          "Used in data centers exclusively"
+        ],
+        "b) Requires a host operating system"
+      ]
+    ],
+    "matching": [
+      [
+        "Match the virtualization term with its definition.",
+        [
+          "Hypervisor",
+          "Guest OS",
+          "Host system",
+          "VM snapshot"
+        ],
+        [
+          "Software layer managing VMs on physical hardware",
+          "Operating system running inside a virtual machine",
+          "Physical machine providing CPU memory and storage",
+          "Point-in-time state of a virtual machine"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the hypervisor type with its characteristic.",
+        [
+          "Type 1 hypervisor",
+          "Type 2 hypervisor",
+          "Bare-metal hypervisor",
+          "Hosted hypervisor"
+        ],
+        [
+          "Installs directly on physical hardware",
+          "Runs as application on host OS",
+          "Used in enterprise data centers",
+          "Used for local development and testing"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the virtualization concept with its benefit.",
+        [
+          "VM isolation",
+          "Live migration",
+          "Snapshot and restore",
+          "Resource overcommitment"
+        ],
+        [
+          "Fault containment between VMs",
+          "Zero-downtime maintenance",
+          "Quick recovery from failures",
+          "Higher physical resource utilization"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the virtualization technology with its use case.",
+        [
+          "Full virtualization",
+          "Paravirtualization",
+          "Hardware-assisted virtualization",
+          "Containerization"
+        ],
+        [
+          "Running unmodified guest OS with software emulation",
+          "Modified guest OS with hypervisor calls",
+          "Using CPU extensions (Intel VT-x / AMD-V)",
+          "Lightweight process isolation sharing host kernel"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the security risk with its virtualization context.",
+        [
+          "VM escape",
+          "Hyperjack",
+          "Snap theft",
+          "Resource starvation"
+        ],
+        [
+          "Guest breaks out to access hypervisor",
+          "Attacker gains control of hypervisor layer",
+          "Unauthorized access to VM snapshot files",
+          "One VM consumes all resources starving others"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the VM component with its purpose.",
+        [
+          "vCPU",
+          "vRAM",
+          "Virtual disk",
+          "Virtual NIC"
+        ],
+        [
+          "Virtual processor allocated to a VM",
+          "Virtual memory allocated to a VM",
+          "Virtual storage device for the VM",
+          "Virtual network interface for the VM"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the hardware term with its data center significance.",
+        [
+          "Rack unit (U)",
+          "Server chassis",
+          "Power distribution unit",
+          "Top-of-rack switch"
+        ],
+        [
+          "Standardized height measurement for equipment (1.75 inches)",
+          "Enclosure holding multiple server blades",
+          "Distributes electrical power to rack equipment",
+          "Network switch at the top of a server rack"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the migration type with its behavior.",
+        [
+          "Cold migration",
+          "Live migration",
+          "Storage migration",
+          "Cross-platform migration"
+        ],
+        [
+          "Migrating a powered-off VM",
+          "Migrating a running VM with no downtime",
+          "Moving VM storage between datastores",
+          "Moving VM between different hypervisor types"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the VM file type with its extension.",
+        [
+          "VM configuration file",
+          "Virtual disk file",
+          "Snapshot file",
+          "VM log file"
+        ],
+        [
+          ".vmx or .xml",
+          ".vmdk or .vhdx",
+          ".vmsn or .snap",
+          ".log"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the industry product with its hypervisor type.",
+        [
+          "VMware ESXi",
+          "Oracle VirtualBox",
+          "Microsoft Hyper-V",
+          "Xen"
+        ],
+        [
+          "Type 1 bare-metal hypervisor",
+          "Type 2 hosted hypervisor",
+          "Type 1 bare-metal hypervisor",
+          "Type 1 bare-metal hypervisor"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "03_B": {
+    "tf": [
+      [
+        "Paravirtualization requires modifying the guest operating system.",
+        "True"
+      ],
+      [
+        "Hardware-assisted virtualization uses CPU extensions like Intel VT-x.",
+        "True"
+      ],
+      [
+        "A single physical machine can host only one virtual machine.",
+        "False"
+      ],
+      [
+        "VM snapshots capture the entire state of a virtual machine at a point in time.",
+        "True"
+      ],
+      [
+        "Type 1 hypervisors have a larger attack surface than Type 2.",
+        "False"
+      ],
+      [
+        "Virtualization enables better resource utilization by consolidating workloads.",
+        "True"
+      ],
+      [
+        "Cold migration requires the VM to be powered off before moving.",
+        "True"
+      ],
+      [
+        "Network isolation is automatically guaranteed in all virtualized environments.",
+        "False"
+      ],
+      [
+        "The host OS manages hardware directly in Type 2 hypervisor setups.",
+        "True"
+      ],
+      [
+        "Overcommitment of resources can lead to performance degradation.",
+        "True"
+      ]
+    ],
+    "mcq": [
+      [
+        "Which CPU feature enables hardware-assisted virtualization?",
+        [
+          "SSE",
+          "Intel VT-x / AMD-V",
+          "AVX",
+          "MMX"
+        ],
+        "b) Intel VT-x / AMD-V"
+      ],
+      [
+        "What is the primary disadvantage of Type 2 hypervisors?",
+        [
+          "Difficult to install",
+          "Limited hardware support",
+          "Performance overhead from double scheduling",
+          "Cannot run multiple VMs"
+        ],
+        "c) Performance overhead from double scheduling"
+      ],
+      [
+        "Which virtualization technique requires guest OS modifications?",
+        [
+          "Full virtualization",
+          "Paravirtualization",
+          "Hardware emulation",
+          "Containerization"
+        ],
+        "b) Paravirtualization"
+      ],
+      [
+        "What is VM sprawl?",
+        [
+          "Rapid growth of VMs leading to management challenges",
+          "A type of VM escape attack",
+          "The process of migrating VMs",
+          "A feature for automatic scaling"
+        ],
+        "a) Rapid growth of VMs leading to management challenges"
+      ],
+      [
+        "In a Type 2 hypervisor what happens if the host OS crashes?",
+        [
+          "VMs continue running unaffected",
+          "All VMs running on it crash as well",
+          "VMs failover to another host automatically",
+          "Only the hypervisor crashes"
+        ],
+        "b) All VMs running on it crash as well"
+      ],
+      [
+        "What is the purpose of a virtual disk file (.vmdk)?",
+        [
+          "Stores the VM configuration",
+          "Stores the guest OS and application data",
+          "Manages network connections",
+          "Logs VM operations"
+        ],
+        "b) Stores the guest OS and application data"
+      ],
+      [
+        "Which technology provides process-level isolation without full virtualization?",
+        [
+          "Hypervisors",
+          "Containers",
+          "Hardware emulators",
+          "Virtual appliances"
+        ],
+        "b) Containers"
+      ],
+      [
+        "What does VM consolidation mean?",
+        [
+          "Deleting unused VMs",
+          "Running multiple VMs on fewer physical hosts",
+          "Merging two VMs into one",
+          "Compressing VM disk files"
+        ],
+        "b) Running multiple VMs on fewer physical hosts"
+      ],
+      [
+        "Which is NOT a benefit of virtualization?",
+        [
+          "Hardware independence",
+          "Improved disaster recovery",
+          "Elimination of all security risks",
+          "Legacy system support"
+        ],
+        "c) Elimination of all security risks"
+      ],
+      [
+        "What does a hypervisor use to allocate CPU time to VMs?",
+        [
+          "Time-sharing scheduling",
+          "Dedicated processor per VM",
+          "Sequential execution",
+          "Manual assignment"
+        ],
+        "a) Time-sharing scheduling"
+      ]
+    ],
+    "matching": [
+      [
+        "Match the virtualization layer with its role.",
+        [
+          "Physical hardware",
+          "Hypervisor",
+          "Guest OS",
+          "Application"
+        ],
+        [
+          "CPU memory storage network interfaces",
+          "Abstraction and resource management layer",
+          "Operating system running inside a VM",
+          "Software running on the guest OS"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the resource type with its virtualization approach.",
+        [
+          "CPU virtualization",
+          "Memory virtualization",
+          "Storage virtualization",
+          "Network virtualization"
+        ],
+        [
+          "Time-slicing and hardware-assisted execution",
+          "Shadow page tables and NUMA awareness",
+          "Abstraction of physical storage into pools",
+          "Virtual switches and software-defined networking"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the VM operation with its description.",
+        [
+          "Provisioning",
+          "Snapshotting",
+          "Cloning",
+          "Template creation"
+        ],
+        [
+          "Creating and configuring a new virtual machine",
+          "Capturing a point-in-time state of a VM",
+          "Creating a copy of an existing VM",
+          "Creating a reusable master VM image"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the data center term with its definition.",
+        [
+          "Rack",
+          "Blade server",
+          "SAN",
+          "PDU"
+        ],
+        [
+          "Standard frame for mounting server equipment",
+          "Compact server module fitting in a chassis",
+          "Storage Area Network for block-level storage",
+          "Power Distribution Unit for rack power management"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the migration technique with downtime impact.",
+        [
+          "Cold migration",
+          "Live migration (vMotion)",
+          "Storage vMotion",
+          "Cross-vCenter migration"
+        ],
+        [
+          "Full downtime during migration",
+          "Zero to minimal downtime",
+          "Zero downtime for storage moves",
+          "Minimal downtime across vCenter instances"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the security concern with its layer.",
+        [
+          "VM escape",
+          "Guest OS compromise",
+          "Hypervisor vulnerability",
+          "Management plane breach"
+        ],
+        [
+          "Virtualization layer boundary",
+          "Individual virtual machine",
+          "Hypervisor software itself",
+          "Administrative console or API"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the container term with its Linux kernel mechanism.",
+        [
+          "Process isolation",
+          "Resource limits",
+          "Filesystem isolation",
+          "Network isolation"
+        ],
+        [
+          "PID namespaces",
+          "Cgroups (control groups)",
+          "Mount namespaces",
+          "Network namespaces"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the virtualization type with overhead level.",
+        [
+          "Full virtualization (software)",
+          "Paravirtualization",
+          "Hardware-assisted virtualization",
+          "Containerization"
+        ],
+        [
+          "High overhead (binary translation)",
+          "Moderate overhead (modified guest)",
+          "Low overhead (CPU extensions)",
+          "Minimal overhead (kernel sharing)"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the resource allocation term.",
+        [
+          "Reservation",
+          "Limit",
+          "Share",
+          "Overcommitment"
+        ],
+        [
+          "Guaranteed minimum resource for a VM",
+          "Maximum resource a VM can consume",
+          "Relative priority weight for resources",
+          "Allocating more resources than physically available"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the hypervisor challenge with mitigation.",
+        [
+          "Performance overhead",
+          "Security isolation",
+          "Resource contention",
+          "Management complexity"
+        ],
+        [
+          "Hardware-assisted virtualization extensions",
+          "Strong isolation boundaries and patching",
+          "Resource pools and reserved allocations",
+          "Centralized management platforms"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "04_A": {
+    "tf": [
+      [
+        "Microservices are an architectural approach where applications are divided into small independent services.",
+        "True"
+      ],
+      [
+        "In a monolithic application each feature is deployed independently.",
+        "False"
+      ],
+      [
+        "Microservices communicate with each other through shared databases.",
+        "False"
+      ],
+      [
+        "Message queues enable asynchronous communication between services.",
+        "True"
+      ],
+      [
+        "The Publisher-Subscriber model decouples message senders from receivers.",
+        "True"
+      ],
+      [
+        "A broker is not required in a pub/sub messaging system.",
+        "False"
+      ],
+      [
+        "Event-Driven Architecture relies on producing and consuming events.",
+        "True"
+      ],
+      [
+        "Node.js fits serverless well because of its synchronous I/O model.",
+        "False"
+      ],
+      [
+        "Microservices must all use the same programming language.",
+        "False"
+      ],
+      [
+        "gRPC is an example of synchronous communication between microservices.",
+        "True"
+      ]
+    ],
+    "mcq": [
+      [
+        "What is the main characteristic of a microservice architecture?",
+        [
+          "Single large codebase",
+          "Small independent services each with a specific function",
+          "Shared database across all components",
+          "One deployment unit"
+        ],
+        "b) Small independent services each with a specific function"
+      ],
+      [
+        "Which communication pattern is asynchronous?",
+        [
+          "REST API call",
+          "gRPC call",
+          "Message queue",
+          "HTTP request"
+        ],
+        "c) Message queue"
+      ],
+      [
+        "In the Pub/Sub model what is the role of a broker?",
+        [
+          "Store application data",
+          "Route messages from publishers to subscribers",
+          "Compile application code",
+          "Manage user authentication"
+        ],
+        "b) Route messages from publishers to subscribers"
+      ],
+      [
+        "What is the primary advantage of event-driven architecture?",
+        [
+          "Simpler code",
+          "Loosely coupled and scalable services",
+          "Eliminates need for databases",
+          "Requires only one server"
+        ],
+        "b) Loosely coupled and scalable services"
+      ],
+      [
+        "Which is a disadvantage of microservices?",
+        [
+          "Independent deployment",
+          "Complex networking and monitoring",
+          "Technology flexibility",
+          "Better fault tolerance"
+        ],
+        "b) Complex networking and monitoring"
+      ],
+      [
+        "What is a message queue?",
+        [
+          "A database for storing messages",
+          "Middleware that lets services send and receive messages asynchronously",
+          "A network protocol",
+          "A type of virtual machine"
+        ],
+        "b) Middleware that lets services send and receive messages asynchronously"
+      ],
+      [
+        "Which statement about synchronous communication is true?",
+        [
+          "It decouples services completely",
+          "The caller waits for a response before continuing",
+          "It uses message queues",
+          "It is always more reliable"
+        ],
+        "b) The caller waits for a response before continuing"
+      ],
+      [
+        "What does the Publisher-Subscriber model enable?",
+        [
+          "Direct point-to-point communication",
+          "One-to-many message distribution without sender knowing receivers",
+          "Synchronous request-response",
+          "Shared memory access"
+        ],
+        "b) One-to-many message distribution without sender knowing receivers"
+      ],
+      [
+        "Why does Node.js fit well with serverless computing?",
+        [
+          "It is a compiled language",
+          "Its event-driven non-blocking I/O handles short-lived functions efficiently",
+          "It requires heavy runtime environments",
+          "It supports only synchronous operations"
+        ],
+        "b) Its event-driven non-blocking I/O handles short-lived functions efficiently"
+      ],
+      [
+        "What is the key difference between monoliths and microservices?",
+        [
+          "Monoliths are faster",
+          "Microservices can be deployed scaled and developed independently",
+          "Monoliths use more resources",
+          "Microservices always use Docker"
+        ],
+        "b) Microservices can be deployed scaled and developed independently"
+      ]
+    ],
+    "matching": [
+      [
+        "Match the microservice characteristic with its benefit.",
+        [
+          "Independent deployment",
+          "Technology diversity",
+          "Fault isolation",
+          "Independent scaling"
+        ],
+        [
+          "Deploy one service without affecting others",
+          "Choose best language for each service job",
+          "A crash in one service does not bring down others",
+          "Scale only the services that need it"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the communication pattern with its description.",
+        [
+          "REST API",
+          "Message queue",
+          "gRPC",
+          "Pub/Sub"
+        ],
+        [
+          "Synchronous HTTP-based API calls",
+          "Asynchronous buffered message passing",
+          "High-performance RPC framework",
+          "Topic-based publish/subscribe messaging"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the Pub/Sub role with its function.",
+        [
+          "Publisher",
+          "Subscriber",
+          "Broker",
+          "Topic"
+        ],
+        [
+          "Sends messages to a topic",
+          "Receives messages from subscribed topics",
+          "Routes messages from publishers to subscribers",
+          "Named channel categorizing messages"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the EDA component with its purpose.",
+        [
+          "Event",
+          "Event producer",
+          "Event consumer",
+          "Event channel"
+        ],
+        [
+          "A significant change in state",
+          "Generates and emits events",
+          "Processes events when they occur",
+          "Transports events from producer to consumer"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the cloud option with microservice suitability.",
+        [
+          "Containers (Docker)",
+          "Kubernetes",
+          "Serverless functions",
+          "Virtual machines"
+        ],
+        [
+          "Packages each service with its dependencies",
+          "Orchestrates scaling and networking of services",
+          "Ideal for small event-driven services",
+          "Provides full OS isolation for each service"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the message queue feature with its benefit.",
+        [
+          "Buffering",
+          "Decoupling",
+          "Load leveling",
+          "Guaranteed delivery"
+        ],
+        [
+          "Absorbs traffic spikes between producer and consumer",
+          "Removes direct dependency between services",
+          "Smooths variable processing rates",
+          "Ensures messages are not lost"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the design pattern with its role.",
+        [
+          "Saga pattern",
+          "Circuit breaker",
+          "Event sourcing",
+          "CQRS"
+        ],
+        [
+          "Managing distributed transactions across services",
+          "Prevents cascading failures in service calls",
+          "Stores state changes as a sequence of events",
+          "Separates read and write operations"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the challenge with its solution.",
+        [
+          "Service discovery",
+          "Distributed tracing",
+          "Data consistency",
+          "API gateway"
+        ],
+        [
+          "Service registry for locating service instances",
+          "Request tracking across multiple services",
+          "Eventual consistency and saga patterns",
+          "Single entry point for all microservice requests"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the communication tool with its use.",
+        [
+          "Apache Kafka",
+          "RabbitMQ",
+          "NATS",
+          "Redis Pub/Sub"
+        ],
+        [
+          "Distributed event streaming platform",
+          "Message broker with advanced routing",
+          "High-performance lightweight messaging",
+          "In-memory publish/subscribe messaging"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the microservice deployment concern with its tool.",
+        [
+          "Service registry",
+          "Configuration management",
+          "API documentation",
+          "Health monitoring"
+        ],
+        [
+          "Consul or Eureka",
+          "Consul KV or Kubernetes ConfigMaps",
+          "Swagger/OpenAPI",
+          "Prometheus and Grafana"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "04_B": {
+    "tf": [
+      [
+        "In event-driven architecture services communicate by producing and consuming events.",
+        "True"
+      ],
+      [
+        "A message queue stores messages permanently until manually deleted.",
+        "False"
+      ],
+      [
+        "Pub/Sub requires publishers to know exactly which subscribers exist.",
+        "False"
+      ],
+      [
+        "The broker in Pub/Sub routes messages to the correct subscribers.",
+        "True"
+      ],
+      [
+        "Microservices always have lower operational complexity than monoliths.",
+        "False"
+      ],
+      [
+        "Asynchronous communication eliminates temporal coupling between services.",
+        "True"
+      ],
+      [
+        "In a monolithic architecture all features are intertwined in a single deployable unit.",
+        "True"
+      ],
+      [
+        "Node.js is poorly suited for serverless because it is single-threaded.",
+        "False"
+      ],
+      [
+        "An event in EDA represents a significant change in state.",
+        "True"
+      ],
+      [
+        "Containerization is the only way to deploy microservices.",
+        "False"
+      ]
+    ],
+    "mcq": [
+      [
+        "What is a key disadvantage of synchronous communication?",
+        [
+          "It is always slower than async",
+          "It creates temporal coupling and can cause cascading failures",
+          "It requires message brokers",
+          "It cannot use HTTP"
+        ],
+        "b) It creates temporal coupling and can cause cascading failures"
+      ],
+      [
+        "In Pub/Sub what is a topic?",
+        [
+          "A database table",
+          "A named category for published messages",
+          "A network protocol",
+          "A type of server"
+        ],
+        "b) A named category for published messages"
+      ],
+      [
+        "Which best describes Event-Driven Architecture?",
+        [
+          "A programming paradigm based on loops",
+          "An architecture where components react to events as they occur",
+          "A database design pattern",
+          "A network topology"
+        ],
+        "b) An architecture where components react to events as they occur"
+      ],
+      [
+        "What is the role of the broker in a message queue?",
+        [
+          "Store and forward messages between producer and consumer",
+          "Execute application code",
+          "Manage user authentication",
+          "Provide DNS resolution"
+        ],
+        "a) Store and forward messages between producer and consumer"
+      ],
+      [
+        "Which scenario is NOT suitable for serverless computing?",
+        [
+          "Short-lived event-driven functions",
+          "Long-running stateful processes",
+          "Image processing on demand",
+          "Webhook handlers"
+        ],
+        "b) Long-running stateful processes"
+      ],
+      [
+        "What does Conway Law suggest about microservice architecture?",
+        [
+          "Services should be organized around business capabilities",
+          "All services must use the same database",
+          "Monoliths are always better",
+          "Teams should be centralized"
+        ],
+        "a) Services should be organized around business capabilities"
+      ],
+      [
+        "What is the purpose of an API gateway?",
+        [
+          "Encrypt all service communications",
+          "Single entry point that routes requests to appropriate services",
+          "Replace the need for service discovery",
+          "Store all microservice data"
+        ],
+        "b) Single entry point that routes requests to appropriate services"
+      ],
+      [
+        "Which pattern helps manage distributed transactions?",
+        [
+          "Singleton pattern",
+          "Saga pattern",
+          "Factory pattern",
+          "Observer pattern"
+        ],
+        "b) Saga pattern"
+      ],
+      [
+        "What is distributed tracing used for?",
+        [
+          "Finding physical location of servers",
+          "Tracking a requests path across multiple services",
+          "Monitoring CPU usage",
+          "Managing IP addresses"
+        ],
+        "b) Tracking a requests path across multiple services"
+      ],
+      [
+        "Which is a message queue system?",
+        [
+          "MySQL",
+          "Redis",
+          "RabbitMQ",
+          "Nginx"
+        ],
+        "c) RabbitMQ"
+      ]
+    ],
+    "matching": [
+      [
+        "Match the communication style with its example.",
+        [
+          "Synchronous",
+          "Asynchronous",
+          "Event-driven",
+          "Request-reply"
+        ],
+        [
+          "HTTP REST API call waiting for response",
+          "Publishing a message and continuing",
+          "Reacting to state changes in the system",
+          "gRPC call with response expected"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the communication tool with its protocol.",
+        [
+          "REST",
+          "gRPC",
+          "RabbitMQ",
+          "Kafka"
+        ],
+        [
+          "HTTP/HTTPS",
+          "HTTP/2 with Protobuf",
+          "AMQP (Advanced Message Queuing Protocol)",
+          "Custom binary protocol over TCP"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the EDA term with its analogy.",
+        [
+          "Event",
+          "Producer",
+          "Consumer",
+          "Channel"
+        ],
+        [
+          "A newspaper published",
+          "The news agency writing the story",
+          "A person reading the newspaper",
+          "The newspaper delivery system"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the Node.js feature with serverless benefit.",
+        [
+          "Event loop",
+          "Non-blocking I/O",
+          "Single-threaded model",
+          "NPM ecosystem"
+        ],
+        [
+          "Efficiently handles multiple concurrent requests",
+          "No thread blocking during I/O operations",
+          "Lightweight execution per function invocation",
+          "Rich library support for cloud integrations"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the integration pattern with resilience.",
+        [
+          "Circuit breaker",
+          "Retry with backoff",
+          "Dead letter queue",
+          "Bulkhead"
+        ],
+        [
+          "Prevents repeated calls to failing services",
+          "Automatically retries with exponential delay",
+          "Stores messages that cannot be processed",
+          "Isolates failures to prevent system-wide impact"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the queue model with delivery behavior.",
+        [
+          "Point-to-point queue",
+          "Pub/Sub topic",
+          "Priority queue",
+          "Delayed queue"
+        ],
+        [
+          "One consumer processes each message",
+          "All subscribers receive each message",
+          "Messages processed by priority level",
+          "Messages available after a delay"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the architectural style with structure.",
+        [
+          "Monolith",
+          "Microservices",
+          "Service-oriented",
+          "Event-driven"
+        ],
+        [
+          "Single codebase deployed as one unit",
+          "Collection of small independent services",
+          "Modular services with enterprise service bus",
+          "Reactive components triggered by events"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the scaling strategy with relevance.",
+        [
+          "Horizontal scaling",
+          "Vertical scaling",
+          "Auto-scaling",
+          "Blue-green deployment"
+        ],
+        [
+          "Adding more instances of a service",
+          "Increasing resources to an existing instance",
+          "Automatic adjustment based on metrics",
+          "Zero-downtime deployment with two environments"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the microservice challenge with context.",
+        [
+          "Network latency",
+          "Data duplication",
+          "Log aggregation",
+          "Versioning"
+        ],
+        [
+          "Overhead from inter-service network calls",
+          "Each service may own duplicate data",
+          "Centralized logging from multiple services",
+          "Managing multiple API versions simultaneously"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the scaling scenario with the approach.",
+        [
+          "Flash sale on e-commerce site",
+          "Scheduled batch processing",
+          "Real-time analytics",
+          "Legacy app modernization"
+        ],
+        [
+          "Horizontal auto-scaling of web tier",
+          "Vertical scaling of compute nodes",
+          "Stream processing with Kafka and Spark",
+          "Container-based microservice decomposition"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "05_A": {
+    "tf": [
+      [
+        "Containers share the host operating system kernel for resource efficiency.",
+        "True"
+      ],
+      [
+        "Docker uses a hypervisor to run containers.",
+        "False"
+      ],
+      [
+        "Namespaces in Linux provide resource isolation for containers.",
+        "True"
+      ],
+      [
+        "Cgroups control groups limit and monitor resource usage.",
+        "True"
+      ],
+      [
+        "The Docker Daemon (dockerd) is the client interface for Docker commands.",
+        "False"
+      ],
+      [
+        "Kubernetes uses a master-worker architecture.",
+        "True"
+      ],
+      [
+        "The kube-scheduler assigns pods to worker nodes based on resource requirements.",
+        "True"
+      ],
+      [
+        "etcd is Kubernetes backing store for all cluster data.",
+        "True"
+      ],
+      [
+        "Docker images are built in layers each representing a change.",
+        "True"
+      ],
+      [
+        "Kube-proxy runs on the control plane node only.",
+        "False"
+      ]
+    ],
+    "mcq": [
+      [
+        "Which Linux feature provides process isolation for containers?",
+        [
+          "Cgroups",
+          "Namespaces",
+          "Systemd",
+          "System calls"
+        ],
+        "b) Namespaces"
+      ],
+      [
+        "What is the role of the Docker Daemon?",
+        [
+          "CLI interface",
+          "Background service managing Docker objects",
+          "Container registry",
+          "Image build tool"
+        ],
+        "b) Background service managing Docker objects"
+      ],
+      [
+        "Which Kubernetes component stores cluster state?",
+        [
+          "kube-apiserver",
+          "kube-scheduler",
+          "etcd",
+          "kubelet"
+        ],
+        "c) etcd"
+      ],
+      [
+        "What does a container runtime do?",
+        [
+          "Manages Docker images",
+          "Runs containers using Linux kernel features",
+          "Provides network routing",
+          "Stores container logs"
+        ],
+        "b) Runs containers using Linux kernel features"
+      ],
+      [
+        "Which namespace type isolates network interfaces?",
+        [
+          "PID namespace",
+          "NET namespace",
+          "MNT namespace",
+          "UTS namespace"
+        ],
+        "b) NET namespace"
+      ],
+      [
+        "What is the purpose of a Dockerfile?",
+        [
+          "Configure Docker Daemon",
+          "Define the steps to build a Docker image",
+          "Manage Docker networks",
+          "Start Docker containers"
+        ],
+        "b) Define the steps to build a Docker image"
+      ],
+      [
+        "Which component maintains pod replicas?",
+        [
+          "kube-apiserver",
+          "kube-controller-manager",
+          "kube-scheduler",
+          "kube-proxy"
+        ],
+        "b) kube-controller-manager"
+      ],
+      [
+        "What is the function of kubelet?",
+        [
+          "Schedule pods on nodes",
+          "Agent on each worker node ensuring containers are running",
+          "Store cluster configuration",
+          "Route network traffic"
+        ],
+        "b) Agent on each worker node ensuring containers are running"
+      ],
+      [
+        "What does UnionFS enable in Docker?",
+        [
+          "Union of multiple filesystems into one",
+          "Network isolation",
+          "Process isolation",
+          "Resource limiting"
+        ],
+        "a) Union of multiple filesystems into one"
+      ],
+      [
+        "A Kubernetes Pod is:",
+        [
+          "A single container",
+          "The smallest deployable unit with one or more containers",
+          "A cluster of machines",
+          "A type of service"
+        ],
+        "b) The smallest deployable unit with one or more containers"
+      ]
+    ],
+    "matching": [
+      [
+        "Match the Kubernetes component with function.",
+        [
+          "kube-apiserver",
+          "kube-scheduler",
+          "kube-controller-manager",
+          "etcd"
+        ],
+        [
+          "Front-end for the Kubernetes API",
+          "Selects best node for new pods",
+          "Runs background control loops for cluster state",
+          "Distributed key-value store for cluster data"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the Linux namespace with what it isolates.",
+        [
+          "PID namespace",
+          "NET namespace",
+          "MNT namespace",
+          "USER namespace"
+        ],
+        [
+          "Process ID tree isolation",
+          "Network interfaces and routing",
+          "Filesystem mount points",
+          "User and group ID mapping"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the Docker component with its role.",
+        [
+          "Docker client (CLI)",
+          "Docker Daemon (dockerd)",
+          "Docker registry",
+          "containerd"
+        ],
+        [
+          "Sends commands to the Docker Daemon",
+          "Background service managing containers and images",
+          "Stores and distributes container images",
+          "Industry-standard container runtime"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the Cgroup controller with resource limits.",
+        [
+          "cpu cgroup",
+          "memory cgroup",
+          "blkio cgroup",
+          "pids cgroup"
+        ],
+        [
+          "CPU cycles and core usage",
+          "Memory consumption limits",
+          "Disk I/O bandwidth",
+          "Number of processes a container can create"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the Kubernetes object with its purpose.",
+        [
+          "Pod",
+          "Service",
+          "Deployment",
+          "ConfigMap"
+        ],
+        [
+          "Smallest deployable unit with containers",
+          "Stable network endpoint for pods",
+          "Declarative updates for pods and ReplicaSets",
+          "Stores configuration data separately from pods"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the Docker layer concept.",
+        [
+          "Base image",
+          "Intermediate layer",
+          "Container layer",
+          "Cache layer"
+        ],
+        [
+          "Starting point for Docker images",
+          "Read-only layer from each Dockerfile instruction",
+          "Writable layer added when container runs",
+          "Reused layer to speed up builds"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match orchestration concept with Kubernetes.",
+        [
+          "Desired state",
+          "Self-healing",
+          "Scaling",
+          "Rolling update"
+        ],
+        [
+          "Declared in Deployment spec",
+          "Replaces failed pods automatically",
+          "Changes replica count based on load",
+          "Gradually updates pod versions without downtime"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Docker network driver with isolation.",
+        [
+          "bridge",
+          "host",
+          "overlay",
+          "none"
+        ],
+        [
+          "Default isolated network for containers on one host",
+          "Container uses hosts network stack directly",
+          "Multi-host container networking across nodes",
+          "Container has no network access"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the Dockerfile instruction with purpose.",
+        [
+          "FROM",
+          "RUN",
+          "CMD",
+          "EXPOSE"
+        ],
+        [
+          "Sets the base image for the build",
+          "Executes a command during build",
+          "Defines default command when container starts",
+          "Informs Docker of containers listening port"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the observability concept with Kubernetes tool.",
+        [
+          "Metrics collection",
+          "Logging",
+          "Distributed tracing",
+          "Health probes"
+        ],
+        [
+          "Prometheus and Metrics Server",
+          "Fluentd and Elasticsearch",
+          "Jaeger or Zipkin",
+          "Liveness and readiness probes"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "05_B": {
+    "tf": [
+      [
+        "Containers share the host operating system kernel for resource efficiency.",
+        "True"
+      ],
+      [
+        "Docker uses a hypervisor to run containers.",
+        "False"
+      ],
+      [
+        "Namespaces in Linux provide resource isolation for containers.",
+        "True"
+      ],
+      [
+        "Cgroups control groups limit and monitor resource usage.",
+        "True"
+      ],
+      [
+        "The Docker Daemon (dockerd) is the client interface for Docker commands.",
+        "False"
+      ],
+      [
+        "Kubernetes uses a master-worker architecture.",
+        "True"
+      ],
+      [
+        "The kube-scheduler assigns pods to worker nodes based on resource requirements.",
+        "True"
+      ],
+      [
+        "etcd is Kubernetes backing store for all cluster data.",
+        "True"
+      ],
+      [
+        "Docker images are built in layers each representing a change.",
+        "True"
+      ],
+      [
+        "Kube-proxy runs on the control plane node only.",
+        "False"
+      ]
+    ],
+    "mcq": [
+      [
+        "Which Linux feature provides process isolation for containers?",
+        [
+          "Cgroups",
+          "Namespaces",
+          "Systemd",
+          "System calls"
+        ],
+        "b) Namespaces"
+      ],
+      [
+        "What is the role of the Docker Daemon?",
+        [
+          "CLI interface",
+          "Background service managing Docker objects",
+          "Container registry",
+          "Image build tool"
+        ],
+        "b) Background service managing Docker objects"
+      ],
+      [
+        "Which Kubernetes component stores cluster state?",
+        [
+          "kube-apiserver",
+          "kube-scheduler",
+          "etcd",
+          "kubelet"
+        ],
+        "c) etcd"
+      ],
+      [
+        "What does a container runtime do?",
+        [
+          "Manages Docker images",
+          "Runs containers using Linux kernel features",
+          "Provides network routing",
+          "Stores container logs"
+        ],
+        "b) Runs containers using Linux kernel features"
+      ],
+      [
+        "Which namespace type isolates network interfaces?",
+        [
+          "PID namespace",
+          "NET namespace",
+          "MNT namespace",
+          "UTS namespace"
+        ],
+        "b) NET namespace"
+      ],
+      [
+        "What is the purpose of a Dockerfile?",
+        [
+          "Configure Docker Daemon",
+          "Define the steps to build a Docker image",
+          "Manage Docker networks",
+          "Start Docker containers"
+        ],
+        "b) Define the steps to build a Docker image"
+      ],
+      [
+        "Which component maintains pod replicas?",
+        [
+          "kube-apiserver",
+          "kube-controller-manager",
+          "kube-scheduler",
+          "kube-proxy"
+        ],
+        "b) kube-controller-manager"
+      ],
+      [
+        "What is the function of kubelet?",
+        [
+          "Schedule pods on nodes",
+          "Agent on each worker node ensuring containers are running",
+          "Store cluster configuration",
+          "Route network traffic"
+        ],
+        "b) Agent on each worker node ensuring containers are running"
+      ],
+      [
+        "What does UnionFS enable in Docker?",
+        [
+          "Union of multiple filesystems into one",
+          "Network isolation",
+          "Process isolation",
+          "Resource limiting"
+        ],
+        "a) Union of multiple filesystems into one"
+      ],
+      [
+        "A Kubernetes Pod is:",
+        [
+          "A single container",
+          "The smallest deployable unit with one or more containers",
+          "A cluster of machines",
+          "A type of service"
+        ],
+        "b) The smallest deployable unit with one or more containers"
+      ]
+    ],
+    "matching": [
+      [
+        "Match the Kubernetes component with function.",
+        [
+          "kube-apiserver",
+          "kube-scheduler",
+          "kube-controller-manager",
+          "etcd"
+        ],
+        [
+          "Front-end for the Kubernetes API",
+          "Selects best node for new pods",
+          "Runs background control loops for cluster state",
+          "Distributed key-value store for cluster data"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the Linux namespace with what it isolates.",
+        [
+          "PID namespace",
+          "NET namespace",
+          "MNT namespace",
+          "USER namespace"
+        ],
+        [
+          "Process ID tree isolation",
+          "Network interfaces and routing",
+          "Filesystem mount points",
+          "User and group ID mapping"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the Docker component with its role.",
+        [
+          "Docker client (CLI)",
+          "Docker Daemon (dockerd)",
+          "Docker registry",
+          "containerd"
+        ],
+        [
+          "Sends commands to the Docker Daemon",
+          "Background service managing containers and images",
+          "Stores and distributes container images",
+          "Industry-standard container runtime"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the Cgroup controller with resource limits.",
+        [
+          "cpu cgroup",
+          "memory cgroup",
+          "blkio cgroup",
+          "pids cgroup"
+        ],
+        [
+          "CPU cycles and core usage",
+          "Memory consumption limits",
+          "Disk I/O bandwidth",
+          "Number of processes a container can create"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the Kubernetes object with its purpose.",
+        [
+          "Pod",
+          "Service",
+          "Deployment",
+          "ConfigMap"
+        ],
+        [
+          "Smallest deployable unit with containers",
+          "Stable network endpoint for pods",
+          "Declarative updates for pods and ReplicaSets",
+          "Stores configuration data separately from pods"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the Docker layer concept.",
+        [
+          "Base image",
+          "Intermediate layer",
+          "Container layer",
+          "Cache layer"
+        ],
+        [
+          "Starting point for Docker images",
+          "Read-only layer from each Dockerfile instruction",
+          "Writable layer added when container runs",
+          "Reused layer to speed up builds"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match orchestration concept with Kubernetes.",
+        [
+          "Desired state",
+          "Self-healing",
+          "Scaling",
+          "Rolling update"
+        ],
+        [
+          "Declared in Deployment spec",
+          "Replaces failed pods automatically",
+          "Changes replica count based on load",
+          "Gradually updates pod versions without downtime"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Docker network driver with isolation.",
+        [
+          "bridge",
+          "host",
+          "overlay",
+          "none"
+        ],
+        [
+          "Default isolated network for containers on one host",
+          "Container uses hosts network stack directly",
+          "Multi-host container networking across nodes",
+          "Container has no network access"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the Dockerfile instruction with purpose.",
+        [
+          "FROM",
+          "RUN",
+          "CMD",
+          "EXPOSE"
+        ],
+        [
+          "Sets the base image for the build",
+          "Executes a command during build",
+          "Defines default command when container starts",
+          "Informs Docker of containers listening port"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match the observability concept with Kubernetes tool.",
+        [
+          "Metrics collection",
+          "Logging",
+          "Distributed tracing",
+          "Health probes"
+        ],
+        [
+          "Prometheus and Metrics Server",
+          "Fluentd and Elasticsearch",
+          "Jaeger or Zipkin",
+          "Liveness and readiness probes"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "06_A": {
+    "tf": [
+      [
+        "Block storage exposes raw sectors of fixed size to the host operating system.",
+        "True"
+      ],
+      [
+        "File access model allows clients to access files and directories over the network.",
+        "True"
+      ],
+      [
+        "DAS (Direct Attached Storage) can be shared across multiple physical servers.",
+        "False"
+      ],
+      [
+        "NAS provides file-level storage access over a standard TCP/IP network.",
+        "True"
+      ],
+      [
+        "SAN provides block-level storage access over a dedicated high-speed network.",
+        "True"
+      ],
+      [
+        "RAID 0 provides data redundancy through mirroring.",
+        "False"
+      ],
+      [
+        "Storage virtualization aggregates physical storage into a single pool.",
+        "True"
+      ],
+      [
+        "Datastores are logical containers that hold virtual machine files.",
+        "True"
+      ],
+      [
+        "NAS uses low-level SCSI commands for communication.",
+        "False"
+      ],
+      [
+        "Storage thin provisioning allocates physical storage only when data is written.",
+        "True"
+      ]
+    ],
+    "mcq": [
+      [
+        "Which storage architecture connects directly to a single host server?",
+        [
+          "NAS",
+          "SAN",
+          "DAS",
+          "Object storage"
+        ],
+        "c) DAS"
+      ],
+      [
+        "What protocol does NAS typically use?",
+        [
+          "SCSI",
+          "NFS or SMB",
+          "NVMe",
+          "Fibre Channel"
+        ],
+        "b) NFS or SMB"
+      ],
+      [
+        "Which storage uses Fibre Channel as a dedicated network?",
+        [
+          "DAS",
+          "NAS",
+          "SAN",
+          "Object storage"
+        ],
+        "c) SAN"
+      ],
+      [
+        "What is a key advantage of NAS over DAS?",
+        [
+          "Lower latency",
+          "Multi-host file sharing over network",
+          "Block-level access",
+          "Direct hardware access"
+        ],
+        "b) Multi-host file sharing over network"
+      ],
+      [
+        "What does RAID stand for?",
+        [
+          "Redundant Array of Independent Disks",
+          "Random Access Integrated Drive",
+          "Rapid Automated I/O Device",
+          "Remote Attached Internet Drive"
+        ],
+        "a) Redundant Array of Independent Disks"
+      ],
+      [
+        "Which RAID level provides mirroring?",
+        [
+          "RAID 0",
+          "RAID 1",
+          "RAID 5",
+          "RAID 10"
+        ],
+        "b) RAID 1"
+      ],
+      [
+        "What is storage virtualization?",
+        [
+          "Encrypting all stored data",
+          "Abstracting physical storage into a unified logical pool",
+          "Compressing data",
+          "Replicating data across data centers"
+        ],
+        "b) Abstracting physical storage into a unified logical pool"
+      ],
+      [
+        "What is a datastore in virtualization?",
+        [
+          "A physical storage device",
+          "A logical container for VM files and templates",
+          "A network protocol",
+          "A type of hypervisor"
+        ],
+        "b) A logical container for VM files and templates"
+      ],
+      [
+        "Which enables high availability through shared storage?",
+        [
+          "DAS only",
+          "NAS and SAN",
+          "Local SSDs",
+          "USB drives"
+        ],
+        "b) NAS and SAN"
+      ],
+      [
+        "What is the main disadvantage of DAS?",
+        [
+          "High cost",
+          "No multi-host sharing leading to poor utilization",
+          "Low performance",
+          "Complex setup"
+        ],
+        "b) No multi-host sharing leading to poor utilization"
+      ]
+    ],
+    "matching": [
+      [
+        "Match storage architecture with connection method.",
+        [
+          "DAS",
+          "NAS",
+          "SAN",
+          "Object storage"
+        ],
+        [
+          "Direct cable (SATA SAS NVMe)",
+          "Standard LAN/Ethernet network",
+          "Dedicated Fibre Channel or iSCSI network",
+          "HTTP/HTTPS REST API over internet"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match RAID level with characteristic.",
+        [
+          "RAID 0",
+          "RAID 1",
+          "RAID 5",
+          "RAID 10"
+        ],
+        [
+          "Striping without redundancy",
+          "Mirroring for fault tolerance",
+          "Striping with parity",
+          "Mirroring and striping combined"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match access model with data unit.",
+        [
+          "Block access",
+          "File access",
+          "Object access",
+          "Stream access"
+        ],
+        [
+          "Raw sectors (512 bytes / 4KB blocks)",
+          "Files and directories",
+          "Objects with metadata in flat namespace",
+          "Continuous data flow"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match storage term with definition.",
+        [
+          "LUN",
+          "Volume",
+          "Datastore",
+          "Snapshot"
+        ],
+        [
+          "Logical Unit Number in SAN storage",
+          "Logical storage unit with filesystem",
+          "Container for VM files in virtualization",
+          "Point-in-time copy of data"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match storage virtualization benefit.",
+        [
+          "Storage pooling",
+          "Thin provisioning",
+          "Storage migration",
+          "Automated tiering"
+        ],
+        [
+          "Eliminates isolated storage silos",
+          "Improves storage utilization efficiency",
+          "Non-disruptive data movement",
+          "Optimizes cost by moving data between tiers"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match storage protocol with use.",
+        [
+          "NFS",
+          "iSCSI",
+          "Fibre Channel",
+          "SMB"
+        ],
+        [
+          "File sharing in Linux/Unix environments",
+          "Block access over standard TCP/IP",
+          "High-performance block access over dedicated network",
+          "File sharing in Windows environments"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match performance metric with IO focus.",
+        [
+          "IOPS",
+          "Throughput",
+          "Latency",
+          "Bandwidth"
+        ],
+        [
+          "Input/output operations per second",
+          "Data transfer rate per unit time",
+          "Delay in data access",
+          "Maximum data transfer capacity"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match storage scenario with best architecture.",
+        [
+          "Virtual machine system disks",
+          "Shared file storage",
+          "High-performance database storage",
+          "Backup and archival"
+        ],
+        [
+          "SAN or block storage",
+          "NAS with NFS/SMB",
+          "SAN with Fibre Channel",
+          "Object storage or tape"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match storage HA feature.",
+        [
+          "Multipathing",
+          "Replication",
+          "Failover",
+          "Load balancing"
+        ],
+        [
+          "Redundant I/O paths to storage",
+          "Synchronous or async data copy to remote site",
+          "Automatic switch to standby component",
+          "Distributing I/O across multiple paths"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match storage challenge with solution.",
+        [
+          "Storage silos",
+          "Poor utilization",
+          "Complex management",
+          "Downtime during maintenance"
+        ],
+        [
+          "Pool physical storage into shared datastores",
+          "Thin provisioning and overcommitment",
+          "Centralized management console",
+          "Live storage migration (vMotion)"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "06_B": {
+    "tf": [
+      [
+        "Block storage exposes raw sectors of fixed size to the host operating system.",
+        "True"
+      ],
+      [
+        "File access model allows clients to access files and directories over the network.",
+        "True"
+      ],
+      [
+        "DAS (Direct Attached Storage) can be shared across multiple physical servers.",
+        "False"
+      ],
+      [
+        "NAS provides file-level storage access over a standard TCP/IP network.",
+        "True"
+      ],
+      [
+        "SAN provides block-level storage access over a dedicated high-speed network.",
+        "True"
+      ],
+      [
+        "RAID 0 provides data redundancy through mirroring.",
+        "False"
+      ],
+      [
+        "Storage virtualization aggregates physical storage into a single pool.",
+        "True"
+      ],
+      [
+        "Datastores are logical containers that hold virtual machine files.",
+        "True"
+      ],
+      [
+        "NAS uses low-level SCSI commands for communication.",
+        "False"
+      ],
+      [
+        "Storage thin provisioning allocates physical storage only when data is written.",
+        "True"
+      ]
+    ],
+    "mcq": [
+      [
+        "Which storage architecture connects directly to a single host server?",
+        [
+          "NAS",
+          "SAN",
+          "DAS",
+          "Object storage"
+        ],
+        "c) DAS"
+      ],
+      [
+        "What protocol does NAS typically use?",
+        [
+          "SCSI",
+          "NFS or SMB",
+          "NVMe",
+          "Fibre Channel"
+        ],
+        "b) NFS or SMB"
+      ],
+      [
+        "Which storage uses Fibre Channel as a dedicated network?",
+        [
+          "DAS",
+          "NAS",
+          "SAN",
+          "Object storage"
+        ],
+        "c) SAN"
+      ],
+      [
+        "What is a key advantage of NAS over DAS?",
+        [
+          "Lower latency",
+          "Multi-host file sharing over network",
+          "Block-level access",
+          "Direct hardware access"
+        ],
+        "b) Multi-host file sharing over network"
+      ],
+      [
+        "What does RAID stand for?",
+        [
+          "Redundant Array of Independent Disks",
+          "Random Access Integrated Drive",
+          "Rapid Automated I/O Device",
+          "Remote Attached Internet Drive"
+        ],
+        "a) Redundant Array of Independent Disks"
+      ],
+      [
+        "Which RAID level provides mirroring?",
+        [
+          "RAID 0",
+          "RAID 1",
+          "RAID 5",
+          "RAID 10"
+        ],
+        "b) RAID 1"
+      ],
+      [
+        "What is storage virtualization?",
+        [
+          "Encrypting all stored data",
+          "Abstracting physical storage into a unified logical pool",
+          "Compressing data",
+          "Replicating data across data centers"
+        ],
+        "b) Abstracting physical storage into a unified logical pool"
+      ],
+      [
+        "What is a datastore in virtualization?",
+        [
+          "A physical storage device",
+          "A logical container for VM files and templates",
+          "A network protocol",
+          "A type of hypervisor"
+        ],
+        "b) A logical container for VM files and templates"
+      ],
+      [
+        "Which enables high availability through shared storage?",
+        [
+          "DAS only",
+          "NAS and SAN",
+          "Local SSDs",
+          "USB drives"
+        ],
+        "b) NAS and SAN"
+      ],
+      [
+        "What is the main disadvantage of DAS?",
+        [
+          "High cost",
+          "No multi-host sharing leading to poor utilization",
+          "Low performance",
+          "Complex setup"
+        ],
+        "b) No multi-host sharing leading to poor utilization"
+      ]
+    ],
+    "matching": [
+      [
+        "Match storage architecture with connection method.",
+        [
+          "DAS",
+          "NAS",
+          "SAN",
+          "Object storage"
+        ],
+        [
+          "Direct cable (SATA SAS NVMe)",
+          "Standard LAN/Ethernet network",
+          "Dedicated Fibre Channel or iSCSI network",
+          "HTTP/HTTPS REST API over internet"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match RAID level with characteristic.",
+        [
+          "RAID 0",
+          "RAID 1",
+          "RAID 5",
+          "RAID 10"
+        ],
+        [
+          "Striping without redundancy",
+          "Mirroring for fault tolerance",
+          "Striping with parity",
+          "Mirroring and striping combined"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match access model with data unit.",
+        [
+          "Block access",
+          "File access",
+          "Object access",
+          "Stream access"
+        ],
+        [
+          "Raw sectors (512 bytes / 4KB blocks)",
+          "Files and directories",
+          "Objects with metadata in flat namespace",
+          "Continuous data flow"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match storage term with definition.",
+        [
+          "LUN",
+          "Volume",
+          "Datastore",
+          "Snapshot"
+        ],
+        [
+          "Logical Unit Number in SAN storage",
+          "Logical storage unit with filesystem",
+          "Container for VM files in virtualization",
+          "Point-in-time copy of data"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match storage virtualization benefit.",
+        [
+          "Storage pooling",
+          "Thin provisioning",
+          "Storage migration",
+          "Automated tiering"
+        ],
+        [
+          "Eliminates isolated storage silos",
+          "Improves storage utilization efficiency",
+          "Non-disruptive data movement",
+          "Optimizes cost by moving data between tiers"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match storage protocol with use.",
+        [
+          "NFS",
+          "iSCSI",
+          "Fibre Channel",
+          "SMB"
+        ],
+        [
+          "File sharing in Linux/Unix environments",
+          "Block access over standard TCP/IP",
+          "High-performance block access over dedicated network",
+          "File sharing in Windows environments"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match performance metric with IO focus.",
+        [
+          "IOPS",
+          "Throughput",
+          "Latency",
+          "Bandwidth"
+        ],
+        [
+          "Input/output operations per second",
+          "Data transfer rate per unit time",
+          "Delay in data access",
+          "Maximum data transfer capacity"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match storage scenario with best architecture.",
+        [
+          "Virtual machine system disks",
+          "Shared file storage",
+          "High-performance database storage",
+          "Backup and archival"
+        ],
+        [
+          "SAN or block storage",
+          "NAS with NFS/SMB",
+          "SAN with Fibre Channel",
+          "Object storage or tape"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match storage HA feature.",
+        [
+          "Multipathing",
+          "Replication",
+          "Failover",
+          "Load balancing"
+        ],
+        [
+          "Redundant I/O paths to storage",
+          "Synchronous or async data copy to remote site",
+          "Automatic switch to standby component",
+          "Distributing I/O across multiple paths"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match storage challenge with solution.",
+        [
+          "Storage silos",
+          "Poor utilization",
+          "Complex management",
+          "Downtime during maintenance"
+        ],
+        [
+          "Pool physical storage into shared datastores",
+          "Thin provisioning and overcommitment",
+          "Centralized management console",
+          "Live storage migration (vMotion)"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "07_A": {
+    "tf": [
+      [
+        "Object storage uses a flat namespace with independent objects.",
+        "True"
+      ],
+      [
+        "Block storage supports partial updates without rewriting the entire file.",
+        "True"
+      ],
+      [
+        "Object storage is best suited for low-latency database workloads.",
+        "False"
+      ],
+      [
+        "The CAP Theorem states a distributed system can guarantee all three properties simultaneously.",
+        "False"
+      ],
+      [
+        "Strong consistency guarantees every read returns the most recent write.",
+        "True"
+      ],
+      [
+        "Eventual consistency means updates propagate over time and all copies converge.",
+        "True"
+      ],
+      [
+        "Consistent hashing minimizes remapping when nodes are added or removed.",
+        "True"
+      ],
+      [
+        "Amazon S3 is an example of block storage.",
+        "False"
+      ],
+      [
+        "A distributed hash table (DHT) maps keys to nodes across a distributed system.",
+        "True"
+      ],
+      [
+        "In a CP system availability is sacrificed when a network partition occurs.",
+        "True"
+      ]
+    ],
+    "mcq": [
+      [
+        "Which cloud storage type provides virtually unlimited scalability?",
+        [
+          "Block storage",
+          "File storage",
+          "Object storage",
+          "Local storage"
+        ],
+        "c) Object storage"
+      ],
+      [
+        "Which storage type supports the lowest latency for databases?",
+        [
+          "Object storage",
+          "File storage",
+          "Block storage",
+          "Archive storage"
+        ],
+        "c) Block storage"
+      ],
+      [
+        "According to CAP theorem which property is sacrificed in AP systems?",
+        [
+          "Availability",
+          "Partition tolerance",
+          "Consistency",
+          "Performance"
+        ],
+        "c) Consistency"
+      ],
+      [
+        "What does consistent hashing solve?",
+        [
+          "Data encryption",
+          "The remapping problem when nodes join or leave",
+          "Network routing",
+          "Resource allocation in Kubernetes"
+        ],
+        "b) The remapping problem when nodes join or leave"
+      ],
+      [
+        "In cloud object storage how is an object updated?",
+        [
+          "Partially overwritten",
+          "The entire object must be rewritten (immutable)",
+          "Appended to",
+          "Only metadata changed"
+        ],
+        "b) The entire object must be rewritten (immutable)"
+      ],
+      [
+        "Which represents a CP system?",
+        [
+          "DNS",
+          "Traditional RDBMS with replication",
+          "Amazon DynamoDB default",
+          "CDN cache"
+        ],
+        "b) Traditional RDBMS with replication"
+      ],
+      [
+        "What does a Distributed Hash Table provide?",
+        [
+          "Centralized database storage",
+          "Key-based lookup across distributed nodes",
+          "File system hierarchy",
+          "Network routing"
+        ],
+        "b) Key-based lookup across distributed nodes"
+      ],
+      [
+        "Which consistency model is typical for Cassandra?",
+        [
+          "Strong consistency",
+          "Eventual consistency",
+          "Strict consistency",
+          "Linearizable consistency"
+        ],
+        "b) Eventual consistency"
+      ],
+      [
+        "What is a key advantage of object storage metadata?",
+        [
+          "Minimal and fixed-size",
+          "Highly customizable with unlimited key-value tags",
+          "Cannot be modified",
+          "Stored separately from object"
+        ],
+        "b) Highly customizable with unlimited key-value tags"
+      ],
+      [
+        "Which is most suitable for backup and archival?",
+        [
+          "Block storage",
+          "File storage",
+          "Object storage",
+          "In-memory storage"
+        ],
+        "c) Object storage"
+      ]
+    ],
+    "matching": [
+      [
+        "Match storage paradigm with data structure.",
+        [
+          "Block storage",
+          "File storage",
+          "Object storage",
+          "In-memory storage"
+        ],
+        [
+          "Raw sectors of fixed size",
+          "Hierarchical folder tree",
+          "Flat namespace with independent objects",
+          "RAM-based data structures"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match CAP property with definition.",
+        [
+          "Consistency",
+          "Availability",
+          "Partition tolerance",
+          "Durability"
+        ],
+        [
+          "Every read receives most recent write",
+          "Every non-failing node returns response",
+          "System continues despite network failures",
+          "Data persists after writes confirmed"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match distributed systems concept with purpose.",
+        [
+          "Distributed Hash Table",
+          "Consistent hashing",
+          "Replication",
+          "Partitioning"
+        ],
+        [
+          "Key-value lookup across distributed nodes",
+          "Minimizes key remapping on node changes",
+          "Data copying for fault tolerance",
+          "Splitting data across multiple nodes"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match cloud storage example with type.",
+        [
+          "AWS EBS",
+          "AWS EFS",
+          "AWS S3",
+          "AWS Glacier"
+        ],
+        [
+          "Block storage for EC2 instances",
+          "File storage for shared filesystems",
+          "Object storage for scalable data",
+          "Archive storage for long-term retention"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match consistency model with characteristic.",
+        [
+          "Strong consistency",
+          "Eventual consistency",
+          "Read-your-writes",
+          "Monotonic reads"
+        ],
+        [
+          "Guarantees latest data on every read",
+          "Data converges over time",
+          "User always sees their own writes",
+          "Reads never return older values"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match storage access method with protocol.",
+        [
+          "Block access",
+          "File access",
+          "Object access",
+          "Stream access"
+        ],
+        [
+          "SCSI NVMe iSCSI",
+          "NFS SMB/CIFS",
+          "HTTP/S REST API (GET PUT POST)",
+          "Kafka Kinesis Pulsar"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match DHT concept with role.",
+        [
+          "Key",
+          "Node",
+          "Virtual node",
+          "Ring topology"
+        ],
+        [
+          "Identifier used for data lookup",
+          "Physical or logical server in the DHT",
+          "Multiple virtual positions per physical node",
+          "Circular arrangement of nodes for routing"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match storage scenario with paradigm.",
+        [
+          "VM boot volume",
+          "Shared team documents",
+          "Media assets for website",
+          "IoT sensor data archive"
+        ],
+        [
+          "Block storage (high performance)",
+          "File storage (multi-user access)",
+          "Object storage (scalable assets)",
+          "Object storage (large volume low cost)"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match replication strategy with consistency.",
+        [
+          "Synchronous replication",
+          "Asynchronous replication",
+          "Quorum-based replication",
+          "Gossip protocol"
+        ],
+        [
+          "Strong consistency (all nodes must confirm)",
+          "Eventual consistency (data syncs over time)",
+          "Configurable consistency (R+W > N)",
+          "Eventual consistency (epidemic-style propagation)"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match CAP system classification.",
+        [
+          "CP (Consistency + Partition)",
+          "AP (Availability + Partition)",
+          "CA (Consistency + Availability)",
+          "Eventual Consistency system"
+        ],
+        [
+          "Traditional RDBMS with primary-secondary",
+          "Cassandra or DynamoDB default",
+          "Not achievable during partitions",
+          "DNS system"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "07_B": {
+    "tf": [
+      [
+        "Object storage uses a flat namespace with independent objects.",
+        "True"
+      ],
+      [
+        "Block storage supports partial updates without rewriting the entire file.",
+        "True"
+      ],
+      [
+        "Object storage is best suited for low-latency database workloads.",
+        "False"
+      ],
+      [
+        "The CAP Theorem states a distributed system can guarantee all three properties simultaneously.",
+        "False"
+      ],
+      [
+        "Strong consistency guarantees every read returns the most recent write.",
+        "True"
+      ],
+      [
+        "Eventual consistency means updates propagate over time and all copies converge.",
+        "True"
+      ],
+      [
+        "Consistent hashing minimizes remapping when nodes are added or removed.",
+        "True"
+      ],
+      [
+        "Amazon S3 is an example of block storage.",
+        "False"
+      ],
+      [
+        "A distributed hash table (DHT) maps keys to nodes across a distributed system.",
+        "True"
+      ],
+      [
+        "In a CP system availability is sacrificed when a network partition occurs.",
+        "True"
+      ]
+    ],
+    "mcq": [
+      [
+        "Which cloud storage type provides virtually unlimited scalability?",
+        [
+          "Block storage",
+          "File storage",
+          "Object storage",
+          "Local storage"
+        ],
+        "c) Object storage"
+      ],
+      [
+        "Which storage type supports the lowest latency for databases?",
+        [
+          "Object storage",
+          "File storage",
+          "Block storage",
+          "Archive storage"
+        ],
+        "c) Block storage"
+      ],
+      [
+        "According to CAP theorem which property is sacrificed in AP systems?",
+        [
+          "Availability",
+          "Partition tolerance",
+          "Consistency",
+          "Performance"
+        ],
+        "c) Consistency"
+      ],
+      [
+        "What does consistent hashing solve?",
+        [
+          "Data encryption",
+          "The remapping problem when nodes join or leave",
+          "Network routing",
+          "Resource allocation in Kubernetes"
+        ],
+        "b) The remapping problem when nodes join or leave"
+      ],
+      [
+        "In cloud object storage how is an object updated?",
+        [
+          "Partially overwritten",
+          "The entire object must be rewritten (immutable)",
+          "Appended to",
+          "Only metadata changed"
+        ],
+        "b) The entire object must be rewritten (immutable)"
+      ],
+      [
+        "Which represents a CP system?",
+        [
+          "DNS",
+          "Traditional RDBMS with replication",
+          "Amazon DynamoDB default",
+          "CDN cache"
+        ],
+        "b) Traditional RDBMS with replication"
+      ],
+      [
+        "What does a Distributed Hash Table provide?",
+        [
+          "Centralized database storage",
+          "Key-based lookup across distributed nodes",
+          "File system hierarchy",
+          "Network routing"
+        ],
+        "b) Key-based lookup across distributed nodes"
+      ],
+      [
+        "Which consistency model is typical for Cassandra?",
+        [
+          "Strong consistency",
+          "Eventual consistency",
+          "Strict consistency",
+          "Linearizable consistency"
+        ],
+        "b) Eventual consistency"
+      ],
+      [
+        "What is a key advantage of object storage metadata?",
+        [
+          "Minimal and fixed-size",
+          "Highly customizable with unlimited key-value tags",
+          "Cannot be modified",
+          "Stored separately from object"
+        ],
+        "b) Highly customizable with unlimited key-value tags"
+      ],
+      [
+        "Which is most suitable for backup and archival?",
+        [
+          "Block storage",
+          "File storage",
+          "Object storage",
+          "In-memory storage"
+        ],
+        "c) Object storage"
+      ]
+    ],
+    "matching": [
+      [
+        "Match storage paradigm with data structure.",
+        [
+          "Block storage",
+          "File storage",
+          "Object storage",
+          "In-memory storage"
+        ],
+        [
+          "Raw sectors of fixed size",
+          "Hierarchical folder tree",
+          "Flat namespace with independent objects",
+          "RAM-based data structures"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match CAP property with definition.",
+        [
+          "Consistency",
+          "Availability",
+          "Partition tolerance",
+          "Durability"
+        ],
+        [
+          "Every read receives most recent write",
+          "Every non-failing node returns response",
+          "System continues despite network failures",
+          "Data persists after writes confirmed"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match distributed systems concept with purpose.",
+        [
+          "Distributed Hash Table",
+          "Consistent hashing",
+          "Replication",
+          "Partitioning"
+        ],
+        [
+          "Key-value lookup across distributed nodes",
+          "Minimizes key remapping on node changes",
+          "Data copying for fault tolerance",
+          "Splitting data across multiple nodes"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match cloud storage example with type.",
+        [
+          "AWS EBS",
+          "AWS EFS",
+          "AWS S3",
+          "AWS Glacier"
+        ],
+        [
+          "Block storage for EC2 instances",
+          "File storage for shared filesystems",
+          "Object storage for scalable data",
+          "Archive storage for long-term retention"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match consistency model with characteristic.",
+        [
+          "Strong consistency",
+          "Eventual consistency",
+          "Read-your-writes",
+          "Monotonic reads"
+        ],
+        [
+          "Guarantees latest data on every read",
+          "Data converges over time",
+          "User always sees their own writes",
+          "Reads never return older values"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match storage access method with protocol.",
+        [
+          "Block access",
+          "File access",
+          "Object access",
+          "Stream access"
+        ],
+        [
+          "SCSI NVMe iSCSI",
+          "NFS SMB/CIFS",
+          "HTTP/S REST API (GET PUT POST)",
+          "Kafka Kinesis Pulsar"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match DHT concept with role.",
+        [
+          "Key",
+          "Node",
+          "Virtual node",
+          "Ring topology"
+        ],
+        [
+          "Identifier used for data lookup",
+          "Physical or logical server in the DHT",
+          "Multiple virtual positions per physical node",
+          "Circular arrangement of nodes for routing"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match storage scenario with paradigm.",
+        [
+          "VM boot volume",
+          "Shared team documents",
+          "Media assets for website",
+          "IoT sensor data archive"
+        ],
+        [
+          "Block storage (high performance)",
+          "File storage (multi-user access)",
+          "Object storage (scalable assets)",
+          "Object storage (large volume low cost)"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match replication strategy with consistency.",
+        [
+          "Synchronous replication",
+          "Asynchronous replication",
+          "Quorum-based replication",
+          "Gossip protocol"
+        ],
+        [
+          "Strong consistency (all nodes must confirm)",
+          "Eventual consistency (data syncs over time)",
+          "Configurable consistency (R+W > N)",
+          "Eventual consistency (epidemic-style propagation)"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match CAP system classification.",
+        [
+          "CP (Consistency + Partition)",
+          "AP (Availability + Partition)",
+          "CA (Consistency + Availability)",
+          "Eventual Consistency system"
+        ],
+        [
+          "Traditional RDBMS with primary-secondary",
+          "Cassandra or DynamoDB default",
+          "Not achievable during partitions",
+          "DNS system"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "08_A": {
+    "tf": [
+      [
+        "Big Data refers to datasets too large or complex for traditional databases to process.",
+        "True"
+      ],
+      [
+        "The 5Vs of Big Data are Volume Velocity Variety Veracity and Value.",
+        "True"
+      ],
+      [
+        "HDFS splits files into fixed-size blocks and replicates them across DataNodes.",
+        "True"
+      ],
+      [
+        "In HDFS the NameNode stores the actual data blocks.",
+        "False"
+      ],
+      [
+        "MapReduce consists of three phases: Map Shuffle & Sort and Reduce.",
+        "True"
+      ],
+      [
+        "Apache Spark processes data in memory making it faster than MapReduce for iterative workloads.",
+        "True"
+      ],
+      [
+        "YARN is responsible for distributed file storage in Hadoop.",
+        "False"
+      ],
+      [
+        "MapReduce writes intermediate data to disk after each phase.",
+        "True"
+      ],
+      [
+        "Spark RDDs are mutable collections of data that can be modified in place.",
+        "False"
+      ],
+      [
+        "Apache Kafka is commonly used for real-time data ingestion in Big Data pipelines.",
+        "True"
+      ]
+    ],
+    "mcq": [
+      [
+        "Which is NOT one of the 5Vs of Big Data?",
+        [
+          "Volume",
+          "Velocity",
+          "Vulnerability",
+          "Value"
+        ],
+        "c) Vulnerability"
+      ],
+      [
+        "What is the default replication factor in HDFS?",
+        [
+          "1",
+          "2",
+          "3",
+          "5"
+        ],
+        "c) 3"
+      ],
+      [
+        "Which Hadoop component manages resources and job scheduling?",
+        [
+          "HDFS",
+          "YARN",
+          "MapReduce",
+          "Hive"
+        ],
+        "b) YARN"
+      ],
+      [
+        "What is the primary advantage of Spark over MapReduce?",
+        [
+          "Lower cost",
+          "In-memory processing for faster iterative workloads",
+          "Easier installation",
+          "Better security"
+        ],
+        "b) In-memory processing for faster iterative workloads"
+      ],
+      [
+        "What is the role of the NameNode in HDFS?",
+        [
+          "Store actual data blocks",
+          "Manage filesystem namespace and metadata",
+          "Execute Map tasks",
+          "Provide network routing"
+        ],
+        "b) Manage filesystem namespace and metadata"
+      ],
+      [
+        "In MapReduce what does the Shuffle & Sort phase do?",
+        [
+          "Splits the input data",
+          "Groups intermediate key-value pairs by key and routes to reducers",
+          "Writes final output to HDFS",
+          "Encrypts data during transmission"
+        ],
+        "b) Groups intermediate key-value pairs by key and routes to reducers"
+      ],
+      [
+        "What is a DataNode in HDFS?",
+        [
+          "Master node managing metadata",
+          "Worker node that stores and retrieves data blocks",
+          "Node that schedules jobs",
+          "Node that manages network traffic"
+        ],
+        "b) Worker node that stores and retrieves data blocks"
+      ],
+      [
+        "What is a Spark RDD?",
+        [
+          "A relational database",
+          "Resilient Distributed Dataset - fault-tolerant collection of elements processed in parallel",
+          "A type of Hadoop configuration",
+          "A network protocol"
+        ],
+        "b) Resilient Distributed Dataset - fault-tolerant collection of elements processed in parallel"
+      ],
+      [
+        "What does HDFS rack awareness do?",
+        [
+          "Distributes block replicas across different racks to prevent rack-level failures",
+          "Speeds up network connections",
+          "Reduces storage costs",
+          "Manages user authentication"
+        ],
+        "a) Distributes block replicas across different racks to prevent rack-level failures"
+      ],
+      [
+        "Which tool is used for SQL-like querying on Hadoop?",
+        [
+          "Apache Spark",
+          "Apache Hive",
+          "Apache Kafka",
+          "Apache Sqoop"
+        ],
+        "b) Apache Hive"
+      ]
+    ],
+    "matching": [
+      [
+        "Match the Big Data V with its description.",
+        [
+          "Volume",
+          "Velocity",
+          "Variety",
+          "Veracity"
+        ],
+        [
+          "Scale of data (terabytes to exabytes)",
+          "Speed of data generation and processing",
+          "Diversity of data formats",
+          "Trustworthiness and quality of data"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Hadoop component with function.",
+        [
+          "HDFS",
+          "YARN",
+          "MapReduce",
+          "Hive"
+        ],
+        [
+          "Distributed file storage",
+          "Resource management and job scheduling",
+          "Parallel processing programming model",
+          "SQL-like query engine on Hadoop"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match MapReduce phase with operation.",
+        [
+          "Map phase",
+          "Shuffle & Sort phase",
+          "Reduce phase",
+          "Input split"
+        ],
+        [
+          "Transforms input into intermediate key-value pairs",
+          "Groups and sorts key-value pairs by key",
+          "Aggregates or summarizes grouped data",
+          "Divides input dataset into independent chunks"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Spark component with function.",
+        [
+          "Spark Core",
+          "Spark SQL",
+          "Spark Streaming",
+          "MLlib"
+        ],
+        [
+          "Basic RDD and DataFrame API",
+          "Structured data query engine",
+          "Real-time stream processing",
+          "Machine learning library"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match HDFS concept with role.",
+        [
+          "Block",
+          "NameNode",
+          "DataNode",
+          "Secondary NameNode"
+        ],
+        [
+          "Fixed-size data unit (default 128MB)",
+          "Metadata manager",
+          "Block storage worker",
+          "Checkpoints NameNode metadata"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Big Data pipeline stage with tool.",
+        [
+          "Ingestion",
+          "Storage",
+          "Processing",
+          "Analysis"
+        ],
+        [
+          "Apache Kafka",
+          "HDFS or S3",
+          "MapReduce or Spark",
+          "Hive or Presto"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match data processing pattern with framework.",
+        [
+          "Batch processing",
+          "Stream processing",
+          "Iterative algorithms",
+          "Interactive queries"
+        ],
+        [
+          "MapReduce or Spark batch",
+          "Spark Streaming or Flink",
+          "Spark (in-memory)",
+          "Presto or Impala"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Spark optimization with benefit.",
+        [
+          "In-memory caching",
+          "Lazy evaluation",
+          "Lineage graph",
+          "Catalyst optimizer"
+        ],
+        [
+          "Avoids recomputing intermediate results",
+          "Defers computation until action is called",
+          "RDD fault tolerance through transformation history",
+          "Query plan optimization for DataFrames"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Hadoop ecosystem tool with category.",
+        [
+          "Apache Sqoop",
+          "Apache Oozie",
+          "Apache Flume",
+          "Apache HBase"
+        ],
+        [
+          "Data transfer between Hadoop and RDBMS",
+          "Workflow scheduling and orchestration",
+          "Log data collection and aggregation",
+          "NoSQL database on HDFS"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Big Data challenge with solution.",
+        [
+          "Fault tolerance",
+          "Scalability",
+          "Data locality",
+          "Metadata management"
+        ],
+        [
+          "Data replication and speculative execution",
+          "Horizontal scaling with commodity hardware",
+          "Processing tasks near where data resides",
+          "Catalog services like Hive Metastore"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "08_B": {
+    "tf": [
+      [
+        "Big Data refers to datasets too large or complex for traditional databases to process.",
+        "True"
+      ],
+      [
+        "The 5Vs of Big Data are Volume Velocity Variety Veracity and Value.",
+        "True"
+      ],
+      [
+        "HDFS splits files into fixed-size blocks and replicates them across DataNodes.",
+        "True"
+      ],
+      [
+        "In HDFS the NameNode stores the actual data blocks.",
+        "False"
+      ],
+      [
+        "MapReduce consists of three phases: Map Shuffle & Sort and Reduce.",
+        "True"
+      ],
+      [
+        "Apache Spark processes data in memory making it faster than MapReduce for iterative workloads.",
+        "True"
+      ],
+      [
+        "YARN is responsible for distributed file storage in Hadoop.",
+        "False"
+      ],
+      [
+        "MapReduce writes intermediate data to disk after each phase.",
+        "True"
+      ],
+      [
+        "Spark RDDs are mutable collections of data that can be modified in place.",
+        "False"
+      ],
+      [
+        "Apache Kafka is commonly used for real-time data ingestion in Big Data pipelines.",
+        "True"
+      ]
+    ],
+    "mcq": [
+      [
+        "Which is NOT one of the 5Vs of Big Data?",
+        [
+          "Volume",
+          "Velocity",
+          "Vulnerability",
+          "Value"
+        ],
+        "c) Vulnerability"
+      ],
+      [
+        "What is the default replication factor in HDFS?",
+        [
+          "1",
+          "2",
+          "3",
+          "5"
+        ],
+        "c) 3"
+      ],
+      [
+        "Which Hadoop component manages resources and job scheduling?",
+        [
+          "HDFS",
+          "YARN",
+          "MapReduce",
+          "Hive"
+        ],
+        "b) YARN"
+      ],
+      [
+        "What is the primary advantage of Spark over MapReduce?",
+        [
+          "Lower cost",
+          "In-memory processing for faster iterative workloads",
+          "Easier installation",
+          "Better security"
+        ],
+        "b) In-memory processing for faster iterative workloads"
+      ],
+      [
+        "What is the role of the NameNode in HDFS?",
+        [
+          "Store actual data blocks",
+          "Manage filesystem namespace and metadata",
+          "Execute Map tasks",
+          "Provide network routing"
+        ],
+        "b) Manage filesystem namespace and metadata"
+      ],
+      [
+        "In MapReduce what does the Shuffle & Sort phase do?",
+        [
+          "Splits the input data",
+          "Groups intermediate key-value pairs by key and routes to reducers",
+          "Writes final output to HDFS",
+          "Encrypts data during transmission"
+        ],
+        "b) Groups intermediate key-value pairs by key and routes to reducers"
+      ],
+      [
+        "What is a DataNode in HDFS?",
+        [
+          "Master node managing metadata",
+          "Worker node that stores and retrieves data blocks",
+          "Node that schedules jobs",
+          "Node that manages network traffic"
+        ],
+        "b) Worker node that stores and retrieves data blocks"
+      ],
+      [
+        "What is a Spark RDD?",
+        [
+          "A relational database",
+          "Resilient Distributed Dataset - fault-tolerant collection of elements processed in parallel",
+          "A type of Hadoop configuration",
+          "A network protocol"
+        ],
+        "b) Resilient Distributed Dataset - fault-tolerant collection of elements processed in parallel"
+      ],
+      [
+        "What does HDFS rack awareness do?",
+        [
+          "Distributes block replicas across different racks to prevent rack-level failures",
+          "Speeds up network connections",
+          "Reduces storage costs",
+          "Manages user authentication"
+        ],
+        "a) Distributes block replicas across different racks to prevent rack-level failures"
+      ],
+      [
+        "Which tool is used for SQL-like querying on Hadoop?",
+        [
+          "Apache Spark",
+          "Apache Hive",
+          "Apache Kafka",
+          "Apache Sqoop"
+        ],
+        "b) Apache Hive"
+      ]
+    ],
+    "matching": [
+      [
+        "Match the Big Data V with its description.",
+        [
+          "Volume",
+          "Velocity",
+          "Variety",
+          "Veracity"
+        ],
+        [
+          "Scale of data (terabytes to exabytes)",
+          "Speed of data generation and processing",
+          "Diversity of data formats",
+          "Trustworthiness and quality of data"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Hadoop component with function.",
+        [
+          "HDFS",
+          "YARN",
+          "MapReduce",
+          "Hive"
+        ],
+        [
+          "Distributed file storage",
+          "Resource management and job scheduling",
+          "Parallel processing programming model",
+          "SQL-like query engine on Hadoop"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match MapReduce phase with operation.",
+        [
+          "Map phase",
+          "Shuffle & Sort phase",
+          "Reduce phase",
+          "Input split"
+        ],
+        [
+          "Transforms input into intermediate key-value pairs",
+          "Groups and sorts key-value pairs by key",
+          "Aggregates or summarizes grouped data",
+          "Divides input dataset into independent chunks"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Spark component with function.",
+        [
+          "Spark Core",
+          "Spark SQL",
+          "Spark Streaming",
+          "MLlib"
+        ],
+        [
+          "Basic RDD and DataFrame API",
+          "Structured data query engine",
+          "Real-time stream processing",
+          "Machine learning library"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match HDFS concept with role.",
+        [
+          "Block",
+          "NameNode",
+          "DataNode",
+          "Secondary NameNode"
+        ],
+        [
+          "Fixed-size data unit (default 128MB)",
+          "Metadata manager",
+          "Block storage worker",
+          "Checkpoints NameNode metadata"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Big Data pipeline stage with tool.",
+        [
+          "Ingestion",
+          "Storage",
+          "Processing",
+          "Analysis"
+        ],
+        [
+          "Apache Kafka",
+          "HDFS or S3",
+          "MapReduce or Spark",
+          "Hive or Presto"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match data processing pattern with framework.",
+        [
+          "Batch processing",
+          "Stream processing",
+          "Iterative algorithms",
+          "Interactive queries"
+        ],
+        [
+          "MapReduce or Spark batch",
+          "Spark Streaming or Flink",
+          "Spark (in-memory)",
+          "Presto or Impala"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Spark optimization with benefit.",
+        [
+          "In-memory caching",
+          "Lazy evaluation",
+          "Lineage graph",
+          "Catalyst optimizer"
+        ],
+        [
+          "Avoids recomputing intermediate results",
+          "Defers computation until action is called",
+          "RDD fault tolerance through transformation history",
+          "Query plan optimization for DataFrames"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Hadoop ecosystem tool with category.",
+        [
+          "Apache Sqoop",
+          "Apache Oozie",
+          "Apache Flume",
+          "Apache HBase"
+        ],
+        [
+          "Data transfer between Hadoop and RDBMS",
+          "Workflow scheduling and orchestration",
+          "Log data collection and aggregation",
+          "NoSQL database on HDFS"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Big Data challenge with solution.",
+        [
+          "Fault tolerance",
+          "Scalability",
+          "Data locality",
+          "Metadata management"
+        ],
+        [
+          "Data replication and speculative execution",
+          "Horizontal scaling with commodity hardware",
+          "Processing tasks near where data resides",
+          "Catalog services like Hive Metastore"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "09_A": {
+    "tf": [
+      [
+        "OpenStack is an open-source cloud computing platform for managing compute storage and networking.",
+        "True"
+      ],
+      [
+        "YAFS is a discrete event simulator designed for cloud topologies.",
+        "True"
+      ],
+      [
+        "Docker can be used to deploy private cloud applications like Nextcloud.",
+        "True"
+      ],
+      [
+        "MinIO is an example of a block storage solution.",
+        "False"
+      ],
+      [
+        "Hadoop MapReduce jobs can be compiled and executed on a Hadoop cluster.",
+        "True"
+      ],
+      [
+        "OpenStack Horizon is a command-line interface for managing OpenStack resources.",
+        "False"
+      ],
+      [
+        "Docker Compose allows defining and running multi-container applications.",
+        "True"
+      ],
+      [
+        "Taikun is a cloud management tool that can work with OpenStack.",
+        "True"
+      ],
+      [
+        "Nextcloud provides file hosting and collaboration features similar to Dropbox.",
+        "True"
+      ],
+      [
+        "MinIO is compatible with Amazon S3 API for object storage.",
+        "True"
+      ]
+    ],
+    "mcq": [
+      [
+        "Which tool is used for provisioning cloud resources in the lab?",
+        [
+          "OpenStack and Taikun",
+          "VMware Workstation",
+          "VirtualBox",
+          "Kubernetes"
+        ],
+        "a) OpenStack and Taikun"
+      ],
+      [
+        "What is YAFS used for?",
+        [
+          "Deploying web applications",
+          "Discrete event simulation of cloud topologies",
+          "Managing Docker containers",
+          "Data analysis"
+        ],
+        "b) Discrete event simulation of cloud topologies"
+      ],
+      [
+        "What does MinIO provide?",
+        [
+          "Block storage volumes",
+          "S3-compatible object storage",
+          "File sharing via NFS",
+          "Virtual machines"
+        ],
+        "b) S3-compatible object storage"
+      ],
+      [
+        "Which technology deploys Nextcloud in the lab?",
+        [
+          "Kubernetes alone",
+          "Docker and Docker Compose",
+          "OpenStack alone",
+          "MinIO"
+        ],
+        "b) Docker and Docker Compose"
+      ],
+      [
+        "What is the first step in deploying Nextcloud with Docker?",
+        [
+          "Install Hadoop",
+          "Set up Docker and Docker Compose",
+          "Configure MinIO",
+          "Compile MapReduce"
+        ],
+        "b) Set up Docker and Docker Compose"
+      ],
+      [
+        "What does Hadoop MapReduce require to run?",
+        [
+          "A functioning Hadoop cluster with YARN and HDFS",
+          "Only a Java compiler",
+          "Docker containers",
+          "A MinIO server"
+        ],
+        "a) A functioning Hadoop cluster with YARN and HDFS"
+      ],
+      [
+        "Which component provides the web dashboard in OpenStack?",
+        [
+          "Nova",
+          "Neutron",
+          "Horizon",
+          "Swift"
+        ],
+        "c) Horizon"
+      ],
+      [
+        "What storage protocol does MinIO use?",
+        [
+          "NFS",
+          "S3-compatible API",
+          "Fibre Channel",
+          "iSCSI"
+        ],
+        "b) S3-compatible API"
+      ],
+      [
+        "What is the role of Taikun?",
+        [
+          "A hypervisor",
+          "A cloud management platform that works with OpenStack",
+          "A container runtime",
+          "A distributed file system"
+        ],
+        "b) A cloud management platform that works with OpenStack"
+      ],
+      [
+        "Which is NOT a component managed by OpenStack?",
+        [
+          "Compute (Nova)",
+          "Networking (Neutron)",
+          "Block Storage (Cinder)",
+          "Docker Swarm"
+        ],
+        "d) Docker Swarm"
+      ]
+    ],
+    "matching": [
+      [
+        "Match the practical lab with its technology.",
+        [
+          "TP 1",
+          "TP 2",
+          "TP 4 and 5",
+          "TP 6"
+        ],
+        [
+          "OpenStack and Taikun",
+          "YAFS discrete event simulation",
+          "Nextcloud and Docker",
+          "MinIO object storage"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match OpenStack component with service.",
+        [
+          "Nova",
+          "Neutron",
+          "Cinder",
+          "Swift"
+        ],
+        [
+          "Compute service (virtual machines)",
+          "Networking service",
+          "Block storage service",
+          "Object storage service"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Docker concept with lab use.",
+        [
+          "Dockerfile",
+          "Docker Compose",
+          "Docker volume",
+          "Docker network"
+        ],
+        [
+          "Defines the Nextcloud application image",
+          "Orchestrates multi-container Nextcloud deployment",
+          "Persists Nextcloud data beyond container lifecycle",
+          "Connects Nextcloud and database containers"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match lab objective with learning outcome.",
+        [
+          "Cloud provisioning",
+          "Simulation",
+          "Private cloud deployment",
+          "MapReduce execution"
+        ],
+        [
+          "Understanding OpenStack resource management",
+          "Modeling cloud topologies and performance",
+          "Deploying real-world applications with Docker",
+          "Distributed data processing on Hadoop"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match MinIO feature with benefit.",
+        [
+          "S3 API compatibility",
+          "Versioning",
+          "Bucket policies",
+          "Encryption"
+        ],
+        [
+          "Easy integration with existing S3 tools",
+          "Protection against accidental overwrites",
+          "Fine-grained access control",
+          "Data security at rest and in transit"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Hadoop MapReduce concept with lab.",
+        [
+          "Mapper class",
+          "Reducer class",
+          "Job configuration",
+          "InputFormat"
+        ],
+        [
+          "Defines Map function in Java code",
+          "Defines Reduce function in Java code",
+          "Sets input/output paths and types",
+          "Specifies how input data is split and read"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match lab tool with category.",
+        [
+          "OpenStack",
+          "YAFS",
+          "MinIO",
+          "Docker"
+        ],
+        [
+          "IaaS cloud management platform",
+          "Network simulation framework",
+          "Object storage server",
+          "Container platform"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match lab step order for Nextcloud.",
+        [
+          "Install Docker",
+          "Create docker-compose.yml",
+          "Run docker-compose up",
+          "Access Nextcloud web UI"
+        ],
+        [
+          "Prerequisite setup",
+          "Define services for Nextcloud and database",
+          "Start all containers",
+          "Verify deployment via browser"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match OpenStack CLI command with purpose.",
+        [
+          "openstack server create",
+          "openstack volume create",
+          "openstack network create",
+          "openstack image list"
+        ],
+        [
+          "Provision a new virtual machine",
+          "Create a block storage volume",
+          "Define a virtual network",
+          "View available operating system images"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match lab topic with problem solved.",
+        [
+          "Cloud provisioning with Taikun",
+          "YAFS simulation",
+          "Nextcloud on Docker",
+          "MinIO automation"
+        ],
+        [
+          "Simplifying multi-cloud resource management",
+          "Testing cloud topologies without physical infrastructure",
+          "Self-hosted cloud collaboration platform",
+          "Programmatic object storage management"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  },
+  "09_B": {
+    "tf": [
+      [
+        "OpenStack is an open-source cloud computing platform for managing compute storage and networking.",
+        "True"
+      ],
+      [
+        "YAFS is a discrete event simulator designed for cloud topologies.",
+        "True"
+      ],
+      [
+        "Docker can be used to deploy private cloud applications like Nextcloud.",
+        "True"
+      ],
+      [
+        "MinIO is an example of a block storage solution.",
+        "False"
+      ],
+      [
+        "Hadoop MapReduce jobs can be compiled and executed on a Hadoop cluster.",
+        "True"
+      ],
+      [
+        "OpenStack Horizon is a command-line interface for managing OpenStack resources.",
+        "False"
+      ],
+      [
+        "Docker Compose allows defining and running multi-container applications.",
+        "True"
+      ],
+      [
+        "Taikun is a cloud management tool that can work with OpenStack.",
+        "True"
+      ],
+      [
+        "Nextcloud provides file hosting and collaboration features similar to Dropbox.",
+        "True"
+      ],
+      [
+        "MinIO is compatible with Amazon S3 API for object storage.",
+        "True"
+      ]
+    ],
+    "mcq": [
+      [
+        "Which tool is used for provisioning cloud resources in the lab?",
+        [
+          "OpenStack and Taikun",
+          "VMware Workstation",
+          "VirtualBox",
+          "Kubernetes"
+        ],
+        "a) OpenStack and Taikun"
+      ],
+      [
+        "What is YAFS used for?",
+        [
+          "Deploying web applications",
+          "Discrete event simulation of cloud topologies",
+          "Managing Docker containers",
+          "Data analysis"
+        ],
+        "b) Discrete event simulation of cloud topologies"
+      ],
+      [
+        "What does MinIO provide?",
+        [
+          "Block storage volumes",
+          "S3-compatible object storage",
+          "File sharing via NFS",
+          "Virtual machines"
+        ],
+        "b) S3-compatible object storage"
+      ],
+      [
+        "Which technology deploys Nextcloud in the lab?",
+        [
+          "Kubernetes alone",
+          "Docker and Docker Compose",
+          "OpenStack alone",
+          "MinIO"
+        ],
+        "b) Docker and Docker Compose"
+      ],
+      [
+        "What is the first step in deploying Nextcloud with Docker?",
+        [
+          "Install Hadoop",
+          "Set up Docker and Docker Compose",
+          "Configure MinIO",
+          "Compile MapReduce"
+        ],
+        "b) Set up Docker and Docker Compose"
+      ],
+      [
+        "What does Hadoop MapReduce require to run?",
+        [
+          "A functioning Hadoop cluster with YARN and HDFS",
+          "Only a Java compiler",
+          "Docker containers",
+          "A MinIO server"
+        ],
+        "a) A functioning Hadoop cluster with YARN and HDFS"
+      ],
+      [
+        "Which component provides the web dashboard in OpenStack?",
+        [
+          "Nova",
+          "Neutron",
+          "Horizon",
+          "Swift"
+        ],
+        "c) Horizon"
+      ],
+      [
+        "What storage protocol does MinIO use?",
+        [
+          "NFS",
+          "S3-compatible API",
+          "Fibre Channel",
+          "iSCSI"
+        ],
+        "b) S3-compatible API"
+      ],
+      [
+        "What is the role of Taikun?",
+        [
+          "A hypervisor",
+          "A cloud management platform that works with OpenStack",
+          "A container runtime",
+          "A distributed file system"
+        ],
+        "b) A cloud management platform that works with OpenStack"
+      ],
+      [
+        "Which is NOT a component managed by OpenStack?",
+        [
+          "Compute (Nova)",
+          "Networking (Neutron)",
+          "Block Storage (Cinder)",
+          "Docker Swarm"
+        ],
+        "d) Docker Swarm"
+      ]
+    ],
+    "matching": [
+      [
+        "Match the practical lab with its technology.",
+        [
+          "TP 1",
+          "TP 2",
+          "TP 4 and 5",
+          "TP 6"
+        ],
+        [
+          "OpenStack and Taikun",
+          "YAFS discrete event simulation",
+          "Nextcloud and Docker",
+          "MinIO object storage"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match OpenStack component with service.",
+        [
+          "Nova",
+          "Neutron",
+          "Cinder",
+          "Swift"
+        ],
+        [
+          "Compute service (virtual machines)",
+          "Networking service",
+          "Block storage service",
+          "Object storage service"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Docker concept with lab use.",
+        [
+          "Dockerfile",
+          "Docker Compose",
+          "Docker volume",
+          "Docker network"
+        ],
+        [
+          "Defines the Nextcloud application image",
+          "Orchestrates multi-container Nextcloud deployment",
+          "Persists Nextcloud data beyond container lifecycle",
+          "Connects Nextcloud and database containers"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match lab objective with learning outcome.",
+        [
+          "Cloud provisioning",
+          "Simulation",
+          "Private cloud deployment",
+          "MapReduce execution"
+        ],
+        [
+          "Understanding OpenStack resource management",
+          "Modeling cloud topologies and performance",
+          "Deploying real-world applications with Docker",
+          "Distributed data processing on Hadoop"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match MinIO feature with benefit.",
+        [
+          "S3 API compatibility",
+          "Versioning",
+          "Bucket policies",
+          "Encryption"
+        ],
+        [
+          "Easy integration with existing S3 tools",
+          "Protection against accidental overwrites",
+          "Fine-grained access control",
+          "Data security at rest and in transit"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match Hadoop MapReduce concept with lab.",
+        [
+          "Mapper class",
+          "Reducer class",
+          "Job configuration",
+          "InputFormat"
+        ],
+        [
+          "Defines Map function in Java code",
+          "Defines Reduce function in Java code",
+          "Sets input/output paths and types",
+          "Specifies how input data is split and read"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match lab tool with category.",
+        [
+          "OpenStack",
+          "YAFS",
+          "MinIO",
+          "Docker"
+        ],
+        [
+          "IaaS cloud management platform",
+          "Network simulation framework",
+          "Object storage server",
+          "Container platform"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match lab step order for Nextcloud.",
+        [
+          "Install Docker",
+          "Create docker-compose.yml",
+          "Run docker-compose up",
+          "Access Nextcloud web UI"
+        ],
+        [
+          "Prerequisite setup",
+          "Define services for Nextcloud and database",
+          "Start all containers",
+          "Verify deployment via browser"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match OpenStack CLI command with purpose.",
+        [
+          "openstack server create",
+          "openstack volume create",
+          "openstack network create",
+          "openstack image list"
+        ],
+        [
+          "Provision a new virtual machine",
+          "Create a block storage volume",
+          "Define a virtual network",
+          "View available operating system images"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ],
+      [
+        "Match lab topic with problem solved.",
+        [
+          "Cloud provisioning with Taikun",
+          "YAFS simulation",
+          "Nextcloud on Docker",
+          "MinIO automation"
+        ],
+        [
+          "Simplifying multi-cloud resource management",
+          "Testing cloud topologies without physical infrastructure",
+          "Self-hosted cloud collaboration platform",
+          "Programmatic object storage management"
+        ],
+        [
+          "a) -> n)",
+          "b) -> o)",
+          "c) -> p)",
+          "d) -> q)"
+        ]
+      ]
+    ]
+  }
+}

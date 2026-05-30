@@ -8,78 +8,138 @@ sources:
   - "[[Chapter 6 - Virtual and Networked Storage/6.6 Solving Storage Silos with Virtualization and Pooling.md]]"
 ---
 
-> [!question] Storage virtualization pools physical storage from multiple devices.
+> [!question] Block storage exposes raw sectors of fixed size to the host operating system.
 >> [!success]- Answer
 >> True
 
-> [!question] A datastore is a logical container for virtual machine files.
+> [!question] File access model allows clients to access files and directories over the network.
 >> [!success]- Answer
 >> True
 
-> [!question] Block access is typically slower than file access for database workloads.
+> [!question] DAS (Direct Attached Storage) can be shared across multiple physical servers.
 >> [!success]- Answer
 >> False
 
-> [!question] High availability in storage implies no single point of failure.
+> [!question] NAS provides file-level storage access over a standard TCP/IP network.
 >> [!success]- Answer
 >> True
 
-> [!question] iSCSI is a protocol used to transport SCSI commands over IP networks.
+> [!question] SAN provides block-level storage access over a dedicated high-speed network.
 >> [!success]- Answer
 >> True
 
-> [!question] Storage virtualization pools:
-> a) Only RAM
-> b) Physical storage from multiple devices into a single logical unit
-> c) Network bandwidth
-> d) CPU cores
+> [!question] RAID 0 provides data redundancy through mirroring.
 >> [!success]- Answer
->> b) Physical storage from multiple devices into a single logical unit
+>> False
 
-> [!question] A datastore in virtualization is:
-> a) A database management system
-> b) A logical container for VM files
+> [!question] Storage virtualization aggregates physical storage into a single pool.
+>> [!success]- Answer
+>> True
+
+> [!question] Datastores are logical containers that hold virtual machine files.
+>> [!success]- Answer
+>> True
+
+> [!question] NAS uses low-level SCSI commands for communication.
+>> [!success]- Answer
+>> False
+
+> [!question] Storage thin provisioning allocates physical storage only when data is written.
+>> [!success]- Answer
+>> True
+
+> [!question] Which storage architecture connects directly to a single host server?
+> a) NAS
+> b) SAN
+> c) DAS
+> d) Object storage
+>> [!success]- Answer
+>> c) DAS
+
+> [!question] What protocol does NAS typically use?
+> a) SCSI
+> b) NFS or SMB
+> c) NVMe
+> d) Fibre Channel
+>> [!success]- Answer
+>> b) NFS or SMB
+
+> [!question] Which storage uses Fibre Channel as a dedicated network?
+> a) DAS
+> b) NAS
+> c) SAN
+> d) Object storage
+>> [!success]- Answer
+>> c) SAN
+
+> [!question] What is a key advantage of NAS over DAS?
+> a) Lower latency
+> b) Multi-host file sharing over network
+> c) Block-level access
+> d) Direct hardware access
+>> [!success]- Answer
+>> b) Multi-host file sharing over network
+
+> [!question] What does RAID stand for?
+> a) Redundant Array of Independent Disks
+> b) Random Access Integrated Drive
+> c) Rapid Automated I/O Device
+> d) Remote Attached Internet Drive
+>> [!success]- Answer
+>> a) Redundant Array of Independent Disks
+
+> [!question] Which RAID level provides mirroring?
+> a) RAID 0
+> b) RAID 1
+> c) RAID 5
+> d) RAID 10
+>> [!success]- Answer
+>> b) RAID 1
+
+> [!question] What is storage virtualization?
+> a) Encrypting all stored data
+> b) Abstracting physical storage into a unified logical pool
+> c) Compressing data
+> d) Replicating data across data centers
+>> [!success]- Answer
+>> b) Abstracting physical storage into a unified logical pool
+
+> [!question] What is a datastore in virtualization?
+> a) A physical storage device
+> b) A logical container for VM files and templates
 > c) A network protocol
-> d) A physical hard drive
+> d) A type of hypervisor
 >> [!success]- Answer
->> b) A logical container for VM files
+>> b) A logical container for VM files and templates
 
-> [!question] iSCSI transports SCSI commands over:
-> a) Serial cables
-> b) IP networks
-> c) USB
-> d) HDMI
+> [!question] Which enables high availability through shared storage?
+> a) DAS only
+> b) NAS and SAN
+> c) Local SSDs
+> d) USB drives
 >> [!success]- Answer
->> b) IP networks
+>> b) NAS and SAN
 
-> [!question] High availability storage eliminates:
-> a) All data
-> b) Single points of failure
-> c) Network redundancy
-> d) Power usage
+> [!question] What is the main disadvantage of DAS?
+> a) High cost
+> b) No multi-host sharing leading to poor utilization
+> c) Low performance
+> d) Complex setup
 >> [!success]- Answer
->> b) Single points of failure
+>> b) No multi-host sharing leading to poor utilization
 
-> [!question] Block storage is most suitable for:
-> a) Unstructured data
-> b) High-performance databases and VMs
-> c) Email attachments
-> d) Log files
->> [!success]- Answer
->> b) High-performance databases and VMs
-
-> [!question] Match the storage optimization with its benefit.
+> [!question] Match storage architecture with connection method.
 >> [!example] Group A
->> a) Deduplication
->> b) Compression
->> c) Tiering
->> d) Caching
+>> a) DAS
+>> b) NAS
+>> c) SAN
+>> d) Object storage
 >
 >> [!example] Group B
->> n) Eliminating duplicate data blocks
->> o) Reducing data size through algorithms
->> p) Moving data between performance tiers
->> q) Storing frequently accessed data in faster media
+>> n) Direct cable (SATA SAS NVMe)
+>> o) Standard LAN/Ethernet network
+>> p) Dedicated Fibre Channel or iSCSI network
+>> q) HTTP/HTTPS REST API over internet
 >
 >> [!success]- Answer
 >> a) -> n)
@@ -87,18 +147,18 @@ sources:
 >> c) -> p)
 >> d) -> q)
 
-> [!question] Match the SAN component with its function.
+> [!question] Match RAID level with characteristic.
 >> [!example] Group A
->> a) HBA
->> b) Fibre Channel switch
->> c) Storage array
->> d) LUN
+>> a) RAID 0
+>> b) RAID 1
+>> c) RAID 5
+>> d) RAID 10
 >
 >> [!example] Group B
->> n) Host Bus Adapter to connect server to SAN
->> o) Network switch dedicated to storage traffic
->> p) Disk enclosure with controllers and disks
->> q) Logical Unit Number representing storage volume
+>> n) Striping without redundancy
+>> o) Mirroring for fault tolerance
+>> p) Striping with parity
+>> q) Mirroring and striping combined
 >
 >> [!success]- Answer
 >> a) -> n)
@@ -106,18 +166,94 @@ sources:
 >> c) -> p)
 >> d) -> q)
 
-> [!question] Match the storage metric with its meaning.
+> [!question] Match access model with data unit.
+>> [!example] Group A
+>> a) Block access
+>> b) File access
+>> c) Object access
+>> d) Stream access
+>
+>> [!example] Group B
+>> n) Raw sectors (512 bytes / 4KB blocks)
+>> o) Files and directories
+>> p) Objects with metadata in flat namespace
+>> q) Continuous data flow
+>
+>> [!success]- Answer
+>> a) -> n)
+>> b) -> o)
+>> c) -> p)
+>> d) -> q)
+
+> [!question] Match storage term with definition.
+>> [!example] Group A
+>> a) LUN
+>> b) Volume
+>> c) Datastore
+>> d) Snapshot
+>
+>> [!example] Group B
+>> n) Logical Unit Number in SAN storage
+>> o) Logical storage unit with filesystem
+>> p) Container for VM files in virtualization
+>> q) Point-in-time copy of data
+>
+>> [!success]- Answer
+>> a) -> n)
+>> b) -> o)
+>> c) -> p)
+>> d) -> q)
+
+> [!question] Match storage virtualization benefit.
+>> [!example] Group A
+>> a) Storage pooling
+>> b) Thin provisioning
+>> c) Storage migration
+>> d) Automated tiering
+>
+>> [!example] Group B
+>> n) Eliminates isolated storage silos
+>> o) Improves storage utilization efficiency
+>> p) Non-disruptive data movement
+>> q) Optimizes cost by moving data between tiers
+>
+>> [!success]- Answer
+>> a) -> n)
+>> b) -> o)
+>> c) -> p)
+>> d) -> q)
+
+> [!question] Match storage protocol with use.
+>> [!example] Group A
+>> a) NFS
+>> b) iSCSI
+>> c) Fibre Channel
+>> d) SMB
+>
+>> [!example] Group B
+>> n) File sharing in Linux/Unix environments
+>> o) Block access over standard TCP/IP
+>> p) High-performance block access over dedicated network
+>> q) File sharing in Windows environments
+>
+>> [!success]- Answer
+>> a) -> n)
+>> b) -> o)
+>> c) -> p)
+>> d) -> q)
+
+> [!question] Match performance metric with IO focus.
 >> [!example] Group A
 >> a) IOPS
 >> b) Throughput
 >> c) Latency
->> d) Capacity
+>> d) Bandwidth
 >
 >> [!example] Group B
->> n) Input/Output operations per second
->> o) Data transfer rate (MB/s or GB/s)
->> p) Time delay in data access
->> q) Total storage space available
+>> n) Input/output operations per second
+>> o) Data transfer rate per unit time
+>> p) Delay in data access
+>> q) Maximum data transfer capacity
 >
 >> [!success]- Answer
 >> a) -> n)
@@ -125,18 +261,18 @@ sources:
 >> c) -> p)
 >> d) -> q)
 
-> [!question] Match the DAS limitation vs network storage benefit.
+> [!question] Match storage scenario with best architecture.
 >> [!example] Group A
->> a) DAS scalability
->> b) NAS file sharing
->> c) SAN performance
->> d) Storage pooling benefit
+>> a) Virtual machine system disks
+>> b) Shared file storage
+>> c) High-performance database storage
+>> d) Backup and archival
 >
 >> [!example] Group B
->> n) Limited to local machine expansion
->> o) Multiple clients can access same files
->> p) High-speed block access for databases
->> q) Flexible capacity allocation across systems
+>> n) SAN or block storage
+>> o) NAS with NFS/SMB
+>> p) SAN with Fibre Channel
+>> q) Object storage or tape
 >
 >> [!success]- Answer
 >> a) -> n)
@@ -144,18 +280,37 @@ sources:
 >> c) -> p)
 >> d) -> q)
 
-> [!question] Match the data protection technique with its description.
+> [!question] Match storage HA feature.
 >> [!example] Group A
->> a) Backup
+>> a) Multipathing
 >> b) Replication
->> c) Erasure coding
->> d) Snapshots
+>> c) Failover
+>> d) Load balancing
 >
 >> [!example] Group B
->> n) Copying data to separate media for recovery
->> o) Continuous copying to remote site
->> p) Data fragmentation with parity for fault tolerance
->> q) Instant point-in-time copy for quick recovery
+>> n) Redundant I/O paths to storage
+>> o) Synchronous or async data copy to remote site
+>> p) Automatic switch to standby component
+>> q) Distributing I/O across multiple paths
+>
+>> [!success]- Answer
+>> a) -> n)
+>> b) -> o)
+>> c) -> p)
+>> d) -> q)
+
+> [!question] Match storage challenge with solution.
+>> [!example] Group A
+>> a) Storage silos
+>> b) Poor utilization
+>> c) Complex management
+>> d) Downtime during maintenance
+>
+>> [!example] Group B
+>> n) Pool physical storage into shared datastores
+>> o) Thin provisioning and overcommitment
+>> p) Centralized management console
+>> q) Live storage migration (vMotion)
 >
 >> [!success]- Answer
 >> a) -> n)

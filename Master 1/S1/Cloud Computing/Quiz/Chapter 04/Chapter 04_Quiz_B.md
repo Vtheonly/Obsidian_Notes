@@ -8,78 +8,138 @@ sources:
   - "[[Chapter 4 - Architecture and Communication Patterns/4.6 Why Node.js Fits Serverless So Well.md]]"
 ---
 
-> [!question] Node.js is well-suited for serverless computing due to its event-driven nature.
+> [!question] In event-driven architecture services communicate by producing and consuming events.
 >> [!success]- Answer
 >> True
 
-> [!question] Microservices always require a message broker to communicate.
+> [!question] A message queue stores messages permanently until manually deleted.
 >> [!success]- Answer
 >> False
 
-> [!question] Event-driven architectures are always synchronous by nature.
+> [!question] Pub/Sub requires publishers to know exactly which subscribers exist.
 >> [!success]- Answer
 >> False
 
-> [!question] A broker can provide message persistence and delivery guarantees.
+> [!question] The broker in Pub/Sub routes messages to the correct subscribers.
 >> [!success]- Answer
 >> True
 
-> [!question] Tight coupling is a goal of microservices architecture.
+> [!question] Microservices always have lower operational complexity than monoliths.
 >> [!success]- Answer
 >> False
 
-> [!question] Why does Node.js fit serverless well?
-> a) It is compiled
-> b) It uses an event-driven, non-blocking I/O model
-> c) It requires a heavy runtime
-> d) It only runs on Windows
+> [!question] Asynchronous communication eliminates temporal coupling between services.
 >> [!success]- Answer
->> b) It uses an event-driven, non-blocking I/O model
+>> True
 
-> [!question] What decouples producers from consumers in a messaging system?
-> a) Direct API calls
-> b) The broker/message queue
-> c) Shared memory
-> d) Environment variables
+> [!question] In a monolithic architecture all features are intertwined in a single deployable unit.
 >> [!success]- Answer
->> b) The broker/message queue
+>> True
 
-> [!question] Event-driven architectures are typically:
-> a) Synchronous and blocking
-> b) Asynchronous and non-blocking
-> c) Sequential
-> d) Batch-oriented
+> [!question] Node.js is poorly suited for serverless because it is single-threaded.
 >> [!success]- Answer
->> b) Asynchronous and non-blocking
+>> False
 
-> [!question] Which pattern allows multiple services to react to the same event?
-> a) Request-Response
-> b) Publish-Subscribe
-> c) Point-to-Point
-> d) Polling
+> [!question] An event in EDA represents a significant change in state.
 >> [!success]- Answer
->> b) Publish-Subscribe
+>> True
 
-> [!question] A key benefit of microservices is:
-> a) Larger codebase per service
-> b) Independent deployability and scalability
-> c) Single point of failure
-> d) Tight coupling
+> [!question] Containerization is the only way to deploy microservices.
 >> [!success]- Answer
->> b) Independent deployability and scalability
+>> False
 
-> [!question] Match the pattern with its messaging model.
+> [!question] What is a key disadvantage of synchronous communication?
+> a) It is always slower than async
+> b) It creates temporal coupling and can cause cascading failures
+> c) It requires message brokers
+> d) It cannot use HTTP
+>> [!success]- Answer
+>> b) It creates temporal coupling and can cause cascading failures
+
+> [!question] In Pub/Sub what is a topic?
+> a) A database table
+> b) A named category for published messages
+> c) A network protocol
+> d) A type of server
+>> [!success]- Answer
+>> b) A named category for published messages
+
+> [!question] Which best describes Event-Driven Architecture?
+> a) A programming paradigm based on loops
+> b) An architecture where components react to events as they occur
+> c) A database design pattern
+> d) A network topology
+>> [!success]- Answer
+>> b) An architecture where components react to events as they occur
+
+> [!question] What is the role of the broker in a message queue?
+> a) Store and forward messages between producer and consumer
+> b) Execute application code
+> c) Manage user authentication
+> d) Provide DNS resolution
+>> [!success]- Answer
+>> a) Store and forward messages between producer and consumer
+
+> [!question] Which scenario is NOT suitable for serverless computing?
+> a) Short-lived event-driven functions
+> b) Long-running stateful processes
+> c) Image processing on demand
+> d) Webhook handlers
+>> [!success]- Answer
+>> b) Long-running stateful processes
+
+> [!question] What does Conway Law suggest about microservice architecture?
+> a) Services should be organized around business capabilities
+> b) All services must use the same database
+> c) Monoliths are always better
+> d) Teams should be centralized
+>> [!success]- Answer
+>> a) Services should be organized around business capabilities
+
+> [!question] What is the purpose of an API gateway?
+> a) Encrypt all service communications
+> b) Single entry point that routes requests to appropriate services
+> c) Replace the need for service discovery
+> d) Store all microservice data
+>> [!success]- Answer
+>> b) Single entry point that routes requests to appropriate services
+
+> [!question] Which pattern helps manage distributed transactions?
+> a) Singleton pattern
+> b) Saga pattern
+> c) Factory pattern
+> d) Observer pattern
+>> [!success]- Answer
+>> b) Saga pattern
+
+> [!question] What is distributed tracing used for?
+> a) Finding physical location of servers
+> b) Tracking a requests path across multiple services
+> c) Monitoring CPU usage
+> d) Managing IP addresses
+>> [!success]- Answer
+>> b) Tracking a requests path across multiple services
+
+> [!question] Which is a message queue system?
+> a) MySQL
+> b) Redis
+> c) RabbitMQ
+> d) Nginx
+>> [!success]- Answer
+>> c) RabbitMQ
+
+> [!question] Match the communication style with its example.
 >> [!example] Group A
->> a) Request-Reply
->> b) Fire-and-Forget
->> c) Competing Consumers
->> d) Dead Letter Channel
+>> a) Synchronous
+>> b) Asynchronous
+>> c) Event-driven
+>> d) Request-reply
 >
 >> [!example] Group B
->> n) Synchronous request followed by response
->> o) Async message without expectation of reply
->> p) Multiple consumers compete for same messages
->> q) Storage for messages that cannot be processed
+>> n) HTTP REST API call waiting for response
+>> o) Publishing a message and continuing
+>> p) Reacting to state changes in the system
+>> q) gRPC call with response expected
 >
 >> [!success]- Answer
 >> a) -> n)
@@ -87,18 +147,18 @@ sources:
 >> c) -> p)
 >> d) -> q)
 
-> [!question] Match the broker type with its specialty.
+> [!question] Match the communication tool with its protocol.
 >> [!example] Group A
->> a) Apache Kafka
->> b) RabbitMQ
->> c) Amazon SQS
->> d) Redis Pub/Sub
+>> a) REST
+>> b) gRPC
+>> c) RabbitMQ
+>> d) Kafka
 >
 >> [!example] Group B
->> n) Distributed streaming platform for event logs
->> o) Message broker supporting AMQP protocol
->> p) Fully managed message queuing service
->> q) In-memory publish-subscribe messaging
+>> n) HTTP/HTTPS
+>> o) HTTP/2 with Protobuf
+>> p) AMQP (Advanced Message Queuing Protocol)
+>> q) Custom binary protocol over TCP
 >
 >> [!success]- Answer
 >> a) -> n)
@@ -106,18 +166,18 @@ sources:
 >> c) -> p)
 >> d) -> q)
 
-> [!question] Match the deployment characteristic with serverless.
+> [!question] Match the EDA term with its analogy.
 >> [!example] Group A
->> a) Scaling
->> b) Billing
->> c) Management
->> d) Cold start
+>> a) Event
+>> b) Producer
+>> c) Consumer
+>> d) Channel
 >
 >> [!example] Group B
->> n) Automatic from zero to any scale
->> o) Pay per execution, not per resource
->> p) Provider manages infrastructure fully
->> q) Initial latency when invoking idle function
+>> n) A newspaper published
+>> o) The news agency writing the story
+>> p) A person reading the newspaper
+>> q) The newspaper delivery system
 >
 >> [!success]- Answer
 >> a) -> n)
@@ -125,18 +185,18 @@ sources:
 >> c) -> p)
 >> d) -> q)
 
-> [!question] Match the coupling type with its description.
+> [!question] Match the Node.js feature with serverless benefit.
 >> [!example] Group A
->> a) Tight coupling
->> b) Loose coupling
->> c) Temporal coupling
->> d) Spatial coupling
+>> a) Event loop
+>> b) Non-blocking I/O
+>> c) Single-threaded model
+>> d) NPM ecosystem
 >
 >> [!example] Group B
->> n) Components heavily depend on each other
->> o) Components have minimal dependencies
->> p) Sender and receiver must be available simultaneously
->> q) Components must know each other's location
+>> n) Efficiently handles multiple concurrent requests
+>> o) No thread blocking during I/O operations
+>> p) Lightweight execution per function invocation
+>> q) Rich library support for cloud integrations
 >
 >> [!success]- Answer
 >> a) -> n)
@@ -144,18 +204,113 @@ sources:
 >> c) -> p)
 >> d) -> q)
 
-> [!question] Match the ESB concept with its function.
+> [!question] Match the integration pattern with resilience.
 >> [!example] Group A
->> a) Service registry
->> b) Protocol transformation
->> c) Message routing
->> d) Orchestration
+>> a) Circuit breaker
+>> b) Retry with backoff
+>> c) Dead letter queue
+>> d) Bulkhead
 >
 >> [!example] Group B
->> n) Directory of available services
->> o) Converting between different communication protocols
->> p) Directing messages based on content
->> q) Coordinating multiple service executions
+>> n) Prevents repeated calls to failing services
+>> o) Automatically retries with exponential delay
+>> p) Stores messages that cannot be processed
+>> q) Isolates failures to prevent system-wide impact
+>
+>> [!success]- Answer
+>> a) -> n)
+>> b) -> o)
+>> c) -> p)
+>> d) -> q)
+
+> [!question] Match the queue model with delivery behavior.
+>> [!example] Group A
+>> a) Point-to-point queue
+>> b) Pub/Sub topic
+>> c) Priority queue
+>> d) Delayed queue
+>
+>> [!example] Group B
+>> n) One consumer processes each message
+>> o) All subscribers receive each message
+>> p) Messages processed by priority level
+>> q) Messages available after a delay
+>
+>> [!success]- Answer
+>> a) -> n)
+>> b) -> o)
+>> c) -> p)
+>> d) -> q)
+
+> [!question] Match the architectural style with structure.
+>> [!example] Group A
+>> a) Monolith
+>> b) Microservices
+>> c) Service-oriented
+>> d) Event-driven
+>
+>> [!example] Group B
+>> n) Single codebase deployed as one unit
+>> o) Collection of small independent services
+>> p) Modular services with enterprise service bus
+>> q) Reactive components triggered by events
+>
+>> [!success]- Answer
+>> a) -> n)
+>> b) -> o)
+>> c) -> p)
+>> d) -> q)
+
+> [!question] Match the scaling strategy with relevance.
+>> [!example] Group A
+>> a) Horizontal scaling
+>> b) Vertical scaling
+>> c) Auto-scaling
+>> d) Blue-green deployment
+>
+>> [!example] Group B
+>> n) Adding more instances of a service
+>> o) Increasing resources to an existing instance
+>> p) Automatic adjustment based on metrics
+>> q) Zero-downtime deployment with two environments
+>
+>> [!success]- Answer
+>> a) -> n)
+>> b) -> o)
+>> c) -> p)
+>> d) -> q)
+
+> [!question] Match the microservice challenge with context.
+>> [!example] Group A
+>> a) Network latency
+>> b) Data duplication
+>> c) Log aggregation
+>> d) Versioning
+>
+>> [!example] Group B
+>> n) Overhead from inter-service network calls
+>> o) Each service may own duplicate data
+>> p) Centralized logging from multiple services
+>> q) Managing multiple API versions simultaneously
+>
+>> [!success]- Answer
+>> a) -> n)
+>> b) -> o)
+>> c) -> p)
+>> d) -> q)
+
+> [!question] Match the scaling scenario with the approach.
+>> [!example] Group A
+>> a) Flash sale on e-commerce site
+>> b) Scheduled batch processing
+>> c) Real-time analytics
+>> d) Legacy app modernization
+>
+>> [!example] Group B
+>> n) Horizontal auto-scaling of web tier
+>> o) Vertical scaling of compute nodes
+>> p) Stream processing with Kafka and Spark
+>> q) Container-based microservice decomposition
 >
 >> [!success]- Answer
 >> a) -> n)
