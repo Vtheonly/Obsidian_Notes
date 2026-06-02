@@ -4,66 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "b6feb9044f189139",
+        "id": "188316da937472cc",
         "type": "tabs",
         "children": [
           {
-            "id": "e31b1a48c6131d92",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
-            }
-          },
-          {
-            "id": "59d043b24f59606f",
+            "id": "2b8a9dc4e1155ae0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Exams/CC 01.pdf.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "CC 01.pdf"
-            }
-          },
-          {
-            "id": "7fa24cf93f5eb919",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Exams/CC 01.pdf.md",
+                "file": "02 Image Preprocessing and Filtering/2.0 Image Noise and Degradation.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CC 01.pdf"
-            }
-          },
-          {
-            "id": "916b053db1f043ee",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "Class.canvas",
-                "viewState": {
-                  "x": -137.5,
-                  "y": 50,
-                  "zoom": -1.2496045784867105
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "Class"
+              "title": "2.0 Image Noise and Degradation"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -95,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:hierarchy",
+                "query": "Auto",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -120,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 488.5
+    "width": 376.5086555480957
   },
   "right": {
     "id": "9c07cb0f11004622",
@@ -219,8 +177,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -235,36 +192,37 @@
       "quiz-generator:Open generator": false
     }
   },
-  "active": "7fa24cf93f5eb919",
+  "active": "2b8a9dc4e1155ae0",
   "lastOpenFiles": [
+    "01 Introduction to Digital Images/1.11 Image Convolution and Boundary Effects.md",
+    "02 Image Preprocessing and Filtering/2.14 Deep Learning for Image Denoising.md",
+    "02 Image Preprocessing and Filtering/2.0 Image Noise and Degradation.md",
+    "02 Image Preprocessing and Filtering/2.17 Histogram Specification and Metrics.md",
+    "02 Image Preprocessing and Filtering/2.16 Histogram Equalization Techniques.md",
+    "02 Image Preprocessing and Filtering/2.25 Adaptive and Local Contrast Methods.md",
+    "02 Image Preprocessing and Filtering/2.26 Morphological Filtering.md",
+    "02 Image Preprocessing and Filtering/2.20 Advanced Interpolation Strategies.md",
+    "02 Image Preprocessing and Filtering/2.19 Super-Resolution Fundamentals and Interpolation.md",
+    "02 Image Preprocessing and Filtering/2.9 Anisotropic Diffusion.md",
+    "02 Image Preprocessing and Filtering/2.8 Bilateral Filtering.md",
+    "01 Introduction to Digital Images/Exercise 1. Computing 2D Convolution and Boundary Padding.md",
+    "01 Introduction to Digital Images/1.12 Three Levels of Image Processing.md",
+    "01 Introduction to Digital Images/1.10 Image Histograms.md",
+    "01 Introduction to Digital Images/1.9 Pixel Neighborhoods and Distance Metrics.md",
+    "01 Introduction to Digital Images/1.8 Spatial Resolution and Color Spaces.md",
+    "01 Introduction to Digital Images/1.7 Pixel Relationships and Distance.md",
+    "01 Introduction to Digital Images/1.6 The Image Histogram.md",
+    "01 Introduction to Digital Images/1.5 Image Formats (JPG, PNG, DICOM).md",
+    "01 Introduction to Digital Images/1.4 Color Spaces (RGB, Grayscale, HSL).md",
+    "01 Introduction to Digital Images/1.3 Resolution and Color Depth.md",
+    "01 Introduction to Digital Images/1.2 Image Representation (Bitmap vs Vector).md",
+    "01 Introduction to Digital Images/1.1 Digital Image Definition and Representation.md",
+    "01 Introduction to Digital Images/1.0 What is a Digital Image.md",
     "Exams/CC 01 & 02 2023-2024.pdf.md",
     "Qs2.md",
-    "Quiz/Q1.md",
     "Untitled.base",
-    "Chapter 1.1: Fundamentals/043 Polymorphism Types.md",
     "Class.canvas",
-    "Exams/CC 01.pdf.md",
-    "Encapsulation and Access Modifiers.md",
-    "Chapter 1.1: Fundamentals/020 Encapsulation and Access Control.md",
     "Quiz",
-    "Chapter 1.1: Fundamentals/016 Advanced Keywords and Modifiers.md",
-    "Chapter 1.1: Fundamentals/002 Object.md",
-    "Chapter 1.1: Fundamentals/003 New Keyword.md",
-    "Chapter 1.1: Fundamentals/001 OOP Basics.md",
-    "Chapter 1.1: Fundamentals/056 Queues and Deques.md",
-    "Chapter 1.1: Fundamentals/070 Coding to Interfaces.md",
-    "Chapter 1.1: Fundamentals/092 Project ATM.md",
-    "Chapter 1.1: Fundamentals/062 Generics.md",
-    "Chapter 1.1: Fundamentals/053 Collection Interface.md",
-    "Chapter 1.1: Fundamentals/052 Collection Framework.md",
-    "Chapter 2.1: Class Diagram Relationships/206 Association Classes and Qualification.md",
-    "Chapter 2.4: Advanced Class Diagram Extras/501 Theoretical Exam Questions.md",
-    "Chapter 2.4: Advanced Class Diagram Extras/504 TD Deep Dive File System and Shortcuts.md",
-    "Chapter 2.4: Advanced Class Diagram Extras/503 TD Deep Dive Arithmetic Expression Trap.md",
-    "Chapter 2.3: Advanced Class Diagram Extras/402 Advanced OCL Constraints.md",
-    "Chapter 2.1: Class Diagram Relationships/202 Associations Roles and Navigability.md",
-    "Chapter 2.3: Advanced Class Diagram Extras/306 Recursive Composition Pattern Trap.md",
-    "Chapter 2.4: Advanced Class Diagram Extras/403 Slide Annotations and Leftover Rules.md",
     "link_keywords_ch12_ch2.py",
     "add_keywords_ch12_ch2.py",
     "rename_ch1.py",

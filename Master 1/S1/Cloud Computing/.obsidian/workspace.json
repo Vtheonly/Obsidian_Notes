@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Quiz/Chapter 09/Chapter 09_Quiz_A.md",
+                "file": "Chapter 1 - Introduction to Cloud Computing/1.1 Cloud Computing Definition and Foundations.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 09_Quiz_A"
+              "title": "1.1 Cloud Computing Definition and Foundations"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 488.5
+    "width": 488.5,
+    "collapsed": true
   },
   "right": {
     "id": "9c07cb0f11004622",
@@ -195,6 +196,7 @@
   },
   "active": "05f4b380c3331cb1",
   "lastOpenFiles": [
+    "Quiz/Chapter 09/Chapter 09_Quiz_A.md",
     "Quiz/Chapter 09/Chapter 09_Quiz_B.md",
     "Quiz/Chapter 01/Chapter 01_Quiz_B.md",
     "Chapter 1 - Introduction to Cloud Computing/1.1 Cloud Computing Definition and Foundations.md",
@@ -230,7 +232,6 @@
     "Chapter 1.1: Fundamentals/053 Collection Interface.md",
     "Chapter 1.1: Fundamentals/052 Collection Framework.md",
     "Chapter 2.1: Class Diagram Relationships/206 Association Classes and Qualification.md",
-    "Chapter 2.4: Advanced Class Diagram Extras/501 Theoretical Exam Questions.md",
-    "Chapter 2.4: Advanced Class Diagram Extras/504 TD Deep Dive File System and Shortcuts.md"
+    "Chapter 2.4: Advanced Class Diagram Extras/501 Theoretical Exam Questions.md"
   ]
 }
