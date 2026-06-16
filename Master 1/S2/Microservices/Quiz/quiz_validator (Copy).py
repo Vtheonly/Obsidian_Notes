@@ -32,7 +32,7 @@ def log_error(msg):
 
 
 def log_warning(msg):
-    print(f"{YELLOW}⚠ {msg}{RESET}")
+    print(f"{YELLOW} {msg}{RESET}")
 
 
 def log_info(msg):

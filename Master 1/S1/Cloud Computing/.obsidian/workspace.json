@@ -13,12 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Chapter 1 - Introduction to Cloud Computing/1.1 Cloud Computing Definition and Foundations.md",
-                "mode": "preview",
+                "file": "Cloud Computing Merged/Chapter 4 - Containerization and Orchestration.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1.1 Cloud Computing Definition and Foundations"
+              "title": "Chapter 4 - Containerization and Orchestration"
+            }
+          },
+          {
+            "id": "bd994d65ceddeadb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Home.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Home"
             }
           }
         ]
@@ -78,8 +92,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 488.5,
-    "collapsed": true
+    "width": 488.5
   },
   "right": {
     "id": "9c07cb0f11004622",
@@ -196,42 +209,45 @@
   },
   "active": "05f4b380c3331cb1",
   "lastOpenFiles": [
-    "Quiz/Chapter 09/Chapter 09_Quiz_A.md",
-    "Quiz/Chapter 09/Chapter 09_Quiz_B.md",
-    "Quiz/Chapter 01/Chapter 01_Quiz_B.md",
-    "Chapter 1 - Introduction to Cloud Computing/1.1 Cloud Computing Definition and Foundations.md",
-    "split_merge/validate_quizzes.py",
-    "split_merge/quiz_data.json",
-    "split_merge/build_quiz_json.py",
-    "split_merge/json_to_md.py",
-    "split_merge/gen_quiz.py",
-    "split_merge/fix_brackets.py",
-    "split_merge/generate_quizzes.py",
-    "split_merge",
-    "Untitled",
-    "Chapter 5 - Containerization and Orchestration/5.2 Docker Engine Architecture and Core Components.md",
-    "Chapter 1 - Introduction to Cloud Computing/1.10 What is a Workload.md",
-    "Quiz/Chapter 01/Chapter 01_Quiz_A.md",
-    "Exams/CC 01 & 02 2023-2024.pdf.md",
-    "Qs2.md",
-    "Quiz/Q1.md",
-    "Untitled.base",
-    "Chapter 1.1: Fundamentals/043 Polymorphism Types.md",
-    "Class.canvas",
-    "Exams/CC 01.pdf.md",
-    "Encapsulation and Access Modifiers.md",
-    "Chapter 1.1: Fundamentals/020 Encapsulation and Access Control.md",
-    "Chapter 1.1: Fundamentals/016 Advanced Keywords and Modifiers.md",
-    "Chapter 1.1: Fundamentals/002 Object.md",
-    "Chapter 1.1: Fundamentals/003 New Keyword.md",
-    "Chapter 1.1: Fundamentals/001 OOP Basics.md",
-    "Chapter 1.1: Fundamentals/056 Queues and Deques.md",
-    "Chapter 1.1: Fundamentals/070 Coding to Interfaces.md",
-    "Chapter 1.1: Fundamentals/092 Project ATM.md",
-    "Chapter 1.1: Fundamentals/062 Generics.md",
-    "Chapter 1.1: Fundamentals/053 Collection Interface.md",
-    "Chapter 1.1: Fundamentals/052 Collection Framework.md",
-    "Chapter 2.1: Class Diagram Relationships/206 Association Classes and Qualification.md",
-    "Chapter 2.4: Advanced Class Diagram Extras/501 Theoretical Exam Questions.md"
+    "Cloud Computing Merged/Chapter 3 - Virtualization.md",
+    "Cloud Computing Merged/Chapter 2 - Service and Deployment Models.md",
+    "Cloud Computing Merged/Practical Labs and Solutions.md",
+    "Cloud Computing Merged/Chapter 5 - Virtual and Networked Storage.md",
+    "Cloud Computing Merged/Chapter 4 - Containerization and Orchestration.md",
+    "Quiz/Merged/Chapter 3/Q1.md",
+    "Quiz/Merged/Chapter 2/Q1.md",
+    "Quiz/Merged/Chapter 2/Q2.md",
+    "Quiz/Merged/Chapter 5/Q2.md",
+    "Quiz/Merged/Chapter 5/Q1.md",
+    "Quiz/Merged/Chapter 4/Q2.md",
+    "Quiz/Merged/Chapter 4/Q1.md",
+    "Quiz/Merged/Chapter 3/Q2.md",
+    "Cloud Computing Merged/Chapter 1 - Introduction to Cloud Computing.md",
+    "Home.md",
+    "Cloud Non Merged/Chapter 9 - Practical Labs and Solutions/Chapter_9_Intro.md",
+    "Cloud Non Merged/Chapter 9 - Practical Labs and Solutions/9.5 TP 7 - Distributed MapReduce Compilation and Execution on Hadoop.md",
+    "Cloud Non Merged/Chapter 9 - Practical Labs and Solutions/9.4 TP 6 - Cloud Storage Automation and Persistance with MinIO.md",
+    "Cloud Non Merged/Chapter 9 - Practical Labs and Solutions/9.3 TP 4 and 5 - Private Cloud Deployment with Nextcloud and Docker.md",
+    "Cloud Non Merged/Chapter 9 - Practical Labs and Solutions/9.2 TP 2 - Discrete Event Simulation of Cloud Topologies via YAFS.md",
+    "Cloud Non Merged/Chapter 9 - Practical Labs and Solutions/9.1 TP 1 - Cloud Provisioning with OpenStack and Taikun.md",
+    "Cloud Non Merged/Chapter 9 - Practical Labs and Solutions",
+    "Cloud Non Merged/Chapter 8 - Big Data Processing Frameworks/Chapter_8_Intro.md",
+    "Cloud Non Merged/Chapter 8 - Big Data Processing Frameworks/8.4 Apache Spark In-Memory Computation Engine.md",
+    "Cloud Non Merged/Chapter 8 - Big Data Processing Frameworks/8.3 MapReduce Programming Model and Execution Engine.md",
+    "Cloud Non Merged/Chapter 8 - Big Data Processing Frameworks/8.2 Apache Hadoop Ecosystem and HDFS.md",
+    "Cloud Non Merged/Chapter 8 - Big Data Processing Frameworks/8.1 Big Data Foundations and Architecture.md",
+    "Cloud Non Merged/Chapter 8 - Big Data Processing Frameworks",
+    "Cloud Non Merged/Chapter 7 - Cloud Storage and Distributed Systems",
+    "Cloud Non Merged/Chapter 6 - Virtual and Networked Storage",
+    "Cloud Non Merged/Chapter 5 - Containerization and Orchestration",
+    "Cloud Non Merged/Chapter 4 - Architecture and Communication Patterns",
+    "Cloud Non Merged/Chapter 3 - Virtualization",
+    "Cloud Non Merged/Chapter 2 - Service and Deployment Models",
+    "Cloud Non Merged/Chapter 1 - Introduction to Cloud Computing",
+    "Cloud Non Merged",
+    "Pasted image 20260606094004.png",
+    "Pasted image 20260606093958.png",
+    "Pasted image 20260606093950.png",
+    "Class.canvas"
   ]
 }

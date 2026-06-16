@@ -4,66 +4,38 @@
     "type": "split",
     "children": [
       {
-        "id": "b6feb9044f189139",
+        "id": "455c0fe1bf0f04d0",
         "type": "tabs",
         "children": [
           {
-            "id": "e31b1a48c6131d92",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
-            }
-          },
-          {
-            "id": "59d043b24f59606f",
+            "id": "367c552e31f02b7d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Exams/CC 01.pdf.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "CC 01.pdf"
-            }
-          },
-          {
-            "id": "7fa24cf93f5eb919",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Exams/CC 01.pdf.md",
+                "file": "Chapter 3: Python Programming Essentials/3.2. Object Oriented Programming in Python.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CC 01.pdf"
+              "title": "3.2. Object Oriented Programming in Python"
             }
           },
           {
-            "id": "916b053db1f043ee",
+            "id": "e8216b8e311c0d48",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Class.canvas",
-                "viewState": {
-                  "x": -137.5,
-                  "y": 50,
-                  "zoom": -1.2496045784867105
-                }
+                "file": "Chapter 1: Introduction to Data Science/1.1. Data Science Fundamentals and Workflows.md",
+                "mode": "preview",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Class"
+              "icon": "lucide-file",
+              "title": "1.1. Data Science Fundamentals and Workflows"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -120,7 +92,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 488.5
+    "width": 373.5086555480957
   },
   "right": {
     "id": "9c07cb0f11004622",
@@ -196,8 +168,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
+              "icon": "lucide-ghost",
+              "title": "git-view"
             }
           },
           {
@@ -235,43 +207,54 @@
       "quiz-generator:Open generator": false
     }
   },
-  "active": "7fa24cf93f5eb919",
+  "active": "367c552e31f02b7d",
   "lastOpenFiles": [
-    "Exams/CC 01 & 02 2023-2024.pdf.md",
-    "Qs2.md",
-    "Quiz/Q1.md",
-    "Untitled.base",
-    "Chapter 1.1: Fundamentals/043 Polymorphism Types.md",
-    "Class.canvas",
-    "Exams/CC 01.pdf.md",
-    "Encapsulation and Access Modifiers.md",
-    "Chapter 1.1: Fundamentals/020 Encapsulation and Access Control.md",
-    "Quiz",
-    "Chapter 1.1: Fundamentals/016 Advanced Keywords and Modifiers.md",
-    "Chapter 1.1: Fundamentals/002 Object.md",
-    "Chapter 1.1: Fundamentals/003 New Keyword.md",
-    "Chapter 1.1: Fundamentals/001 OOP Basics.md",
-    "Chapter 1.1: Fundamentals/056 Queues and Deques.md",
-    "Chapter 1.1: Fundamentals/070 Coding to Interfaces.md",
-    "Chapter 1.1: Fundamentals/092 Project ATM.md",
-    "Chapter 1.1: Fundamentals/062 Generics.md",
-    "Chapter 1.1: Fundamentals/053 Collection Interface.md",
-    "Chapter 1.1: Fundamentals/052 Collection Framework.md",
-    "Chapter 2.1: Class Diagram Relationships/206 Association Classes and Qualification.md",
-    "Chapter 2.4: Advanced Class Diagram Extras/501 Theoretical Exam Questions.md",
-    "Chapter 2.4: Advanced Class Diagram Extras/504 TD Deep Dive File System and Shortcuts.md",
-    "Chapter 2.4: Advanced Class Diagram Extras/503 TD Deep Dive Arithmetic Expression Trap.md",
-    "Chapter 2.3: Advanced Class Diagram Extras/402 Advanced OCL Constraints.md",
-    "Chapter 2.1: Class Diagram Relationships/202 Associations Roles and Navigability.md",
-    "Chapter 2.3: Advanced Class Diagram Extras/306 Recursive Composition Pattern Trap.md",
-    "Chapter 2.4: Advanced Class Diagram Extras/403 Slide Annotations and Leftover Rules.md",
-    "link_keywords_ch12_ch2.py",
-    "add_keywords_ch12_ch2.py",
-    "rename_ch1.py",
-    "rename_ch2.py",
-    "Chapter 1.1: Fundamentals/add_keywords.py",
-    "Chapter 1.1: Fundamentals/link_keywords.py",
-    "Chapter 1.1: Fundamentals/rename_files.py",
-    "Exams"
+    "Quiz/Chapter 02/Quiz_A.md",
+    "Chapter 3: Python Programming Essentials/3.1. Python Essentials and Data Structures.md",
+    "HospitalDataAnalysis/requirements.txt",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/jupyter-1.1.1.dist-info/top_level.txt",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/jupyter-1.1.1.dist-info/WHEEL",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/jupyter-1.1.1.dist-info/REQUESTED",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/jupyter-1.1.1.dist-info/RECORD",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/jupyter-1.1.1.dist-info/METADATA",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/jupyter-1.1.1.dist-info/LICENSE",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/jupyter-1.1.1.dist-info/INSTALLER",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/jupyter-1.1.1.dist-info",
+    "HospitalDataAnalysis/env/bin/jupyter-notebook",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/notebook/static/be0a084962d8066884f7.svg",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/notebook/static/a3b9817780214caf01e8.svg",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/notebook/static/9674eb1bd55047179038.svg",
+    "HospitalDataAnalysis/env/share/icons/hicolor/scalable/apps/notebook.svg",
+    "HospitalDataAnalysis/env/share/icons/hicolor/scalable/apps/jupyterlab.svg",
+    "HospitalDataAnalysis/env/share/jupyter/lab/static/be0a084962d8066884f7.svg",
+    "HospitalDataAnalysis/env/share/jupyter/lab/static/a3b9817780214caf01e8.svg",
+    "HospitalDataAnalysis/env/share/jupyter/lab/static/9674eb1bd55047179038.svg",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/jupyterlab/static/be0a084962d8066884f7.svg",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/jupyterlab/static/a3b9817780214caf01e8.svg",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/jupyter_server/i18n/README.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/nbconvert/templates/skeleton/README.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/nbconvert/templates/README.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/httpx-0.28.1.dist-info/licenses/LICENSE.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/httpcore-1.0.9.dist-info/licenses/LICENSE.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/debugpy/_vendored/pydevd/pydevd_plugins/extensions/README.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/idna-3.18.dist-info/licenses/LICENSE.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/numpy-2.4.6.dist-info/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/numpy-2.4.6.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/numpy-2.4.6.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/numpy-2.4.6.dist-info/licenses/numpy/random/src/philox/LICENSE.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/numpy-2.4.6.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/numpy-2.4.6.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/numpy-2.4.6.dist-info/licenses/numpy/random/src/distributions/LICENSE.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/numpy-2.4.6.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/numpy-2.4.6.dist-info/licenses/numpy/random/LICENSE.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/numpy/random/LICENSE.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/pyparsing/ai/best_practices.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/pyzmq-27.1.0.dist-info/licenses/LICENSE.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/zmq/backend/cffi/README.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/soupsieve-2.8.4.dist-info/licenses/LICENSE.md",
+    "HospitalDataAnalysis/env/lib/python3.12/site-packages/pip-26.1.2.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
+    "Chapter 2: Setting Up the Python Environment/2.2. Exercise 1. Hospital Patient Data Analysis Setup.md",
+    "HospitalDataAnalysis/README.md",
+    "Class.canvas"
   ]
 }

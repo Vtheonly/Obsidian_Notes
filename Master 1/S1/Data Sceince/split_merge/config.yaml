@@ -1,0 +1,138 @@
+default:
+  workspace_path: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S2/Complexity and Advanced Algorithms old"
+  backup_archive: "Course_Backup.zip"
+
+rename:
+  # ===================================================================
+  # 1. Course Chapter 1
+  # ===================================================================
+  rename_ch1:
+    target_dir: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S2/Complexity and Advanced Algorithms old/old/Course/Chapter 1. Calculability"
+    strategy: "map"
+    mapping:
+      "00 Introduction and Notion of Algorithm.md": "../../../01 Calculability (Turing Machines & Automata)/01.00 Introduction and Notion of Algorithm.md"
+      "01 Finite Automata and Regular Languages.md": "../../../01 Calculability (Turing Machines & Automata)/01.01 Finite Automata and Regular Languages.md"
+      "02 Countability and Pushdown Automata.md": "../../../01 Calculability (Turing Machines & Automata)/01.02 Countability and Pushdown Automata.md"
+      "03 Turing Machine Model and Architecture.md": "../../../01 Calculability (Turing Machines & Automata)/01.03 Turing Machine Model and Architecture.md"
+      "04 Formal Definition and Execution of a TM.md": "../../../01 Calculability (Turing Machines & Automata)/01.04 Formal Definition and Execution of a TM.md"
+      "05 Turing Machines Basics and Formal Definitions.md": "../../../01 Calculability (Turing Machines & Automata)/01.05 Turing Machines Basics and Formal Definitions.md"
+      "06 Configurations and Terminology.md": "../../../01 Calculability (Turing Machines & Automata)/01.06 Configurations and Terminology.md"
+      "07 Tracing Configurations and Execution.md": "../../../01 Calculability (Turing Machines & Automata)/01.07 Tracing Configurations and Execution.md"
+      "08 Decidability and The Halting Problem.md": "../../../01 Calculability (Turing Machines & Automata)/01.08 Decidability and The Halting Problem.md"
+      "09 Turing Machines as Transducers.md": "../../../01 Calculability (Turing Machines & Automata)/01.09 Turing Machines as Transducers.md"
+      "10 Turing Machines as Language Recognizers.md": "../../../01 Calculability (Turing Machines & Automata)/01.10 Turing Machines as Language Recognizers.md"
+      "11 Undecidable Problems (PCP and MMP).md": "../../../01 Calculability (Turing Machines & Automata)/01.11 Undecidable Problems (PCP and MMP).md"
+      "12 Non-Deterministic Turing Machines.md": "../../../01 Calculability (Turing Machines & Automata)/01.12 Non-Deterministic Turing Machines.md"
+      "13 Advanced Turing Machine Variants.md": "../../../01 Calculability (Turing Machines & Automata)/01.13 Advanced Turing Machine Variants.md"
+
+  # ===================================================================
+  # 2. Course Chapter 2
+  # ===================================================================
+  rename_ch2:
+    target_dir: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S2/Complexity and Advanced Algorithms old/old/Course/Chapter 2. Complexity"
+    strategy: "map"
+    mapping:
+      "0. Complexity Analysis Methodology and Summary.md": "../../../02 Complexity/02.00 Complexity Analysis Methodology and Summary.md"
+      "1. Matrix Search Complexity and Operation Counting.md": "../../../02 Complexity/02.01 Matrix Search Complexity and Operation Counting.md"
+      "2. Average Case Calculation using Probability.md": "../../../02 Complexity/02.02 Average Case Calculation using Probability.md"
+      "3. Complexity Lookup Table for Standard Operations.md": "../../../02 Complexity/02.03 Complexity Lookup Table for Standard Operations.md"
+      "4. Mathematical Proofs of Big O Notation.md": "../../../02 Complexity/02.04 Mathematical Proofs of Big O Notation.md"
+      "5. Additional Big O Mathematical Proofs.md": "../../../02 Complexity/02.05 Additional Big O Mathematical Proofs.md"
+
+  # ===================================================================
+  # 3. Practical Labs
+  # ===================================================================
+  rename_labs:
+    target_dir: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S2/Complexity and Advanced Algorithms old/old/Labs"
+    strategy: "map"
+    mapping:
+      "Lab 1. Experimental Study of Simple Sorting Algorithms.md": "../../03 Practical Labs/03.01 Experimental Study of Simple Sorting Algorithms.md"
+
+  # ===================================================================
+  # 4. Serie 1 Turing - Concepts
+  # ===================================================================
+  rename_s1_concepts:
+    target_dir: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S2/Complexity and Advanced Algorithms old/old/Series/Serie 1 Turing/Lesson Concepts"
+    strategy: "map"
+    mapping:
+      "01 Turing Machine Foundations.md": "../../../../04 Exercise Series/Serie 1 - Turing Machines/Lesson Concepts/04.1.01 Turing Machine Foundations.md"
+      "02 Methodology for Solving Exercises.md": "../../../../04 Exercise Series/Serie 1 - Turing Machines/Lesson Concepts/04.1.02 Methodology for Solving Exercises.md"
+      "03 Data Representations and Arithmetic.md": "../../../../04 Exercise Series/Serie 1 - Turing Machines/Lesson Concepts/04.1.03 Data Representations and Arithmetic.md"
+      "04 Memory and Advanced Patterns.md": "../../../../04 Exercise Series/Serie 1 - Turing Machines/Lesson Concepts/04.1.04 Memory and Advanced Patterns.md"
+      "05 Formal Tracing and Halting.md": "../../../../04 Exercise Series/Serie 1 - Turing Machines/Lesson Concepts/04.1.05 Formal Tracing and Halting.md"
+      "06 Master Patterns and Antipatterns.md": "../../../../04 Exercise Series/Serie 1 - Turing Machines/Lesson Concepts/04.1.06 Master Patterns and Antipatterns.md"
+
+  # ===================================================================
+  # 5. Serie 1 Turing - Solutions
+  # ===================================================================
+  rename_s1_solutions:
+    target_dir: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S2/Complexity and Advanced Algorithms old/old/Series/Serie 1 Turing/Exercise Solutions"
+    strategy: "map"
+    mapping:
+      "Exercise 1 Ones Complement.md": "../../../../04 Exercise Series/Serie 1 - Turing Machines/Exercise Solutions/04.1.07 Exercise 1 Ones Complement.md"
+      "Exercise 2 Unary Successor.md": "../../../../04 Exercise Series/Serie 1 - Turing Machines/Exercise Solutions/04.1.08 Exercise 2 Unary Successor.md"
+      "Exercise 3 Binary Successor.md": "../../../../04 Exercise Series/Serie 1 - Turing Machines/Exercise Solutions/04.1.09 Exercise 3 Binary Successor.md"
+      "Exercise 4 String Copying.md": "../../../../04 Exercise Series/Serie 1 - Turing Machines/Exercise Solutions/04.1.10 Exercise 4 String Copying.md"
+      "Exercise 5 TM Tracing and Halting.md": "../../../../04 Exercise Series/Serie 1 - Turing Machines/Exercise Solutions/04.1.11 Exercise 5 TM Tracing and Halting.md"
+      "Exercise 6 Completing Reject State.md": "../../../../04 Exercise Series/Serie 1 - Turing Machines/Exercise Solutions/04.1.12 Exercise 6 Completing Reject State.md"
+      "Exercise 7 Matrix Mortality.md": "../../../../04 Exercise Series/Serie 1 - Turing Machines/Exercise Solutions/04.1.13 Exercise 7 Matrix Mortality.md"
+
+  # ===================================================================
+  # 6. Serie 2 Complexity - Chapter 1
+  # ===================================================================
+  rename_s2_ch1:
+    target_dir: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S2/Complexity and Advanced Algorithms old/old/Series/Serie 2 Complexity/Chapter 1 - Mathematical Foundations for Algorithm Analysis"
+    strategy: "map"
+    mapping:
+      "1. Summation Rules and Properties.md": "../../../../04 Exercise Series/Serie 2 - Complexity/Chapter 1 - Mathematical Foundations/04.2.01 Summation Rules and Properties.md"
+      "2. Asymptotic Notations and Big-O Proofs.md": "../../../../04 Exercise Series/Serie 2 - Complexity/Chapter 1 - Mathematical Foundations/04.2.02 Asymptotic Notations and Big-O Proofs.md"
+
+  # ===================================================================
+  # 7. Serie 2 Complexity - Chapter 2
+  # ===================================================================
+  rename_s2_ch2:
+    target_dir: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S2/Complexity and Advanced Algorithms old/old/Series/Serie 2 Complexity/Chapter 2 - Iterative Algorithms Analysis"
+    strategy: "map"
+    mapping:
+      "1. Basic Nested Loops Complexity.md": "../../../../04 Exercise Series/Serie 2 - Complexity/Chapter 2 - Iterative Algorithms/04.2.03 Basic Nested Loops Complexity.md"
+      "2. Matrix Search Algorithm Analysis.md": "../../../../04 Exercise Series/Serie 2 - Complexity/Chapter 2 - Iterative Algorithms/04.2.04 Matrix Search Algorithm Analysis.md"
+      "3. Pyramid Function Exact Operation Counting.md": "../../../../04 Exercise Series/Serie 2 - Complexity/Chapter 2 - Iterative Algorithms/04.2.05 Pyramid Function Exact Operation Counting.md"
+      "4. Decidability and Finite Search Spaces.md": "../../../../04 Exercise Series/Serie 2 - Complexity/Chapter 2 - Iterative Algorithms/04.2.06 Decidability and Finite Search Spaces.md"
+
+  # ===================================================================
+  # 8. Serie 2 Complexity - Chapter 3
+  # ===================================================================
+  rename_s2_ch3:
+    target_dir: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S2/Complexity and Advanced Algorithms old/old/Series/Serie 2 Complexity/Chapter 3 - Common Algorithmic Operations and Complexities"
+    strategy: "map"
+    mapping:
+      "1. Standard Data Structures and Mathematical Operations.md": "../../../../04 Exercise Series/Serie 2 - Complexity/Chapter 3 - Common Algorithmic Operations/04.2.07 Standard Data Structures and Mathematical Operations.md"
+      "2. Deducing Complexity from Execution Times.md": "../../../../04 Exercise Series/Serie 2 - Complexity/Chapter 3 - Common Algorithmic Operations/04.2.08 Deducing Complexity from Execution Times.md"
+
+  # ===================================================================
+  # 9. Serie 2 Complexity - Chapter 4
+  # ===================================================================
+  rename_s2_ch4:
+    target_dir: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S2/Complexity and Advanced Algorithms old/old/Series/Serie 2 Complexity/Chapter 4 - Recursive Algorithms Analysis"
+    strategy: "map"
+    mapping:
+      "1. Merge Sort Recurrence Relation.md": "../../../../04 Exercise Series/Serie 2 - Complexity/Chapter 4 - Recursive Algorithms/04.2.09 Merge Sort Recurrence Relation.md"
+
+  # ===================================================================
+  # 10. Quiz Subfolder
+  # ===================================================================
+  rename_quiz:
+    target_dir: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S2/Complexity and Advanced Algorithms old/Quiz"
+    strategy: "map"
+    mapping:
+      "Q1.md": "../05 Quizzes/05.01 Q1.md"
+      "Q2.md": "../05 Quizzes/05.02 Q2.md"
+
+  # ===================================================================
+  # 11. Loose Questions Subfolder
+  # ===================================================================
+  rename_questions:
+    target_dir: "/home/mersel/Documents/Learn/Obsidian Notes/Shared/Master 1/S2/Complexity and Advanced Algorithms old/old/Questions"
+    strategy: "map"
+    mapping:
+      "Qs1.md": "../../05 Quizzes/05.03 Qs1.md"

@@ -1,0 +1,16 @@
+# Virtual environment folder
+env/
+.venv/
+venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Local configuration files
+.env

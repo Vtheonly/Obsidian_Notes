@@ -132,4 +132,4 @@ Optimized for **relationships**.
 ## 6. Cloud & Multi-Model Databases
 *   **Cloud (DBaaS):** Amazon RDS, Google Firestore. The provider manages backups and scaling. You just use the API.
 *   **Multi-Model:** Modern databases are blurring lines. **ArangoDB** or **CosmosDB** let you use Key-Value, Graph, and Document models all in the *same* database engine. This reduces operational complexity (you only have to install one software).
-[[index.html]]
+[[Advanced Database Systems]]

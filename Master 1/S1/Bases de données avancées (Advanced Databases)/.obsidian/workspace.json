@@ -4,24 +4,67 @@
     "type": "split",
     "children": [
       {
-        "id": "d93d5897cc7d9653",
+        "id": "c7f532795eae1c95",
         "type": "tabs",
         "children": [
           {
-            "id": "65f3957dd1fa1def",
+            "id": "ae3ea19e4913a8eb",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 Fundamentals/1. Relational Algebra/2. Relational Algebra Operators.md",
+                "file": "02 Integrity Management/02 Integrity Management.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "02 Integrity Management"
+            }
+          },
+          {
+            "id": "678f1a7fa00c228f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03 Transactions and Security/03 Transactions and Security.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2. Relational Algebra Operators"
+              "title": "03 Transactions and Security"
+            }
+          },
+          {
+            "id": "2f016a42a96a3e4b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "04 Query Optimization and Processing/04 Query Optimization and Processing.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "04 Query Optimization and Processing"
+            }
+          },
+          {
+            "id": "6e7bf3246554ea6f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Exams/2025/2025 Retake Jan 29/2025 Retake Jan 29.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2025 Retake Jan 29"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -193,44 +236,44 @@
       "quiz-generator:Open generator": false
     }
   },
-  "active": "65f3957dd1fa1def",
+  "active": "6e7bf3246554ea6f",
   "lastOpenFiles": [
-    "01 Fundamentals/1. Relational Algebra/1. Relational Model Fundamentals.md",
-    "05 PLSQL and Database Programming/07 Delimiters and Procedural Parsing Mechanics.md",
-    "Quiz/Chapter_06/Q2.md",
-    "Quiz/Chapter_06/Q1.md",
-    "Quiz/Chapter_05/Q2.md",
-    "Quiz/Chapter_05/Q1.md",
-    "Quiz/Chapter_04/Q2.md",
-    "Quiz/Chapter_04/Q1.md",
-    "Quiz/Chapter_03/Q2.md",
-    "Quiz/Chapter_03/Q1.md",
-    "Quiz/Chapter_02/Q2.md",
-    "Quiz/Chapter_02/Q1.md",
-    "Quiz/Chapter_01/Q2.md",
-    "Quiz/Chapter_01/Q1.md",
-    "Exams/CC 01 & 02 2023-2024.pdf.md",
-    "Qs2.md",
-    "Quiz/Q1.md",
+    "06 Exercises and Scenarios/Serie/Source TD N4 - Optimisation de requêtes.md",
+    "06 Exercises and Scenarios/Serie/Source TD N3 BDA Contraintes d’intégrité, Vue et Contrôle de données.md",
+    "04 Query Optimization and Processing/04 Query Optimization and Processing.md",
+    "Exams/2025/2025 Retake Jan 29/2025 Retake Jan 29.md",
+    "05 PLSQL and Database Programming/05 PLSQL and Database Programming.md",
+    "03 Transactions and Security/03 Transactions and Security.md",
+    "02 Integrity Management/02 Integrity Management.md",
+    "Exams/2008/2008 Control Dec 13/2008 Control Dec 13.md",
+    "Exams/2008/2008 Exam Feb 06/2008 Exam Feb 06.md",
+    "Exams/2008/2008 Retake Jun 15/2008 Retake Jun 15.md",
+    "Exams/2009/2009 Control Jan 28/2009 Control Jan 28.md",
+    "Exams/2023/2023 Control Dec 10/2023 Control Dec 10.md",
+    "Advanced Database Systems.md",
+    "03 Transactions and Security/03 Transactions and Security/09 Disaster Recovery Protocols.md",
+    "03 Transactions and Security/03 Transactions and Security",
+    "03 Transactions and Security/03 Transactions and Security/07 Advanced Concurrency Protocols.md",
+    "02 Integrity Management/02 Integrity Management/09 Metadata and the Information Schema.md",
+    "02 Integrity Management/02 Integrity Management",
+    "05 PLSQL and Database Programming/05 PLSQL and Database Programming/07 Delimiters and Procedural Parsing Mechanics.md",
+    "05 PLSQL and Database Programming/05 PLSQL and Database Programming",
+    "05 PLSQL and Database Programming/05 PLSQL and Database Programming/05 Advanced Cursors and Dynamic SQL.md",
+    "04 Query Optimization and Processing/04 Query Optimization and Processing/15. Database Statistics and Selectivity Estimation.md",
+    "04 Query Optimization and Processing/04 Query Optimization and Processing",
+    "04 Query Optimization and Processing/04 Query Optimization and Processing/3. Physical Operators & Algorithms.md",
+    "02 Integrity Management/02 Integrity Management/03 Dynamic Constraints Triggers.md",
+    "02 Integrity Management/02 Integrity Management/04 Advanced Triggers.md",
+    "03 Transactions and Security/03 Transactions and Security/06 Master Class Transactions & Integrity.md",
+    "03 Transactions and Security/03 Transactions and Security/04 Transaction Control Syntax/Combined_Syntax.md",
+    "02 Integrity Management/02 Integrity Management/02 Foreign Key Behaviors.md",
+    "02 Integrity Management/02 Integrity Management/01 Static Constraints.md",
     "Untitled.base",
-    "Chapter 1.1: Fundamentals/043 Polymorphism Types.md",
     "Class.canvas",
-    "Exams/CC 01.pdf.md",
-    "Encapsulation and Access Modifiers.md",
-    "Chapter 1.1: Fundamentals/020 Encapsulation and Access Control.md",
     "Quiz",
-    "Chapter 1.1: Fundamentals/016 Advanced Keywords and Modifiers.md",
-    "Chapter 1.1: Fundamentals/002 Object.md",
-    "Chapter 1.1: Fundamentals/003 New Keyword.md",
-    "Chapter 1.1: Fundamentals/001 OOP Basics.md",
-    "Chapter 1.1: Fundamentals/056 Queues and Deques.md",
     "link_keywords_ch12_ch2.py",
     "add_keywords_ch12_ch2.py",
     "rename_ch1.py",
-    "rename_ch2.py",
-    "Chapter 1.1: Fundamentals/add_keywords.py",
-    "Chapter 1.1: Fundamentals/link_keywords.py",
-    "Chapter 1.1: Fundamentals/rename_files.py",
-    "Exams"
+    "rename_ch2.py"
   ]
 }

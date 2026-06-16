@@ -7,5 +7,6 @@
     "downscalePercent": 100
   },
   "promptDelete": false,
-  "readableLineLength": true
+  "readableLineLength": true,
+  "showInlineTitle": true
 }
