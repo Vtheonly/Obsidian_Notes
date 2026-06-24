@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Cloud Computing Merged/Chapter 4 - Containerization and Orchestration.md",
+                "file": "Quiz/Merged/Chapter 4/Q1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 4 - Containerization and Orchestration"
+              "title": "Q1"
             }
           },
           {
@@ -67,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:hierarchy",
+                "query": "reverse prox",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -209,15 +209,16 @@
   },
   "active": "05f4b380c3331cb1",
   "lastOpenFiles": [
+    "Quiz/Merged/Chapter 5/Q2.md",
+    "Cloud Computing Merged/Practical Labs and Solutions.md",
+    "Cloud Non Merged/Chapter 2 - Service and Deployment Models/2.2 Cloud Service Models - IaaS PaaS SaaS Deep Dive.md",
+    "Cloud Computing Merged/Chapter 4 - Containerization and Orchestration.md",
     "Cloud Computing Merged/Chapter 3 - Virtualization.md",
     "Cloud Computing Merged/Chapter 2 - Service and Deployment Models.md",
-    "Cloud Computing Merged/Practical Labs and Solutions.md",
     "Cloud Computing Merged/Chapter 5 - Virtual and Networked Storage.md",
-    "Cloud Computing Merged/Chapter 4 - Containerization and Orchestration.md",
     "Quiz/Merged/Chapter 3/Q1.md",
     "Quiz/Merged/Chapter 2/Q1.md",
     "Quiz/Merged/Chapter 2/Q2.md",
-    "Quiz/Merged/Chapter 5/Q2.md",
     "Quiz/Merged/Chapter 5/Q1.md",
     "Quiz/Merged/Chapter 4/Q2.md",
     "Quiz/Merged/Chapter 4/Q1.md",
@@ -235,7 +236,6 @@
     "Cloud Non Merged/Chapter 8 - Big Data Processing Frameworks/8.4 Apache Spark In-Memory Computation Engine.md",
     "Cloud Non Merged/Chapter 8 - Big Data Processing Frameworks/8.3 MapReduce Programming Model and Execution Engine.md",
     "Cloud Non Merged/Chapter 8 - Big Data Processing Frameworks/8.2 Apache Hadoop Ecosystem and HDFS.md",
-    "Cloud Non Merged/Chapter 8 - Big Data Processing Frameworks/8.1 Big Data Foundations and Architecture.md",
     "Cloud Non Merged/Chapter 8 - Big Data Processing Frameworks",
     "Cloud Non Merged/Chapter 7 - Cloud Storage and Distributed Systems",
     "Cloud Non Merged/Chapter 6 - Virtual and Networked Storage",

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 Calculability (Turing Machines & Automata)/01.09 Turing Machines as Transducers.md",
-                "mode": "source",
+                "file": "01 Calculability (Turing Machines & Automata)/01.04 Formal Definition and Execution of a TM.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01.09 Turing Machines as Transducers"
+              "title": "01.04 Formal Definition and Execution of a TM"
             }
           }
         ]
@@ -41,7 +41,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -185,10 +185,26 @@
   },
   "active": "356bd60477a61b27",
   "lastOpenFiles": [
+    "01 Calculability (Turing Machines & Automata)/01.03 Turing Machine Model and Architecture.md",
+    "01 Calculability (Turing Machines & Automata)/01.00 Introduction and Notion of Algorithm.md",
+    "01 Calculability (Turing Machines & Automata)/01.13 Advanced Turing Machine Variants.md",
+    "03 Practical Labs/03.01 Experimental Study of Simple Sorting Algorithms.md",
+    "02 Complexity/02.04 Mathematical Proofs of Big O Notation.md",
+    "02 Complexity/02.03 Complexity Lookup Table for Standard Operations.md",
+    "02 Complexity/02.02 Average Case Calculation using Probability.md",
+    "02 Complexity/02.01 Matrix Search Complexity and Operation Counting.md",
+    "02 Complexity/02.00 Complexity Analysis Methodology and Summary.md",
     "01 Calculability (Turing Machines & Automata)/01.11 Undecidable Problems (PCP and MMP).md",
+    "01 Calculability (Turing Machines & Automata)/01.12 Non-Deterministic Turing Machines.md",
+    "01 Calculability (Turing Machines & Automata)/01.09 Turing Machines as Transducers.md",
+    "01 Calculability (Turing Machines & Automata)/01.10 Turing Machines as Language Recognizers.md",
+    "01 Calculability (Turing Machines & Automata)/01.08 Decidability and The Halting Problem.md",
     "01 Calculability (Turing Machines & Automata)/01.07 Tracing Configurations and Execution.md",
     "01 Calculability (Turing Machines & Automata)/01.06 Configurations and Terminology.md",
-    "01 Calculability (Turing Machines & Automata)/01.13 Advanced Turing Machine Variants.md",
+    "01 Calculability (Turing Machines & Automata)/01.05 Turing Machines Basics and Formal Definitions.md",
+    "01 Calculability (Turing Machines & Automata)/01.04 Formal Definition and Execution of a TM.md",
+    "01 Calculability (Turing Machines & Automata)/01.02 Countability and Pushdown Automata.md",
+    "01 Calculability (Turing Machines & Automata)/01.01 Finite Automata and Regular Languages.md",
     "05 Quizzes/05.01 Q1.md",
     "split_merge/vault_manager/utils/__pycache__/file_ops.cpython-312.pyc",
     "split_merge/vault_manager/utils/__pycache__/__init__.cpython-312.pyc",
@@ -204,15 +220,6 @@
     "04 Exercise Series/Serie 2 - Complexity/Chapter 2 - Iterative Algorithms/04.2.04 Matrix Search Algorithm Analysis.md",
     "04 Exercise Series/Serie 2 - Complexity/Chapter 2 - Iterative Algorithms/04.2.03 Basic Nested Loops Complexity.md",
     "04 Exercise Series/Serie 2 - Complexity/Chapter 3 - Common Algorithmic Operations/04.2.08 Deducing Complexity from Execution Times.md",
-    "04 Exercise Series/Serie 2 - Complexity/Chapter 3 - Common Algorithmic Operations/04.2.07 Standard Data Structures and Mathematical Operations.md",
-    "04 Exercise Series/Serie 2 - Complexity/Chapter 4 - Recursive Algorithms/04.2.09 Merge Sort Recurrence Relation.md",
-    "03 Practical Labs/03.01 Experimental Study of Simple Sorting Algorithms.md",
-    "02 Complexity/02.05 Additional Big O Mathematical Proofs.md",
-    "02 Complexity/02.04 Mathematical Proofs of Big O Notation.md",
-    "02 Complexity/02.03 Complexity Lookup Table for Standard Operations.md",
-    "02 Complexity/02.02 Average Case Calculation using Probability.md",
-    "02 Complexity/02.01 Matrix Search Complexity and Operation Counting.md",
-    "02 Complexity/02.00 Complexity Analysis Methodology and Summary.md",
-    "01 Calculability (Turing Machines & Automata)/01.12 Non-Deterministic Turing Machines.md"
+    "04 Exercise Series/Serie 2 - Complexity/Chapter 3 - Common Algorithmic Operations/04.2.07 Standard Data Structures and Mathematical Operations.md"
   ]
 }

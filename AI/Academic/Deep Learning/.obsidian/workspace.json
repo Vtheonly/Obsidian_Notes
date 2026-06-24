@@ -11,35 +11,18 @@
             "id": "e7015a51fe1e78d6",
             "type": "leaf",
             "state": {
-              "type": "canvas",
-              "state": {
-                "file": "TP Graph.canvas",
-                "viewState": {
-                  "x": 1262.5,
-                  "y": 505,
-                  "zoom": -0.2975074672696181
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "TP Graph"
-            }
-          },
-          {
-            "id": "a82d1b5002731aca",
-            "type": "leaf",
-            "state": {
               "type": "markdown",
               "state": {
-                "file": "Cours/Chapter 1 - Introduction to Deep Learning/5. Gradient Descent Optimization.md",
+                "file": "Cours/Chapter 2 - CNN/01 Foundations and Philosophy.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "5. Gradient Descent Optimization"
+              "title": "01 Foundations and Philosophy"
             }
           },
           {
-            "id": "376fc237862b4361",
+            "id": "dca28f66bcb9a9dc",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -53,7 +36,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -227,29 +210,46 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "376fc237862b4361",
+  "active": "dca28f66bcb9a9dc",
   "lastOpenFiles": [
-    "TP Graph.canvas",
     "Untitled.md",
-    "Cours/Chapter 1 - Introduction to Deep Learning/5. Gradient Descent Optimization.md",
-    "Cours/Chapter 1 - Introduction to Deep Learning/4. Applications of Deep Learning.md",
-    "Cours/Chapter 1 - Introduction to Deep Learning/1. Deep Learning Definition and Context.md",
-    "Cours/Chapter 1 - Introduction to Deep Learning/Quiz 1.md",
-    "Cours/Chapter 1 - Introduction to Deep Learning/3. Evolution and History of Deep Learning.md",
-    "Cours/Chapter 1 - Introduction to Deep Learning/2. Machine Learning vs Deep Learning.md",
-    "Cours/Chapter 1 - Introduction to Deep Learning/12. Data Preparation and MLP Implementation.md",
-    "Cours/Chapter 2 - CNN/9. VGG16 Architecture Deep Dive.md",
-    "Cours/Chapter 2 - CNN/1. Introduction and Foundations of CNNs.md",
-    "Quiz/Chapter 1: Introduction to Deep Learning/Q6 - Loss Functions and Cost Optimization.md",
-    "<!DOCTYPE html>.html",
-    "Cours/Chapter 1 - Introduction to Deep Learning/6. Loss Functions and Cost Optimization.md",
-    "Untitled 1.canvas",
-    "Quiz/Chapter 2 : CNN/Q21_Model_Evaluation_Metrics_Beyond_Accuracy.md",
-    "Cours/Chapter 1 - Introduction to Deep Learning/7. Linear Regression.md",
-    "Deep Learning.md",
-    "Cours/Chapter 2 - CNN/2. Core Architecture and Philosophy.md",
-    "Cours/Chapter 2 - CNN/5. Activation and Pooling Layers.md",
-    "Cours/Chapter 1 - Introduction to Deep Learning/9. The Perceptron and the Chain Rule.md",
-    "Cours/Chapter 1 - Introduction to Deep Learning/11. Multi-Layer Perceptron and Backpropagation.md"
+    "Cours/Chapter 2 - CNN/01 Foundations and Philosophy.md",
+    "Cours/Chapter 2 - CNN/06 Transfer Learning and ResNet.md",
+    "Cours/Chapter 2 - CNN/03 Hyperparameters and Basic PyTorch.md",
+    "Cours/Chapter 2 - CNN/02 Core Operators and Geometry.md",
+    "Cours/Chapter 2 - CNN/05 Normalization, Regularization and Augmentation.md",
+    "Cours/Chapter 2 - CNN/07 Scaling, Pipeline and Interpretability.md",
+    "Cours/Chapter 2 - CNN/Untitled 6.md",
+    "Cours/Chapter 2 - CNN/07 Scaling, Pipeline and Interpretability/6. Advanced Pooling Mechanisms and Global Average Pooling.md",
+    "Cours/Chapter 2 - CNN/07 Scaling, Pipeline and Interpretability/27. Exercises Solved and Explained.md",
+    "Cours/Chapter 2 - CNN/07 Scaling, Pipeline and Interpretability/26. Demystifying the Black Box - CNN Interpretability.md",
+    "Cours/Chapter 2 - CNN/07 Scaling, Pipeline and Interpretability/25. Common Mistakes and How to Fix Them.md",
+    "Cours/Chapter 2 - CNN/07 Scaling, Pipeline and Interpretability/24. The Full Training Pipeline End-to-End Checklist.md",
+    "Cours/Chapter 2 - CNN/07 Scaling, Pipeline and Interpretability/21. Model Evaluation Metrics Beyond Accuracy.md",
+    "Cours/Chapter 2 - CNN/07 Scaling, Pipeline and Interpretability",
+    "Cours/Chapter 2 - CNN/06 Transfer Learning and ResNet/19. Transfer Learning and Fine-Tuning.md",
+    "Cours/Chapter 2 - CNN/06 Transfer Learning and ResNet/15. The Vanishing and Exploding Gradient Problems.md",
+    "Cours/Chapter 2 - CNN/06 Transfer Learning and ResNet/14. Weight Initialization.md",
+    "Cours/Chapter 2 - CNN/06 Transfer Learning and ResNet/13. Backpropagation and Gradient Flow in CNNs.md",
+    "Cours/Chapter 2 - CNN/06 Transfer Learning and ResNet/12. ResNet Bottleneck Blocks and Architectural Variants.md",
+    "Cours/Chapter 2 - CNN/06 Transfer Learning and ResNet/11. The Degradation Problem and Residual Connections.md",
+    "Cours/Chapter 2 - CNN/06 Transfer Learning and ResNet",
+    "Cours/Chapter 2 - CNN/05 Normalization, Regularization and Augmentation/18. Data Augmentation.md",
+    "Cours/Chapter 2 - CNN/05 Normalization, Regularization and Augmentation/17. Dropout and Regularization.md",
+    "Cours/Chapter 2 - CNN/05 Normalization, Regularization and Augmentation/16. Batch Normalization.md",
+    "Cours/Chapter 2 - CNN/05 Normalization, Regularization and Augmentation",
+    "Cours/Chapter 2 - CNN/04 VGG and Classic Architectures/9. VGG16 Architecture Deep Dive.md",
+    "Cours/Chapter 2 - CNN/04 VGG and Classic Architectures/8. Evolution of CNN Architectures.md",
+    "Cours/Chapter 2 - CNN/04 VGG and Classic Architectures/23. PyTorch Advanced - VGG16 and Pre-trained Models.md",
+    "Cours/Chapter 2 - CNN/04 VGG and Classic Architectures",
+    "Cours/Chapter 2 - CNN/03 Hyperparameters and Basic PyTorch",
+    "Cours/Chapter 2 - CNN/02 Core Operators and Geometry",
+    "Cours/Chapter 2 - CNN/01 Foundations and Philosophy",
+    "TP Graph_expanded.canvas",
+    "Cours/Chapter 2 - CNN/07_Scaling_Pipeline_and_Interpretability",
+    "Cours/Chapter 2 - CNN/06_Transfer_Learning_and_ResNet",
+    "Cours/Chapter 2 - CNN/05_Normalization_Regularization_and_Augmentation",
+    "TP Graph.canvas",
+    "Untitled 1.canvas"
   ]
 }

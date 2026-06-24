@@ -1,0 +1,195 @@
+{
+  "main": {
+    "id": "884d0aa546539d14",
+    "type": "split",
+    "children": [
+      {
+        "id": "96b954817df2c4c8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f663c64d1728dad3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Chapter 5. Caching Patterns and Strategies.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Chapter 5. Caching Patterns and Strategies"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b8c12be18cb3970d",
+    "type": "split",
+    "children": [
+      {
+        "id": "a8d5c32351aaf922",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "209cf1710b7c192e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "b38cdba8855d2217",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "020e5c9b0b4b8fc0",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "821b081947fd5605",
+    "type": "split",
+    "children": [
+      {
+        "id": "ac1dfba3dc460b8e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7a9bd66cafad458c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Chapter 5. Caching Patterns and Strategies.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Chapter 5. Caching Patterns and Strategies"
+            }
+          },
+          {
+            "id": "69dcb2addc1af99f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Chapter 5. Caching Patterns and Strategies.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Chapter 5. Caching Patterns and Strategies"
+            }
+          },
+          {
+            "id": "d26a43a92b168da4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "adb737dba36eb280",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "850c55bc526b1838",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Chapter 5. Caching Patterns and Strategies.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Chapter 5. Caching Patterns and Strategies"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "f663c64d1728dad3",
+  "lastOpenFiles": [
+    "Web Engineering/Untitled.md",
+    "Chapter 5. Caching Patterns and Strategies.md",
+    "Chapter 4. Content Delivery and Edge Computing.md",
+    "Chapter 3. Load Balancing and Traffic Routing.md",
+    "Chapter 2. Networking Fundamentals.md",
+    "Chapter 1. Foundations of System Design.md"
+  ]
+}

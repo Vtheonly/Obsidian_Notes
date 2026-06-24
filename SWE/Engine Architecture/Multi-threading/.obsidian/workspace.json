@@ -1,0 +1,198 @@
+{
+  "main": {
+    "id": "f7310c77dc681f13",
+    "type": "split",
+    "children": [
+      {
+        "id": "8e240bfd6d9b6f55",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d379981254460d43",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Chapter 5 - Modern Thread Management in Python and C++/5.2. Python Synchronization Primitives and Thread-Safe Patterns.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "5.2. Python Synchronization Primitives and Thread-Safe Patterns"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d3ae346009db2053",
+    "type": "split",
+    "children": [
+      {
+        "id": "c5225a2234ce7acf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d5be28184efc20c5",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "e3de63a7a9bc5e75",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "2e2a1c93600492cd",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "ce30f8eeba65e16d",
+    "type": "split",
+    "children": [
+      {
+        "id": "f628320b3b5aff7c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6e83aead52225f9c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Chapter 5 - Modern Thread Management in Python and C++/5.2. Python Synchronization Primitives and Thread-Safe Patterns.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 5.2. Python Synchronization Primitives and Thread-Safe Patterns"
+            }
+          },
+          {
+            "id": "6df362478d4b7221",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Chapter 5 - Modern Thread Management in Python and C++/5.2. Python Synchronization Primitives and Thread-Safe Patterns.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 5.2. Python Synchronization Primitives and Thread-Safe Patterns"
+            }
+          },
+          {
+            "id": "640cc49b3369e3b2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "67c29d6a6760ac73",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "98e7c347be2dbd01",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Chapter 5 - Modern Thread Management in Python and C++/5.2. Python Synchronization Primitives and Thread-Safe Patterns.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 5.2. Python Synchronization Primitives and Thread-Safe Patterns"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "d379981254460d43",
+  "lastOpenFiles": [
+    "Chapter 5 - Modern Thread Management in Python and C++/5.1. The Python Threading Ecosystem and the GIL.md",
+    "Chapter 4 - The Challenges of Concurrency Conversion/4.2. Legacy Code Conversion Challenges.md",
+    "Chapter 4 - The Challenges of Concurrency Conversion/4.1. Race Conditions and Thread-Local Storage Mechanics.md",
+    "Chapter 3 - Rigorous Exercise Solutions/3.1. Detailed Solution and Analysis of Thread Exercise 1.md",
+    "Chapter 2 - Multi-threading Models and Systems/2.3. Distributed Systems and Pop-Up Thread Design.md",
+    "Chapter 2 - Multi-threading Models and Systems/2.2. Scheduler Activations and Upcall Architecture.md",
+    "Chapter 2 - Multi-threading Models and Systems/2.1. Threading Models and Thread Tables.md",
+    "Chapter 1 - Foundations of Threads and Processes/1.2. State Transitions and Memory Layout of Threads.md",
+    "Chapter 1 - Foundations of Threads and Processes/1.1. Process vs Thread Conceptual Analysis.md"
+  ]
+}
