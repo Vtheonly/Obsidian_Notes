@@ -1,0 +1,10 @@
+{
+  "attachmentFolderPath": "assets",
+  "showLineNumber": false,
+  "spellcheck": true,
+  "strictLineBreaks": false,
+  "readableLineLength": true,
+  "showFrontmatter": true,
+  "useMarkdownLinks": false,
+  "newLinkFormat": "shortest"
+}

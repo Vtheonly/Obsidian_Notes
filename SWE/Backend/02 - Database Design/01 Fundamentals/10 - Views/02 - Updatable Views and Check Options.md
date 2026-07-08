@@ -18,13 +18,13 @@ A view is **STRICTLY NOT UPDATABLE** if its defining query contains any of the f
 
 | Defining query contains... | Updatable? | Why |
 |----------------------------|------------|-----|
-| Single table, simple `WHERE` | ✅ YES | 1-to-1 mapping preserved |
-| `GROUP BY` / `HAVING` | ❌ NO | One virtual row ↔ many physical rows |
-| Aggregates (`SUM`, `COUNT`, etc.) | ❌ NO | Aggregate is not reversible |
-| `DISTINCT` | ❌ NO | Duplicate rows collapsed; mapping lost |
-| `UNION` / `UNION ALL` | ❌ NO | Row source ambiguous |
-| Single-table computed column (`a + b AS c`) | ⚠️ Partial | Can `UPDATE` non-computed columns; not `c` |
-| Simple join (one-to-one) | ⚠️ DBMS-dependent | Some allow updates to one side |
+| Single table, simple `WHERE` |  YES | 1-to-1 mapping preserved |
+| `GROUP BY` / `HAVING` |  NO | One virtual row  many physical rows |
+| Aggregates (`SUM`, `COUNT`, etc.) |  NO | Aggregate is not reversible |
+| `DISTINCT` |  NO | Duplicate rows collapsed; mapping lost |
+| `UNION` / `UNION ALL` |  NO | Row source ambiguous |
+| Single-table computed column (`a + b AS c`) |  Partial | Can `UPDATE` non-computed columns; not `c` |
+| Simple join (one-to-one) |  DBMS-dependent | Some allow updates to one side |
 
 ## The `WITH CHECK OPTION` Clause
 

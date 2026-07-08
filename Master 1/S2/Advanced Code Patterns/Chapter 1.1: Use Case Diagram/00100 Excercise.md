@@ -14,9 +14,9 @@ graph LR
         UC1((Use Case 1))
         UC2((Use Case 2))
     end
-    Actor1[👤 Primary Actor] --- UC1
+    Actor1[ Primary Actor] --- UC1
     Actor1 --- UC2
-    UC2 --- Actor2[⚙️ Secondary Actor]
+    UC2 --- Actor2[ Secondary Actor]
     style UC1 fill:#fff,stroke:#333,stroke-width:2px;
     style UC2 fill:#fff,stroke:#333,stroke-width:2px;
 ```
@@ -81,12 +81,12 @@ graph BT
         UC_ResLaptop -->|Generalization| UC_ResEquip
     end
     
-    A_User["👤 Utilisateur salle"] --- UC_Plan
-    A_Teacher["👤 Enseignant"] -->|Inheritance| A_User
+    A_User[" Utilisateur salle"] --- UC_Plan
+    A_Teacher[" Enseignant"] -->|Inheritance| A_User
     A_Teacher --- UC_RecapT
     A_Teacher --- UC_Reserve
     
-    A_Lead["👤 Responsable formation"] -->|Inheritance| A_Teacher
+    A_Lead[" Responsable formation"] -->|Inheritance| A_Teacher
     A_Lead --- UC_RecapC
     
     style UC_Plan fill:#fff,stroke:#333,stroke-width:2px;
@@ -155,15 +155,15 @@ graph BT
         UC_SaisieBDD -.->|<<include>>| UC_Ident
     end
     
-    A_Worker["👤 Ouvrier Agricole"] --- UC_Saisie
-    A_Manager["👤 Chef d'exploitation"] -->|Inheritance| A_Worker
+    A_Worker[" Ouvrier Agricole"] --- UC_Saisie
+    A_Manager[" Chef d'exploitation"] -->|Inheritance| A_Worker
     
     A_Manager --- UC_VerifyC
     A_Manager --- UC_CorrectC
     A_Manager --- UC_SaisieBDD
     A_Manager --- UC_Report
     
-    A_Researcher["👤 Chercheur"] --- UC_VerifyD
+    A_Researcher[" Chercheur"] --- UC_VerifyD
     A_Researcher --- UC_CorrectD
     A_Researcher --- UC_Notify
     A_Researcher --- UC_Analyze
@@ -234,11 +234,11 @@ graph BT
         UC_PayCheck -->|Generalization| UC_Pay
     end
     
-    A_Client["👤 Client"] --- UC_Browse
+    A_Client[" Client"] --- UC_Browse
     A_Client --- UC_Buy
-    A_Seller["👤 Vendeur"] --- UC_Info
-    A_Cashier["👤 Caisse"] --- UC_Pay
-    A_Banks["⚙️ Groupement des banques"] --- UC_PayCard
+    A_Seller[" Vendeur"] --- UC_Info
+    A_Cashier[" Caisse"] --- UC_Pay
+    A_Banks[" Groupement des banques"] --- UC_PayCard
     
     style UC_Browse fill:#fff,stroke:#333,stroke-width:2px;
     style UC_Info fill:#fff,stroke:#333,stroke-width:2px;
@@ -304,18 +304,18 @@ graph BT
         UC_DepCheck -->|Generalization| UC_Deposit
     end
     
-    A_Holder["👤 Porteur de carte"] --- UC_WithdrawV
+    A_Holder[" Porteur de carte"] --- UC_WithdrawV
     A_Holder --- UC_Withdraw
-    A_BankClient["👤 Client de la banque"] -->|Inheritance| A_Holder
+    A_BankClient[" Client de la banque"] -->|Inheritance| A_Holder
     A_BankClient --- UC_Balance
     A_BankClient --- UC_Deposit
     
-    A_BankSys["⚙️ SI Banque"] --- UC_Auth
+    A_BankSys[" SI Banque"] --- UC_Auth
     A_BankSys --- UC_Balance
     A_BankSys --- UC_Deposit
-    A_CardSys["⚙️ SI gestion CB"] --- UC_Auth
+    A_CardSys[" SI gestion CB"] --- UC_Auth
     
-    A_Tech["👤 Opérateur de maintenance"] --- UC_Refill
+    A_Tech[" Opérateur de maintenance"] --- UC_Refill
     A_Tech --- UC_RetrieveCard
     A_Tech --- UC_RetrieveCheck
     
@@ -373,7 +373,7 @@ graph BT
         UC_AddSupplier -.->|<<extend>>| UC_AddItem
     end
     
-    A_Merchant["👤 Commerçant"] --- UC_Display
+    A_Merchant[" Commerçant"] --- UC_Display
     A_Merchant --- UC_EditSupplier
     A_Merchant --- UC_AddItem
     
@@ -411,12 +411,12 @@ graph LR
         UC_Export(Exporter fiches réparation)
     end
     
-    A_Stock["👤 Magasinier"] --- UC_Parts
-    A_Workshop["👤 Chef d'atelier"] --- UC_Create
+    A_Stock[" Magasinier"] --- UC_Parts
+    A_Workshop[" Chef d'atelier"] --- UC_Create
     A_Workshop --- UC_Close
     A_Workshop --- UC_Labor
-    A_Accountant["👤 Comptable"] --- UC_Export
-    A_AccSys["⚙️ SI comptabilité"] --- UC_Export
+    A_Accountant[" Comptable"] --- UC_Export
+    A_AccSys[" SI comptabilité"] --- UC_Export
     
     style UC_Parts fill:#fff,stroke:#333,stroke-width:2px;
     style UC_Create fill:#fff,stroke:#333,stroke-width:2px;
@@ -464,10 +464,10 @@ graph BT
         UC_Export -.->|<<include>>| UC_Auth
     end
     
-    A_Employe["👤 Employé (Abstract)"] --- UC_Search
-    A_Stock["👤 Magasinier"] -->|Inheritance| A_Employe
-    A_Workshop["👤 Chef d'atelier"] -->|Inheritance| A_Employe
-    A_Admin["👤 Administrateur"] -->|Inheritance| A_Employe
+    A_Employe[" Employé (Abstract)"] --- UC_Search
+    A_Stock[" Magasinier"] -->|Inheritance| A_Employe
+    A_Workshop[" Chef d'atelier"] -->|Inheritance| A_Employe
+    A_Admin[" Administrateur"] -->|Inheritance| A_Employe
     
     A_Stock --- UC_Parts
     A_Stock --- UC_Modify
@@ -480,8 +480,8 @@ graph BT
     A_Admin --- UC_ManageUsers
     A_Admin --- UC_Archive
     
-    A_Accountant["👤 Comptable"] --- UC_Export
-    A_AccSys["⚙️ SI comptabilité"] --- UC_Export
+    A_Accountant[" Comptable"] --- UC_Export
+    A_AccSys[" SI comptabilité"] --- UC_Export
     
     style UC_Print fill:#fff,stroke:#333,stroke-width:2px;
     style UC_Read fill:#fff,stroke:#333,stroke-width:2px;
@@ -519,10 +519,10 @@ graph BT
         UC_Repair(Entretenir les véhicules)
     end
     
-    A_Client["👤 Client"] --- UC_Gas
-    A_Mechanic["👤 Mécanicien"] --- UC_Repair
+    A_Client[" Client"] --- UC_Gas
+    A_Mechanic[" Mécanicien"] --- UC_Repair
     
-    A_Manager["👤 Gérant"] -->|Inheritance| A_Client
+    A_Manager[" Gérant"] -->|Inheritance| A_Client
     A_Manager -->|Inheritance| A_Mechanic
     A_Manager --- UC_Manage
     
@@ -566,7 +566,7 @@ graph BT
         UC_Plane -->|Generalization| UC_Trip
     end
     
-    A_Client["👤 Client"] --- UC_Trip
+    A_Client[" Client"] --- UC_Trip
     
     style UC_Trip fill:#fff,stroke:#333,stroke-width:2px;
     style UC_Taxi fill:#fff,stroke:#333,stroke-width:2px;
@@ -602,10 +602,10 @@ graph TD
         UC_Return -.->|<<include>>| UC_Auth
     end
     
-    A_Client["👤 Client"] --- UC_Rent
+    A_Client[" Client"] --- UC_Rent
     A_Client --- UC_Return
     
-    A_Staff["👤 Personnel du magasin"] --- UC_Refill
+    A_Staff[" Personnel du magasin"] --- UC_Refill
     A_Staff --- UC_Settle
     
     style UC_Rent fill:#fff,stroke:#333,stroke-width:2px;
@@ -639,9 +639,9 @@ graph TD
         UC_Remove(Radier membre inactif)
     end
     
-    A_Member["👤 Membre"] --- UC_RegC
+    A_Member[" Membre"] --- UC_RegC
     A_Member --- UC_RegAct
-    A_Manager["👤 Gestionnaire"] --- UC_Manage
+    A_Manager[" Gestionnaire"] --- UC_Manage
     A_Manager --- UC_Remove
     
     style UC_RegC fill:#fff,stroke:#333,stroke-width:2px;
@@ -674,7 +674,7 @@ graph LR
         UC_Pilot -.->|<<include>>| UC_Command
     end
     
-    A_Pilot["👤 Pilote"] --- UC_Pilot
+    A_Pilot[" Pilote"] --- UC_Pilot
     
     style UC_Pilot fill:#fff,stroke:#333,stroke-width:2px;
     style UC_Video fill:#fff,stroke:#333,stroke-width:2px;
@@ -722,16 +722,16 @@ graph BT
         UC_Dispute -.->|<<include>>| UC_Auth
     end
     
-    A_Visitor["👤 Visiteur"] --- UC_Search
-    A_Member["👤 Abonné"] -->|Inheritance| A_Visitor
+    A_Visitor[" Visiteur"] --- UC_Search
+    A_Member[" Abonné"] -->|Inheritance| A_Visitor
     A_Member --- UC_Order
     
-    A_Librarian["👤 Bibliothécaire"] --- UC_Loan
+    A_Librarian[" Bibliothécaire"] --- UC_Loan
     A_Librarian --- UC_Return
     A_Librarian --- UC_Register
     
-    A_Collections["👤 Service Contentieux"] --- UC_Dispute
-    A_Legal["👤 Service Juridique"] --- UC_Legal
+    A_Collections[" Service Contentieux"] --- UC_Dispute
+    A_Legal[" Service Juridique"] --- UC_Legal
     
     style UC_Search fill:#fff,stroke:#333,stroke-width:2px;
     style UC_Order fill:#fff,stroke:#333,stroke-width:2px;
@@ -773,11 +773,11 @@ graph TD
         UC_Enable -.->|<<include>>| UC_CheckTank
     end
     
-    A_Client["👤 Client"] --- UC_Pump
+    A_Client[" Client"] --- UC_Pump
     A_Client --- UC_Pay
-    A_Attendant["👤 Pompiste"] --- UC_Enable
-    A_Meter["⚙️ Débitmètre"] --- UC_Pump
-    A_Tank["⚙️ Cuve"] --- UC_CheckTank
+    A_Attendant[" Pompiste"] --- UC_Enable
+    A_Meter[" Débitmètre"] --- UC_Pump
+    A_Tank[" Cuve"] --- UC_CheckTank
     
     style UC_Pump fill:#fff,stroke:#333,stroke-width:2px;
     style UC_Enable fill:#fff,stroke:#333,stroke-width:2px;
@@ -820,16 +820,16 @@ graph TD
         UC_Fuel(Soumettre facture carburant)
     end
     
-    A_Admin["👤 Personnel Administratif"] --- UC_Book
+    A_Admin[" Personnel Administratif"] --- UC_Book
     A_Admin --- UC_Drivers
-    A_Mechanic["👤 Mécanicien"] --- UC_Maint
+    A_Mechanic[" Mécanicien"] --- UC_Maint
     A_Mechanic --- UC_Repair
-    A_Driver["👤 Chauffeur"] --- UC_Fuel
-    A_Mgmt["👤 Direction"] --- UC_Buy
+    A_Driver[" Chauffeur"] --- UC_Fuel
+    A_Mgmt[" Direction"] --- UC_Buy
     A_Mgmt --- UC_Rent
     
-    A_Garage["⚙️ Garage Extérieur"] --- UC_Repair
-    A_Rental["⚙️ Société de Location"] --- UC_Rent
+    A_Garage[" Garage Extérieur"] --- UC_Repair
+    A_Rental[" Société de Location"] --- UC_Rent
     
     style UC_Book fill:#fff,stroke:#333,stroke-width:2px;
     style UC_Drivers fill:#fff,stroke:#333,stroke-width:2px;
@@ -1339,12 +1339,12 @@ sequenceDiagram
 
 ```mermaid
 graph TD
-    Client["👤 Client"]
-    Vendeur["👤 Vendeur"]
-    Ouvrier["👤 Ouvrier Fleuriste"]
-    BF["📄 Bon de fabrication"]
-    Facture["📄 Facture"]
-    Composition["🌸 Composition"]
+    Client[" Client"]
+    Vendeur[" Vendeur"]
+    Ouvrier[" Ouvrier Fleuriste"]
+    BF[" Bon de fabrication"]
+    Facture[" Facture"]
+    Composition[" Composition"]
     
     Client -->|1: Demande renseignements<br>3: Commande<br>12: Régler facture| Vendeur
     Vendeur -->|2: Fournir informations<br>11: Remettre facture<br>13: Remettre bouquet| Client

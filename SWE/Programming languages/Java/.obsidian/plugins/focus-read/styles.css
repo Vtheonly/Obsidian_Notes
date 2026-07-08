@@ -1,0 +1,575 @@
+/* ===========================================================
+   Focus Read — ADHD-friendly reading styles for Obsidian
+   =========================================================== */
+
+:root {
+  --fr-font-size: 17px;
+  --fr-line-height: 1.7;
+  --fr-para-spacing: 1.4;
+  --fr-max-width: 66ch;
+  --fr-font-family: ;
+  --fr-def-color: #e8f5e9;
+  --fr-bold-color: #fff8c4;
+  --fr-line-focus-opacity: 0.35;
+  --fr-line-focus-lines: 3;
+}
+
+/* ---------- Bionic Reading ---------- */
+.fr-bionic {
+  font-weight: 700;
+}
+body.fr-bionic-on .markdown-reading-view .fr-bionic {
+  font-weight: 700;
+}
+
+/* ---------- Reading Ruler ---------- */
+.fr-reading-ruler {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 28px;
+  top: -9999px;
+  background: #ffd54f;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 9999;
+  display: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.18);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+  mix-blend-mode: multiply;
+  transition: opacity 0.3s;
+}
+body.fr-ruler-on .fr-reading-ruler {
+  display: block;
+}
+
+/* ---------- Definition highlight ---------- */
+body.fr-definitions-on .markdown-reading-view p.fr-definition {
+  background: var(--fr-def-color);
+  border-left: 3px solid #66bb6a;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 0.6em 0;
+}
+
+/* ---------- Bold highlight ---------- */
+body.fr-bold-highlight-on .markdown-reading-view strong,
+body.fr-bold-highlight-on .markdown-reading-view b {
+  background: var(--fr-bold-color);
+  border-radius: 3px;
+  padding: 0 3px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+/* ---------- Typography polish ---------- */
+body.fr-typography-on .markdown-reading-view .markdown-preview-section {
+  font-size: var(--fr-font-size);
+  line-height: var(--fr-line-height);
+  max-width: var(--fr-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+body.fr-typography-on .markdown-reading-view p {
+  margin-bottom: calc(var(--fr-font-size) * (var(--fr-para-spacing) - 1));
+}
+body.fr-typography-on .markdown-reading-view li {
+  margin-bottom: calc(var(--fr-font-size) * 0.25);
+}
+body.fr-typography-on .markdown-source-view .cm-content,
+body.fr-typography-on .markdown-source-view .cm-line {
+  max-width: var(--fr-max-width);
+}
+
+/* ---------- Focus Mode (hide everything except note + timer + progress) ---------- */
+body.fr-focus-mode .workspace-ribbon,
+body.fr-focus-mode .workspace-split.mod-left-split,
+body.fr-focus-mode .workspace-split.mod-right-split,
+body.fr-focus-mode .workspace-tabs.mod-top,
+body.fr-focus-mode .status-bar,
+body.fr-focus-mode .view-header-nav,
+body.fr-focus-mode .view-actions,
+body.fr-focus-mode .workspace-tab-header-container {
+  display: none !important;
+}
+
+/* ---------- Smart Highlight (karaoke) ---------- */
+.fr-smart-current {
+  background: #fff3a3 !important;
+  border-radius: 3px;
+  box-shadow: 0 0 0 2px rgba(255, 200, 0, 0.25);
+  transition: background 0.2s;
+}
+.fr-smart-prev {
+  opacity: 0.5;
+}
+
+/* ---------- Line Focus overlay ---------- */
+.fr-line-focus-overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 100px;
+  top: -9999px;
+  pointer-events: none;
+  z-index: 9990;
+  background: rgba(255, 255, 255, 0.001);
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, var(--fr-line-focus-opacity, 0.35));
+  display: none;
+}
+body.fr-line-focus-on .fr-line-focus-overlay {
+  display: block;
+}
+body.theme-dark .fr-line-focus-overlay {
+  box-shadow: 0 0 0 100vmax
+    rgba(0, 0, 0, calc(var(--fr-line-focus-opacity, 0.35) * 1.4));
+}
+
+/* ---------- Hover Definition popup ---------- */
+.fr-hover-def {
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  max-width: 320px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  font-size: 13px;
+}
+.fr-hover-def-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.fr-hover-def-body {
+  color: var(--text-muted);
+}
+
+/* ---------- Floating Focus Timer ---------- */
+/* Moved to top-right so it stays visible while scrolling and out of the way of the bottom progress bar. */
+.fr-floating-timer {
+  position: fixed !important;
+  top: 16px !important;
+  right: 16px !important;
+  bottom: auto !important;
+  left: auto !important;
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  min-width: 200px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  z-index: 9990;
+  font-size: 13px;
+  opacity: 1;
+  transition: opacity 0.3s;
+  /* Ensure buttons stay clickable even when the box is dimmed by auto-hide. */
+  pointer-events: auto;
+}
+.fr-timer-label {
+  color: var(--text-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.fr-timer-time {
+  font-size: 24px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  margin: 2px 0 6px;
+}
+.fr-timer-bar {
+  height: 4px;
+  background: var(--background-modifier-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.fr-timer-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #66bb6a, #42a5f5);
+  width: 0%;
+  transition: width 0.3s;
+}
+.fr-timer-xp {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #ff9800;
+  font-weight: 600;
+}
+
+/* ---------- Timer control buttons (Start / Pause / Stop) ---------- */
+/* Clickable in-timer controls so the user doesn't need the Command Palette. */
+.fr-timer-controls {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--background-modifier-border);
+}
+.fr-timer-btn {
+  flex: 1;
+  background: var(--background-modifier-border);
+  color: var(--text-normal);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 5px 0;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    transform 0.05s;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.fr-timer-btn:hover:not(:disabled) {
+  background: var(--background-modifier-border-hover, var(--interactive-accent-hover));
+}
+.fr-timer-btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+.fr-timer-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.fr-timer-btn-primary {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+.fr-timer-btn-primary:hover:not(:disabled) {
+  background: var(--interactive-accent-hover);
+  color: var(--text-on-accent);
+}
+.fr-timer-btn-stop:hover:not(:disabled) {
+  background: #e53935;
+  color: white;
+  border-color: #c62828;
+}
+
+/* ---------- ADHD Nudge ---------- */
+/* Centered modal with a dimmed backdrop so it's impossible to miss. */
+.fr-adhd-nudge {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  bottom: auto !important;
+  right: auto !important;
+  transform: translate(-50%, -50%) !important;
+  background: var(--background-secondary);
+  border: 1px solid #ff9800;
+  border-radius: 10px;
+  padding: 18px 22px;
+  /* The first box-shadow layer paints a translucent full-screen backdrop without needing a separate element. */
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.45), 0 6px 20px rgba(0, 0, 0, 0.25);
+  z-index: 9997;
+  max-width: min(360px, 90vw);
+  animation: fr-nudge-in 0.3s ease-out;
+}
+@keyframes fr-nudge-in {
+  from {
+    transform: translate(-50%, calc(-50% + 20px)) !important;
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) !important;
+    opacity: 1;
+  }
+}
+.fr-nudge-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.fr-nudge-body {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.fr-nudge-actions {
+  display: flex;
+  gap: 8px;
+}
+.fr-nudge-actions button {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.fr-nudge-actions button.fr-nudge-dismiss {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--background-modifier-border);
+}
+
+/* ---------- XP popup ---------- */
+/* Stacked on the left so it doesn't fight the top-right timer. left: 60px clears the desktop workspace ribbon. */
+.fr-xp-popup {
+  position: fixed !important;
+  top: 80px !important;
+  left: 60px !important;
+  right: auto !important;
+  bottom: auto !important;
+  background: linear-gradient(135deg, #ff9800, #ff5722);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(255, 87, 34, 0.4);
+  z-index: 9995;
+  text-align: center;
+  transform: translateY(-20px);
+  opacity: 0;
+  transition:
+    transform 0.3s,
+    opacity 0.3s;
+}
+.fr-xp-popup.fr-xp-show {
+  transform: translateY(0);
+  opacity: 1;
+}
+.fr-xp-amount {
+  font-size: 20px;
+  font-weight: 700;
+}
+.fr-xp-label {
+  font-size: 11px;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ---------- Combo popup ---------- */
+/* Stacked below XP popup on the left. */
+.fr-combo-popup {
+  position: fixed !important;
+  top: 140px !important;
+  left: 60px !important;
+  right: auto !important;
+  bottom: auto !important;
+  background: linear-gradient(135deg, #9c27b0, #673ab7);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(103, 58, 183, 0.4);
+  z-index: 9995;
+  text-align: center;
+  transform: translateY(-20px);
+  opacity: 0;
+  transition:
+    transform 0.3s,
+    opacity 0.3s;
+}
+.fr-combo-popup.fr-combo-show {
+  transform: translateY(0);
+  opacity: 1;
+}
+.fr-combo-day {
+  font-size: 18px;
+  font-weight: 700;
+}
+.fr-combo-mult {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+/* ---------- Visual Completion ---------- */
+.fr-completion {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0);
+  z-index: 9996;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.fr-completion.fr-completion-show {
+  opacity: 1;
+}
+.fr-completion-inner {
+  background: var(--background-secondary);
+  border: 2px solid #66bb6a;
+  border-radius: 12px;
+  padding: 30px 40px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  animation: fr-completion-pop 0.5s ease-out;
+}
+@keyframes fr-completion-pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.fr-completion-title {
+  font-size: 14px;
+  color: #66bb6a;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.fr-completion-note {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 6px 0;
+}
+.fr-completion-stat {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* ---------- Reading Dashboard ---------- */
+.fr-dashboard {
+  padding: 12px;
+  font-size: 13px;
+}
+.fr-dash-section {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin: 14px 0 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+.fr-dash-section:first-child {
+  margin-top: 0;
+}
+.fr-dash-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 4px 0;
+}
+.fr-dash-label {
+  color: var(--text-muted);
+}
+.fr-dash-value {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.fr-dash-bar-row {
+  margin: 8px 0;
+}
+.fr-dash-bar {
+  height: 6px;
+  background: var(--background-modifier-border);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+.fr-dash-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #66bb6a, #42a5f5);
+  transition: width 0.4s;
+}
+.fr-dash-achievements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.fr-dash-ach {
+  background: var(--background-modifier-border);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 11px;
+}
+
+/* ---------- Heatmap ---------- */
+.fr-heatmap {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-top: 4px;
+}
+.fr-heat-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.fr-heat-day {
+  font-size: 9px;
+  color: var(--text-muted);
+}
+.fr-heat-bar {
+  width: 100%;
+  height: 50px;
+  background: var(--background-modifier-border);
+  border-radius: 3px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.fr-heat-fill {
+  width: 100%;
+  background: #66bb6a;
+  transition:
+    height 0.3s,
+    opacity 0.3s;
+}
+.fr-heat-min {
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+/* ---------- Settings tab helpers ---------- */
+.fr-setting-hint {
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+  padding: 8px 0 0 0;
+}
+.fr-setting-ach-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+}
+.fr-setting-ach {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  background: var(--background-secondary);
+  border-radius: 4px;
+}
+.fr-setting-ach-icon {
+  font-size: 16px;
+}
+.fr-setting-ach-name {
+  font-weight: 600;
+  flex: 0 0 140px;
+}
+.fr-setting-ach-desc {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* ---------- Dark-theme tweaks ---------- */
+body.theme-dark .fr-reading-ruler {
+  border-top-color: rgba(255, 255, 255, 0.18);
+  border-bottom-color: rgba(255, 255, 255, 0.18);
+}
+
+/* ---------- Bold highlight (Works in Reading and Live Preview) ---------- */
+body.fr-bold-highlight-on .markdown-reading-view strong,
+body.fr-bold-highlight-on .markdown-reading-view b,
+body.fr-bold-highlight-on .markdown-source-view .cm-strong {
+  background: var(--fr-bold-color);
+  border-radius: 3px;
+  padding: 0 3px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+/* ---------- Typography polish (Applies font sizing to editor view as well) ---------- */
+body.fr-typography-on .markdown-source-view .cm-content {
+  font-size: var(--fr-font-size) !important;
+  line-height: var(--fr-line-height) !important;
+}

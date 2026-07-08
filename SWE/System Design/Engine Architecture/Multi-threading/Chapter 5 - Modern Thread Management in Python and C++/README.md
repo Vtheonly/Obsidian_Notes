@@ -89,7 +89,7 @@ The chapter is split into **ten self-contained notes**. Each one assumes you hav
 | Pop-up threads | §2.3 | How `std::async` and `concurrent.futures.ThreadPoolExecutor` relate to the pop-up thread pattern |
 | Race conditions | §4.1 | Concrete code examples in Python and C++, with the actual bytecodes / atomic instructions that race |
 | Thread-local storage | §4.1 | `threading.local()` and the `thread_local` keyword |
-| Legacy code conversion | §4.2 | Modern equivalents (e.g., `strtok_r` ↔ Python's `reentrant` functions, `malloc` wrappers ↔ `std::mutex`) |
+| Legacy code conversion | §4.2 | Modern equivalents (e.g., `strtok_r`  Python's `reentrant` functions, `malloc` wrappers  `std::mutex`) |
 
 ---
 

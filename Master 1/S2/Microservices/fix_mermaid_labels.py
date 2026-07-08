@@ -129,7 +129,7 @@ def main():
 
             fixed_count += 1
             fixed_files_list.append(rel_path)
-            print(f"  ✓ {rel_path}")
+            print(f"   {rel_path}")
 
     print(f"\nScanned {len(md_files)} files, found {total_mermaid_blocks} mermaid blocks total.")
     print(f"Modified: {fixed_count}/{len(md_files)} files.")

@@ -24,11 +24,11 @@ RESET = "\033[0m"
 
 
 def log_success(msg):
-    print(f"{GREEN}✓ {msg}{RESET}")
+    print(f"{GREEN} {msg}{RESET}")
 
 
 def log_error(msg):
-    print(f"{RED}✗ {msg}{RESET}")
+    print(f"{RED} {msg}{RESET}")
 
 
 def log_warning(msg):

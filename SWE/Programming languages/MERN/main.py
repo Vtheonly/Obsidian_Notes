@@ -1,5 +1,0 @@
-print("=" * 80)
-print("No main.py was found so one was created!")
-print("Add your own code to this file: /home/mersel/Documents/Learn/Obsidian Notes/Shared/Programming languages/MERN/main.py")
-print("=" * 80)
-input("Key enter to close.")

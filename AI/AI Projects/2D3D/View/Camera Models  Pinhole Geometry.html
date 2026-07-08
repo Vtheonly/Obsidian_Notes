@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demystifying Camera Models & Pinhole Geometry</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- MathJax CDN for gorgeous equations -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/dist/es5/tex-mml-chtml.js"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        .glow-pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans selection:bg-indigo-500 selection:text-white">
+
+    <!-- Header Section -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-indigo-600 p-2.5 rounded-xl shadow-lg shadow-indigo-500/20">
+                    <i class="fa-solid fa-camera text-xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-white">Camera Models & Pinhole Geometry</h1>
+                    <p class="text-xs text-slate-400">Interactive Visual Exploration of 3D to 2D Projection</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/50">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-slate-300 font-medium">Interactive Sandbox & Guided Tour Active</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 md:px-6 py-8 space-y-12">
+        
+        <!-- Quick Intro Cards -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-sm">
+                <div class="text-indigo-400 mb-3"><i class="fa-solid fa-wand-magic-sparkles text-2xl"></i></div>
+                <h3 class="font-semibold text-white mb-1 text-base">The Core Goal</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Understand how the physical 3D world is captured and compressed onto a flat 2D screen sensor, laying the foundation for all 3D reconstruction algorithms.</p>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-sm">
+                <div class="text-emerald-400 mb-3"><i class="fa-solid fa-circle-nodes text-2xl"></i></div>
+                <h3 class="font-semibold text-white mb-1 text-base">Geometry Rules</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">No fancy AI is needed here. Standard high-school geometry and "similar triangles" are all we need to map physical coordinates to pixels.</p>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-sm">
+                <div class="text-amber-400 mb-3"><i class="fa-solid fa-circle-exclamation text-2xl"></i></div>
+                <h3 class="font-semibold text-white mb-1 text-base">The Missing Depth</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Learn why a single photo leaves us guessing if something is a small toy close by or a massive object far away—a puzzle known as Scale Ambiguity.</p>
+            </div>
+        </section>
+
+        <!-- Main Visualizer & Walkthrough Section -->
+        <section class="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
+            <div class="p-6 border-b border-slate-800 bg-slate-900/50 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                        <span class="bg-indigo-500/10 text-indigo-400 px-2.5 py-1 rounded-md text-xs font-mono">Module 1.1</span>
+                        Step-by-Step Projection Engine
+                    </h2>
+                    <p class="text-xs text-slate-400">Use the control deck below to navigate the camera geometry concepts chronologically.</p>
+                </div>
+                
+                <!-- Tour Progress Stepper -->
+                <div class="flex items-center gap-2 bg-slate-950 p-1.5 rounded-xl border border-slate-800">
+                    <button id="prevBtn" class="px-3 py-1.5 rounded-lg text-xs bg-slate-900 hover:bg-slate-800 text-slate-300 disabled:opacity-40 disabled:hover:bg-slate-900 transition-all flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-left text-[10px]"></i> Back
+                    </button>
+                    <span id="stepIndicator" class="text-xs font-mono text-indigo-400 px-3 font-semibold">Step 1 of 7</span>
+                    <button id="nextBtn" class="px-3 py-1.5 rounded-lg text-xs bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition-all flex items-center gap-1">
+                        Next <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Two Column Layout: Left Canvas Visualizer, Right Explanation Panel -->
+            <div class="grid grid-cols-1 lg:grid-cols-12">
+                
+                <!-- Canvas Area (Cols 1 to 7) -->
+                <div class="lg:col-span-7 p-6 bg-slate-950 flex flex-col justify-between border-r border-slate-800 min-h-[500px] lg:min-h-[600px] relative">
+                    <!-- Instruction Overlay badge -->
+                    <div class="absolute top-4 left-4 z-10 bg-slate-900/90 border border-slate-800 backdrop-blur px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <span class="w-2 h-2 rounded-full bg-indigo-500 animate-ping"></span>
+                        <span class="text-slate-300"><i class="fa-solid fa-arrows-spin mr-1"></i> Left-click & drag on the viewport to rotate the 3D space!</span>
+                    </div>
+
+                    <div class="absolute top-4 right-4 z-10 bg-slate-900/90 border border-slate-800 backdrop-blur px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <button id="resetViewBtn" class="text-indigo-400 hover:text-indigo-300 font-mono text-[11px] flex items-center gap-1">
+                            <i class="fa-solid fa-rotate-left"></i> Reset Angle
+                        </button>
+                    </div>
+
+                    <!-- The 3D Canvas -->
+                    <div class="w-full flex-grow flex items-center justify-center">
+                        <canvas id="projectionCanvas" class="w-full h-full max-h-[500px] bg-slate-950 cursor-grab active:cursor-grabbing rounded-xl"></canvas>
+                    </div>
+
+                    <!-- Canvas Interactive Sliders and Status values -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-slate-900/80 text-xs">
+                        <div>
+                            <span class="text-slate-500 block mb-1">Focal Length ($f$)</span>
+                            <div class="flex items-center gap-2">
+                                <input type="range" id="focalSlider" min="50" max="250" value="120" class="w-full accent-indigo-500">
+                                <span id="focalVal" class="font-mono text-indigo-400 font-bold w-10">120px</span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 block mb-1">Object Depth ($Z$)</span>
+                            <div class="flex items-center gap-2">
+                                <input type="range" id="depthSlider" min="150" max="450" value="300" class="w-full accent-emerald-500">
+                                <span id="depthVal" class="font-mono text-emerald-400 font-bold w-10">300px</span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 block mb-1">Object Height ($Y$)</span>
+                            <div class="flex items-center gap-2">
+                                <input type="range" id="heightSlider" min="-150" max="150" value="-80" class="w-full accent-cyan-500">
+                                <span id="heightVal" class="font-mono text-cyan-400 font-bold w-10">-80px</span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 block mb-1">Object Lateral ($X$)</span>
+                            <div class="flex items-center gap-2">
+                                <input type="range" id="latSlider" min="-150" max="150" value="-60" class="w-full accent-amber-500">
+                                <span id="latVal" class="font-mono text-amber-400 font-bold w-10">-60px</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step Description Panel (Cols 8 to 12) -->
+                <div class="lg:col-span-5 p-6 md:p-8 flex flex-col justify-between h-[600px] overflow-y-auto custom-scrollbar">
+                    
+                    <!-- Step Text Content -->
+                    <div class="space-y-6">
+                        <!-- Step Tag -->
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-semibold">
+                            <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+                            <span id="stepCategory">Visualizing Space</span>
+                        </div>
+
+                        <!-- Step Main Title -->
+                        <h3 id="stepTitle" class="text-2xl font-bold text-white tracking-tight">Meet the 3D Point</h3>
+
+                        <!-- Simpler Explanation Callout -->
+                        <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-2">
+                            <h4 class="text-xs font-bold text-indigo-400 uppercase tracking-wider flex items-center gap-1.5">
+                                <i class="fa-solid fa-graduation-cap"></i> Plain English Breakdown
+                            </h4>
+                            <p id="stepSimpleText" class="text-xs text-slate-300 leading-relaxed">
+                                We place a physical object in front of our camera. In computer vision, we call this the **World Coordinate Point** and represent it using three basic numbers: width, height, and depth.
+                            </p>
+                        </div>
+
+                        <!-- Step Technical Details -->
+                        <div class="space-y-3">
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">How the Math views this</h4>
+                            <div id="stepTechnicalText" class="text-xs text-slate-400 leading-relaxed space-y-2">
+                                Let's define the object's physical 3D coordinate as:
+                                <div class="bg-slate-950 p-3 rounded-lg border border-slate-800 font-mono text-indigo-300 my-2 text-center text-sm">
+                                    $P = (X, Y, Z)$
+                                </div>
+                                Where $X$ represents horizontal position, $Y$ vertical height, and $Z$ depth (how far away the object is straight in front of our camera lens).
+                            </div>
+                        </div>
+
+                        <!-- "Look Here" Visual Prompt Cue -->
+                        <div id="visualCue" class="p-3 bg-indigo-500/5 border border-indigo-500/20 rounded-xl flex items-start gap-3">
+                            <div class="text-indigo-400 mt-0.5"><i class="fa-solid fa-eye text-xs"></i></div>
+                            <div>
+                                <h5 class="text-xs font-bold text-indigo-300">LOOK HERE:</h5>
+                                <p id="visualCueText" class="text-[11px] text-slate-400 leading-relaxed mt-0.5">Observe the bright glowing red sphere in the center of the 3D space. That is our physical object.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Controls inside Panel -->
+                    <div class="pt-6 border-t border-slate-800 flex items-center justify-between text-xs text-slate-500">
+                        <span>Click "Next" to trigger active geometric visual layers.</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- The Deeper Math: Matrix Formulation and Similar Triangles -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- Mathematical Formulation -->
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6">
+                <div class="flex items-center gap-3">
+                    <div class="bg-indigo-500/10 text-indigo-400 p-2.5 rounded-xl">
+                        <i class="fa-solid fa-calculator text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">The Mathematical Projection Equations</h3>
+                        <p class="text-xs text-slate-400">From similar triangles to standard camera intrinsics</p>
+                    </div>
+                </div>
+
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    By looking at our visualizer from the top, the ratio of height-to-distance remains constant across matching triangles. This geometry results in two elegant, fundamental equations:
+                </p>
+
+                <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 text-center space-y-4">
+                    <div class="text-indigo-400 font-mono text-base font-bold py-2 border-b border-slate-900">
+                        $$x = f \frac{X}{Z} \quad \text{and} \quad y = f \frac{Y}{Z}$$
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-[10px] text-slate-400">
+                        <div>
+                            <span class="block font-bold text-indigo-400 font-mono">$f$</span>
+                            <span>Focal Length (Sensor Distance)</span>
+                        </div>
+                        <div>
+                            <span class="block font-bold text-emerald-400 font-mono">$Z$</span>
+                            <span>Physical Depth (Divisor)</span>
+                        </div>
+                        <div>
+                            <span class="block font-bold text-cyan-400 font-mono">$X, Y$</span>
+                            <span>Physical Width & Height</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold text-slate-200 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                        Perspective Foreshortening (The Depth Shrink Effect)
+                    </h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Notice how the physical depth coordinate $Z$ sits cleanly in the <strong>denominator</strong> of the division. As $Z$ grows larger (the object travels far away), the overall pixel coordinate $(x, y)$ becomes smaller. This division is what naturally generates perspective foreshortening in photos!
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold text-slate-200 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                        Scale Ambiguity (The Depth Illusion)
+                    </h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Because we divide by $Z$, we lose absolute scale. An object with a height of $2\text{m}$ at a depth of $10\text{m}$ yields $\frac{2}{10} = 0.2$. An object of $4\text{m}$ at a depth of $20\text{m}$ also yields $\frac{4}{20} = 0.2$. On a single photo's flat pixels, these two completely different objects look <strong>identical</strong>!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Interactive Intrinsics K-Matrix sandbox -->
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-indigo-500/10 text-indigo-400 p-2.5 rounded-xl">
+                            <i class="fa-solid fa-table text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">The Intrinsic Matrix $K$</h3>
+                            <p class="text-xs text-slate-400">How pixel offsets and hardware scaling are represented</p>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                        In digital systems, sensors don't measure in physical millimeters; they measure in <strong>pixels</strong>. Also, pixel coordinates start from the top-left corner $(0,0)$ of your screen, not the center of the camera center. To map millimeters to pixels, we use the Intrinsic Matrix, traditionally represented as $K$:
+                    </p>
+
+                    <!-- K-Matrix visualization -->
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3">
+                        <div class="font-mono text-sm text-indigo-400 text-center py-2">
+                            $$K = \begin{bmatrix} f_x & 0 & c_x \\ 0 & f_y & c_y \\ 0 & 0 & 1 \end{bmatrix}$$
+                        </div>
+                        <div class="text-[11px] text-slate-400 space-y-1.5 border-t border-slate-900 pt-3">
+                            <p><strong class="text-indigo-300 font-mono">$f_x, f_y$:</strong> Focal lengths converted and scaled into horizontal & vertical pixel dimensions.</p>
+                            <p><strong class="text-indigo-300 font-mono">$c_x, c_y$:</strong> The Principal Point. This shifts $(0,0)$ from the sensor's center to the image top-left pixel corner.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Matrix Value Matrix Calculator -->
+                <div class="p-4 bg-slate-950 border border-slate-800/80 rounded-2xl space-y-3">
+                    <span class="text-xs font-bold text-slate-300 block">Live Calculated $K$ Matrix:</span>
+                    <div class="grid grid-cols-3 gap-2 text-center text-xs font-mono py-2 bg-slate-900 rounded-xl border border-slate-800/40">
+                        <div class="p-1 border-r border-slate-800"><span id="mx_fx" class="text-indigo-400">120.0</span></div>
+                        <div class="p-1 border-r border-slate-800"><span class="text-slate-600">0.0</span></div>
+                        <div class="p-1"><span id="mx_cx" class="text-emerald-400">150.0</span></div>
+                        <div class="p-1 border-t border-r border-slate-800"><span class="text-slate-600">0.0</span></div>
+                        <div class="p-1 border-t border-r border-slate-800"><span id="mx_fy" class="text-indigo-400">120.0</span></div>
+                        <div class="p-1 border-t"><span id="mx_cy" class="text-emerald-400">100.0</span></div>
+                        <div class="p-1 border-t border-r border-slate-800"><span class="text-slate-600">0.0</span></div>
+                        <div class="p-1 border-t border-r border-slate-800"><span class="text-slate-600">0.0</span></div>
+                        <div class="p-1 border-t"><span class="text-slate-400">1.0</span></div>
+                    </div>
+                    <div class="flex items-center justify-between text-[10px] text-slate-500">
+                        <span>Adjust the Focal length slider above to see focal parameters update live in $K$ Matrix.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lens Distortion Sandbox (Interactive Grid) -->
+        <section class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="bg-amber-500/10 text-amber-400 p-2.5 rounded-xl">
+                        <i class="fa-solid fa-wand-magic text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Lens Distortion Sandbox</h3>
+                        <p class="text-xs text-slate-400">See how real physical glass lenses bend and warp straight light rays</p>
+                    </div>
+                </div>
+
+                <!-- Preset Controls -->
+                <div class="flex flex-wrap gap-2">
+                    <button id="btnNoDistortion" class="px-3 py-1.5 rounded-lg text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 transition-all font-mono">
+                        No Distortion
+                    </button>
+                    <button id="btnBarrel" class="px-3 py-1.5 rounded-lg text-xs bg-indigo-950/80 hover:bg-indigo-900 border border-indigo-800/50 text-indigo-300 transition-all font-mono">
+                        Barrel Effect (Fish-eye)
+                    </button>
+                    <button id="btnPincushion" class="px-3 py-1.5 rounded-lg text-xs bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-800/50 text-emerald-300 transition-all font-mono">
+                        Pincushion Effect
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Sandbox Controls (Cols 1 to 4) -->
+                <div class="lg:col-span-4 bg-slate-950 p-5 rounded-2xl border border-slate-800/80 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
+                            <i class="fa-solid fa-sliders"></i> Distortion Parameters
+                        </h4>
+
+                        <!-- Radial Slider 1 -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-mono">
+                                <span class="text-slate-400">Radial Coeff ($k_1$)</span>
+                                <span id="k1Val" class="text-amber-400 font-bold">0.0</span>
+                            </div>
+                            <input type="range" id="k1Slider" min="-1.5" max="1.5" step="0.1" value="0" class="w-full accent-amber-500">
+                            <p class="text-[10px] text-slate-500">Positive values create barrel distortion; negative creates pincushion.</p>
+                        </div>
+
+                        <!-- Radial Slider 2 -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-mono">
+                                <span class="text-slate-400">Radial Coeff ($k_2$)</span>
+                                <span id="k2Val" class="text-amber-400 font-bold">0.0</span>
+                            </div>
+                            <input type="range" id="k2Slider" min="-1" max="1" step="0.1" value="0" class="w-full accent-amber-500">
+                            <p class="text-[10px] text-slate-500">Fine-tunes warping further away from lens center.</p>
+                        </div>
+
+                        <!-- Tangential Slider 1 -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-mono">
+                                <span class="text-slate-400">Tangential Coeff ($p_1$)</span>
+                                <span id="p1Val" class="text-pink-400 font-bold">0.0</span>
+                            </div>
+                            <input type="range" id="p1Slider" min="-0.5" max="0.5" step="0.05" value="0" class="w-full accent-pink-500">
+                            <p class="text-[10px] text-slate-500">Simulates physical lens tilt/misalignment horizontally.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-slate-900 rounded-xl space-y-2 border border-slate-800/40 text-xs text-slate-400">
+                        <strong class="text-slate-200 block">Why this matters:</strong>
+                        In professional pipelines (like COLMAP or OpenCV photogrammetry), images must be mathematically "undistorted" before calculations. If ignored, camera projection lines will completely miss each other, rendering 3D reconstruction impossible.
+                    </div>
+                </div>
+
+                <!-- Sandbox Grid Visualizer (Cols 5 to 12) -->
+                <div class="lg:col-span-8 bg-slate-950 rounded-2xl border border-slate-800/80 p-4 min-h-[300px] flex flex-col justify-between">
+                    <div class="w-full flex-grow flex items-center justify-center relative">
+                        <canvas id="distortionCanvas" class="bg-slate-950 w-full h-full max-h-[380px] rounded-xl"></canvas>
+                        
+                        <!-- Visual Overlay Marker -->
+                        <div class="absolute bottom-4 left-4 bg-slate-900/80 border border-slate-800/50 backdrop-blur px-3 py-1.5 rounded-lg text-[11px] text-slate-400">
+                            <i class="fa-solid fa-eye text-amber-400 mr-1"></i> LOOK HERE: See how lines curve as you drag the sliders.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950 mt-16 py-8 px-6 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto space-y-2">
+            <p>Module 1.1: Camera Models & Pinhole Geometry — Built for educational purposes with interactive JS visualization.</p>
+            <p class="text-slate-600">No data trackers or heavy server-side frameworks were used. Optimized for client-side rendering.</p>
+        </div>
+    </footer>
+
+    <!-- Core Interactive Logic Script -->
+    <script>
+        // DOM Elements
+        const fSlider = document.getElementById('focalSlider');
+        const dSlider = document.getElementById('depthSlider');
+        const hSlider = document.getElementById('heightSlider');
+        const lSlider = document.getElementById('latSlider');
+
+        const fVal = document.getElementById('focalVal');
+        const dVal = document.getElementById('depthVal');
+        const hVal = document.getElementById('heightVal');
+        const lVal = document.getElementById('latVal');
+
+        const mx_fx = document.getElementById('mx_fx');
+        const mx_fy = document.getElementById('mx_fy');
+        const mx_cx = document.getElementById('mx_cx');
+        const mx_cy = document.getElementById('mx_cy');
+
+        // Step Controller Buttons
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const stepIndicator = document.getElementById('stepIndicator');
+        const stepCategory = document.getElementById('stepCategory');
+        const stepTitle = document.getElementById('stepTitle');
+        const stepSimpleText = document.getElementById('stepSimpleText');
+        const stepTechnicalText = document.getElementById('stepTechnicalText');
+        const visualCueText = document.getElementById('visualCueText');
+        const resetViewBtn = document.getElementById('resetViewBtn');
+
+        // Main Projection Canvas Setup
+        const canvas = document.getElementById('projectionCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Distortion Canvas Setup
+        const distCanvas = document.getElementById('distortionCanvas');
+        const distCtx = distCanvas.getContext('2d');
+
+        // Sliders for Distortion Sandbox
+        const k1Slider = document.getElementById('k1Slider');
+        const k2Slider = document.getElementById('k2Slider');
+        const p1Slider = document.getElementById('p1Slider');
+
+        const k1Val = document.getElementById('k1Val');
+        const k2Val = document.getElementById('k2Val');
+        const p1Val = document.getElementById('p1Val');
+
+        const btnNoDistortion = document.getElementById('btnNoDistortion');
+        const btnBarrel = document.getElementById('btnBarrel');
+        const btnPincushion = document.getElementById('btnPincushion');
+
+        // 3D Scene View Orientation Settings
+        let pitch = -0.3; // Orbit angle pitch
+        let yaw = 0.55;   // Orbit angle yaw
+        let isDragging = false;
+        let lastMouseX = 0;
+        let lastMouseY = 0;
+
+        // Current Step Index (1 to 7)
+        let currentStep = 1;
+
+        // Visual State Flags modulated by steps
+        let renderPinhole = true;
+        let renderRealPlane = false;
+        let renderVirtualPlane = false;
+        let renderProjectedPoint = false;
+        let renderLightRay = false;
+        let renderSimilarityTriangles = false;
+        let renderScaleAmbiguity = false;
+        let renderDistortedGrid = false;
+
+        // Initialize Canvas resolutions on layout load
+        function resizeCanvases() {
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = Math.max(400, canvas.parentElement.clientHeight);
+            distCanvas.width = distCanvas.parentElement.clientWidth;
+            distCanvas.height = Math.max(300, distCanvas.parentElement.clientHeight);
+            drawMainScene();
+            drawDistortionSandbox();
+        }
+
+        window.addEventListener('resize', resizeCanvases);
+
+        // Standard 3D Rotation Math & projection onto visualizer viewport
+        function project3DToViewport(x, y, z, width, height) {
+            // Center scene origin
+            const originX = width / 2;
+            const originY = height / 2 - 20;
+
+            // Rotation matrices around axes
+            // Rotate Yaw (around Y axis)
+            let xRot = x * Math.cos(yaw) - z * Math.sin(yaw);
+            let zRot = x * Math.sin(yaw) + z * Math.cos(yaw);
+            
+            // Rotate Pitch (around X axis)
+            let yRot = y * Math.cos(pitch) - zRot * Math.sin(pitch);
+            let zFinal = y * Math.sin(pitch) + zRot * Math.cos(pitch);
+
+            // Simple perspective scaling for visualization purposes
+            const scale = 500 / (zFinal + 600);
+            return {
+                x: originX + xRot * scale,
+                y: originY + yRot * scale,
+                depth: zFinal
+            };
+        }
+
+        // Draw coordinate system helper lines
+        function drawAxes(width, height) {
+            const size = 150;
+            const origin = project3DToViewport(0, 0, 0, width, height);
+            const xAxis = project3DToViewport(size, 0, 0, width, height);
+            const yAxis = project3DToViewport(0, size, 0, width, height);
+            const zAxis = project3DToViewport(0, 0, size, width, height);
+
+            ctx.lineWidth = 1;
+
+            // X-Axis (Red)
+            ctx.strokeStyle = 'rgba(239, 68, 68, 0.4)';
+            ctx.beginPath();
+            ctx.moveTo(origin.x, origin.y);
+            ctx.lineTo(xAxis.x, xAxis.y);
+            ctx.stroke();
+
+            // Y-Axis (Green)
+            ctx.strokeStyle = 'rgba(34, 197, 94, 0.4)';
+            ctx.beginPath();
+            ctx.moveTo(origin.x, origin.y);
+            ctx.lineTo(yAxis.x, yAxis.y);
+            ctx.stroke();
+
+            // Z-Axis (Blue - Principal Axis)
+            ctx.strokeStyle = 'rgba(59, 130, 246, 0.6)';
+            ctx.setLineDash([4, 4]);
+            ctx.beginPath();
+            ctx.moveTo(origin.x, origin.y);
+            ctx.lineTo(zAxis.x, zAxis.y);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            // Label Axis ends
+            ctx.fillStyle = 'rgba(239, 68, 68, 0.8)';
+            ctx.font = '10px monospace';
+            ctx.fillText('+X', xAxis.x + 5, xAxis.y);
+            
+            ctx.fillStyle = 'rgba(34, 197, 94, 0.8)';
+            ctx.fillText('+Y (Down)', yAxis.x, yAxis.y + 12);
+            
+            ctx.fillStyle = 'rgba(59, 130, 246, 0.9)';
+            ctx.fillText('+Z (Depth Axis)', zAxis.x + 5, zAxis.y + 5);
+        }
+
+        // Render the Main Projection Interactive Scene
+        function drawMainScene() {
+            const w = canvas.width;
+            const h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // Draw coordinate systems
+            drawAxes(w, h);
+
+            // Fetch dynamic values from layout sliders
+            const f = parseFloat(fSlider.value);
+            const objZ = parseFloat(dSlider.value);
+            const objY = parseFloat(hSlider.value);
+            const objX = parseFloat(lSlider.value);
+
+            // Standard projection math
+            const projX = f * (objX / objZ);
+            const projY = f * (objY / objZ);
+
+            // Coordinate Points
+            const cameraCenter = project3DToViewport(0, 0, 0, w, h);
+            const objectPoint = project3DToViewport(objX, objY, objZ, w, h);
+            const virtualPlanePoint = project3DToViewport(projX, projY, f, w, h);
+            const realPlanePoint = project3DToViewport(-projX, -projY, -f, w, h);
+
+            // 1. Draw Real Image Plane Behind Camera (-f)
+            if (renderRealPlane) {
+                drawPlane(-f, 'rgba(220, 38, 38, 0.1)', 'rgba(220, 38, 38, 0.5)', 'Real Image Plane (Upside Down)', w, h);
+                // Real Projected Point on the sensor plane
+                ctx.beginPath();
+                ctx.arc(realPlanePoint.x, realPlanePoint.y, 5, 0, Math.PI * 2);
+                ctx.fillStyle = '#ef4444';
+                ctx.shadowColor = '#ef4444';
+                ctx.shadowBlur = 8;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+
+            // 2. Draw Virtual Image Plane (+f)
+            if (renderVirtualPlane) {
+                drawPlane(f, 'rgba(99, 102, 241, 0.08)', 'rgba(99, 102, 241, 0.5)', 'Virtual Image Plane (Right Side Up)', w, h);
+            }
+
+            // 3. Draw Rays & Projective Similiarity Triangles
+            if (renderLightRay) {
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([2, 2]);
+                ctx.strokeStyle = 'rgba(251, 191, 36, 0.8)'; // Golden ray
+                ctx.beginPath();
+                if (renderRealPlane) {
+                    ctx.moveTo(realPlanePoint.x, realPlanePoint.y);
+                } else {
+                    ctx.moveTo(cameraCenter.x, cameraCenter.y);
+                }
+                ctx.lineTo(objectPoint.x, objectPoint.y);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+
+            // Highlighting Similar Triangles for step 5 explanation
+            if (renderSimilarityTriangles) {
+                // Triangle 1: Camera center -> Focal line -> Projected point
+                const centerProjF = project3DToViewport(0, 0, f, w, h);
+                ctx.beginPath();
+                ctx.moveTo(cameraCenter.x, cameraCenter.y);
+                ctx.lineTo(centerProjF.x, centerProjF.y);
+                ctx.lineTo(virtualPlanePoint.x, virtualPlanePoint.y);
+                ctx.closePath();
+                ctx.fillStyle = 'rgba(99, 102, 241, 0.2)';
+                ctx.strokeStyle = '#6366f1';
+                ctx.lineWidth = 1.5;
+                ctx.fill();
+                ctx.stroke();
+
+                // Triangle 2: Camera Center -> Object Depth Line -> Object Point
+                const centerDepthObj = project3DToViewport(0, 0, objZ, w, h);
+                ctx.beginPath();
+                ctx.moveTo(cameraCenter.x, cameraCenter.y);
+                ctx.lineTo(centerDepthObj.x, centerDepthObj.y);
+                ctx.lineTo(objectPoint.x, objectPoint.y);
+                ctx.closePath();
+                ctx.fillStyle = 'rgba(16, 185, 129, 0.1)';
+                ctx.strokeStyle = '#10b981';
+                ctx.lineWidth = 1.5;
+                ctx.fill();
+                ctx.stroke();
+
+                // Add descriptive math labels floating near components
+                ctx.fillStyle = '#818cf8';
+                ctx.fillText('x = ' + projX.toFixed(1) + 'px', virtualPlanePoint.x + 10, virtualPlanePoint.y - 10);
+                ctx.fillStyle = '#34d399';
+                ctx.fillText('X = ' + objX.toFixed(0) + 'mm', objectPoint.x + 10, objectPoint.y - 10);
+            }
+
+            // Render Scale Ambiguity
+            if (renderScaleAmbiguity) {
+                // Draw a smaller object close to the camera along the exact same ray line
+                const ratio = 0.5;
+                const closeX = objX * ratio;
+                const closeY = objY * ratio;
+                const closeZ = objZ * ratio;
+                const closeObjPoint = project3DToViewport(closeX, closeY, closeZ, w, h);
+
+                // Draw a larger object further away along the same ray
+                const ratioFar = 1.4;
+                const farX = objX * ratioFar;
+                const farY = objY * ratioFar;
+                const farZ = objZ * ratioFar;
+                const farObjPoint = project3DToViewport(farX, farY, farZ, w, h);
+
+                // Closer Object
+                ctx.beginPath();
+                ctx.arc(closeObjPoint.x, closeObjPoint.y, 4, 0, Math.PI * 2);
+                ctx.fillStyle = '#a855f7'; // Purple
+                ctx.fill();
+                ctx.fillStyle = 'rgba(168, 85, 247, 0.8)';
+                ctx.fillText('Tiny & Close (Object A)', closeObjPoint.x + 10, closeObjPoint.y + 12);
+
+                // Further Object
+                ctx.beginPath();
+                ctx.arc(farObjPoint.x, farObjPoint.y, 10, 0, Math.PI * 2);
+                ctx.fillStyle = '#fb923c'; // Orange
+                ctx.fill();
+                ctx.fillStyle = 'rgba(251, 146, 60, 0.8)';
+                ctx.fillText('Giant & Far (Object C)', farObjPoint.x + 12, farObjPoint.y - 10);
+
+                // Connector line highlighting scale ray
+                ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+                ctx.setLineDash([2, 5]);
+                ctx.beginPath();
+                ctx.moveTo(cameraCenter.x, cameraCenter.y);
+                ctx.lineTo(farObjPoint.x, farObjPoint.y);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+
+            // 4. Render Projected Point on Virtual Plane
+            if (renderProjectedPoint && renderVirtualPlane) {
+                ctx.beginPath();
+                ctx.arc(virtualPlanePoint.x, virtualPlanePoint.y, 6, 0, Math.PI * 2);
+                ctx.fillStyle = '#6366f1';
+                ctx.shadowColor = '#6366f1';
+                ctx.shadowBlur = 10;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+                
+                ctx.fillStyle = '#fff';
+                ctx.font = '11px sans-serif';
+                ctx.fillText(`p(x, y)`, virtualPlanePoint.x + 10, virtualPlanePoint.y + 15);
+            }
+
+            // 5. Draw Primary World Object
+            ctx.beginPath();
+            ctx.arc(objectPoint.x, objectPoint.y, 8, 0, Math.PI * 2);
+            ctx.fillStyle = '#10b981'; // Emerald object
+            ctx.shadowColor = '#10b981';
+            ctx.shadowBlur = 12;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 11px sans-serif';
+            ctx.fillText(`P(X, Y, Z)`, objectPoint.x + 12, objectPoint.y - 8);
+
+            // 6. Draw Pinhole/Camera Center
+            if (renderPinhole) {
+                ctx.beginPath();
+                ctx.arc(cameraCenter.x, cameraCenter.y, 6, 0, Math.PI * 2);
+                ctx.fillStyle = '#f59e0b'; // Gold center point
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 1.5;
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.fillStyle = '#f59e0b';
+                ctx.font = '11px monospace';
+                ctx.fillText("Camera Center (0,0,0)", cameraCenter.x - 50, cameraCenter.y - 12);
+            }
+        }
+
+        // Helper function to draw plane boundary rectangles in 3D
+        function drawPlane(zOffset, fillColor, strokeColor, label, width, height) {
+            const size = 100;
+            const p1 = project3DToViewport(-size, -size, zOffset, width, height);
+            const p2 = project3DToViewport(size, -size, zOffset, width, height);
+            const p3 = project3DToViewport(size, size, zOffset, width, height);
+            const p4 = project3DToViewport(-size, size, zOffset, width, height);
+
+            ctx.fillStyle = fillColor;
+            ctx.strokeStyle = strokeColor;
+            ctx.lineWidth = 1;
+
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.lineTo(p3.x, p3.y);
+            ctx.lineTo(p4.x, p4.y);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+
+            // Label plane on visualizer
+            ctx.fillStyle = strokeColor;
+            ctx.font = '10px monospace';
+            ctx.fillText(label, p1.x, p1.y - 8);
+        }
+
+        // Live Intrinsic Matrix Updates based on user input values
+        function updateIntrinsicMatrixDisplay() {
+            const f = parseFloat(fSlider.value).toFixed(1);
+            mx_fx.innerText = f;
+            mx_fy.innerText = f;
+            
+            // Assume canvas center is principal point offset
+            const cx = (canvas.width / 2).toFixed(1);
+            const cy = (canvas.height / 2).toFixed(1);
+            mx_cx.innerText = cx;
+            mx_cy.innerText = cy;
+        }
+
+        // Orbit Interactivity handlers
+        canvas.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const deltaX = e.clientX - lastMouseX;
+            const deltaY = e.clientY - lastMouseY;
+
+            yaw += deltaX * 0.007;
+            pitch += deltaY * 0.007;
+
+            // Restrict vertical look to avoid screen flip disorientation
+            pitch = Math.max(-Math.PI / 3, Math.min(Math.PI / 3, pitch));
+
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
+
+            drawMainScene();
+        });
+
+        // Sync slider visual values in layout
+        fSlider.addEventListener('input', () => {
+            fVal.innerText = fSlider.value + 'px';
+            updateIntrinsicMatrixDisplay();
+            drawMainScene();
+        });
+        dSlider.addEventListener('input', () => {
+            dVal.innerText = dSlider.value + 'px';
+            drawMainScene();
+        });
+        hSlider.addEventListener('input', () => {
+            hVal.innerText = hSlider.value + 'px';
+            drawMainScene();
+        });
+        lSlider.addEventListener('input', () => {
+            lVal.innerText = lSlider.value + 'px';
+            drawMainScene();
+        });
+
+        resetViewBtn.addEventListener('click', () => {
+            pitch = -0.3;
+            yaw = 0.55;
+            drawMainScene();
+        });
+
+
+        // ==========================================
+        // 7-Step Guided Tour Configuration
+        // ==========================================
+
+        const tourSteps = [
+            {
+                step: 1,
+                category: "3D Coordinate Space",
+                title: "Meet the physical 3D Point",
+                simple: "We place an object in the physical world. In computer vision, we represent this as coordinates $P(X, Y, Z)$. $Z$ is depth (how far away it is), $X$ is side-to-side, and $Y$ is height.",
+                technical: "Let's define the object's physical coordinates relative to the lens center. Adjust the object sliders below to see it move in real-time.",
+                cue: "Observe the glowing green sphere labeled P(X, Y, Z) standing in front of the camera space.",
+                setup: () => {
+                    renderPinhole = true;
+                    renderRealPlane = false;
+                    renderVirtualPlane = false;
+                    renderProjectedPoint = false;
+                    renderLightRay = false;
+                    renderSimilarityTriangles = false;
+                    renderScaleAmbiguity = false;
+                }
+            },
+            {
+                step: 2,
+                category: "Hardware Physics",
+                title: "The Camera Center (The Pinhole)",
+                simple: "This is our camera center origin $(0, 0, 0)$. In standard math, we strip away physical lenses and model the aperture as an infinitely small dot.",
+                technical: "Because we have no lens, all light rays must pass perfectly straight through this exact origin center point to reach the image sensor.",
+                cue: "Look at the glowing golden circle at the center of the axes. That is where all incoming light rays converge.",
+                setup: () => {
+                    renderPinhole = true;
+                    renderRealPlane = false;
+                    renderVirtualPlane = false;
+                    renderProjectedPoint = false;
+                    renderLightRay = false;
+                    renderSimilarityTriangles = false;
+                    renderScaleAmbiguity = false;
+                }
+            },
+            {
+                step: 3,
+                category: "Projection Physics",
+                title: "The Real Image Sensor Plane",
+                simple: "Inside real cameras, the physical sensor or film sits at a distance of $-f$ behind the aperture. Light rays cross through the pinhole, projecting an upside-down image.",
+                technical: "Because straight lines cross, the projected coordinate values on the real film plane are completely inverted: $x = -f \\frac{X}{Z}$ and $y = -f \\frac{Y}{Z}$.",
+                cue: "Look behind the pinhole center. A red plane has appeared showing the upside-down projection point.",
+                setup: () => {
+                    renderPinhole = true;
+                    renderRealPlane = true;
+                    renderVirtualPlane = false;
+                    renderProjectedPoint = false;
+                    renderLightRay = true;
+                    renderSimilarityTriangles = false;
+                    renderScaleAmbiguity = false;
+                }
+            },
+            {
+                step: 4,
+                category: "Mathematical Simplification",
+                title: "The Virtual Image Plane Trick",
+                simple: "To avoid negative numbers and simplify calculations, mathematicians pretend the screen sits in front of the pinhole at distance $+f$ so the projection is right-side up.",
+                technical: "Both configurations share identical proportions. Projecting at $+f$ allows us to operate on positive coordinate outputs without flipping geometry.",
+                cue: "Observe the semi-transparent blue rectangle placed in front of the center. This is the virtual image plane.",
+                setup: () => {
+                    renderPinhole = true;
+                    renderRealPlane = false;
+                    renderVirtualPlane = true;
+                    renderProjectedPoint = true;
+                    renderLightRay = true;
+                    renderSimilarityTriangles = false;
+                    renderScaleAmbiguity = false;
+                }
+            },
+            {
+                step: 5,
+                category: "Similarity Geometry",
+                title: "Triangles Reveal the Projection Math",
+                simple: "Now we derive the core projection math. We can see two nested triangles: a small one inside the camera, and a large one stretching out to the world object.",
+                technical: "Because these are 'similar triangles', they share identical scaling ratios: $\\frac{x}{f} = \\frac{X}{Z}$, which translates to the standard formula: $x = f \\frac{X}{Z}$.",
+                cue: "Look at the blue and green shaded triangles. Their proportional matching is why perspective works.",
+                setup: () => {
+                    renderPinhole = true;
+                    renderRealPlane = false;
+                    renderVirtualPlane = true;
+                    renderProjectedPoint = true;
+                    renderLightRay = true;
+                    renderSimilarityTriangles = true;
+                    renderScaleAmbiguity = false;
+                }
+            },
+            {
+                step: 6,
+                category: "Dimension Reduction Problem",
+                title: "The Scale Ambiguity Challenge",
+                simple: "Because we divide by depth ($Z$), we lose the absolute size. A tiny toy car close up and a giant real car far away look identical on our flat image screen.",
+                technical: "Mathematically, multiple points along the projection ray land on the exact same pixel $(x, y)$. A single photo cannot reconstruct 3D without extra views.",
+                cue: "Look at the orange and purple spheres. Both land on the exact same pixel point on our blue screen sensor.",
+                setup: () => {
+                    renderPinhole = true;
+                    renderRealPlane = false;
+                    renderVirtualPlane = true;
+                    renderProjectedPoint = true;
+                    renderLightRay = false;
+                    renderSimilarityTriangles = false;
+                    renderScaleAmbiguity = true;
+                }
+            },
+            {
+                step: 7,
+                category: "Real World Constraints",
+                title: "When Math Meets Real Glass",
+                simple: "Our formulas assume a perfect pinhole, but physical cameras use curved glass lenses. Glass bends light imperfectly, resulting in geometric warping.",
+                technical: "Straight lines end up appearing curved (radial distortion). To repair this, we run mathematical calibration routines using checkerboard patterns before running reconstruction algorithms.",
+                cue: "Let's explore this glass bending effect in the interactive sandbox below!",
+                setup: () => {
+                    renderPinhole = true;
+                    renderRealPlane = false;
+                    renderVirtualPlane = true;
+                    renderProjectedPoint = true;
+                    renderLightRay = true;
+                    renderSimilarityTriangles = false;
+                    renderScaleAmbiguity = false;
+                }
+            }
+        ];
+
+        function applyStepState(stepNum) {
+            const stepData = tourSteps[stepNum - 1];
+            stepCategory.innerText = stepData.category;
+            stepTitle.innerText = stepData.title;
+            stepSimpleText.innerHTML = stepData.simple;
+            stepTechnicalText.innerHTML = stepData.technical;
+            visualCueText.innerText = stepData.cue;
+
+            stepIndicator.innerText = `Step ${stepData.step} of 7`;
+
+            // Execute specific step visualization layers
+            stepData.setup();
+            drawMainScene();
+
+            // Re-render MathJax markup inside text blocks
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+
+            // Button states
+            prevBtn.disabled = stepNum === 1;
+            if (stepNum === 7) {
+                nextBtn.innerHTML = `Sandbox Jump <i class="fa-solid fa-arrow-down text-[10px]"></i>`;
+            } else {
+                nextBtn.innerHTML = `Next <i class="fa-solid fa-arrow-right text-[10px]"></i>`;
+            }
+        }
+
+        // Stepper click handlers
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                applyStepState(currentStep);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentStep < 7) {
+                currentStep++;
+                applyStepState(currentStep);
+            } else {
+                // Scroll down to the sandbox section
+                document.getElementById('distortionCanvas').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+
+        // ==========================================
+        // LENS DISTORTION SANDBOX ENGINE
+        // ==========================================
+
+        // Map distorted coordinates based on standard radial-tangential formula
+        function distortCoordinate(x, y, k1, k2, p1) {
+            // Normalize centered coordinates
+            const r2 = x*x + y*y;
+            const r4 = r2 * r2;
+
+            // Radial component mapping
+            const radialScale = 1 + k1*r2 + k2*r4;
+
+            // Tangential component mapping
+            const dx = 2*p1*x*y;
+            const dy = p1*(r2 + 2*y*y);
+
+            return {
+                x: x * radialScale + dx,
+                y: y * radialScale + dy
+            };
+        }
+
+        function drawDistortionSandbox() {
+            const w = distCanvas.width;
+            const h = distCanvas.height;
+            distCtx.clearRect(0, 0, w, h);
+
+            // Fetch current distortion params
+            const k1 = parseFloat(k1Slider.value);
+            const k2 = parseFloat(k2Slider.value);
+            const p1 = parseFloat(p1Slider.value);
+
+            // Draw clean background layout elements
+            distCtx.strokeStyle = 'rgba(71, 85, 105, 0.15)';
+            distCtx.lineWidth = 1;
+
+            const gridLines = 14;
+            const size = Math.min(w, h) * 0.7;
+            const step = size / gridLines;
+
+            // Center of simulation screen
+            const cx = w / 2;
+            const cy = h / 2;
+
+            // Draw warped grid lines horizontally
+            for (let r = -gridLines/2; r <= gridLines/2; r++) {
+                distCtx.beginPath();
+                for (let c = -gridLines/2; c <= gridLines/2; c++) {
+                    // Map physical points to normalized coordinates
+                    const normX = (c * step) / (size / 2);
+                    const normY = (r * step) / (size / 2);
+
+                    const warpedNorm = distortCoordinate(normX, normY, k1, k2, p1);
+
+                    // De-normalize back to physical canvas space
+                    const finalX = cx + warpedNorm.x * (size / 2);
+                    const finalY = cy + warpedNorm.y * (size / 2);
+
+                    if (c === -gridLines/2) {
+                        distCtx.moveTo(finalX, finalY);
+                    } else {
+                        distCtx.lineTo(finalX, finalY);
+                    }
+                }
+                distCtx.strokeStyle = 'rgba(99, 102, 241, 0.35)'; // Indigo grid
+                distCtx.stroke();
+            }
+
+            // Draw warped grid lines vertically
+            for (let c = -gridLines/2; c <= gridLines/2; c++) {
+                distCtx.beginPath();
+                for (let r = -gridLines/2; r <= gridLines/2; r++) {
+                    const normX = (c * step) / (size / 2);
+                    const normY = (r * step) / (size / 2);
+
+                    const warpedNorm = distortCoordinate(normX, normY, k1, k2, p1);
+
+                    const finalX = cx + warpedNorm.x * (size / 2);
+                    const finalY = cy + warpedNorm.y * (size / 2);
+
+                    if (r === -gridLines/2) {
+                        distCtx.moveTo(finalX, finalY);
+                    } else {
+                        distCtx.lineTo(finalX, finalY);
+                    }
+                }
+                distCtx.strokeStyle = 'rgba(99, 102, 241, 0.35)';
+                distCtx.stroke();
+            }
+
+            // Draw center reference dot
+            distCtx.beginPath();
+            distCtx.arc(cx, cy, 4, 0, Math.PI * 2);
+            distCtx.fillStyle = '#fbbf24';
+            distCtx.fill();
+        }
+
+        // Sync Distortion sliders and redraw
+        k1Slider.addEventListener('input', () => {
+            k1Val.innerText = k1Slider.value;
+            drawDistortionSandbox();
+        });
+        k2Slider.addEventListener('input', () => {
+            k2Val.innerText = k2Slider.value;
+            drawDistortionSandbox();
+        });
+        p1Slider.addEventListener('input', () => {
+            p1Val.innerText = p1Slider.value;
+            drawDistortionSandbox();
+        });
+
+        // Preset distortion profile loader buttons
+        btnNoDistortion.addEventListener('click', () => {
+            k1Slider.value = 0;
+            k2Slider.value = 0;
+            p1Slider.value = 0;
+
+            k1Val.innerText = "0.0";
+            k2Val.innerText = "0.0";
+            p1Val.innerText = "0.0";
+
+            drawDistortionSandbox();
+        });
+
+        btnBarrel.addEventListener('click', () => {
+            k1Slider.value = 0.8;
+            k2Slider.value = 0.2;
+            p1Slider.value = 0.0;
+
+            k1Val.innerText = "0.8";
+            k2Val.innerText = "0.2";
+            p1Val.innerText = "0.0";
+
+            drawDistortionSandbox();
+        });
+
+        btnPincushion.addEventListener('click', () => {
+            k1Slider.value = -0.7;
+            k2Slider.value = -0.3;
+            p1Slider.value = 0.0;
+
+            k1Val.innerText = "-0.7";
+            k2Val.innerText = "-0.3";
+            p1Val.innerText = "0.0";
+
+            drawDistortionSandbox();
+        });
+
+        // Initialize state arrays on render boot
+        applyStepState(1);
+        updateIntrinsicMatrixDisplay();
+        setTimeout(resizeCanvases, 100);
+
+    </script>
+</body>
+</html>

@@ -28,7 +28,7 @@ To understand why the cloud is a consumption model rather than a new physical te
 3.  **Utility Billing:** Fine-grained metering tools track resource usage in real-time, functioning similarly to an electricity grid.
 
 ════════════════════════════════════════════════════════════════════════
-📄 FILE: Chapter 1 - Introduction to Cloud Computing/1.10 What is a Workload.md
+ FILE: Chapter 1 - Introduction to Cloud Computing/1.10 What is a Workload.md
    Language: markdown
 ════════════════════════════════════════════════════════════════════════
 
@@ -112,7 +112,7 @@ When you deploy on **cloud platforms**, your site lives inside **a virtual machi
 
 
 ════════════════════════════════════════════════════════════════════════
-📄 FILE: Chapter 1 - Introduction to Cloud Computing/1.11 What is Serverless.md
+ FILE: Chapter 1 - Introduction to Cloud Computing/1.11 What is Serverless.md
    Language: markdown
 ════════════════════════════════════════════════════════════════════════
 
@@ -520,7 +520,7 @@ Serverless feels like magic because the platform gives you **isolated compute un
 
 
 ════════════════════════════════════════════════════════════════════════
-📄 FILE: Chapter 1 - Introduction to Cloud Computing/1.2 Historical Evolution of Computing Paradigms.md
+ FILE: Chapter 1 - Introduction to Cloud Computing/1.2 Historical Evolution of Computing Paradigms.md
    Language: markdown
 ════════════════════════════════════════════════════════════════════════
 
@@ -548,7 +548,7 @@ timeline
 *   **Modern Cloud Computing (2006-Present):** In 2006, Amazon Web Services (AWS) launched Simple Storage Service (S3) and Elastic Compute Cloud (EC2). This combined virtualization, utility billing, and automated orchestration into a mature commercial platform, marking the start of the modern cloud era.
 
 ════════════════════════════════════════════════════════════════════════
-📄 FILE: Chapter 1 - Introduction to Cloud Computing/1.3 NIST Characteristics of Cloud Computing.md
+ FILE: Chapter 1 - Introduction to Cloud Computing/1.3 NIST Characteristics of Cloud Computing.md
    Language: markdown
 ════════════════════════════════════════════════════════════════════════
 
@@ -587,7 +587,7 @@ Cloud systems automatically control and optimize resource use by leveraging a me
 *   **Behind the Scenes:** Background agents track resource consumption. This data is processed by billing systems to generate detailed usage reports and invoices.
 
 ════════════════════════════════════════════════════════════════════════
-📄 FILE: Chapter 1 - Introduction to Cloud Computing/1.4 Cloud vs On-Premise Strategic Analysis.md
+ FILE: Chapter 1 - Introduction to Cloud Computing/1.4 Cloud vs On-Premise Strategic Analysis.md
    Language: markdown
 ════════════════════════════════════════════════════════════════════════
 
@@ -611,7 +611,7 @@ Choosing between an on-premise infrastructure and cloud migration requires evalu
 *   **Ignoring Data Egress Charges:** Cloud providers often charge minimal fees to ingest data (ingress) but bill heavily to retrieve data (egress). Failing to account for egress costs can lead to unexpectedly high monthly invoices.
 
 ════════════════════════════════════════════════════════════════════════
-📄 FILE: Chapter 1 - Introduction to Cloud Computing/1.5 Evolution, Elasticity, and Scalability Mechanics.md
+ FILE: Chapter 1 - Introduction to Cloud Computing/1.5 Evolution, Elasticity, and Scalability Mechanics.md
    Language: markdown
 ════════════════════════════════════════════════════════════════════════
 
@@ -673,7 +673,7 @@ flowchart TD
 
 
 ════════════════════════════════════════════════════════════════════════
-📄 FILE: Chapter 1 - Introduction to Cloud Computing/1.6 The Five Essential NIST Characteristics and Financial Models.md
+ FILE: Chapter 1 - Introduction to Cloud Computing/1.6 The Five Essential NIST Characteristics and Financial Models.md
    Language: markdown
 ════════════════════════════════════════════════════════════════════════
 
@@ -750,7 +750,7 @@ xychart-beta
 
 
 ════════════════════════════════════════════════════════════════════════
-📄 FILE: Chapter 1 - Introduction to Cloud Computing/1.7 The Historical Paradigm Shifts Preceding Cloud Computing.md
+ FILE: Chapter 1 - Introduction to Cloud Computing/1.7 The Historical Paradigm Shifts Preceding Cloud Computing.md
    Language: markdown
 ════════════════════════════════════════════════════════════════════════
 
@@ -827,7 +827,7 @@ flowchart TD
 
 
 ════════════════════════════════════════════════════════════════════════
-📄 FILE: Chapter 1 - Introduction to Cloud Computing/1.8 What The Cloud Means.md
+ FILE: Chapter 1 - Introduction to Cloud Computing/1.8 What The Cloud Means.md
    Language: markdown
 ════════════════════════════════════════════════════════════════════════
 
@@ -926,7 +926,7 @@ In cloud and fog computing simulation frameworks, the abstract concepts describe
 
 
 ════════════════════════════════════════════════════════════════════════
-📄 FILE: Chapter 1 - Introduction to Cloud Computing/1.9 Understanding Cloud Providers, Hosting Services, and VPS.md
+ FILE: Chapter 1 - Introduction to Cloud Computing/1.9 Understanding Cloud Providers, Hosting Services, and VPS.md
    Language: markdown
 ════════════════════════════════════════════════════════════════════════
 
@@ -1144,7 +1144,7 @@ You pay only for what you use (per hour, per GB, etc.). This pay-per-use model i
 
 
 ════════════════════════════════════════════════════════════════════════
-📄 FILE: Chapter 1 - Introduction to Cloud Computing/Chapter_1_Intro.md
+ FILE: Chapter 1 - Introduction to Cloud Computing/Chapter_1_Intro.md
    Language: markdown
 ════════════════════════════════════════════════════════════════════════
 

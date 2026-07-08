@@ -30,7 +30,7 @@ Database essentials: what a database is, the relational model, RDBMS, SQL basics
 - [[11 - Atomic Values]]
 
 ### 02 — Relational Algebra
-The formal mathematical foundation: operators (σ, π, ρ, ⋈, ÷, ∪, ∩, −), set vs. bag semantics, advanced functions, and the SQL↔algebra mapping.
+The formal mathematical foundation: operators (σ, π, ρ, ⋈, ÷, ∪, ∩, −), set vs. bag semantics, advanced functions, and the SQLalgebra mapping.
 
 - [[01 - Relational Model Fundamentals]]
 - [[02 - Relational Algebra Operators]]
@@ -132,7 +132,7 @@ The broader database landscape: DBMS architectures, data independence, the moder
 - [[07 - Wide Column Physical Layout and JSONiq Context]]
 
 ### 12 — Exercises
-Worked problems and practice drills spanning set operations, joins, algebra↔SQL translation, advanced theory, and 30+ progressive practice exercises.
+Worked problems and practice drills spanning set operations, joins, algebraSQL translation, advanced theory, and 30+ progressive practice exercises.
 
 - [[01 - Set Operations vs Joins]]
 - [[02 - Master Guide to SQL Joins]]
