@@ -11,10 +11,14 @@
             "id": "9b1a98a6941b6785",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "SWE/Programming languages/Java/01. Java Developer Roadmap/01. Master the Java Language/01.1. JVM JRE JDK and Execution Pipeline.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "01.1. JVM JRE JDK and Execution Pipeline"
             }
           }
         ]
@@ -184,9 +188,16 @@
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
       "bases:Create new base": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "quiz-generator:Open generator": false
     }
   },
-  "active": "e28bb4de916259c8",
-  "lastOpenFiles": []
+  "active": "9b1a98a6941b6785",
+  "lastOpenFiles": [
+    "SWE/Programming languages/Java/quiz/01. Master the Java Language/01.5. Type Conversions Casting and Wrapper Classes.md",
+    "SWE/Programming languages/Java/quiz/01. Master the Java Language/01.4. Methods Packages and Imports.md",
+    "SWE/Programming languages/Java/quiz/01. Master the Java Language/01.1. JVM JRE JDK and Execution Pipeline.md",
+    "SWE/Programming languages/Java/quiz/01. Master the Java Language/01.6. var Keyword and Naming Conventions.md",
+    "SWE/Programming languages/Java/quiz/01. Master the Java Language/01.2. Primitive Types Variables and Constants.md"
+  ]
 }
