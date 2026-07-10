@@ -1,5 +1,5 @@
 {
-  "typographyEnabled": true,
+  "typographyEnabled": false,
   "fontFamily": "lexend",
   "customFontFamily": "",
   "loadGoogleFonts": false,
