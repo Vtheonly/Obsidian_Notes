@@ -1,0 +1,133 @@
+/* Container for the vertical graph track */
+.frh-heatmap-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 12px; /* Positioned left of the scrollbar to avoid blocking scroll actions */
+  width: 16px;
+  z-index: 99; /* Stay above workspace text blocks */
+  background: rgba(128, 128, 128, 0.02);
+  border-left: 1px solid var(--background-modifier-border);
+  border-right: 1px solid var(--background-modifier-border);
+  pointer-events: auto; /* Active pointer events to support hover tooltips */
+  user-select: none;
+  -webkit-user-select: none;
+  opacity: 0.85;
+  transition:
+    opacity 0.2s,
+    width 0.2s;
+}
+
+.frh-heatmap-wrapper:hover {
+  opacity: 1;
+  background: rgba(128, 128, 128, 0.05);
+}
+
+/* Heatmap canvas element */
+.frh-heatmap-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: crosshair;
+}
+
+/* Floating interactive tooltip */
+.frh-heatmap-tooltip {
+  position: fixed;
+  background: var(--background-floating);
+  border: 1px solid var(--background-modifier-border);
+  color: var(--text-normal);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  line-height: 1.4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+  z-index: 10000;
+  pointer-events: none;
+  font-family: var(--font-interface);
+  opacity: 0;
+  transition: opacity 0.15s ease-out;
+  max-width: 220px;
+}
+
+.frh-heatmap-tooltip-title {
+  font-weight: 600;
+  border-bottom: 1px solid var(--background-modifier-border);
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+  color: var(--text-accent);
+}
+
+.frh-heatmap-tooltip-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 2px;
+}
+
+.frh-heatmap-tooltip-value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Adjustments for the settings interface */
+.frh-setting-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* Styles for Timeline Tools Panel */
+.frh-tools-container {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--background-secondary-alt);
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.frh-subsection-title {
+  margin-top: 18px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  padding-bottom: 6px;
+  color: var(--text-normal);
+}
+
+.frh-dashboard-panel {
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+
+.frh-dashboard-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--background-modifier-border);
+  font-size: 12px;
+  font-family: var(--font-interface);
+}
+
+.frh-dashboard-stat:last-child {
+  border-bottom: none;
+}
+
+.frh-stat-label {
+  color: var(--text-muted);
+}
+
+.frh-stat-value {
+  font-weight: 600;
+  color: var(--text-normal);
+}
+
+.frh-diagnostic-section {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--background-modifier-border);
+}
