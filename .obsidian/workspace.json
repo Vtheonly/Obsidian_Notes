@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "9964e399686409ff",
+        "id": "7f7d3a37e55de681",
         "type": "tabs",
         "children": [
           {
-            "id": "9b1a98a6941b6785",
+            "id": "d87c4ec5397a9f79",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -192,8 +192,12 @@
       "quiz-generator:Open generator": false
     }
   },
-  "active": "9b1a98a6941b6785",
+  "active": "d87c4ec5397a9f79",
   "lastOpenFiles": [
+    "SWE/Programming languages/Java/01. Java Developer Roadmap/01. Master the Java Language/01.3. Operators Expressions and Control Flow.md",
+    "SWE/Programming languages/Java/01. Java Developer Roadmap/01. Master the Java Language/01.2. Primitive Types Variables and Constants.md",
+    "SWE/Programming languages/Java/01. Java Developer Roadmap/01. Master the Java Language/01.1. JVM JRE JDK and Execution Pipeline.md",
+    "SWE/Programming languages/Java/01. Java Developer Roadmap/01. Master the Java Language/01.4. Methods Packages and Imports.md",
     "SWE/Programming languages/Java/quiz/01. Master the Java Language/01.5. Type Conversions Casting and Wrapper Classes.md",
     "SWE/Programming languages/Java/quiz/01. Master the Java Language/01.4. Methods Packages and Imports.md",
     "SWE/Programming languages/Java/quiz/01. Master the Java Language/01.1. JVM JRE JDK and Execution Pipeline.md",

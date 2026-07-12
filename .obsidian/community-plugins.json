@@ -1,8 +1,8 @@
 [
   "obsidian-git",
   "quiz-generator",
-  "focus-read-timer",
   "focus-read-typography",
   "heatmap-of-notes",
-  "obsidian-plantuml"
+  "obsidian-plantuml",
+  "focus-read-timer"
 ]
