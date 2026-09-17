@@ -1,0 +1,1835 @@
+# Final Technical Report — Real-Time AI Boxing Coach
+
+**Status:** Final architecture recommendation
+**Date:** 17 September 2026
+**Primary target:** Samsung Galaxy A30s, 4 GB RAM
+**Development/training machine:** PC with RTX 3060 6 GB
+**Operating principle:** On-device real-time inference, with heavy training and model preparation performed off-device.
+
+---
+
+## 1. Executive Decision
+
+The application should be designed as a **real-time AI boxing coach**, not as a simple pose detector or punch classifier.
+
+The user should be able to stand in front of one phone camera and practice:
+
+* individual stances
+* individual punches
+* defensive movements
+* footwork
+* punch combinations
+* complete routines
+* transitions between movements
+* recovery back to guard
+
+While the user is performing the exercise, the application should continuously determine:
+
+> **What movement was supposed to happen → what actually happened → how closely it matches technically good reference movements → what was correct → what was wrong → what should be corrected next.**
+
+The final system therefore has five major intelligence layers:
+
+```text
+CAMERA
+   ↓
+BOXER TRACKING
+   ↓
+POSE + MOTION REPRESENTATION
+   ↓
+MOVEMENT / ROUTINE UNDERSTANDING
+   ↓
+TECHNIQUE COMPARISON
+   ↓
+REAL-TIME COACHING FEEDBACK
+```
+
+The most important architectural decision is:
+
+> **Use transformers for temporal/motion understanding, not as a giant end-to-end vision model running continuously on the Galaxy A30s.**
+
+That gives us much of the benefit of transformer-based motion modeling while keeping the phone workload realistic.
+
+---
+
+# 2. Target Hardware Constraints
+
+Samsung's own Galaxy A30s specifications list configurations with up to 4 GB RAM and rear-camera video recording at 1920×1080/30 fps.
+
+The A30s uses the Exynos 7904 platform with a Mali-G71-class GPU and has no dedicated NPU according to available hardware specifications.
+
+This has a major architectural consequence.
+
+A large modern vision transformer running directly on every camera frame is not the correct design target for this phone.
+
+Instead, the phone should perform:
+
+```text
+Camera frame
+    ↓
+Lightweight pose extraction
+    ↓
+Small numerical feature stream
+    ↓
+Small temporal model
+    ↓
+Rules + learned technique model
+```
+
+rather than:
+
+```text
+Camera frame
+    ↓
+Huge transformer
+    ↓
+Everything
+```
+
+This is also why the model should be trained heavily on the RTX 3060 and then compressed for mobile deployment.
+
+---
+
+# 3. Final AI Pipeline
+
+The recommended production pipeline is:
+
+```text
+                     PHONE CAMERA
+                           │
+                           ▼
+                  CameraX / YUV frames
+                           │
+                           ▼
+               Person ROI + tracking
+                           │
+                           ▼
+                  RTMPose-S Pose
+                           │
+                           ▼
+              Boxing-specific fine-tuning
+                           │
+                           ▼
+                Temporal stabilization
+                  One Euro filtering
+                           │
+                           ▼
+              Body-relative normalization
+                           │
+                           ▼
+       ┌───────────────────┴───────────────────┐
+       │                                       │
+       ▼                                       ▼
+  Geometric features                    Skeleton sequence
+       │                                       │
+       │                              ┌────────┴────────┐
+       │                              │                 │
+       │                              ▼                 ▼
+       │                         ST-GCN front      Tiny Temporal
+       │                           encoder          Transformer
+       │                              │                 │
+       │                              └────────┬────────┘
+       │                                       │
+       └───────────────────┬───────────────────┘
+                           ▼
+                 Movement representation
+                           │
+                           ▼
+                DTW + reference matching
+                           │
+                           ▼
+                Biomechanical evaluation
+                           │
+                           ▼
+              Technique / routine state
+                           │
+                           ▼
+                   COACHING ENGINE
+                           │
+             ┌─────────────┼─────────────┐
+             ▼             ▼             ▼
+          Visual        Voice/audio     Session
+          feedback       feedback       analytics
+```
+
+---
+
+# 4. Pose Estimation — RTMPose-S
+
+## Decision
+
+**Primary pose estimator: RTMPose-S, fine-tuned specifically for boxing.**
+
+RTMPose was explicitly designed around real-time pose estimation and reports strong mobile performance; the authors report RTMPose-S at 72.2% COCO AP and 70+ FPS on a Snapdragon 865 reference device. Those numbers are not A30s measurements, so they should not be interpreted as the expected A30s performance.
+
+MMPose provides deployment/export paths including ONNX and mobile-oriented formats, and its project is Apache-2.0 licensed.
+
+### Why RTMPose-S
+
+The application needs more than generic “person detected” information.
+
+For boxing we need stable measurements of:
+
+* shoulders
+* elbows
+* wrists
+* hips
+* knees
+* ankles
+* head
+* torso orientation
+* relative limb positions
+
+The model should subsequently be **fine-tuned on boxing footage**, especially:
+
+* orthodox stance
+* southpaw stance
+* jab
+* cross
+* hook
+* uppercut
+* guard
+* slip
+* roll
+* step
+* pivot
+* lateral movement
+
+Generic COCO performance alone is not enough.
+
+---
+
+# 5. Do Not Run Pose Estimation at Full Camera FPS
+
+The camera can provide a 30 FPS stream, but the expensive ML pipeline does not have to process every frame.
+
+CameraX's `ImageAnalysis` API explicitly supports frame analysis and frame-dropping strategies when analysis cannot keep up with the camera rate.
+
+The intended design is:
+
+```text
+Camera:                    ~30 FPS
+          ↓
+Pose inference:            adaptive lower rate
+          ↓
+Tracking/interpolation:    between pose frames
+          ↓
+Temporal model:            continuous skeleton stream
+```
+
+The initial engineering target should be approximately **10–15 high-quality pose updates per second**, with benchmarking determining the final value.
+
+This is much more realistic for an old 4 GB device than attempting full heavyweight inference at 30 FPS.
+
+The app should measure:
+
+* pose latency
+* end-to-end latency
+* FPS
+* dropped frames
+* CPU utilization
+* RAM
+* battery drain
+* thermal throttling
+
+on the **actual A30s**, rather than assuming published Snapdragon measurements transfer to it.
+
+---
+
+# 6. Temporal Stabilization
+
+Raw pose coordinates are noisy.
+
+This becomes especially problematic during:
+
+* fast jabs
+* hooks
+* rapid hand retraction
+* pivots
+* fast defensive movement
+* partial occlusion
+
+Therefore the pose stream should be stabilized before technique analysis.
+
+## Decision
+
+**One Euro Filter + confidence-aware temporal processing.**
+
+The system should not blindly trust every pose point.
+
+For every keypoint:
+
+```text
+(x, y, confidence, timestamp)
+```
+
+should be retained.
+
+Low-confidence points should receive less influence in the temporal representation.
+
+---
+
+# 7. Body-Relative Normalization
+
+Absolute screen coordinates are not suitable for comparing different repetitions.
+
+For example:
+
+```text
+Person A:
+shoulders = 200 pixels apart
+
+Person B:
+shoulders = 300 pixels apart
+```
+
+This does not mean B has a different boxing technique.
+
+The skeleton should therefore be normalized around the boxer.
+
+Recommended representation:
+
+```text
+center = midpoint(left shoulder, right shoulder)
+
+scale = shoulder width
+
+normalized_x = (x - center_x) / scale
+normalized_y = (y - center_y) / scale
+```
+
+Additional representations should include:
+
+* shoulder-centered coordinates
+* hip-centered coordinates
+* torso orientation
+* limb lengths
+* joint angles
+* joint velocities
+* joint accelerations
+* relative hand positions
+* foot positions
+* distances between guard hands and head
+* shoulder/hip rotation relationships
+
+This creates a representation that describes **movement**, instead of merely describing where the boxer happened to stand in the camera image.
+
+---
+
+# 8. The Transformer Decision
+
+This is where I would specifically introduce transformers.
+
+A transformer is highly useful for understanding **relationships across time**.
+
+Research such as ST-TR demonstrates the use of spatial and temporal self-attention directly on skeleton sequences, while MotionBERT uses a dual-stream spatio-temporal transformer to learn human motion representations from noisy 2D observations.
+
+However, we should not simply put a large MotionBERT-like model on the A30s.
+
+## Final architecture
+
+Use:
+
+### Stage A — ST-GCN
+
+A small ST-GCN-style graph encoder captures local skeleton structure efficiently.
+
+ST-GCN was specifically designed to learn spatial and temporal patterns from skeleton graphs rather than treating the skeleton as an ordinary vector.
+
+### Stage B — Tiny Temporal Transformer
+
+A very small transformer operates on the compact motion features produced from the skeleton sequence.
+
+Its job is to understand:
+
+```text
+what happened before
++
+what is happening now
++
+what happens afterward
+```
+
+This is particularly useful for:
+
+* punch phases
+* combinations
+* recovery
+* timing
+* transitions
+* repeated movement patterns
+* routine sequencing
+
+Therefore:
+
+```text
+ST-GCN
+   ↓
+compact motion tokens
+   ↓
+small Temporal Transformer
+   ↓
+motion embedding
+```
+
+is preferable to a giant image transformer.
+
+---
+
+# 9. Transformer Teacher / Student Training
+
+There is an even better use of transformers.
+
+A larger transformer such as a MotionBERT/DSTformer-style model can be used **offline on the RTX 3060** as a teacher.
+
+The training system can then produce a much smaller mobile student model.
+
+```text
+                    OFFLINE PC
+                         │
+             Large motion transformer
+                         │
+                   Teacher features
+                         │
+              ┌──────────┴──────────┐
+              ▼                     ▼
+       boxing embedding       3D/kinematic
+                              representation
+              │                     │
+              └──────────┬──────────┘
+                         ▼
+                 knowledge distillation
+                         │
+                         ▼
+                  small mobile model
+                         │
+                         ▼
+                    Galaxy A30s
+```
+
+This is one of the best places to use a transformer because its computational cost does not directly affect the real-time phone experience.
+
+MotionBERT's central idea—learning a general human-motion representation from noisy partial 2D observations and transferring it to downstream motion tasks—is particularly relevant to this architecture.
+
+---
+
+# 10. Stance Practice Mode
+
+The app should have a dedicated **Stance Coach**.
+
+The user selects:
+
+```text
+Orthodox
+Southpaw
+Custom stance
+```
+
+The application then continuously evaluates:
+
+### Feet
+
+* lead-foot position
+* rear-foot position
+* stance width
+* foot separation
+* foot direction
+* excessive crossing
+* unnecessary weight-shifting
+
+### Legs
+
+* knee position
+* knee bend
+* leg alignment
+* excessive straightening
+* stability
+
+### Hips
+
+* hip orientation
+* hip alignment
+* rotation relative to shoulders
+
+### Torso
+
+* torso angle
+* torso rotation
+* unnecessary leaning
+
+### Head
+
+* head position
+* head movement relative to guard
+* excessive forward movement
+
+### Hands
+
+* lead-hand location
+* rear-hand location
+* guard height
+* guard symmetry/asymmetry
+
+The system should provide continuous feedback such as:
+
+```text
+REAR HAND
+Too low
+
+STANCE
+Too narrow
+
+HEAD
+Good position
+
+FEET
+Good alignment
+```
+
+The feedback should not fire every frame.
+
+A condition must persist long enough to be considered meaningful.
+
+---
+
+# 11. Punch Practice Mode
+
+The first major technique should be the **jab**.
+
+Then:
+
+```text
+Jab
+Cross
+Lead Hook
+Rear Hook
+Lead Uppercut
+Rear Uppercut
+```
+
+can be added.
+
+For every punch, the system should model phases.
+
+## Example: Jab
+
+```text
+STANCE
+   ↓
+PREPARATION
+   ↓
+INITIATION
+   ↓
+ACCELERATION
+   ↓
+EXTENSION
+   ↓
+PEAK / IMPACT POSITION
+   ↓
+RETRACTION
+   ↓
+GUARD RECOVERY
+```
+
+This is substantially more informative than:
+
+```text
+JAB DETECTED
+```
+
+The app could instead produce:
+
+```text
+JAB
+
+Initiation        Good
+Lead-arm path     Good
+Extension         Slightly short
+Rear hand         Too low
+Retraction        Slow
+Guard recovery    Good
+```
+
+---
+
+# 12. Combination / Routine Mode
+
+This should be a first-class feature rather than an afterthought.
+
+The user can choose or create routines such as:
+
+```text
+Jab → Cross
+```
+
+```text
+Jab → Cross → Lead Hook
+```
+
+```text
+Jab → Slip → Cross → Hook
+```
+
+```text
+Jab → Cross → Rear Hook → Roll → Cross
+```
+
+The routine engine becomes a state machine.
+
+```text
+EXPECTED: JAB
+        ↓
+DETECTED: JAB ✓
+        ↓
+EXPECTED: CROSS
+        ↓
+DETECTED: CROSS ✓
+        ↓
+EXPECTED: HOOK
+        ↓
+DETECTED: CROSS ✗
+        ↓
+FEEDBACK:
+Wrong movement
+Expected lead hook
+```
+
+The routine should continue instead of simply failing the whole repetition.
+
+---
+
+# 13. Timing Evaluation
+
+For routines, timing becomes another major feature.
+
+Measure:
+
+* start-to-punch latency
+* punch duration
+* punch-to-punch transition time
+* recovery duration
+* pause duration
+* timing consistency
+* timing deviation from references
+
+Example:
+
+```text
+JAB
+Reference:       310 ms
+User:            340 ms
+
+CROSS
+Reference:       290 ms
+User:            287 ms
+
+HOOK TRANSITION
+Reference:       210 ms
+User:            318 ms
+```
+
+This allows the coach to distinguish:
+
+> “Your hook is technically shaped correctly but your transition is slow”
+
+from:
+
+> “Your hook technique is incorrect.”
+
+Those are different problems and should produce different feedback.
+
+---
+
+# 14. Reference Library
+
+The reference system should **never be based on one supposedly perfect punch**.
+
+Instead, the dataset should contain many high-quality examples.
+
+```text
+             QUALITY BOXING DATA
+                      │
+       ┌──────────────┼──────────────┐
+       ▼              ▼              ▼
+      Jab #1         Jab #2         Jab #3
+       │              │              │
+       └──────────────┼──────────────┘
+                      ▼
+               Reference Model
+                      │
+                 distribution
+                      │
+                      ▼
+                 User Repetition
+```
+
+This makes the system tolerant to legitimate technical variation.
+
+The reference dataset should contain:
+
+* multiple athletes
+* different heights
+* different body proportions
+* different styles
+* orthodox/southpaw
+* different camera distances
+* multiple repetitions
+* different speeds
+
+Most importantly, experts/coaches should annotate what counts as a meaningful technical error.
+
+---
+
+# 15. Dynamic Time Warping
+
+Two technically similar jabs will not happen at exactly the same speed.
+
+For example:
+
+```text
+Reference:
+0.00 0.10 0.20 0.30 0.40 0.50
+
+User:
+0.00 0.13 0.27 0.39 0.54
+```
+
+Direct frame-by-frame comparison would incorrectly penalize the user.
+
+Therefore the system should use **Dynamic Time Warping (DTW)** to align the temporal shape of the movements.
+
+DTW is particularly useful for:
+
+* punches
+* short combinations
+* stance transitions
+* defensive movements
+
+It provides temporal alignment before calculating deviations.
+
+---
+
+# 16. Technique Scoring
+
+The application should not produce one mysterious score such as:
+
+> “Your jab is 73%.”
+
+Instead, the score should be decomposed.
+
+Example:
+
+```text
+JAB ANALYSIS
+
+Overall similarity       84%
+
+Setup                    91%
+Initiation               87%
+Extension                78%
+Rotation                 82%
+Hand position            89%
+Retraction               74%
+Guard recovery           93%
+Timing                   81%
+Balance                  90%
+```
+
+The user can then understand exactly where improvement is needed.
+
+The application can still display one high-level session score, but it should always be backed by interpretable components.
+
+---
+
+# 17. Real-Time Feedback Engine
+
+The coaching engine should classify feedback into three categories.
+
+### Positive
+
+```text
+Good guard recovery
+Good hip rotation
+Good stance stability
+Good punch path
+```
+
+### Corrective
+
+```text
+Rear hand dropped
+Lead elbow drifting outward
+Stance became too narrow
+Punch is too long
+Recovery is too slow
+```
+
+### Sequence errors
+
+```text
+Wrong punch
+Missed movement
+Movement performed too early
+Movement performed too late
+Incorrect combination order
+```
+
+The system should have **confidence thresholds**.
+
+It must not tell the user:
+
+> “Your elbow is wrong”
+
+when the elbow keypoint itself has low confidence.
+
+Instead:
+
+```text
+Low visual confidence.
+Move into better camera position.
+```
+
+---
+
+# 18. Real-Time Display
+
+The live screen should show the boxer rather than burying the camera view under statistics.
+
+Recommended layout:
+
+```text
+┌────────────────────────────────────┐
+│                                    │
+│          CAMERA VIEW               │
+│                                    │
+│       skeleton overlay             │
+│                                    │
+│              USER                  │
+│                                    │
+│     "REAR HAND TOO LOW"            │
+│                                    │
+├────────────────────────────────────┤
+│ CURRENT: JAB                       │
+│                                    │
+│ Extension       ●●●●○              │
+│ Guard           ●●●●●              │
+│ Balance         ●●●●●              │
+│ Timing          ●●●●○              │
+└────────────────────────────────────┘
+```
+
+During routine training:
+
+```text
+JAB ✓ → CROSS ✓ → HOOK ...
+```
+
+should be visible.
+
+---
+
+# 19. Voice Feedback
+
+Voice is especially useful because a boxer cannot constantly look at a phone while punching.
+
+Examples:
+
+> “Good jab.”
+
+> “Rear hand up.”
+
+> “Recover.”
+
+> “Too wide.”
+
+> “Good combination.”
+
+The phone should use short messages rather than speaking long analytical sentences during movement.
+
+Detailed analysis belongs after the repetition or round.
+
+---
+
+# 20. Session / Round System
+
+The application should support:
+
+```text
+30 seconds
+60 seconds
+2 minutes
+3 minutes
+Custom
+```
+
+and rounds such as:
+
+```text
+Round 1 — Jab
+Round 2 — Jab/Cross
+Round 3 — Combination
+Round 4 — Free shadowboxing
+```
+
+At the end:
+
+```text
+ROUND SUMMARY
+
+Jabs:                 47
+Correct:              42
+Technique deviations: 19
+Sequence errors:       3
+Guard drops:           7
+Average timing:      ...
+Consistency:          ...
+```
+
+---
+
+# 21. Long-Term Progress
+
+The system should remember performance history.
+
+Examples:
+
+```text
+Jab extension
+Week 1     68
+Week 2     72
+Week 3     76
+Week 4     81
+```
+
+and:
+
+```text
+Guard recovery
+Current:  87%
+Previous: 79%
+```
+
+It should also identify persistent problems:
+
+```text
+Most frequent issue:
+Rear-hand guard drops during lead punches.
+
+Second:
+Late recovery after hook.
+
+Improvement:
+Stance stability +11%.
+```
+
+---
+
+# 22. Adaptive Training
+
+Eventually the app should automatically generate the next drill.
+
+Example:
+
+```text
+Repeated issue:
+Slow jab recovery
+
+        ↓
+
+Recommended drill:
+Jab → Guard → Jab → Guard
+
+        ↓
+
+After improvement:
+
+Jab → Cross → Guard
+```
+
+This turns the application from a passive analyzer into an adaptive training system.
+
+---
+
+# 23. 2D Versus 3D
+
+A single phone camera cannot produce perfect laboratory-quality 3D biomechanics.
+
+Research in combat-sports pose estimation shows that the strongest 3D approaches can exploit multiple cameras, multi-view geometry, tracking, triangulation, kinematic optimization and even physics-based optimization.
+
+Similarly, boxing-specific research has explored 2D-to-3D transfer and found that depth information can be useful for boxing pose estimation.
+
+Therefore the app should expose a **relative 3D/motion estimate**, not claim to reconstruct exact physical biomechanics from a single RGB phone camera.
+
+The application can estimate useful properties such as:
+
+* relative torso rotation
+* apparent forward movement
+* relative joint depth
+* shoulder/hip rotation
+* movement trajectories
+
+but should not pretend that these are equivalent to laboratory motion-capture measurements.
+
+---
+
+# 24. 3D Transformer Usage
+
+The best use of a large 3D transformer is therefore offline.
+
+Recommended training architecture:
+
+```text
+2D boxing pose sequences
+        ↓
+Large Motion Transformer teacher
+        ↓
+learned motion representation
+        ↓
+boxing-specific fine-tuning
+        ↓
+knowledge distillation
+        ↓
+small mobile 3D/motion model
+```
+
+This gives the project access to stronger temporal representations without forcing the A30s to run the teacher model.
+
+MotionBERT is particularly relevant as a research direction because its motion encoder learns from noisy 2D observations and incorporates geometric and kinematic information into a transferable motion representation.
+
+---
+
+# 25. Mobile Runtime
+
+The Android runtime should be deliberately lightweight.
+
+Two viable deployment technologies are:
+
+### ONNX Runtime Mobile
+
+ONNX Runtime supports Android CPU execution, XNNPACK and NNAPI, with quantization recommended for reducing model size and computation. It also supports creating custom/minimal runtimes to reduce application size.
+
+### LiteRT / TensorFlow Lite
+
+Google's current Android guidance also supports on-device ML deployment through LiteRT/TensorFlow Lite and GPU delegates. Google notes that NNAPI is deprecated as of Android 15, so the application should not make NNAPI the core architectural dependency.
+
+## Final preference
+
+For this project:
+
+**ONNX Runtime Mobile** should be the first deployment target because the model development pipeline can remain strongly aligned with PyTorch/ONNX and the runtime provides CPU/XNNPACK/mobile optimization paths.
+
+LiteRT should remain a deployment alternative if benchmarking demonstrates a meaningful advantage on the target device.
+
+---
+
+# 26. Quantization
+
+The mobile models should be quantized.
+
+Priority:
+
+```text
+FP32
+ ↓
+FP16 / INT8 experiments
+ ↓
+INT8 production candidate
+```
+
+The final choice should be determined by actual validation accuracy and A30s benchmarks rather than assuming INT8 is automatically superior.
+
+The most important models to compress are:
+
+* temporal encoder
+* Transformer
+* 3D/motion student
+* optional auxiliary classifiers
+
+The large training teacher does not need to ship with the application.
+
+---
+
+# 27. Camera Architecture
+
+Use **CameraX** for the Android camera layer.
+
+CameraX is designed to provide consistent camera functionality across Android devices, and its ImageAnalysis API is directly suited to computer-vision/ML processing.
+
+Recommended pipeline:
+
+```text
+CameraX
+  ↓
+YUV frame
+  ↓
+ROI crop
+  ↓
+pose inference
+  ↓
+close ImageProxy immediately
+  ↓
+next frame
+```
+
+The analyzer must avoid building an ever-growing queue of old frames.
+
+For boxing, the newest frame is normally more valuable than a stale frame.
+
+---
+
+# 28. Camera Setup Assistance
+
+Before starting a session, the app should automatically check:
+
+```text
+FULL BODY VISIBLE       ✓
+HEAD VISIBLE             ✓
+FEET VISIBLE             ✓
+LIGHTING                 ✓
+DISTANCE                 ✓
+SINGLE PERSON            ✓
+BODY CENTERED            ✓
+```
+
+If the boxer is too close:
+
+> Move farther away.
+
+If feet are outside the frame:
+
+> Step back so your full body is visible.
+
+If lighting is poor:
+
+> Improve lighting for more reliable tracking.
+
+This is extremely important because model accuracy can be limited by the input itself.
+
+---
+
+# 29. Training Dataset
+
+The final dataset should combine:
+
+### Open research/project material
+
+Existing boxing computer-vision work already demonstrates the feasibility of combining pose estimation with temporal models for jab/cross/hook/block/stance recognition. One public boxing project, for example, uses YOLO pose plus an LSTM for real-time boxing action classification.
+
+There is also published boxing-specific pose-estimation research and more recent combat-sports research involving advanced temporal and 3D approaches.
+
+However:
+
+**Every dataset must be checked individually for its license and redistribution/training permissions before being included in a commercial product.**
+
+MMPose itself is Apache-2.0 licensed, but that does not automatically make every dataset or third-party model used with it freely redistributable.
+
+---
+
+# 30. Custom Boxing Dataset
+
+The most important dataset should ultimately be our own.
+
+For every repetition:
+
+```text
+video
++
+2D keypoints
++
+confidence
++
+movement label
++
+movement phase
++
+stance
++
+side
++
+timing
++
+technical annotations
+```
+
+Example:
+
+```text
+sample_00472
+
+movement: jab
+stance: orthodox
+side: lead
+phase:
+  setup
+  initiation
+  extension
+  peak
+  recovery
+
+annotations:
+  rear_hand_low = false
+  excessive_lean = false
+  elbow_flare = true
+  recovery_slow = false
+```
+
+This dataset becomes the actual intelligence behind the coach.
+
+---
+
+# 31. Coach / Expert Annotation
+
+The system should not learn “good technique” exclusively from generic pose statistics.
+
+The dataset should contain expert annotations describing meaningful technique.
+
+For example:
+
+```text
+GOOD
+- stable stance
+- efficient punch path
+- correct guard
+- appropriate rotation
+
+ERROR
+- rear hand drops
+- excessive torso lean
+- elbow flares
+- poor recovery
+- foot crossing
+```
+
+This allows the model to learn what actually matters for the sport.
+
+---
+
+# 32. Feature Engineering
+
+The learned models should receive both raw normalized pose information and derived biomechanics.
+
+Useful features include:
+
+```text
+Joint positions
+Joint velocities
+Joint accelerations
+Joint angles
+Angular velocities
+Distances
+Relative positions
+Body orientation
+Shoulder rotation
+Hip rotation
+Shoulder/hip phase difference
+Foot displacement
+Hand displacement
+Guard position
+Head displacement
+```
+
+This hybrid approach is preferable to forcing the neural network to rediscover every simple geometric relationship.
+
+---
+
+# 33. Punch-Speed Estimation
+
+The application should estimate relative punch speed from the temporal movement of the relevant joints.
+
+For example:
+
+```text
+wrist velocity
++
+elbow velocity
++
+shoulder rotation
++
+extension duration
+```
+
+can contribute to a learned punch-speed representation.
+
+However, the app should label it as **estimated movement speed**, not claim that it is equivalent to a radar, force plate, boxing sensor or laboratory measurement.
+
+---
+
+# 34. Impact / Power
+
+Shadowboxing pose alone cannot reliably tell whether a punch actually made contact with a target.
+
+Therefore:
+
+### Shadowboxing mode
+
+Can evaluate:
+
+* technique
+* trajectory
+* timing
+* recovery
+* movement speed estimate
+
+### Bag/target mode
+
+Could additionally use:
+
+* target detection
+* target displacement
+* optional microphone/audio cues
+* optional external sensors
+
+to improve contact-related analysis.
+
+The application should not pretend that pose estimation alone measures actual punching force.
+
+---
+
+# 35. Defensive Movement
+
+After offensive techniques, add:
+
+```text
+High guard
+Low guard
+Slip left
+Slip right
+Roll
+Pull back
+Step back
+Lateral step
+Pivot
+```
+
+Each becomes another temporal movement class with its own reference distribution.
+
+---
+
+# 36. Footwork Engine
+
+Footwork deserves a separate subsystem.
+
+Track:
+
+```text
+lead foot
+rear foot
+stance width
+center of mass proxy
+foot displacement
+crossing
+pivot
+direction changes
+forward/backward movement
+lateral movement
+```
+
+For combinations, the system can determine whether the boxer maintained a valid base.
+
+Example:
+
+```text
+JAB ✓
+CROSS ✓
+HOOK ✓
+FOOTWORK ERROR
+Lead foot crossed rear foot
+```
+
+---
+
+# 37. Free Shadowboxing Mode
+
+Eventually the application should support a mode where no predetermined routine exists.
+
+Instead:
+
+```text
+Camera
+ ↓
+Movement recognition
+ ↓
+Jab
+Cross
+Hook
+Slip
+Roll
+Footwork
+Guard
+...
+ ↓
+Continuous analysis
+```
+
+At the end:
+
+```text
+FREE SHADOWBOXING REVIEW
+
+312 actions detected
+
+Jab                  61
+Cross                47
+Hooks                38
+Defensive movements  29
+
+Most frequent issue:
+Guard recovery
+
+Best improvement:
+Footwork consistency
+```
+
+---
+
+# 38. Drill Creator
+
+Users should eventually be able to create custom routines.
+
+Example:
+
+```text
+Round:
+2 minutes
+
+Sequence:
+Jab
+Cross
+Lead Hook
+Slip Right
+Cross
+
+Repeat:
+10 times
+```
+
+Difficulty can increase by:
+
+```text
+Normal
+Fast
+Randomized
+Reaction mode
+Endurance mode
+```
+
+The AI can also randomize combinations while keeping the expected state machine known internally.
+
+---
+
+# 39. Reaction Training
+
+The application can provide an audio/visual command:
+
+> “Jab.”
+
+User responds.
+
+Then:
+
+> “Cross.”
+
+Then:
+
+> “Slip.”
+
+The model evaluates both the **correct movement** and **reaction latency**.
+
+This turns the system into an elementary reaction-training tool without requiring additional hardware.
+
+---
+
+# 40. Session Analytics
+
+Every session should produce:
+
+```text
+Accuracy
+Technique consistency
+Movement timing
+Sequence accuracy
+Guard discipline
+Stance stability
+Footwork quality
+Recovery quality
+Common errors
+Improving errors
+Persistent errors
+```
+
+Instead of one black-box score, it should show a structured profile.
+
+---
+
+# 41. Core Final Feature Set
+
+The final product should contain:
+
+| Area                 | Features                                                                     |
+| -------------------- | ---------------------------------------------------------------------------- |
+| Camera               | Live camera, framing guidance, full-body detection, lighting/distance checks |
+| Stance               | Orthodox, southpaw, stance width, feet, knees, hips, torso, head, guard      |
+| Punches              | Jab, cross, hooks, uppercuts                                                 |
+| Defense              | Guard, slips, rolls, pull-back, steps, pivots                                |
+| Footwork             | Forward, backward, lateral, pivot, stance stability                          |
+| Combos               | Multi-punch combinations and transitions                                     |
+| Routines             | User-defined and predefined routines                                         |
+| Detection            | Real-time movement recognition                                               |
+| Comparison           | Reference-distribution comparison                                            |
+| Timing               | Phase and transition timing                                                  |
+| Technique            | Joint/pose/trajectory analysis                                               |
+| Feedback             | Visual, audio and post-repetition feedback                                   |
+| Coaching             | Corrective recommendations                                                   |
+| Training             | Drills and progressive difficulty                                            |
+| History              | Session history and progress                                                 |
+| Adaptive AI          | Training suggestions based on repeated errors                                |
+| Replay               | Movement-by-movement analysis                                                |
+| Free mode            | Unstructured shadowboxing analysis                                           |
+| Reaction             | Audio-command reaction drills                                                |
+| Optional target mode | Target/contact-related analysis with additional signals                      |
+
+---
+
+# 42. Final Model Stack
+
+This is the stack I would commit to as the project's baseline:
+
+| Job                           | Final choice                                           |
+| ----------------------------- | ------------------------------------------------------ |
+| Camera                        | Android CameraX                                        |
+| Person tracking               | Lightweight ROI/person tracking                        |
+| Base pose                     | RTMPose-S                                              |
+| Pose training                 | Boxing-specific fine-tuning                            |
+| Filtering                     | One Euro + confidence weighting                        |
+| Normalization                 | Shoulder/torso-centered body-relative representation   |
+| Skeleton representation       | Positions + velocities + angles + derived features     |
+| Local motion encoder          | ST-GCN                                                 |
+| Long-range temporal reasoning | Tiny Temporal Transformer                              |
+| Offline motion teacher        | MotionBERT/DSTformer-style transformer                 |
+| Temporal alignment            | DTW                                                    |
+| Technique evaluation          | Hybrid learned + geometric model                       |
+| Routine recognition           | Temporal model + state machine                         |
+| Mobile deployment             | ONNX Runtime Mobile first                              |
+| Compression                   | INT8/FP16 benchmarking                                 |
+| Training hardware             | RTX 3060 6 GB                                          |
+| Phone target                  | Galaxy A30s 4 GB                                       |
+| First technique               | Jab                                                    |
+| First complete mode           | Stance + Jab Coach                                     |
+| Expansion                     | Cross → hooks → defense → routines → free shadowboxing |
+
+---
+
+# 43. What the Transformer Is Actually Doing
+
+The transformer should not replace everything.
+
+Its role is specifically:
+
+```text
+POSE
+ ↓
+MOTION TOKENS
+ ↓
+TRANSFORMER
+ ↓
+UNDERSTAND TEMPORAL CONTEXT
+```
+
+For example, these two frames can look almost identical:
+
+```text
+Frame A:
+hand extended
+```
+
+```text
+Frame B:
+hand extended
+```
+
+But their histories differ:
+
+```text
+A:
+stance → acceleration → extension
+
+B:
+stance → incorrect movement → extension
+```
+
+The temporal transformer can use the sequence context rather than judging the isolated frame.
+
+That is exactly why the transformer belongs in the **motion understanding layer**.
+
+---
+
+# 44. Why Not Use a Transformer Everywhere?
+
+Because the target is an old 4 GB smartphone.
+
+The architecture should optimize for:
+
+```text
+ACCURACY
+      ×
+REAL-TIME LATENCY
+      ×
+MEMORY
+      ×
+BATTERY
+```
+
+not simply maximize model size.
+
+Research has repeatedly shown the usefulness of transformer-based skeleton modeling, but mobile deployment requires deliberate compromises. Lightweight/mobile transformer designs exist specifically because conventional large vision transformers are expensive for mobile hardware.
+
+Therefore:
+
+**Transformer for temporal intelligence: yes.**
+
+**Huge end-to-end video transformer on the A30s: no.**
+
+---
+
+# 45. Development Phases
+
+## Phase 1 — Foundation
+
+Implement:
+
+```text
+Camera
+ ↓
+RTMPose-S
+ ↓
+Skeleton
+ ↓
+Filtering
+ ↓
+Normalization
+ ↓
+Live skeleton visualization
+```
+
+No advanced coaching yet.
+
+---
+
+## Phase 2 — Stance Coach
+
+Implement:
+
+```text
+stance detection
++
+stance geometry
++
+reference stance
++
+live feedback
+```
+
+---
+
+## Phase 3 — Jab Coach
+
+Implement:
+
+```text
+jab detection
++
+jab phases
++
+reference library
++
+DTW
++
+technique deviation
++
+real-time feedback
+```
+
+---
+
+## Phase 4 — Temporal Transformer
+
+Add:
+
+```text
+ST-GCN
++
+Tiny Temporal Transformer
+```
+
+and train it on boxing movement sequences.
+
+---
+
+## Phase 5 — Combinations
+
+Implement the routine state machine.
+
+```text
+Jab
+ →
+Cross
+ →
+Hook
+ →
+Defense
+```
+
+---
+
+## Phase 6 — Offline Transformer Teacher
+
+Train a larger motion transformer on the PC.
+
+Use it for:
+
+```text
+representation learning
++
+3D/motion supervision
++
+knowledge distillation
+```
+
+---
+
+## Phase 7 — Mobile Optimization
+
+Benchmark the real A30s.
+
+Measure:
+
+```text
+FPS
+Latency
+RAM
+CPU
+GPU
+Temperature
+Battery
+Model size
+Accuracy
+```
+
+Only then lock the mobile model configuration.
+
+---
+
+# 46. Acceptance Criteria
+
+The app should not be considered successful merely because it detects a human skeleton.
+
+The core acceptance tests should be:
+
+### Stance
+
+The system correctly identifies the selected stance and detects deliberately introduced stance deviations.
+
+### Punches
+
+The system distinguishes:
+
+```text
+jab
+cross
+hook
+uppercut
+```
+
+and recognizes the major movement phases.
+
+### Combinations
+
+For a known routine:
+
+```text
+correct sequence
+wrong sequence
+missing movement
+extra movement
+```
+
+must be distinguishable.
+
+### Feedback
+
+The application must provide **specific corrections**, not generic labels.
+
+Bad:
+
+> Technique incorrect.
+
+Good:
+
+> Rear hand dropped during jab extension.
+
+### Real time
+
+The final implementation must be measured on the actual Galaxy A30s.
+
+### Robustness
+
+Testing must include:
+
+* different clothing
+* different lighting
+* different heights
+* different distances
+* different body proportions
+* faster/slower movements
+* repeated movements
+* partial occlusions
+
+---
+
+# 47. Final Product Concept
+
+The final application can therefore be summarized as:
+
+```text
+               AI BOXING COACH
+                      │
+        ┌─────────────┼─────────────┐
+        ▼             ▼             ▼
+      STANCE        TECHNIQUE      ROUTINE
+        │             │             │
+        └─────────────┼─────────────┘
+                      ▼
+              REAL-TIME MOTION
+                   ANALYSIS
+                      │
+         ┌────────────┴────────────┐
+         ▼                         ▼
+   REFERENCE MODEL           YOUR MOVEMENT
+         │                         │
+         └────────────┬────────────┘
+                      ▼
+              TEMPORAL ALIGNMENT
+                      │
+                      ▼
+             TECHNIQUE DEVIATIONS
+                      │
+                      ▼
+              REAL-TIME FEEDBACK
+                      │
+                      ▼
+                PROGRESS HISTORY
+                      │
+                      ▼
+              ADAPTIVE TRAINING
+```
+
+The final engineering philosophy is:
+
+> **Use computer vision to observe the boxer, skeleton modeling to represent the body, graph networks to understand local body mechanics, a small transformer to understand temporal context, DTW to align repetitions, expert-labelled reference distributions to define technically good movement, and an interpretable coaching layer to tell the boxer exactly what happened.**
+
+That is the architecture that best fits the project's goals while respecting the Galaxy A30s constraint.
+
+The most important practical rule is also the simplest:
+
+> **Train big on the RTX 3060; deploy small on the A30s.**
+
+The phone should be the **inference device**, not the training device.
