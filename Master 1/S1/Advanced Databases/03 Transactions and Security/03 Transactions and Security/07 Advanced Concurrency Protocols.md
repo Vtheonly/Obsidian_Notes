@@ -2,48 +2,97 @@
 
 While SQL Isolation Levels (Read Committed, Serializable) tell the DBMS *what* anomalies to prevent, **Concurrency Control Protocols** define *how* the engine actually achieves this internally.
 
-There are two primary paradigms: **Pessimistic** (Locking, assuming conflicts will happen) and **Optimistic** (Versioning, assuming conflicts are rare).
+There are two primary paradigms: **Pessimistic** (locking) and **Optimistic** (assuming conflicts are rare).
 
 ## 1. Lock-Based Protocols (Pessimistic)
-Before reading or writing a data item, a transaction must acquire a lock.
+Before reading or writing a data item, a transaction acquires an appropriate lock.
 
 ### Types of Locks
-*   **Shared Lock (S-Lock):** Required for reading. Multiple transactions can hold S-locks on the same data simultaneously.
-*   **Exclusive Lock (X-Lock):** Required for writing/updating. Only **one** transaction can hold an X-lock at a time. It blocks all other S-locks and X-locks.
+* **Shared Lock (S-Lock):** Used for reading. Multiple transactions may hold compatible shared locks simultaneously.
+* **Exclusive Lock (X-Lock):** Used for writing. Only one transaction can hold an exclusive lock on the item, and it conflicts with shared and exclusive locks from other transactions.
+
+### Lock Compatibility
+| Requested / Existing | Shared (S) | Exclusive (X) |
+| :--- | :---: | :---: |
+| **Shared (S)** | Compatible | Not compatible |
+| **Exclusive (X)** | Not compatible | Not compatible |
 
 ### Two-Phase Locking (2PL)
-To guarantee "Serializability" (the highest isolation level resulting in math strictly equivalent to executing transactions one by one), the DBMS uses the **2PL protocol**. 
-A transaction is divided into exactly two phases:
-1.  **Growing Phase:** The transaction requests and acquires locks. It *cannot release* any lock.
-2.  **Shrinking Phase:** The transaction begins releasing locks. Once it releases its first lock, it *cannot acquire* any new locks.
+To guarantee conflict serializability, a transaction is divided into two phases:
 
-**The Problem with Basic 2PL:** It can lead to **Cascading Rollbacks**. If Trans A releases an X-lock during its shrinking phase, Trans B might read it. If Trans A then crashes and rolls back, Trans B has read "dirty" data and must also be rolled back.
+1. **Growing phase:** Acquire locks; no lock is released.
+2. **Shrinking phase:** Release locks; no new lock may be acquired after the first release.
 
-### Strict 2PL (S2PL)
-To fix cascading rollbacks, databases use Strict 2PL.
-*   **Rule:** A transaction obeys basic 2PL, but it **holds all Exclusive (X) locks until the very end** (`COMMIT` or `ROLLBACK`). It does not release them gradually. 
+Basic 2PL may permit **cascading rollbacks** when a transaction releases an exclusive lock before it commits.
+
+### Strict 2PL
+Strict 2PL keeps exclusive locks until `COMMIT` or `ROLLBACK`. This prevents other transactions from reading uncommitted writes and therefore prevents cascading rollback chains caused by dirty writes.
 
 ## 2. Timestamp Ordering Protocol (TO)
-This is a non-locking protocol. Instead of waiting for locks, the system assigns a **Timestamp (TS)** to every transaction when it starts. 
 
-Every piece of data (row or block) keeps track of two timestamps:
-*   `Read_TS(Q)`: The timestamp of the youngest transaction that successfully read Q.
-*   `Write_TS(Q)`: The timestamp of the youngest transaction that successfully wrote Q.
+Timestamp ordering is a non-locking approach. Every transaction receives a unique timestamp `TS(Ti)` when it begins. Each data item `Q` records:
 
-### The Algorithm Rule
-When Transaction $T_i$ issues a command, the DBMS compares $T_i$'s timestamp against the data's timestamps.
-*   **Rule of thumb:** "You cannot mess with the future." If a transaction from the "future" (a higher timestamp) has already read or written the data, the older transaction $T_i$ is too late. It is aborted and restarted with a new timestamp.
+* `read_TS(Q)`: the largest timestamp of a transaction that has successfully read `Q`;
+* `write_TS(Q)`: the largest timestamp of a transaction that has successfully written `Q`.
 
-**Advantages of TO:** No locks mean **Deadlocks are impossible**.
-**Disadvantages:** High abort/restart rates in heavily contested environments. 
+### Read Rule
+When `Ti` requests `READ(Q)`:
+
+* If `TS(Ti) < write_TS(Q)`, a newer transaction has already written `Q`, so allowing `Ti` to read it would violate the timestamp order; `Ti` is aborted/restarted.
+* Otherwise the read is allowed and `read_TS(Q)` is updated to `max(read_TS(Q), TS(Ti))`.
+
+### Write Rule
+For `WRITE(Q)`:
+
+* If `TS(Ti) < read_TS(Q)`, a newer transaction has already read the value, so the write would violate ordering and `Ti` must be aborted under basic timestamp ordering.
+* If `TS(Ti) < write_TS(Q)`, a newer transaction has already written `Q`, so the older write is obsolete and is rejected/aborted under the basic protocol.
+* Otherwise the write is accepted and `write_TS(Q)` becomes `TS(Ti)`.
+
+### Thomas Write Rule
+A refinement called the **Thomas Write Rule** can ignore certain obsolete writes rather than aborting the whole transaction when `TS(Ti) < write_TS(Q)`, provided the write cannot affect the serially ordered result. This can reduce unnecessary aborts.
+
+**Advantage:** No lock waiting means the protocol cannot create classical lock-based deadlocks.
+
+**Disadvantage:** Transactions may be repeatedly aborted and restarted under contention.
 
 ## 3. Optimistic Concurrency Control (OCC)
-In environments where conflicts are very rare (e.g., mostly reading data, like a Wiki or an analytics dashboard), managing locks is a waste of CPU. OCC assumes everything will be fine.
 
-OCC has three phases for a transaction:
-1.  **Read & Execute Phase:** The transaction reads data without taking any locks. It performs its updates on a *private local copy* in RAM.
-2.  **Validation Phase:** When the transaction attempts to `COMMIT`, the DBMS checks if any other transaction modified the data while we were working.
-3.  **Write Phase:** If validation succeeds, the private local changes are copied to the actual database on disk. If it fails, the transaction is discarded (rolled back).
+OCC assumes conflicts are rare and postpones conflict checking until commit.
 
-> [!INFO] MVCC (Multi-Version Concurrency Control)
-> Modern DBMS like PostgreSQL heavily use MVCC. When you update a row, it doesn't overwrite it. It creates a *new version* of the row. This allows readers to read the old version without being blocked by writers taking X-locks, elegantly solving many concurrency bottlenecks.
+1. **Read/Execute phase:** Read database values and perform changes in private workspace.
+2. **Validation phase:** At commit time, check whether concurrent transactions invalidated the assumptions made during execution.
+3. **Write phase:** If validation succeeds, publish the private changes; otherwise abort and restart.
+
+Validation may be described using **backward validation** or **forward validation**, depending on which active transactions are compared and how conflicts are detected.
+
+## 4. MVCC (Multi-Version Concurrency Control)
+
+MVCC keeps multiple committed versions of a row rather than forcing every reader to wait for writers.
+
+* An update creates or exposes a new row version.
+* A reader uses the version appropriate to its transaction snapshot/isolation semantics.
+* Old versions remain temporarily so transactions that still need them can continue reading consistently.
+* A background cleanup process eventually removes versions that are no longer visible to any active transaction.
+
+MVCC improves read/write concurrency, but it introduces storage and version-maintenance overhead.
+
+## 5. Deadlocks and Prevention
+
+A deadlock occurs when transactions form a cycle of waits. A wait-for graph represents transactions as nodes and waiting relationships as directed edges.
+
+### Detection
+The DBMS can periodically inspect the wait-for graph. A cycle indicates a deadlock. One transaction is selected as the **victim**, rolled back, and its locks are released.
+
+### Wait-Die
+A common timestamp-based prevention policy:
+
+* an **older** transaction may wait for a younger transaction;
+* a **younger** transaction requesting a lock held by an older transaction is aborted (dies) and restarts with a new timestamp.
+
+### Wound-Wait
+Another policy:
+
+* an **older** transaction may abort/wound a younger transaction holding the needed lock;
+* a **younger** transaction waits for an older transaction.
+
+These policies impose an ordering on waits so that cycles cannot form.
