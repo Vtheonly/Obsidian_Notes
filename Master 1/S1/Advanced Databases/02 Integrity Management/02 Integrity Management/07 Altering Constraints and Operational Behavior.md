@@ -4,16 +4,16 @@ While static constraints are usually defined during the `CREATE TABLE` phase, da
 
 ## 1. Managing Constraints Post-Creation
 
-To modify a constraint, you cannot simply "edit" it. You must entirely **DROP** the old constraint and **ADD** a new one.
+To modify a constraint, you normally replace it rather than editing its definition in place: **DROP** the old constraint and **ADD** the corrected constraint.
 
 ### Dropping a Constraint
-To drop a constraint, you must know its name. If you did not explicitly name it during creation, the DBMS auto-generated a name (which you can find by querying the `information_schema.TABLE_CONSTRAINTS` table).
+To drop a constraint, you must know its name. If you did not explicitly name it during creation, the DBMS auto-generated a name (which you can find by querying the information schema or another DBMS-specific catalog).
 
 ```sql
 -- Dropping a CHECK constraint
 ALTER TABLE Students DROP CONSTRAINT check_note;
 
--- Dropping a FOREIGN KEY constraint
+-- Dropping a FOREIGN KEY constraint in MySQL syntax
 ALTER TABLE Orders DROP FOREIGN KEY fk_customer_id;
 ```
 
@@ -22,17 +22,20 @@ When adding a constraint, it is a best practice to explicitly name it using the 
 
 ```sql
 -- Adding a CHECK constraint
-ALTER TABLE Students 
-ADD CONSTRAINT check_email 
-CHECK (email LIKE '%_@__%.__%'); 
+ALTER TABLE Students
+ADD CONSTRAINT check_email
+CHECK (email LIKE '%_@__%.__%');
 
 -- Adding a UNIQUE constraint
-ALTER TABLE Students 
-ADD CONSTRAINT unique_nin 
+ALTER TABLE Students
+ADD CONSTRAINT unique_nin
 UNIQUE (national_id_number);
 ```
-> [!warning] Precaution
-> When you add a constraint to an existing table, the DBMS will instantly scan all existing rows. If even one existing row violates the new constraint, the `ALTER TABLE` command will fail and the constraint will not be added.
+
+> [!WARNING] Existing Data and Operational Impact
+> When a constraint is added to an existing table, the DBMS generally has to validate the existing data before the operation can succeed. The exact scan, locking behavior, validation strategy, and whether the operation blocks concurrent work are **DBMS- and version-dependent**. On a large production table this can therefore be an expensive DDL operation.
+
+If even one existing row violates the new constraint, the `ALTER TABLE` operation fails and the new constraint is not successfully established.
 
 ## 2. Advanced Foreign Key Behaviors
 Understanding exactly how Foreign Keys restrict data is crucial for preventing orphaned data.
@@ -43,6 +46,15 @@ Imagine a `Departments` table (Parent) and an `Employees` table (Child). Departm
 
 **Scenario: We DELETE Department 10.**
 
-*   **If `ON DELETE CASCADE`:** The DBMS destroys Department 10. It then actively searches the `Employees` table and completely deletes the records for Alice and Bob. This maintains perfect relational parity but is dangerous if unintended.
-*   **If `ON DELETE SET NULL`:** The DBMS destroys Department 10. It searches the `Employees` table and changes the `department_id` for Alice and Bob from 10 to `NULL`. Alice and Bob still exist, but they are now unassigned.
-*   **If `ON DELETE RESTRICT`:** The DBMS blocks the query. It returns an error: *"Cannot delete or update a parent row: a foreign key constraint fails"*. You must manually reassign or delete Alice and Bob before the database will allow you to delete Department 10.
+*   **If `ON DELETE CASCADE`:** The DBMS removes Department 10 and propagates the delete to the dependent `Employees` rows. This maintains referential consistency but can affect many records unexpectedly.
+*   **If `ON DELETE SET NULL`:** The DBMS removes Department 10 and sets Alice and Bob's `department_id` to `NULL`. The employees remain but are now unassigned. This requires the child FK column to permit `NULL`.
+*   **If `ON DELETE RESTRICT`:** The DBMS blocks the deletion while dependent employees exist. The application must first reassign or delete the dependent rows.
+
+## 3. Operational Checklist
+Before changing a constraint on a live table:
+
+1. Identify the exact constraint name and owning table.
+2. Check whether current rows already satisfy the new rule.
+3. Check whether application queries depend on the existing constraint behavior.
+4. Consider the size of the table and the DBMS-specific locking/validation strategy.
+5. Prefer explicit names for future constraints so administration is deterministic.
