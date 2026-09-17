@@ -46,6 +46,17 @@ END
 * **`DETERMINISTIC`:** The same input under the same relevant database state produces the same result. A pure mathematical function such as `SQRT(4)` is deterministic.
 * **`NOT DETERMINISTIC`:** The result can vary between calls, for example `NOW()` or `RAND()`.
 
+### Example: Deterministic Function
+```sql
+CREATE FUNCTION SquareNumber(p_x INT)
+RETURNS INT
+DETERMINISTIC
+NO SQL
+BEGIN
+    RETURN p_x * p_x;
+END
+```
+
 ### SQL Data-Access Classifications
 MySQL-style routine declarations can also describe how a routine interacts with data:
 
@@ -74,11 +85,35 @@ SELECT COUNT(*) INTO v_count FROM Employees;
 
 The first produces a result set, whereas the second assigns one scalar value to a variable. Whether a stored function can execute particular SQL statements or return result sets is DBMS-specific, so do not generalize a restriction from one procedural engine to all others.
 
-## 4. Determinism and Binary Logging / Replication
+## 4. Recursion in Stored Routines
+
+Recursive routines call themselves until a base case is reached. A factorial example is:
+
+```sql
+DELIMITER //
+
+CREATE FUNCTION RecursiveFactorial(n INT)
+RETURNS INT
+DETERMINISTIC
+NO SQL
+BEGIN
+    IF n <= 1 THEN
+        RETURN 1;
+    ELSE
+        RETURN n * RecursiveFactorial(n - 1);
+    END IF;
+END //
+
+DELIMITER ;
+```
+
+Recursive execution is subject to engine-specific limits. In MySQL environments that permit stored-program recursion, `max_sp_recursion_depth` controls the maximum recursion depth. The exact support and configuration depend on the server version. Older MySQL configurations may reject recursive stored functions, so an iterative implementation can be safer when recursion is not required.
+
+## 5. Determinism and Binary Logging / Replication
 
 In MySQL, stored functions used while binary logging is enabled are subject to additional safety checks because a function that produces different results on different servers can lead to replication divergence.
 
-For example, a non-deterministic operation may produce different results if independently evaluated on source and replica servers. MySQL therefore requires routine characteristics and, depending on server settings and operation, may raise an error such as **Error 1418** when a function does not declare appropriate characteristics.
+For example, a non-deterministic operation may produce different results if independently evaluated on source and replica servers. MySQL may raise **Error 1418** when a function does not declare appropriate characteristics under the relevant binary-logging configuration.
 
 Typical approaches are:
 
