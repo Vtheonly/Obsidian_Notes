@@ -699,4 +699,4 @@ At 30 FPS, a 5-tap filter produces about 66.7 ms of group delay, illustrating wh
 - [[Chapter 1. Foundations]]
 - [[03. Signal Conditioning, Normalization, and Kinematics/Chapter 3. Conditioning and Kinematics]]
 - [[04. Spatial-Temporal Deep Learning Architectures/Chapter 4. Spatial-Temporal Deep Learning]]
-- [[Chapter 2. Full Technical Deep Dive]]
+- [[02. Mobile Vision and Real-Time Pose Estimation/Chapter 2. Mobile Vision and Pose]]
