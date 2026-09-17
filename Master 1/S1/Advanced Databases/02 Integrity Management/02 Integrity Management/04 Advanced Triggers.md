@@ -8,18 +8,19 @@
 ## Part 1: Theoretical Foundations
 
 ### 1.1 What is a Trigger?
-According to **Source 18 (Slide 43)** and **Source 20 (Section 4.1)**, a Trigger (Déclencheur) is a specialized stored procedure that is **automatically executed** (fired) by the DBMS in response to a specific event on a table.
+According to **Source 18 (Slide 43)** and **Source 20 (Section 4.1)**, a Trigger (Déclencheur) is a specialized stored procedure that is **automatically executed** by the DBMS in response to a specific event on a table.
 
-Unlike standard procedures, **you never call a trigger manually**. It waits for an event to happen.
+Unlike a standard procedure, **you do not call a trigger manually**. It waits for its configured event.
 
-### 1.2 The Event Model (ECA Rule)
-Triggers follow the **Event-Condition-Action** logic:
-1.  **Event:** A modification command: `INSERT`, `UPDATE`, or `DELETE`.
-2.  **Timing:** When to fire? `BEFORE` the modification hits the disk, or `AFTER` it is confirmed.
-3.  **Action:** The SQL code to execute (validation, auditing, calculation).
+### 1.2 The Event-Condition-Action Model
+Triggers follow the **Event-Condition-Action (ECA)** logic:
+1. **Event:** `INSERT`, `UPDATE`, or `DELETE` activates the trigger.
+2. **Timing:** The trigger runs `BEFORE` or `AFTER` the data modification according to the DBMS semantics.
+3. **Condition:** Optional logic determines whether the action should run.
+4. **Action:** Procedural SQL performs validation, correction, auditing, or propagation.
 
 ### 1.3 Key Variables: `NEW` and `OLD`
-Inside a trigger, you have access to two "pseudo-rows" that hold the data involved in the transaction (**Source 20, Section 4.4**):
+Inside a row-level trigger, you have access to two pseudo-rows that hold the data involved in the modification:
 
 | Pseudo-row | Description | Available In |
 | :--- | :--- | :--- |
@@ -27,15 +28,13 @@ Inside a trigger, you have access to two "pseudo-rows" that hold the data involv
 | **`OLD`** | The original version of the row before modification. | `UPDATE`, `DELETE` |
 
 > [!TIP] Access Syntax
-> You access columns using dot notation: `NEW.column_name` or `OLD.column_name`.
+> Use dot notation such as `NEW.column_name` or `OLD.column_name`.
 
 ---
 
 ## Part 2: Syntax and Creation
 
-### 2.1 The Standard Structure
-Based on **Source 20 (Section 4.4)**:
-
+### 2.1 Standard Row-Level Structure
 ```sql
 CREATE TRIGGER TriggerName
 { BEFORE | AFTER } { INSERT | UPDATE | DELETE }
@@ -43,50 +42,62 @@ ON TableName
 FOR EACH ROW
 BEGIN
     -- Business Logic
-    -- Use NEW.col and OLD.col here
 END;
 ```
 
 ### 2.2 BEFORE vs. AFTER
-*   **BEFORE:**
-    *   Fires *before* the integrity checks and the physical write.
-    *   **Use case:** Data validation, data cleaning (formatting), blocking invalid transactions.
-    *   *Power:* You can change `NEW.value` here to fix data silently.
-*   **AFTER:**
-    *   Fires *after* the operation is successful.
-    *   **Use case:** Logging (Audit), updating related tables (denormalization), cascading changes.
-    *   *Limitation:* You cannot change `NEW.value` here (it's already written).
+
+* **BEFORE:** Used for validation, normalization, blocking an operation, or modifying incoming `NEW` values where the DBMS permits it.
+* **AFTER:** Used after the modification succeeds, commonly for audit logging, maintaining counters, or updating related tables.
+
+An `AFTER` trigger should not be presented as an editable stage for the already-written triggering row; exact mutability rules are DBMS-specific.
 
 ---
 
 ## Part 3: Use Cases & Scenarios (Dynamic Integrity)
 
-**Source 18 (Slide 41)** defines triggers as "Dynamic Integrity Constraints". They are used where static constraints (like `CHECK` or `FOREIGN KEY`) are not enough.
+Triggers are useful when ordinary static constraints are not enough, especially for state-dependent or cross-table rules.
 
 ### 3.1 Complex Validation
-*   *Static:* `CHECK (age > 18)`
-*   *Dynamic (Trigger):* "A pilot cannot be promoted to 'Captain' unless they have flown 1000 hours." (Requires logic).
+* *Static:* `CHECK (age > 18)`
+* *Dynamic:* "A pilot cannot be promoted to 'Captain' unless they have flown 1000 hours."
 
 ### 3.2 Denormalization Maintenance
-*   If you store a `Total_Sales` column in a `Store` table (for performance), you need a trigger on the `Sales` table to update that total every time a sale is made.
+A trigger can maintain a cached aggregate such as `Total_Sales` or a qualification counter in another table after the underlying child rows change.
 
 ### 3.3 Auditing
-*   Recording who changed what and when into a `Logs` table.
+A trigger can record who changed what and when in an audit table.
+
+### 3.4 Emulating a Cross-Table Foreign-Key Rule
+If a target DBMS does not provide a native foreign key for a particular situation, a trigger can check that a referenced parent exists and reject the child write when it does not:
+
+```sql
+CREATE TRIGGER Check_Customer_Exists
+BEFORE INSERT ON Orders
+FOR EACH ROW
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1 FROM Customers WHERE ID = NEW.CustomerID
+    ) THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Referenced customer does not exist';
+    END IF;
+END;
+```
+
+> [!IMPORTANT]
+> When a native foreign key can express the rule, prefer the declarative foreign key because the DBMS can enforce and optimize it as a schema-level integrity constraint. Trigger-based emulation is mainly useful when the rule cannot be represented directly or the engine lacks the required feature.
 
 ---
 
 ## Part 4: Solved Exercises (Deep Dive)
 
-The following exercises are from **TD N°4 (MySQL Procedural)** and demonstrate advanced trigger logic.
-
 **Context Schema:**
-*   `Pilote (brevet, nom, nbHVol, comp, nbqualif, grade)`
-*   `Qualifications (brevet, typa, dateexpiration)`
+* `Pilote (brevet, nom, nbHVol, comp, nbqualif, grade)`
+* `Qualifications (brevet, typa, dateexpiration)`
 
 ### Exercise 7: Automatic Counter Decrement (`AFTER DELETE`)
-**Scenario:** The table `Pilote` has a column `nbqualif` which stores the count of qualifications a pilot holds. We must ensure this number stays accurate when a qualification is deleted.
 
-**Solution:**
 ```sql
 DELIMITER $
 
@@ -94,25 +105,21 @@ CREATE TRIGGER TrigDelQualif
 AFTER DELETE ON Qualifications
 FOR EACH ROW
 BEGIN
-    -- Logic: Find the pilot who owned this qualification and decrease their count
-    UPDATE Pilote 
-    SET nbqualif = nbqualif - 1
+    UPDATE Pilote
+    SET nbqualif = COALESCE(nbqualif, 1) - 1
     WHERE brevet = OLD.brevet;
 END $
 
 DELIMITER ;
 ```
-**Reasoning:**
-1.  **Timing:** `AFTER` is appropriate because we only want to update the count if the deletion actually succeeded.
-2.  **Event:** `DELETE`.
-3.  **Reference:** We use `OLD.brevet` because the row in `Qualifications` is being removed; we need the ID that *used* to be there.
 
----
+**Reasoning:**
+1. `AFTER DELETE` updates the count only after the deletion succeeds.
+2. `OLD.brevet` identifies the pilot that owned the deleted qualification.
+3. `COALESCE(nbqualif, 1)` illustrates defensive handling when the stored counter is unexpectedly `NULL`; in a well-designed schema, the counter should normally be `NOT NULL`.
 
 ### Exercise 8: Automatic Counter Increment (`AFTER INSERT`)
-**Scenario:** Conversely, when a new qualification is added, the pilot's count must increase.
 
-**Solution:**
 ```sql
 DELIMITER $
 
@@ -120,22 +127,20 @@ CREATE TRIGGER TrigInsQualif
 AFTER INSERT ON Qualifications
 FOR EACH ROW
 BEGIN
-    UPDATE Pilote 
-    SET nbqualif = nbqualif + 1
+    UPDATE Pilote
+    SET nbqualif = COALESCE(nbqualif, 0) + 1
     WHERE brevet = NEW.brevet;
 END $
 
 DELIMITER ;
 ```
-**Reasoning:**
-1.  **Reference:** We use `NEW.brevet` because this is the pilot ID associated with the newly inserted row.
 
----
+Use `NEW.brevet` because the new qualification row contains the pilot identifier.
 
 ### Exercise 9: Handling Updates (`AFTER UPDATE`)
-**Scenario:** What if a qualification is transferred? (e.g., The `brevet` ID in the `Qualifications` table is changed from Pilot A to Pilot B).
 
-**Solution:**
+When a qualification is transferred from Pilot A to Pilot B, adjust both counters. If another column such as `dateexpiration` changes but `brevet` does not, no counter adjustment is needed.
+
 ```sql
 DELIMITER $
 
@@ -143,35 +148,31 @@ CREATE TRIGGER TrigUpdQualif
 AFTER UPDATE ON Qualifications
 FOR EACH ROW
 BEGIN
-    -- 1. Remove from the old pilot
-    UPDATE Pilote 
-    SET nbqualif = nbqualif - 1
-    WHERE brevet = OLD.brevet;
+    IF OLD.brevet <> NEW.brevet THEN
+        UPDATE Pilote
+        SET nbqualif = COALESCE(nbqualif, 1) - 1
+        WHERE brevet = OLD.brevet;
 
-    -- 2. Add to the new pilot
-    UPDATE Pilote 
-    SET nbqualif = nbqualif + 1
-    WHERE brevet = NEW.brevet;
+        UPDATE Pilote
+        SET nbqualif = COALESCE(nbqualif, 0) + 1
+        WHERE brevet = NEW.brevet;
+    END IF;
 END $
 
 DELIMITER ;
 ```
-**Reasoning:**
-*   An `UPDATE` is conceptually a DELETE of the old state and an INSERT of the new state.
-*   If `OLD.brevet` is the same as `NEW.brevet`, the count performs `-1` then `+1`, resulting in no change (correct).
-*   If they are different, the counts are adjusted correctly for both pilots.
 
----
+If `OLD.brevet = NEW.brevet`, decrementing and incrementing the same pilot would produce no logical change but would create unnecessary writes. The explicit condition avoids that work.
 
 ### Exercise 10: Complex Data Correction (`BEFORE INSERT`)
-**Scenario:** Enforce strict business rules for Pilot Grades based on flight hours (`nbHVol`).
-*   **Rules:**
-    *   `CDB`: Must have 1000-4000 hours.
-    *   `COPI`: Must have 100-1000 hours.
-    *   `INST`: Must have > 3000 hours.
-*   **Requirement:** If the data inserted is invalid (e.g., a novice listed as 'CDB'), force the grade to `NULL` (or correct it) instead of crashing.
 
-**Solution:**
+Rules:
+* `CDB`: 1000–4000 hours.
+* `COPI`: 100–1000 hours.
+* `INST`: at least 3000 hours.
+
+A defensive trigger should also account explicitly for `NULL` flight hours because comparisons with `NULL` evaluate to `UNKNOWN`.
+
 ```sql
 DELIMITER $
 
@@ -179,35 +180,30 @@ CREATE TRIGGER TrigInsGrade
 BEFORE INSERT ON Pilote
 FOR EACH ROW
 BEGIN
-    -- Rule 1: Validate Commander (CDB)
-    IF NEW.grade = 'CDB' AND (NEW.nbHVol NOT BETWEEN 1000 AND 4000) THEN
-        SET NEW.grade = NULL; 
-        -- Logic: "You claimed to be CDB but don't have the hours. Rejected."
-    END IF;
-
-    -- Rule 2: Validate Copilot (COPI)
-    IF NEW.grade = 'COPI' AND (NEW.nbHVol NOT BETWEEN 100 AND 1000) THEN
+    IF NEW.grade = 'CDB' AND (
+        NEW.nbHVol IS NULL OR NEW.nbHVol < 1000 OR NEW.nbHVol > 4000
+    ) THEN
         SET NEW.grade = NULL;
     END IF;
 
-    -- Rule 3: Validate Instructor (INST)
-    IF NEW.grade = 'INST' AND NEW.nbHVol < 3000 THEN
+    IF NEW.grade = 'COPI' AND (
+        NEW.nbHVol IS NULL OR NEW.nbHVol < 100 OR NEW.nbHVol > 1000
+    ) THEN
+        SET NEW.grade = NULL;
+    END IF;
+
+    IF NEW.grade = 'INST' AND (
+        NEW.nbHVol IS NULL OR NEW.nbHVol < 3000
+    ) THEN
         SET NEW.grade = NULL;
     END IF;
 END $
 
 DELIMITER ;
 ```
-**Reasoning:**
-*   **Timing:** Must be `BEFORE`. We need to intercept the data (`NEW.grade`) and modify it *before* it is written to the database.
-*   **Action:** Using `SET NEW.col = val` modifies the data in-flight.
-
----
 
 ### Exercise 11: Blocking Transactions (`SIGNAL SQLSTATE`)
-**Scenario:** A pilot cannot have more than 3 qualifications. If a user tries to insert a 4th, block the transaction.
 
-**Modern Solution (MySQL 5.5+):**
 ```sql
 DELIMITER $
 
@@ -215,34 +211,23 @@ CREATE TRIGGER CheckMaxQualif
 BEFORE INSERT ON Qualifications
 FOR EACH ROW
 BEGIN
-    DECLARE current_count INT;
+    DECLARE current_count INT DEFAULT 0;
 
-    -- Check current status
-    SELECT nbqualif INTO current_count 
-    FROM Pilote 
+    SELECT COALESCE(nbqualif, 0) INTO current_count
+    FROM Pilote
     WHERE brevet = NEW.brevet;
 
-    -- Logic
     IF current_count >= 3 THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: This pilot already has 3 qualifications.';
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Error: This pilot already has 3 qualifications.';
     END IF;
 END $
 
 DELIMITER ;
 ```
 
-**Legacy Solution (Workaround for Older MySQL):**
-*From Source 15 (Correction TD4)*
-If `SIGNAL` is not available, you must force a standard SQL error, like inserting NULL into a NOT NULL column.
-```sql
--- Inside Trigger Body
-IF current_count >= 3 THEN
-    -- Create a dummy table called 'Trace' with a non-null column
-    INSERT INTO TRACE VALUES (NULL); 
-    -- This causes a crash, rolling back the transaction.
-END IF;
-```
+### Legacy Workaround
+Older engines without `SIGNAL` sometimes used an intentional constraint violation to force the statement to fail, for example inserting `NULL` into a known `NOT NULL` column of a dedicated dummy/error table. The table and column must actually exist; using a nonexistent object simply produces a different database error and is not a clean demonstration of the pattern.
 
 ---
 
@@ -252,23 +237,23 @@ END IF;
 ```sql
 DROP TRIGGER IF EXISTS TriggerName;
 ```
+
 > [!NOTE] Dependency
-> According to **Source 20**, if you drop a table, all associated triggers are automatically deleted.
+> Dropping a table may also remove associated triggers according to the DBMS's dependency rules.
 
 ### 5.2 Restrictions
-1.  **No Transactions:** You cannot explicitly use `START TRANSACTION`, `COMMIT`, or `ROLLBACK` inside a trigger. The trigger becomes part of the transaction that fired it.
-2.  **Recursion:** Be careful of updating the same table you are triggering on (Mutating Table Error), though MySQL handles some cases, infinite loops are possible (Update T1 -> Trigger Updates T1 -> Trigger Updates T1...).
+1. **No explicit transaction boundary:** A trigger executes within the transaction that fired it; explicit `START TRANSACTION`, `COMMIT`, and `ROLLBACK` are prohibited in many procedural trigger implementations.
+2. **Recursion/Cascades:** Trigger A may modify a table that fires Trigger B. Long chains are difficult to debug and maintain.
+3. **Self-referencing tables:** Some DBMSs restrict querying or changing the table currently undergoing a row-level trigger. Exact restrictions are engine-specific.
+4. **Performance:** Trigger logic is synchronous with the original operation, so expensive work increases the latency of the triggering statement.
 
 ---
 
 ## Summary Checklist for Exams
 
-1.  **NEW vs OLD:**
-    *   `INSERT`: Only **NEW**.
-    *   `DELETE`: Only **OLD**.
-    *   `UPDATE`: Both **NEW** and **OLD**.
-2.  **Timing:**
-    *   Use **BEFORE** to validate or modify data.
-    *   Use **AFTER** to update *other* tables.
-3.  **Blocking:** Use `SIGNAL SQLSTATE` to stop an operation.
-4.  **Syntax:** Always remember `FOR EACH ROW`.
+1. **`NEW` vs `OLD`:** `INSERT` → `NEW`; `DELETE` → `OLD`; `UPDATE` → both.
+2. **Timing:** Use `BEFORE` when validation/correction must happen before the write; use `AFTER` when logic depends on a successful modification.
+3. **Row scope:** `FOR EACH ROW` executes once per affected row.
+4. **Blocking:** `SIGNAL SQLSTATE '45000'` can abort a user-defined condition in MySQL-style procedural SQL.
+5. **Avoid unnecessary writes:** Compare `OLD` and `NEW` before maintaining derived counters.
+6. **Prefer native constraints:** Use a foreign key instead of trigger emulation when the DBMS can express the relationship declaratively.
