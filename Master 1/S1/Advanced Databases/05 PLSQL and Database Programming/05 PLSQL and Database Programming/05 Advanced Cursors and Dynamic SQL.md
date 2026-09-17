@@ -1,76 +1,100 @@
 # Advanced Cursors and Dynamic SQL
 
-Standard SQL is "set-oriented"—it processes thousands of rows at once. PL/SQL is "procedural"—it prefers to execute logic line by line. **Cursors** serve as the bridge between these two paradigms.
+Standard SQL is "set-oriented"—it processes sets of rows. Procedural SQL introduces row-by-row logic where required. **Cursors** provide the bridge between these approaches.
 
 ## 1. Implicit vs. Explicit Cursors
 
 ### Implicit Cursors
-Every time you run an `INSERT`, `UPDATE`, `DELETE`, or a single-row `SELECT INTO`, the DBMS automatically creates an implicit cursor in the background to handle the execution state.
-You can access metadata about the last executed implicit cursor using attributes:
-*   `SQL%FOUND`: True if the query affected 1 or more rows.
-*   `SQL%NOTFOUND`: True if no rows were affected.
-*   `SQL%ROWCOUNT`: The number of rows affected.
+The DBMS automatically uses an execution context for statements such as `INSERT`, `UPDATE`, `DELETE`, and single-row `SELECT ... INTO`. Procedural dialects expose status attributes differently; in Oracle, examples include:
+
+* `SQL%FOUND`: the previous statement affected/found rows;
+* `SQL%NOTFOUND`: no row was affected/found;
+* `SQL%ROWCOUNT`: number of rows affected/fetched as defined by the dialect.
 
 ### Explicit Cursors
-For queries that return *multiple rows*, you must define an Explicit Cursor to iterate through the result set one row at a time.
-1.  **DECLARE:** Define the query structure.
-2.  **OPEN:** Execute the query and allocate memory (the Active Set).
-3.  **FETCH:** Pull the next row from memory into local variables.
-4.  **CLOSE:** Release the memory.
+For a query that returns multiple rows and needs procedural row-by-row processing, define an explicit cursor.
 
-```plsql
+1. **DECLARE:** Define the query.
+2. **OPEN:** Execute/activate the cursor.
+3. **FETCH:** Retrieve the next row into variables.
+4. **CLOSE:** Release the cursor resources.
+
+```sql
 DECLARE
-    CURSOR emp_cursor IS SELECT name, salary FROM employees WHERE dept = 'IT';
+    CURSOR emp_cursor IS
+        SELECT name, salary FROM employees WHERE dept = 'IT';
     v_name employees.name%TYPE;
     v_salary employees.salary%TYPE;
 BEGIN
     OPEN emp_cursor;
     LOOP
         FETCH emp_cursor INTO v_name, v_salary;
-        EXIT WHEN emp_cursor%NOTFOUND; -- Exit loop when no more rows exist
-        -- Do procedural logic here
+        EXIT WHEN emp_cursor%NOTFOUND;
+        -- Procedural logic
     END LOOP;
     CLOSE emp_cursor;
 END;
 ```
 
+MySQL-style cursors use a different syntax and normally pair `FETCH` with a `CONTINUE HANDLER FOR NOT FOUND` flag. Do not mix Oracle `%NOTFOUND` syntax with MySQL handler syntax in the same implementation.
+
 ## 2. Advanced Cursor Control (`FOR UPDATE`)
 
-If your cursor is iterating through rows with the intention of updating or deleting them, you must prevent other users from modifying those specific rows while your loop is running.
+When a cursor iterates over rows that the procedure intends to update or delete, locking may be required to prevent concurrent modifications.
 
-Adding the **`FOR UPDATE`** clause at the end of the cursor declaration places an **Exclusive Lock (X-Lock)** on the rows as soon as the cursor is opened.
+Oracle-style example:
 
 ```plsql
-CURSOR salary_cursor IS 
-    SELECT id, salary FROM employees WHERE status = 'Active' 
+CURSOR salary_cursor IS
+    SELECT id, salary
+    FROM employees
+    WHERE status = 'Active'
     FOR UPDATE;
 ```
-Inside the loop, you can then update the exact row the cursor is currently pointing to using `WHERE CURRENT OF`:
+
+Then the current row can be updated with:
 
 ```plsql
-UPDATE employees SET salary = salary * 1.10 WHERE CURRENT OF salary_cursor;
+UPDATE employees
+SET salary = salary * 1.10
+WHERE CURRENT OF salary_cursor;
 ```
-This is much faster and safer than running `UPDATE employees ... WHERE id = v_id`.
 
-## 3. Dynamic SQL 
-Standard PL/SQL requires queries to be hardcoded at compile time. But what if you want to write a procedure that can drop *any* table, where the table name is passed as a string variable?
-You cannot write `DROP TABLE v_tableName;` because PL/SQL validators will look for a table literally named `v_tableName`.
+`FOR UPDATE` and `WHERE CURRENT OF` semantics are DBMS-specific. In MySQL stored programs, `WHERE CURRENT OF` is not available in the same form, so the common workaround is to fetch the row's primary key and issue `UPDATE ... WHERE primary_key = v_id` or `DELETE ... WHERE primary_key = v_id` while the cursor transaction holds the required locks.
 
-**Dynamic SQL** allows you to build strings at runtime and tell the DBMS to compile and execute them.
+## 3. Dynamic SQL
 
-### `EXECUTE IMMEDIATE`
+Static SQL names its schema objects at compile time. **Dynamic SQL** constructs a statement at runtime when identifiers or statement structure must vary.
+
+### Oracle-style `EXECUTE IMMEDIATE`
 ```plsql
-CREATE PROCEDURE drop_dynamic_table (p_table_name VARCHAR2) IS
-    v_sql_string VARCHAR2(200);
+CREATE PROCEDURE update_salary (p_new_salary NUMBER, p_id NUMBER) IS
 BEGIN
-    -- Build the command string
-    v_sql_string := 'DROP TABLE ' || p_table_name;
-    
-    -- Execute it dynamically
-    EXECUTE IMMEDIATE v_sql_string;
+    EXECUTE IMMEDIATE
+        'UPDATE employees SET salary = :1 WHERE id = :2'
+        USING p_new_salary, p_id;
 END;
 ```
 
-> [!WARNING] SQL Injection Warning
-> Never use string concatenation (`||`) for user-input data in `EXECUTE IMMEDIATE` if it's a value comparison (`WHERE name = ` || user_input). Always use **Bind Variables** (`USING` clause) to prevent SQL Injection attacks.
-> *Correct way:* `EXECUTE IMMEDIATE 'UPDATE emp SET salary = :1 WHERE id = :2' USING v_new_salary, v_id;`
+### Identifier vs. Value Safety
+Bind variables are designed for **values**, not arbitrary table or column names. A dynamic table name therefore requires identifier validation/quoting according to the DBMS rather than simple value binding.
+
+For example, this is unsafe when `p_name` is untrusted input:
+
+```text
+'... WHERE name = ''' || p_name || ''''
+```
+
+A safer value comparison uses a bind variable:
+
+```plsql
+EXECUTE IMMEDIATE
+    'UPDATE employees SET salary = :1 WHERE id = :2'
+    USING v_new_salary, v_id;
+```
+
+For a dynamic identifier such as a table name, first validate the identifier against an allowed list or DBMS-specific identifier rules before constructing the statement.
+
+## 4. Dynamic SQL Cost and Trade-Offs
+
+Dynamic SQL provides flexibility but may introduce parsing/optimization overhead and makes SQL harder to analyze statically. Use static SQL when the statement structure is known and dynamic SQL only where runtime variability requires it.
