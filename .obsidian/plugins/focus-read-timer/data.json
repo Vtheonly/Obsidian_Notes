@@ -1,14 +1,14 @@
 {
   "settings": {
-    "timerEnabled": false,
+    "timerEnabled": true,
     "timerWorkMinutes": 25,
     "timerBreakMinutes": 5,
     "timerAutoHide": false,
     "timerAutoHideSeconds": 4,
     "timerPauseOnBlur": false,
-    "timerPositionX": 87,
-    "timerPositionY": 809,
-    "focusDetectionEnabled": true,
+    "timerPositionX": 1187,
+    "timerPositionY": 162,
+    "focusDetectionEnabled": false,
     "focusDetectionIdleSeconds": 30,
     "nudgeEnabled": true,
     "nudgeIdleSeconds": 30,
@@ -17,9 +17,9 @@
     "dopamineDailyGoalMinutes": 60
   },
   "stats": {
-    "totalReadingMs": 6077248,
-    "todayMs": 141342,
-    "todayDate": "2026-07-13",
+    "totalReadingMs": 6335744,
+    "todayMs": 0,
+    "todayDate": "2026-09-17",
     "streak": 1,
     "lastReadDate": "2026-07-13",
     "longestStreak": 3,
@@ -27,7 +27,7 @@
       "2026-07-08": 3278903,
       "2026-07-09": 1936879,
       "2026-07-10": 720124,
-      "2026-07-13": 141342
+      "2026-07-13": 399838
     },
     "longestFocusMs": 1464168.299999997,
     "sessionsToday": 0

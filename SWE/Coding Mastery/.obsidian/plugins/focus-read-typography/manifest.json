@@ -1,0 +1,10 @@
+{
+  "id": "focus-read-typography",
+  "name": "Focus Read: Typography & Ruler",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "Reading typography (font, size, line height, max width), Google Fonts loader, and a mouse-following reading ruler.",
+  "author": "Focus Read",
+  "authorUrl": "https://obsidian.md",
+  "isDesktopOnly": false
+}

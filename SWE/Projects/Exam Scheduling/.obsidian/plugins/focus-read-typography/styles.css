@@ -1,0 +1,50 @@
+/* Focus Read: Typography & Ruler — base styles (dynamic typography is injected via JS) */
+
+:root {
+  --frt-font-size: 17px;
+  --frt-line-height: 1.7;
+  --frt-para-spacing: 1.4;
+  --frt-max-width: 66ch;
+  --frt-font-family: ;
+}
+
+body.frt-typography-on .markdown-reading-view .markdown-preview-section {
+  font-size: var(--frt-font-size);
+  line-height: var(--frt-line-height);
+  max-width: var(--frt-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+body.frt-typography-on .markdown-reading-view p {
+  margin-bottom: calc(var(--frt-font-size) * (var(--frt-para-spacing) - 1));
+}
+body.frt-typography-on .markdown-reading-view li {
+  margin-bottom: calc(var(--frt-font-size) * 0.25);
+}
+body.frt-typography-on .markdown-source-view .cm-content,
+body.frt-typography-on .markdown-source-view .cm-line {
+  max-width: var(--frt-max-width);
+}
+
+/* Reading ruler */
+.frt-reading-ruler {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 28px;
+  top: -9999px;
+  background: #ffd54f;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 9999;
+  display: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.18);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+  mix-blend-mode: multiply;
+  transition: opacity 0.3s;
+}
+body.frt-ruler-on .frt-reading-ruler { display: block; }
+body.theme-dark .frt-reading-ruler {
+  border-top-color: rgba(255, 255, 255, 0.18);
+  border-bottom-color: rgba(255, 255, 255, 0.18);
+}

@@ -1,0 +1,41 @@
+{
+  "settings": {
+    "timerEnabled": true,
+    "timerWorkMinutes": 25,
+    "timerBreakMinutes": 5,
+    "timerAutoHide": false,
+    "timerAutoHideSeconds": 4,
+    "timerPauseOnBlur": false,
+    "timerPositionX": 99,
+    "timerPositionY": 359,
+    "focusDetectionEnabled": false,
+    "focusDetectionIdleSeconds": 30,
+    "nudgeEnabled": true,
+    "nudgeIdleSeconds": 30,
+    "nudgeIgnoreScroll": false,
+    "dopamineEnabled": false,
+    "dopamineDailyGoalMinutes": 60
+  },
+  "stats": {
+    "totalReadingMs": 10597431,
+    "todayMs": 0,
+    "todayDate": "2026-08-11",
+    "streak": 1,
+    "lastReadDate": "2026-08-09",
+    "longestStreak": 3,
+    "perDayMs": {
+      "2026-07-08": 3278903,
+      "2026-07-09": 1936879,
+      "2026-07-10": 720124,
+      "2026-07-13": 399838,
+      "2026-07-14": 1770004,
+      "2026-07-17": 30052,
+      "2026-07-21": 1500007,
+      "2026-08-07": 330010,
+      "2026-08-08": 540859,
+      "2026-08-09": 90755
+    },
+    "longestFocusMs": 1590016,
+    "sessionsToday": 0
+  }
+}

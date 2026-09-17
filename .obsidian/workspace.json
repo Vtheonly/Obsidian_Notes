@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "SWE/Programming languages/Java/01. Java Developer Roadmap/01. Master the Java Language/01.1. JVM JRE JDK and Execution Pipeline.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -41,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -194,9 +196,9 @@
   },
   "active": "d87c4ec5397a9f79",
   "lastOpenFiles": [
-    "SWE/Programming languages/Java/01. Java Developer Roadmap/01. Master the Java Language/01.3. Operators Expressions and Control Flow.md",
     "SWE/Programming languages/Java/01. Java Developer Roadmap/01. Master the Java Language/01.2. Primitive Types Variables and Constants.md",
     "SWE/Programming languages/Java/01. Java Developer Roadmap/01. Master the Java Language/01.1. JVM JRE JDK and Execution Pipeline.md",
+    "SWE/Programming languages/Java/01. Java Developer Roadmap/01. Master the Java Language/01.3. Operators Expressions and Control Flow.md",
     "SWE/Programming languages/Java/01. Java Developer Roadmap/01. Master the Java Language/01.4. Methods Packages and Imports.md",
     "SWE/Programming languages/Java/quiz/01. Master the Java Language/01.5. Type Conversions Casting and Wrapper Classes.md",
     "SWE/Programming languages/Java/quiz/01. Master the Java Language/01.4. Methods Packages and Imports.md",

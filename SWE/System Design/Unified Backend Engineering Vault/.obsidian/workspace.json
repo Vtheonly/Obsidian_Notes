@@ -1,0 +1,203 @@
+{
+  "main": {
+    "id": "feabab4251c221f0",
+    "type": "split",
+    "children": [
+      {
+        "id": "4879ff64f07961a9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d42dafe8934a66f6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00. Systems Overview and Meta Index/00.00. Map of Content - Systems Overview.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "00.00. Map of Content - Systems Overview"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "78fcaf84f85ef748",
+    "type": "split",
+    "children": [
+      {
+        "id": "edd4a8bf0b6637ed",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b585563211366906",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "fb779965bf919ba7",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "bec0e4c229d151d7",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 431.5
+  },
+  "right": {
+    "id": "e0fee0afa6129355",
+    "type": "split",
+    "children": [
+      {
+        "id": "87d570bd5139d1ee",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "507d491d3818c42a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "04. Runtime Concurrency and Execution Models/04.04. PHP Zend Engine and FastCGI Process Pools/04.04.03. Long-Running In-Memory PHP Runtimes.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "4a1fbc752d558edf",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "04. Runtime Concurrency and Execution Models/04.04. PHP Zend Engine and FastCGI Process Pools/04.04.03. Long-Running In-Memory PHP Runtimes.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "0633b766e888c242",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "73e3d4bcf2498965",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "f783dc02c1e7375d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "04. Runtime Concurrency and Execution Models/04.04. PHP Zend Engine and FastCGI Process Pools/04.04.03. Long-Running In-Memory PHP Runtimes.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "d42dafe8934a66f6",
+  "lastOpenFiles": [
+    "04. Runtime Concurrency and Execution Models/04.04. PHP Zend Engine and FastCGI Process Pools/04.04.03. Long-Running In-Memory PHP Runtimes.md",
+    "04. Runtime Concurrency and Execution Models/04.04. PHP Zend Engine and FastCGI Process Pools/04.04.02. FastCGI Protocol and PHP-FPM Pool Architecture.md",
+    "04. Runtime Concurrency and Execution Models/04.04. PHP Zend Engine and FastCGI Process Pools/04.04.01. Zend Engine and the Shared-Nothing Lifecycle.md",
+    "04. Runtime Concurrency and Execution Models/04.03. Python CPython GIL and WSGI ASGI Architectures/04.03.01. CPython Execution and the Global Interpreter Lock.md",
+    "04. Runtime Concurrency and Execution Models/04.01. JVM HotSpot Memory Model and Multi-Threading/04.01.01. HotSpot Execution Engine and JIT Compilation.md",
+    "03. Networking and Application Transport Protocols/03.05. Binary Serialization and RPC Frameworks/03.05.01. Data Serialization Formats Compared.md",
+    "03. Networking and Application Transport Protocols/03.03. TLS Cryptographic Security and PKI/03.03.01. Cryptographic Foundations.md",
+    "03. Networking and Application Transport Protocols/03.02. HTTP Protocol Evolution and Framing/03.02.01. HTTP 1.1 Textual Protocol Specification.md",
+    "03. Networking and Application Transport Protocols/03.00. Map of Content - Networking.md"
+  ]
+}

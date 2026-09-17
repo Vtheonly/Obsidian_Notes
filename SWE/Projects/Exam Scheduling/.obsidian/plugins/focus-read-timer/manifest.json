@@ -1,0 +1,10 @@
+{
+  "id": "focus-read-timer",
+  "name": "Focus Read: Timer & Nudge",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "Floating focus timer (Pomodoro), focus detection, ADHD idle nudge, and a daily dopamine goal bar. Tracks its own reading time.",
+  "author": "Focus Read",
+  "authorUrl": "https://obsidian.md",
+  "isDesktopOnly": false
+}

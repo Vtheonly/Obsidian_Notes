@@ -1,0 +1,206 @@
+{
+  "main": {
+    "id": "aa7d5cb71433bf88",
+    "type": "split",
+    "children": [
+      {
+        "id": "33dad7aa53430550",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "909bc85138e65ddc",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c02a654211056bb7",
+    "type": "split",
+    "children": [
+      {
+        "id": "dd23766bfedd3f9b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "13de4797c0b574cc",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "801e87938fb089e0",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "1cd65df45de4ad91",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "0843ec5caff5fb20",
+    "type": "split",
+    "children": [
+      {
+        "id": "ce376d36df1e8611",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e6413b7a51667b01",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Chapter 1. Foundations of System Design/Part 1/Quiz.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "1d87d18f5eeb08fa",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Chapter 1. Foundations of System Design/Part 1/Quiz.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "7619c7fdf0233086",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "75b2f323e4a5ee35",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "da26d8af0a0b25bc",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Chapter 1. Foundations of System Design/Part 1/Quiz.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "quiz-generator:Open generator": false
+    }
+  },
+  "active": "909bc85138e65ddc",
+  "lastOpenFiles": [
+    "Untitled.md",
+    "Chapter 1. Foundations of System Design/13. Throughput Metrics (RPS, QPS).md",
+    "Chapter 1. Foundations of System Design/8. Threads and Multi-Threading.md",
+    "Chapter 1. Foundations of System Design/Part 1/Quiz.md",
+    "Chapter 1. Foundations of System Design/Part 1/_entire_project_.txt",
+    "Chapter 1. Foundations of System Design/_entire_project_.txt",
+    "Chapter 1. Foundations of System Design/Untitled/Untitled",
+    "Chapter 1. Foundations of System Design/Part 1/7. Motherboard and Data Pathways.md",
+    "Chapter 1. Foundations of System Design/Part 1",
+    "Chapter 1. Foundations of System Design/Part 1/6. CPU Cache Hierarchy (L1, L2, L3).md",
+    "Chapter 1. Foundations of System Design/Part 1/5. Central Processing Unit Execution Cycles.md",
+    "Chapter 1. Foundations of System Design/Part 1/4. Random Access Memory Capabilities.md",
+    "Chapter 1. Foundations of System Design/Part 1/3. Data Volatility and Persistence.md",
+    "Chapter 1. Foundations of System Design/Part 1/2. Storage Types Disk Drives and Solid State Drives.md",
+    "Chapter 1. Foundations of System Design/Part 1/1. Binary Data and Bits.md"
+  ]
+}

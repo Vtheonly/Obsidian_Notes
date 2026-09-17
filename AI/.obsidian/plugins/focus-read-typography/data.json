@@ -1,0 +1,14 @@
+{
+  "typographyEnabled": false,
+  "fontFamily": "lexend",
+  "customFontFamily": "",
+  "loadGoogleFonts": false,
+  "fontSize": 17,
+  "lineHeight": 1.7,
+  "maxWidthChars": 66,
+  "paragraphSpacing": 1.4,
+  "readingRulerEnabled": true,
+  "readingRulerHeight": 47,
+  "readingRulerColor": "#ffc400",
+  "readingRulerOpacity": 0.6
+}
