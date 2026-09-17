@@ -231,17 +231,132 @@ Older engines without `SIGNAL` sometimes used an intentional constraint violatio
 
 ---
 
-## Part 5: Managing Triggers
+## Part 5: Additional Business-Limit Trigger
 
-### 5.1 Dropping Triggers
+Triggers can enforce cumulative business rules by examining the existing state before accepting a new operation. A banking example is a daily and weekly debit/credit limit.
+
+### Scenario
+For an `OPERATION` table containing account ID (`Cid`), operation date (`Odate`), amount (`Oamount`), and direction (`Osense`):
+
+* Debit (`D`): maximum 20,000 DA per day and 100,000 DA per rolling 7-day period.
+* Credit (`C`): maximum 100,000 DA per day and 500,000 DA per rolling 7-day period.
+
+```sql
+DELIMITER //
+
+CREATE TRIGGER EnforceTransactionLimits
+BEFORE INSERT ON OPERATION
+FOR EACH ROW
+BEGIN
+    DECLARE v_daily_sum DECIMAL(12,2) DEFAULT 0;
+    DECLARE v_weekly_sum DECIMAL(12,2) DEFAULT 0;
+
+    IF NEW.Osense = 'D' THEN
+        SELECT COALESCE(SUM(Oamount), 0)
+        INTO v_daily_sum
+        FROM OPERATION
+        WHERE Cid = NEW.Cid
+          AND Odate = NEW.Odate
+          AND Osense = 'D';
+
+        SELECT COALESCE(SUM(Oamount), 0)
+        INTO v_weekly_sum
+        FROM OPERATION
+        WHERE Cid = NEW.Cid
+          AND Odate >= DATE_SUB(NEW.Odate, INTERVAL 7 DAY)
+          AND Osense = 'D';
+
+        IF v_daily_sum + NEW.Oamount > 20000.00 THEN
+            SIGNAL SQLSTATE '45000'
+                SET MESSAGE_TEXT = 'Daily debit limit exceeded.';
+        END IF;
+
+        IF v_weekly_sum + NEW.Oamount > 100000.00 THEN
+            SIGNAL SQLSTATE '45000'
+                SET MESSAGE_TEXT = 'Weekly debit limit exceeded.';
+        END IF;
+
+    ELSEIF NEW.Osense = 'C' THEN
+        SELECT COALESCE(SUM(Oamount), 0)
+        INTO v_daily_sum
+        FROM OPERATION
+        WHERE Cid = NEW.Cid
+          AND Odate = NEW.Odate
+          AND Osense = 'C';
+
+        SELECT COALESCE(SUM(Oamount), 0)
+        INTO v_weekly_sum
+        FROM OPERATION
+        WHERE Cid = NEW.Cid
+          AND Odate >= DATE_SUB(NEW.Odate, INTERVAL 7 DAY)
+          AND Osense = 'C';
+
+        IF v_daily_sum + NEW.Oamount > 100000.00 THEN
+            SIGNAL SQLSTATE '45000'
+                SET MESSAGE_TEXT = 'Daily credit limit exceeded.';
+        END IF;
+
+        IF v_weekly_sum + NEW.Oamount > 500000.00 THEN
+            SIGNAL SQLSTATE '45000'
+                SET MESSAGE_TEXT = 'Weekly credit limit exceeded.';
+        END IF;
+    END IF;
+END //
+
+DELIMITER ;
+```
+
+> [!WARNING] Concurrency
+> A production implementation must also consider concurrent inserts. Two simultaneous transactions can each read the same pre-insert total and both appear to be below the limit. Appropriate locking, isolation, or atomic database-side design is required if the limit must be race-free.
+
+---
+
+## Part 6: Structural Consistency Without Native Foreign Keys
+
+If the underlying database engine does not support a physical foreign-key constraint for a particular relationship, triggers can emulate the essential checks.
+
+### Case Study: `ACCOUNT(Cid) -> BANK(Bid)`
+
+**Child insertion/modification:** Verify that the referenced bank exists.
+
+```sql
+CREATE TRIGGER VerifyBankFKOnInsert
+BEFORE INSERT ON ACCOUNT
+FOR EACH ROW
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM BANK WHERE Bid = NEW.Bid) THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Foreign Key Violation: Referenced Bank ID does not exist.';
+    END IF;
+END;
+```
+
+**Parent deletion:** Prevent deleting a bank while dependent accounts exist.
+
+```sql
+CREATE TRIGGER PreventBankDeleteWithChildren
+BEFORE DELETE ON BANK
+FOR EACH ROW
+BEGIN
+    IF EXISTS (SELECT 1 FROM ACCOUNT WHERE Bid = OLD.Bid) THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Foreign Key Violation: Cannot delete Bank with dependent accounts.';
+    END IF;
+END;
+```
+
+Again, prefer a native foreign key whenever the DBMS can express the relationship directly.
+
+---
+
+## Part 7: Managing Triggers
+
+### 7.1 Dropping Triggers
 ```sql
 DROP TRIGGER IF EXISTS TriggerName;
 ```
 
-> [!NOTE] Dependency
-> Dropping a table may also remove associated triggers according to the DBMS's dependency rules.
-
-### 5.2 Restrictions
+### 7.2 Restrictions
 1. **No explicit transaction boundary:** A trigger executes within the transaction that fired it; explicit `START TRANSACTION`, `COMMIT`, and `ROLLBACK` are prohibited in many procedural trigger implementations.
 2. **Recursion/Cascades:** Trigger A may modify a table that fires Trigger B. Long chains are difficult to debug and maintain.
 3. **Self-referencing tables:** Some DBMSs restrict querying or changing the table currently undergoing a row-level trigger. Exact restrictions are engine-specific.
