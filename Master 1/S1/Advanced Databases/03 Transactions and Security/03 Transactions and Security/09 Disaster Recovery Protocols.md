@@ -1,30 +1,56 @@
 # 7. Disaster Recovery Protocols
 
-A DBMS must guarantee that once a transaction says `COMMIT`, the data is permanently safe, even if someone unplugs the server a millisecond later. This relies on three core pillars: The WAL, Checkpoints, and Backups.
+A DBMS must preserve committed data and provide a recovery strategy for failures that range from transaction-level errors to complete site loss. The relevant mechanisms include WAL, checkpoints, backups, replication, and failover.
 
-## 1. Write-Ahead Logging WAL Detailed Workflow
-Writing directly to database files on a hard drive is slow because data is scattered randomly across the disk. To guarantee speed and safety, the DBMS uses the WAL.
+## 1. Write-Ahead Logging (WAL) Detailed Workflow
 
-1.  **The Log File:** This is a continuous, append-only file. Writing to it is incredibly fast.
-2.  **The Rule:** The DBMS must write the *intent* of the modification to the WAL **before** it actually modifies the physical database pages.
-3.  **The Memory Buffer:** Data modifications happen in fast RAM (Buffer Pool). Eventually, these modified memory pages are flushed to the slow hard drive.
+1. **The Log File:** A sequential log records changes and transaction events.
+2. **The WAL Rule:** The relevant log record must be durable before the corresponding modified data page is written to permanent storage.
+3. **The Buffer Pool:** Data pages may be changed in memory before being flushed to disk.
 
-### The Crash Scenario:
-Imagine T1 transfers money, says `COMMIT`, the DBMS writes this to the WAL, but before the RAM flushes the actual database files to the disk, the power fails.
+### Crash Scenario
 
-Upon reboot, the DBMS goes into **Recovery Mode**:
-1.  It reads the WAL from the last known good state.
-2.  **REDO Phase (Roll Forward):** It finds T1 in the log with a `COMMIT` tag, but sees the data file is missing the change. It *re-executes* T1 from the log to restore the committed state.
-3.  **UNDO Phase (Roll Back):** It finds T2 in the log with some `UPDATE` statements, but no `COMMIT` tag (T2 was interrupted). The DBMS actively reverses any partial writes T2 might have made to ensure consistency.
+If a transaction has a durable `COMMIT` record but some of its modified data pages were not yet persisted when the server failed, recovery can **REDO** the committed work. If another transaction was active without a durable commit, recovery can **UNDO** its incomplete work.
 
 ## 2. Checkpoints
-If a database runs for a year, the WAL becomes enormous. Rebooting and reading a year's worth of logs would take days.
-*   Periodically, the DBMS pauses briefly.
-*   It forces all modified RAM pages to the physical disk.
-*   It writes a **Checkpoint** marker in the WAL.
-*   If a crash happens, the DBMS only needs to read the WAL starting from the most recent Checkpoint, discarding everything before it as safely written.
 
-## 3. High Availability Redundancy
-For mission-critical systems, WAL and Checkpoints are not enough (what if the hard drive itself burns?). 
-*   **Replication:** The Master server constantly streams its WAL entries to a Slave server. The Slave plays the WAL entries on its own disk.
-*   **Failover:** If the Master dies, a load balancer instantly redirects all user traffic to the Slave, which becomes the new Master, ensuring zero downtime.
+If the log grows for a long time, scanning it from the beginning would make recovery expensive. Checkpoints record a known recovery position and reduce the amount of log that normally needs to be examined after a crash.
+
+The exact checkpoint mechanism varies by DBMS; some systems flush many dirty pages, while others use more sophisticated incremental or fuzzy checkpoints.
+
+## 3. Failure Classes
+
+1. **Transaction failure:** Logical errors, constraint violations, or deadlock victims. Usually handled with statement/transaction rollback.
+2. **System crash:** Power loss or operating-system failure destroys volatile memory. WAL-based REDO/UNDO restores a consistent database state.
+3. **Media/disk failure:** Physical storage is damaged or lost. Backups and replication are required because WAL stored only on the failed medium is not enough.
+4. **Site/catastrophic failure:** Fire, flood, or datacenter loss. Off-site or geographically separated backups/replicas are needed.
+
+## 4. High Availability and Replication
+
+Replication maintains one or more copies of database state on other servers. WAL records or equivalent change streams may be sent from a primary/source to replicas.
+
+### Synchronous Replication
+
+The primary waits for one or more replicas to durably acknowledge the required change before reporting success, depending on the system's exact commit policy.
+
+**Trade-off:** Lower risk of losing recently committed transactions after a primary failure, but higher commit latency and dependence on replica availability/network latency.
+
+### Asynchronous Replication
+
+The primary reports success without waiting for replicas to confirm that the change is durable. Replicas may therefore lag behind the primary.
+
+**Trade-off:** Lower commit latency and continued primary operation despite replica/network delays, but a sudden primary loss can leave a window of recently committed changes not yet present on the replica.
+
+## 5. Failover
+
+**Failover** is the controlled promotion of a replica to serve as the new primary after a primary failure.
+
+A complete high-availability design must specify:
+
+* how failure is detected;
+* which replica is eligible for promotion;
+* how clients are redirected;
+* how replication consistency is verified;
+* how the former primary is reintegrated after recovery.
+
+A load balancer may help redirect traffic, but the exact failover orchestration is deployment-specific.
