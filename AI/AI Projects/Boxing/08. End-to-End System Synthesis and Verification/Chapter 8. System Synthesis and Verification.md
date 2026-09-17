@@ -1,157 +1,172 @@
 ---
 title: Chapter 8 — End-to-End System Synthesis and Verification
-tags: [boxing, ai, system-design, profiling, verification, benchmarking, failure-modes]
+tags: [boxing, ai, system-integration, profiling, verification, failure-modes, benchmarking]
 ---
 
-# Chapter 8: End-to-End System Synthesis and Verification
+# Chapter 8 — End-to-End System Synthesis and Verification
 
-## 8.1 Complete Pipeline
+## 8.1 System Pipeline Integration
 
-CameraX / YUV
-→ frame selection and ROI
-→ RTMPose-S
-→ One Euro filtering and confidence handling
-→ body-relative normalization
-→ kinematic features
-→ ST-GCN
-→ Tiny Temporal Transformer
-→ movement and phase understanding
-→ DTW and reference distribution
-→ biomechanical evaluation
-→ HFSM coaching state
-→ visual/audio feedback
-→ session analytics
+```mermaid
+flowchart TD
+    A["CameraX YUV"] --> B["ROI and frame selection"]
+    B --> C["RTMPose-S"]
+    C --> D["One Euro filtering"]
+    D --> E["Body-relative normalization"]
+    E --> F["Kinematic features"]
+    F --> G["ST-GCN"]
+    G --> H["Tiny Temporal Transformer"]
+    H --> I["Movement / phase understanding"]
+    I --> J["DTW + reference matching"]
+    J --> K["Biomechanical evaluation"]
+    K --> L["HFSM coaching state"]
+    L --> M["Visual + audio feedback"]
+    L --> N["Session analytics"]
+```
 
-Each stage should have one clearly defined responsibility.
+The target transformation is:
 
-## 8.2 Frame Budget
+raw camera data
+→ pose
+→ stable motion signal
+→ representation
+→ movement understanding
+→ technique evaluation
+→ coaching decision.
+
+## 8.2 Diagnostic Frame-Budget Analysis
 
 At 15 FPS:
 
-budget ≈ 66.7 ms per processing cycle
+$$
+\tau_{budget}
+=
+\frac{1000}{15}
+\approx
+66.6ms.
+$$
 
 Initial planning budget:
 
-| Stage | Planning target |
+| Stage | Planned time |
 |---|---:|
-| Capture/conversion | 8–10 ms |
-| Pose inference | 35–40 ms |
-| Conditioning | 1–2 ms |
-| Temporal models | 6–8 ms |
-| Kinematics/comparison | 4–5 ms |
-| State/UI decision | 3–4 ms |
-| Remaining | headroom |
+| YUV capture/conversion | 8.5 ms |
+| RTMPose-S inference | 38.0 ms |
+| One Euro + normalization | 1.2 ms |
+| ST-GCN + Transformer | 7.8 ms |
+| DTW + kinematics | 4.5 ms |
+| Coaching engine/UI | 3.5 ms |
+| Spare headroom | 3.1 ms |
+| Total | 63.5 ms |
 
-These are planning values, not measured Galaxy A30s results.
+These are **planning numbers from the architecture document, not measurements of the Galaxy A30s**.
 
-## 8.3 Diagnostic Profiling
+The acceptance test must measure real device behavior.
 
-Record:
+## 8.3 Failure Modes and Edge-Case Triage
 
-- median latency
-- P95 latency
-- P99 latency
-- effective pose FPS
-- dropped frames
-- model memory
-- process RSS
-- battery drain
-- thermal rise
-- thermal-throttling onset
-- movement recognition accuracy
-- phase recognition accuracy
-- technique-error detection accuracy
-
-Measure both each stage and the full pipeline.
-
-## 8.4 Failure Modes
-
-| Failure | Trigger | Response |
+| Failure mode | Root trigger | Mitigation |
 |---|---|---|
-| Framing violation | head/feet leave frame | framing guidance; suppress unsafe critique |
-| Low confidence | occlusion/blur | suppress affected feedback |
-| Hand identity ambiguity | cross-body overlap | temporal tracking/context |
-| Low lighting | poor image quality | lighting warning |
-| Multiple people | background person | primary-person lock |
-| Thermal overload | sustained temperature | reduce inference cadence |
-| Stale frames | analyzer backlog | keep-latest strategy |
-| State chatter | threshold oscillation | hysteresis + dwell |
+| Framing violation | boxer too close or leaves frame | boundary monitoring and framing assistance |
+| Low-confidence detection | lighting, blur, occlusion | suppress affected technical feedback |
+| Rapid occlusion | hand crosses body | temporal context and interpolation where justified |
+| Multi-person interference | another person enters scene | maintain primary boxer identity |
+| State chatter | metric hovers around threshold | hysteresis and dwell time |
+| Stale-frame backlog | inference slower than camera | KEEP_ONLY_LATEST |
+| Thermal overload | sustained heavy inference | reduce processing cadence |
+| Poor lighting | exposure/motion blur | input-quality warning |
 
-## 8.5 Verification Matrix
+Framing checks can monitor normalized boundaries near 0 and 1.
 
-### Stance
+Lighting can use the Y-plane brightness as an input-quality signal:
 
-Test:
+$$
+\mu_Y
+=
+\frac{1}{HW}
+\sum_{i,j}Y_{ij}.
+$$
+
+A very low measured mean indicates a candidate lighting warning, but the actual threshold must be calibrated against device camera behavior.
+
+## 8.4 Verification Matrix
+
+### Stance tests
 
 - correct stance
 - narrow stance
-- excessive width
-- foot crossing
+- wide stance
+- crossed feet
 - guard asymmetry
 - torso lean
 
-### Punches
-
-Test:
+### Punch tests
 
 - jab
 - cross
 - lead hook
 - rear hook
-- uppercuts
-- phase boundaries
+- lead uppercut
+- rear uppercut
+- phase segmentation
 
-### Combinations
+### Combination tests
 
-Test:
-
-- correct sequence
+- correct order
 - wrong order
 - missing movement
 - extra movement
-- timing variations
+- timing variation
+- recovery
 
-### Robustness
-
-Test:
+### Environment tests
 
 - different lighting
-- different camera distances
+- different distances
 - different heights
 - different body proportions
-- different clothes
-- slow and fast execution
+- different clothing
+- slow movements
+- fast movements
 - partial occlusion
-- background interference
+- secondary person
 
-## 8.6 Acceptance Criteria
+## 8.5 Acceptance Criteria
 
-The system must demonstrate:
+The system should demonstrate:
 
-1. reliable body tracking
+1. reliable full-body tracking
 2. stable keypoint streams
-3. useful movement recognition
-4. phase-aware analysis
-5. specific coaching feedback
-6. real-time responsiveness
-7. graceful low-confidence behavior
-8. repeatable physical-device benchmarks
+3. robust movement classification
+4. useful phase segmentation
+5. specific corrective feedback
+6. acceptable real-time latency
+7. confidence-aware suppression
+8. repeatable A30s performance benchmarks
 
-Skeleton display alone is not a successful implementation.
+## 8.6 First Complete Implementation Slice
 
-## 8.7 First Implementation Slice
-
+```text
 Camera
-→ RTMPose-S
-→ filtering
-→ normalization
-→ live skeleton
-→ stance evaluation
-→ jab detection
-→ basic phase analysis
-→ specific feedback
+↓
+RTMPose-S
+↓
+Filtering
+↓
+Normalization
+↓
+Live skeleton
+↓
+Stance evaluation
+↓
+Jab detection
+↓
+Basic phase analysis
+↓
+Specific feedback
+```
 
-After this becomes reliable, expand into combinations, teacher-student motion modeling, free shadowboxing, reaction drills, and adaptive curricula.
+This provides a controlled first milestone before combinations, free shadowboxing, reaction drills, teacher-student modeling, and adaptive training.
 
 ## Core Connections
 
