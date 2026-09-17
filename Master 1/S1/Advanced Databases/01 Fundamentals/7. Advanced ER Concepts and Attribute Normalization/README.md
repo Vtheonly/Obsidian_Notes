@@ -9,7 +9,7 @@ This chapter develops the E/R modeling cases that become difficult in exams: ter
 - [[03 Derived Attributes and Redundancy]]
 - [[04 Attributes of Associations]]
 - [[05 Enumerated Values and Reference Entities]]
-- [[06 Advanced ER Modeling Exercises]]
+- [[07 Advanced ER Modeling Exercises]]
 
 ## Learning Objectives
 
