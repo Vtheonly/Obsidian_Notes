@@ -1,17 +1,15 @@
 ---
 title: Chapter 1 — Mathematical and Theoretical Foundations
-tags: [boxing, ai, mathematics, linear-algebra, optimization, probability, signal-processing]
+tags: [boxing, ai, mathematics, linear-algebra, calculus, probability, signal-processing]
 ---
 
-# Chapter 1: Mathematical and Theoretical Foundations
-
-This chapter supplies the mathematical language used by every later stage of the boxing coach.
+# Chapter 1 — Mathematical and Theoretical Foundations
 
 ## 1.1 Linear Algebra for Pose Geometry
 
 ### 1.1.1 Vectors, Norms, and Metric Spaces in R² and R³
 
-A tracked anatomical landmark is represented as a spatial vector:
+At time t, keypoint i is represented as:
 
 $$
 \mathbf{p}_i(t)=
@@ -22,7 +20,7 @@ y_i(t)
 \in\mathbb{R}^2
 $$
 
-or, where depth is available,
+or in 3D:
 
 $$
 \mathbf{P}_i(t)=
@@ -34,40 +32,42 @@ Z_i(t)
 \in\mathbb{R}^3.
 $$
 
-A full 2D skeleton with $K$ joints can be unrolled into:
+For K tracked landmarks, the complete 2D skeleton can be concatenated:
 
 $$
 \mathbf{x}(t)=
-[x_1,y_1,x_2,y_2,\ldots,x_K,y_K]^T
+[x_1(t),y_1(t),x_2(t),y_2(t),\dots,x_K(t),y_K(t)]^T
 \in\mathbb{R}^{2K}.
 $$
 
-For two landmarks:
+Difference vector:
 
 $$
 \mathbf{d}_{ij}=\mathbf{p}_j-\mathbf{p}_i.
 $$
 
-Relevant norms are:
+Norms:
 
 $$
-\|\mathbf{d}\|_1=|d_x|+|d_y|,
+\|\mathbf{d}\|_1=|d_x|+|d_y|
 $$
 
 $$
-\|\mathbf{d}\|_2=\sqrt{d_x^2+d_y^2},
+\|\mathbf{d}\|_2=\sqrt{d_x^2+d_y^2}
+=\sqrt{\mathbf{d}^T\mathbf{d}}
 $$
 
 $$
 \|\mathbf{d}\|_\infty=\max(|d_x|,|d_y|).
 $$
 
-The Euclidean norm is the main geometric metric for limb lengths, clearances, and trajectory deviations.
+The Euclidean norm is the primary spatial metric for limb length, clearance, and trajectory deviation.
 
-For joint angles, use two limb vectors:
+For a joint angle, with limb vectors u and v:
 
 $$
-\theta=
+\theta
+=
 \arccos
 \left(
 \frac{\mathbf{u}^T\mathbf{v}}
@@ -75,21 +75,21 @@ $$
 \right).
 $$
 
-For a signed two-dimensional angle, use:
+For a signed angle in 2D:
 
 $$
-\theta_{signed}=\operatorname{atan2}
+\theta_{signed}
+=
+\operatorname{atan2}
 (u_xv_y-u_yv_x,\,
 u_xv_x+u_yv_y).
 $$
 
-This is the basis for elbow articulation, knee flexion, torso tilt, and other boxing kinematics.
+This provides the basis for elbow flexion, knee flexion, torso orientation, and limb articulation.
 
-### 1.1.2 Affine Transformations and Body-Centric Change of Basis
+### 1.1.2 Affine Transformations and Change of Basis
 
-Raw image coordinates depend on camera translation, distance, scale, and orientation. The coaching engine therefore transforms the skeleton into a canonical body-relative frame.
-
-General affine transform:
+A general affine transformation is:
 
 $$
 \mathbf{p}'=\mathbf{A}\mathbf{p}+\mathbf{t}.
@@ -99,13 +99,16 @@ Using homogeneous coordinates:
 
 $$
 \tilde{\mathbf{p}}=
-[x,y,1]^T
+\begin{bmatrix}
+x\\y\\1
+\end{bmatrix}
 $$
 
-and
+and:
 
 $$
-\mathbf{M}=
+\mathbf{M}
+=
 \begin{bmatrix}
 a_{11}&a_{12}&t_x\\
 a_{21}&a_{22}&t_y\\
@@ -113,29 +116,29 @@ a_{21}&a_{22}&t_y\\
 \end{bmatrix}.
 $$
 
-Elementary transforms include translation:
+Translation:
 
 $$
-\mathbf{T}=
+\mathbf{T}(t_x,t_y)=
 \begin{bmatrix}
 1&0&t_x\\
 0&1&t_y\\
 0&0&1
-\end{bmatrix},
+\end{bmatrix}.
 $$
 
-isotropic scale:
+Scale:
 
 $$
-\mathbf{S}=
+\mathbf{S}(s)=
 \begin{bmatrix}
 s&0&0\\
 0&s&0\\
 0&0&1
-\end{bmatrix},
+\end{bmatrix}.
 $$
 
-and planar rotation:
+Rotation:
 
 $$
 \mathbf{R}(\theta)=
@@ -146,7 +149,25 @@ $$
 \end{bmatrix}.
 $$
 
-A body-relative normalization can be built as:
+For body-centric normalization, let c be the anatomical center and phi the torso tilt:
+
+$$
+\phi
+=
+\operatorname{atan2}
+(x_{neck}-x_{mid\_hip},
+y_{neck}-y_{mid\_hip})
+$$
+
+and:
+
+$$
+s=
+\frac{1}
+{\|\mathbf{p}_{neck}-\mathbf{p}_{mid\_hip}\|_2}.
+$$
+
+Then:
 
 $$
 \mathbf{M}_{norm}
@@ -156,24 +177,43 @@ $$
 \mathbf{T}(-c_x,-c_y).
 $$
 
-This makes downstream analysis more sensitive to movement mechanics and less sensitive to where the athlete is standing in the camera view.
+Applied to every joint, this reduces dependence on subject position, camera distance, and camera orientation.
 
-### 1.1.3 SVD and PCA for Motion Signals
+### 1.1.3 SVD and PCA
 
-For a temporal sequence:
+For a centered temporal pose matrix:
 
 $$
 \mathbf{X}\in\mathbb{R}^{T\times2K}
 $$
 
-subtract the temporal mean and compute covariance:
+define:
 
 $$
-\boldsymbol\Sigma=
-\frac{1}{T-1}\tilde{\mathbf{X}}^T\tilde{\mathbf{X}}.
+\tilde{\mathbf{X}}
+=
+\mathbf{X}
+-
+\mathbf{1}_T\boldsymbol\mu^T
 $$
 
-SVD gives:
+with:
+
+$$
+\mu_j=
+\frac1T\sum_{t=1}^T X_{tj}.
+$$
+
+Covariance:
+
+$$
+\boldsymbol\Sigma
+=
+\frac1{T-1}
+\tilde{\mathbf{X}}^T\tilde{\mathbf{X}}.
+$$
+
+SVD:
 
 $$
 \tilde{\mathbf{X}}
@@ -183,10 +223,18 @@ $$
 \mathbf{V}^T.
 $$
 
-A low-rank representation is:
+The singular values relate to covariance eigenvalues:
 
 $$
-\mathbf{Z}_r=\tilde{\mathbf{X}}\mathbf{V}_r.
+\sigma_i=\sqrt{(T-1)\lambda_i}.
+$$
+
+Low-rank embedding:
+
+$$
+\mathbf{Z}_r
+=
+\tilde{\mathbf{X}}\mathbf{V}_r.
 $$
 
 Reconstruction:
@@ -194,30 +242,30 @@ Reconstruction:
 $$
 \hat{\mathbf{X}}
 =
-\mathbf{Z}_r\mathbf{V}_r^T+
+\mathbf{Z}_r\mathbf{V}_r^T
++
 \mathbf{1}_T\boldsymbol\mu^T.
 $$
 
-The same projection can support anomaly analysis:
+Anomaly residual:
 
 $$
 \epsilon_{anomaly}(t)
 =
-\|
+\left\|
 \tilde{\mathbf{x}}(t)
 -
-\mathbf{V}_r\mathbf{V}_r^T
-\tilde{\mathbf{x}}(t)
-\|_2^2.
+\mathbf{V}_r\mathbf{V}_r^T\tilde{\mathbf{x}}(t)
+\right\|_2^2.
 $$
 
-For this project, PCA/SVD is best treated as an analysis, compression, and exploratory tool rather than a hard assumption that a fixed six-dimensional representation will always capture a jab.
+PCA/SVD is useful for exploratory motion analysis, denoising, compression, and anomaly detection. Any fixed statement such as "six components always capture 95%" must instead be validated on the actual boxing dataset.
 
 ## 1.2 Multivariate Calculus and Optimization
 
 ### 1.2.1 Gradient Descent and Backpropagation
 
-The learned components minimize an objective such as:
+The learning problem can be written:
 
 $$
 \theta^*
@@ -225,11 +273,25 @@ $$
 \arg\min_\theta
 \left[
 \frac1N
-\sum_i
+\sum_{i=1}^N
 \ell(f(x^{(i)};\theta),y^{(i)})
 +
 \lambda\Omega(\theta)
 \right].
+$$
+
+Gradient:
+
+$$
+\nabla_\theta\mathcal{L}
+=
+\begin{bmatrix}
+\frac{\partial\mathcal{L}}{\partial\theta_1}
+&
+\cdots
+&
+\frac{\partial\mathcal{L}}{\partial\theta_D}
+\end{bmatrix}^T.
 $$
 
 Gradient descent:
@@ -237,29 +299,63 @@ Gradient descent:
 $$
 \theta_{t+1}
 =
-\theta_t-
-\eta\nabla_\theta\mathcal{L}(\theta_t).
+\theta_t-\eta\nabla_\theta\mathcal{L}(\theta_t).
 $$
 
-For Adam/AdamW:
+Adam-style moving averages:
 
 $$
-m_t=\beta_1m_{t-1}+(1-\beta_1)g_t
+m_t
+=
+\beta_1m_{t-1}
++
+(1-\beta_1)g_t
 $$
 
 $$
-v_t=\beta_2v_{t-1}+(1-\beta_2)g_t^2
+v_t
+=
+\beta_2v_{t-1}
++
+(1-\beta_2)g_t^2.
 $$
 
-with bias correction:
+Bias corrections:
 
 $$
-\hat m_t=\frac{m_t}{1-\beta_1^t},
-\quad
-\hat v_t=\frac{v_t}{1-\beta_2^t}.
+\hat m_t
+=
+\frac{m_t}{1-\beta_1^t},
+\qquad
+\hat v_t
+=
+\frac{v_t}{1-\beta_2^t}.
 $$
 
-The backpropagation recursion for a feed-forward layer is:
+AdamW-style update:
+
+$$
+\theta_{t+1}
+=
+\theta_t
+-
+\eta_t
+\left(
+\frac{\hat m_t}{\sqrt{\hat v_t}+\epsilon}
++
+\gamma\theta_t
+\right).
+$$
+
+For a neural layer:
+
+$$
+a^{(l)}
+=
+\sigma(W^{(l)}a^{(l-1)}+b^{(l)}).
+$$
+
+Backpropagation:
 
 $$
 \delta^{(L)}
@@ -269,8 +365,6 @@ $$
 \sigma'(z^{(L)})
 $$
 
-and
-
 $$
 \delta^{(l)}
 =
@@ -279,192 +373,307 @@ $$
 \sigma'(z^{(l)}).
 $$
 
-These concepts matter when fine-tuning the boxing pose front-end and training the temporal motion models.
+Parameter gradients:
+
+$$
+\frac{\partial\mathcal{L}}{\partial W^{(l)}}
+=
+\delta^{(l)}(a^{(l-1)})^T
+$$
+
+$$
+\frac{\partial\mathcal{L}}{\partial b^{(l)}}
+=
+\delta^{(l)}.
+$$
 
 ### 1.2.2 Kinematic Derivatives
 
-For a tracked point $p(t)$:
+For p(t):
 
 $$
-v(t)=\frac{dp(t)}{dt},
-\qquad
-a(t)=\frac{d^2p(t)}{dt^2},
-\qquad
+v(t)=\frac{dp(t)}{dt}
+$$
+
+$$
+a(t)=\frac{d^2p(t)}{dt^2}
+$$
+
+$$
 j(t)=\frac{d^3p(t)}{dt^3}.
 $$
 
-At discrete frame spacing $\Delta t$:
+Discrete approximations:
 
-Forward difference:
+| Quantity | Approximation | Error order |
+|---|---|---|
+| Velocity | (p[t+1] - p[t]) / dt | O(dt) |
+| Velocity | (p[t] - p[t-1]) / dt | O(dt) |
+| Velocity | (p[t+1] - p[t-1]) / (2dt) | O(dt²) |
+| Acceleration | (p[t+1] - 2p[t] + p[t-1]) / dt² | O(dt²) |
+| Jerk | (p[t+2] - 2p[t+1] + 2p[t-1] - p[t-2]) / (2dt³) | O(dt²) |
 
-$$
-v[t]\approx\frac{p[t+1]-p[t]}{\Delta t}.
-$$
-
-Backward difference:
-
-$$
-v[t]\approx\frac{p[t]-p[t-1]}{\Delta t}.
-$$
-
-Central difference:
-
-$$
-v[t]\approx
-\frac{p[t+1]-p[t-1]}{2\Delta t}.
-$$
-
-Second derivative:
-
-$$
-a[t]\approx
-\frac{p[t+1]-2p[t]+p[t-1]}{\Delta t^2}.
-$$
-
-Third derivative:
-
-$$
-j[t]\approx
-\frac{p[t+2]-2p[t+1]+2p[t-1]-p[t-2]}
-{2\Delta t^3}.
-$$
-
-Real-time processing favors causal/backward approximations; post-repetition analysis can use buffered non-causal central differences.
+Causal/backward differences are appropriate for live inference. Central differences can be used in post-repetition review because the complete trajectory is then available.
 
 ## 1.3 Probability, Information Theory, and Confidence Modeling
 
-### 1.3.1 Heatmaps and Coordinate Distributions
+### 1.3.1 Heatmaps as Spatial Probability Densities
 
-A keypoint target may be represented with a spatial Gaussian:
+A Gaussian keypoint target is:
 
 $$
-p(u,v|g_k)
+p(\mathbf{u}\mid\mathbf{g}_k)
 =
 \frac{1}{2\pi\sigma^2}
 \exp
 \left(
--\frac{\|(u,v)-g_k\|_2^2}{2\sigma^2}
+-\frac{\|\mathbf{u}-\mathbf{g}_k\|_2^2}{2\sigma^2}
 \right).
 $$
 
-Typical decoding paradigms include:
+Standard heatmap decoding:
 
-- Argmax
-- Soft-argmax / integral regression
-- SimCC's independent 1D coordinate classification
+$$
+\hat{\mathbf{p}}_k
+=
+\arg\max_{(u,v)}H_k(u,v).
+$$
 
-SimCC predicts:
+Soft-argmax:
+
+$$
+\tilde H_k(u,v)
+=
+\frac{\exp(\beta H_k(u,v))}
+{\sum_{u',v'}\exp(\beta H_k(u',v'))}
+$$
+
+and:
+
+$$
+\hat{\mathbf{p}}_k
+=
+\sum_{u,v}
+\begin{bmatrix}
+u\\v
+\end{bmatrix}
+\tilde H_k(u,v).
+$$
+
+SimCC instead predicts one-dimensional coordinate distributions:
 
 $$
 p_x\in\mathbb{R}^{N_x},
 \qquad
-p_y\in\mathbb{R}^{N_y}
+p_y\in\mathbb{R}^{N_y}.
 $$
 
-instead of a full 2D heatmap.
+With coordinate split factor k:
+
+$$
+N_x=Wk,
+\qquad
+N_y=Hk.
+$$
+
+A Gaussian-smoothed target for x:
+
+$$
+T_x(i)
+=
+\frac{1}{\sqrt{2\pi}\sigma}
+\exp
+\left(
+-\frac{(i-x^*k)^2}{2\sigma^2}
+\right).
+$$
+
+SimCC loss:
+
+$$
+\mathcal{L}_{SimCC}
+=
+\frac1K
+\sum_{k=1}^K
+\left(
+\mathcal{L}_{CE}(p_{x,k},T_{x,k})
++
+\mathcal{L}_{CE}(p_{y,k},T_{y,k})
+\right).
+$$
 
 ### 1.3.2 Confidence Weighting and Uncertainty Propagation
 
-Each keypoint is associated with confidence:
+Each keypoint has confidence:
 
 $$
 c_i(t)\in[0,1].
 $$
 
-A useful uncertainty abstraction is:
+A confidence-aware Gaussian model is:
 
 $$
-P_i(t)
+\mathbf{P}_i(t)
 \sim
 \mathcal{N}
-(\hat p_i(t),\Sigma_i(t)).
+(\hat{\mathbf{p}}_i(t),\Sigma_i(t))
 $$
 
-For a linear combination $y=Ap_1+Bp_2$:
+with an illustrative confidence-to-covariance mapping:
+
+$$
+\Sigma_i(t)
+=
+\sigma_0^2
+\left(
+\frac{1-c_i(t)+\epsilon}
+{c_i(t)+\epsilon}
+\right)I_2.
+$$
+
+For a linear combination:
+
+$$
+y=Ap_1+Bp_2
+$$
+
+the covariance is:
 
 $$
 \Sigma_y
 =
-A\Sigma_1A^T+
-B\Sigma_2B^T.
+A\Sigma_1A^T+B\Sigma_2B^T.
 $$
 
-For a nonlinear quantity $\theta=f(p)$, first-order propagation uses the Jacobian:
+For nonlinear f(p), first-order propagation uses:
 
 $$
-\sigma_\theta^2
+f(p)
+\approx
+f(\hat p)
++
+J_f(\hat p)(p-\hat p).
+$$
+
+Thus:
+
+$$
+\sigma_f^2
 \approx
 J_f\Sigma_pJ_f^T.
 $$
 
-The coaching engine should reduce or suppress technical feedback when the visual uncertainty becomes too large.
+The coaching engine should suppress feedback when propagated uncertainty is too high.
 
 ### 1.3.3 Information Entropy and Feature Relevance
 
-For a continuous feature $X$:
+Differential entropy:
 
 $$
 H(X)
 =
--\int p(x)\log_2p(x)dx.
+-\int_{\mathcal X}
+p(x)\log_2p(x)\,dx.
 $$
 
-Mutual information with a coaching label $Y$:
+Conditional entropy:
 
 $$
-I(X;Y)=H(X)-H(X|Y).
+H(X|Y)
+=
+-\sum_y p(y)
+\int
+p(x|y)\log_2p(x|y)\,dx.
 $$
 
-This provides a principled method for evaluating whether engineered features actually carry diagnostic value.
+Mutual information:
+
+$$
+I(X;Y)
+=
+H(X)-H(X|Y).
+$$
+
+This can be used to rank engineered kinematic features for mobile inference.
 
 ## 1.4 Classical Signal Processing
 
-### 1.4.1 Sampling and Aliasing
+### 1.4.1 Nyquist-Shannon Sampling and Aliasing
 
-A discrete pose stream is:
+Sampling:
 
 $$
 x[n]=x(nT_s)
 $$
 
-with
+with:
 
 $$
 f_s=\frac1{T_s}.
 $$
 
-Nyquist-Shannon requires:
+Nyquist condition:
 
 $$
 f_s>2f_{max}.
 $$
 
-A 30 FPS camera has a 15 Hz Nyquist frequency. Fast boxing motion can therefore be undersampled, which is important when interpreting wrist acceleration, retraction, and very short impact events.
+At 30 FPS:
 
-The application should distinguish between:
+$$
+f_{Nyquist}=15Hz.
+$$
 
-- camera sampling
-- pose inference rate
-- temporal model update rate
-- visual rendering rate
+Fast hand movement can therefore be undersampled. A discrete alias may be expressed as:
 
-These do not need to be identical.
+$$
+f_{alias}
+=
+|f_{signal}-kf_s|.
+$$
+
+Mitigation strategies described by the curriculum:
+
+1. Interpolate around inflection points.
+2. Use adaptive pose extraction frequency based on movement magnitude.
+3. Apply responsive temporal filtering such as the One Euro Filter.
 
 ### 1.4.2 LTI Systems and Group Delay
 
-An LTI system produces:
+An LTI system satisfies linearity and time invariance and is characterized by its impulse response h[n].
+
+Convolution:
 
 $$
-y[n]=(x*h)[n].
+y[n]=(x*h)[n]
+=
+\sum_kx[k]h[n-k].
 $$
 
-Its transfer function is:
+Transfer function:
 
 $$
 H(z)
 =
-\frac{\sum_{k=0}^M b_kz^{-k}}
-{1+\sum_{k=1}^Na_kz^{-k}}.
+\frac{\sum_{k=0}^{M}b_kz^{-k}}
+{1+\sum_{k=1}^{N}a_kz^{-k}}.
+$$
+
+Frequency response:
+
+$$
+H(e^{j\omega})
+=
+|H(e^{j\omega})|
+e^{j\Phi(\omega)}.
+$$
+
+Phase delay:
+
+$$
+\tau_p(\omega)
+=
+-\frac{\Phi(\omega)}{\omega}.
 $$
 
 Group delay:
@@ -475,17 +684,19 @@ $$
 -\frac{d\Phi(\omega)}{d\omega}.
 $$
 
-A five-tap moving average introduces approximately:
+For an M-tap moving average:
 
 $$
 \tau_g=\frac{M-1}{2}
 $$
 
-samples, which is about 66.7 ms at 30 FPS. For real-time boxing feedback, excessive fixed smoothing is undesirable, motivating adaptive filtering.
+samples.
 
-## Core Connections
+At 30 FPS, a 5-tap filter produces about 66.7 ms of group delay, illustrating why fixed long-window smoothing is undesirable for live boxing feedback.
 
-- [[02. Mobile Vision and Real-Time Pose Estimation/Chapter 2. Mobile Vision and Pose]]
+## Chapter 1 Technical Connections
+
+- [[Chapter 1. Foundations]]
 - [[03. Signal Conditioning, Normalization, and Kinematics/Chapter 3. Conditioning and Kinematics]]
 - [[04. Spatial-Temporal Deep Learning Architectures/Chapter 4. Spatial-Temporal Deep Learning]]
-- [[readme|Final Technical Report — Real-Time AI Boxing Coach]]
+- [[Chapter 2. Full Technical Deep Dive]]
