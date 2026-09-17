@@ -17,17 +17,18 @@
     "dopamineDailyGoalMinutes": 60
   },
   "stats": {
-    "totalReadingMs": 6335744,
-    "todayMs": 0,
+    "totalReadingMs": 6365749,
+    "todayMs": 30005,
     "todayDate": "2026-09-17",
     "streak": 1,
-    "lastReadDate": "2026-07-13",
+    "lastReadDate": "2026-09-17",
     "longestStreak": 3,
     "perDayMs": {
       "2026-07-08": 3278903,
       "2026-07-09": 1936879,
       "2026-07-10": 720124,
-      "2026-07-13": 399838
+      "2026-07-13": 399838,
+      "2026-09-17": 30005
     },
     "longestFocusMs": 1464168.299999997,
     "sessionsToday": 0
