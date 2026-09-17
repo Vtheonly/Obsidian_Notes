@@ -175,4 +175,4 @@ This provides a controlled first milestone before combinations, free shadowboxin
 - [[05. Biomechanical Modeling and Sequence Comparison/Chapter 5. Biomechanical Modeling]]
 - [[06. Real-Time Coaching State Engine/Chapter 6. Real-Time Coaching Engine]]
 - [[07. Edge Inference Runtime and Optimization/Chapter 7. Edge Runtime and Optimization]]
-- [[readme|Final Technical Report — Real-Time AI Boxing Coach]]
+- [[09. Project Architecture/01. Final Technical Report|Final Technical Report — Real-Time AI Boxing Coach]]
