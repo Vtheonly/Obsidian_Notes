@@ -1,136 +1,322 @@
 ---
 title: Chapter 4 — Spatial-Temporal Deep Learning Architectures
-tags: [boxing, ai, deep-learning, st-gcn, transformer, knowledge-distillation]
+tags: [boxing, ai, deep-learning, gcn, st-gcn, transformer, distillation]
 ---
 
-# Chapter 4: Spatial-Temporal Deep Learning Architectures
+# Chapter 4 — Spatial-Temporal Deep Learning Architectures
 
 ## 4.1 Graph Convolution Foundations
 
-Represent the skeleton as a graph G = (V, E):
+### 4.1.1 Graph Laplacian and Spectral Convolutions
 
-- vertices V = anatomical joints
-- edges E = anatomical connections
-- adjacency A = connectivity
-- degree matrix D = node degree
-- Laplacian L = D - A
+Skeleton graph:
 
-Graph modeling matches the physical topology of the human body more directly than treating the skeleton as an ordinary flat vector.
+$$
+G=(V,E).
+$$
 
-## 4.2 Spatial-Temporal Graph Convolutional Networks
+Adjacency:
 
-ST-GCN-style processing learns local anatomical relationships first, then temporal relationships across frames.
+$$
+A_{ij}
+=
+1
+\quad
+\text{if joints i and j are connected}.
+$$
 
-Conceptual flow:
+Degree:
 
-Joints
-→ spatial neighborhood aggregation
-→ graph features
-→ temporal convolution
-→ motion representation
+$$
+D_{ii}
+=
+\sum_j A_{ij}.
+$$
 
-Useful spatial partitions include:
+Laplacian:
 
-- root joint
+$$
+L=D-A.
+$$
+
+Normalized Laplacian:
+
+$$
+L_{sym}
+=
+D^{-1/2}LD^{-1/2}
+=
+I-D^{-1/2}AD^{-1/2}.
+$$
+
+Spectral decomposition:
+
+$$
+L_{sym}=U\Lambda U^T.
+$$
+
+Graph Fourier transform:
+
+$$
+\hat{x}=U^Tx.
+$$
+
+Spectral graph convolution:
+
+$$
+x *_G g
+=
+Ug(\Lambda)U^Tx.
+$$
+
+For efficiency, Chebyshev polynomial approximation can avoid explicit eigendecomposition:
+
+$$
+g_\theta(\Lambda)
+\approx
+\sum_{k=0}^{M}
+\theta'_kT_k(\tilde{\Lambda}).
+$$
+
+The polynomial recurrence is:
+
+$$
+T_0(x)=1,
+\quad
+T_1(x)=x,
+\quad
+T_k(x)=2xT_{k-1}(x)-T_{k-2}(x).
+$$
+
+The practical consequence is localized neighborhood aggregation without carrying a full spectral basis through mobile inference.
+
+## 4.2 ST-GCN
+
+### 4.2.1 Spatial Configuration Partitioning
+
+Sequence tensor:
+
+$$
+X\in\mathbb{R}^{C\times T\times K}.
+$$
+
+For each node i, aggregate over a neighborhood B_i.
+
+A spatial configuration partition can separate:
+
+- root node
 - centripetal neighbors
 - centrifugal neighbors
 
-For causal temporal inference:
+The intuition matches boxing motion: the body core and distal joints participate in different directions of information flow.
 
-X_next(t) = sum over past offsets of W_offset X(t - offset)
+A partitioned convolution can be represented as:
 
-The temporal receptive field should cover complete punch phases while remaining inexpensive on the A30s.
+$$
+Y
+=
+\sum_d
+\Lambda_d^{-1/2}
+(A_d\odot M_d)
+\Lambda_d^{-1/2}
+XW_d.
+$$
 
-## 4.3 Transformer Attention Mechanisms
+Here A_d is a partition adjacency matrix, M_d is a learnable attention mask, and W_d is a learnable transform.
 
-### 4.3.1 Scaled Dot-Product Attention
+### 4.2.2 Temporal Convolutions
 
-For motion token sequence Z:
+Non-causal temporal convolution:
 
-Q = Z W_Q
-K = Z W_K
-V = Z W_V
+$$
+X_{l+1}(:,t,k)
+=
+\sum_{\tau=-r}^{r}
+W_\tau X_l(:,t+\tau,k).
+$$
 
-Attention(Q,K,V) =
-Softmax((Q K^T) / sqrt(d_k) + causal_mask) V
+For live inference use a causal form:
 
-Causal masking is important because the live model cannot inspect future frames.
+$$
+X_{l+1}(:,t,k)
+=
+\sum_{\tau=0}^{K_t-1}
+W_\tau X_l(:,t-\tau,k).
+$$
 
-Multi-head attention allows different heads to specialize in different temporal relationships such as:
+For L layers and kernel K_t with unit dilation:
 
-- wrist acceleration
-- guard persistence
-- foot-to-hand coordination
-- recovery timing
+$$
+RF
+=
+1+
+L(K_t-1).
+$$
+
+The receptive field must be large enough to observe the relevant punch phase sequence but small enough to remain efficient.
+
+## 4.3 Transformer Attention
+
+### 4.3.1 Scaled Dot-Product and Multi-Head Attention
+
+Given temporal embeddings Z:
+
+$$
+Q=ZW_Q,
+\quad
+K=ZW_K,
+\quad
+V=ZW_V.
+$$
+
+Attention:
+
+$$
+Attention(Q,K,V)
+=
+Softmax
+\left(
+\frac{QK^T}{\sqrt{d_k}}+M
+\right)V.
+$$
+
+For causal inference, future positions are masked.
+
+Multi-head attention:
+
+$$
+MHA(Z)
+=
+Concat(head_1,\dots,head_h)W_O.
+$$
+
+A motion-model head can learn short-range acceleration patterns while another can learn longer guard or foot-to-hand dependencies.
 
 ### 4.3.2 Positional Encoding
 
-Self-attention needs explicit sequence order.
+Without temporal position information, self-attention does not inherently know chronological order.
 
-Candidate approaches:
+Sinusoidal encoding:
 
-- sinusoidal positional encoding
-- learnable positional embeddings
+$$
+E_{pos,2i}
+=
+\sin
+\left(
+\frac{pos}{10000^{2i/D}}
+\right)
+$$
 
-For a fixed mobile window, learnable embeddings are a viable baseline; the choice should be validated experimentally.
+$$
+E_{pos,2i+1}
+=
+\cos
+\left(
+\frac{pos}{10000^{2i/D}}
+\right).
+$$
+
+Alternatively use learnable positional vectors for a fixed-size mobile window.
 
 ## 4.4 Tiny Temporal Transformer
 
-Baseline mobile design:
+### 4.4.1 Kinematic Signal Transformer
 
-| Parameter | Initial target |
+Initial architecture hypothesis:
+
+| Parameter | Target |
 |---|---:|
-| Sequence window | 32 frames |
+| Window | 32 frames |
 | Model width | 48 |
-| Attention heads | 3 |
+| Heads | 3 |
 | FFN width | 96 |
-| Encoder depth | 2 |
-| Deployment | CPU/mobile |
+| Layers | 2 |
 
 Pipeline:
 
-normalized pose + kinematics
-→ projection
+normalized pose
+→ feature projection
 → positional encoding
-→ causal transformer block
-→ causal transformer block
+→ causal attention block
+→ causal attention block
 → motion embedding
-→ movement and phase heads
+→ movement classifier
+→ phase classifier
 
-SwiGLU is a candidate feed-forward activation.
+Candidate feed-forward activation:
 
-The exact dimensions are a starting hypothesis, not a permanent specification.
+$$
+SwiGLU(x)
+=
+(xW_1\odot Swish(xW_2))W_3.
+$$
+
+The parameter budget is a design target and must be measured after implementation.
 
 ## 4.5 Teacher-Student Knowledge Distillation
 
-Use a larger motion transformer offline on the RTX 3060 and distill its useful representations into a much smaller student.
+### 4.5.1 Distilling Large Motion Models
 
-Teacher
-→ teacher logits and motion embeddings
-→ student training
-→ quantization
-→ Galaxy A30s
+A large transformer can run offline on the RTX 3060.
 
-Combined loss:
+Teacher:
+MotionBERT/DSTformer-style model
+→ teacher embeddings and logits
+→ small student
+→ mobile quantization
 
-L_distill =
-alpha L_task
-+ beta L_soft
-+ gamma L_hidden
+Combined objective:
 
-Soft-target loss can use KL divergence with a temperature parameter.
+$$
+L_{distill}
+=
+\alpha L_{task}
++
+\beta L_{soft}
++
+\gamma L_{hidden}.
+$$
 
-Hidden representation loss can align projected teacher and student embeddings.
+Hard task loss:
 
-Candidate teachers include MotionBERT- or DSTformer-style architectures, but model choice must consider licensing, reproducibility, resource usage, and actual boxing-task improvement.
+$$
+L_{task}
+=
+-\sum_c y_c\log p_c.
+$$
 
-## Architecture Principle
+Soft loss:
 
-Use the transformer for temporal intelligence, not as a giant end-to-end image/video model on the target phone.
+$$
+L_{soft}
+=
+T^2
+D_{KL}
+(
+Softmax(z_t/T)
+\parallel
+Softmax(z_s/T)
+).
+$$
+
+Feature alignment:
+
+$$
+L_{hidden}
+=
+\frac1T
+\sum_t
+\|
+h_t^{teacher}
+-
+W_{proj}h_t^{student}
+\|_2^2.
+$$
+
+The teacher is an offline training component and does not need to ship with the phone.
 
 ## Core Connections
 
 - [[03. Signal Conditioning, Normalization, and Kinematics/Chapter 3. Conditioning and Kinematics]]
 - [[05. Biomechanical Modeling and Sequence Comparison/Chapter 5. Biomechanical Modeling]]
 - [[07. Edge Inference Runtime and Optimization/Chapter 7. Edge Runtime and Optimization]]
-- [[readme|Final Technical Report — Real-Time AI Boxing Coach]]
