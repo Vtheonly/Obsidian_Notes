@@ -200,4 +200,4 @@ The application should measure:
 - [[01. Mathematical and Theoretical Foundations/Chapter 1. Foundations]]
 - [[03. Signal Conditioning, Normalization, and Kinematics/Chapter 3. Conditioning and Kinematics]]
 - [[07. Edge Inference Runtime and Optimization/Chapter 7. Edge Runtime and Optimization]]
-- [[readme|Final Technical Report — Real-Time AI Boxing Coach]]
+- [[09. Project Architecture/01. Final Technical Report|Final Technical Report — Real-Time AI Boxing Coach]]
