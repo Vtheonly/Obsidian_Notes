@@ -11,10 +11,14 @@
             "id": "3a0bb45702d250ad",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Advanced Database Systems.md",
+                "mode": "preview",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Advanced Database Systems"
             }
           }
         ]
@@ -79,7 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 514.5
   },
   "right": {
     "id": "6133c85a489a9e8a",
@@ -182,5 +186,32 @@
     }
   },
   "active": "3a0bb45702d250ad",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "05 PLSQL and Database Programming/05 PLSQL and Database Programming.md",
+    "02 Integrity Management/02 Integrity Management.md",
+    "Advanced Database Systems.md",
+    "Quiz/Chapter_01/Q10.md",
+    "Quiz/Chapter_01/Q9.md",
+    "Quiz/Chapter_01/Q1.md",
+    "Quiz/Chapter_01/Q2.md",
+    "Quiz/Chapter_01/Q8.md",
+    "Quiz/Chapter_03/Q1.md",
+    "Quiz/Chapter_03/Q3.md",
+    "Quiz/Chapter_03/Q4.md",
+    "Quiz/Chapter_03/Q2.md",
+    "Quiz/Chapter_04/Q1.md",
+    "Quiz/Chapter_04/Q2.md",
+    "Quiz/Chapter_06/Q2.md",
+    "Quiz/Chapter_06/Q1.md",
+    "Quiz/Chapter_05/Q2.md",
+    "Quiz/Chapter_05/Q1.md",
+    "01 Fundamentals/10. Aggregation Nuances and Subquery Optimization/02 COUNT and Other Aggregate Functions.md",
+    "01 Fundamentals/10. Aggregation Nuances and Subquery Optimization/01 NULL and Aggregate Functions.md",
+    "01 Fundamentals/7. Advanced ER Concepts and Attribute Normalization/01 Ternary Associations and Repeated Events.md",
+    "01 Fundamentals/7. Advanced ER Concepts and Attribute Normalization/02 Composite and Multivalued Attributes.md",
+    "01 Fundamentals/6. Normalization and Functional Dependencies/01 Data Anomalies.md",
+    "01 Fundamentals/6. Normalization and Functional Dependencies/6. Normalization and Functional Dependencies.md",
+    "01 Fundamentals/10. Aggregation Nuances and Subquery Optimization/06 Aggregation and Subquery Exercises.md",
+    "01 Fundamentals/10. Aggregation Nuances and Subquery Optimization/05 EXISTS versus JOIN.md"
+  ]
 }
