@@ -1,40 +1,51 @@
 ---
 title: Chapter 5 — Biomechanical Modeling and Sequence Comparison
-tags: [boxing, ai, biomechanics, dtw, scoring, motion-reference]
+tags: [boxing, ai, biomechanics, dtw, reference-distributions, scoring]
 ---
 
-# Chapter 5: Biomechanical Modeling and Sequence Comparison
+# Chapter 5 — Biomechanical Modeling and Sequence Comparison
 
 ## 5.1 Kinetic Chains of Boxing
 
-A strike is a coordinated sequence across the body rather than an isolated arm action.
+### 5.1.1 Kinematics of the Kinetic Chain
 
-Useful chain abstraction:
+A technically coordinated punch can be modeled as a proximal-to-distal kinetic sequence:
 
-foot/base
-→ knee and hip
-→ pelvis
-→ torso
-→ shoulder/scapula
-→ elbow
-→ hand
+```mermaid
+mindmap
+  root((Proximal-to-Distal Kinetic Sequence))
+    Ground reaction
+      Foot drive
+    Axial rotation
+      Knee and pelvis
+    Core torque
+      Torso rotation
+    Shoulder release
+      Scapular contribution
+    Terminal strike
+      Elbow extension
+      Wrist position
+```
 
-Study the temporal relationship of segment angular velocities rather than assuming one universal fixed timing.
+The curriculum proposes checking the ordering of peak segment angular velocities:
 
-### 5.1.1 Kinetic Chain Evaluation
+$$
+t_{peak}(\dot\theta_{foot})
+\le
+t_{peak}(\dot\theta_{pelvis})
+\le
+t_{peak}(\dot\theta_{torso})
+\le
+t_{peak}(\dot\theta_{shoulder})
+\le
+t_{peak}(\dot\theta_{elbow}).
+$$
 
-The system can investigate:
-
-- arm-only initiation
-- insufficient lower-body contribution
-- unstable base
-- excessive torso compensation
-- poor recovery
-- guard-hand drop
+This ordering should be treated as a hypothesis to validate against real boxing data, not a universal requirement for every punch or style.
 
 ### 5.1.2 Punch Phase Decomposition
 
-Five useful phases:
+Five phases:
 
 1. Preparation
 2. Initiation
@@ -42,98 +53,342 @@ Five useful phases:
 4. Peak extension
 5. Retraction/recovery
 
-The state engine can use wrist velocity, acceleration, articulation, trajectory, guard position, and recovery direction to identify these phases.
+Reference table:
+
+| Phase | Entry condition | Main checks |
+|---|---|---|
+| Preparation | wrist velocity low and guard active | stance, balance, guard |
+| Initiation | wrist velocity crosses initiation threshold | telegraphing, base |
+| Acceleration | wrist acceleration increases | path and guard |
+| Peak extension | extension approaches terminal position | extension, alignment |
+| Retraction | wrist reverses toward guard | recovery speed/path |
+
+An implementation may model wrist velocity, acceleration, elbow angle, torso rotation, feet, and guard position jointly.
 
 ## 5.2 Dynamic Time Warping
 
-### 5.2.1 Dynamic Programming
+### 5.2.1 Dynamic Programming Formulation
 
-Two similar punches can have different durations.
+Euclidean frame-by-frame comparison is sensitive to execution speed.
 
-DTW finds a monotonic alignment path minimizing cumulative local distance.
+$$
+D_{Euclidean}(X,Y)
+=
+\sum_t\|x_t-y_t\|_2.
+$$
 
-D(i,j) = cost(i,j) + min(
-    D(i-1,j),
-    D(i,j-1),
-    D(i-1,j-1)
-)
+DTW instead searches for an alignment path W minimizing cumulative cost:
 
-This lets a slower repetition be compared to a faster reference without imposing rigid one-to-one frame correspondence.
+$$
+DTW(X,Y)
+=
+\min_W
+\sum_k
+c(x_{i_k},y_{j_k}).
+$$
 
-A mobile implementation should reuse memory efficiently and avoid unnecessary allocation.
+Boundary conditions:
+
+$$
+w_1=(1,1),
+\qquad
+w_K=(N,M).
+$$
+
+Monotonicity:
+
+$$
+i_{k+1}\ge i_k,
+\qquad
+j_{k+1}\ge j_k.
+$$
+
+Allowed steps:
+
+$$
+(1,0),
+\quad
+(0,1),
+\quad
+(1,1).
+$$
+
+Accumulated-cost recurrence:
+
+$$
+D(i,j)
+=
+c(x_i,y_j)
++
+\min
+\{
+D(i-1,j),
+D(i,j-1),
+D(i-1,j-1)
+\}.
+$$
+
+Kotlin baseline:
+
+```kotlin
+fun computeDTWDistance(
+    sequenceX: Array<FloatArray>,
+    sequenceY: Array<FloatArray>
+): Float {
+    val n = sequenceX.size
+    val m = sequenceY.size
+    val d = Array(n + 1) {
+        FloatArray(m + 1) { Float.POSITIVE_INFINITY }
+    }
+
+    d[0][0] = 0f
+
+    for (i in 1..n) {
+        for (j in 1..m) {
+            val cost = euclideanDistance(
+                sequenceX[i - 1],
+                sequenceY[j - 1]
+            )
+            d[i][j] = cost + minOf(
+                d[i - 1][j],
+                d[i][j - 1],
+                d[i - 1][j - 1]
+            )
+        }
+    }
+
+    return d[n][m]
+}
+
+private fun euclideanDistance(
+    a: FloatArray,
+    b: FloatArray
+): Float {
+    var sum = 0f
+    for (i in a.indices) {
+        val diff = a[i] - b[i]
+        sum += diff * diff
+    }
+    return kotlin.math.sqrt(sum)
+}
+```
 
 ### 5.2.2 Sakoe-Chiba Band
 
-Constrain the alignment with:
+Constrain the path:
 
-|i - j| <= R
+$$
+|i-j|\le R.
+$$
 
-This reduces computation and prevents pathological temporal stretching.
+Complexity becomes approximately:
 
-The radius R should be tuned from the real dataset.
+$$
+O(R\min(N,M))
+$$
+
+instead of:
+
+$$
+O(NM).
+$$
+
+The band also prevents pathological alignments that stretch one short movement phase over a long reference phase.
+
+The proposed radius should be benchmarked from actual repetition-speed variation.
 
 ## 5.3 Multi-Reference Distribution Modeling
 
-A single reference punch is too rigid.
+### 5.3.1 Statistical Motion Envelopes
 
-Build references from many athletes and repetitions covering:
+A single "perfect" reference punishes legitimate athlete variation.
 
-- different body proportions
+The dataset should include:
+
+- multiple athletes
+- different heights and proportions
 - orthodox and southpaw
 - multiple speeds
+- repeated executions
 - different camera distances
 - legitimate stylistic variation
 
-For aligned phase tau:
+After temporal normalization:
 
-x_ref(tau) ~ Gaussian(mu(tau), Sigma(tau))
+$$
+x_{ref}(\tau)
+\sim
+\mathcal{N}
+(\mu(\tau),\Sigma(\tau)).
+$$
 
-Evaluate a user point using Mahalanobis distance:
+Mean:
 
-D_M = sqrt((x - mu)^T Sigma^-1 (x - mu))
+$$
+\mu(\tau)
+=
+\frac1K
+\sum_{k=1}^K
+x_k(\tau).
+$$
 
-High-variance dimensions are penalized less; highly consistent technical dimensions are penalized more.
+Covariance:
+
+$$
+\Sigma(\tau)
+=
+\frac1{K-1}
+\sum_{k=1}^K
+(x_k-\mu)
+(x_k-\mu)^T
++
+\epsilon I.
+$$
+
+Mahalanobis distance:
+
+$$
+D_M
+=
+\sqrt{
+(x_{user}-\mu)^T
+\Sigma^{-1}
+(x_{user}-\mu)
+}.
+$$
+
+This makes the penalty depend on how much legitimate variation exists in each feature.
 
 ## 5.4 Decomposed Biomechanical Scoring
 
-Avoid a mysterious single percentage.
+Suggested components:
 
-Recommended components:
+1. Trajectory Accuracy
+2. Kinetic Velocity/Acceleration
+3. Guard Discipline
+4. Stance Stability
+5. Temporal Rhythm
 
-1. trajectory accuracy
-2. kinetic timing and velocity
-3. guard discipline
-4. stance stability
-5. temporal rhythm and recovery
+Trajectory example:
 
-A trajectory score can be derived from accumulated reference-distribution distance.
+$$
+S_{traj}
+=
+100
+\exp
+\left(
+-\frac{1}{2\lambda T}
+\sum_\tau D_M(x_{user}(\tau),\mu(\tau))
+\right).
+$$
 
-The output should explain the reason for a low component score.
+Kinetic score:
 
-Example:
+$$
+S_{kin}
+=
+100
+\min
+\left(
+1,
+\frac{
+\max_t\|a_{wrist}(t)\|_2
+}{
+\max_\tau\|a_{ref}(\tau)\|_2
+}
+\right).
+$$
 
-Trajectory: strong
-Guard discipline: weak
-Stance stability: strong
-Recovery: moderate
+Guard score:
 
-This produces actionable coaching instead of a black-box number.
+$$
+S_{guard}
+=
+100
+\left(
+1-
+\frac1T
+\sum_t
+ReLU
+\left(
+\frac{
+\|p_{rear\_wrist}(t)-p_{chin}(t)\|_2-d_{safe}
+}{
+d_{safe}
+}
+\right)
+\right).
+$$
 
-## 5.5 Expert Annotation
+Stance-base score:
 
-Reference distributions require expert-defined technical meaning.
+$$
+S_{base}
+=
+100
+\left(
+1-
+\frac1T
+\sum_t
+\frac{
+|W_{feet}(t)-W_{ideal}|
+}{
+W_{ideal}
+}
+\right).
+$$
 
-The dataset should label events such as:
+Extension/retraction ratio:
 
-- rear hand drop
-- elbow flare
+$$
+R_{ext/ret}
+=
+\frac{T_{extension}}{T_{retraction}}.
+$$
+
+Rhythm score:
+
+$$
+S_{rhythm}
+=
+100
+\exp
+\left(
+-\frac{
+(R_{ext/ret}-R_{ref})^2
+}{
+2\sigma_{rhythm}^2
+}
+\right).
+$$
+
+These formulas are starting models. Their thresholds, scaling, and even usefulness must be validated against expert-labeled data.
+
+## 5.5 Dataset and Expert Annotation
+
+Each repetition should contain:
+
+- video
+- pose sequence
+- confidence values
+- movement label
+- phase labels
+- stance
+- side
+- timing
+- technical annotations
+
+Example annotation categories:
+
+- rear hand low
 - excessive lean
-- poor recovery
+- elbow flare
+- recovery slow
 - foot crossing
-- weak base
-- inefficient trajectory
+- trajectory deviation
+- unstable stance
 
-Statistical similarity alone is not a substitute for expert knowledge.
+Open datasets and third-party models must be checked individually for licensing and redistribution/training permissions.
 
 ## Core Connections
 
