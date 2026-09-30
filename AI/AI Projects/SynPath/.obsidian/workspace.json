@@ -1,0 +1,223 @@
+{
+  "main": {
+    "id": "7ac58874c28523d2",
+    "type": "split",
+    "children": [
+      {
+        "id": "68484c63dab78d74",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cae216cc275c18e6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "SynPath-3D Technical Specification & System Architecture/1. 3. 6-Layer Equiformer-Light Pocket Backbone.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "1. 3. 6-Layer Equiformer-Light Pocket Backbone"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0b31d2e9009def70",
+    "type": "split",
+    "children": [
+      {
+        "id": "dcf3ad89477a4117",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7c77b8e7a27a725a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "2e2967b3b87a1a9b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "293d825f81c24eb7",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c8e58b1382e19573",
+    "type": "split",
+    "children": [
+      {
+        "id": "07476f1cd7015183",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7f922b3a4cf8ad05",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "SynPath-3D Computational Systems & Deep Learning Vault/1. 1. Limitations of Grid Convolutions for Molecular Geometry.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "f92ca72efa5d55ee",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "SynPath-3D Computational Systems & Deep Learning Vault/1. 1. Limitations of Grid Convolutions for Molecular Geometry.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "22481640407b01d5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "078ea2a1e4cfd437",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "10db26b0936298cf",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "SynPath-3D Computational Systems & Deep Learning Vault/1. 1. Limitations of Grid Convolutions for Molecular Geometry.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "cae216cc275c18e6",
+  "lastOpenFiles": [
+    "SynPath-3D Technical Specification & System Architecture/1. 2. Component Lifecycle: Kept, Removed, Replaced, and Redesigned.md",
+    "SynPath-3D Technical Specification & System Architecture/1. 1. Overall System Architecture and Modular Decomposition.md",
+    "SynPath-3D Computational Systems & Deep Learning Vault/1. 1. Limitations of Grid Convolutions for Molecular Geometry.md",
+    "SynPath-3D Technical Specification & System Architecture/Introduction.md",
+    "SynPath-3D Technical Specification & System Architecture/9. 2. Bemis-Murcko Scaffold Exclusion and Generalization Tests.md",
+    "SynPath-3D Technical Specification & System Architecture/9. 1. Bipartite Sequence and Structural Clustering Protocol.md",
+    "SynPath-3D Technical Specification & System Architecture/8. 3. Receptor Protonation and Tautomer Optimization via Protoss.md",
+    "SynPath-3D Technical Specification & System Architecture/8. 2. Electron Density Validation via EDIA Scoring.md",
+    "SynPath-3D Technical Specification & System Architecture/8. 1. Diffraction Quality, Resolution, and R-Free Gateways.md",
+    "SynPath-3D Technical Specification & System Architecture/7. 2. Automated Download, Checksumming, and Verification Pipeline.md",
+    "SynPath-3D Technical Specification & System Architecture/7. 1. Raw Source Repositories, APIs, and Mirrored Storage.md",
+    "SynPath-3D Technical Specification & System Architecture/6. 3. Pre-Featurized In-RAM Sharding Infrastructure.md",
+    "SynPath-3D Technical Specification & System Architecture/6. 2. Ingestion Rules for PDBbind, MOAD, and CrossDocked.md",
+    "SynPath-3D Technical Specification & System Architecture/6. 1. Multi-Source Structural Biology Corpus Architecture.md",
+    "SynPath-3D Technical Specification & System Architecture/5. 3. Spatial Distance Biasing and Frame Equivariance Proofs.md",
+    "SynPath-3D Technical Specification & System Architecture/5. 2. Analytical 3D-RISM Cavity Hydration Distillation.md",
+    "SynPath-3D Technical Specification & System Architecture/5. 1. All-Atom Pocket Featurization with FreeSASA and Formal Charges.md",
+    "SynPath-3D Technical Specification & System Architecture/4. 4. Isotopic Atom Provenance and Stereochemical Parity Conservation.md",
+    "SynPath-3D Technical Specification & System Architecture/4. 3. Deterministic Pushdown Automata Synthesis Grammar.md",
+    "SynPath-3D Technical Specification & System Architecture/4. 2. Stratified 75,000 Enamine REAL Synthon Catalog.md",
+    "SynPath-3D Technical Specification & System Architecture/4. 1. The 24 Certified Stereo-Preserving Reaction Grammar.md",
+    "SynPath-3D Technical Specification & System Architecture/3. 3. Differentiable Thermodynamic Phys-Score Reward Functional.md",
+    "SynPath-3D Technical Specification & System Architecture/3. 2. Stage-2 Sub-Trajectory Balance (SubTB) GFlowNet Objective.md",
+    "SynPath-3D Technical Specification & System Architecture/3. 1. Stage-1 Multi-Task Loss with Homoscedastic Uncertainty.md",
+    "SynPath-3D Technical Specification & System Architecture/22. 1. Eighteen Foundational Questions and Definitive Solutions.md",
+    "SynPath-3D Technical Specification & System Architecture/21. 1. Direct Mapping Between Theoretical Formulations and Source Files.md",
+    "SynPath-3D Technical Specification & System Architecture",
+    "Technical Specification & System Architecture",
+    "code"
+  ]
+}
