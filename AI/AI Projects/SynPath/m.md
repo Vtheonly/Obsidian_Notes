@@ -1,3 +1,23 @@
+# Canonical Architecture Notice
+
+> [!IMPORTANT]
+> The canonical SynPath-3D architecture is defined by **0.1. Master Architectural Overhaul and Canonical Revision** and the canonical component notes under **SynPath-3D Technical Specification & System Architecture**.
+>
+> This file is a large working engineering archive. Older terminology such as ENSF, fixed TIF anchors, DPDA state, dense catalog scoring, DLS correction, and mandatory MMFF94s minimization may still appear in archived material below. Those references must not be used to override the canonical specification.
+>
+> Canonical replacements are:
+> - HENF continuous hydration field
+> - CPDF adaptive pharmacophore field
+> - hierarchical reaction + top-128 synthon retrieval
+> - finite-state functional-handle bitsets
+> - compliant PoE
+> - energy-guided torus flow
+> - pruned SubTB with hard validity gates
+>
+> This notice is part of the current state of the archive, not a historical migration note.
+
+---
+
 # SynPath-3D Project Engineering Vault
 ## The Definitive Technical Specification & System Architecture
 
