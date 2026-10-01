@@ -48,9 +48,9 @@ SynPath-3D AI Systems Knowledge System
 │   └── 10.3. Numerical Integration Schemes: Euler versus Midpoint ODE Solvers.md
 ├── 11. The Complete End-to-End System Architecture
 │   ├── 11.1. Pocket Backbone: 6-Layer Equiformer-Light Forward Walkthrough.md
-│   ├── 11.2. The Teleological Target Interaction Field Anchor Module.md
-│   ├── 11.3. Discrete Heads: 24-Class Reaction and 75k-Synthon Selection.md
-│   └── 11.4. Continuous Head: Coupled Torus Riemannian Flow Matching.md
+│   ├── 11.2. Continuous Pharmacophore Density Field (CPDF).md
+│   ├── 11.3. Discrete Heads: Reaction Selection and Hierarchical Synthon Retrieval.md
+│   └── 11.4. Energy-Guided Coupled Torus Flow Matching.md
 ├── 12. Complete Tensor Lifecycle and Information Flow
 │   ├── 12.1. Exact Input Dimension Manifest: From PyG Batch to Latent Spaces.md
 │   ├── 12.2. Tensor Dimension Evolution Table Across Every Forward Layer.md
