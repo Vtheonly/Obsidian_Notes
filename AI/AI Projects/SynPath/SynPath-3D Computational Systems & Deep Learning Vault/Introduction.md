@@ -1,3 +1,10 @@
+> [!IMPORTANT]
+> Canonical architecture is governed by [[0. 0. SynPath-3D Vault Coherence Contract]] and the Technical Specification vault. This learning vault explains the implementation concepts behind that architecture.
+>
+> The current production stack is: ensemble-conditioned Equiformer-Light → HENF → CPDF → spatial planning → 24-class legal reaction → 263-D target profile → ANN top-128 retrieval → contextual re-ranking → compliant PoE + energy-guided torus flow → validation → pruned SubTB.
+>
+> Retired mechanisms may appear only as historical comparisons or ablations; they do not define production behavior.
+
 # SynPath-3D Computational Systems & Deep Learning Vault
 ## Engineering Reference Manual & Technical Foundations
 
