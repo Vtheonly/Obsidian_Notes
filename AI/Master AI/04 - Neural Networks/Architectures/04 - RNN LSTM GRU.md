@@ -13,34 +13,399 @@ aliases: [RNN LSTM GRU]
 
 ## Vanilla RNN
 
-At each timestep, the RNN updates its hidden state:
+A **vanilla RNN (Recurrent Neural Network)** is a neural network whose defining architectural feature is a state that is carried from one timestep to the next.
+
+The important idea is not simply that an RNN "processes sequences." It is that the computation at timestep $t$ receives **both the current input $x_t$ and the previous hidden state $h_{t-1}$**, and produces a new hidden state $h_t$:
 
 $$
-\mathbf{h}_t = \tanh(\mathbf{W}_h \mathbf{h}_{t-1} + \mathbf{W}_x \mathbf{x}_t + \mathbf{b})
+(x_t, h_{t-1}) \rightarrow \boxed{\text{RNN cell}} \rightarrow h_t
 $$
 
-The same weights $\mathbf{W}_h, \mathbf{W}_x$ are used at every timestep (weight sharing across time, like CNNs across space).
+The hidden state is therefore the mechanism that carries information from the past into the present.
 
-The output can be:
-- The hidden state itself (e.g., for sequence labeling).
-- A transformation of the hidden state: $\mathbf{y}_t = \mathbf{W}_y \mathbf{h}_t$ (e.g., for next-token prediction).
-- The final hidden state (e.g., for sequence classification).
+### 1. The RNN architecture
 
-### Why RNNs seemed great
+Consider a sequence:
 
-- Handle variable-length sequences naturally.
-- Share weights across time (parameter-efficient).
-- Maintain a "memory" of past inputs.
-- Can process streaming data (one token at a time).
+$$
+x_1, x_2, x_3, \ldots, x_T
+$$
 
-### The problem: vanishing/exploding gradients
+At every timestep, the **same RNN cell** is applied again. The cell does not get a new set of weights for each position. It reuses the same learned parameters while the hidden state changes.
 
-When you backpropagate through time (BPTT), the gradient flows through the recurrence $\mathbf{h}_t = \tanh(\mathbf{W}_h \mathbf{h}_{t-1} + \ldots)$. The gradient is multiplied by $\mathbf{W}_h$ (and the tanh derivative) at each step.
+A single timestep looks like this:
 
-- If $\|\mathbf{W}_h\| < 1$ (in the relevant sense), the gradient decays exponentially with sequence length — **vanishing gradient**. The model can't learn long-range dependencies.
-- If $\|\mathbf{W}_h\| > 1$, the gradient explodes — **exploding gradient**. Training diverges.
+~~~mermaid
+flowchart LR
+    X["Current input x_t"] --> C["RNN cell"]
+    Hprev["Previous hidden state h_{t-1}"] --> C
+    C --> H["New hidden state h_t"]
+    H --> Y["Output y_t"]
+~~~
 
-Practically, vanilla RNNs can't reliably learn dependencies past ~20 timesteps.
+The recurrent connection is the path from $h_{t-1}$ into the next application of the same cell.
+
+Unrolling the same cell through time makes this explicit:
+
+~~~mermaid
+flowchart LR
+    H0["h₀"] --> C1["RNN cell"]
+    X1["x₁"] --> C1
+    C1 --> H1["h₁"]
+    H1 --> C2["RNN cell"]
+    X2["x₂"] --> C2
+    C2 --> H2["h₂"]
+    H2 --> C3["RNN cell"]
+    X3["x₃"] --> C3
+    C3 --> H3["h₃"]
+~~~
+
+This is not three different cells with three different parameter sets. It is **one cell reused three times**:
+
+$$
+\text{RNN cell}_{\theta}
+\rightarrow
+\text{RNN cell}_{\theta}
+\rightarrow
+\text{RNN cell}_{\theta}
+$$
+
+where the same parameters $\theta = \{W_x, W_h, b_h, W_y, b_y\}$ are shared across all timesteps.
+
+### 2. What exactly is the hidden state?
+
+The hidden state $h_t$ is a learned vector that represents the information the RNN chooses to carry forward from the sequence processed so far.
+
+After processing timestep $t$:
+
+$$
+h_t = \text{state summarizing relevant information from } x_1, \ldots, x_t
+$$
+
+It is **not** a separate database containing the previous inputs, and it is not a human-readable memory. It is a numerical representation learned during training.
+
+For example, if the sequence is:
+
+> "The cat sat on the ..."
+
+the hidden state after processing "The cat sat on the" can encode information useful for predicting what comes next. The exact information stored is learned automatically; we do not manually assign meanings to individual dimensions.
+
+The crucial recurrence is:
+
+$$
+h_{t-1}
+\xrightarrow{\text{combined with }x_t}
+h_t
+$$
+
+Therefore:
+
+- $h_0$ represents the state **before any input has been processed**.
+- $h_1$ contains information derived from $x_1$ and $h_0$.
+- $h_2$ contains information derived from $x_2$ and $h_1$, and therefore indirectly from $x_1$.
+- $h_3$ depends on $x_3$ and $h_2$, and therefore indirectly on $x_1$ and $x_2$.
+- This continues through the entire sequence.
+
+This is why the hidden state is often called the RNN's **memory**.
+
+### 3. How is the hidden state initialized?
+
+Before the first timestep, there is no previous sequence state, so we need $h_0$.
+
+The most common choice is a zero vector:
+
+$$
+h_0 = \mathbf{0}
+$$
+
+For a batch, if the hidden dimension is $d_h$ and the batch size is $B$:
+
+$$
+h_0 \in \mathbb{R}^{B \times d_h}
+$$
+
+Zero initialization does **not** mean the model has no memory mechanism. It simply means there is no information from an earlier timestep at the beginning of this sequence. The model then builds its state as it processes $x_1, x_2, \ldots$.
+
+Some architectures can instead learn an initial state, but zero initialization is the standard conceptual starting point.
+
+### 4. The actual computation inside the RNN cell
+
+The vanilla RNN first combines the current input with the previous hidden state:
+
+$$
+z_t = W_x x_t + W_h h_{t-1} + b_h
+$$
+
+and then applies a nonlinear activation, traditionally $\tanh$:
+
+$$
+\boxed{
+h_t = \tanh(W_x x_t + W_h h_{t-1} + b_h)
+}
+$$
+
+This is the central equation of a vanilla RNN.
+
+The output can then be produced from the new hidden state:
+
+$$
+\boxed{
+y_t = W_y h_t + b_y
+}
+$$
+
+The output equation is optional depending on the task. The hidden-state recurrence is the defining part of the RNN.
+
+### 5. What every term means
+
+Assume:
+
+- input dimension = $d_x$
+- hidden-state dimension = $d_h$
+- output dimension = $d_y$
+
+For one sample at one timestep:
+
+$$
+x_t \in \mathbb{R}^{d_x}
+$$
+
+$$
+h_{t-1}, h_t \in \mathbb{R}^{d_h}
+$$
+
+$$
+y_t \in \mathbb{R}^{d_y}
+$$
+
+The parameters are:
+
+| Parameter | Shape | Purpose |
+|---|---:|---|
+| $W_x$ | $d_h \times d_x$ | Transforms the current input into hidden space |
+| $W_h$ | $d_h \times d_h$ | Transforms the previous hidden state |
+| $b_h$ | $d_h$ | Hidden-layer bias |
+| $W_y$ | $d_y \times d_h$ | Maps hidden state to output space |
+| $b_y$ | $d_y$ | Output bias |
+
+The dimensions make the recurrence valid:
+
+$$
+W_xx_t \in \mathbb{R}^{d_h}
+$$
+
+$$
+W_hh_{t-1} \in \mathbb{R}^{d_h}
+$$
+
+so:
+
+$$
+W_xx_t + W_hh_{t-1} + b_h \in \mathbb{R}^{d_h}
+$$
+
+and therefore:
+
+$$
+h_t \in \mathbb{R}^{d_h}
+$$
+
+For a batch, the sequence input is usually represented as:
+
+$$
+X \in \mathbb{R}^{B \times T \times d_x}
+$$
+
+and the sequence of hidden states as:
+
+$$
+H \in \mathbb{R}^{B \times T \times d_h}
+$$
+
+where $B$ is batch size and $T$ is sequence length.
+
+### 6. What happens at every timestep?
+
+Suppose the input sequence contains three vectors:
+
+$$
+x_1, x_2, x_3
+$$
+
+Start with:
+
+$$
+h_0 = 0
+$$
+
+At timestep 1:
+
+$$
+h_1 = \tanh(W_xx_1 + W_hh_0 + b_h)
+$$
+
+At timestep 2:
+
+$$
+h_2 = \tanh(W_xx_2 + W_hh_1 + b_h)
+$$
+
+At timestep 3:
+
+$$
+h_3 = \tanh(W_xx_3 + W_hh_2 + b_h)
+$$
+
+Notice what happens to information from $x_1$.
+
+It affects $h_1$, which affects $h_2$, which affects $h_3$:
+
+$$
+x_1 \rightarrow h_1 \rightarrow h_2 \rightarrow h_3
+$$
+
+So even though the RNN receives $x_3$ at the third timestep, the computation can still depend on information carried from earlier inputs through the hidden state.
+
+### 7. The RNN cell versus the unrolled architecture
+
+These are two views of the same network.
+
+**Cell view:** describes the computation performed once.
+
+$$
+(x_t,h_{t-1}) \rightarrow h_t
+$$
+
+**Unrolled view:** shows what happens when the cell is repeatedly applied to a sequence.
+
+$$
+(x_1,h_0) \rightarrow h_1
+$$
+
+$$
+(x_2,h_1) \rightarrow h_2
+$$
+
+$$
+(x_3,h_2) \rightarrow h_3
+$$
+
+$$
+\cdots
+$$
+
+The unrolled representation makes the recurrence visible, while the cell representation makes parameter sharing visible.
+
+### 8. Why the architecture is called "recurrent"
+
+A feed-forward layer normally sends information in one direction:
+
+$$
+x \rightarrow y
+$$
+
+An RNN introduces a recurrence across timesteps:
+
+$$
+h_{t-1} \rightarrow \boxed{\text{same RNN cell}} \rightarrow h_t
+$$
+
+The state produced at one timestep becomes part of the input to the cell at the next timestep.
+
+That recurrence is the architectural feature that distinguishes an RNN from an ordinary feed-forward network.
+
+### 9. Weight sharing across time
+
+The same parameters are used at every timestep:
+
+$$
+W_x^{(1)} = W_x^{(2)} = \cdots = W_x
+$$
+
+$$
+W_h^{(1)} = W_h^{(2)} = \cdots = W_h
+$$
+
+There is therefore no separate parameter set for "position 1", "position 2", or "position 100".
+
+This gives RNNs two important properties:
+
+1. They naturally handle sequences of different lengths.
+2. The number of learned parameters does not grow with sequence length.
+
+The sequence length affects how many times the cell is executed, not how many copies of its parameters are learned.
+
+### 10. Where does the output come from?
+
+Different sequence tasks use the hidden states differently.
+
+**Many-to-one:** use the final hidden state for a single prediction.
+
+$$
+x_1,x_2,\ldots,x_T \rightarrow h_T \rightarrow y
+$$
+
+Example: classify an entire sentence as positive or negative.
+
+**Many-to-many:** produce an output at every timestep.
+
+$$
+x_t \rightarrow h_t \rightarrow y_t
+$$
+
+Example: assign a label to every token.
+
+**Sequence-to-sequence:** an RNN encoder can process one sequence into hidden state(s), which a decoder RNN uses to generate another sequence. This is covered in the Seq2Seq note.
+
+The important distinction is that the **hidden-state recurrence is the core RNN architecture**; the way outputs are attached depends on the task.
+
+### 11. Why the hidden state creates a bottleneck
+
+The hidden state has a fixed dimension $d_h$, regardless of how long the input sequence becomes.
+
+Therefore, after many timesteps, information from the entire prefix:
+
+$$
+x_1, x_2, \ldots, x_t
+$$
+
+must be represented through the current state:
+
+$$
+h_t
+$$
+
+This is powerful because it gives the model a compact running state, but it is also a limitation. Information can be progressively overwritten or become difficult to preserve over many recurrent updates.
+
+This limitation is directly connected to the vanishing-gradient problem and motivates LSTM and GRU architectures.
+
+### 12. Why vanilla RNNs suffer from vanishing/exploding gradients
+
+When training an RNN, we usually use **Backpropagation Through Time (BPTT)**. Conceptually, the recurrent cell is unrolled into a deep computation graph and ordinary backpropagation is applied through the timesteps.
+
+Because:
+
+$$
+h_t = \tanh(W_hh_{t-1} + W_xx_t + b_h)
+$$
+
+the gradient must repeatedly pass through the recurrent transformation $W_h$ and the derivative of $\tanh$.
+
+Over many timesteps, this creates a product of Jacobians:
+
+$$
+\frac{\partial L}{\partial h_0}
+=
+\frac{\partial L}{\partial h_T}
+\prod_{t=1}^{T}
+\frac{\partial h_t}{\partial h_{t-1}}
+$$
+
+Repeated multiplication can make gradients shrink toward zero (**vanishing gradients**) or grow uncontrollably (**exploding gradients**).
+
+This means that although the hidden state theoretically carries information arbitrarily far into the sequence, vanilla RNNs have difficulty **learning** long-range dependencies reliably.
+
+That is the architectural problem that LSTM and GRU attempt to address.
 
 ## LSTM (Long Short-Term Memory)
 
