@@ -1,26 +1,41 @@
+/* ============================================================
+   Heatmap of Notes — v1.1.0
+   ============================================================ */
+
 /* Container for the vertical graph track */
 .frh-heatmap-wrapper {
   position: absolute;
   top: 0;
   bottom: 0;
-  right: 12px; /* Positioned left of the scrollbar to avoid blocking scroll actions */
+  right: 12px; /* left of the scrollbar */
   width: 16px;
-  z-index: 99; /* Stay above workspace text blocks */
+  z-index: 20;
   background: rgba(128, 128, 128, 0.02);
   border-left: 1px solid var(--background-modifier-border);
   border-right: 1px solid var(--background-modifier-border);
-  pointer-events: auto; /* Active pointer events to support hover tooltips */
+  pointer-events: auto; /* hover tooltips on desktop */
   user-select: none;
   -webkit-user-select: none;
   opacity: 0.85;
-  transition:
-    opacity 0.2s,
-    width 0.2s;
+  transition: opacity 0.2s, width 0.2s;
 }
 
 .frh-heatmap-wrapper:hover {
   opacity: 1;
   background: rgba(128, 128, 128, 0.05);
+}
+
+/*
+ * Touch devices: the strip must NEVER intercept gestures. A pointer-events:
+ * auto strip along the right edge made scrolling from that edge impossible
+ * on phones/tablets. Hover tooltips don't exist on touch anyway.
+ */
+body.frh-touch-device .frh-heatmap-wrapper {
+  pointer-events: none;
+}
+body.frh-touch-device .frh-heatmap-wrapper:hover {
+  opacity: 0.85;
+  background: rgba(128, 128, 128, 0.02);
 }
 
 /* Heatmap canvas element */
@@ -29,6 +44,10 @@
   height: 100%;
   display: block;
   cursor: crosshair;
+}
+
+body.frh-touch-device .frh-heatmap-canvas {
+  cursor: default;
 }
 
 /* Floating interactive tooltip */
@@ -42,7 +61,7 @@
   font-size: 11px;
   line-height: 1.4;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
-  z-index: 10000;
+  z-index: var(--layer-tooltip, 1000);
   pointer-events: none;
   font-family: var(--font-interface);
   opacity: 0;
@@ -70,7 +89,7 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Adjustments for the settings interface */
+/* Settings interface */
 .frh-setting-hint {
   font-size: 11px;
   color: var(--text-muted);
@@ -78,7 +97,6 @@
   line-height: 1.4;
 }
 
-/* Styles for Timeline Tools Panel */
 .frh-tools-container {
   border: 1px solid var(--background-modifier-border);
   border-radius: 8px;
@@ -107,6 +125,7 @@
 .frh-dashboard-stat {
   display: flex;
   justify-content: space-between;
+  gap: 12px;
   padding: 6px 0;
   border-bottom: 1px dashed var(--background-modifier-border);
   font-size: 12px;
@@ -124,10 +143,19 @@
 .frh-stat-value {
   font-weight: 600;
   color: var(--text-normal);
+  text-align: right;
 }
 
 .frh-diagnostic-section {
   margin-top: 20px;
   padding-top: 16px;
   border-top: 1px solid var(--background-modifier-border);
+}
+
+/* Confirm modal button row */
+.frh-modal-button-row {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 12px;
 }

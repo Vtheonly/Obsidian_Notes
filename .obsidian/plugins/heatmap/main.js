@@ -1,41 +1,53 @@
-const {
-  Plugin,
-  PluginSettingTab,
-  Setting,
-  MarkdownView,
-  Notice,
-} = require("obsidian");
+"use strict";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-/* =========================================================================
-   1. UTILS & LOGGER MODULE
-   ========================================================================= */
+// heatmap-of-notes/src/main.ts
+var main_exports = {};
+__export(main_exports, {
+  default: () => HeatmapPlugin
+});
+module.exports = __toCommonJS(main_exports);
+var import_obsidian2 = require("obsidian");
 
-class HeatmapLogger {
+// heatmap-of-notes/src/logger.ts
+var HeatmapLogger = class {
   constructor(pluginId) {
     this.pluginId = pluginId;
     this.debugEnabled = false;
   }
-
   setDebug(enabled) {
     this.debugEnabled = enabled;
   }
-
   log(level, ...args) {
-    const timestamp = new Date().toISOString();
-    const prefix = `[${timestamp}] [${this.pluginId}] [${level}]`;
-    if (level === "DEBUG") {
-      if (this.debugEnabled) {
+    if (level === "DEBUG" && !this.debugEnabled) return;
+    const prefix = `[${this.pluginId}] [${level}]`;
+    switch (level) {
+      case "WARN":
+        console.warn(prefix, ...args);
+        break;
+      case "ERROR":
+        console.error(prefix, ...args);
+        break;
+      default:
         console.log(prefix, ...args);
-      }
-    } else if (level === "WARN") {
-      console.warn(prefix, ...args);
-    } else if (level === "ERROR") {
-      console.error(prefix, ...args);
-    } else {
-      console.log(prefix, ...args);
     }
   }
-
   debug(...args) {
     this.log("DEBUG", ...args);
   }
@@ -48,111 +60,98 @@ class HeatmapLogger {
   error(...args) {
     this.log("ERROR", ...args);
   }
-}
+};
+var logger = new HeatmapLogger("HeatmapOfNotes");
 
-const logger = new HeatmapLogger("HeatmapOfNotes");
-
-/* =========================================================================
-   2. ACTIVITY MONITOR MODULE
-   ========================================================================= */
-
-class ActivityMonitor {
-  constructor(idleThresholdSeconds) {
-    this.idleThresholdMs = idleThresholdSeconds * 1000;
-    this.lastActivityTime = Date.now();
-    this.boundHandlers = [];
-  }
-
-  setIdleThreshold(seconds) {
-    this.idleThresholdMs = seconds * 1000;
-    logger.debug(`Idle threshold updated to ${seconds}s.`);
-  }
-
-  recordActivity() {
-    this.lastActivityTime = Date.now();
-  }
-
-  start() {
-    this.recordActivity();
-
-    const handleEvent = () => {
-      this.recordActivity();
-    };
-
-    const events = [
-      "mousemove",
-      "keydown",
-      "wheel",
-      "touchstart",
-      "click",
-      "scroll",
-    ];
-    events.forEach((evt) => {
-      window.addEventListener(evt, handleEvent, { passive: true });
-      this.boundHandlers.push({
-        element: window,
-        event: evt,
-        handler: handleEvent,
-      });
-    });
-
-    document.addEventListener("visibilitychange", handleEvent);
-    this.boundHandlers.push({
-      element: document,
-      event: "visibilitychange",
-      handler: handleEvent,
-    });
-
-    logger.debug("ActivityMonitor listeners registered successfully.");
-  }
-
-  isUserActive() {
-    if (document.hidden) return false;
-    return Date.now() - this.lastActivityTime < this.idleThresholdMs;
-  }
-
-  destroy() {
-    this.boundHandlers.forEach(({ element, event, handler }) => {
-      element.removeEventListener(event, handler);
-    });
-    this.boundHandlers = [];
-    logger.debug("ActivityMonitor destroyed.");
-  }
-}
-
-/* =========================================================================
-   3. PERSISTENT STORAGE MODULE (DATABASE)
-   ========================================================================= */
-
-const DEFAULT_SETTINGS = {
+// heatmap-of-notes/src/types.ts
+var DEFAULT_HEATMAP_SETTINGS = {
   idleSeconds: 30,
   bucketCount: 100,
   heatmapWidth: 16,
   heatmapOffsetRight: 12,
   heatmapOpacity: 0.85,
-  refreshIntervalMs: 1000,
-  debugMode: false,
+  refreshIntervalMs: 1e3,
+  debugMode: false
 };
 
-class HeatmapDatabase {
-  constructor(plugin) {
-    this.plugin = plugin;
-    this.settings = Object.assign({}, DEFAULT_SETTINGS);
-    this.records = {};
-    this.lastSaveTime = Date.now();
+// heatmap-of-notes/src/storage.ts
+function resizeArray(arr, targetSize) {
+  if (arr.length === targetSize) return arr;
+  const resized = Array(targetSize).fill(0);
+  if (arr.length === 0) return resized;
+  for (let i = 0; i < targetSize; i++) {
+    const srcIndex = i / targetSize * arr.length;
+    const low = Math.floor(srcIndex);
+    const high = Math.min(arr.length - 1, Math.ceil(srcIndex));
+    const weight = srcIndex - low;
+    resized[i] = Math.round(arr[low] * (1 - weight) + arr[high] * weight);
   }
-
+  return resized;
+}
+function remapRecordPaths(records, oldPath, newPath) {
+  if (!oldPath || !newPath || oldPath === newPath) return 0;
+  let moved = 0;
+  if (oldPath in records) {
+    records[newPath] = records[oldPath];
+    delete records[oldPath];
+    moved++;
+  }
+  const prefix = `${oldPath}/`;
+  for (const key of Object.keys(records)) {
+    if (key.startsWith(prefix)) {
+      const remapped = `${newPath}/${key.slice(prefix.length)}`;
+      if (!(remapped in records)) {
+        records[remapped] = records[key];
+        moved++;
+      }
+      delete records[key];
+    }
+  }
+  return moved;
+}
+function pruneDeletedRecords(records, fileExists) {
+  const removed = [];
+  for (const key of Object.keys(records)) {
+    if (!fileExists(key)) {
+      delete records[key];
+      removed.push(key);
+    }
+  }
+  return removed;
+}
+function clampInt(value, min, max, fallback) {
+  if (typeof value !== "number" || !Number.isFinite(value)) return fallback;
+  return Math.round(Math.min(Math.max(value, min), max));
+}
+function normalizeHeatmapSettings(raw) {
+  const merged = { ...DEFAULT_HEATMAP_SETTINGS, ...raw != null ? raw : {} };
+  merged.idleSeconds = clampInt(merged.idleSeconds, 5, 600, DEFAULT_HEATMAP_SETTINGS.idleSeconds);
+  merged.bucketCount = clampInt(merged.bucketCount, 10, 400, DEFAULT_HEATMAP_SETTINGS.bucketCount);
+  merged.heatmapWidth = clampInt(merged.heatmapWidth, 8, 48, DEFAULT_HEATMAP_SETTINGS.heatmapWidth);
+  merged.heatmapOffsetRight = clampInt(merged.heatmapOffsetRight, 0, 80, DEFAULT_HEATMAP_SETTINGS.heatmapOffsetRight);
+  merged.heatmapOpacity = Math.min(Math.max(Number(merged.heatmapOpacity) || DEFAULT_HEATMAP_SETTINGS.heatmapOpacity, 0.1), 1);
+  merged.refreshIntervalMs = clampInt(merged.refreshIntervalMs, 250, 5e3, DEFAULT_HEATMAP_SETTINGS.refreshIntervalMs);
+  merged.debugMode = Boolean(merged.debugMode);
+  return merged;
+}
+var _HeatmapDatabase = class _HeatmapDatabase {
+  constructor(plugin) {
+    this.settings = { ...DEFAULT_HEATMAP_SETTINGS };
+    this.records = {};
+    this.lastSaveAt = 0;
+    this.dirty = false;
+    this.plugin = plugin;
+  }
   async load() {
+    var _a;
     try {
-      const rawData = await this.plugin.loadData();
-      if (rawData) {
-        this.settings = Object.assign(
-          {},
-          DEFAULT_SETTINGS,
-          rawData.settings || {},
-        );
-        this.records = rawData.records || {};
-        logger.setDebug(this.settings.debugMode);
+      const raw = await this.plugin.loadData();
+      if (raw) {
+        this.settings = normalizeHeatmapSettings(raw.settings);
+        this.records = (_a = raw.records) != null ? _a : {};
+        for (const path of Object.keys(this.records)) {
+          this.records[path] = this.normalizeRecord(this.records[path], this.settings.bucketCount);
+        }
         logger.info("Database loaded successfully.");
       } else {
         logger.info("No existing database found. Creating a fresh copy.");
@@ -161,163 +160,186 @@ class HeatmapDatabase {
       logger.error("Failed to load database from disk. Using defaults.", err);
     }
   }
-
+  /**
+   * Normalizes a record's fields IN PLACE (so callers holding the record
+   * reference keep mutating the stored object) and returns it.
+   */
+  normalizeRecord(record, bucketCount) {
+    if (!Array.isArray(record.buckets) || record.buckets.length !== bucketCount) {
+      record.buckets = resizeArray(Array.isArray(record.buckets) ? record.buckets : [], bucketCount);
+    }
+    if (!Array.isArray(record.bucketVisits) || record.bucketVisits.length !== bucketCount) {
+      record.bucketVisits = resizeArray(Array.isArray(record.bucketVisits) ? record.bucketVisits : [], bucketCount);
+    }
+    record.totalTimeMs = Number(record.totalTimeMs) || 0;
+    record.visits = Number(record.visits) || 0;
+    return record;
+  }
   async save(force = false) {
     const now = Date.now();
-    if (!force && now - this.lastSaveTime < 10000) {
-      return;
-    }
-
+    if (!force && !this.dirty) return;
+    if (!force && now - this.lastSaveAt < _HeatmapDatabase.SAVE_THROTTLE_MS) return;
     try {
-      await this.plugin.saveData({
-        settings: this.settings,
-        records: this.records,
-      });
-      this.lastSaveTime = Date.now();
-      logger.debug("Database persisted to disk.");
+      await this.plugin.saveData({ settings: this.settings, records: this.records });
+      this.lastSaveAt = now;
+      this.dirty = false;
     } catch (err) {
       logger.error("Failed to save database to disk.", err);
     }
   }
-
+  /**
+   * Read-only lookup — returns undefined when nothing was recorded yet.
+   * (Creating records on read was a bug: hover tooltips used to mint empty
+   * records for never-opened notes.)
+   */
+  getRecord(path) {
+    return this.records[path];
+  }
+  /** Gets or creates the record for a path. Write-intent only. */
   getOrCreateRecord(path) {
-    const defaultBuckets = Array(this.settings.bucketCount).fill(0);
-    const defaultVisits = Array(this.settings.bucketCount).fill(0);
-
     if (!this.records[path]) {
       this.records[path] = {
         totalTimeMs: 0,
         visits: 0,
-        lastAccessed: new Date().toISOString(),
-        buckets: defaultBuckets,
-        bucketVisits: defaultVisits,
+        lastAccessed: (/* @__PURE__ */ new Date()).toISOString(),
+        buckets: Array(this.settings.bucketCount).fill(0),
+        bucketVisits: Array(this.settings.bucketCount).fill(0)
       };
-      logger.debug(`Created fresh record for path: ${path}`);
     } else {
-      const record = this.records[path];
-      if (
-        !record.buckets ||
-        record.buckets.length !== this.settings.bucketCount
-      ) {
-        this.records[path].buckets = this.resizeArray(
-          record.buckets || [],
-          this.settings.bucketCount,
-        );
-      }
-      if (
-        !record.bucketVisits ||
-        record.bucketVisits.length !== this.settings.bucketCount
-      ) {
-        this.records[path].bucketVisits = this.resizeArray(
-          record.bucketVisits || [],
-          this.settings.bucketCount,
-        );
-      }
+      this.records[path] = this.normalizeRecord(this.records[path], this.settings.bucketCount);
     }
     return this.records[path];
   }
-
-  resizeArray(arr, targetSize) {
-    if (arr.length === targetSize) return arr;
-    const resized = Array(targetSize).fill(0);
-    if (arr.length === 0) return resized;
-
-    for (let i = 0; i < targetSize; i++) {
-      const srcIndex = (i / targetSize) * arr.length;
-      const low = Math.floor(srcIndex);
-      const high = Math.min(arr.length - 1, Math.ceil(srcIndex));
-      const weight = srcIndex - low;
-      resized[i] = Math.round(arr[low] * (1 - weight) + arr[high] * weight);
+  /** Resizes all records after a bucket-count change. */
+  resizeAllRecords(bucketCount) {
+    for (const path of Object.keys(this.records)) {
+      this.records[path] = this.normalizeRecord(this.records[path], bucketCount);
     }
-    return resized;
   }
-
-  recordReadingTime(
-    path,
-    startBucket,
-    endBucket,
-    incrementMs,
-    newlyVisibleBuckets,
-  ) {
+  recordReadingTime(path, startBucket, endBucket, incrementMs, newlyVisibleBuckets) {
     const rec = this.getOrCreateRecord(path);
     rec.totalTimeMs += incrementMs;
-    rec.lastAccessed = new Date().toISOString();
-
+    rec.lastAccessed = (/* @__PURE__ */ new Date()).toISOString();
     for (let i = startBucket; i <= endBucket; i++) {
-      if (i >= 0 && i < rec.buckets.length) {
-        rec.buckets[i] += incrementMs;
-      }
+      if (i >= 0 && i < rec.buckets.length) rec.buckets[i] += incrementMs;
     }
-
-    newlyVisibleBuckets.forEach((bucketIdx) => {
-      if (bucketIdx >= 0 && bucketIdx < rec.bucketVisits.length) {
-        rec.bucketVisits[bucketIdx] += 1;
-      }
-    });
-
-    this.save();
+    for (const bucketIdx of newlyVisibleBuckets) {
+      if (bucketIdx >= 0 && bucketIdx < rec.bucketVisits.length) rec.bucketVisits[bucketIdx] += 1;
+    }
+    this.dirty = true;
+    void this.save();
   }
-
-  incrementOverallVisit(path) {
+  incrementVisit(path) {
     const rec = this.getOrCreateRecord(path);
     rec.visits += 1;
-    this.save();
+    this.dirty = true;
+    void this.save();
   }
-
+  /** Handles file AND folder renames (see remapRecordPaths). */
   handleRename(oldPath, newPath) {
-    if (this.records[oldPath]) {
-      this.records[newPath] = this.records[oldPath];
-      delete this.records[oldPath];
-      this.save(true);
-      logger.info(`Renamed record: ${oldPath} -> ${newPath}`);
+    const moved = remapRecordPaths(this.records, oldPath, newPath);
+    if (moved > 0) {
+      this.dirty = true;
+      void this.save(true);
+      logger.info(`Renamed ${moved} record(s): ${oldPath} -> ${newPath}`);
     }
   }
-
+  /** Drops records for files that no longer exist. Returns removed paths. */
+  pruneDeleted(fileExists) {
+    const removed = pruneDeletedRecords(this.records, fileExists);
+    if (removed.length > 0) {
+      this.dirty = true;
+      void this.save(true);
+      logger.info(`Pruned ${removed.length} record(s) for deleted files.`);
+    }
+    return removed;
+  }
   clearRecord(path) {
     if (this.records[path]) {
       delete this.records[path];
-      this.save(true);
+      void this.save(true);
       logger.info(`Cleared storage data for: ${path}`);
+      return true;
     }
+    return false;
   }
-}
+  clearAll() {
+    this.records = {};
+    void this.save(true);
+  }
+};
+/** Minimum interval between throttled saves (ms). */
+_HeatmapDatabase.SAVE_THROTTLE_MS = 1e4;
+var HeatmapDatabase = _HeatmapDatabase;
 
-/* =========================================================================
-   4. RENDERER MODULE (DYNAMIC ATTENTION PROFILE GRAPH OVERLAY)
-   ========================================================================= */
+// heatmap-of-notes/src/activity.ts
+var WINDOW_EVENTS = ["pointermove", "pointerdown", "keydown", "wheel", "scroll"];
+var ActivityMonitor = class {
+  constructor(registerDomElement, idleThresholdSeconds) {
+    this.lastActivityAt = Date.now();
+    this.register = registerDomElement;
+    this.idleThresholdMs = idleThresholdSeconds * 1e3;
+  }
+  setIdleThreshold(seconds) {
+    this.idleThresholdMs = seconds * 1e3;
+    logger.debug(`Idle threshold updated to ${seconds}s.`);
+  }
+  start() {
+    this.recordActivity();
+    const handler = () => this.recordActivity();
+    for (const evt of WINDOW_EVENTS) {
+      this.register(window, evt, handler, { passive: true });
+    }
+    this.register(document, "visibilitychange", handler);
+    logger.debug("ActivityMonitor listeners registered successfully.");
+  }
+  recordActivity() {
+    this.lastActivityAt = Date.now();
+  }
+  isUserActive(now = Date.now()) {
+    if (typeof document !== "undefined" && document.hidden) return false;
+    return now - this.lastActivityAt < this.idleThresholdMs;
+  }
+};
 
-class HeatmapRenderer {
-  constructor(view, database) {
-    this.view = view;
-    this.database = database;
-
+// heatmap-of-notes/src/renderer.ts
+var TOUCH_BODY_CLASS = "frh-touch-device";
+var HeatmapRenderer = class {
+  constructor(view, database, getSettings, registerDomElement) {
     this.container = null;
     this.canvas = null;
     this.ctx = null;
     this.tooltip = null;
-
     this.scrollerElement = null;
     this.resizeObserver = null;
     this.animationFrameId = null;
-
     this.scrollListener = null;
-    this.mouseMoveListener = null;
-    this.mouseLeaveListener = null;
-
+    this.pointerMoveListener = null;
+    this.pointerLeaveListener = null;
+    /** Original inline position of contentEl (restored on destroy). */
+    this.originalContentElPosition = null;
+    this.view = view;
+    this.database = database;
+    this.getSettings = getSettings;
+    this.registerDomElement = registerDomElement;
     this.initDOM();
-    this.scrollerElement = this.getScroller();
+    this.scrollerElement = this.findScroller();
     this.bindEvents();
     this.resizeCanvas();
   }
-
-  getScroller() {
-    if (!this.view) return null;
-    const container = this.view.contentEl;
+  /* ------------------------------------------------------------------ */
+  /* Scroller resolution                                                 */
+  /* ------------------------------------------------------------------ */
+  findScroller() {
+    var _a, _b;
+    const container = (_a = this.view) == null ? void 0 : _a.contentEl;
     if (!container) return null;
-
-    const mode =
-      typeof this.view.getMode === "function" ? this.view.getMode() : null;
-
+    let mode = null;
+    try {
+      mode = typeof this.view.getMode === "function" ? this.view.getMode() : null;
+    } catch (e) {
+      mode = null;
+    }
     if (mode === "preview") {
       const preview = container.querySelector(".markdown-preview-view");
       if (preview) return preview;
@@ -325,45 +347,40 @@ class HeatmapRenderer {
       const source = container.querySelector(".cm-scroller");
       if (source) return source;
     }
-
     const sourceScroller = container.querySelector(".cm-scroller");
+    if (sourceScroller && sourceScroller.clientHeight > 0) return sourceScroller;
     const previewScroller = container.querySelector(".markdown-preview-view");
-
-    if (sourceScroller && sourceScroller.clientHeight > 0) {
-      return sourceScroller;
-    }
-    if (previewScroller && previewScroller.clientHeight > 0) {
-      return previewScroller;
-    }
-
-    return sourceScroller || previewScroller || null;
+    if (previewScroller && previewScroller.clientHeight > 0) return previewScroller;
+    return (_b = sourceScroller != null ? sourceScroller : previewScroller) != null ? _b : null;
   }
-
+  /**
+   * Cheap validity check + rebind. Called from the engine tick — must stay
+   * O(1) when nothing changed (it is: just isConnected).
+   */
   checkAndRebindScroller() {
+    if (this.scrollerElement && this.scrollerElement.isConnected) return;
     this.initDOM();
-
-    const currentScroller = this.getScroller();
-    if (!currentScroller) return;
-
-    if (this.scrollerElement !== currentScroller) {
-      logger.debug(
-        "Active scroller changed (e.g. mode toggle). Rebinding event listeners.",
-      );
-      this.unbindEvents();
-      this.scrollerElement = currentScroller;
-      this.bindEvents();
-      this.resizeCanvas();
-    }
+    const current = this.findScroller();
+    if (!current) return;
+    logger.debug("Active scroller changed (e.g. mode toggle). Rebinding event listeners.");
+    this.unbindEvents();
+    this.scrollerElement = current;
+    this.bindEvents();
+    this.resizeCanvas();
   }
-
+  /* ------------------------------------------------------------------ */
+  /* DOM                                                                 */
+  /* ------------------------------------------------------------------ */
   initDOM() {
-    const contentEl = this.view.contentEl;
+    var _a;
+    const contentEl = (_a = this.view) == null ? void 0 : _a.contentEl;
     if (!contentEl) return;
-
     if (getComputedStyle(contentEl).position === "static") {
+      if (this.originalContentElPosition === null) {
+        this.originalContentElPosition = contentEl.style.position;
+      }
       contentEl.style.position = "relative";
     }
-
     if (this.container) {
       if (this.container.parentElement !== contentEl) {
         contentEl.appendChild(this.container);
@@ -373,115 +390,96 @@ class HeatmapRenderer {
       }
       return;
     }
-
     this.container = document.createElement("div");
     this.container.className = "frh-heatmap-wrapper";
-
-    const settings = this.database.settings;
+    const settings = this.getSettings();
     this.container.style.width = `${settings.heatmapWidth}px`;
     this.container.style.right = `${settings.heatmapOffsetRight}px`;
     this.container.style.opacity = `${settings.heatmapOpacity}`;
-
     this.canvas = document.createElement("canvas");
     this.canvas.className = "frh-heatmap-canvas";
     this.container.appendChild(this.canvas);
     this.ctx = this.canvas.getContext("2d");
-
     contentEl.appendChild(this.container);
     logger.debug("Created and appended new heatmap container.");
-
-    let existingTooltip = document.getElementById("frh-tooltip-element");
-    if (!existingTooltip) {
-      this.tooltip = document.createElement("div");
-      this.tooltip.id = "frh-tooltip-element";
-      this.tooltip.className = "frh-heatmap-tooltip";
-      document.body.appendChild(this.tooltip);
-    } else {
-      this.tooltip = existingTooltip;
+    let tooltip = document.getElementById("frh-tooltip-element");
+    if (!tooltip) {
+      tooltip = document.createElement("div");
+      tooltip.id = "frh-tooltip-element";
+      tooltip.className = "frh-heatmap-tooltip";
+      document.body.appendChild(tooltip);
     }
+    this.tooltip = tooltip;
   }
-
+  /* ------------------------------------------------------------------ */
+  /* Events                                                              */
+  /* ------------------------------------------------------------------ */
   bindEvents() {
     if (!this.scrollerElement) return;
-
     this.scrollListener = () => {
-      this.database.plugin.activityMonitor.recordActivity();
+      this.hideTooltip();
       this.draw();
     };
-    this.scrollerElement.addEventListener("scroll", this.scrollListener, {
-      passive: true,
-    });
-
-    this.resizeObserver = new ResizeObserver(() => {
-      this.resizeCanvas();
-    });
+    this.registerDomElement(this.scrollerElement, "scroll", this.scrollListener, { passive: true });
+    this.resizeObserver = new ResizeObserver(() => this.resizeCanvas());
     this.resizeObserver.observe(this.scrollerElement);
-
-    this.mouseMoveListener = (e) => this.handleMouseMove(e);
-    this.mouseLeaveListener = () => this.handleMouseLeave();
-
     if (this.canvas) {
-      this.canvas.addEventListener("mousemove", this.mouseMoveListener);
-      this.canvas.addEventListener("mouseleave", this.mouseLeaveListener);
+      this.pointerMoveListener = (e) => this.handlePointerMove(e);
+      this.pointerLeaveListener = () => this.hideTooltip();
+      this.registerDomElement(this.canvas, "pointermove", this.pointerMoveListener);
+      this.registerDomElement(this.canvas, "pointerleave", this.pointerLeaveListener);
+      this.registerDomElement(this.canvas, "pointerdown", (e) => e.preventDefault());
     }
   }
-
   unbindEvents() {
-    if (this.scrollerElement) {
-      if (this.scrollListener) {
-        this.scrollerElement.removeEventListener("scroll", this.scrollListener);
-      }
-      if (this.resizeObserver) {
-        this.resizeObserver.disconnect();
-        this.resizeObserver = null;
-      }
-    }
-    if (this.canvas) {
-      if (this.mouseMoveListener) {
-        this.canvas.removeEventListener("mousemove", this.mouseMoveListener);
-      }
-      if (this.mouseLeaveListener) {
-        this.canvas.removeEventListener("mouseleave", this.mouseLeaveListener);
-      }
+    this.scrollListener = null;
+    this.pointerMoveListener = null;
+    this.pointerLeaveListener = null;
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+      this.resizeObserver = null;
     }
   }
-
-  resizeCanvas() {
-    if (!this.scrollerElement || !this.canvas || !this.container) return;
+  /* ------------------------------------------------------------------ */
+  /* Canvas                                                              */
+  /* ------------------------------------------------------------------ */
+  syncCanvasSize() {
+    if (!this.scrollerElement || !this.canvas || !this.container || !this.ctx) return false;
     const rect = this.container.getBoundingClientRect();
-
-    if (rect.width <= 0 || rect.height <= 0) return;
-
+    if (rect.width <= 0 || rect.height <= 0) return false;
     const dpr = window.devicePixelRatio || 1;
-    this.canvas.width = rect.width * dpr;
-    this.canvas.height = rect.height * dpr;
-    this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    this.draw();
+    const expectedWidth = Math.round(rect.width * dpr);
+    const expectedHeight = Math.round(rect.height * dpr);
+    if (this.canvas.width !== expectedWidth || this.canvas.height !== expectedHeight) {
+      this.canvas.width = expectedWidth;
+      this.canvas.height = expectedHeight;
+      this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    return true;
   }
-
+  resizeCanvas() {
+    if (this.syncCanvasSize()) this.draw();
+  }
+  applySettings() {
+    const settings = this.getSettings();
+    if (this.container) {
+      this.container.style.width = `${settings.heatmapWidth}px`;
+      this.container.style.right = `${settings.heatmapOffsetRight}px`;
+      this.container.style.opacity = `${settings.heatmapOpacity}`;
+    }
+    this.resizeCanvas();
+  }
   draw() {
-    if (this.animationFrameId) {
-      cancelAnimationFrame(this.animationFrameId);
-    }
-
-    this.animationFrameId = requestAnimationFrame(() => {
-      this.paint();
-    });
+    if (this.animationFrameId !== null) cancelAnimationFrame(this.animationFrameId);
+    this.animationFrameId = requestAnimationFrame(() => this.paint());
   }
-
-  getAccentColor(alpha = 1) {
+  /** Parses the theme accent color once; returns an rgba() factory. */
+  accentColorFactory() {
     const bodyStyle = getComputedStyle(document.body);
-    let colorStr = bodyStyle.getPropertyValue("--interactive-accent").trim();
-    if (!colorStr) {
-      return `rgba(36, 143, 178, ${alpha})`;
-    }
-
+    const colorStr = bodyStyle.getPropertyValue("--interactive-accent").trim();
+    let r = 36, g = 143, b = 178;
     if (colorStr.startsWith("#")) {
       const clean = colorStr.replace("#", "");
-      let r = 36,
-        g = 143,
-        b = 178;
       if (clean.length === 3) {
         r = parseInt(clean[0] + clean[0], 16);
         g = parseInt(clean[1] + clean[1], 16);
@@ -491,109 +489,72 @@ class HeatmapRenderer {
         g = parseInt(clean.substring(2, 4), 16);
         b = parseInt(clean.substring(4, 6), 16);
       }
-      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-    }
-
-    if (colorStr.startsWith("rgb")) {
+    } else if (colorStr.startsWith("rgb")) {
       const matches = colorStr.match(/\d+/g);
       if (matches && matches.length >= 3) {
-        return `rgba(${matches[0]}, ${matches[1]}, ${matches[2]}, ${alpha})`;
+        r = parseInt(matches[0], 10);
+        g = parseInt(matches[1], 10);
+        b = parseInt(matches[2], 10);
       }
     }
-
-    return `rgba(36, 143, 178, ${alpha})`;
+    return (alpha) => `rgba(${r}, ${g}, ${b}, ${alpha})`;
   }
-
   paint() {
-    this.checkAndRebindScroller();
-    if (!this.canvas || !this.ctx || !this.scrollerElement) return;
-
+    this.animationFrameId = null;
+    if (!this.canvas || !this.ctx || !this.scrollerElement || !this.container) return;
     const rect = this.container.getBoundingClientRect();
     if (rect.width <= 0 || rect.height <= 0) return;
-
-    const dpr = window.devicePixelRatio || 1;
-    const expectedWidth = Math.round(rect.width * dpr);
-    const expectedHeight = Math.round(rect.height * dpr);
-
-    if (
-      this.canvas.width !== expectedWidth ||
-      this.canvas.height !== expectedHeight
-    ) {
-      this.canvas.width = expectedWidth;
-      this.canvas.height = expectedHeight;
-      this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      logger.debug(
-        `Canvas bounds normalized: ${expectedWidth}px x ${expectedHeight}px`,
-      );
-    }
-
+    if (!this.syncCanvasSize()) return;
     const clientWidth = rect.width;
     const clientHeight = rect.height;
-
     const ctx = this.ctx;
     ctx.clearRect(0, 0, clientWidth, clientHeight);
-
     ctx.fillStyle = "rgba(128, 128, 128, 0.03)";
     ctx.fillRect(0, 0, clientWidth, clientHeight);
-
     const path = this.view.file ? this.view.file.path : null;
     if (!path) return;
-
-    const record = this.database.getOrCreateRecord(path);
+    const record = this.database.getRecord(path);
+    if (!record) return;
     const buckets = record.buckets;
     const bucketCount = buckets.length;
-
+    if (bucketCount === 0) return;
+    const accent = this.accentColorFactory();
     const maxVal = Math.max(...buckets, 1);
     const itemHeight = clientHeight / bucketCount;
-
     ctx.beginPath();
     ctx.moveTo(0, 0);
     for (let i = 0; i < bucketCount; i++) {
-      const val = buckets[i];
-      const weight = val / maxVal;
+      const weight = buckets[i] / maxVal;
       const y = (i + 0.5) * itemHeight;
-      const x = weight * clientWidth;
-      ctx.lineTo(x, y);
+      ctx.lineTo(weight * clientWidth, y);
     }
     ctx.lineTo(0, clientHeight);
     ctx.closePath();
-
-    ctx.fillStyle = this.getAccentColor(0.18);
+    ctx.fillStyle = accent(0.18);
     ctx.fill();
-
     ctx.beginPath();
     for (let i = 0; i < bucketCount; i++) {
-      const val = buckets[i];
-      const weight = val / maxVal;
+      const weight = buckets[i] / maxVal;
       const y = (i + 0.5) * itemHeight;
       const x = weight * clientWidth;
-      if (i === 0) {
-        ctx.moveTo(x, y);
-      } else {
-        ctx.lineTo(x, y);
-      }
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
     }
-    ctx.strokeStyle = this.getAccentColor(0.85);
+    ctx.strokeStyle = accent(0.85);
     ctx.lineWidth = 2;
     ctx.lineJoin = "round";
     ctx.lineCap = "round";
     ctx.stroke();
-
     const scrollTop = this.scrollerElement.scrollTop;
     const scrollHeight = this.scrollerElement.scrollHeight;
     const scrollerHeight = this.scrollerElement.clientHeight;
-
     if (scrollHeight > 0) {
       const startPct = scrollTop / scrollHeight;
       const endPct = (scrollTop + scrollerHeight) / scrollHeight;
-
       const yStart = startPct * clientHeight;
       const yEnd = Math.min(clientHeight, endPct * clientHeight);
-
-      ctx.fillStyle = this.getAccentColor(0.1);
+      ctx.fillStyle = accent(0.1);
       ctx.fillRect(0, yStart, clientWidth, yEnd - yStart);
-
-      // White borders for the upper and lower bands to stand out and improve visual contrast
       ctx.strokeStyle = "rgba(255, 255, 255, 0.95)";
       ctx.lineWidth = 1.5;
       ctx.beginPath();
@@ -604,28 +565,32 @@ class HeatmapRenderer {
       ctx.stroke();
     }
   }
-
-  handleMouseMove(e) {
-    this.checkAndRebindScroller();
+  /* ------------------------------------------------------------------ */
+  /* Tooltip (desktop hover)                                             */
+  /* ------------------------------------------------------------------ */
+  handlePointerMove(e) {
     if (!this.canvas || !this.tooltip) return;
+    if (e.pointerType === "touch") return;
     const rect = this.canvas.getBoundingClientRect();
     const relativeY = e.clientY - rect.top;
-    const pct = Math.max(0, Math.min(1, relativeY / rect.height));
-
+    const pct = Math.max(0, Math.min(1, relativeY / Math.max(1, rect.height)));
     const path = this.view.file ? this.view.file.path : null;
     if (!path) return;
-
-    const record = this.database.getOrCreateRecord(path);
+    const record = this.database.getRecord(path);
+    if (!record) {
+      this.tooltip.innerHTML = `
+        <div class="frh-heatmap-tooltip-title">Section ~${Math.round(pct * 100)}%</div>
+        <div class="frh-heatmap-tooltip-row"><span>No reading data yet</span></div>`;
+      this.positionTooltip(e);
+      return;
+    }
     const bucketCount = record.buckets.length;
-    const bucketIdx = Math.floor(pct * bucketCount);
-
+    const bucketIdx = Math.min(bucketCount - 1, Math.floor(pct * bucketCount));
     const ms = record.buckets[bucketIdx] || 0;
     const visits = record.bucketVisits[bucketIdx] || 0;
-
-    const totalSeconds = Math.round(ms / 1000);
+    const totalSeconds = Math.round(ms / 1e3);
     const minStr = Math.floor(totalSeconds / 60);
     const secStr = String(totalSeconds % 60).padStart(2, "0");
-
     this.tooltip.innerHTML = `
       <div class="frh-heatmap-tooltip-title">Section ~${Math.round(pct * 100)}%</div>
       <div class="frh-heatmap-tooltip-row">
@@ -635,498 +600,414 @@ class HeatmapRenderer {
       <div class="frh-heatmap-tooltip-row">
         <span>Visits:</span>
         <span class="frh-heatmap-tooltip-value">${visits}</span>
-      </div>
-    `;
-
-    const tooltipWidth = 140;
+      </div>`;
+    this.positionTooltip(e);
+  }
+  positionTooltip(e) {
+    if (!this.tooltip) return;
+    const tooltipWidth = this.tooltip.offsetWidth || 150;
     const xPos = e.clientX - tooltipWidth - 15;
-    const yPos = Math.max(
-      10,
-      Math.min(window.innerHeight - 80, e.clientY - 30),
-    );
-
-    this.tooltip.style.left = `${xPos}px`;
+    const yPos = Math.max(10, Math.min(window.innerHeight - 90, e.clientY - 30));
+    this.tooltip.style.left = `${Math.max(4, xPos)}px`;
     this.tooltip.style.top = `${yPos}px`;
     this.tooltip.style.opacity = "1";
   }
-
-  handleMouseLeave() {
-    if (this.tooltip) {
-      this.tooltip.style.opacity = "0";
-    }
+  hideTooltip() {
+    if (this.tooltip) this.tooltip.style.opacity = "0";
   }
-
+  /* ------------------------------------------------------------------ */
+  /* Teardown                                                            */
+  /* ------------------------------------------------------------------ */
   destroy() {
-    if (this.animationFrameId) {
+    var _a, _b;
+    if (this.animationFrameId !== null) {
       cancelAnimationFrame(this.animationFrameId);
+      this.animationFrameId = null;
     }
     this.unbindEvents();
-    if (this.container) {
-      this.container.remove();
+    if (this.originalContentElPosition !== null && ((_a = this.view) == null ? void 0 : _a.contentEl)) {
+      this.view.contentEl.style.position = this.originalContentElPosition;
+      this.originalContentElPosition = null;
     }
-    logger.debug(`Renderer destroyed for pane view.`);
+    (_b = this.container) == null ? void 0 : _b.remove();
+    this.container = null;
+    logger.debug("Renderer destroyed for pane view.");
   }
+};
+
+// heatmap-of-notes/src/engine.ts
+function computeVisibleBuckets(scrollTop, scrollHeight, clientHeight, bucketCount) {
+  if (bucketCount <= 0) return { start: 0, end: -1 };
+  if (scrollHeight <= 0) return { start: 0, end: -1 };
+  if (scrollHeight <= clientHeight) {
+    return { start: 0, end: bucketCount - 1 };
+  }
+  const startPct = scrollTop / scrollHeight;
+  const endPct = (scrollTop + clientHeight) / scrollHeight;
+  const start = Math.max(0, Math.floor(startPct * bucketCount));
+  const end = Math.min(bucketCount - 1, Math.floor(endPct * bucketCount));
+  return { start, end };
 }
-
-/* =========================================================================
-   5. ENGINE MODULE (RUNTIME LOOP & ORCHESTRATOR)
-   ========================================================================= */
-
-class HeatmapEngine {
-  constructor(plugin, database, activityMonitor) {
-    this.plugin = plugin;
+function diffVisibleBuckets(current, previous) {
+  const newlyVisible = [];
+  for (const b of current) {
+    if (!previous.has(b)) newlyVisible.push(b);
+  }
+  return newlyVisible;
+}
+var HeatmapEngine = class {
+  constructor(host, database, activityMonitor, getSettings) {
+    this.renderers = /* @__PURE__ */ new Map();
+    this.intervalId = null;
+    this.lastVisibleBuckets = /* @__PURE__ */ new Map();
+    /** Paths already visited in this session (visit counted once per session). */
+    this.sessionVisitedPaths = /* @__PURE__ */ new Set();
+    this.host = host;
     this.database = database;
     this.activityMonitor = activityMonitor;
-    this.renderers = new Map();
-    this.intervalId = null;
-    this.lastVisibleBucketsMap = new Map();
+    this.getSettings = getSettings;
   }
-
+  /* ------------------------------------------------------------------ */
+  /* Lifecycle                                                           */
+  /* ------------------------------------------------------------------ */
   start() {
-    const intervalMs = this.database.settings.refreshIntervalMs;
-    this.intervalId = window.setInterval(() => this.tick(), intervalMs);
-    logger.debug(`Engine sequence started with cycle rate: ${intervalMs}ms.`);
+    if (this.intervalId !== null) return;
+    const intervalMs = this.getSettings().refreshIntervalMs;
+    this.intervalId = this.host.registerInterval(window.setInterval(() => this.tick(), intervalMs));
   }
-
   stop() {
-    if (this.intervalId) {
+    if (this.intervalId !== null) {
       clearInterval(this.intervalId);
       this.intervalId = null;
     }
     this.clearAllRenderers();
-    logger.debug("Engine sequence terminated.");
   }
-
+  /* ------------------------------------------------------------------ */
+  /* View management                                                     */
+  /* ------------------------------------------------------------------ */
   registerView(view) {
+    var _a;
     if (this.renderers.has(view)) return;
-
     logger.debug(`Registering view: ${view.file ? view.file.name : "unknown"}`);
-
-    const renderer = new HeatmapRenderer(view, this.database);
-
+    const renderer = new HeatmapRenderer(
+      view,
+      this.database,
+      this.getSettings,
+      (el, type, cb, options) => this.host.registerDomElement(el, type, cb, options)
+    );
     this.renderers.set(view, renderer);
-
-    if (view.file) {
-      this.database.incrementOverallVisit(view.file.path);
+    const path = (_a = view.file) == null ? void 0 : _a.path;
+    if (path && !this.sessionVisitedPaths.has(path)) {
+      this.sessionVisitedPaths.add(path);
+      this.database.incrementVisit(path);
     }
   }
-
   deregisterView(view) {
+    var _a;
     const renderer = this.renderers.get(view);
-    if (renderer) {
-      renderer.destroy();
-      this.renderers.delete(view);
-      logger.debug(`Deregistered view.`);
+    if (!renderer) return;
+    renderer.destroy();
+    this.renderers.delete(view);
+    const path = (_a = view.file) == null ? void 0 : _a.path;
+    if (path && !this.hasOpenViewForPath(path)) {
+      this.lastVisibleBuckets.delete(path);
     }
   }
-
+  hasOpenViewForPath(path) {
+    var _a;
+    for (const view of this.renderers.keys()) {
+      if (((_a = view.file) == null ? void 0 : _a.path) === path) return true;
+    }
+    return false;
+  }
   clearAllRenderers() {
-    this.renderers.forEach((renderer) => renderer.destroy());
+    for (const renderer of this.renderers.values()) renderer.destroy();
     this.renderers.clear();
-    this.lastVisibleBucketsMap.clear();
+    this.lastVisibleBuckets.clear();
   }
-
+  /** Rebuilds renderers after a settings change WITHOUT recounting visits. */
+  rebuildRenderers() {
+    this.clearAllRenderers();
+    this.syncOpenViews();
+  }
   syncOpenViews() {
+    var _a;
     const activeViews = [];
-    this.plugin.app.workspace.iterateAllLeaves((leaf) => {
-      if (leaf.view instanceof MarkdownView) {
-        activeViews.push(leaf.view);
-      }
-    });
-
-    for (const [view, renderer] of this.renderers.entries()) {
-      if (!activeViews.includes(view)) {
-        this.deregisterView(view);
-      }
+    this.host.iterateMarkdownViews((view) => activeViews.push(view));
+    for (const view of [...this.renderers.keys()]) {
+      if (!activeViews.includes(view)) this.deregisterView(view);
     }
-
-    activeViews.forEach((view) => {
+    for (const view of activeViews) {
       if (!this.renderers.has(view)) {
         this.registerView(view);
       } else {
-        const renderer = this.renderers.get(view);
-        if (renderer) {
-          renderer.checkAndRebindScroller();
-        }
+        (_a = this.renderers.get(view)) == null ? void 0 : _a.checkAndRebindScroller();
       }
-    });
-  }
-
-  tick() {
-    if (!this.activityMonitor.isUserActive()) {
-      return;
     }
-
-    this.renderers.forEach((renderer, view) => {
-      if (
-        !view.contentEl ||
-        view.contentEl.getBoundingClientRect().height <= 0
-      ) {
-        return;
-      }
-      this.refreshCurrentActiveViewPort(view);
-    });
   }
-
-  refreshCurrentActiveViewPort(view) {
+  applySettingsToRenderers() {
+    for (const renderer of this.renderers.values()) renderer.applySettings();
+  }
+  /* ------------------------------------------------------------------ */
+  /* Tracking loop                                                       */
+  /* ------------------------------------------------------------------ */
+  tick() {
+    if (!this.activityMonitor.isUserActive()) return;
+    for (const [view, renderer] of this.renderers.entries()) {
+      const contentEl = view.contentEl;
+      if (!contentEl || !contentEl.isConnected) continue;
+      if (contentEl.getBoundingClientRect().height <= 0) continue;
+      this.refreshViewPort(view, renderer);
+    }
+  }
+  refreshViewPort(view, renderer) {
+    var _a;
     const path = view.file ? view.file.path : null;
     if (!path) return;
-
-    const renderer = this.renderers.get(view);
-    if (!renderer) return;
-
     renderer.checkAndRebindScroller();
-
     const scroller = renderer.scrollerElement;
     if (!scroller) return;
-
     const scrollTop = scroller.scrollTop;
     const scrollHeight = scroller.scrollHeight;
     const clientHeight = scroller.clientHeight;
-
     if (scrollHeight <= 0) return;
-
-    const bucketCount = this.database.settings.bucketCount;
-    let startBucket = 0;
-    let endBucket = bucketCount - 1;
-
-    if (scrollHeight > clientHeight) {
-      const startPct = scrollTop / scrollHeight;
-      const endPct = (scrollTop + clientHeight) / scrollHeight;
-
-      startBucket = Math.floor(startPct * bucketCount);
-      endBucket = Math.min(bucketCount - 1, Math.floor(endPct * bucketCount));
-    }
-
-    const currentlyVisible = new Set();
-    const newlyVisible = [];
-
-    if (!this.lastVisibleBucketsMap.has(path)) {
-      this.lastVisibleBucketsMap.set(path, new Set());
-    }
-    const previouslyVisible = this.lastVisibleBucketsMap.get(path);
-
-    for (let i = startBucket; i <= endBucket; i++) {
-      currentlyVisible.add(i);
-      if (!previouslyVisible.has(i)) {
-        newlyVisible.push(i);
-      }
-    }
-
-    this.lastVisibleBucketsMap.set(path, currentlyVisible);
-
-    const incrementMs = this.database.settings.refreshIntervalMs;
-    this.database.recordReadingTime(
-      path,
-      startBucket,
-      endBucket,
-      incrementMs,
-      newlyVisible,
-    );
-
+    const bucketCount = this.getSettings().bucketCount;
+    const { start, end } = computeVisibleBuckets(scrollTop, scrollHeight, clientHeight, bucketCount);
+    const currentlyVisible = /* @__PURE__ */ new Set();
+    for (let i = start; i <= end; i++) currentlyVisible.add(i);
+    const previouslyVisible = (_a = this.lastVisibleBuckets.get(path)) != null ? _a : /* @__PURE__ */ new Set();
+    const newlyVisible = diffVisibleBuckets(currentlyVisible, previouslyVisible);
+    this.lastVisibleBuckets.set(path, currentlyVisible);
+    const incrementMs = this.getSettings().refreshIntervalMs;
+    this.database.recordReadingTime(path, start, end, incrementMs, newlyVisible);
     renderer.draw();
   }
-}
+};
 
-/* =========================================================================
-   6. SETTINGS TAB INTERFACE (WITH TIMELINE TOOLS PANEL)
-   ========================================================================= */
-
-class HeatmapSettingTab extends PluginSettingTab {
+// heatmap-of-notes/src/settings-tab.ts
+var import_obsidian = require("obsidian");
+var ConfirmModal = class extends import_obsidian.Modal {
+  constructor(app, title, body, confirmLabel, onConfirm) {
+    super(app);
+    this.title = title;
+    this.body = body;
+    this.confirmLabel = confirmLabel;
+    this.onConfirm = onConfirm;
+  }
+  onOpen() {
+    this.titleEl.setText(this.title);
+    this.contentEl.empty();
+    this.contentEl.createEl("p", { text: this.body });
+    const buttonRow = this.contentEl.createDiv({ cls: "frh-modal-button-row" });
+    new import_obsidian.ButtonComponent(buttonRow).setButtonText(this.confirmLabel).setWarning().onClick(() => {
+      this.close();
+      this.onConfirm();
+    });
+    new import_obsidian.ButtonComponent(buttonRow).setButtonText("Cancel").onClick(() => this.close());
+  }
+  onClose() {
+    this.contentEl.empty();
+  }
+};
+var HeatmapSettingTab = class extends import_obsidian.PluginSettingTab {
   constructor(app, plugin) {
     super(app, plugin);
     this.plugin = plugin;
   }
-
+  get db() {
+    return this.plugin.database;
+  }
   display() {
     const { containerEl } = this;
     containerEl.empty();
-
     containerEl.createEl("h2", { text: "Heatmap of Notes Settings" });
-
-    new Setting(containerEl)
-      .setName("Activity Idle Threshold (seconds)")
-      .setDesc(
-        "The reading viewport halts data accumulation after this period of user inactivity.",
-      )
-      .addSlider((slider) =>
-        slider
-          .setLimits(10, 300, 5)
-          .setValue(this.plugin.database.settings.idleSeconds)
-          .setDynamicTooltip()
-          .onChange(async (val) => {
-            this.plugin.database.settings.idleSeconds = val;
-            this.plugin.activityMonitor.setIdleThreshold(val);
-            await this.plugin.database.save(true);
-          }),
-      );
-
-    new Setting(containerEl)
-      .setName("Heatmap Resolution (buckets)")
-      .setDesc("The density of segmented vertical bands.")
-      .addSlider((slider) =>
-        slider
-          .setLimits(20, 200, 10)
-          .setValue(this.plugin.database.settings.bucketCount)
-          .setDynamicTooltip()
-          .onChange(async (val) => {
-            this.plugin.database.settings.bucketCount = val;
-            await this.plugin.database.save(true);
-            this.plugin.engine.clearAllRenderers();
-            this.plugin.engine.syncOpenViews();
-          }),
-      );
-
-    new Setting(containerEl)
-      .setName("Visual Bar Width (pixels)")
-      .setDesc("The screen width of the vertical colored track.")
-      .addSlider((slider) =>
-        slider
-          .setLimits(8, 48, 2)
-          .setValue(this.plugin.database.settings.heatmapWidth)
-          .setDynamicTooltip()
-          .onChange(async (val) => {
-            this.plugin.database.settings.heatmapWidth = val;
-            await this.plugin.database.save(true);
-            this.refreshUIPositioning();
-          }),
-      );
-
-    new Setting(containerEl)
-      .setName("Sidebar Edge Offset (pixels)")
-      .setDesc(
-        "Position spacing from the right pane borders to fit clean native layouts.",
-      )
-      .addSlider((slider) =>
-        slider
-          .setLimits(0, 50, 2)
-          .setValue(this.plugin.database.settings.heatmapOffsetRight)
-          .setDynamicTooltip()
-          .onChange(async (val) => {
-            this.plugin.database.settings.heatmapOffsetRight = val;
-            await this.plugin.database.save(true);
-            this.refreshUIPositioning();
-          }),
-      );
-
-    new Setting(containerEl)
-      .setName("Track Transparency")
-      .setDesc("Alpha transparent blend values.")
-      .addSlider((slider) =>
-        slider
-          .setLimits(0.1, 1.0, 0.05)
-          .setValue(this.plugin.database.settings.heatmapOpacity)
-          .setDynamicTooltip()
-          .onChange(async (val) => {
-            this.plugin.database.settings.heatmapOpacity = val;
-            await this.plugin.database.save(true);
-            this.refreshUIPositioning();
-          }),
-      );
-
-    new Setting(containerEl)
-      .setName("Debug Mode")
-      .setDesc("Toggle verbose tracing inside consoles.")
-      .addToggle((toggle) =>
-        toggle
-          .setValue(this.plugin.database.settings.debugMode)
-          .onChange(async (val) => {
-            this.plugin.database.settings.debugMode = val;
-            logger.setDebug(val);
-            await this.plugin.database.save(true);
-          }),
-      );
-
+    new import_obsidian.Setting(containerEl).setName("Activity idle threshold (seconds)").setDesc("Reading data accumulation pauses after this period of inactivity.").addSlider(
+      (slider) => slider.setLimits(10, 300, 5).setValue(this.db.settings.idleSeconds).setDynamicTooltip().onChange(async (val) => {
+        this.db.settings.idleSeconds = val;
+        this.plugin.activityMonitor.setIdleThreshold(val);
+        await this.db.save(true);
+      })
+    );
+    new import_obsidian.Setting(containerEl).setName("Heatmap resolution (buckets)").setDesc("Density of the vertical bands. Existing data is resampled.").addSlider(
+      (slider) => slider.setLimits(20, 200, 10).setValue(this.db.settings.bucketCount).setDynamicTooltip().onChange(async (val) => {
+        this.db.settings.bucketCount = val;
+        this.db.resizeAllRecords(val);
+        await this.db.save(true);
+        this.plugin.engine.rebuildRenderers();
+      })
+    );
+    new import_obsidian.Setting(containerEl).setName("Visual bar width (pixels)").setDesc("Screen width of the vertical colored track.").addSlider(
+      (slider) => slider.setLimits(8, 48, 2).setValue(this.db.settings.heatmapWidth).setDynamicTooltip().onChange(async (val) => {
+        this.db.settings.heatmapWidth = val;
+        await this.db.save(true);
+        this.plugin.engine.applySettingsToRenderers();
+      })
+    );
+    new import_obsidian.Setting(containerEl).setName("Sidebar edge offset (pixels)").setDesc("Spacing from the right pane border.").addSlider(
+      (slider) => slider.setLimits(0, 50, 2).setValue(this.db.settings.heatmapOffsetRight).setDynamicTooltip().onChange(async (val) => {
+        this.db.settings.heatmapOffsetRight = val;
+        await this.db.save(true);
+        this.plugin.engine.applySettingsToRenderers();
+      })
+    );
+    new import_obsidian.Setting(containerEl).setName("Track transparency").setDesc("Opacity of the heatmap strip.").addSlider(
+      (slider) => slider.setLimits(0.1, 1, 0.05).setValue(this.db.settings.heatmapOpacity).setDynamicTooltip().onChange(async (val) => {
+        this.db.settings.heatmapOpacity = val;
+        await this.db.save(true);
+        this.plugin.engine.applySettingsToRenderers();
+      })
+    );
+    new import_obsidian.Setting(containerEl).setName("Debug mode").setDesc("Verbose tracing in the developer console.").addToggle(
+      (toggle) => toggle.setValue(this.db.settings.debugMode).onChange(async (val) => {
+        this.db.settings.debugMode = val;
+        this.plugin.setDebugLogging(val);
+        await this.db.save(true);
+      })
+    );
     containerEl.createEl("p", {
       cls: "frh-setting-hint",
-      text: "Tip: Hover your pointer directly over the vertical heatmap strip to review total engagement, historical visit counts, and dynamic read lengths for each portion of your notes.",
+      text: "Tip: on desktop, hover the pointer over the vertical heatmap strip to see time spent, visit counts and read lengths for each part of the note. On touch devices the strip never intercepts your scroll gestures."
     });
-
-    /* =========================================================================
-       TIMELINE TOOLS PANEL
-       ========================================================================= */
+    this.renderTimelineTools(containerEl);
+  }
+  renderTimelineTools(containerEl) {
+    var _a;
     containerEl.createEl("h3", { text: "Timeline Tools" });
-    const toolsContainer = containerEl.createDiv({
-      cls: "frh-tools-container",
-    });
-
-    // 1. DASHBOARD SUBSECTION
-    toolsContainer.createEl("h4", {
-      text: "Analytics Dashboard",
-      cls: "frh-subsection-title",
-    });
-    const activeView = this.app.workspace.getActiveViewOfType(MarkdownView);
-    const activeFile = activeView ? activeView.file : null;
-    const db = this.plugin.database;
-
+    const toolsContainer = containerEl.createDiv({ cls: "frh-tools-container" });
+    toolsContainer.createEl("h4", { text: "Analytics Dashboard", cls: "frh-subsection-title" });
+    const activeView = this.app.workspace.getActiveViewOfType(import_obsidian.MarkdownView);
+    const activeFile = (_a = activeView == null ? void 0 : activeView.file) != null ? _a : null;
+    const db = this.db;
     if (activeFile) {
-      const rec = db.getOrCreateRecord(activeFile.path);
-      const totalSec = Math.round(rec.totalTimeMs / 1000);
-      const minStr = Math.floor(totalSec / 60);
-      const secStr = String(totalSec % 60).padStart(2, "0");
-
+      const rec = db.getRecord(activeFile.path);
       const dashDiv = toolsContainer.createDiv({ cls: "frh-dashboard-panel" });
-
       const createStat = (label, val) => {
         const row = dashDiv.createDiv({ cls: "frh-dashboard-stat" });
         row.createSpan({ text: label, cls: "frh-stat-label" });
         row.createSpan({ text: val, cls: "frh-stat-value" });
       };
-
-      createStat("Active Note Name", activeFile.name);
-      createStat("Total Time Spent", `${minStr}m ${secStr}s`);
-      createStat("Total Section Visits", `${rec.visits || 0}`);
-      createStat(
-        "Last Accessed",
-        rec.lastAccessed
-          ? new Date(rec.lastAccessed).toLocaleString()
-          : "Unknown",
-      );
-      createStat(
-        "Indexed Notes Count",
-        `${Object.keys(db.records).length} files`,
-      );
+      if (rec) {
+        const totalSec = Math.round(rec.totalTimeMs / 1e3);
+        const minStr = Math.floor(totalSec / 60);
+        const secStr = String(totalSec % 60).padStart(2, "0");
+        createStat("Active note name", activeFile.name);
+        createStat("Total time spent", `${minStr}m ${secStr}s`);
+        createStat("Total section visits", `${rec.visits || 0}`);
+        createStat("Last accessed", rec.lastAccessed ? new Date(rec.lastAccessed).toLocaleString() : "Unknown");
+      } else {
+        createStat("Active note name", activeFile.name);
+        createStat("Total time spent", "No data yet");
+      }
+      createStat("Indexed notes count", `${Object.keys(db.records).length} files`);
     } else {
       toolsContainer.createEl("p", {
         cls: "frh-setting-hint",
-        text: "Please open a markdown file in the editor to view active note analytics.",
+        text: "Please open a markdown file in the editor to view active note analytics."
       });
     }
-
-    // 2. RESET SUBSECTION
-    toolsContainer.createEl("h4", {
-      text: "Reset Operations",
-      cls: "frh-subsection-title",
-    });
-
-    new Setting(toolsContainer)
-      .setName("Reset Current Note Analytics")
-      .setDesc(
-        "Permanently discard collected reading metrics for the active note.",
-      )
-      .addButton((button) =>
-        button
-          .setButtonText("Reset Current Note")
-          .setWarning()
-          .onClick(async () => {
-            if (activeFile) {
-              db.clearRecord(activeFile.path);
-              new Notice(`Cleared reading analytics for: ${activeFile.name}`);
-              this.plugin.engine.clearAllRenderers();
-              this.plugin.engine.syncOpenViews();
-              this.display();
-            } else {
-              new Notice("No active note found to reset.");
-            }
-          }),
-      );
-
-    new Setting(toolsContainer)
-      .setName("Reset All Heatmaps")
-      .setDesc(
-        "Delete all historical engagement records across the entire vault database.",
-      )
-      .addButton((button) =>
-        button
-          .setButtonText("Reset Database")
-          .setWarning()
-          .onClick(async () => {
-            if (
-              confirm(
-                "Are you sure you want to permanently delete all reading engagement history? This action cannot be undone.",
-              )
-            ) {
-              db.records = {};
-              await db.save(true);
-              new Notice("All vault reading metrics have been cleared.");
-              this.plugin.engine.clearAllRenderers();
-              this.plugin.engine.syncOpenViews();
-              this.display();
-            }
-          }),
-      );
-
-    // 3. ERROR & DIAGNOSTICS SUBSECTION
-    const diagSection = toolsContainer.createDiv({
-      cls: "frh-diagnostic-section",
-    });
+    toolsContainer.createEl("h4", { text: "Reset Operations", cls: "frh-subsection-title" });
+    new import_obsidian.Setting(toolsContainer).setName("Reset current note analytics").setDesc("Permanently discard collected reading metrics for the active note.").addButton(
+      (button) => button.setButtonText("Reset Current Note").setWarning().onClick(async () => {
+        if (activeFile) {
+          db.clearRecord(activeFile.path);
+          new import_obsidian.Notice(`Cleared reading analytics for: ${activeFile.name}`);
+          this.plugin.engine.rebuildRenderers();
+          this.display();
+        } else {
+          new import_obsidian.Notice("No active note found to reset.");
+        }
+      })
+    );
+    new import_obsidian.Setting(toolsContainer).setName("Reset all heatmaps").setDesc("Delete all historical engagement records across the entire vault database.").addButton(
+      (button) => button.setButtonText("Reset Database").setWarning().onClick(() => {
+        new ConfirmModal(
+          this.app,
+          "Reset all reading analytics?",
+          "This permanently deletes all reading engagement history for every note. This action cannot be undone.",
+          "Delete everything",
+          async () => {
+            db.clearAll();
+            new import_obsidian.Notice("All vault reading metrics have been cleared.");
+            this.plugin.engine.rebuildRenderers();
+            this.display();
+          }
+        ).open();
+      })
+    );
+    new import_obsidian.Setting(toolsContainer).setName("Prune records for deleted notes").setDesc("Remove analytics entries whose notes no longer exist in the vault.").addButton(
+      (button) => button.setButtonText("Prune Deleted").onClick(() => {
+        const removed = db.pruneDeleted(
+          (path) => this.app.vault.getAbstractFileByPath(path) !== null
+        );
+        new import_obsidian.Notice(removed.length > 0 ? `Pruned ${removed.length} record(s).` : "Nothing to prune.");
+        this.display();
+      })
+    );
+    const diagSection = toolsContainer.createDiv({ cls: "frh-diagnostic-section" });
     diagSection.createEl("h4", { text: "Diagnostics & System Health" });
-
     const isUserActive = this.plugin.activityMonitor.isUserActive();
     const recordsCount = Object.keys(db.records).length;
-
-    new Setting(diagSection)
-      .setName("Tracking Status")
-      .setDesc(
-        "Verifies if the activity monitor is actively tracking runtime engagement.",
-      )
-      .addText((text) =>
-        text
-          .setValue(
-            isUserActive ? "Active & Monitoring" : "Suspended (Idle/Inactive)",
-          )
-          .setDisabled(true),
-      );
-
-    new Setting(diagSection)
-      .setName("Storage Database State")
-      .setDesc("Indexed registry nodes and system health check.")
-      .addText((text) =>
-        text
-          .setValue(`Healthy (${recordsCount} tracked files)`)
-          .setDisabled(true),
-      );
+    new import_obsidian.Setting(diagSection).setName("Tracking status").setDesc("Verifies if the activity monitor is actively tracking runtime engagement.").addText(
+      (text) => text.setValue(isUserActive ? "Active & Monitoring" : "Suspended (Idle/Inactive)").setDisabled(true)
+    );
+    new import_obsidian.Setting(diagSection).setName("Storage database state").setDesc("Indexed registry nodes and system health check.").addText((text) => text.setValue(`Healthy (${recordsCount} tracked files)`).setDisabled(true));
   }
+};
 
-  refreshUIPositioning() {
-    const settings = this.plugin.database.settings;
-    this.plugin.engine.renderers.forEach((renderer) => {
-      if (renderer.container) {
-        renderer.container.style.width = `${settings.heatmapWidth}px`;
-        renderer.container.style.right = `${settings.heatmapOffsetRight}px`;
-        renderer.container.style.opacity = `${settings.heatmapOpacity}`;
-        renderer.resizeCanvas();
-      }
-    });
+// shared/src/viewport.ts
+function hasHoverPointer() {
+  if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
+    return true;
+  }
+  try {
+    return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  } catch (e) {
+    return true;
   }
 }
 
-/* =========================================================================
-   7. MAIN PLUG-IN BOOTSTRAPPER (LIFECYCLE ENTRY POINT)
-   ========================================================================= */
-
-class HeatmapPlugin extends Plugin {
+// heatmap-of-notes/src/main.ts
+var HeatmapPlugin = class extends import_obsidian2.Plugin {
   async onload() {
     logger.info("Initializing Heatmap of Notes plugin...");
-
-    this.database = new HeatmapDatabase(this);
+    this.database = new HeatmapDatabase({
+      loadData: () => this.loadData(),
+      saveData: (data) => this.saveData(data)
+    });
     await this.database.load();
-
+    logger.setDebug(this.database.settings.debugMode);
     this.activityMonitor = new ActivityMonitor(
-      this.database.settings.idleSeconds,
+      (el, type, cb, options) => this.registerDomEvent(el, type, cb, options),
+      this.database.settings.idleSeconds
     );
     this.activityMonitor.start();
-
-    this.engine = new HeatmapEngine(this, this.database, this.activityMonitor);
-
-    this.registerEvent(
-      this.app.workspace.on("layout-change", () => {
-        this.engine.syncOpenViews();
-      }),
+    this.engine = new HeatmapEngine(
+      {
+        registerInterval: (id) => this.registerInterval(id),
+        iterateMarkdownViews: (cb) => this.app.workspace.iterateAllLeaves((leaf) => {
+          if (leaf.view instanceof import_obsidian2.MarkdownView) cb(leaf.view);
+        }),
+        registerDomElement: (el, type, cb, options) => this.registerDomEvent(el, type, cb, options)
+      },
+      this.database,
+      this.activityMonitor,
+      () => this.database.settings
     );
-
+    if (!hasHoverPointer()) {
+      document.body.classList.add(TOUCH_BODY_CLASS);
+      this.register(() => document.body.classList.remove(TOUCH_BODY_CLASS));
+    }
     this.registerEvent(
-      this.app.workspace.on("active-leaf-change", () => {
-        this.engine.syncOpenViews();
-      }),
+      this.app.workspace.on("layout-change", () => this.engine.syncOpenViews())
     );
-
+    this.registerEvent(
+      this.app.workspace.on("active-leaf-change", () => this.engine.syncOpenViews())
+    );
     this.registerEvent(
       this.app.vault.on("rename", (file, oldPath) => {
         this.database.handleRename(oldPath, file.path);
-      }),
+      })
     );
-
     if (this.app.workspace.layoutReady) {
       this.engine.start();
       this.engine.syncOpenViews();
@@ -1136,48 +1017,33 @@ class HeatmapPlugin extends Plugin {
         this.engine.syncOpenViews();
       });
     }
-
     this.addSettingTab(new HeatmapSettingTab(this.app, this));
-
     this.addCommand({
       id: "clear-heatmap-data",
-      name: "Clear Heatmap Analytics for Current Note",
+      name: "Clear heatmap analytics for current note",
       callback: () => {
-        const activeView = this.app.workspace.getActiveViewOfType(MarkdownView);
+        const activeView = this.app.workspace.getActiveViewOfType(import_obsidian2.MarkdownView);
         if (activeView && activeView.file) {
           this.database.clearRecord(activeView.file.path);
-          new Notice(`Cleared reading analytics for ${activeView.file.name}`);
-          this.engine.clearAllRenderers();
-          this.engine.syncOpenViews();
+          new import_obsidian2.Notice(`Cleared reading analytics for ${activeView.file.name}`);
+          this.engine.rebuildRenderers();
         } else {
-          new Notice("No active note found to clear.");
+          new import_obsidian2.Notice("No active note found to clear.");
         }
-      },
+      }
     });
-
     logger.info("Load lifecycle completed successfully.");
   }
-
+  setDebugLogging(enabled) {
+    logger.setDebug(enabled);
+  }
   async onunload() {
+    var _a, _b, _c;
     logger.info("Unloading Heatmap of Notes plugin...");
-
-    if (this.engine) {
-      this.engine.stop();
-    }
-    if (this.activityMonitor) {
-      this.activityMonitor.destroy();
-    }
-    if (this.database) {
-      await this.database.save(true);
-    }
-
-    const tooltip = document.getElementById("frh-tooltip-element");
-    if (tooltip) {
-      tooltip.remove();
-    }
-
+    (_a = this.engine) == null ? void 0 : _a.stop();
+    await ((_b = this.database) == null ? void 0 : _b.save(true));
+    (_c = document.getElementById("frh-tooltip-element")) == null ? void 0 : _c.remove();
+    document.body.classList.remove(TOUCH_BODY_CLASS);
     logger.info("Cleanup successfully completed.");
   }
-}
-
-module.exports = HeatmapPlugin;
+};

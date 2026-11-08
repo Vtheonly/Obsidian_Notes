@@ -1,50 +1,171 @@
-/* Focus Read: Typography & Ruler — base styles (dynamic typography is injected via JS) */
+/* ============================================================
+   Focus Read: Typography & Ruler — v1.1.0
+   ------------------------------------------------------------
+   This stylesheet is the single source of truth for all plugin
+   styling. Dynamic values are provided as CSS custom properties
+   that main.ts sets on :root (--frt-*) and on the ruler element
+   (--frt-ruler-*). No CSS is generated in JS anymore.
+   ============================================================ */
 
 :root {
   --frt-font-size: 17px;
   --frt-line-height: 1.7;
   --frt-para-spacing: 1.4;
   --frt-max-width: 66ch;
-  --frt-font-family: ;
+  --frt-font-family: inherit;
 }
+
+/* ---------- Typography ---------- */
 
 body.frt-typography-on .markdown-reading-view .markdown-preview-section {
-  font-size: var(--frt-font-size);
-  line-height: var(--frt-line-height);
-  max-width: var(--frt-max-width);
-  margin-left: auto;
-  margin-right: auto;
-}
-body.frt-typography-on .markdown-reading-view p {
-  margin-bottom: calc(var(--frt-font-size) * (var(--frt-para-spacing) - 1));
-}
-body.frt-typography-on .markdown-reading-view li {
-  margin-bottom: calc(var(--frt-font-size) * 0.25);
-}
-body.frt-typography-on .markdown-source-view .cm-content,
-body.frt-typography-on .markdown-source-view .cm-line {
-  max-width: var(--frt-max-width);
+  font-size: var(--frt-font-size) !important;
+  line-height: var(--frt-line-height) !important;
+  font-family: var(--frt-font-family) !important;
+  max-width: var(--frt-max-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
-/* Reading ruler */
+body.frt-typography-on .markdown-reading-view p,
+body.frt-typography-on .markdown-reading-view li {
+  font-family: var(--frt-font-family) !important;
+}
+
+body.frt-typography-on .markdown-reading-view p {
+  margin-bottom: calc(var(--frt-font-size) * (var(--frt-para-spacing) - 1)) !important;
+}
+
+body.frt-typography-on .markdown-reading-view li {
+  margin-bottom: calc(var(--frt-font-size) * 0.25) !important;
+}
+
+body.frt-typography-on .markdown-source-view .cm-content {
+  font-family: var(--frt-font-family) !important;
+  max-width: var(--frt-max-width) !important;
+  font-size: var(--frt-font-size) !important;
+  line-height: var(--frt-line-height) !important;
+}
+
+body.frt-typography-on .markdown-source-view .cm-line {
+  max-width: var(--frt-max-width) !important;
+}
+
+/* ---------- Reading ruler ---------- */
+/*
+   Structure:
+     .frt-reading-ruler          fixed band container (pointer-events: none)
+       > .frt-ruler-band         translucent colored highlight
+       > .frt-ruler-handle       the ONLY interactive element (drag me)
+
+   The container is moved with transform: translate3d() for
+   compositor-friendly updates; height/color/opacity come from
+   element-level CSS variables set by the plugin.
+
+   z-index sits just below Obsidian's floating UI layer
+   (--layer-float) so the ruler never paints over menus, modals,
+   popovers or tooltips, and never blocks clicks anywhere.
+*/
+
 .frt-reading-ruler {
   position: fixed;
   left: 0;
   right: 0;
-  height: 28px;
-  top: -9999px;
-  background: #ffd54f;
-  opacity: 0.18;
+  top: 0;
+  height: var(--frt-ruler-height, 28px);
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
   pointer-events: none;
-  z-index: 9999;
+  z-index: calc(var(--layer-float, 60) - 5);
   display: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body.frt-ruler-on .frt-reading-ruler {
+  display: block;
+}
+
+.frt-ruler-band {
+  position: absolute;
+  inset: 0;
+  background: var(--frt-ruler-color, #ffd54f);
+  opacity: var(--frt-ruler-opacity, 0.18);
   border-top: 1px solid rgba(0, 0, 0, 0.18);
   border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+  /* multiply = classic highlighter look on light backgrounds */
   mix-blend-mode: multiply;
   transition: opacity 0.3s;
 }
-body.frt-ruler-on .frt-reading-ruler { display: block; }
-body.theme-dark .frt-reading-ruler {
+
+/* In dark themes, "multiply" against a dark background would render the
+   yellow band almost black — use normal blending there instead. */
+body.theme-dark .frt-ruler-band {
+  mix-blend-mode: normal;
   border-top-color: rgba(255, 255, 255, 0.18);
   border-bottom-color: rgba(255, 255, 255, 0.18);
+}
+
+/* ---------- Ruler drag handle ---------- */
+
+.frt-ruler-handle {
+  position: absolute;
+  right: max(10px, env(safe-area-inset-right, 10px));
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  /* critical for touch: the finger drag must move the ruler, not scroll */
+  touch-action: none;
+  cursor: grab;
+  border-radius: 999px;
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+  opacity: 0.85;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.frt-ruler-handle:hover {
+  opacity: 1;
+}
+
+.frt-ruler-handle:active,
+.frt-reading-ruler.frt-ruler-dragging .frt-ruler-handle {
+  cursor: grabbing;
+  opacity: 1;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.frt-ruler-handle-icon {
+  font-size: 18px;
+  line-height: 1;
+  pointer-events: none;
+  letter-spacing: -0.35em;
+  margin-left: -0.18em;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Comfortable pointer target on precise pointers, same hit area */
+@media (hover: hover) and (pointer: fine) {
+  .frt-ruler-handle {
+    width: 34px;
+    height: 34px;
+  }
+  .frt-ruler-handle-icon {
+    font-size: 14px;
+  }
+}
+
+/* ---------- Settings hint ---------- */
+
+.frt-setting-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.5;
 }

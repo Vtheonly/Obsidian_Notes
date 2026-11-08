@@ -1,9 +1,9 @@
 {
   "id": "heatmap-of-notes",
   "name": "Heatmap of Notes",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "minAppVersion": "1.4.0",
-  "description": "Visualizes reading attention by displaying a real-time vertical heatmap bar indicating which parts of your notes have been read, skimmed, or skipped.",
+  "description": "Visualizes reading attention with a real-time vertical heatmap bar showing which parts of your notes have been read, skimmed, or skipped. Touch-safe on mobile.",
   "author": "Heatmap of Notes Contributor",
   "authorUrl": "https://obsidian.md",
   "isDesktopOnly": false
