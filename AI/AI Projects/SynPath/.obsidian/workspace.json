@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SynPath-3D Technical Specification & System Architecture/1. 3. 6-Layer Equiformer-Light Pocket Backbone.md",
+                "file": "Prompt.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. 3. 6-Layer Equiformer-Light Pocket Backbone"
+              "title": "Prompt"
+            }
+          },
+          {
+            "id": "b0df332805ba5ce7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "AI/01. Advanced Tensor Algebra and Computational Graphs/Chapter 1. Tensor Geometries and Strides/1. Memory Layouts Contiguity and Strides.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "1. Memory Layouts Contiguity and Strides"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -55,7 +70,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "syntho",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -188,36 +203,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "cae216cc275c18e6",
+  "active": "b0df332805ba5ce7",
   "lastOpenFiles": [
-    "SynPath-3D Technical Specification & System Architecture/1. 2. Component Lifecycle: Kept, Removed, Replaced, and Redesigned.md",
-    "SynPath-3D Technical Specification & System Architecture/1. 1. Overall System Architecture and Modular Decomposition.md",
-    "SynPath-3D Computational Systems & Deep Learning Vault/1. 1. Limitations of Grid Convolutions for Molecular Geometry.md",
-    "SynPath-3D Technical Specification & System Architecture/Introduction.md",
-    "SynPath-3D Technical Specification & System Architecture/9. 2. Bemis-Murcko Scaffold Exclusion and Generalization Tests.md",
-    "SynPath-3D Technical Specification & System Architecture/9. 1. Bipartite Sequence and Structural Clustering Protocol.md",
-    "SynPath-3D Technical Specification & System Architecture/8. 3. Receptor Protonation and Tautomer Optimization via Protoss.md",
-    "SynPath-3D Technical Specification & System Architecture/8. 2. Electron Density Validation via EDIA Scoring.md",
-    "SynPath-3D Technical Specification & System Architecture/8. 1. Diffraction Quality, Resolution, and R-Free Gateways.md",
-    "SynPath-3D Technical Specification & System Architecture/7. 2. Automated Download, Checksumming, and Verification Pipeline.md",
-    "SynPath-3D Technical Specification & System Architecture/7. 1. Raw Source Repositories, APIs, and Mirrored Storage.md",
-    "SynPath-3D Technical Specification & System Architecture/6. 3. Pre-Featurized In-RAM Sharding Infrastructure.md",
-    "SynPath-3D Technical Specification & System Architecture/6. 2. Ingestion Rules for PDBbind, MOAD, and CrossDocked.md",
-    "SynPath-3D Technical Specification & System Architecture/6. 1. Multi-Source Structural Biology Corpus Architecture.md",
-    "SynPath-3D Technical Specification & System Architecture/5. 3. Spatial Distance Biasing and Frame Equivariance Proofs.md",
-    "SynPath-3D Technical Specification & System Architecture/5. 2. Analytical 3D-RISM Cavity Hydration Distillation.md",
-    "SynPath-3D Technical Specification & System Architecture/5. 1. All-Atom Pocket Featurization with FreeSASA and Formal Charges.md",
-    "SynPath-3D Technical Specification & System Architecture/4. 4. Isotopic Atom Provenance and Stereochemical Parity Conservation.md",
-    "SynPath-3D Technical Specification & System Architecture/4. 3. Deterministic Pushdown Automata Synthesis Grammar.md",
-    "SynPath-3D Technical Specification & System Architecture/4. 2. Stratified 75,000 Enamine REAL Synthon Catalog.md",
-    "SynPath-3D Technical Specification & System Architecture/4. 1. The 24 Certified Stereo-Preserving Reaction Grammar.md",
-    "SynPath-3D Technical Specification & System Architecture/3. 3. Differentiable Thermodynamic Phys-Score Reward Functional.md",
-    "SynPath-3D Technical Specification & System Architecture/3. 2. Stage-2 Sub-Trajectory Balance (SubTB) GFlowNet Objective.md",
-    "SynPath-3D Technical Specification & System Architecture/3. 1. Stage-1 Multi-Task Loss with Homoscedastic Uncertainty.md",
-    "SynPath-3D Technical Specification & System Architecture/22. 1. Eighteen Foundational Questions and Definitive Solutions.md",
-    "SynPath-3D Technical Specification & System Architecture/21. 1. Direct Mapping Between Theoretical Formulations and Source Files.md",
-    "SynPath-3D Technical Specification & System Architecture",
-    "Technical Specification & System Architecture",
-    "code"
+    "AI/01. Advanced Tensor Algebra and Computational Graphs/Chapter 1. Tensor Geometries and Strides/2. Broadcasting Rules and Dimension Semantics.md",
+    "AI/01. Advanced Tensor Algebra and Computational Graphs/Chapter 1. Tensor Geometries and Strides/1. Memory Layouts Contiguity and Strides.md",
+    "AI/00. Master Index and System Map/1. Post-CNN Learning Roadmap and Prerequisites.md",
+    "3D-SynTree Chemsitrey/00. Master Index and System Map/1. 3D-SynTree System Overview.md",
+    "3D-SynTree AI/Untitled.md",
+    "3D-SynTree AI",
+    "3D-SynTree Chemsitrey/00. Master Index and System Map/0. Master Vault Index.md",
+    "Prompt.md",
+    "3D-SynTree Chemsitrey/_entire_project_.txt",
+    "3D-SynTree Chemsitrey/10. Benchmarking and Wet Lab Translation/Chapter 2. Wet Lab Translation/2. SPR Kinetics and X-Ray Complex Confirmation.md",
+    "3D-SynTree Chemsitrey/10. Benchmarking and Wet Lab Translation/Chapter 2. Wet Lab Translation/1. Assay Cascade Strategy and nanoDSF.md",
+    "3D-SynTree Chemsitrey/10. Benchmarking and Wet Lab Translation/Chapter 1. Computational Benchmarking/3. Baseline Comparisons TargetDiff SyntheMol.md",
+    "3D-SynTree Chemsitrey/10. Benchmarking and Wet Lab Translation/Chapter 1. Computational Benchmarking/2. AiZynthFinder Retrosynthetic Solvability.md",
+    "3D-SynTree Chemsitrey/10. Benchmarking and Wet Lab Translation/Chapter 1. Computational Benchmarking/1. PoseBusters Physical Sanity Filters.md",
+    "3D-SynTree Chemsitrey/09. Markov Decision Processes and GFlowNets/Chapter 2. GFlowNet Theory and Training/4. Curriculum Learning Approach C Quantiles.md",
+    "3D-SynTree Chemsitrey/09. Markov Decision Processes and GFlowNets/Chapter 2. GFlowNet Theory and Training/3. Stationary Terminal Reward Formulation.md",
+    "3D-SynTree Chemsitrey/09. Markov Decision Processes and GFlowNets/Chapter 2. GFlowNet Theory and Training/2. Multi Path Probability and Backward Flows.md",
+    "3D-SynTree Chemsitrey/09. Markov Decision Processes and GFlowNets/Chapter 2. GFlowNet Theory and Training/1. Trajectory Balance GFlowNets Theory.md",
+    "3D-SynTree Chemsitrey/09. Markov Decision Processes and GFlowNets/Chapter 1. The Assembly MDP/2. Derivation Trees vs Molecular DAGs.md",
+    "3D-SynTree Chemsitrey/09. Markov Decision Processes and GFlowNets/Chapter 1. The Assembly MDP/1. The Assembly MDP Formulation.md",
+    "3D-SynTree Chemsitrey/08. Circular Statistics and Torsion Heads/Chapter 2. Torsion Prediction Design/2. Sub Bin Pocket Conditioned Dihedral Refinement.md",
+    "3D-SynTree Chemsitrey/08. Circular Statistics and Torsion Heads/Chapter 2. Torsion Prediction Design/1. Categorical Binned vs Continuous Torsion Space.md",
+    "3D-SynTree Chemsitrey/08. Circular Statistics and Torsion Heads/Chapter 1. Circular Statistics Foundations/3. Modified Bessel Functions and Amos Ratio.md",
+    "3D-SynTree Chemsitrey/08. Circular Statistics and Torsion Heads/Chapter 1. Circular Statistics Foundations/2. The von Mises Distribution.md",
+    "3D-SynTree Chemsitrey/08. Circular Statistics and Torsion Heads/Chapter 1. Circular Statistics Foundations/1. Statistics on Riemannian Manifolds SO2.md",
+    "3D-SynTree Chemsitrey/07. Geometric Deep Learning and Equivariance/Chapter 2. Equivariant Architectures for Structure Based Design/3. Cross Attention Decoders for SBDD.md",
+    "3D-SynTree Chemsitrey/07. Geometric Deep Learning and Equivariance/Chapter 2. Equivariant Architectures for Structure Based Design/2. Bipartite Heterogeneous Protein Ligand Graphs.md",
+    "3D-SynTree Chemsitrey/07. Geometric Deep Learning and Equivariance/Chapter 2. Equivariant Architectures for Structure Based Design/1. PaiNN Polarizable Interaction Networks.md",
+    "3D-SynTree Chemsitrey/10. Benchmarking and Wet Lab Translation/Chapter 2. Wet Lab Translation",
+    "3D-SynTree Chemsitrey/10. Benchmarking and Wet Lab Translation/Chapter 1. Computational Benchmarking",
+    "3D-SynTree Chemsitrey/09. Markov Decision Processes and GFlowNets/Chapter 2. GFlowNet Theory and Training",
+    "3D-SynTree Chemsitrey/09. Markov Decision Processes and GFlowNets/Chapter 1. The Assembly MDP",
+    "3D-SynTree Chemsitrey/08. Circular Statistics and Torsion Heads/Chapter 2. Torsion Prediction Design",
+    "3D-SynTree Chemsitrey/08. Circular Statistics and Torsion Heads/Chapter 1. Circular Statistics Foundations",
+    "3D-SynTree Chemsitrey/07. Geometric Deep Learning and Equivariance/Chapter 2. Equivariant Architectures for Structure Based Design",
+    "3D-SynTree Chemsitrey/07. Geometric Deep Learning and Equivariance/Chapter 1. Symmetry Groups and Equivariant Foundations",
+    "Untitled.canvas"
   ]
 }

@@ -29,10 +29,10 @@ With encapsulation:
 
 | Modifier | Same class | Same package | Subclass | World |
 |---|---|---|---|---|
-| `public` | ✓ | ✓ | ✓ | ✓ |
-| `protected` | ✓ | ✓ | ✓ | ✗ |
-| (package-private, default) | ✓ | ✓ | ✗ | ✗ |
-| `private` | ✓ | ✗ | ✗ | ✗ |
+| `public` |  |  |  |  |
+| `protected` |  |  |  |  |
+| (package-private, default) |  |  |  |  |
+| `private` |  |  |  |  |
 
 **Default to `private`.** Expose only what callers need. Use `package-private` for testing access within the same package. Use `public` only for the class's published API.
 

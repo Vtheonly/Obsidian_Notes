@@ -32,7 +32,7 @@ Three things:
 - **Aggregation** — a "has-a" relationship where A is conceptually a *whole* and B is a *part*, but B has an independent lifecycle. The part can be shared between wholes.
 - **Composition** — a "contains-a" relationship where A is the whole, B is the part, and B's lifecycle is *bound to* A's. If A is destroyed, B is destroyed. The part is not shared.
 - **Multiplicity** (cardinality) — how many instances participate. `1` (exactly one), `0..1` (zero or one), `*` or `0..*` (zero or more), `1..*` (one or more), `n..m` (between n and m).
-- **Navigability** — which direction the reference goes. `A → B` means A knows B; `A ↔ B` means they know each other (usually a smell).
+- **Navigability** — which direction the reference goes. `A → B` means A knows B; `A  B` means they know each other (usually a smell).
 - **Ownership** — who creates, who destroys, who is responsible for the part's lifecycle.
 - **UML notation** — open diamond (aggregation), filled diamond (composition), plain line (association), arrowhead (navigability), numbers on each end (multiplicity). See [[01-Class-Diagrams]].
 

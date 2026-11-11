@@ -12,7 +12,7 @@ tags: [bim, ifc, relationships]
 | ------------------------------------- | ----------------- | ------------------- | ---------------------------------------- |
 | `IfcRelAggregates`                    | Whole             | Parts               | A building aggregates storeys.           |
 | `IfcRelContainedInSpatialStructure`   | Element           | Space               | A wall is contained in a space.          |
-| `IfcRelConnectsElements`              | Element A         | Element B           | Two elements are connected (door ↔ wall).|
+| `IfcRelConnectsElements`              | Element A         | Element B           | Two elements are connected (door  wall).|
 | `IfcRelDefinesByType`                 | Element           | Type                | An element is an instance of a type.     |
 | `IfcRelDefinesByProperties`           | Element           | PropertySet         | An element has these properties.         |
 | `IfcRelAssociatesMaterial`            | Element           | Material            | An element has this material.            |

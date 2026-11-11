@@ -39,7 +39,7 @@ The window opening goes from $x=1$ to $x=2$, $y=-0.1$ to $y=0.3$, $z=1$ to $z=2$
 The wall goes from $x=0$ to $x=5$, $y=0$ to $y=0.2$, $z=0$ to $z=3$.
 
 Check:
-- $x$: opening $[1, 2]$ is inside wall $[0, 5]$. ✓
+- $x$: opening $[1, 2]$ is inside wall $[0, 5]$. 
 - $y$: opening $[-0.1, 0.3]$ is NOT inside wall $[0, 0.2]$. The opening extends beyond the wall on both sides (by 0.1 m each).
 
 This is a problem: the opening should be inside the wall. The opening's $y$ range should be $[0, 0.2]$ (or slightly less, to leave a frame).
@@ -48,7 +48,7 @@ This is a problem: the opening should be inside the wall. The opening's $y$ rang
 
 The wall's geometry is a box from $(0, 0, 0)$ to $(5, 0.2, 3)$. The vertical direction is $z$.
 
-- The wall's height is along $z$ (from 0 to 3). ✓
+- The wall's height is along $z$ (from 0 to 3). 
 - The wall's thickness is along $y$ (from 0 to 0.2).
 - The wall's length is along $x$ (from 0 to 5).
 

@@ -127,9 +127,9 @@ FDs:
 
 ### Step-by-step decomposition
 
-**Step 1: 1NF.** All attributes are already atomic. ✓
+**Step 1: 1NF.** All attributes are already atomic. 
 
-**Step 2: 2NF.** Candidate keys are `{account_id}` and `{iban}`, both single-attribute. No partial dependencies on composite keys possible. ✓
+**Step 2: 2NF.** Candidate keys are `{account_id}` and `{iban}`, both single-attribute. No partial dependencies on composite keys possible. 
 
 **Step 3: 3NF.** Two transitive dependencies:
 

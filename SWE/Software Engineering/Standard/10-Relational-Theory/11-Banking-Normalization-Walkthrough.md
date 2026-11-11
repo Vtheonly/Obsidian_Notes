@@ -100,13 +100,13 @@ Every other attribute is non-prime. This immediately signals many violations.
 
 ## Step 2: 1NF check
 
-All attributes are atomic (no repeating groups, no lists). ✓
+All attributes are atomic (no repeating groups, no lists). 
 
 (If the spreadsheet had packed both ledger entries into one column like `debit_id/credit_id`, that would be a 1NF violation; we'd split into separate columns first.)
 
 ## Step 3: 2NF check
 
-Candidate key `{transfer_id}` is single-attribute. No partial dependencies on composite keys are possible. ✓ (2NF is automatic from 1NF here.)
+Candidate key `{transfer_id}` is single-attribute. No partial dependencies on composite keys are possible.  (2NF is automatic from 1NF here.)
 
 ## Step 4: 3NF check — many violations
 
@@ -166,22 +166,22 @@ with FDs:
 - `{transfer_id} → {transfer_date, amount, currency, idempotency_key, from_account_id, to_account_id}`
 - `{idempotency_key} → {transfer_id}`
 
-This relation is in 3NF (and BCNF). ✓
+This relation is in 3NF (and BCNF). 
 
 ## Step 5: BCNF check
 
 Each decomposed relation:
 
-- `customers(id, legal_name, tax_id)`: FDs `{id} → {legal_name, tax_id}` and `{tax_id} → {id}`. Candidate keys: `{id}`, `{tax_id}`. Every determinant is a candidate key. ✓ BCNF.
-- `accounts(id, iban, balance, status, customer_id)`: candidate keys `{id}`, `{iban}`. Every determinant (`{id}`, `{iban}`, `{customer_id}` — wait, `{customer_id} → ?` is not an FD here; one customer has many accounts). ✓ BCNF.
-- `ledger_entries(id, account_id, transfer_id, amount, occurred_at)`: candidate key `{id}`. FD `{account_id, transfer_id} → ?` is not present (multiple entries per account per transfer are possible — the debit and the credit). ✓ BCNF.
-- `transfers(transfer_id, transfer_date, amount, currency, idempotency_key, from_account_id, to_account_id)`: candidate keys `{transfer_id}`, `{idempotency_key}`. Every determinant is a candidate key. ✓ BCNF.
+- `customers(id, legal_name, tax_id)`: FDs `{id} → {legal_name, tax_id}` and `{tax_id} → {id}`. Candidate keys: `{id}`, `{tax_id}`. Every determinant is a candidate key.  BCNF.
+- `accounts(id, iban, balance, status, customer_id)`: candidate keys `{id}`, `{iban}`. Every determinant (`{id}`, `{iban}`, `{customer_id}` — wait, `{customer_id} → ?` is not an FD here; one customer has many accounts).  BCNF.
+- `ledger_entries(id, account_id, transfer_id, amount, occurred_at)`: candidate key `{id}`. FD `{account_id, transfer_id} → ?` is not present (multiple entries per account per transfer are possible — the debit and the credit).  BCNF.
+- `transfers(transfer_id, transfer_date, amount, currency, idempotency_key, from_account_id, to_account_id)`: candidate keys `{transfer_id}`, `{idempotency_key}`. Every determinant is a candidate key.  BCNF.
 
-All decomposed relations are in BCNF. ✓
+All decomposed relations are in BCNF. 
 
 ## Step 6: Verify losslessness and dependency preservation
 
-**Losslessness**: each decomposition shared an attribute that was a candidate key of one of the resulting relations. For example, `transfers.from_account_id` is a foreign key to `accounts.id`; the join `transfers ⋈ accounts` on `from_account_id = id` reconstructs the account data losslessly. ✓
+**Losslessness**: each decomposition shared an attribute that was a candidate key of one of the resulting relations. For example, `transfers.from_account_id` is a foreign key to `accounts.id`; the join `transfers ⋈ accounts` on `from_account_id = id` reconstructs the account data losslessly. 
 
 **Dependency preservation**: each original FD can be checked in one of the resulting tables:
 
@@ -191,7 +191,7 @@ All decomposed relations are in BCNF. ✓
 - Transfer FDs: in `transfers` (enforced by PK and UNIQUE on `idempotency_key`).
 - Foreign keys: `accounts.customer_id → customers.id`, `ledger_entries.account_id → accounts.id`, `ledger_entries.transfer_id → transfers.id`, `transfers.from_account_id → accounts.id`, `transfers.to_account_id → accounts.id`. All declared as FK constraints.
 
-No FDs were lost. ✓ (This is the case where BCNF is also dependency-preserving — the lucky case.)
+No FDs were lost.  (This is the case where BCNF is also dependency-preserving — the lucky case.)
 
 ## The final schema
 

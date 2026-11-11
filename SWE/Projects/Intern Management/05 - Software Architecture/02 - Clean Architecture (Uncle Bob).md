@@ -79,7 +79,7 @@ The use case (inner) defines the interface. The repository (outer) implements it
 
 ## Project Connection
 
-The project is the opposite of Clean Architecture. `oracleConnector` (outer — DB access) is called directly by controllers (outer — UI). There are no use cases, no entities, no interfaces. The dependency direction is sideways (controller ↔ DAO) instead of inward.
+The project is the opposite of Clean Architecture. `oracleConnector` (outer — DB access) is called directly by controllers (outer — UI). There are no use cases, no entities, no interfaces. The dependency direction is sideways (controller  DAO) instead of inward.
 
 ## When Clean Architecture is overkill
 

@@ -35,7 +35,7 @@ new Thread(() -> {
 }).start();
 ```
 
-⚠️ For high-frequency updates, throttle (don't call `runLater` per row — batch).
+ For high-frequency updates, throttle (don't call `runLater` per row — batch).
 
 ## Pattern 3: Error handling
 

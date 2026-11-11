@@ -58,7 +58,7 @@ public class InternCell extends TableCell<Intern, String> {
 }
 ```
 
-⚠️ **Critical**: always call `super.updateItem(item, empty)` first. Always handle the `empty` case (set text/graphic to null). Otherwise, cells show stale data when reused.
+ **Critical**: always call `super.updateItem(item, empty)` first. Always handle the `empty` case (set text/graphic to null). Otherwise, cells show stale data when reused.
 
 ## Why this matters
 

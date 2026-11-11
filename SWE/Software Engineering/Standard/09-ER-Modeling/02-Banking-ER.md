@@ -167,7 +167,7 @@ erDiagram
 | Account → Statement | 1:N | Mandatory on Statement side | FK on Statement |
 | Account → AccountFreeze | 1:N | Mandatory on AccountFreeze side; optional on Account side | FK on AccountFreeze |
 | Transfer → TransferAudit | 1:N | Mandatory on TransferAudit side | FK on TransferAudit |
-| LedgerEntry ↔ Transfer | N:0..1 | Optional correlation — a LedgerEntry may belong to a Transfer (and a Transfer has 2 LedgerEntries) | FK `correlation_id` on LedgerEntry, nullable |
+| LedgerEntry  Transfer | N:0..1 | Optional correlation — a LedgerEntry may belong to a Transfer (and a Transfer has 2 LedgerEntries) | FK `correlation_id` on LedgerEntry, nullable |
 
 ### Where ER is straightforward
 

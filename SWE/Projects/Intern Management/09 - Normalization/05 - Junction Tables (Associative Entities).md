@@ -14,7 +14,7 @@ A **junction table** (also called bridge table, linking table, associative entit
 
 ## Many-to-many example
 
-Interns ↔ Themes: an intern can have multiple themes; a theme can have multiple interns.
+Interns  Themes: an intern can have multiple themes; a theme can have multiple interns.
 
 ```sql
 CREATE TABLE interns (intern_id NUMBER PRIMARY KEY, ...);

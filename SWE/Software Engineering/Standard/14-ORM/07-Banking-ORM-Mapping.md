@@ -28,7 +28,7 @@ The Banking domain is the right case study because it exercises *every* mismatch
 
 - Identity: `Account` has both surrogate `id` and logical `iban`.
 - Inheritance: `CheckingAccount` and `SavingsAccount` extend `Account`.
-- Associations: `Account` ↔ `LedgerEntry` (one-to-many), `Transfer` ↔ `Account` (many-to-one, twice).
+- Associations: `Account`  `LedgerEntry` (one-to-many), `Transfer`  `Account` (many-to-one, twice).
 - Collections: ordered list of entries.
 - Transactions: atomic transfer.
 - Data types: `Money` (value object), `AccountStatus` (enum), `Instant` (timestamp).

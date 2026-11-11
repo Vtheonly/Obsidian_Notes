@@ -83,10 +83,10 @@ This is the "two models" approach. It produces a richer object model (because it
 
 For the Banking system:
 
-- `Account` (object) ↔ `accounts` (table) — direct correspondence.
-- `LedgerEntry` (object) ↔ `ledger_entries` (table) — direct.
-- `Customer` (object) ↔ `customers` (table) — direct.
-- `Transfer` (object) ↔ `transfers` (table) — direct.
+- `Account` (object)  `accounts` (table) — direct correspondence.
+- `LedgerEntry` (object)  `ledger_entries` (table) — direct.
+- `Customer` (object)  `customers` (table) — direct.
+- `Transfer` (object)  `transfers` (table) — direct.
 
 These are the easy cases. The object model and the data model align closely.
 
@@ -137,7 +137,7 @@ Banking uses a mild form of CQRS: the write model is `accounts` + `ledger_entrie
 ## What is genuinely new here
 
 - The object model and the data model are *different abstractions of the same domain*, not the same model in two notations.
-- They correspond in the easy cases (class ↔ table) and diverge in the hard cases (identity, inheritance, collections, behavior).
+- They correspond in the easy cases (class  table) and diverge in the hard cases (identity, inheritance, collections, behavior).
 - The right design approach: design each model for its purpose, translate at the boundary, and consider CQRS for read-heavy systems.
 
 ## Where this goes next

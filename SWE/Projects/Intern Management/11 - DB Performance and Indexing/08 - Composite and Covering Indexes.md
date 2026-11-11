@@ -23,9 +23,9 @@ SELECT * FROM interns WHERE department_id = 5 AND status = 'Pending';
 ## Column order matters
 
 The index is sorted by the first column, then the second, etc. The index helps:
-- `WHERE department_id = 5` ✓ (uses the index)
-- `WHERE department_id = 5 AND status = 'Pending'` ✓
-- `WHERE status = 'Pending'` ✗ (can't use the index — status is not the leading column)
+- `WHERE department_id = 5`  (uses the index)
+- `WHERE department_id = 5 AND status = 'Pending'` 
+- `WHERE status = 'Pending'`  (can't use the index — status is not the leading column)
 
 Rule of thumb: **most selective column first** (or the column always queried).
 

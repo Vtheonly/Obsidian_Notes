@@ -60,8 +60,8 @@ Compatibility matrix:
 
 | | S | X |
 |---|---|---|
-| **S** | ✓ | ✗ |
-| **X** | ✗ | ✗ |
+| **S** |  |  |
+| **X** |  |  |
 
 ### The deadlock problem
 

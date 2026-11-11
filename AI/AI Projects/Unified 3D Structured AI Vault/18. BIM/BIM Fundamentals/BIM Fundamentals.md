@@ -45,7 +45,7 @@ IFC defines relationships through `IfcRel*` entities:
 
 - `IfcRelContainedInSpatialStructure`: element → space.
 - `IfcRelAggregates`: whole → parts.
-- `IfcRelConnectsElements`: element ↔ element.
+- `IfcRelConnectsElements`: element  element.
 - `IfcRelDefinesByType`: element → type.
 - `IfcRelAssociatesMaterial`: element → material.
 

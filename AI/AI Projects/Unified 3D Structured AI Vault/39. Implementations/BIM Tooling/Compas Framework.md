@@ -17,7 +17,7 @@ tags: [implementation, bim, compas]
 ## Use in AI
 
 - Build geometric features for ML.
-- Convert between representations (mesh ↔ graph ↔ tree).
+- Convert between representations (mesh  graph  tree).
 - Implement validation checks.
 - Build synthetic data generators.
 

@@ -11,14 +11,10 @@
             "id": "3ae495d0ad8f179e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Complete AI Engineering.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Complete AI Engineering"
+              "title": "New tab"
             }
           }
         ]
@@ -55,7 +51,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "fpn",
+                "query": "quiz",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -156,6 +152,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Untitled 1.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -164,7 +161,8 @@
               "title": "Outline"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -183,8 +181,14 @@
       "quiz-generator:Open generator": false
     }
   },
-  "active": "3ae495d0ad8f179e",
+  "active": "57c4253cb2ad748b",
   "lastOpenFiles": [
+    "AI Projects/SynPath/MAIN.md",
+    "AI /Master AI/26 - Papers/2024-2026/47 - Based 2024.md",
+    "MAIN.md",
+    "AI Course/02 - Python and Data Tooling/02.1 - Python Environment Setup/02. Installation and Distributions.md",
+    "Master AI/04 - Neural Networks/Architectures/04 - RNN LSTM GRU.md",
+    "Untitled 1.md",
     "AI Projects/TAMER Project/Tamer Our Version/00 - Master Index and MOC.md",
     "50_Swin_Transformer_v2/07_Feature_Pyramid_Networks_and_Fusion.md",
     "50_Swin_Transformer_v2",
@@ -206,12 +210,6 @@
     "Master AI/27 - Projects/Implementations/09 - Build a Mini SSM.md",
     "Master AI/27 - Projects/Implementations/05 - Build a Tiny LLM Trainer.md",
     "Master AI/27 - Projects/Implementations/04 - Build a Mini MoE.md",
-    "Master AI/27 - Projects/Implementations/01 - Build Attention and Transformer From Scratch.md",
-    "Master AI/27 - Projects/Capstones/19 - Build a Fine-Tuning Pipeline with LoRA and DPO.md",
-    "Master AI/27 - Projects/Capstones/18 - Build an MCP Marketplace.md",
-    "Master AI/27 - Projects/Capstones/17 - Build a Quantization Toolkit.md",
-    "Master AI/27 - Projects/Capstones/16 - Build a Speculative Decoding Server.md",
-    "Master AI/27 - Projects/Capstones/15 - Build a Multimodal Agent.md",
     "Master AI/29 - Interview Prep/System Design",
     "Master AI/29 - Interview Prep/Conceptual",
     "Master AI/29 - Interview Prep/Coding",

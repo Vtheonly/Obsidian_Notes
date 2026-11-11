@@ -32,7 +32,7 @@ The row's position in the result set (1-based). Assigned before `ORDER BY`.
 ```sql
 SELECT ROWNUM, name FROM interns WHERE ROWNUM <= 10;  -- first 10 rows
 ```
-⚠️ `ROWNUM <= 10` returns 10 rows, but `ROWNUM > 10` returns 0 rows (ROWNUM is assigned before the filter). Use a subquery.
+ `ROWNUM <= 10` returns 10 rows, but `ROWNUM > 10` returns 0 rows (ROWNUM is assigned before the filter). Use a subquery.
 
 ### ROWID
 The physical address of a row. Unique within a table.

@@ -1,0 +1,955 @@
+/* ============================================================
+   Focus Read Suite — v2.0.0 — unified design system
+   ------------------------------------------------------------
+   One stylesheet for every module. Dynamic values arrive as CSS
+   custom properties (--frs-*) set from TypeScript:
+
+     --frs-accent        custom accent (Appearance) or unset → native
+     --frs-widget-scale  floating widget scale (Appearance)
+     --frs-font-*        typography (Typography section)
+     --frs-ruler-*       ruler band + notch (Focus / Ruler sections)
+
+   Everything else reads Obsidian's theme variables so the suite
+   feels native in light and dark themes alike.
+   ============================================================ */
+
+:root {
+  --frs-accent-resolved: var(--frs-accent, var(--interactive-accent));
+  --frs-accent-hover-resolved: var(--frs-accent, var(--interactive-accent-hover));
+  --frs-widget-scale: 1;
+
+  /* Typography defaults (overwritten at runtime). */
+  --frs-font-size: 17px;
+  --frs-line-height: 1.7;
+  --frs-para-spacing: 1.4;
+  --frs-max-width: 66ch;
+  --frs-font-family: inherit;
+
+  /* Ruler defaults (overwritten at runtime). */
+  --frs-ruler-height: 28px;
+  --frs-ruler-color: #ffd54f;
+  --frs-ruler-opacity: 0.18;
+  --frs-notch-size: 44px;
+}
+
+/* ============================================================
+   Shared buttons
+   ============================================================ */
+
+.frs-btn {
+  flex: 1;
+  background: var(--background-modifier-border);
+  color: var(--text-normal);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  /* comfortably tappable on touch screens */
+  min-height: 34px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.05s;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: auto;
+  touch-action: manipulation;
+  font-family: var(--font-interface);
+}
+
+.frs-btn:hover:not(:disabled) {
+  background: var(--background-modifier-border-hover, var(--interactive-accent-hover));
+}
+
+.frs-btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.frs-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.frs-btn-primary {
+  background: var(--frs-accent-resolved);
+  color: var(--text-on-accent);
+}
+
+.frs-btn-primary:hover:not(:disabled) {
+  background: var(--frs-accent-hover-resolved);
+}
+
+.frs-btn-danger:hover:not(:disabled) {
+  background: #e53935;
+  color: white;
+  border-color: #c62828;
+}
+
+/* ============================================================
+   Focus Read Timer — floating widget
+   ============================================================ */
+
+.frs-timer {
+  position: fixed !important;
+  top: 16px;
+  right: 16px;
+  left: auto;
+  bottom: auto;
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 12px;
+  padding: 0;
+  min-width: 224px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  z-index: var(--layer-popover, 300);
+  font-size: 13px;
+  opacity: 1;
+  transition: opacity 0.3s, box-shadow 0.2s;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-select: none;
+  /* lets pointermove fire on touch without scrolling while dragging */
+  touch-action: none;
+  /* widget scale from Appearance settings */
+  transform-origin: top right;
+  scale: var(--frs-widget-scale);
+}
+
+.frs-dimmed {
+  opacity: 0.55;
+}
+
+/* ---- Drag header: grip + title + phase pill ---- */
+
+.frs-timer-header {
+  cursor: grab;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--background-primary-alt, var(--background-modifier-border));
+  border-bottom: 1px solid var(--background-modifier-border);
+  border-radius: 12px 12px 0 0;
+  touch-action: none;
+}
+
+.frs-timer-header:active {
+  cursor: grabbing;
+}
+
+.frs-grip {
+  font-size: 14px;
+  line-height: 1;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.frs-timer-title {
+  flex: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.frs-timer-phase {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--background-modifier-border);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.frs-timer-phase-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--text-faint);
+}
+
+/* Phase states color the dot + pill (data-phase on the card). */
+.frs-timer[data-phase="reading"] .frs-timer-phase-dot {
+  background: var(--frs-accent-resolved);
+  animation: frs-pulse 2s ease-in-out infinite;
+}
+.frs-timer[data-phase="reading"] .frs-timer-phase {
+  color: var(--frs-accent-resolved);
+}
+.frs-timer[data-phase="break"] .frs-timer-phase-dot {
+  background: #66bb6a;
+}
+.frs-timer[data-phase="break"] .frs-timer-phase {
+  color: #66bb6a;
+}
+.frs-timer[data-phase="paused"] .frs-timer-phase-dot {
+  background: var(--text-muted);
+}
+
+@keyframes frs-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* ---- Body: clock, progress, info, controls ---- */
+
+.frs-timer-body {
+  padding: 10px 14px 12px;
+}
+
+.frs-timer-collapsed .frs-timer-body {
+  display: none;
+}
+
+.frs-timer-clock {
+  font-size: 30px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  margin: 2px 0 6px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.frs-timer[data-phase="break"] .frs-timer-clock {
+  color: #66bb6a;
+}
+.frs-timer[data-phase="paused"] .frs-timer-clock {
+  color: var(--text-muted);
+}
+
+.frs-timer-progress {
+  height: 4px;
+  background: var(--background-modifier-border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.frs-timer-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--frs-accent-resolved), var(--frs-accent-hover-resolved));
+  width: 0%;
+  transition: width 0.3s;
+}
+
+.frs-timer[data-phase="break"] .frs-timer-progress-fill {
+  background: linear-gradient(90deg, #66bb6a, #43a047);
+}
+
+.frs-timer-info {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  min-height: 15px;
+  margin-bottom: 8px;
+}
+
+.frs-timer-controls {
+  display: flex;
+  gap: 6px;
+}
+
+/* Drag feedback. */
+.frs-timer.frs-dragging {
+  transition: none;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  cursor: grabbing !important;
+}
+
+/* Phones: narrower card, larger clock button targets. */
+@media (max-width: 480px) {
+  .frs-timer {
+    min-width: 188px;
+  }
+  .frs-timer-clock {
+    font-size: 26px;
+  }
+  .frs-btn {
+    min-height: 38px;
+  }
+}
+
+/* ============================================================
+   Idle nudge
+   ============================================================ */
+
+.frs-nudge {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  bottom: auto !important;
+  right: auto !important;
+  transform: translate(-50%, -50%) !important;
+  background: var(--background-secondary);
+  border: 1px solid var(--frs-accent-resolved);
+  border-radius: 12px;
+  padding: 18px 22px;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.45), 0 6px 20px rgba(0, 0, 0, 0.25);
+  z-index: var(--layer-modal, 90);
+  max-width: min(360px, 90vw);
+  animation: frs-nudge-in 0.3s ease-out;
+}
+
+@keyframes frs-nudge-in {
+  from {
+    transform: translate(-50%, calc(-50% + 20px)) !important;
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) !important;
+    opacity: 1;
+  }
+}
+
+.frs-nudge-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.frs-nudge-body {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.frs-nudge-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.frs-nudge-actions .frs-btn {
+  min-height: 34px;
+}
+
+.frs-nudge-actions .frs-nudge-dismiss {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--background-modifier-border);
+}
+
+/* ============================================================
+   Daily goal bar
+   ============================================================ */
+
+.frs-goal-bar {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: auto !important;
+  height: 4px;
+  background: var(--background-modifier-border);
+  z-index: var(--layer-status-bar, 15);
+  pointer-events: none;
+}
+
+.frs-goal-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--frs-accent-resolved), #ff7043);
+  width: 0%;
+  transition: width 0.4s;
+}
+
+.frs-goal-bar-label {
+  position: fixed !important;
+  /* lift above iOS home indicator / Android gesture bar */
+  bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+  right: 10px !important;
+  top: auto !important;
+  left: auto !important;
+  font-size: 11px;
+  color: var(--text-muted);
+  z-index: var(--layer-status-bar, 15);
+  pointer-events: none;
+  background: var(--background-secondary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   Reading ruler + notch + focus line
+   ============================================================ */
+/*
+   Structure:
+     .frs-ruler                 fixed band container (pointer-events: none)
+       > .frs-ruler-band        translucent highlight
+       > .frs-ruler-focus-line  crisp guide at the center (optional)
+       > .frs-notch             the ONLY interactive element (drag me)
+       > .frs-ruler-badge       live position % while dragging
+
+   The container moves with transform: translate3d() (compositor-driven);
+   height/color/opacity/notch size come from CSS variables.
+   z-index sits just below Obsidian's floating UI layer so the ruler never
+   paints over menus, modals, popovers or tooltips.
+*/
+
+.frs-ruler {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: var(--frs-ruler-height, 28px);
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  pointer-events: none;
+  z-index: calc(var(--layer-float, 60) - 5);
+  display: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body.frs-focus-on .frs-ruler {
+  display: block;
+}
+
+.frs-ruler-band {
+  position: absolute;
+  inset: 0;
+  background: var(--frs-ruler-color, #ffd54f);
+  opacity: var(--frs-ruler-opacity, 0.18);
+  border-top: 1px solid rgba(0, 0, 0, 0.18);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+  /* multiply = classic highlighter look on light backgrounds */
+  mix-blend-mode: multiply;
+  transition: opacity 0.3s;
+}
+
+/* In dark themes "multiply" against a dark background renders the yellow
+   band almost black — use normal blending there instead. */
+body.theme-dark .frs-ruler-band {
+  mix-blend-mode: normal;
+  border-top-color: rgba(255, 255, 255, 0.18);
+  border-bottom-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Focus line: crisp eye-tracking guide at the band's center. */
+.frs-ruler-focus-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--frs-accent-resolved);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.frs-ruler-with-focus-line .frs-ruler-focus-line {
+  opacity: 0.75;
+}
+
+/* ---- The notch (drag handle) ---- */
+
+.frs-notch {
+  position: absolute;
+  /* keep the notch inside the viewport even when the band hugs the top */
+  top: 50%;
+  transform: translateY(-50%);
+  right: max(10px, env(safe-area-inset-right, 10px));
+  width: var(--frs-notch-size, 44px);
+  height: var(--frs-notch-size, 44px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  /* critical for touch: the finger drag must move the ruler, not scroll */
+  touch-action: none;
+  cursor: grab;
+  border-radius: 999px;
+  background: var(--frs-accent-resolved);
+  color: var(--text-on-accent);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  opacity: 0.9;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  border: none;
+}
+
+.frs-notch:hover,
+.frs-notch:focus-visible {
+  opacity: 1;
+  outline: 2px solid var(--text-on-accent);
+  outline-offset: 2px;
+}
+
+.frs-notch:active,
+.frs-ruler-dragging .frs-notch {
+  cursor: grabbing;
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.frs-notch-icon {
+  font-size: 18px;
+  line-height: 1;
+  pointer-events: none;
+  letter-spacing: -0.35em;
+  margin-left: -0.18em;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Comfortable pointer target on precise pointers, same hit area. */
+@media (hover: hover) and (pointer: fine) {
+  .frs-notch-icon {
+    font-size: 14px;
+  }
+}
+
+/* Live position badge while dragging. */
+.frs-ruler-badge {
+  position: absolute;
+  right: calc(max(10px, env(safe-area-inset-right, 10px)) + var(--frs-notch-size, 44px) + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  opacity: 0;
+  transition: opacity 0.15s;
+  pointer-events: none;
+}
+
+.frs-ruler-badge.frs-visible {
+  opacity: 1;
+}
+
+/* While dragging the ruler, suppress text selection globally. */
+body.frs-ruler-drag-global {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+/* ============================================================
+   Heat Map of Notes
+   ============================================================ */
+
+.frs-heatmap-wrapper {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  right: 12px;
+  width: 16px;
+  z-index: 20;
+  background: rgba(128, 128, 128, 0.03);
+  border-left: 1px solid var(--background-modifier-border);
+  border-right: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  overflow: hidden;
+  pointer-events: auto; /* hover tooltips on desktop */
+  user-select: none;
+  -webkit-user-select: none;
+  opacity: 0.85;
+  transition: opacity 0.2s, width 0.2s;
+}
+
+.frs-heatmap-wrapper:hover {
+  opacity: 1;
+  background: rgba(128, 128, 128, 0.06);
+}
+
+/*
+ * Touch devices: the strip must NEVER intercept gestures. A
+ * pointer-events: auto strip along the right edge made scrolling from that
+ * edge impossible on phones/tablets. Hover tooltips don't exist on touch.
+ */
+body.frs-touch-device .frs-heatmap-wrapper {
+  pointer-events: none;
+}
+body.frs-touch-device .frs-heatmap-wrapper:hover {
+  opacity: 0.85;
+  background: rgba(128, 128, 128, 0.03);
+}
+
+.frs-heatmap-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: crosshair;
+}
+
+body.frs-touch-device .frs-heatmap-canvas {
+  cursor: default;
+}
+
+/* Floating tooltip (desktop hover). */
+.frs-heatmap-tooltip {
+  position: fixed;
+  background: var(--background-floating);
+  border: 1px solid var(--background-modifier-border);
+  border-left: 3px solid var(--frs-accent-resolved);
+  color: var(--text-normal);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  line-height: 1.5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+  z-index: var(--layer-tooltip, 1000);
+  pointer-events: none;
+  font-family: var(--font-interface);
+  opacity: 0;
+  transition: opacity 0.15s ease-out;
+  max-width: 230px;
+}
+
+.frs-heatmap-tooltip-title {
+  font-weight: 600;
+  border-bottom: 1px solid var(--background-modifier-border);
+  padding-bottom: 4px;
+  margin-bottom: 5px;
+  color: var(--frs-accent-resolved);
+}
+
+.frs-heatmap-tooltip-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 2px;
+  color: var(--text-muted);
+}
+
+.frs-heatmap-tooltip-value {
+  font-weight: 600;
+  color: var(--text-normal);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   Typography
+   ============================================================ */
+
+body.frs-typography-on .markdown-reading-view .markdown-preview-section {
+  font-size: var(--frs-font-size) !important;
+  line-height: var(--frs-line-height) !important;
+  font-family: var(--frs-font-family) !important;
+  max-width: var(--frs-max-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body.frs-typography-on .markdown-reading-view p,
+body.frs-typography-on .markdown-reading-view li {
+  font-family: var(--frs-font-family) !important;
+}
+
+body.frs-typography-on .markdown-reading-view p {
+  margin-bottom: calc(var(--frs-font-size) * (var(--frs-para-spacing) - 1)) !important;
+}
+
+body.frs-typography-on .markdown-reading-view li {
+  margin-bottom: calc(var(--frs-font-size) * 0.25) !important;
+}
+
+body.frs-typography-on .markdown-source-view .cm-content {
+  font-family: var(--frs-font-family) !important;
+  max-width: var(--frs-max-width) !important;
+  font-size: var(--frs-font-size) !important;
+  line-height: var(--frs-line-height) !important;
+}
+
+body.frs-typography-on .markdown-source-view .cm-line {
+  max-width: var(--frs-max-width) !important;
+}
+
+/* ============================================================
+   Settings tab
+   ============================================================ */
+
+.frs-settings-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.frs-settings-head-titles h2 {
+  margin: 0 0 2px;
+}
+
+.frs-settings-head-sub {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.frs-settings-head-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Status pills. */
+.frs-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid var(--background-modifier-border);
+  color: var(--text-muted);
+  background: var(--background-secondary);
+}
+
+.frs-pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--text-faint);
+}
+
+.frs-pill-on {
+  color: var(--frs-accent-resolved);
+  border-color: color-mix(in srgb, var(--frs-accent-resolved) 45%, transparent);
+}
+.frs-pill-on .frs-pill-dot {
+  background: var(--frs-accent-resolved);
+}
+
+.frs-pill-off {
+  color: var(--text-faint);
+}
+
+/* Sticky tab navigation (horizontally scrollable on phones). */
+.frs-settings-nav {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 4px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  margin-bottom: 14px;
+  position: sticky;
+  top: 0;
+  background: var(--background-primary);
+  z-index: 5;
+  scrollbar-width: thin;
+}
+
+.frs-settings-tab {
+  flex: 0 0 auto;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.frs-settings-tab:hover {
+  background: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+.frs-settings-tab-active {
+  background: var(--frs-accent-resolved);
+  color: var(--text-on-accent);
+}
+
+.frs-settings-tab-active:hover {
+  background: var(--frs-accent-hover-resolved);
+  color: var(--text-on-accent);
+}
+
+/* Section headers. */
+.frs-settings-section-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.frs-settings-section-head h3 {
+  margin: 0 0 2px;
+}
+
+.frs-settings-section-subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.frs-subhead {
+  margin: 22px 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+/* Slider value badge. */
+.frs-setting-value {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--background-modifier-border);
+  color: var(--text-normal);
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  vertical-align: middle;
+}
+
+/* Cards (stats, tools, migration). */
+.frs-card {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  background: var(--background-secondary-alt);
+  margin: 16px 0;
+}
+
+.frs-card h4 {
+  margin: 0 0 8px;
+}
+
+.frs-card-note {
+  margin: 4px 0 10px;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.frs-card-danger {
+  border-color: color-mix(in srgb, #e53935 40%, var(--background-modifier-border));
+}
+
+/* Stat grids. */
+.frs-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+}
+
+.frs-stat-cell {
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.frs-stat-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.frs-stat-value {
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Module overview rows (General tab). */
+.frs-module-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.frs-module-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+}
+
+.frs-module-row-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.frs-module-row-titles strong {
+  font-size: 13px;
+}
+
+.frs-module-row-titles span {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Callouts. */
+.frs-callout {
+  border-left: 3px solid var(--frs-accent-resolved);
+  background: var(--background-secondary);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin: 12px 0;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.frs-callout-warn {
+  border-left-color: #e53935;
+}
+
+/* Chips (small action buttons). */
+.frs-chip {
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.frs-chip-action:hover {
+  background: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+/* Diagnostics row + modal buttons. */
+.frs-diag-row {
+  margin-top: 10px;
+}
+
+.frs-modal-button-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+/* Narrow settings panes (phones): tighter paddings. */
+@media (max-width: 480px) {
+  .frs-settings-section-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .frs-stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .frs-module-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

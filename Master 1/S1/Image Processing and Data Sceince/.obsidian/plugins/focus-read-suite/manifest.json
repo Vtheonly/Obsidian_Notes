@@ -1,0 +1,10 @@
+{
+  "id": "focus-read-suite",
+  "name": "Focus Read Suite",
+  "version": "2.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "All-in-one reading companion: floating focus timer with sessions and stats, reading focus ruler with notch, typography control, and a per-note reading heatmap. Works on desktop and mobile.",
+  "author": "Focus Read",
+  "authorUrl": "https://obsidian.md",
+  "isDesktopOnly": false
+}

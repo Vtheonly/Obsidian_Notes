@@ -11,7 +11,7 @@ tags: [trees, fundamentals]
 | Term           | Definition                                                       |
 | -------------- | ---------------------------------------------------------------- |
 | Node           | An element of the tree.                                          |
-| Edge           | A link between two nodes (parent ↔ child).                       |
+| Edge           | A link between two nodes (parent  child).                       |
 | Root           | The unique node with no parent.                                  |
 | Leaf           | A node with no children.                                         |
 | Internal node  | A node with at least one child.                                  |
