@@ -7,8 +7,8 @@
   "stats": {
     "totalReadingMs": 13020098,
     "todayMs": 0,
-    "todayDate": "2026-11-11",
-    "streak": 4,
+    "todayDate": "2026-11-12",
+    "streak": 1,
     "lastReadDate": "2026-11-10",
     "longestStreak": 4,
     "perDayMs": {
@@ -9837,13 +9837,13 @@
       ]
     },
     "Computer Vision.md": {
-      "totalTimeMs": 1324000,
-      "visits": 2,
-      "lastAccessed": "2026-11-11T10:36:33.831Z",
+      "totalTimeMs": 1327000,
+      "visits": 3,
+      "lastAccessed": "2026-11-12T19:23:39.517Z",
       "buckets": [
-        123000,
         126000,
-        127000,
+        129000,
+        129000,
         161000,
         166000,
         175000,
@@ -10043,9 +10043,9 @@
         119000
       ],
       "bucketVisits": [
-        7,
-        9,
-        9,
+        8,
+        10,
+        10,
         9,
         6,
         10,
@@ -10259,8 +10259,8 @@
       "autoHide": true,
       "autoHideSeconds": 4,
       "pauseOnBlur": true,
-      "positionX": 7,
-      "positionY": 686,
+      "positionX": 215,
+      "positionY": 536,
       "focusDetectionEnabled": true,
       "focusDetectionIdleSeconds": 30,
       "nudgeEnabled": false,
