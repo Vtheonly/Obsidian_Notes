@@ -74,7 +74,10 @@ Every column requires a data type for **domain integrity** (Ch 1 Slide 8 & TP 1/
 | `BLOB` / `BYTEA`                  | Raw binary bytes (files, images)                               | —               | Media/binary objects (`BYTEA` in PostgreSQL, `BLOB` in MySQL)                                           |
 | `NULL`                            | Absence of a value / unknown                                   | `NULL`          | Missing salary (`109`), missing `class_id` (`8`)                                                        |
 
-_(Dialect note: MySQL adds `TINYINT` (1 byte), `UNSIGNED` integer modifiers that double the positive range e.g. `INT UNSIGNED` $0 \dots 4.29\times 10^9$, `AUTO_INCREMENT`, `DATETIME`, and `ON UPDATE CURRENT_TIMESTAMP`; PostgreSQL uses `GENERATED ALWAYS AS IDENTITY` or `SERIAL` instead of `AUTO_INCREMENT` and explicit `::TYPE` casts.)_
+_(Dialect note: MySQL adds `TINYINT` (1 byte), `UNSIGNED` integer modifiers that double the positive range e.g. `INT UNSIGNED` $0 \dots 4.29\times 10^9$, `AUTO_INCREMENT`, `DATETIME`, and `ON UPDATE CURRENT_TIMESTAMP`; 
+
+
+PostgreSQL uses `GENERATED ALWAYS AS IDENTITY` or `SERIAL` instead of `AUTO_INCREMENT` and explicit `::TYPE` casts.)_
 
 ---
 

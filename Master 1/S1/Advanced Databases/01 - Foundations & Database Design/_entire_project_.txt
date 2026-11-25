@@ -1,0 +1,725 @@
+--- START OF FILE _entire_project_.txt ---
+
++======================================================================+
+|  MERGED CODE EXPORT                                                   |
+|  Project:  01 - Foundations & Database Design                         |
+|  Source:   (entire project)                                          |
+|  Date:     2026-11-16 16:50:21                                        |
+|  Status:   Complete                                                  |
++======================================================================+
+
+ FOLDER STRUCTURE
+-------------------
+.
+├── 01 - Database Concepts, Relational Model & SQL Overview.md
+├── 02 - Relational Algebra & Formal Foundations.md
+├── 03 - Keys, Data Types & Static Constraints (PostgreSQL).md
+├── 04 - Relationships & ER Modeling.md
+├── 05 - Normalization & Functional Dependencies.md
+└── _entire_project_.txt
+
+========================================================================
+ FILE: 03 - Keys, Data Types & Static Constraints (PostgreSQL).md
+   Language: markdown
+========================================================================
+# Keys, Data Types & Static Constraints (PostgreSQL)
+
+Keys establish row identity and cross-table relationships, while data types and static constraints enforce domain and referential integrity declaratively at schema creation (`CREATE TABLE` / `ALTER TABLE`).
+
+---
+
+## 1. Taxonomy of Relational Keys
+
+Every key in a relational table must obey **Three Fundamental Rules**:
+
+1. **Always unique:** No two rows may share the same key value.
+2. **Never changing (immutable):** Updating a primary key requires cascading changes across every referencing foreign key in the database—expensive and error-prone.
+3. **Never null:** A null key leaves a row unidentifiable and breaks uniqueness checks (because `NULL`s are not equal to each other).
+
+### Functional Hierarchy (Selection Pipeline)
+
+1. **Superkey:** Any combination of 1+ columns that uniquely identifies every row (may include redundant columns; the entire column set of a valid table is always a superkey).
+2. **Candidate Key:** A **minimal superkey**—removing any column destroys guaranteed uniqueness. A table may have several candidate keys.
+3. **Primary Key (`PRIMARY KEY`):** The single candidate key selected as the official row identifier and target for foreign keys. Enforces `UNIQUE` + `NOT NULL` and automatically creates a unique B-tree index. Exactly **one** per table.
+4. **Alternate Key:** Any candidate key _not_ chosen as the primary key. Should be given a `UNIQUE` constraint (creating a unique index for fast lookups, e.g., logging in by `email`).
+5. **Foreign Key (`FOREIGN KEY`):** Column(s) in a child table referencing the primary key of a parent table. Unlike primary keys, foreign key values can repeat (many children per parent), can change when reassignment occurs, and can be `NULL` if optional.
+
+#### Worked Superkey $\to$ Candidate Key $\to$ Primary Key Selection
+
+Consider `users(username, email, password, first_name, middle_name, last_name, birth_date, address)`:
+
+- **Superkeys:** `{username}` (unique), `{email}` (unique), `{username, email}` (redundant—not minimal!), `{username, password, first_name, last_name}` (redundant). `{first_name, last_name}` is **not** a superkey (duplicates exist).
+- **Candidate Keys:** `{username}`, `{email}` (minimal!). `{first_name, middle_name, last_name, birth_date, address}` is risky (middle name can be NULL; address/name can change; twins could collide).
+- **Primary Key Choice:** Choose `username` (stable, required, single-column) as `PRIMARY KEY`, and declare `email VARCHAR(100) UNIQUE NOT NULL` as an indexed **alternate key**.
+
+### Design Choice: Natural Key vs. Surrogate Key
+
+| Property               | Natural Key                                                                                                                                                                                                                                                                                            | Surrogate Key                                                                                                        |
+| :--------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------- |
+| **Source**             | Existing business data (`username`, `email`, `ISBN`, `VIN`)                                                                                                                                                                                                                                            | Artificially generated (`user_id`, `GENERATED ALWAYS AS IDENTITY`, `UUID`)                                           |
+| **Meaning**            | Carries real-world meaning (fewer joins needed to interpret IDs)                                                                                                                                                                                                                                       | Meaningless identifier                                                                                               |
+| **Stability**          | Volatile if business rules/user details change (cascading FK updates!)                                                                                                                                                                                                                                 | Immutable (ID `42` never changes)                                                                                    |
+| **Simplicity & Speed** | Often larger strings or multi-column composites                                                                                                                                                                                                                                                        | Single 4/8-byte integer; compact B-tree & fast joins (UUIDs avoid distributed conflicts & enumeration leaks in URLs) |
+| **Consistency Rule**   | Pick **one** strategy consistently across the whole database. **Important caveat:** The moment a "surrogate" ID (e.g., printed Student Card ID) is given real-world meaning externally, it inherits natural-key change risks! Best practice: use surrogate PKs + `UNIQUE` constraints on natural keys. |
+
+### Structural Composition: Simple, Composite & Compound Keys
+
+This classification describes structure (not SQL keywords):
+
+- **Simple Key:** 1 column (e.g., `user_id` or `username`).
+- **Composite Key:** 2+ columns where **at least one** column is not a key by itself (e.g., `video_comments(user_id, video_id, comment_time)`—a user can comment multiple times on the same video, and `comment_time` is not a key alone).
+- **Compound Key:** 2+ columns where **every** column is itself a key (usually an FK), such as `student_classes(student_id, class_id)` or `teacher_class(teacher_id, class_id)`.
+  _(If an ORM requires a single-column PK on a junction table, add a surrogate `enrollment_id` PK and keep `UNIQUE(student_id, class_id)`.)_
+
+### `NOT NULL` Foreign Keys & Lookup Tables
+
+- **`NOT NULL` Foreign Key (Mandatory vs. Optional):** Apply `NOT NULL` only when business logic requires every child row to have a parent (e.g., `card.holder_id NOT NULL` when only owned cards are stored; **omit `NOT NULL`** on `class.instructor_id` or `student.class_id` when a class can be created before an instructor is assigned, or a student like Farah Ines is not yet enrolled in a class). Data types of parent PK and child FK must match; only nullability may differ.
+- **Lookup (Reference) Tables:** Centralize fixed sets of options (e.g., `membership_tiers(tier_id, tier_name, monthly_price)` referenced by `members.tier_id`) rather than repeating `'Gold'` and `60.00` in every member row. Prevents typos (`'Gld'`, `'gold'`), simplifies price updates to 1 row, saves space, and eliminates 3NF transitive dependencies.
+
+---
+
+## 2. SQL Data Types (PostgreSQL Curriculum Standard)
+
+Every column requires a data type for **domain integrity** (Ch 1 Slide 8 & TP 1/TP 2):
+
+| Data Type                         | Storage / Description                                          | Example         | Usage in Course                                                                                         |
+| :-------------------------------- | :------------------------------------------------------------- | :-------------- | :------------------------------------------------------------------------------------------------------ |
+| `INTEGER` (`INT`)                 | 4-byte signed whole number ($\pm 2.14 \times 10^9$)            | `25, 100, -5`   | Primary/foreign keys, `student.age` (TP 1)                                                              |
+| `SMALLINT`                        | 2-byte signed small integer ($-32{,}768$ to $32{,}767$)        | `10, 500`       | Small integers (`student.age`, Ch 1 Slide 6 & TP 1 Part P.4)                                            |
+| `BIGINT`                          | 8-byte large integer                                           | `9000000000`    | High-volume identifiers                                                                                 |
+| `VARCHAR(n)`                      | Variable-length character string (max $n$)                     | `'Ahmed'`       | Names, emails (`VARCHAR(50)`, `VARCHAR(100)`)                                                           |
+| `CHAR(n)`                         | Fixed-length character string (space-padded to $n$)            | `'M'`, `'DZ'`   | Fixed-length codes (country codes, hashes)                                                              |
+| `TEXT`                            | Variable-length unbounded text                                 | `'Dir -> Dean'` | Long articles, recursive path strings (`::TEXT`, TP 3)                                                  |
+| `NUMERIC(p, s)` / `DECIMAL(p, s)` | Exact base-10 decimal ($p$ precision, $s$ scale)               | `75000.50`      | **Mandatory for salaries & currency** (`NUMERIC(10,2)`)—represents `0.1` without binary rounding error! |
+| `REAL`                            | 4-byte single-precision floating point ($\approx 7$ digits)    | `12.45`         | Approximate scientific calculations (never money!)                                                      |
+| `DOUBLE PRECISION`                | 8-byte double-precision floating point ($\approx 15$ digits)   | `1234.56789`    | Higher-precision approximate scientific math                                                            |
+| `BOOLEAN`                         | True/False logic                                               | `TRUE`, `FALSE` | Procedural flags (`v_done BOOLEAN`)                                                                     |
+| `DATE` / `TIME` / `TIMESTAMP`     | Calendar date / time / date+time (UTC-aware via `TIMESTAMPTZ`) | `'2026-11-12'`  | Audit logs (`DEFAULT CURRENT_TIMESTAMP`)                                                                |
+| `BLOB` / `BYTEA`                  | Raw binary bytes (files, images)                               | —               | Media/binary objects (`BYTEA` in PostgreSQL, `BLOB` in MySQL)                                           |
+| `NULL`                            | Absence of a value / unknown                                   | `NULL`          | Missing salary (`109`), missing `class_id` (`8`)                                                        |
+
+_(Dialect note: MySQL adds `TINYINT` (1 byte), `UNSIGNED` integer modifiers that double the positive range e.g. `INT UNSIGNED` $0 \dots 4.29\times 10^9$, `AUTO_INCREMENT`, `DATETIME`, and `ON UPDATE CURRENT_TIMESTAMP`; PostgreSQL uses `GENERATED ALWAYS AS IDENTITY` or `SERIAL` instead of `AUTO_INCREMENT` and explicit `::TYPE` casts.)_
+
+---
+
+## 3. Static Integrity Constraints & Foreign Key Actions
+
+| Constraint     | Role                | PostgreSQL & SQL Behavior                                                                                                                                                                                           |
+| :------------- | :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `PRIMARY KEY`  | Entity uniqueness   | Implicitly `NOT NULL` + `UNIQUE` + unique B-tree index.                                                                                                                                                             |
+| `NOT NULL`     | Mandatory attribute | Rejects `NULL` values (`department_name VARCHAR(50) NOT NULL`).                                                                                                                                                     |
+| `UNIQUE`       | Prevents duplicates | Allows multiple `NULL`s unless combined with `NOT NULL`.                                                                                                                                                            |
+| `CHECK (cond)` | Domain condition    | Rejects rows ONLY when `cond` is **`FALSE`**. Because `NULL >= 0` evaluates to **`UNKNOWN`** in Three-Valued Logic, `NULL` **passes** `CHECK` unless `NOT NULL` is also specified (critical for **TD 2 Ex 16\***!). |
+| `DEFAULT val`  | Fallback value      | Used when `INSERT` omits the column (`salary NUMERIC(10,2) DEFAULT 30000`). Explicitly inserting `NULL` overrides `DEFAULT`.                                                                                        |
+| `FOREIGN KEY`  | Referential link    | Value must exist in parent PK or be `NULL` (if nullable).                                                                                                                                                           |
+
+### Foreign Key Referential Actions (`ON DELETE` / `ON UPDATE`) — TP 1 Part H
+
+When a parent row is deleted or its PK is updated, the child table follows the declared referential action:
+
+| Action                      | Effect on Child Rows                                            | Course Rationale (`university` DB, TP 1 Part H)                                                                                                                                                                                                                                                            |
+| :-------------------------- | :-------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`ON DELETE CASCADE`**     | Child rows are automatically deleted                            | Used on `class.department_id` and `teacher_class` (`teacher_id`, `class_id`): if a class or teacher is deleted, junction rows lose meaning; furthermore, `teacher_class` columns are part of the `PRIMARY KEY`, so `SET NULL` is **impossible** (TP 1 H.8).                                                |
+| **`ON DELETE SET NULL`**    | Child FK becomes `NULL`; child survives                         | Used on `teacher.department_id` and `student.class_id`: deleting a department (`DELETE FROM department WHERE department_id = 3`) must **not** erase teachers—they stay in `teacher` with `department_id = NULL` so they can be reassigned later. **Forbidden if the FK column is `NOT NULL`!** (TP 1 H.6). |
+| **`ON DELETE RESTRICT`**    | Deletion refused immediately if child rows exist                | Protects parents with dependents; forces manual cleanup first.                                                                                                                                                                                                                                             |
+| **`ON DELETE NO ACTION`**   | Default action; refuses if child rows still exist at check time | Same practical effect as `RESTRICT` for standard non-deferred FKs.                                                                                                                                                                                                                                         |
+| **`ON UPDATE CASCADE`**     | Child FK automatically updates to new parent PK                 | `UPDATE department SET department_id = 100 WHERE department_id = 1;` updates all teachers & classes from `1` to `100` automatically, preventing orphan rows (TP 1 H.2 & H.7).                                                                                                                              |
+| **`ON UPDATE SET NULL`**    | Child FK set to `NULL` when parent PK changes                   | Rare; disconnects children on parent renumbering.                                                                                                                                                                                                                                                          |
+| **`ON UPDATE RESTRICT`**    | Parent PK update refused if child rows exist                    | Prevents renumbering `department_id = 1` while teachers/classes reference it (TP 1 H.5).                                                                                                                                                                                                                   |
+| **`ON DELETE SET DEFAULT`** | Sets child FK to column `DEFAULT` value                         | Supported in SQL standard / PostgreSQL (provided default value exists in parent); MySQL treats as `RESTRICT`.                                                                                                                                                                                              |
+
+---
+
+## 4. Modifying Constraints with `ALTER TABLE` (TP 1 Part F)
+
+**PostgreSQL does not support direct modification of an existing constraint.** To change a constraint, you must **drop the old constraint** and **add the new one** (for composite FKs, actions apply to the key tuple as a single unit):
+
+```sql
+-- 1. Add a named CHECK constraint
+ALTER TABLE teacher ADD CONSTRAINT chk_teacher_salary CHECK (salary IS NULL OR salary > 0);
+
+-- 2. Modify by dropping then re-adding
+ALTER TABLE teacher DROP CONSTRAINT chk_teacher_salary;
+ALTER TABLE teacher ADD CONSTRAINT chk_teacher_salary CHECK (salary IS NULL OR salary >= 30000);
+
+-- 3. Drop completely
+ALTER TABLE teacher DROP CONSTRAINT chk_teacher_salary;
+```
+
+_(Note: When adding a constraint to a populated table, PostgreSQL scans existing rows under an exclusive lock; if any existing row violates the new rule, `ALTER TABLE` fails and rolls back.)_
+
+
+========================================================================
+ FILE: 04 - Relationships & ER Modeling.md
+   Language: markdown
+========================================================================
+# Relationships & ER Modeling
+
+Entity-Relationship (ER) modeling captures entities, attributes, and connections visually before writing DDL, ensuring the schema accurately mirrors real-world domain rules.
+
+---
+
+## 1. The Three Relationship Types & Foreign Key Placement
+
+Every relationship connects a **parent table** (holds the referenced primary key) and a **child table** (holds the foreign key pointing back to the parent). Determining parent vs. child is straightforward: ask which entity cannot exist meaningfully without the other—the dependent entity is the child and receives the foreign key.
+
+```mermaid
+erDiagram
+    DEPARTMENT ||--o{ TEACHER : "employs (1:N)"
+    DEPARTMENT ||--o{ CLASS : "contains (1:N)"
+    CLASS ||--o{ STUDENT : "enrolls (1:N)"
+    TEACHER }o--o{ CLASS : "teaches via teacher_class (M:N)"
+```
+
+### A. One-to-One (1:1)
+
+One instance of A connects to at most one instance of B, and vice versa (e.g., person and SSN, employee and assigned parking space, user account and profile).
+
+- **When to keep in ONE table:** When the related item is a simple attribute with no extra properties (e.g., `username VARCHAR(50) UNIQUE NOT NULL` inside `users`), or both sides share an identical lifecycle and are always queried together.
+- **When to split into TWO tables:** When the second entity has its own attributes (`cards`: `max_amount`, `issue_date`, `late_fee` belong to the card, not the cardholder!), contains large `TEXT`/`BLOB` fields (`bio`), requires stricter security isolation (`users` auth vs. public `user_profiles`), or has an independent/optional lifecycle.
+- **Two-table implementation patterns:** (1) Unique foreign key (`holder_id INT UNIQUE NOT NULL` in `cards`), or (2) Shared primary key (`user_id INT PRIMARY KEY REFERENCES users(user_id)` in `user_profiles`).
+
+### B. One-to-Many (1:N)
+
+One parent row links to many child rows; each child row links to at most one parent (e.g., `users` $\to$ `comments`, `departments` $\to$ `employees`, `cardholders` $\to$ `cards`, `department` $\to$ `teacher`).
+
+- **Golden Rule:** **Always place the foreign key on the "many" (child) side.** Putting child IDs in the parent (`review_id1, review_id2`) creates repeating groups, unbounded columns, and wasted `NULL` cells.
+- **Directional awareness:** Given a child row (a comment), following `user_id` immediately identifies its parent; given a parent (a user), finding children requires querying the child table.
+
+### C. Many-to-Many (M:N) — TP 1 Part E Case Study
+
+Multiple rows of A link to multiple rows of B (`students` $\leftrightarrow$ `classes`, `orders` $\leftrightarrow$ `products`, `teacher` $\leftrightarrow$ `class` in **TP 1 Part E**).
+
+- **Why 2 tables fail (TP 1 Part E Q1–Q3):**
+  1. Adding `class_id` to `teacher` allows only **1 class per teacher**.
+  2. Adding `teacher_id` to `class` allows only **1 teacher per class**.
+  3. Storing `'10, 20, 30'` in a single column violates **1NF** (non-atomic) and breaks foreign-key checks and joins.
+- **The Junction Table Solution (TP 1 Part E Q4–Q7):** Introduce a third **junction / bridge / association table** (`teacher_class` or `class_students`) that decomposes M:N into **two 1:N relationships** pointing inward to the junction table (which is the child of both parents):
+  - Contains `teacher_id` (FK) and `class_id` (FK) forming a **composite primary key `(teacher_id, class_id)`** so the same `(teacher, class)` pair cannot be inserted twice.
+  - **Key principle:** Neither `teacher` nor `class` is modified! Additional relationship attributes (`enrolled_date`, `grade`, `academic_year`, `semester`) can be added directly to the junction table without touching the parents.
+
+### Business Rules Dictate Cardinality
+
+The exact same entity pair (`professor` and `class`) can be **1:1** (small training center: 1 dedicated instructor per course), **1:N** (standard: 1 professor teaches many classes, 1 instructor per class), or **M:N** (team-taught courses). Always model the domain's business rules.
+
+---
+
+## 2. Weak Entities, Crow's Foot Cardinality & Modality
+
+### Strong vs. Weak Entities (Identifying vs. Non-Identifying)
+
+- **Weak Entity (Identifying Relationship):** Child cannot exist or be identified without its parent; parent's PK becomes **part of the child's composite PK** (e.g., `order_items(order_id, item_id)` with `PRIMARY KEY (order_id, item_id)`).
+- **Strong Entity (Non-Identifying Relationship):** Child has its own independent PK (`emp_id`, `teacher_id`), while the parent's PK is simply a non-PK foreign key (`dept_id`, `department_id`).
+
+### Crow's Foot Notation: Cardinality vs. Modality
+
+- **Cardinality** = _maximum_ participation (`|` = one, `<` = many).
+- **Modality** = _minimum_ participation (`O` = 0 optional / nullable FK, `|` = 1 mandatory / `NOT NULL` FK).
+- **Four common child-side patterns:**
+  1. **Optional One (`0..1`):** `O|` — child may reference 0 or 1 parent (`class.instructor_id` nullable).
+  2. **Mandatory One (`1..1`):** `||` — child must reference 1 parent (`card.holder_id NOT NULL`).
+  3. **Optional Many (`0..M`):** `O<` — parent has 0 or more children; child FK may be `NULL` (`student.class_id` nullable).
+  4. **Mandatory Many (`1..M`):** `|<` — child must participate (`order_item.order_id NOT NULL`).
+
+_(Tools such as MySQL Workbench, Vertabelo, Lucidchart, and draw.io support forward engineering ER diagrams directly into SQL `CREATE TABLE` DDL.)_
+
+---
+
+## 3. Advanced Conceptual (French E/A MCD) Rules & Complex Translations
+
+_(From `Source TD Modèle Entité Association` and conceptual design methodology)_
+
+### Four Strict Attribute Normalization Rules in E/R
+
+1. **No Composite or Multi-Valued Attributes:** Explode `Address` into `Street, City, ZipCode`; extract `PhoneNumbers` into a separate `PHONE` entity.
+2. **No Derived / Calculated Attributes:** Never store `Total_Price` physically when `Quantity` and `Unit_Price` exist—compute it dynamically in SQL to avoid desynchronization.
+3. **Enumerated Attributes Become Entities:** Fixed value lists (`Emission_Type` = `'Radio'`, `'TV'`, `'Web'`) become a dedicated `TYPE` entity linked 1:N to enforce referential integrity and prevent spelling errors.
+4. **Association Attributes:** An attribute belongs inside an association **only if it depends on all participating entities simultaneously** (e.g., `Quantity` sits inside `SUPPLIES(Supplier, Article)`, not in `Supplier` or `Article` alone).
+
+### The "Borrowing" Problem (Promoting Binary M:N to Ternary)
+
+A naive binary M:N association `SUBSCRIBER (0,n) — Borrows — (0,n) BOOK` gives implicit PK `(Subscriber_ID, Book_ID)`, which restricts each subscriber to borrowing any given book **at most once in their entire lifetime**.
+
+- **Fix:** Introduce a `DATE` entity and promote `BORROWS` to a **ternary association** so the implicit identifier becomes `(Subscriber_ID, ISBN, Borrow_Date)`, allowing repeat borrows on different dates.
+
+### Complex Translation Rules (1,1 Functional Dependencies & Edge Cases)
+
+- **Never turn a `1,1` or `0,1` association into its own table:** The primary key of the `0,n` entity always migrates as a **foreign key into the entity sitting on the `1,1` / `0,1` side**.
+  - _Command Example:_ `CLIENT (0,n) — Passée_par — (1,1) COMMANDE (0,n) — Concerne(quantité) — (0,n) ARTICLE` translates to:
+    - `CLIENT(num_client, nom, adresse)`
+    - `ARTICLE(num_article, designation, prix)`
+    - `COMMANDE(num_commande, date, num_client*)` _(FK placed in `COMMANDE` because of its `1,1` leg!)_
+    - `DETAIL_COMMANDE(num_commande*, num_article*, quantité)`
+  - _Teaching Edge Case:_ `ELEVE (0,n) — A_suivi(note) — (0,n) UV (1,1) — Enseignant — (0,n) PROFESSEUR` translates to `ELEVE`, `PROFESSEUR`, `UV(code_UV, nom, annee, code_professeur*)`, and `NOTE(code_eleve*, code_UV*, note)`.
+
+---
+
+## 4. Worked E/A Conceptual Design Exercises (`Source TD Modèle E-A`)
+
+### Exercise 1: Reception Management System
+
+- **Entities:** `PERSONNES(Nom, Prénom [PK], Sexe, Age, Profession)`, `RECEPTIONS(DateReception [PK])`, `PLATS(NomPlat [PK], Nature)`, `TYPEVINS(Region, Type [PK])`.
+- **Associations:**
+  - `ESTINVITE` (`Personnes 0,N — 1,N Receptions`), `ESTSERVI` (`Plats 0,N — 1,N Receptions`), `VAAVEC` (`Plats 0,N — 0,N TypeVins`—wine pairs with the dish, not the reception directly), `APPRECIE` (`0,N — 0,N`) and `DETESTE` (`0,N — 0,N`) between `Personnes` and `Plats`.
+  - **Reflexive Relationships:** `AMIS(0,N — 0,N)` and `ENNEMIS(0,N — 0,N)` linking `PERSONNES` to itself (translates to junction tables `AMITIE(P1_ID, P2_ID)` and `INIMITIE(P1_ID, P2_ID)`).
+
+### Exercise 2: Airline Company (Inheritance + Flight Instances)
+
+- **Class Table Inheritance for Staff Hierarchy:**
+  - `PERSONNE(NoSecu PK, Nom, Prenom, Adresse)` $\leftarrow$ `EMPLOYE(NoSecu PK/FK, Salaire)` $\leftarrow$ `AUSOL(NoSecu PK/FK)` & `NAVIGANT(NoSecu PK/FK, NbHrVol)` $\leftarrow$ `PILOTE(NoSecu PK/FK, NoLicence)` & `EQUIPAGE(NoSecu PK/FK, Fonction)`. _(Flattened alternative duplicates inherited attributes inside `PILOTE` and `EQUIPAGE`.)_
+- **Flight Operations:** `APPAREIL(NoImm PK, Type, Capa)`, `LIAISON(NoL PK, VilleDep, VilleArr)`, `VOL(NoV PK, DateDeb, DateFin, HrDep, HrArr, NoL*, NoImm*)`, `DEPART(NoVol PK/FK, DateDep PK, NbLibre, NbOccup, NoPil1*, NoPil2*, NoEquip1*..4*)` _(or normalized junction table `AFFECTATION_PILOTE`)_, `BILLET(NoB PK, DateEm, Prix, NoP*, NoVol*, DateDep*)`.
+
+
+========================================================================
+ FILE: 01 - Database Concepts, Relational Model & SQL Overview.md
+   Language: markdown
+========================================================================
+# Database Systems, Relational Model & SQL Overview
+
+## 1. What Is Data and What Is a Database?
+
+**Data** refers to any factual information that can be recorded, stored, and processed electronically—numbers, text strings, dates, boolean flags, sensor readings, product catalogs, course enrollments, or transaction logs. A **Database (DB)** is an organized collection of structured data that models a part of the real world and supports computer applications. Unlike scattered text files or ad-hoc spreadsheets, a database provides systematic storage, querying, integrity enforcement, concurrency control, security, and crash recovery.
+
+### Database vs. Spreadsheet
+
+Spreadsheets and databases both display rows and columns, but differ fundamentally in capability and purpose:
+
+- **Scale & Complex Querying:** A spreadsheet works well for ten employees and basic sums. With thousands of records (e.g., finding every employee with at least 3 years of tenure and fewer than 3 absences), spreadsheets require brittle manual scanning or formulas, whereas a database executes a declarative SQL query in milliseconds.
+- **Selective Access Control:** Spreadsheets are typically all-or-nothing. A database grants fine-grained access: a website user sees only their own `username` and `email`, while an administrator views internal IDs, registration dates, and audit histories.
+- **Relational Structure:** Spreadsheets force data into flat grids, creating massive duplication; relational databases split entities into interconnected tables and recombine them cleanly via joins.
+
+---
+
+## 2. DBMS, RDBMS, and the SQL Standard vs. PostgreSQL
+
+- **DBMS (Database Management System):** A software system that lets users define, create, maintain, and control access to databases across any model (relational, hierarchical, network, NoSQL).
+- **RDBMS (Relational DBMS):** A DBMS built specifically on the relational model (e.g., **PostgreSQL**, MySQL, Oracle Database, Microsoft SQL Server, SQLite). An RDBMS translates raw scattered bytes on physical drives into clean logical tables and adds **queries**, **views**, and **ACID transactions** (for example, guaranteeing that a bank debit and credit both complete or both roll back together on power loss).
+- **SQL (Structured Query Language):** The standardized **declarative** language (standardized by **ISO/IEC**) used to communicate with an RDBMS.
+  - **Standard vs. Implementation (Ch 1 Slide 3):** SQL is the ISO/IEC standard language; PostgreSQL, MySQL, Oracle, and SQL Server are concrete implementations. **PostgreSQL** implements a large portion of the ISO/IEC SQL standard while adding powerful extensions (such as `ILIKE`, `$$` dollar-quoting, `IS DISTINCT FROM`, `MATERIALIZED VIEW` refresh commands, and `PL/pgSQL`) and showing minor syntactic differences from MySQL or Oracle.
+
+```mermaid
+flowchart LR
+    User["User / Application<br/>Writes SQL queries"] -->|"SQL Query"| DBMS["DBMS (PostgreSQL)<br/>Parses, optimizes & enforces integrity"]
+    DBMS -->|"Internal Storage I/O"| DB[("Database<br/>Organized persistent data")]
+    DB -->|"Retrieved tuples"| DBMS
+    DBMS -->|"Result set / Status"| User
+```
+
+### Front-End, Back-End, Client, and Server Decoupling
+
+- **Client & Front-End:** The browser/UI layer (`HTML`, `CSS`, `JavaScript`) that presents data and collects input without ever needing SQL knowledge or direct database connections.
+- **Server & Back-End:** Server-side application code (`Python`, `Java`, `Node.js`, `PHP`) + the RDBMS server. The back-end validates input, prevents SQL injection, enforces authorization, executes SQL against the database, and catches database errors so internal schema details are never leaked to end users.
+- **Compatibility via Views:** If a back-end table splits `full_name` into `first_name` and `last_name`, a **view** can concatenate them back into `full_name` so front-end queries continue working unchanged.
+
+---
+
+## 3. SQL Language Categories & Course Organization
+
+| Category | Full Name                    | Purpose                                                              | Main Statements                                                            |
+| :------- | :--------------------------- | :------------------------------------------------------------------- | :------------------------------------------------------------------------- |
+| **DDL**  | Data Definition Language     | Define, alter, or remove database structural objects (the blueprint) | `CREATE`, `ALTER`, `DROP` (`DATABASE`, `DOMAIN`, `TABLE`, `VIEW`, `INDEX`) |
+| **DML**  | Data Manipulation Language   | Insert, update, and delete row data inside tables                    | `INSERT`, `UPDATE`, `DELETE`                                               |
+| **DQL**  | Data Query Language          | Retrieve, filter, group, and analyze data (often grouped under DML)  | `SELECT`                                                                   |
+| **DCL**  | Data Control Language        | Manage user privileges and object permissions                        | `GRANT`, `REVOKE`                                                          |
+| **TCL**  | Transaction Control Language | Control atomic execution boundaries                                  | `BEGIN` / `START TRANSACTION`, `COMMIT`, `ROLLBACK`, `SAVEPOINT`           |
+
+**Course Organization Matrix (Ch 1 Slide 5):**
+
+- **DDL & Constraints:** `CREATE`, `ALTER`, `DROP`, `PRIMARY KEY`, `FOREIGN KEY`, `NOT NULL`, `UNIQUE`, `CHECK`, `DEFAULT`
+- **Filtering & Sorting:** `WHERE`, `BETWEEN`, `IN`, `LIKE`/`ILIKE`, `IS NULL`, `ORDER BY`
+- **Aggregation & Grouping:** `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`, `GROUP BY`, `HAVING`
+- **Joins & Set Operations:** `INNER`, `LEFT`, `RIGHT`, `FULL`, `CROSS`, `SELF`, `NATURAL`; `UNION`, `UNION ALL`, `INTERSECT`, `EXCEPT`
+- **Subqueries, Expressions & CTEs:** `IN`, `EXISTS`, `ANY`/`SOME`, `ALL`, `CASE`, `WITH` / `WITH RECURSIVE`
+
+---
+
+## 4. The Relational Model, Terminology & Atomic Values
+
+Introduced by **Edgar F. Codd (1970)**, the relational model builds on **mathematical set theory** and **first-order predicate logic**. Mathematically, given sets like $\{2, 4\}$ and $\{6, 8\}$, their Cartesian product yields ordered pairings; in a database, attribute domains combine into tuples describing real-world entities.
+
+### Complete Terminology & Synonym Mapping
+
+| Formal / Relational Term    | SQL / Table Term            | File-Processing / Casual Synonym | Meaning & Example                                                                                                                               |
+| :-------------------------- | :-------------------------- | :------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Entity Type / Relation**  | **Table**                   | File                             | Category of tracked object (`teacher`, `student`); a mathematical set of tuples. Note: "relational" comes from _relation_, not _relationships_. |
+| **Specific Entity / Tuple** | **Row**                     | Record / Entry                   | One horizontal entity instance, e.g., `(101, 'Benali', 'Ahmed', 75000, 1)`.                                                                     |
+| **Attribute**               | **Column**                  | Field                            | Vertical property defining one piece of metadata (`salary`, `first_name`).                                                                      |
+| **Domain**                  | **Data Type & Constraints** | —                                | Set of valid values permitted in a column (`NUMERIC(10,2)`, `age > 0`).                                                                         |
+| **Attribute Value**         | **Cell Value**              | Value                            | Concrete entry at the intersection of one row and one column.                                                                                   |
+| **Cardinality**             | **Row Count**               | —                                | Number of tuples in a relation.                                                                                                                 |
+| **Degree / Arity**          | **Column Count**            | —                                | Number of attributes in a relation.                                                                                                             |
+| **NULL**                    | **NULL**                    | —                                | Absence of a value / unknown value (strictly distinct from `0`, `''`, or whitespace; tested only with `IS NULL` / `IS NOT NULL`).               |
+| **Schema**                  | **Schema**                  | Blueprint                        | Structural definition of tables, columns, types, keys, and constraints.                                                                         |
+| **View**                    | **Virtual Table**           | Saved Query                      | Named `SELECT` query presenting a filtered/joined subset without storing rows.                                                                  |
+
+### Atomic Values (Prerequisite for 1NF)
+
+An **atomic value** represents **one and only one unit of information** in a single cell—indivisible for the purposes of the application:
+
+- **Full Name Violation:** Storing `'Caleb Daniel Curry'` in `full_name` prevents easy sorting or filtering by last name; decompose into `first_name`, `middle_name`, `last_name`.
+- **Address Violation:** Storing `'123 Epic Lane, Legit, CA 73821'` in one cell blocks `WHERE state = 'CA'`; decompose into `street_address`, `city`, `state`, `zip_code`.
+- **Multi-Valued Attribute Violation:** Storing `'The Matrix, Inception, Interstellar'` in `favorite_movies` prevents normal indexing, uniqueness, and deletion; extract into a child table `favorite_movies(user_id, movie)`.
+- **Contextual Rule & Avoiding Over-Decomposition:** Phone numbers or `DATE` values (`'2026-11-12'`) are stored in single columns when always handled as single units—only split `area_code` or `year/month/day` if queries genuinely filter on them independently. Never split a single word like `'subscribe'` into individual characters.
+
+---
+
+## 5. The Three Design Schemas, Data Integrity & Naming Conventions
+
+### Conceptual, Logical, and Physical Schemas
+
+| Schema Level          | Level of Abstraction                     | Focus & Decisions                                                                                                                  |
+| :-------------------- | :--------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| **Conceptual Schema** | Highest (DBMS-independent)               | Identifies entities, attributes, and business relationships (e.g., "one department has many teachers").                            |
+| **Logical Schema**    | Intermediate (Relational, DBMS-agnostic) | Defines exact tables, columns, primary keys, foreign keys, data types, and normalized forms (`teacher`, `class`, `teacher_class`). |
+| **Physical Schema**   | Concrete (DBMS-specific)                 | Configures PostgreSQL server, B-tree/hash indexes, partitioning, views, stored routines, security roles, and backups.              |
+
+### Three Data Integrity Pillars
+
+Good database design prevents **data anomalies** (update, insertion, and deletion anomalies) by enforcing:
+
+1. **Entity Integrity:** Every row represents a distinct entity uniquely identified by a non-null `PRIMARY KEY` (e.g., distinguishing two people sharing the same name and phone number via `id`).
+2. **Referential Integrity:** Every non-null `FOREIGN KEY` must point to a valid existing parent row (`CASCADE`, `RESTRICT`/`NO ACTION`, `SET NULL`).
+3. **Domain Integrity:** Every cell conforms to its column's data type, length, range, and constraints (`CHECK`, `NOT NULL`, `UNIQUE`).
+
+### Standard Naming Conventions
+
+- **SQL Keywords:** `UPPERCASE` (`SELECT`, `FROM`, `WHERE`).
+- **User-Defined Names:** `lowercase` with `snake_case` underscores—**never spaces** (`first_name`, `department_id`, not `first name` or `tbl_users`).
+- **Tables vs. Columns:** Plural or collective domain nouns for tables (`users`, `order_items`—note the `university` course schema uses singular `department`, `class`, `teacher`, `student`, so always follow the instructor's exact schema names in course queries!), singular nouns for columns (`last_name`, `salary`), and specific names (`department_name`, `order_date`) over vague `name`/`date`.
+- **Foreign Keys:** Named consistently after the referenced table and PK (`department_id`, `class_id`). Use natural language during whiteboard brainstorming, then convert to `snake_case` in the logical schema.
+
+
+========================================================================
+ FILE: 05 - Normalization & Functional Dependencies.md
+   Language: markdown
+========================================================================
+# Normalization & Functional Dependencies
+
+Database normalization is a systematic progression of rules (**Normal Forms**) that refines a schema to eliminate redundancy, preserve lossless information, and prevent DML anomalies.
+
+---
+
+## 1. Anatomy of Database Anomalies (Worked Breakdown)
+
+Consider an unnormalized flat table `R(product, client, address, date, quantity, amount)`:
+
+| product   | client | address   | date  | quantity | amount |
+| :-------- | :----- | :-------- | :---- | :------: | :----: |
+| Cassettes | Dupuis | Lille     | 10/02 |   100    |  1000  |
+| CD-ROM    | Dupuis | Lille     | 15/02 |   150    |  1500  |
+| CD-ROM    | Martin | Marseille | 01/03 |    15    |  150   |
+| Disks     | Dupont | Lyon      | 05/03 |   300    |  600   |
+
+This design suffers from four severe flaws:
+
+1. **Redundancy:** `Dupuis` and `Lille` repeat on every order Dupuis places.
+2. **Update Anomaly:** If Dupuis moves from `Lille` to `Paris`, updating only row 1 leaves row 2 saying `Lille`—contradicting the database's truth.
+3. **Deletion Anomaly:** If Martin cancels order `01/03`, deleting that row erases Martin and `Marseille` permanently from the system.
+4. **Insertion Anomaly:** We cannot register a new client `Dubois` in `Dijon` before he places an order, because the row lacks product/date keys.
+
+**Normalized Solution (3NF):**
+
+- `R1_CLIENT(code_client PK, nom_client, adresse)` $\to$ adds Dubois anytime, keeps Martin on order deletion, updates Dupuis's address in 1 place.
+- `R2_PRODUIT(code_produit PK, nom_produit, prix_unitaire)`
+- `R3_COMMANDE(code_commande PK, code_client FK, date, code_produit FK, quantity)`
+
+---
+
+## 2. Functional Dependencies & Armstrong's Axioms
+
+A **Functional Dependency (FD)** $X \to Y$ ("$X$ determines $Y$") states that whenever two tuples share the same value(s) for $X$, they **must** share the same value(s) for $Y$ (e.g., $\text{SSN} \to \text{Name}$).
+
+### Armstrong's Axioms (Inference Rules)
+
+1. **Reflexivity:** If $Y \subseteq X$, then $X \to Y$ _(trivial FD)_.
+2. **Augmentation:** If $X \to Y$, then $XZ \to YZ$.
+3. **Transitivity:** If $X \to Y$ and $Y \to Z$, then $X \to Z$.
+
+- _(Derived rules)_ **Union:** If $X \to Y$ and $X \to Z$, then $X \to YZ$. **Decomposition:** If $X \to YZ$, then $X \to Y$ and $X \to Z$.
+
+---
+
+## 3. Normal Forms: 1NF, 2NF, 3NF, and BCNF
+
+Normal forms are cumulative: a table in **3NF** automatically satisfies **2NF** and **1NF**.
+
+```mermaid
+flowchart LR
+    Raw["Unnormalized"] -->|"1NF: Atomic cells, unique rows, no repeating groups"| NF1["1NF"]
+    NF1 -->|"2NF: Remove partial dependencies on composite PK"| NF2["2NF"]
+    NF2 -->|"3NF: Remove transitive dependencies (PK -> A -> B)"| NF3["3NF"]
+    NF3 -->|"BCNF: Every non-trivial FD determinant is a superkey"| BCNF["BCNF"]
+```
+
+### First Normal Form (1NF) — Atomicity
+
+**Rule:** Every column contains atomic (indivisible) values of a single type, rows are unique, and no repeating groups exist.
+
+- **Violation 1 (Multi-part cell):** `address = '123 Main St, Springfield, IL 62701'` $\to$ split into `street_address`, `city`, `state`, `postal_code`.
+- **Violation 2 (Comma-separated list):** `email = 'caleb@example.com, caleb@work.com'` $\to$ extract `email(email_id PK, email, user_id FK)`.
+- **Violation 3 (Repeating rows for multi-valued attribute):** Repeating `(5, Caleb, Curry, caleb@example.com)` and `(5, Caleb, Curry, caleb@work.com)` $\to$ extract `email` child table.
+
+### Second Normal Form (2NF) — No Partial Dependencies
+
+**Rule:** Must be in 1NF and every non-key attribute must depend on the **entire** primary key (never on only a proper subset of a composite primary key).
+
+- _(Tables with a single-column primary key are automatically in 2NF!)_
+- **Worked Violation (`book_author`):** Key is `(author_id, book_id)` with columns `author_position`, `isbn`, `book_title`.
+  - `author_position` depends on `(author_id, book_id)` $\to$ full dependency (OK).
+  - `isbn` and `book_title` depend **only on `book_id`** $\to$ **partial dependency!**
+- **Fix:** Keep `book_author(author_id, book_id, author_position)` and move `isbn`, `book_title` to `book(book_id PK, isbn, book_title)`.
+
+### Third Normal Form (3NF) — No Transitive Dependencies
+
+**Rule:** Must be in 2NF and no non-key column may depend on another non-key column ($PK \to A \to B$).
+
+- **Worked Example 1 (`review`):** `review(review_id PK, review_text, star_rating, star_meaning, user_id)`. Here `review_id -> star_rating -> star_meaning` (5 always means `'Excellent'`).
+  - **Fix:** Keep `star_rating` in `review` (it depends directly on `review_id`), move `star_meaning` to `star_rating(star_rating PK, star_meaning)`.
+- **Worked Example 2 (`employee`):** `employee(employee_id PK, name, department_id, department_name, department_location)`. Here `department_name` and `department_location` depend on non-key `department_id`.
+  - **Fix:** Extract `department(department_id PK, department_name, department_location)` and keep `department_id` as FK in `employee`.
+
+> [!TIP] Codd's Rule of Thumb for 3NF
+> Every non-key attribute must provide a fact about **the key** (1NF), **the whole key** (2NF), and **nothing but the key** (3NF), so help me Codd.
+
+### Boyce-Codd Normal Form (BCNF)
+
+Stricter form of 3NF: for **every non-trivial FD** $X \to Y$, $X$ must be a **superkey**. Only differs from 3NF when a table has multiple overlapping candidate keys where a non-key attribute determines part of a candidate key.
+
+*(Denormalization—storing derived totals like `nbqualif` in `Pilote` or precomputed materializations—is applied deliberately *after* achieving 3NF only when profiling confirms join bottlenecks, and must then be protected by triggers or refresh routines.)*
+
+---
+
+## 4. Worked TD Exercises (`Source TD Dépendance Fonctionnelle`)
+
+### Exercise 1: Apartment Occupancy
+
+Attributes: `Propriétaire (P)`, `Occupant (O)`, `Adresse (A)`, `Noapt (N)`, `Nbpièces (nb1)`, `Nbpersonnes (nb2)`.
+Initial FDs: $O \to A$, $O \to N$, $O \to nb2$, $A,N \to P$, $A,N \to O$, $A,N \to nb1$.
+
+1. **Transitive Closure:** From $O \to A, N$ and $A,N \to P, nb1$, we deduce $O \to \{A, N, nb2, P, nb1\}$ and $A,N \to \{P, O, nb1, nb2\}$.
+2. **Candidate Keys:** **`{O}`** and **`{A, N}`** (minimal determinants of all attributes).
+3. **3NF Verification:**
+   - **2NF:** Key $O$ is single-attribute; under key $\{A,N\}$, neither $P$, $nb1$, nor $nb2$ depends on just $A$ or just $N$. $\to$ **2NF holds**.
+   - **3NF:** $A,N \to O \to nb2$ goes through $O$, which IS a candidate key (not a non-key attribute!). No non-key attribute determines another non-key attribute. $\to$ **Already in 3NF!**
+
+### Exercise 2: University Courses
+
+Attributes: `C (Cours)`, `P (Prof)`, `H (Heure)`, `S (Salle)`, `E (Etudiant)`, `N (Note)`.
+Initial FDs: $C \to P$, $H,S \to C$, $H,P \to S$, $C,E \to N$, $H,E \to S$.
+
+1. **Inferences:** $H,E \to S$ and $H,S \to C \implies H,E \to C$; $H,E \to C$ and $C \to P \implies H,E \to P$; $H,E \to C$ and $C,E \to N \implies H,E \to N$.
+2. **Candidate Key:** **`{H, E}`** (given a time and student, we determine room $S$, course $C$, professor $P$, and grade $N$).
+3. **3NF Failure:** $H, E \to C \to P$ is a **transitive dependency** where $C$ is _not_ a superkey! Updating a professor for course $C$ would require updating every enrolled student's schedule row.
+4. **3NF Decomposition:**
+   - `R1(C, E, N)` — PK `(C, E)` (preserves $C, E \to N$)
+   - `R2(C, P)` — PK `(C)` (preserves $C \to P$)
+   - `R3(H, S, C)` — PK `(H, S)` (preserves $H, S \to C$)
+   - `R4(H, E, S)` — PK `(H, E)` (or `R4(H, E, C)` linking student/hour to course & schedule)
+
+
+========================================================================
+ FILE: 02 - Relational Algebra & Formal Foundations.md
+   Language: markdown
+========================================================================
+# Relational Algebra & Formal Foundations
+
+Relational Algebra is the formal, **procedural** query language underlying all relational databases. When you submit a declarative SQL query, the DBMS parser translates it into a relational algebra expression (logical plan) before optimization (see [[01 - Query Processing, Algebraic Rewriting & Cost Estimation]]).
+
+---
+
+## 1. Set Semantics vs. Bag (Multiset) Semantics
+
+- **Relational Algebra (Theory — Sets):** Relations are strict mathematical **sets**.
+  - **No duplicates:** $\{A, B, A\}$ is automatically reduced to $\{A, B\}$. Every algebraic projection ($\pi$) implicitly deduplicates.
+  - **Unordered:** Row order has no semantic meaning.
+- **SQL (Practice — Bags / Multisets):** SQL tables and query results are **bags**.
+  - **Duplicates allowed:** `SELECT col FROM R` keeps duplicate rows unless `SELECT DISTINCT` is specified.
+  - **Ordering:** Unordered unless `ORDER BY` is explicitly added.
+
+> [!TIP] Exam Tip
+> When computing the **Relational Algebra** result of $\pi$, always eliminate duplicate rows. When tracing **SQL**, preserve duplicates unless `DISTINCT` (or set operators `UNION`/`INTERSECT`/`EXCEPT` without `ALL`) is used.
+
+---
+
+## 2. Unary Operators (Single Relation)
+
+### Selection ($\sigma$) — Horizontal Slicing
+
+Filters **rows** satisfying predicate $C$, preserving the full schema (columns):
+$$\sigma_{C}(R)$$
+
+- **SQL equivalent:** `WHERE` clause.
+- **Commutativity:** $\sigma_{C_1}(\sigma_{C_2}(R)) \equiv \sigma_{C_2}(\sigma_{C_1}(R)) \equiv \sigma_{C_1 \land C_2}(R)$.
+
+### Projection ($\pi$) — Vertical Slicing
+
+Extracts specified **columns** $A_1, \dots, A_k$ and eliminates duplicates created by dropping distinguishing columns:
+$$\pi_{A_1, \dots, A_k}(R)$$
+
+- **SQL equivalent:** `SELECT DISTINCT A1, ..., Ak`.
+- **Cascading:** $\pi_{L_1}(\pi_{L_2}(R)) \equiv \pi_{L_1}(R)$ whenever $L_1 \subseteq L_2$.
+
+### Rename ($\rho$)
+
+Renames a relation and/or its attributes, **mandatory for Self-Joins** and disambiguating shared column names:
+$$\rho_{S(B_1, \dots, B_n)}(R) \quad \text{or} \quad \rho_{t_1}(\text{teacher})$$
+
+- **Shortcut notation in course slides:** $NewRel(Col_1, Col_2, \dots) = R_1 \times R_2$ renames output attributes left-to-right sequentially (must match exact column count).
+
+---
+
+## 3. Binary Set Operators
+
+> [!WARNING] Union Compatibility Requirement
+> Before applying $\cup$, $\cap$, or $-$, both relations $R$ and $S$ must satisfy:
+>
+> 1. **Same Arity (Degree):** Equal number of columns.
+> 2. **Domain Compatibility:** The $i$-th column of $R$ and the $i$-th column of $S$ must have compatible data types.
+
+| Operator         |   Symbol   | Logic                                   | SQL Equivalent                   | Algebraic Laws                                                   |
+| :--------------- | :--------: | :-------------------------------------- | :------------------------------- | :--------------------------------------------------------------- |
+| **Union**        | $R \cup S$ | Tuples in $R$ **OR** $S$ (deduplicated) | `UNION` (`UNION ALL` keeps bags) | Commutative, Associative                                         |
+| **Intersection** | $R \cap S$ | Tuples in **BOTH** $R$ **AND** $S$      | `INTERSECT`                      | Commutative, Associative; equals $R - (R - S)$                   |
+| **Difference**   |  $R - S$   | Tuples in $R$ and **NOT** in $S$        | `EXCEPT` (Oracle `MINUS`)        | **Not commutative** ($R - S \neq S - R$); $R - (S - R) \equiv R$ |
+
+---
+
+## 4. The Join Family ($\bowtie$) & Cartesian Product ($\times$)
+
+### A. Cartesian Product ($R \times S$)
+
+Concatenates every tuple of $R$ with every tuple of $S$. Result cardinality is $|R| \times |S|$; degree is $\text{deg}(R) + \text{deg}(S)$. Rarely desired alone because of combinatorial explosion; serves as the formal basis for joins.
+
+### B. Theta-Join ($\bowtie_\theta$) and Equi-Join ($\bowtie_=$)
+
+Defined mathematically as a Cartesian product followed by a selection:
+$$R \bowtie_{\theta} S = \sigma_{\theta}(R \times S)$$
+
+- **Theta-Join:** $\theta$ can use any comparison ($<, \le, >, \ge, =, \neq$).
+- **Equi-Join:** $\theta$ uses strictly equality ($R.k = S.k$). Retains both join columns side-by-side (`INNER JOIN ... ON`).
+
+### C. Natural Join ($R \bowtie S$)
+
+1. Automatically equi-joins on all attributes sharing the **exact same name and domain** in both $R$ and $S$.
+2. **Eliminates the duplicate join column** from the output schema.
+   _(If $R$ and $S$ share no attribute names, $R \bowtie S = R \times S$. Warning: dangerous in production SQL because adding an unrelated same-named column like `notes` to both tables silently alters the join condition!)_
+
+### D. Semi-Joins ($\ltimes, \rtimes$) and Anti-Joins ($\triangleright, \triangleleft$)
+
+- **Left Semi-Join ($R \ltimes S$):** Returns tuples of $R$ that have **at least one match** in $S$, keeping **only columns of $R$** (e.g., producers who produced at least one product; conceptually `WHERE EXISTS`).
+- **Left Anti-Join ($R \triangleright S$):** Returns tuples of $R$ that have **zero matches** in $S$ (e.g., producers who never produced a product; conceptually `WHERE NOT EXISTS`).
+
+### E. Outer Joins ($\leftouterjoin, \rightouterjoin, \fullouterjoin$) & 5-Step Mechanism
+
+Outer joins preserve unmatched tuples by padding missing columns with `NULL`:
+
+- **Left Outer Join ($R \leftouterjoin S$):** Keeps all rows from $R$, padding unmatched $S$ attributes with `NULL`.
+- **Right Outer Join ($R \rightouterjoin S$):** Keeps all rows from $S$, padding unmatched $R$ attributes with `NULL`.
+- **Full Outer Join ($R \fullouterjoin S$):** Keeps all rows from both $R$ and $S$.
+
+**Mathematical 5-Step Outer Join Construction** (e.g., `Producteur(Nom, Prenom, Produit_ID)` $\fullouterjoin$ `Produit(Id, Nom)`):
+
+1. **Cartesian Product:** Form all pairs of $R_1 \times R_2$.
+2. **Nullify Left Orphans:** For each row of $R_1$ whose join key matches no $R_2$, set $R_2$'s columns on those unmatched pairings to `NULL`.
+3. **Nullify Right Orphans:** For each row of $R_2$ whose join key matches no $R_1$, set $R_1$'s columns to `NULL`.
+4. **Deduplicate:** Eliminate duplicate null-padded rows introduced in steps 2–3.
+5. **Consolidate Join Column:** Merge matching join keys (`Produit_ID` and `Id`) into one column (producing matched rows, left-only orphans, and right-only orphans). Left Outer discards right orphans; Right Outer discards left orphans.
+
+---
+
+## 5. The Division Operator ($\div$)
+
+Division answers **universal quantification** queries: _"Find every $A$ in $R$ associated with **ALL** $B$ values in $S$."_ (Keywords: "all", "every").
+
+### Derivation Using Double Negation
+
+Given $R(A, B)$ and $S(B)$:
+$$R \div S = \pi_A(R) - \pi_A\big((\pi_A(R) \times S) - R\big)$$
+
+1. $\pi_A(R)$: All candidate $A$ values.
+2. $\pi_A(R) \times S$: The "perfect world" where every candidate $A$ is paired with every required $B \in S$.
+3. $(\pi_A(R) \times S) - R$: All **missing pairs** (what candidates failed to satisfy).
+4. $\pi_A(\dots)$: Disqualified candidates who missed at least one item.
+5. Subtracting disqualified candidates from all candidates leaves only those associated with **every** item in $S$.
+
+**Worked Example:** Suppose $R = \{(A,1), (A,2), (B,1), (C,1), (C,2)\}$ and $S = \{1, 2\}$.
+
+- Candidates $\pi_{\text{User}}(R) = \{A, B, C\}$.
+- Ideal world $\pi_{\text{User}}(R) \times S$ has 6 pairs; subtracting $R$ leaves the single missing pair $\{(B, 2)\}$.
+- Disqualified = $\{B\}$. Final result $R \div S = \{A, B, C\} - \{B\} = \{A, C\}$.
+
+### Two SQL Implementations
+
+_Example: Find students enrolled in ALL `'Core'` courses:_
+
+- **Method 1 — Double `NOT EXISTS`** (literally _"students for whom there is NO Core course that they have NOT enrolled in"_):
+
+```sql
+SELECT S.Name
+FROM Student S
+WHERE NOT EXISTS (
+    SELECT C.CourseID
+    FROM Courses C
+    WHERE C.Type = 'Core'
+      AND NOT EXISTS (
+          SELECT 1 FROM Enrolled E
+          WHERE E.StudentID = S.StudentID AND E.CourseID = C.CourseID
+      )
+);
+```
+
+- **Method 2 — `GROUP BY` + `HAVING COUNT(DISTINCT ...)`:**
+
+```sql
+SELECT StudentID
+FROM Enrolled
+WHERE CourseID IN (SELECT CourseID FROM Courses WHERE Type = 'Core')
+GROUP BY StudentID
+HAVING COUNT(DISTINCT CourseID) = (SELECT COUNT(*) FROM Courses WHERE Type = 'Core');
+```
+
+_(Caveat: Method 2 assumes the divisor set is non-empty; if 0 `'Core'` courses exist, `NOT EXISTS` returns all students vacuously while `HAVING` returns none.)_
+
+---
+
+## 6. Extended Relational Algebra: Scalar Functions & Aggregation ($\lambda$)
+
+- **Pattern Matching (`LIKE`):** `_` matches **exactly one** character (e.g., $\sigma_{Nom\ \text{LIKE}\ '\_a\%'}(\text{Employé})$ finds names whose second letter is `'a'`, $\sigma_{Nom\ \text{LIKE}\ 'T\_\_\_\_\_'}$ matches 6-letter names starting with `'T'`); `%` matches **zero or more** characters. Transformation functions like `UPPER()`, `LOWER()`, `LENGTH()`, `CONCAT()`, `LEFT()`, `RIGHT()`, `MID()` work inside $\sigma$ and $\pi$.
+- **Arithmetic:** `+`, `-`, `*`, `/`, `^`, `div` (integer division, $5\ \text{div}\ 2 = 2$), `mod` ($5\ \text{mod}\ 2 = 1$), `ABS()`, `COS`, `SIN`, `LOG`, `ROUND`, `FLOOR`, `CEIL` (e.g., $\sigma_{Salaire * 1.05 < 25000}(\text{Employé})$).
+- **Aggregate Operator ($\lambda$ or $\mathcal{G}$):** Supports `COUNT`, `MIN`, `MAX`, `SUM`, `AVG`.
+  - _Global:_ $R' = \lambda_{\text{COUNT}(IdProduit)}(\text{Producteur})$ returns 1 scalar row.
+  - _Grouped:_ $R' = Nom, Pr\acute{e}nom\ \lambda_{\text{COUNT}(IdProduit)}(\text{Producteur})$ groups by `(Nom, Prénom)` and creates column `COUNT_IdProduit` (`GROUP BY`).
+
+---
+
+## 7. SQL $\leftrightarrow$ Relational Algebra Mapping & Worked Translations
+
+| SQL Clause                       | Algebraic Operator              | Notes                        |
+| :------------------------------- | :------------------------------ | :--------------------------- |
+| `SELECT DISTINCT x, y`           | $\pi_{x, y}$                    | Algebra is always distinct   |
+| `FROM A, B`                      | $A \times B$                    | Cartesian product            |
+| `WHERE x = 5`                    | $\sigma_{x=5}$                  | Selection                    |
+| `JOIN ... ON ...`                | $\bowtie_{cond}$                | Theta / Equi-join            |
+| `AS`                             | $\rho$                          | Mandatory for self-joins     |
+| `UNION` / `INTERSECT` / `EXCEPT` | $\cup$ / $\cap$ / $-$           | Requires union-compatibility |
+| `GROUP BY g` + `AGG(col)`        | $_{g}\lambda_{\text{AGG}(col)}$ | Grouping & aggregation       |
+
+**Worked Construction Steps (Self-Join Example):** _"Find employees earning more than their manager."_
+
+```sql
+SELECT E.Name
+FROM Employee E, Employee M
+WHERE E.ManagerID = M.ID AND E.Salary > M.Salary;
+```
+
+1. Start from relations and rename instances via $\rho$: $\rho_E(\text{Employee})$ and $\rho_M(\text{Employee})$.
+2. Join on manager relationship: $\rho_E(\text{Employee}) \bowtie_{E.ManagerID = M.ID} \rho_M(\text{Employee})$.
+3. Apply salary selection $\sigma_{E.Salary > M.Salary}$ and final projection $\pi_{E.Name}$:
+   $$\pi_{E.Name}\Big(\sigma_{E.Salary > M.Salary}\big(\rho_E(\text{Employee}) \bowtie_{E.ManagerID = M.ID} \rho_M(\text{Employee})\big)\Big)$$
+
+_(For 20 more worked Relational Algebra $\leftrightarrow$ SQL query translations, see [[01 - Worked SQL & Relational Algebra Drills (Practice Bank)]].)_
+
+
+========================================================================
+End of merged export - (entire project)
+========================================================================

@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Computer Vision.md",
-                "mode": "preview",
-                "source": true
+                "file": "00. Master Curriculum Roadmap.md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "Computer Vision"
+              "title": "00. Master Curriculum Roadmap"
             }
           }
         ],
@@ -235,33 +235,33 @@
   },
   "active": "849064f01db0263a",
   "lastOpenFiles": [
-    "Test 1.md",
     "Computer Vision.md",
+    "00. Master Curriculum Roadmap.md",
+    "Data Science",
+    "Test 1.md",
     "Untitled 1.md",
     "Test 1.zip",
     "Libraries/02. NumPy Array Manipulation - Slicing, Strides, Shapes, and Vectorized Indexing.md",
     "Libraries/01. NumPy Foundations - Memory Layout, ndarray Anatomy, and Array Instantiation.md",
     "Libraries/00. Library Learning Roadmap.md",
-    "06. Advanced Image Processing (TAI)/06.2. Degradation, Restoration, and Spatial Filtering/06.2.6. Structural Edge-Preserving Smoothing (Nagao 9-Sector Multi-Directional Filter).md",
-    "06. Advanced Image Processing (TAI)/06.2. Degradation, Restoration, and Spatial Filtering/06.2.5. Order-Statistic Non-Linear Filtering (Median, Min, Max, Min-Max Operators).md",
-    "06. Advanced Image Processing (TAI)/06.2. Degradation, Restoration, and Spatial Filtering/06.2.4. Spatial High-Pass Filtering, Sobel Gradients, and Laplacian Sharpening.md",
-    "06. Advanced Image Processing (TAI)/06.2. Degradation, Restoration, and Spatial Filtering/06.2.3. Linear Spatial Smoothing (Mean Box Filter, Gaussian Bell, and 1D Separability).md",
-    "06. Advanced Image Processing (TAI)/06.2. Degradation, Restoration, and Spatial Filtering/06.2.2. Quantitative Quality Benchmarks (MSE, PSNR, and SSIM).md",
-    "06. Advanced Image Processing (TAI)/06.2. Degradation, Restoration, and Spatial Filtering/06.2.1. Physical Noise Models (PSF, Gaussian, Impulse Salt-and-Pepper, Speckle).md",
-    "06. Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.11. The Classical Vision Processing Hierarchy - Low, Mid, and High-Level Tasks.md",
-    "06. Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.10. Mathematical 2D Spatial Convolution, Cross-Correlation, and Boundary Padding.md",
-    "06. Advanced Image Processing (TAI)/06.3. Frequency Domain and Spectral Processing/06.3.2. Frequency Filters (Low-Pass, High-Pass, and Band-Reject Notch Filtering).md",
-    "06. Advanced Image Processing (TAI)/06.3. Frequency Domain and Spectral Processing/06.3.1. 2D Discrete Fourier Transform (DFT), FFT Shift, and Convolution Theorem.md",
-    "00. Master Curriculum Roadmap.md",
-    "06. Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.9. Tonal Histograms, Probability Densities, and Cumulative Distribution Functions.md",
-    "06. Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.8. Discrete Spatial Topology, Neighborhoods (N4, N8), and Metric Spaces.md",
-    "06. Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.7. Digital File Encapsulation, Compression Standards, and Medical DICOM.md",
-    "06. Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.6. Perceptual and Broadcast Spaces - YUV, YCbCr, HSV, and CIE Lab.md",
-    "06. Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.5. Color Models - Additive RGB, Subtractive CMYK, and Photometric Grayscale.md",
-    "06. Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.4. Image Representations - Raster Matrix vs Mathematical Vector Primitives.md",
-    "06. Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.3. Amplitude Quantization, Dynamic Range, and Bit Depth.md",
-    "06. Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.2. Spatial Discretization, Dirac Comb Sampling, and Nyquist-Shannon Theorem.md",
-    "06. Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.1. Physical Image Formation, Radiometry, and Optical Sensing.md",
+    "Advanced Image Processing (TAI)/06.2. Degradation, Restoration, and Spatial Filtering/06.2.6. Structural Edge-Preserving Smoothing (Nagao 9-Sector Multi-Directional Filter).md",
+    "Advanced Image Processing (TAI)/06.2. Degradation, Restoration, and Spatial Filtering/06.2.5. Order-Statistic Non-Linear Filtering (Median, Min, Max, Min-Max Operators).md",
+    "Advanced Image Processing (TAI)/06.2. Degradation, Restoration, and Spatial Filtering/06.2.4. Spatial High-Pass Filtering, Sobel Gradients, and Laplacian Sharpening.md",
+    "Advanced Image Processing (TAI)/06.2. Degradation, Restoration, and Spatial Filtering/06.2.3. Linear Spatial Smoothing (Mean Box Filter, Gaussian Bell, and 1D Separability).md",
+    "Advanced Image Processing (TAI)/06.2. Degradation, Restoration, and Spatial Filtering/06.2.2. Quantitative Quality Benchmarks (MSE, PSNR, and SSIM).md",
+    "Advanced Image Processing (TAI)/06.2. Degradation, Restoration, and Spatial Filtering/06.2.1. Physical Noise Models (PSF, Gaussian, Impulse Salt-and-Pepper, Speckle).md",
+    "Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.11. The Classical Vision Processing Hierarchy - Low, Mid, and High-Level Tasks.md",
+    "Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.10. Mathematical 2D Spatial Convolution, Cross-Correlation, and Boundary Padding.md",
+    "Advanced Image Processing (TAI)/06.3. Frequency Domain and Spectral Processing/06.3.2. Frequency Filters (Low-Pass, High-Pass, and Band-Reject Notch Filtering).md",
+    "Advanced Image Processing (TAI)/06.3. Frequency Domain and Spectral Processing/06.3.1. 2D Discrete Fourier Transform (DFT), FFT Shift, and Convolution Theorem.md",
+    "Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.9. Tonal Histograms, Probability Densities, and Cumulative Distribution Functions.md",
+    "Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.8. Discrete Spatial Topology, Neighborhoods (N4, N8), and Metric Spaces.md",
+    "Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.7. Digital File Encapsulation, Compression Standards, and Medical DICOM.md",
+    "Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.6. Perceptual and Broadcast Spaces - YUV, YCbCr, HSV, and CIE Lab.md",
+    "Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.5. Color Models - Additive RGB, Subtractive CMYK, and Photometric Grayscale.md",
+    "Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.4. Image Representations - Raster Matrix vs Mathematical Vector Primitives.md",
+    "Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.3. Amplitude Quantization, Dynamic Range, and Bit Depth.md",
+    "Advanced Image Processing (TAI)/06.1. Image Foundations and Discretization/06.1.2. Spatial Discretization, Dirac Comb Sampling, and Nyquist-Shannon Theorem.md",
     "workspace.json",
     "graph.json",
     "core-plugins.json",
@@ -269,7 +269,6 @@
     "appearance.json",
     "app.json",
     "plugins/obsidian-plantuml/styles.css",
-    "plugins/obsidian-plantuml/manifest.json",
-    "plugins/obsidian-plantuml/main.js"
+    "plugins/obsidian-plantuml/manifest.json"
   ]
 }

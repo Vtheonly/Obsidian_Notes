@@ -41,15 +41,16 @@ The database contains four core entity tables (`department`, `class`, `teacher`,
 
 ```mermaid
 erDiagram
-    DEPARTMENT ||--o{ TEACHER : "employs (ON DELETE SET NULL)"
-    DEPARTMENT ||--o{ CLASS : "contains (ON DELETE CASCADE)"
-    CLASS ||--o{ STUDENT : "enrolls (ON DELETE SET NULL)"
+
+    DEPARTMENT |o--o{ TEACHER : "employs (ON DELETE SET NULL, ON UPDATE CASCADE)"
+    DEPARTMENT ||--o{ "CLASS" : "contains (ON DELETE CASCADE, ON UPDATE CASCADE)"
+    "CLASS" |o--o{ STUDENT : "enrolls (ON DELETE SET NULL)"
     TEACHER ||--o{ TEACHER_CLASS : "teaches (ON DELETE CASCADE)"
-    CLASS ||--o{ TEACHER_CLASS : "taught in (ON DELETE CASCADE)"
+    "CLASS" ||--o{ TEACHER_CLASS : "taught in (ON DELETE CASCADE)"
 
     DEPARTMENT {
         integer department_id PK
-        varchar department_name "NOT NULL UNIQUE"
+        varchar department_name UK "NOT NULL"
     }
     TEACHER {
         integer teacher_id PK
@@ -58,10 +59,10 @@ erDiagram
         numeric salary "DEFAULT 30000"
         integer department_id FK "nullable"
     }
-    CLASS {
+    "CLASS" {
         integer class_id PK
         varchar class_name "NOT NULL"
-        integer department_id FK
+        integer department_id FK "NOT NULL"
     }
     STUDENT {
         integer student_id PK
@@ -71,8 +72,8 @@ erDiagram
         integer class_id FK "nullable"
     }
     TEACHER_CLASS {
-        integer teacher_id PK_FK
-        integer class_id PK_FK
+        integer teacher_id PK, FK
+        integer class_id PK, FK
     }
 ```
 

@@ -1,0 +1,1053 @@
+--- START OF FILE _entire_project_.txt ---
+
++======================================================================+
+|  MERGED CODE EXPORT                                                   |
+|  Project:  02 - Advanced SQL (Chapter 1, TP 1 & TD 1)                 |
+|  Source:   (entire project)                                          |
+|  Date:     2026-11-16 16:52:47                                        |
+|  Status:   Complete                                                  |
++======================================================================+
+
+ FOLDER STRUCTURE
+-------------------
+.
+├── 01 - The University Database Setup, Constraints & DML.md
+├── 02 - Querying, Filtering, Aggregation & Joins.md
+├── 03 - Set Operations, Subqueries, CTEs & CASE Expressions.md
+└── _entire_project_.txt
+
+========================================================================
+ FILE: 01 - The University Database Setup, Constraints & DML.md
+   Language: markdown
+========================================================================
+# The University Database Setup, Constraints & DML
+
+This note integrates **Chapter 1 (Slides 6–7, 44–48)**, **TP 1 (Parts A–S)**, and **TP 2 Part I**, serving as the complete reference for setting up, populating, modifying, and auditing the **`university`** database in **PostgreSQL / pgAdmin 4**.
+
+---
+
+## 1. Environment Setup & Connecting via pgAdmin 4 (TP 1 Parts A–B, TP 2 Part I)
+
+### Tool Roles
+
+- **SQL:** The declarative language used to communicate with the database.
+- **PostgreSQL:** The RDBMS server that executes SQL statements (default port `5432`, superuser `postgres`).
+- **pgAdmin 4:** The graphical administration interface used to manage servers and run SQL via the **Query Tool** (click Run or press **F5**).
+
+### Database Creation & Verification Workflow
+
+1. Open pgAdmin 4, expand **Servers**, connect to your PostgreSQL server, open a **Query Tool**, and create the database:
+   ```sql
+   CREATE DATABASE university;
+   ```
+2. Refresh **Databases**, locate `university`, right-click it, and open a new **Query Tool** connected specifically to `university` (tables created while connected to the default `postgres` database will not be inside `university`!).
+3. Verify the connection and existing base tables (TP 1 Part B.1 & TP 2 Part I):
+
+   ```sql
+   SELECT current_database(), current_user, version();
+
+   SELECT table_name
+   FROM information_schema.tables
+   WHERE table_schema = 'public'
+     AND table_type = 'BASE TABLE'
+   ORDER BY table_name;
+   ```
+
+   _(Important TP 2/TP 3 reminder: Always reuse the `university` tables and data created in TP 1; do not recreate the four main tables or duplicate TP 1 `INSERT` statements.)_
+
+---
+
+## 2. The `university` Relational Schema & DDL (TP 1 Parts C–E)
+
+The database contains four core entity tables (`department`, `class`, `teacher`, `student`) plus the N:N junction table (`teacher_class`) introduced in TP 1 Part E:
+
+```mermaid
+erDiagram
+    DEPARTMENT ||--o{ TEACHER : "employs (ON DELETE SET NULL)"
+    DEPARTMENT ||--o{ CLASS : "contains (ON DELETE CASCADE)"
+    CLASS ||--o{ STUDENT : "enrolls (ON DELETE SET NULL)"
+    TEACHER ||--o{ TEACHER_CLASS : "teaches (ON DELETE CASCADE)"
+    CLASS ||--o{ TEACHER_CLASS : "taught in (ON DELETE CASCADE)"
+
+    DEPARTMENT {
+        integer department_id PK
+        varchar department_name "NOT NULL UNIQUE"
+    }
+    TEACHER {
+        integer teacher_id PK
+        varchar last_name "NOT NULL"
+        varchar first_name "NOT NULL"
+        numeric salary "DEFAULT 30000"
+        integer department_id FK "nullable"
+    }
+    CLASS {
+        integer class_id PK
+        varchar class_name "NOT NULL"
+        integer department_id FK
+    }
+    STUDENT {
+        integer student_id PK
+        varchar last_name "NOT NULL"
+        varchar first_name "NOT NULL"
+        integer age "NOT NULL CHECK (age > 0 AND age < 150)"
+        integer class_id FK "nullable"
+    }
+    TEACHER_CLASS {
+        integer teacher_id PK_FK
+        integer class_id PK_FK
+    }
+```
+
+### Complete Table Creation Scripts (TP 1 Parts D & E)
+
+```sql
+-- 1. department (no dependencies)
+CREATE TABLE department (
+    department_id INTEGER PRIMARY KEY,
+    department_name VARCHAR(50) NOT NULL UNIQUE
+);
+
+-- 2. teacher (depends on department)
+CREATE TABLE teacher (
+    teacher_id INTEGER PRIMARY KEY,
+    last_name VARCHAR(50) NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    salary NUMERIC(10,2) DEFAULT 30000,
+    department_id INTEGER REFERENCES department(department_id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
+);
+
+-- 3. class (depends on department)
+CREATE TABLE class (
+    class_id INTEGER PRIMARY KEY,
+    class_name VARCHAR(50) NOT NULL,
+    department_id INTEGER REFERENCES department(department_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- 4. student (depends on class)
+CREATE TABLE student (
+    student_id INTEGER PRIMARY KEY,
+    last_name VARCHAR(50) NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    age INTEGER NOT NULL CHECK (age > 0 AND age < 150),
+    class_id INTEGER REFERENCES class(class_id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
+);
+
+-- 5. teacher_class (N:N junction table; depends on teacher AND class)
+CREATE TABLE teacher_class (
+    teacher_id INTEGER NOT NULL,
+    class_id INTEGER NOT NULL,
+    PRIMARY KEY (teacher_id, class_id),
+    FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (class_id) REFERENCES class(class_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+```
+
+_(Schema comparison note: Lecture Ch 1 Slide 6 summarizes `student.age` as `SMALLINT` without `CHECK` and omits `DEFAULT 30000` on `salary`; TP 1 defines the complete PostgreSQL lab DDL above.)_
+
+### Why `teacher_class` Is Designed This Way (TP 1 Part E Q1–Q7)
+
+1. **Why not add `class_id` to `teacher`?** Each teacher could reference only **one** class.
+2. **Why not add `teacher_id` to `class`?** Each class could reference only **one** teacher.
+3. **Why not store `'10, 20, 30'` in one column?** Violates **First Normal Form (1NF)** (non-atomic cell), breaks foreign-key validation, and prevents standard SQL joins.
+4. **Junction table principles:** `teacher_class` holds one row per `(teacher, class)` assignment, uses `PRIMARY KEY (teacher_id, class_id)` (a compound key preventing duplicate assignments), leaves `teacher` and `class` completely unmodified, and can later hold relationship attributes like `academic_year` or `semester` (Part P.5 / Part R.23).
+
+---
+
+## 3. Foreign-Key Referential Actions (TP 1 Part H Q1–Q8)
+
+For the complete table of referential actions (`CASCADE`, `SET NULL`, `RESTRICT`, `NO ACTION`, `SET DEFAULT`), see [[03 - Keys, Data Types & Static Constraints (PostgreSQL)]]. Here are the exact answers to **TP 1 Part H.4 (`Q1`–`Q8`)**:
+
+- **Q1 (Deleting a department):** `teacher.department_id` becomes `NULL` (`ON DELETE SET NULL`), while `class` rows for that department are deleted (`ON DELETE CASCADE`).
+- **Q2 (Updating `department.department_id`):** `teacher.department_id` and `class.department_id` automatically update to the new ID (`ON UPDATE CASCADE`).
+- **Q3 (Why `SET NULL` instead of `CASCADE` on `teacher.department_id`?):** Teachers are valuable university staff; removing or reorganizing a department must preserve teacher records so they can be reassigned later.
+- **Q4 (What if `ON DELETE CASCADE` were used on `teacher.department_id`?):** Deleting a department would accidentally delete all its teachers from the database!
+- **Q5 (What if `ON UPDATE CASCADE` were replaced by `ON UPDATE RESTRICT`?):** Any attempt to renumber a `department_id` that still has teachers (or classes) would be **rejected** by PostgreSQL.
+- **Q6 (Can `ON DELETE SET NULL` be used on a `NOT NULL` FK?):** **No**—setting the column to `NULL` on parent deletion would violate the `NOT NULL` constraint (PostgreSQL rejects the action/invalidates the rule).
+- **Q7 (Concrete SQL triggering `ON UPDATE CASCADE`):**
+  ```sql
+  UPDATE department SET department_id = 100 WHERE department_id = 1;
+  -- All teachers and classes previously in department 1 now have department_id = 100
+  ```
+- **Q8 (Why `ON DELETE CASCADE` in `teacher_class` instead of `SET NULL`?):** Both `teacher_id` and `class_id` are `NOT NULL` and form the **composite primary key** of `teacher_class`. Primary key columns can never be `NULL`, and an assignment without a teacher or class is meaningless, so removing a teacher or class must cascade-delete its junction rows.
+
+---
+
+## 4. Insertion Order & Complete TP 1 Seed Dataset (TP 1 Parts I–K)
+
+Because foreign keys require referenced parent rows to exist first, insertion must follow the **dependency graph**:
+
+```mermaid
+flowchart LR
+    D["1. department<br/>(no dependencies)"] --> T["2a. teacher<br/>(depends on department)"]
+    D --> C["2b. class<br/>(depends on department)"]
+    C --> S["3. student<br/>(depends on class)"]
+    T --> TC["4. teacher_class<br/>(depends on teacher AND class)"]
+    C --> TC
+```
+
+### Answers to Insertion Order Questions (TP 1 Part I.2 Q1–Q8)
+
+- **Q1–Q4:** `department` has no FKs, so it goes first; `teacher` and `class` reference `department`, so they follow `department`; `student` references `class`, so it follows `class`; `teacher_class` references **both** `teacher` and `class`, so it must be inserted last.
+- **Q5 (Insert student with non-existent `class_id = 99`):** PostgreSQL rejects the insertion with a **foreign-key constraint violation** (`insert or update on table "student" violates foreign key constraint`).
+- **Q6–Q7 (Insert teacher with `department_id = NULL` or student with `class_id = NULL`):** **Yes!** Both FK columns are nullable (no `NOT NULL` constraint). In SQL, a `NULL` foreign key means "no parent assigned yet" and satisfies referential integrity (e.g., **student 8 Farah Ines** has `class_id = NULL`).
+- **Q8 (Insert `teacher_class` with missing `teacher_id`):** Rejected by PostgreSQL with a foreign-key constraint violation.
+
+### Exact TP 1 Dataset (Ch 1 Slide 7 & TP 1 Part J–K)
+
+Key assumptions tested throughout **TD 1, TP 2, TD 2, TP 3, and TD 3**:
+
+- **Department 5 (`Chimie`)** has **0 teachers** and **0 classes**.
+- **Teacher 109 (`Khelifi Nora`)** has **`salary = NULL`**.
+- **Class 50 (`M1-Physique`)** has **0 students**.
+- **Student 8 (`Farah Ines`)** has **`class_id = NULL`**.
+
+```sql
+-- J.1: Departments
+INSERT INTO department (department_id, department_name) VALUES
+(1, 'Informatique'),
+(2, 'Mathématiques'),
+(3, 'Électronique'),
+(4, 'Physique'),
+(5, 'Chimie');
+
+-- J.2: Teachers
+INSERT INTO teacher (teacher_id, last_name, first_name, salary, department_id) VALUES
+(101, 'Benali', 'Ahmed', 75000, 1),
+(102, 'Saidi', 'Nadia', 62000, 1),
+(103, 'Karim', 'Samir', 48000, 2),
+(104, 'Haddad', 'Amel', 85000, 2),
+(105, 'Mansouri', 'Ali', 55000, 3),
+(106, 'Rahmani', 'Sara', 72000, 3),
+(107, 'Bensaid', 'Omar', 45000, 4),
+(108, 'Ahmed', 'Yasmine', 68000, 1),
+(109, 'Khelifi', 'Nora', NULL, 1);
+
+-- J.3: Classes
+INSERT INTO class (class_id, class_name, department_id) VALUES
+(10, 'M1-GL', 1),
+(20, 'M1-IA', 1),
+(30, 'M1-Math', 2),
+(40, 'M1-Elec', 3),
+(50, 'M1-Physique', 4);
+
+-- J.4: Students
+INSERT INTO student (student_id, last_name, first_name, age, class_id) VALUES
+(1, 'Ahmed', 'Karim', 22, 10),
+(2, 'Ali', 'Sara', 23, 10),
+(3, 'Amine', 'Yacine', 21, 20),
+(4, 'Benali', 'Lina', 24, 20),
+(5, 'Brahimi', 'Omar', 22, 30),
+(6, 'Chibani', 'Amel', 23, 30),
+(7, 'Dali', 'Sami', 21, 40),
+(8, 'Farah', 'Ines', 22, NULL),
+(9, 'Ahmed', 'Salim', 25, 10),
+(10, 'Ali', 'Nadia', 20, 20);
+
+-- J.5: Teacher-Class Assignments (14 pairs)
+INSERT INTO teacher_class (teacher_id, class_id) VALUES
+(101, 10), (101, 20),
+(102, 10), (102, 30),
+(103, 30),
+(104, 30), (104, 40),
+(105, 40),
+(106, 40), (106, 50),
+(107, 50),
+(108, 10), (108, 20),
+(109, 20);
+```
+
+---
+
+## 5. DML Operations: `INSERT`, `UPDATE`, `DELETE` (Ch 1 Slides 44–48 & TP 1 Part M)
+
+### `INSERT` Forms (Ch 1 Slides 45–46)
+
+1. **Single row (positional):** `INSERT INTO department VALUES (6, 'Biologie');`
+2. **Multiple rows:** `INSERT INTO department VALUES (7, 'Génie Civil'), (8, 'Chimie Industrielle');`
+3. **Explicit column list:** `INSERT INTO department (department_id, department_name) VALUES (9, 'Biotechnologie');` (omitted columns receive `DEFAULT` or `NULL`).
+4. **From another query (`INSERT ... SELECT`):**
+   ```sql
+   INSERT INTO destination_table
+   SELECT ... FROM source_table WHERE ...;
+   ```
+
+### `UPDATE` & Composite-Key Replacement (TP 1 Part M.1–M.5)
+
+Always use `WHERE` unless you intend to overwrite every row in the table! Use `BEGIN; ... ROLLBACK;` (or restore values afterwards) when running temporary tests.
+
+```sql
+-- M.1: Modify one teacher's salary
+UPDATE teacher SET salary = 78000 WHERE teacher_id = 101;
+
+-- M.2: Increase department 1 salaries by 5% (explicitly excluding NULL)
+UPDATE teacher SET salary = salary * 1.05
+WHERE department_id = 1 AND salary IS NOT NULL;
+
+-- M.3: Assign student 8 to class 10
+UPDATE student SET class_id = 10 WHERE student_id = 8;
+
+-- M.4: Increase salaries below 50000 by 10%
+UPDATE teacher SET salary = salary * 1.10 WHERE salary < 50000;
+
+-- M.5: Reassign teacher 103 from class 30 to class 40 in junction table
+-- Note: Replace composite key via DELETE + INSERT (not direct UPDATE of PK!)
+DELETE FROM teacher_class WHERE teacher_id = 103 AND class_id = 30;
+INSERT INTO teacher_class (teacher_id, class_id) VALUES (103, 40);
+```
+
+### `DELETE` (Ch 1 Slide 48)
+
+```sql
+DELETE FROM table_name WHERE condition;
+```
+
+---
+
+## 6. Testing Integrity Constraints & Structural Changes (TP 1 Parts O, P, Q)
+
+### Part O: Observing PostgreSQL Integrity Enforcement (`O.1`–`O.10`)
+
+> [!WARNING] Source Discrepancy on `O.5`, `O.6`, `O.7`
+> In TP 1 Part D, `teacher.salary` had no `CHECK` constraint (it was added and dropped in Part F), and `class.class_name` had neither `UNIQUE` nor `CHECK`. To observe `O.5`–`O.7` fail as intended, add those constraints via `ALTER TABLE` first (and drop them afterwards if continuing with the default schema):
+>
+> ```sql
+> ALTER TABLE teacher ADD CONSTRAINT chk_teacher_salary CHECK (salary IS NULL OR salary > 0);
+> ALTER TABLE class ADD CONSTRAINT uq_class_name UNIQUE (class_name);
+> ALTER TABLE class ADD CONSTRAINT chk_class_name_len CHECK (LENGTH(class_name) >= 3);
+> ```
+
+| Test     | Attempted `INSERT`                                                                                           | Result / Violated Constraint                                                                                    |
+| :------- | :----------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
+| **O.1**  | `INSERT INTO department VALUES (1, 'Biology');`                                                              | Rejected: **`PRIMARY KEY`** (`department_id = 1` already exists).                                               |
+| **O.2**  | `INSERT INTO teacher VALUES (110, 'Test', 'Student', 50000, 99);`                                            | Rejected: **`FOREIGN KEY`** (department `99` does not exist).                                                   |
+| **O.3**  | `INSERT INTO teacher VALUES (111, NULL, 'Test', 50000, 1);`                                                  | Rejected: **`NOT NULL`** on `last_name`.                                                                        |
+| **O.4**  | `INSERT INTO student VALUES (11, 'Test', 'Student', -5, 10);`                                                | Rejected: **`CHECK`** on `student.age` (`age > 0 AND age < 150`).                                               |
+| **O.5**  | `INSERT INTO teacher VALUES (113, 'Test', 'Salary', -1000, 1);`                                              | Rejected: **`CHECK`** `chk_teacher_salary` _(once added!)_.                                                     |
+| **O.6**  | `INSERT INTO class VALUES (60, 'M1-GL', 1);`                                                                 | Rejected: **`UNIQUE`** on `class.class_name` _(once added!)_.                                                   |
+| **O.7**  | `INSERT INTO class VALUES (61, 'AB', 1);`                                                                    | Rejected: **`CHECK`** on `class.class_name` _(once added!)_.                                                    |
+| **O.8**  | `INSERT INTO teacher_class VALUES (101, 10);`                                                                | Rejected: **Composite `PRIMARY KEY (teacher_id, class_id)`** — prevents duplicate assignments in the N:N table. |
+| **O.9**  | `INSERT INTO teacher_class VALUES (999, 10);`                                                                | Rejected: **`FOREIGN KEY (teacher_id)`** (teacher `999` missing).                                               |
+| **O.10** | `INSERT INTO teacher (teacher_id, last_name, first_name, department_id) VALUES (112, 'Default', 'Test', 1);` | **Succeeds!** Assigned **`salary = 30000.00`** by `DEFAULT 30000`.                                              |
+
+### Part P (`ALTER TABLE`) & Part Q (Final Verification)
+
+```sql
+-- P.1–P.4: Modify student structure (revert age rename before TP 2/3!)
+ALTER TABLE student ADD COLUMN email VARCHAR(100);
+ALTER TABLE student DROP COLUMN email;
+ALTER TABLE student RENAME COLUMN age TO student_age;
+ALTER TABLE student ALTER COLUMN student_age TYPE SMALLINT;
+
+-- P.5: Extend junction table with relationship attribute
+ALTER TABLE teacher_class ADD COLUMN academic_year VARCHAR(10);
+UPDATE teacher_class SET academic_year = '2025-2026';
+```
+
+- **Part Q Counts:** `department`: `5`, `teacher`: `9`, `class`: `5`, `student`: `10`, `teacher_class`: `14` _(note: Part Q printed `13`, whereas Part J inserts 14 pairs)_; verify Chimie exists, M1-Physique exists, Khelifi Nora has `NULL` salary, Farah Ines has `NULL` `class_id` (after restoring `M.3`), Benali Ahmed teaches M1-GL & M1-IA, and M1-Math is taught by $\ge 2$ teachers.
+
+---
+
+## 7. Worked Solutions: TP 1 Part R (All 28 Exercises) & Part S (16-Step Final Challenge)
+
+### Part R Solutions (`R.1`–`R.28`)
+
+```sql
+-- R.1: All department names alphabetically
+SELECT department_name FROM department ORDER BY department_name ASC;
+
+-- R.2: Teachers earning > 70000
+SELECT last_name, first_name, salary FROM teacher WHERE salary > 70000;
+
+-- R.3: Salary between 50000 and 80000
+SELECT * FROM teacher WHERE salary BETWEEN 50000 AND 80000;
+
+-- R.4: Students younger than 23
+SELECT * FROM student WHERE age < 23;
+
+-- R.5: Students whose last name starts with A
+SELECT * FROM student WHERE last_name LIKE 'A%';
+
+-- R.6: Teachers with non-NULL salary
+SELECT * FROM teacher WHERE salary IS NOT NULL;
+
+-- R.7: Students without a class
+SELECT * FROM student WHERE class_id IS NULL;
+
+-- R.8: All classes ordered by class_name
+SELECT * FROM class ORDER BY class_name;
+
+-- R.9: Three highest salaries (NULLS LAST critical in PostgreSQL!)
+SELECT DISTINCT salary FROM teacher WHERE salary IS NOT NULL
+ORDER BY salary DESC FETCH FIRST 3 ROWS ONLY;
+
+-- R.10: Teachers from dept 1 earning > 60000
+SELECT * FROM teacher WHERE department_id = 1 AND salary > 60000;
+
+-- R.11–R.13: Updates (run inside BEGIN; ... ROLLBACK; if keeping original TP1 state)
+UPDATE teacher SET salary = 52000 WHERE teacher_id = 103;
+UPDATE teacher SET salary = salary * 1.05 WHERE department_id = 3 AND salary IS NOT NULL;
+UPDATE student SET age = 21 WHERE student_id = 10;
+```
+
+- **R.14 (`INSERT` vs `UPDATE` vs `ALTER TABLE` vs `SELECT`):**
+  - `INSERT` (DML): adds **new rows** to an existing table.
+  - `UPDATE` (DML): modifies **existing row values** in a table.
+  - `ALTER TABLE` (DDL): modifies the **table structure/schema** (columns, data types, constraints).
+  - `SELECT` (DQL/DML): **reads/queries** data without changing stored tables or structure.
+
+```sql
+-- R.15–R.17: Managing constraints
+ALTER TABLE class ADD CONSTRAINT uq_class_name UNIQUE (class_name);
+-- Verify: INSERT INTO class VALUES (99, 'M1-GL', 1); -> fails
+
+-- R.16: Note Part D created an unnamed CHECK on student.age; inspect name in pg_constraint first!
+ALTER TABLE student DROP CONSTRAINT student_age_check; -- typical auto-generated name in PostgreSQL
+ALTER TABLE student ADD CONSTRAINT chk_student_age CHECK (age >= 18 AND age < 150);
+
+-- R.17: Drop UNIQUE on class_name
+ALTER TABLE class DROP CONSTRAINT uq_class_name;
+
+-- R.18: Each teacher with names of classes they teach
+SELECT t.last_name, t.first_name, c.class_name
+FROM teacher t
+JOIN teacher_class tc ON t.teacher_id = tc.teacher_id
+JOIN class c ON tc.class_id = c.class_id
+ORDER BY t.last_name, c.class_name;
+
+-- R.19: Each class with names of its teachers
+SELECT c.class_name, t.last_name, t.first_name
+FROM class c
+JOIN teacher_class tc ON c.class_id = tc.class_id
+JOIN teacher t ON tc.teacher_id = t.teacher_id
+ORDER BY c.class_name, t.last_name;
+
+-- R.20: Teachers teaching more than 2 classes
+SELECT t.teacher_id, t.last_name, t.first_name, COUNT(tc.class_id) AS class_count
+FROM teacher t JOIN teacher_class tc ON t.teacher_id = tc.teacher_id
+GROUP BY t.teacher_id, t.last_name, t.first_name
+HAVING COUNT(tc.class_id) > 2;
+
+-- R.21: Classes taught by exactly 1 teacher
+SELECT c.class_id, c.class_name, COUNT(tc.teacher_id) AS teacher_count
+FROM class c JOIN teacher_class tc ON c.class_id = tc.class_id
+GROUP BY c.class_id, c.class_name
+HAVING COUNT(tc.teacher_id) = 1;
+
+-- R.22: Teachers who teach no class
+SELECT t.teacher_id, t.last_name, t.first_name
+FROM teacher t LEFT JOIN teacher_class tc ON t.teacher_id = tc.teacher_id
+WHERE tc.class_id IS NULL;
+
+-- R.23: Add semester column to teacher_class and set to 'S1'
+ALTER TABLE teacher_class ADD COLUMN semester VARCHAR(10);
+UPDATE teacher_class SET semester = 'S1';
+
+-- R.24–R.25: Deleting a teacher or class (inside reversible test)
+BEGIN;
+DELETE FROM teacher WHERE teacher_id = 109; -- corresponding rows in teacher_class (109, 20) vanish via ON DELETE CASCADE
+DELETE FROM class WHERE class_id = 50;      -- corresponding rows in teacher_class (106, 50), (107, 50) vanish via ON DELETE CASCADE
+ROLLBACK;
+
+-- R.26: All constraints of teacher using pg_constraint
+SELECT c.conname, c.contype, pg_get_constraintdef(c.oid) AS definition
+FROM pg_constraint c
+JOIN pg_class t ON c.conrelid = t.oid
+WHERE t.relname = 'teacher';
+
+-- R.27: All constraints of class using information_schema
+SELECT constraint_name, constraint_type
+FROM information_schema.table_constraints
+WHERE table_schema = 'public' AND table_name = 'class';
+
+-- R.28: ON DELETE and ON UPDATE rules of all foreign keys in public schema
+SELECT tc.table_name, rc.constraint_name, rc.delete_rule, rc.update_rule
+FROM information_schema.referential_constraints rc
+JOIN information_schema.table_constraints tc
+  ON rc.constraint_name = tc.constraint_name
+ AND rc.constraint_schema = tc.constraint_schema
+WHERE tc.table_schema = 'public'
+ORDER BY tc.table_name, rc.constraint_name;
+```
+
+### Part S: 16-Step Final Challenge (`Biology` Lifecycle Walkthrough)
+
+```sql
+BEGIN; -- Wrap in transaction or clean up after observing step 16!
+
+-- 1–7: Create Biology dept, teacher, update salary, class, student, and assign 2 teachers
+INSERT INTO department (department_id, department_name) VALUES (6, 'Biology');
+INSERT INTO teacher (teacher_id, last_name, first_name, salary, department_id) VALUES (115, 'Ziani', 'Meriem', 58000, 6);
+UPDATE teacher SET salary = 61000 WHERE teacher_id = 115;
+INSERT INTO class (class_id, class_name, department_id) VALUES (60, 'M1-Bio', 6);
+INSERT INTO student (student_id, last_name, first_name, age, class_id) VALUES (12, 'Kaci', 'Rami', 22, 60);
+INSERT INTO teacher_class (teacher_id, class_id) VALUES (115, 60);
+INSERT INTO teacher_class (teacher_id, class_id) VALUES (101, 60); -- existing teacher Benali
+
+-- 8–10: Inspect rows, teachers of M1-Bio, classes of teacher 115
+SELECT * FROM department WHERE department_id = 6;
+SELECT t.teacher_id, t.last_name, t.first_name FROM teacher t
+JOIN teacher_class tc ON t.teacher_id = tc.teacher_id WHERE tc.class_id = 60;
+SELECT c.class_id, c.class_name FROM class c
+JOIN teacher_class tc ON c.class_id = tc.class_id WHERE tc.teacher_id = 115;
+
+-- 11–12: Consistency guarantees
+-- PKs prevent duplicate IDs and duplicate (115, 60) assignments; FKs guarantee every teacher, class, student,
+-- and assignment points to existing parents, without modifying teacher or class schemas for the N:N link.
+
+-- 13–15: Add & drop CHECK on department_name, add DEFAULT on salary
+ALTER TABLE department ADD CONSTRAINT chk_dept_name_len CHECK (LENGTH(department_name) >= 3);
+ALTER TABLE department DROP CONSTRAINT chk_dept_name_len;
+ALTER TABLE teacher ALTER COLUMN salary SET DEFAULT 35000;
+
+-- 16: Delete Biology department and trace cascades!
+DELETE FROM department WHERE department_id = 6;
+SELECT * FROM teacher WHERE teacher_id = 115;      -- Exists with department_id = NULL (ON DELETE SET NULL)
+SELECT * FROM class WHERE class_id = 60;           -- Deleted (ON DELETE CASCADE from department)
+SELECT * FROM student WHERE student_id = 12;       -- Exists with class_id = NULL (ON DELETE SET NULL from class)
+SELECT * FROM teacher_class WHERE class_id = 60;   -- Both (115,60) and (101,60) deleted (ON DELETE CASCADE from class)
+
+ROLLBACK;
+```
+
+
+========================================================================
+ FILE: 03 - Set Operations, Subqueries, CTEs & CASE Expressions.md
+   Language: markdown
+========================================================================
+# Set Operations, Subqueries, CTEs & CASE Expressions
+
+This note integrates **Chapter 1 (Slides 30–43, 49)**, **TD 1 (Questions 20\*–29, 31)**, **TP 2 Ex 12 Task 9**, and advanced querying/optimization concepts (`ANY`/`ALL`/`SOME`, Set Ops vs. Joins, Division, and SQL best practices).
+
+---
+
+## 1. Set Operations (`UNION`, `INTERSECT`, `EXCEPT`) vs. Joins
+
+Set operations combine results **vertically** (requiring identical column count and compatible types); joins link rows **horizontally**.
+
+### Course `university` Examples (Ch 1 Slides 31–33)
+
+```sql
+-- UNION (removes duplicates; use UNION ALL to keep duplicates & avoid sort/hash overhead)
+SELECT last_name FROM student WHERE class_id = 10
+UNION
+SELECT last_name FROM student WHERE class_id = 20;
+-- Result: Ahmed, Ali, Amine, Benali
+
+-- INTERSECT (common rows)
+SELECT last_name FROM student WHERE class_id = 10
+INTERSECT
+SELECT last_name FROM student WHERE class_id = 20;
+-- Result: Ali
+
+-- EXCEPT (in first query, absent from second)
+SELECT last_name FROM student WHERE class_id = 10
+EXCEPT
+SELECT last_name FROM student WHERE last_name = 'Ahmed';
+-- Result: Ali
+```
+
+### Three Critical Differences: `INTERSECT` vs. `INNER JOIN`
+
+1. **Duplicates:** `INTERSECT` (set) returns each matching value **once**. `INNER JOIN` **multiplies** duplicates ($5 \times 5 = 25$ rows if an ID appears 5 times on each side; requires `DISTINCT` to mimic `INTERSECT`).
+2. **`NULL` Values:** **`INTERSECT` treats `NULL = NULL` as a match**, whereas **`INNER JOIN` drops `NULL` rows** (because `NULL = NULL` evaluates to `UNKNOWN`).
+3. **Column Flexibility:** `INTERSECT` requires identical schemas in both queries; `INNER JOIN` can project arbitrary columns from both tables.
+   _(Dialect note: PostgreSQL supports `UNION`, `INTERSECT`, and `EXCEPT` natively. Older MySQL lacks `INTERSECT` and `EXCEPT`, requiring `WHERE col IN (...)` and `WHERE col NOT IN (...)` / `NOT EXISTS`.)_
+
+---
+
+## 2. Subqueries, Correlation & `EXISTS` vs. `JOIN`
+
+- **Non-Correlated Subquery:** Inner query executes independently once and returns a scalar or set (`WHERE salary > (SELECT AVG(salary) FROM teacher)`).
+- **Correlated Subquery:** Inner query references a column from the outer row (`WHERE t.department_id = d.department_id`). Logically evaluated per outer row.
+- **`EXISTS (SELECT 1 FROM ...)`:** Stops scanning the inner table the instant **one** matching row is found (often much faster than `JOIN` when you only test existence and don't need columns from the inner table; writing `SELECT 1` is standard convention because only row existence matters).
+- **The `NOT IN` NULL Trap:** If a subquery inside `NOT IN (...)` returns **even a single `NULL`**, `x NOT IN (1, 2, NULL)` evaluates to `UNKNOWN` for every row and returns **0 rows**! Always prefer **`NOT EXISTS`** (or add `WHERE col IS NOT NULL` inside the subquery).
+
+---
+
+## 3. Quantified Operators: `ANY`, `SOME`, and `ALL` (Ch 1 Slides 40–41)
+
+Multi-row subqueries cannot be compared with plain `>` or `=`. SQL provides `ANY`, `SOME` (exact synonym of `ANY`), and `ALL`:
+
+| Operator                       | Meaning                                                   | Mathematical Equivalent (No `NULL`s) |
+| :----------------------------- | :-------------------------------------------------------- | :----------------------------------- |
+| `x > ANY (S)` / `x > SOME (S)` | True if $x$ is greater than **at least one** value in $S$ | `x > MIN(S)`                         |
+| `x < ANY (S)`                  | True if $x$ is less than **at least one** value in $S$    | `x < MAX(S)`                         |
+| `x = ANY (S)`                  | Equal to at least one value in $S$                        | `x IN (S)`                           |
+| `x > ALL (S)`                  | True if $x$ is greater than **every** value in $S$        | `x > MAX(S)`                         |
+| `x < ALL (S)`                  | True if $x$ is less than **every** value in $S$           | `x < MIN(S)`                         |
+| `x <> ALL (S)`                 | Not equal to any value in $S$                             | `x NOT IN (S)`                       |
+
+> [!WARNING] Two `ALL` Traps on Exams!
+>
+> 1. **The `NULL` Trap:** If the subquery returns `[100, 200, NULL]`, `x > ALL (...)` expands to `x > 100 AND x > 200 AND x > NULL`, yielding **`UNKNOWN`** and returning **0 rows**! Always filter `AND salary IS NOT NULL` inside `ALL` subqueries when `NULL` is possible.
+> 2. **Ch 1 Slide 41 (`> ALL` on Department 2):** `SELECT last_name, salary FROM teacher WHERE salary > ALL (SELECT salary FROM teacher WHERE department_id = 2);` returns **0 rows**! Why? Department 2 (`Mathématiques`) contains `Karim` (`48000`) and `Haddad` (`85000`), and `85000` is already the maximum salary across the entire university—no teacher earns strictly more than `85000`.
+>    _(Meanwhile, Slide 40 `> ANY` on Department 2 returns the 6 teachers earning $> 48000$: Benali `75000`, Saidi `62000`, Haddad `85000`, Mansouri `55000`, Rahmani `72000`, Ahmed `68000`.)_
+
+---
+
+## 4. Common Table Expressions (`WITH`) & Conditional `CASE`
+
+### Common Table Expressions (`WITH`) — Ch 1 Slides 42–43
+
+A **CTE** defines a named temporary virtual table scoped strictly to a single query, replacing unreadable nested subqueries:
+
+```sql
+-- Ch 1 Slide 43: Teachers earning more than the overall average salary
+WITH average_salary AS (
+    SELECT AVG(salary) AS avg_salary
+    FROM teacher
+)
+SELECT t.last_name, t.salary
+FROM teacher t, average_salary a
+WHERE t.salary > a.avg_salary;
+-- Result: Benali (75000), Haddad (85000), Rahmani (72000), Ahmed (68000)
+```
+
+### `CASE` Conditional Expression — Ch 1 Slide 49
+
+Evaluates `WHEN` conditions top-to-bottom and returns the first match:
+
+```sql
+SELECT last_name, salary,
+       CASE
+           WHEN salary >= 70000 THEN 'High'
+           WHEN salary >= 50000 THEN 'Medium'
+           WHEN salary IS NOT NULL THEN 'Low'
+           ELSE 'Not reported'
+       END AS category
+FROM teacher;
+```
+
+_(Notice why `WHEN salary IS NOT NULL THEN 'Low'` works safely after `>= 70000` and `>= 50000`: any `NULL` salary fails all three comparisons and falls cleanly into `ELSE 'Not reported'` for Khelifi Nora.)_
+
+---
+
+## 5. Worked Solutions: TD 1 (Questions 20\*–29, 31) & TP 2 Ex 12 Task 9
+
+```sql
+-- 20*. Teachers earning > overall average (using subquery)
+SELECT * FROM teacher
+WHERE salary > (SELECT AVG(salary) FROM teacher);
+
+-- 21*. Teachers in departments with at least one teacher earning > 70000
+SELECT * FROM teacher
+WHERE department_id IN (SELECT department_id FROM teacher WHERE salary > 70000);
+
+-- 22*. Students whose class_id belongs to department 1
+SELECT * FROM student
+WHERE class_id IN (SELECT class_id FROM class WHERE department_id = 1);
+
+-- 23*. Departments for which at least one teacher exists (EXISTS)
+SELECT * FROM department d
+WHERE EXISTS (SELECT 1 FROM teacher t WHERE t.department_id = d.department_id);
+
+-- 24*. Departments with no teachers (NOT EXISTS)
+SELECT * FROM department d
+WHERE NOT EXISTS (SELECT 1 FROM teacher t WHERE t.department_id = d.department_id);
+
+-- 25*. Salary > at least one teacher in department 2 (ANY)
+SELECT * FROM teacher
+WHERE salary > ANY (SELECT salary FROM teacher WHERE department_id = 2);
+
+-- 26*. Rewrite 25 using SOME (ANY and SOME are identical ISO SQL aliases for existential comparison)
+SELECT * FROM teacher
+WHERE salary > SOME (SELECT salary FROM teacher WHERE department_id = 2);
+
+-- 27*. Salary > EVERY teacher in department 3 (ALL; include IS NOT NULL defensively)
+SELECT * FROM teacher
+WHERE salary > ALL (
+    SELECT salary FROM teacher WHERE department_id = 3 AND salary IS NOT NULL
+);
+
+-- 28. Teachers who: (1) > overall avg, (2) belong to dept with >= 2 teachers, (3) > own dept avg
+SELECT t.last_name, t.first_name, t.salary, d.department_name
+FROM teacher t
+JOIN department d ON t.department_id = d.department_id
+WHERE t.salary > (SELECT AVG(salary) FROM teacher)
+  AND t.department_id IN (
+      SELECT department_id FROM teacher GROUP BY department_id HAVING COUNT(*) >= 2
+  )
+  AND t.salary > (
+      SELECT AVG(t2.salary) FROM teacher t2 WHERE t2.department_id = t.department_id
+  );
+
+-- 29. Per department stats keeping depts with >= 2 teachers AND avg > overall university avg
+SELECT d.department_name,
+       COUNT(t.teacher_id) AS number_of_teachers,
+       AVG(t.salary) AS average_salary,
+       MAX(t.salary) AS maximum_salary
+FROM department d
+JOIN teacher t ON d.department_id = t.department_id
+GROUP BY d.department_id, d.department_name
+HAVING COUNT(t.teacher_id) >= 2
+   AND AVG(t.salary) > (SELECT AVG(salary) FROM teacher);
+```
+
+### TD 1 Q31 & TP 2 Ex 12 Task 9
+
+```sql
+-- TP 2 Ex 12 (Task 9): Teachers whose non-NULL salary > average salary of their own department
+-- Note: In SQL, t.salary > (...) naturally skips NULL salaries because NULL > x is UNKNOWN
+SELECT t.teacher_id, t.last_name, t.first_name, t.salary, d.department_name
+FROM teacher t
+JOIN department d ON d.department_id = t.department_id
+WHERE t.salary > (
+    SELECT AVG(t2.salary)
+    FROM teacher t2
+    WHERE t2.department_id = t.department_id
+)
+ORDER BY d.department_name, t.salary DESC;
+
+-- TD 1 Q31: Full Teacher Classification & Department Average Comparison Report
+WITH dept_avg AS (
+    SELECT department_id, AVG(salary) AS dept_avg_salary
+    FROM teacher
+    GROUP BY department_id
+)
+SELECT t.teacher_id,
+       t.last_name,
+       t.first_name,
+       d.department_name,
+       t.salary,
+       ROUND(da.dept_avg_salary, 2) AS department_average_salary,
+       CASE
+           WHEN t.salary IS NULL THEN 'Not specified'
+           WHEN t.salary >= 70000 THEN 'High'
+           WHEN t.salary >= 50000 THEN 'Medium'
+           ELSE 'Low'
+       END AS salary_category,
+       CASE
+           WHEN t.salary IS NULL OR da.dept_avg_salary IS NULL THEN 'Not specified'
+           WHEN t.salary > da.dept_avg_salary THEN 'Above Department Average'
+           WHEN t.salary = da.dept_avg_salary THEN 'At Department Average'
+           ELSE 'Below Department Average'
+       END AS comparison_status
+FROM teacher t
+LEFT JOIN department d ON t.department_id = d.department_id
+LEFT JOIN dept_avg da ON t.department_id = da.department_id
+ORDER BY d.department_name, t.salary DESC NULLS LAST;
+```
+
+_(Note: For SQL optimization best practices—avoiding `SELECT _`, `EXISTS`/`LIMIT 1`, indexable date ranges instead of `YEAR(col)`, and `UNION ALL`—plus 30 additional Join & Division practice drills, see [[01 - Worked SQL & Relational Algebra Drills (Practice Bank)]].)\*
+
+
+========================================================================
+ FILE: 02 - Querying, Filtering, Aggregation & Joins.md
+   Language: markdown
+========================================================================
+# Querying, Filtering, Aggregation & Joins
+
+This note integrates **Chapter 1 (Slides 12–29)**, **TP 1 (Parts L & N)**, **TD 1 (Questions 1*–19*, 30)**, and the complete join mechanics from the vault (`INNER`, `LEFT`, `RIGHT`, `FULL OUTER`, `CROSS`, `SELF JOIN`, `NATURAL JOIN`, 3-table chains, and `NOT NULL` foreign key interactions).
+
+---
+
+## 1. `SELECT` Syntax, Logical Execution Order & Quoting Rules
+
+### Standard `SELECT` Syntax (Ch 1 Slides 12–13)
+
+```sql
+SELECT [ DISTINCT | ALL ] select_list
+FROM table1 [, table2 ...]
+[ WHERE condition ]
+[ GROUP BY grouping_columns ]
+[ HAVING group_condition ]
+[ ORDER BY sort_expressions ]
+[ OFFSET n ROWS ]
+[ FETCH FIRST m ROWS ONLY ];
+```
+
+- **Logical Processing Order (Critical for Avoiding Errors!):**
+  1. `FROM` / `JOIN` (build working table)
+  2. `WHERE` (filter raw rows)
+  3. `GROUP BY` (form groups)
+  4. `HAVING` (filter groups)
+  5. `SELECT` (evaluate expressions & create column aliases)
+  6. `DISTINCT` (remove duplicate output rows; `ALL` is the default)
+  7. `ORDER BY` (sort by expression, alias, or 1-based column position; `ASC` default, `DESC` descending)
+  8. `OFFSET ... ROWS` / `FETCH FIRST ... ROWS ONLY` (skip first $n$ rows, return at most $m$ rows; PostgreSQL/MySQL also support `LIMIT m OFFSET n`).
+- Because `SELECT` runs _after_ `WHERE`, **column aliases cannot be used in `WHERE`** (they _can_ be used in `ORDER BY`).
+
+### Quoting Rules (Common Exam Pitfall!)
+
+- **Single quotes (`'...'`):** **String literals** (`WHERE first_name LIKE '%am%'`, `WHERE last_name = 'Ahmed'`). _Never use double quotes for strings in PostgreSQL—PostgreSQL treats `"..."` as a column/table identifier!_
+- **Double quotes (`"..."`):** **Identifiers** containing spaces or case sensitivity (`SELECT salary AS "Monthly Salary"`). Simple lowercase aliases (`AS monthly_salary`) need no quotes. _(MySQL uses backticks `` `...` `` for identifiers and permissively accepts `"..."` for strings, which violates ANSI SQL.)_
+
+---
+
+## 2. Filtering (`WHERE`), Pattern Matching & `NULL`
+
+- **Logical Operator Precedence:** `NOT` binds tightest, then `AND`, then `OR`. Always parenthesize `OR` conditions combined with `AND` (`WHERE age BETWEEN 21 AND 23 AND (class_id = 10 OR class_id = 20)`).
+- **`BETWEEN a AND b`:** Inclusive interval ($a \le x \le b$).
+- **`IN (v1, v2, ...)`:** Membership in an explicit list.
+- **`LIKE` vs. PostgreSQL `ILIKE` (TP 1 Part N.7–N.8):**
+  - `%` matches **0 or more** characters; `_` matches **exactly 1** character.
+  - `LIKE 'A%'` is **case-sensitive** in PostgreSQL (matches `'Ahmed'`, skips `'ahmed'`).
+  - `ILIKE 'a%'` is a **PostgreSQL extension** for case-insensitive pattern matching.
+- **`NULL` Testing:** `salary = NULL` or `salary <> NULL` evaluates to `UNKNOWN` (excluded by `WHERE`). Always test **`IS NULL`** and **`IS NOT NULL`**.
+- **Sorting with `NULL`:** In PostgreSQL, `ORDER BY salary DESC` places `NULL`s **first** by default (`NULLS FIRST` for `DESC`, `NULLS LAST` for `ASC`). Add `NULLS LAST` when sorting top salaries (`ORDER BY salary DESC NULLS LAST`).
+
+---
+
+## 3. Built-in Functions, Aggregations & Grouping Nuances
+
+### Scalar & Aggregate Functions (Ch 1 Slide 15)
+
+| Category        | Functions                                                    | Example             |
+| :-------------- | :----------------------------------------------------------- | :------------------ |
+| **Aggregation** | `COUNT(*)`, `COUNT(col)`, `SUM()`, `AVG()`, `MIN()`, `MAX()` | `AVG(salary)`       |
+| **Character**   | `UPPER()`, `LOWER()`, `LENGTH()`                             | `UPPER(last_name)`  |
+| **Numeric**     | `ROUND(val, n)`, `ABS(val)`                                  | `ROUND(average, 2)` |
+| **Dates**       | `CURRENT_DATE`, `CURRENT_TIMESTAMP`                          | `CURRENT_TIMESTAMP` |
+
+### `NULL` Semantics in Aggregations (Critical Nuance!)
+
+- **`COUNT(*)`** counts **every physical row** in the table/group (returns `9` on `teacher`).
+- **`COUNT(col)`, `SUM(col)`, `AVG(col)`, `MIN(col)`, `MAX(col)` ignore `NULL`s completely!**
+  - Teacher 109 (`Khelifi Nora`) has `salary = NULL`. Thus `COUNT(salary)` is `8` (not 9), and `AVG(salary)` in department 1 (`75000`, `62000`, `68000`, `NULL`) computes $(75000 + 62000 + 68000)/3 = \mathbf{68333.33}$ (Ch 1 Slide 20)!
+  - **Fixing `NULL` math when needed:** Use `COALESCE(salary, 0)` (ANSI SQL / PostgreSQL; `IFNULL(salary, 0)` in MySQL) inside `AVG(COALESCE(salary, 0))` if missing salaries should count as `0`.
+- **Empty set:** `COUNT(*)` returns **`0`**, whereas `AVG`, `SUM`, `MIN`, `MAX` return **`NULL`**.
+
+### `GROUP BY` and `HAVING` vs. `WHERE`
+
+- **`WHERE`** filters raw rows **before** grouping (cannot reference aggregate functions like `AVG(salary)`).
+- **`GROUP BY`** collapses rows sharing identical values in the grouping column(s). Every non-aggregated column in `SELECT` must appear in `GROUP BY`.
+- **`HAVING`** filters aggregated groups **after** `GROUP BY` (`HAVING AVG(salary) > 60000` returns only department `1` with `68333.33`, Ch 1 Slide 20).
+
+---
+
+## 4. Complete Guide to SQL Joins
+
+In a normalized database, joins belong to **DQL/DML** (`SELECT`)—they reassemble fragmented tables virtually without altering stored tables.
+
+```mermaid
+flowchart LR
+    T1["Left Table (A)"] --> J{"Join Strategy"}
+    T2["Right Table (B)"] --> J
+    J -->|"CROSS JOIN"| C["All A x B combinations"]
+    J -->|"INNER JOIN"| I["Matched pairs only"]
+    J -->|"LEFT OUTER JOIN"| L["All A + matched B (NULL gaps)"]
+    J -->|"RIGHT OUTER JOIN"| R["All B + matched A (NULL gaps)"]
+    J -->|"FULL OUTER JOIN"| F["All A + All B (NULL gaps)"]
+```
+
+### A. `CROSS JOIN` (Cartesian Product)
+
+Pairs every row of Table A with every row of Table B (Ch 1 Slide 21: `9 teachers × 5 departments = 45 rows`):
+
+```sql
+SELECT t.last_name, t.first_name, d.department_name
+FROM teacher AS t CROSS JOIN department AS d;
+```
+
+_(Old SQL-89 comma syntax `FROM teacher t, department d` without `WHERE` produces a `CROSS JOIN`; in ANSI-92, `JOIN` without `ON` is a syntax error unless `CROSS JOIN` or `NATURAL JOIN` is used.)_
+
+### B. `INNER JOIN` (Match or Die)
+
+Returns **only rows matching the `ON` condition** in both tables. The `INNER` keyword is optional (`JOIN` = `INNER JOIN`), and logical table order (`A JOIN B` vs. `B JOIN A`) does not change the result set.
+
+- **Filtering effect:** On `student s INNER JOIN class c ON s.class_id = c.class_id` (Ch 1 Slide 22), **9 students appear** and **Farah Ines** (`class_id = NULL`) disappears! Similarly, in a `Customer` / `Card` schema, customers with no card (`Sarah`) vanish; in `Student(SID, Name, DeptID)` / `Department`, a student with an unmatched `DeptID = 99` (`Leila`) disappears.
+
+#### Multi-Table `INNER JOIN` Chains & Cumulative Filtering
+
+Chaining `INNER JOIN`s evaluates matches pairwise—every additional join acts as an extra filter, shrinking unmatched orphans out of the result:
+
+1. **Course `university` 3-Table Chain (Ch 1 Slide 27):** `student s JOIN class c ON s.class_id = c.class_id JOIN department d ON c.department_id = d.department_id` $\to$ displays each enrolled student, class, and department (drops Farah).
+2. **Banking Lookup Pattern (`customer` $\to$ `card` $\to$ `card_type`):** Connects `customer` to `card` on `customer_id`, then `card` to lookup table `card_type` (`Visa`, `Mastercard`, `rate`) on `card_type_id`. Any customer with no card or unissued `card_type` (`Amex`) disappears.
+3. **Video-Sharing Walkthrough (`user` $\to$ `comment` $\to$ `video`):**
+   - Suppose 6 users (`1..6`, where `6: BestSpeller` has no comments), 8 videos (`1..8`, where `8: Database Design 8` has no comments), and 6 comments (`comment.user_id` and `comment.video_id` both `NOT NULL`).
+   - Step 1 (`user INNER JOIN comment`): keeps all 6 comments, drops `BestSpeller`.
+   - Step 2 (`... INNER JOIN video`): keeps all 6 comments, drops `Database Design 8`.
+
+### C. Outer Joins (`LEFT`, `RIGHT`, `FULL OUTER`)
+
+Preserve unmatched rows from one or both sides, filling missing columns with `NULL` (keyword `OUTER` is optional):
+
+- **`LEFT OUTER JOIN`:** Keeps **all rows from the left table** (`student s LEFT JOIN class c` keeps **Farah** with `class_name = NULL`, Ch 1 Slide 23; `Customers LEFT JOIN Orders` keeps **Charlie** with `OrderID = NULL`).
+- **`RIGHT OUTER JOIN`:** Keeps **all rows from the right table** (`student s RIGHT JOIN class c` keeps **M1-Physique** with `last_name = NULL`, Ch 1 Slide 24; `customer RIGHT JOIN card` keeps unassigned card `104` with `name = NULL`). Every `A RIGHT JOIN B` can be rewritten equivalently as `B LEFT JOIN A`; preferring `LEFT JOIN` consistently makes multi-table queries easier to read.
+- **Finding Orphans Pattern:** `LEFT JOIN ... WHERE right_table.pk IS NULL` returns only unmatched left rows (e.g., customers with no card, teachers with no class).
+- **`FULL OUTER JOIN`:** Keeps **all rows from both tables** (`student s FULL OUTER JOIN class c` keeps **both Farah and M1-Physique**, Ch 1 Slide 25).
+  - _DBMS Note:_ **PostgreSQL supports `FULL OUTER JOIN` natively.** **MySQL does not**; simulate it in MySQL via `(SELECT ... LEFT JOIN ...) UNION (SELECT ... RIGHT JOIN ...)` (using `UNION` to deduplicate matched rows).
+
+#### Chaining Outer Joins Across 3 Tables (`user` $\to$ `comment` $\to$ `video`)
+
+- **Sequential Trap:** `FROM user LEFT JOIN comment ... RIGHT JOIN video ...` first preserves all users (`Carol`, `Dave` with `NULL` comments), then Step 2 (`RIGHT JOIN video`) **eliminates `Carol` and `Dave`** because their `NULL` `video_id` fails to match any video, while keeping Video 3 (`Joins`) with `NULL` user/comment!
+- **Clean Strategy:** Always place the primary table whose rows must ALL survive first in `FROM`, and chain `LEFT OUTER JOIN`s consistently (`FROM video LEFT JOIN comment ... LEFT JOIN user ...`).
+
+### D. How `NOT NULL` Foreign Keys Affect Joins
+
+When a child FK like `comment.user_id` is declared **`NOT NULL`**, every comment is guaranteed to match a user:
+
+| Join Query                | Users Included           | Comments Included | `NULL`s Produced                       |
+| :------------------------ | :----------------------- | :---------------- | :------------------------------------- |
+| `user INNER JOIN comment` | Only users with comments | All               | None                                   |
+| `comment LEFT JOIN user`  | Only users with comments | All               | None (**identical to `INNER JOIN`**!)  |
+| `user LEFT JOIN comment`  | **All users**            | All               | `NULL` comment fields for silent users |
+
+_(By contrast, when `card.customer_id` is nullable, `card LEFT JOIN customer` differs from `INNER JOIN` by preserving unassigned cards.)_
+
+### E. `SELF JOIN` & Table Aliases
+
+There is no `SELF JOIN` keyword—you join a table to itself using **mandatory distinct table aliases** (`t1` and `t2`, `e` and `m`):
+
+1. **Same-Group Pairs without Duplicates (Ch 1 Slide 26 — `university`):**
+   Find pairs of teachers in the same department:
+   ```sql
+   SELECT t1.last_name AS teacher1, t2.last_name AS teacher2, t1.department_id
+   FROM teacher t1
+   JOIN teacher t2
+     ON t1.department_id = t2.department_id
+    AND t1.teacher_id < t2.teacher_id;
+   ```
+
+   - **Why `t1.teacher_id < t2.teacher_id`?** (1) Prevents pairing a teacher with themselves (`Benali, Benali`); (2) keeps each unordered pair **once** (`Benali, Saidi` without `Saidi, Benali`). Produces 8 pairs: 6 in dept 1, 1 in dept 2 (`Karim, Haddad`), 1 in dept 3 (`Mansouri, Rahmani`). _(Using `E1.ID <> E2.ID` prevents self-matches but emits both `(A,B)` and `(B,A)`.)_
+2. **Hierarchical Employee-Manager (`Diana Prince`, `Bruce Wayne`, `Clark Kent`):**
+   ```sql
+   SELECT e.first_name AS employee, m.first_name AS manager
+   FROM employee AS e
+   LEFT OUTER JOIN employee AS m ON e.manager_id = m.employee_id;
+   ```
+   Using `LEFT OUTER JOIN` ensures the CEO (`Diana`, `manager_id = NULL`) stays in the output with `NULL` manager rather than vanishing under `INNER JOIN`. Same pattern applies to referral chains (`u1.referred_by = u2.user_id`).
+3. **Sequential Lookup:** Find flights departing from the same city as `'F09'`:
+   ```sql
+   SELECT F2.code FROM Flight F1 JOIN Flight F2 ON F1.departure = F2.departure WHERE F1.code = 'F09';
+   ```
+
+### F. `NATURAL JOIN`
+
+`SELECT * FROM student NATURAL JOIN class;` (Ch 1 Slides 28–29) auto-joins on the shared column `class_id`, eliminates the duplicate column (`7` columns total instead of `8`), and returns the 9 enrolled students (dropping Farah Ines). **Avoid in production** because adding an unrelated same-named column later breaks the join silently.
+
+---
+
+## 5. Worked Course Queries: TP 1 (Parts L & N) and TD 1 (Q1*–19*, Q30)
+
+### TP 1 Part L (`L.1`–`L.8`) & Part N (`N.1`–`N.11`)
+
+```sql
+-- L.1 / L.2: Teachers with classes / Classes with teachers
+SELECT t.teacher_id, t.last_name, t.first_name, c.class_id, c.class_name
+FROM teacher t
+JOIN teacher_class tc ON t.teacher_id = tc.teacher_id
+JOIN class c ON tc.class_id = c.class_id
+ORDER BY t.teacher_id, c.class_id;
+
+-- L.3 / L.5: Classes taught per teacher (LEFT JOIN keeps 0; add HAVING COUNT(tc.class_id) > 1 for >1)
+SELECT t.teacher_id, t.last_name, t.first_name, COUNT(tc.class_id) AS number_of_classes
+FROM teacher t LEFT JOIN teacher_class tc ON t.teacher_id = tc.teacher_id
+GROUP BY t.teacher_id, t.last_name, t.first_name
+ORDER BY number_of_classes DESC;
+
+-- L.4 / L.6: Teachers per class (LEFT JOIN keeps 0; add HAVING COUNT(tc.teacher_id) > 1 for >1)
+SELECT c.class_id, c.class_name, COUNT(tc.teacher_id) AS number_of_teachers
+FROM class c LEFT JOIN teacher_class tc ON c.class_id = tc.class_id
+GROUP BY c.class_id, c.class_name
+ORDER BY number_of_teachers DESC;
+
+-- L.7 / L.8: Teachers with no class / Classes with no teacher
+SELECT t.teacher_id, t.last_name, t.first_name
+FROM teacher t LEFT JOIN teacher_class tc ON t.teacher_id = tc.teacher_id
+WHERE tc.class_id IS NULL;
+
+SELECT c.class_id, c.class_name
+FROM class c LEFT JOIN teacher_class tc ON c.class_id = tc.class_id
+WHERE tc.teacher_id IS NULL;
+
+-- N.1–N.11 highlights:
+SELECT last_name, first_name, salary AS monthly_salary FROM teacher;
+SELECT last_name, first_name FROM teacher WHERE last_name LIKE 'A%';   -- case-sensitive
+SELECT last_name, first_name FROM teacher WHERE last_name ILIKE 'a%';  -- PostgreSQL case-insensitive
+```
+
+### TD 1 Questions `1*`–`19*` and `30` (Full Solutions & Pitfall Alerts)
+
+```sql
+-- 1*. Display last_name, first_name, salary
+SELECT last_name, first_name, salary FROM teacher;
+
+-- 2*. Rename salary as Monthly Salary
+SELECT last_name, first_name, salary AS "Monthly Salary" FROM teacher;
+
+-- 3*. Salary >= 70000
+SELECT * FROM teacher WHERE salary >= 70000;
+
+-- 4*. Department 1 AND salary > 65000
+SELECT * FROM teacher WHERE department_id = 1 AND salary > 65000;
+
+-- 5*. Students aged 21..23 and class_id is 10 or 20
+SELECT * FROM student WHERE (age BETWEEN 21 AND 23) AND (class_id = 10 OR class_id = 20);
+
+-- 6*. Teachers with salary between 50000 and 75000
+SELECT * FROM teacher WHERE salary BETWEEN 50000 AND 75000;
+
+-- 7*. Students whose first_name contains 'am' (use single quotes '%am%', NOT double quotes!)
+SELECT * FROM student WHERE first_name LIKE '%am%';
+
+-- 8*. Salary unavailable / 9*. Salary available
+SELECT * FROM teacher WHERE salary IS NULL;
+SELECT * FROM teacher WHERE salary IS NOT NULL;
+
+-- 10*. Different student ages
+SELECT DISTINCT age FROM student;
+
+-- 11*. All teachers ordered by salary highest to lowest
+SELECT * FROM teacher ORDER BY salary DESC;
+
+-- 12*. Ordered by department_id ASC, then salary DESC
+SELECT * FROM teacher ORDER BY department_id ASC, salary DESC;
+
+-- 13*. Student age and age after 5 years
+SELECT student_id, last_name, first_name, age, age + 5 AS age_after_5_years FROM student;
+
+-- 14*. Total teachers, avg salary, min salary
+SELECT COUNT(*) AS total_teachers, AVG(salary) AS average_salary, MIN(salary) AS minimum_salary FROM teacher;
+
+-- 15*. Number of teachers in each department (teacher table only)
+SELECT department_id, COUNT(*) AS number_of_teachers FROM teacher GROUP BY department_id;
+
+-- 16*. Per department: count, avg, min, max
+SELECT department_id, COUNT(*) AS number_of_teachers,
+       AVG(salary) AS average_salary, MIN(salary) AS minimum_salary, MAX(salary) AS maximum_salary
+FROM teacher GROUP BY department_id;
+
+-- 17*. Departments having at least two teachers
+SELECT department_id, COUNT(*) AS number_of_teachers
+FROM teacher GROUP BY department_id HAVING COUNT(*) >= 2;
+
+-- 18*. Each teacher with department name (INNER JOIN)
+SELECT t.last_name, t.first_name, d.department_name, t.salary
+FROM teacher t INNER JOIN department d ON t.department_id = d.department_id;
+
+-- 19*. All departments, including departments with no teachers (LEFT JOIN)
+-- Critical: COUNT(t.teacher_id) returns 0 for Chimie; COUNT(*) would wrongly return 1!
+SELECT d.department_id, d.department_name, COUNT(t.teacher_id) AS number_of_teachers
+FROM department d LEFT JOIN teacher t ON d.department_id = t.department_id
+GROUP BY d.department_id, d.department_name
+ORDER BY d.department_id;
+
+-- 30.1 Departments without teachers (Chimie) -> NOT EXISTS avoids duplicate rows & short-circuits
+SELECT d.* FROM department d
+WHERE NOT EXISTS (SELECT 1 FROM teacher t WHERE t.department_id = d.department_id);
+
+-- 30.2 Classes without students (M1-Physique) -> NOT EXISTS short-circuits on first student
+SELECT c.* FROM class c
+WHERE NOT EXISTS (SELECT 1 FROM student s WHERE s.class_id = c.class_id);
+
+-- 30.3 Students without classes (Farah Ines) -> LEFT JOIN + IS NULL (or directly WHERE s.class_id IS NULL)
+SELECT s.* FROM student s
+LEFT JOIN class c ON s.class_id = c.class_id
+WHERE c.class_id IS NULL;
+```
+
+
+========================================================================
+End of merged export - (entire project)
+========================================================================
