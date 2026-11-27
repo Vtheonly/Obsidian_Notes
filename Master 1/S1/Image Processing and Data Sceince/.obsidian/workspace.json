@@ -217,6 +217,10 @@
   },
   "active": "04a753fafa136095",
   "lastOpenFiles": [
+    "Data Science/01. Introduction to Data Science/01.3. Practical Tutorials/01.4. Tutorial 02 - Hospital Patient Cohort Initialization and Environment Audit.md",
+    "Data Science/01. Introduction to Data Science/01.3. Practical Tutorials",
+    "Data Science/01. Introduction to Data Science/01.2. Computational Environment/01.3. Setting Up the Professional Python and Data Science Environment.md",
+    "Data Science/01. Introduction to Data Science/01.2. Computational Environment",
     "PDF LAB TD TP/TAI/PW2_TAI_For students_full version_c.pdf",
     "PDF LAB TD TP/TAI/TP1_TAI version pour étudiants_ex.pdf",
     "PDF LAB TD TP/TAI/TP1_TAI version pour étudiants_eng_ex.pdf",
@@ -225,9 +229,6 @@
     "PDF LAB TD TP/TAI/Cous_TAI_Chap1_Partie1.pdf",
     "PDF LAB TD TP/TAI/Cous_TAI_Chapitre 2.pdf",
     "PDF LAB TD TP/TAI",
-    "PDF LAB TD TP/Python Data Science/Cours/Chapter_5.pdf",
-    "PDF LAB TD TP/Python Data Science/Cours/Chapter_4_part_1.pdf",
-    "PDF LAB TD TP/Python Data Science/Cours/Chapter_1.pdf",
     "00. Master Curriculum Roadmap.md",
     "Quiz/TAI/10. Worked Analytical Exercises and Projects/Quiz 10 - Worked Analytical Exercises and Projects.md",
     "Quiz/TAI/09. Practical Laboratories (TPs)/Quiz 09 - Practical Laboratories TPs.md",
@@ -251,7 +252,6 @@
     "Quiz/01. Introduction to Data Science/Quiz 01 - Introduction to Data Science.md",
     "Quiz/00. Quiz Master Index.md",
     "Libraries/60-Second Recovery Sheet & 15-Minute Motor Recall Protocol.md",
-    "Libraries/26.5. Nagao Filtering - 9-Sector Geometry, Kernels & Variance Clamping.md",
-    "Libraries/26. Nagao Filtering - Multi-Implementation Reference with Hardcoded Kernels, Vectorized, and Convolution Approaches.md"
+    "Libraries/26.5. Nagao Filtering - 9-Sector Geometry, Kernels & Variance Clamping.md"
   ]
 }
