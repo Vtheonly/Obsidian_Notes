@@ -34,12 +34,57 @@ DELIMITER ;  -- Change back to ;
 
 **Source 20 (Section 3)** defines two distinct types of variables. Confusing them is a common exam mistake.
 
-| Feature | **Local Variables** (`DECLARE`) | **Session Variables** (`@var`) |
-| :--- | :--- | :--- |
-| **Scope** | Exist **only** inside the `BEGIN...END` block. | Exist for the entire connection session (globally). |
-| **Declaration** | `DECLARE v_nom VARCHAR(20);` | No declaration needed. Just assignment. |
-| **Syntax** | `v_nom` (No @ sign) | `@v_nom` (Must have @) |
-| **Usage** | Used for internal calculations. | Used to pass values between procedures or from the shell. |
+The big picture — a session variable lives at the connection level and persists across calls, while local variables are born and die inside each stored-procedure execution context:
+
+```mermaid
+graph TD
+    subgraph Client Session [Database Connection Session]
+        SV[Session Variable: @v_session_var]
+        SV -->|Persists across multiple calls| SP1
+        SV -->|Persists across multiple calls| SP2
+        
+        subgraph SP1 [Stored Procedure Execution Context]
+            LV1[Local Variable: v_local_var]
+            LV1 -->|Scope restricted to BEGIN...END| LV1
+        end
+        subgraph SP2 [Another Call or Query Context]
+            LV2[Local Variable]
+        end
+    end
+```
+
+| Property | **Local Variables** (`DECLARE`) | **Session Variables** (`@var`) | **System Variables** (`@@var`) |
+| :--- | :--- | :--- | :--- |
+| **Scope** | Exist **only** inside the `BEGIN...END` block. | Exist for the entire connection session (globally); invisible to other concurrent sessions. | Global or Session system-wide. |
+| **Syntax** | `v_nom` (No @ sign) | `@v_nom` (Must have @) | Must start with `@@` (or use `SET SESSION` / `SET GLOBAL` syntax). |
+| **Declaration** | `DECLARE v_nom VARCHAR(20);` — explicit `DECLARE` required. | No declaration needed. Dynamically initialized on first assignment; `NULL` if referenced before that. | Modified via `SET GLOBAL` or `SET SESSION`. |
+| **Lifespan** | Duration of the enclosing block. | Duration of the database connection. | Until the instance restarts (unless persisted). |
+| **Type Checking** | Strongly and statically typed. | Weakly and dynamically typed — can hold an integer, then be reassigned to a string or date. | Strongly typed. |
+| **Default Value** | `NULL` (unless `DEFAULT` is declared). | `NULL`. | Pre-configured by engine defaults. |
+| **Usage** | Used for internal calculations. | Used to pass values between procedures or from the shell. | Used to configure engine behavior. |
+
+Local variables are allocated on the thread's execution stack when their block is entered, and automatically reclaimed from memory when execution leaves the block's `END` boundary — they are isolated from concurrent database sessions and from nested outer contexts.
+
+**Nested Scope:** local variables declared inside an inner `BEGIN...END` block vanish at that block's `END` boundary — while the inner block can still read the outer block's variables:
+
+```sql
+BEGIN
+    DECLARE v_limit INT DEFAULT 100;
+    DECLARE v_name VARCHAR(50);
+    
+    -- Sub-block (nested scope)
+    BEGIN
+        DECLARE v_nested_score DECIMAL(5,2);
+        -- Inner block can access v_limit and v_name
+        SET v_nested_score = v_limit * 0.95;
+    END;
+    -- v_nested_score is no longer accessible here
+END;
+```
+
+**System Variables (`@@var`)** control the behavior of the database instance itself:
+*   **Session System Variables:** configure behaviors for the current connection (e.g., `SET SESSION sql_mode = 'STRICT_TRANS_TABLES';`).
+*   **Global System Variables:** configure global behaviors across all connections (e.g., `SET GLOBAL max_connections = 1000;`) — modifying these usually requires administrator privileges.
 
 **Assignment Syntax:**
 ```sql
@@ -47,6 +92,12 @@ SET v_count = 10;
 -- OR
 SELECT COUNT(*) INTO v_count FROM Pilote;
 ```
+
+> [!WARNING]
+> When using `SELECT ... INTO`, the query **must return exactly one row**. 
+> * If the query returns **zero rows**, the database engine raises a `NOT FOUND` exception (SQLSTATE `02000`), terminating execution unless a handler is registered.
+> * If the query returns **multiple rows**, the engine raises a `TOOMANYROWS` exception (SQLSTATE `21000`), causing a runtime crash.
+> Always use aggregate functions (like `COUNT`, `SUM`) or apply limiting conditions (such as `LIMIT 1` or filtering on primary keys) to guarantee a single-row result.
 
 ---
 
@@ -144,6 +195,41 @@ DELIMITER ;
 2.  **`SELECT ... INTO`**: We calculate the count and store it immediately in the local variable `resultat`.
 3.  **`IF/ELSE`**: Handles the requirement "If comp is NULL, count all".
 
+**Execution Walkthrough — Scenario 1: `SELECT EffectifsHeure('AF', 1500.00);`**
+
+```mermaid
+sequenceDiagram
+    participant Caller as SQL Query Engine
+    participant Func as Function EffectifsHeure('AF', 1500.00)
+    participant DB as Table Pilote
+    Caller->>Func: Call with pcomp='AF', pheuresVol=1500.00
+    Func->>Func: Check condition: Is pcomp IS NULL? (Result: FALSE)
+    Func->>DB: Execute query: SELECT COUNT(*) WHERE nbHVol > 1500.00 AND comp = 'AF'
+    DB-->>Func: Returns count (e.g., 12)
+    Func->>Func: Assign value 12 to resultat
+    Func-->>Caller: Return 12
+```
+
+**Execution Walkthrough — Scenario 2: `SELECT EffectifsHeure(NULL, 2000.00);`**
+
+```mermaid
+sequenceDiagram
+    participant Caller as SQL Query Engine
+    participant Func as Function EffectifsHeure(NULL, 2000.00)
+    participant DB as Table Pilote
+    Caller->>Func: Call with pcomp=NULL, pheuresVol=2000.00
+    Func->>Func: Check condition: Is pcomp IS NULL? (Result: TRUE)
+    Func->>DB: Execute query: SELECT COUNT(*) WHERE nbHVol > 2000.00
+    DB-->>Func: Returns count (e.g., 45)
+    Func->>Func: Assign value 45 to resultat
+    Func-->>Caller: Return 45
+```
+
+**Key Considerations:**
+*   **Handling NULL safely:** the explicit `IF pcomp IS NULL` check is mandatory. In SQL, comparing a value to `NULL` with an operator like `=` (e.g., `comp = NULL`) always evaluates to `UNKNOWN` — never `TRUE` or `FALSE` — so the filter would silently match nothing.
+*   **Database indexes:** to optimize this function, ensure a compound index on `Pilote(comp, nbHVol)` — the `COUNT(*)` queries then run as quick index-only scans, avoiding slow full table scans.
+*   **Function optimization:** the `DETERMINISTIC` + `READS SQL DATA` declarations tell the query optimizer the function is safe to call inline within wider queries and will not modify database state.
+
 ---
 
 ### Exercise 2: Procedure with INOUT (`PlusExperimente`)
@@ -181,12 +267,62 @@ DELIMITER ;
 ```
 **Explanation:**
 *   **`INOUT pcomp`**: This is crucial. It acts as a filter initially. If it's NULL, the procedure fills it with the company of the winner.
-*   **`ORDER BY ... DESC LIMIT 1`**: The standard SQL way to find "The most experienced" (Max) without using a complex subquery.
+*   **`ORDER BY ... DESC LIMIT 1`**: The standard SQL way to find "The most experienced" (Max) without using a complex subquery — it also lets the engine stop after the top row instead of scanning everything.
+*   **Index support:** to make the query run as fast as possible, ensure an index on the `nbHVol` column — the engine then finds the top pilot with a quick index order scan, avoiding a full table sort.
+*   **Handling empty tables:** if the table is empty, the `SELECT ... INTO` query returns zero rows and triggers a `NOT FOUND` exception. In production environments, add an exception handler or verify the table has data first to prevent the procedure from crashing.
+
+**Call Protocol 1 — asking for a specific company:**
+```sql
+-- 1. Initialize a session variable with the target company code
+SET @v_comp = 'AF';
+
+-- 2. Execute the procedure, passing the session variable to the INOUT parameter
+CALL PlusExperimente(@v_comp, @v_name, @v_hours);
+
+-- 3. Inspect the returned values
+SELECT @v_comp, @v_name, @v_hours;
+```
+
+```mermaid
+graph TD
+    subgraph Execution Steps
+        Step1[Set session variable @v_comp = 'AF'] --> Step2[Call procedure PlusExperimente]
+        Step2 --> Step3{Is pcomp NOT NULL?}
+        Step3 -->|TRUE: AF| Step4[Query: SELECT nom, nbHVol FROM Pilote WHERE comp = 'AF' ORDER BY nbHVol DESC LIMIT 1]
+        Step4 --> Step5[Assign query results to OUT variables pnom and pheuresVol]
+        Step5 --> Step6[Exit procedure. @v_comp remains 'AF'. @v_name and @v_hours are updated with the pilot's details.]
+    end
+```
+
+**Call Protocol 2 — searching globally (the INOUT variable gets rewritten):**
+```sql
+-- 1. Initialize the company variable to NULL to search globally
+SET @v_comp = NULL;
+
+-- 2. Execute the procedure
+CALL PlusExperimente(@v_comp, @v_name, @v_hours);
+
+-- 3. Inspect the results. @v_comp will be updated with the winner's company code.
+SELECT @v_comp, @v_name, @v_hours;
+```
+
+```mermaid
+graph TD
+    subgraph Execution Steps
+        Step1[Set session variable @v_comp = NULL] --> Step2[Call procedure PlusExperimente]
+        Step2 --> Step3{Is pcomp NOT NULL?}
+        Step3 -->|FALSE: NULL| Step4[Query: SELECT nom, nbHVol, comp FROM Pilote ORDER BY nbHVol DESC LIMIT 1]
+        Step4 --> Step5[Assign query results to OUT variables pnom, pheuresVol, and the INOUT variable pcomp]
+        Step5 --> Step6[Exit procedure. @v_comp is updated with the pilot's company code, e.g., 'SING'.]
+    end
+```
 
 ---
 
 ### Exercise 4: Recursion (Factorial)
-**Goal:** Write a recursive function for $n!$.
+**Goal:** Write a recursive function for $n!$ (factorial).
+
+$$\text{Factorial Definition: } n! = \begin{cases} 1 & \text{if } n \leq 1 \\ n \times (n-1)! & \text{if } n > 1 \end{cases}$$
 
 **Solution:**
 ```sql
@@ -202,8 +338,33 @@ BEGIN
 END $
 DELIMITER ;
 ```
-> [!WARNING] MySQL Limitation
-> As noted in **Source 15**, older MySQL versions (and default configs) disallow recursive functions (`Error 1424`). To make this work in a procedure, you must set `SET max_sp_recursion_depth = 255;`.
+**Call Stack Trace for $n = 4$** — step through the recursive execution of `factorielle(4)`:
+
+```mermaid
+graph TD
+    Level1[Call: factorielle(4)] --> Level2[Evaluate: 4 * factorielle(3)]
+    Level2 --> Level3[Evaluate: 3 * factorielle(2)]
+    Level3 --> Level4[Evaluate: 2 * factorielle(1)]
+    Level4 --> Level5[Base Case: factorielle(1) returns 1]
+    Level5 -->|Returns 1| Level4
+    Level4 -->|Returns 2 * 1 = 2| Level3
+    Level3 -->|Returns 3 * 2 = 6| Level2
+    Level2 -->|Returns 4 * 6 = 24| Level1
+```
+
+**Engine Limitations & Safety Safeguards**
+Recursive functions can consume significant resources — each nested call adds a new layer to the database execution stack, consuming thread memory. If left unchecked, deep recursion can lead to server crashes or stack overflow errors. To safeguard system resources, databases impose strict controls on recursive routines:
+
+*   **MySQL Limitations:** As noted in **Source 15**, older MySQL versions (and default configurations) restrict recursive functions to prevent system abuse. Attempting to execute recursive functions on older or default configurations may result in a compilation error:
+    ```
+    Error 1424: Recursive stored functions and triggers are not allowed.
+    ```
+*   **Stored Procedure Alternative:** While recursive *functions* are heavily restricted, you can implement recursive *stored procedures*. This recursion depth is governed by a system variable:
+    ```sql
+    -- Check or raise the allowed recursion depth before running recursive procedures
+    SET max_sp_recursion_depth = 255;
+    ```
+*   **Performance Best Practice:** For performance-critical calculations, iterative loops (`WHILE`, `LOOP`) are generally preferred over recursion — iterative solutions execute within a single memory frame, avoiding stack overhead and running much faster.
 
 ---
 
@@ -249,7 +410,53 @@ BEGIN
 END $
 DELIMITER ;
 ```
-**Key logic:** The `FETCH` moves the pointer. When it fails, `done` becomes TRUE. The `IF done` check prevents adding the last value twice or adding NULL.
+**Key logic:** The `FETCH` moves the pointer. When it fails, `done` becomes TRUE. The `IF done` check prevents adding the last value twice or adding NULL — which is exactly why the check must sit **immediately after** the `FETCH` (see the Loop Terminating Condition Pattern below).
+
+**Execution Walkthrough:** For this trace, assume the `Pilote` table contains the following records for company `'AF'`:
+
+| brevet | comp | nbHVol |
+| :--- | :--- | :--- |
+| `P01` | `AF` | `1200.00` |
+| `P02` | `AF` | `850.50` |
+
+```mermaid
+stateDiagram-v2
+    [*] --> Init: Step 1: Initialize Variables
+    note right of Init: v_tot = 0.00, done = FALSE
+    Init --> OpenCursor: Step 2: Open Cursor
+    note right of OpenCursor: Executes SELECT. Active set contains 2 rows.
+    
+    OpenCursor --> Fetch1: Step 3: Fetch Row 1
+    note right of Fetch1: FETCH -> v_nbHv = 1200.00
+    Fetch1 --> Check1: Step 4: Check done?
+    note right of Check1: done is FALSE. Continue.
+    Check1 --> Add1: Step 5: Accumulate Hours
+    note right of Add1: v_tot = 0.00 + 1200.00 = 1200.00
+    
+    Add1 --> Fetch2: Step 6: Fetch Row 2
+    note right of Fetch2: FETCH -> v_nbHv = 850.50
+    Fetch2 --> Check2: Step 7: Check done?
+    note right of Check2: done is FALSE. Continue.
+    Check2 --> Add2: Step 8: Accumulate Hours
+    note right of Add2: v_tot = 1200.00 + 850.50 = 2050.50
+    
+    Add2 --> Fetch3: Step 9: Fetch Row 3 (No more rows)
+    note right of Fetch3: FETCH fails. NOT FOUND handler triggers.<br/>done becomes TRUE.
+    Fetch3 --> Check3: Step 10: Check done?
+    note right of Check3: done is TRUE. LEAVE read_loop.
+    
+    Check3 --> CloseCursor: Step 11: Close Cursor & Output
+    note right of CloseCursor: Frees cursor memory. Returns v_tot (2050.50).
+    CloseCursor --> [*]
+```
+
+**Crucial Architectural Guidelines:**
+
+*   **Declaration Order Rule:** In procedural SQL, declarations must follow a strict order. Violating this sequence results in compilation errors:
+    1.  Local variables (`DECLARE var_name...`)
+    2.  Cursors (`DECLARE cursor_name CURSOR FOR...`)
+    3.  Condition handlers (`DECLARE CONTINUE HANDLER FOR...`)
+*   **Loop Terminating Condition Pattern:** Always place your termination check (`IF done THEN LEAVE...`) **immediately after** the `FETCH` statement. If you place the calculation step before checking `done`, the loop will execute one extra time using stale data from the previous fetch, resulting in incorrect calculations.
 
 ---
 
@@ -269,6 +476,7 @@ BEGIN
     DECLARE done INT DEFAULT 0;
     DECLARE v_brevet VARCHAR(6);
     DECLARE v_comp VARCHAR(4);
+    DECLARE v_error_flag INT DEFAULT FALSE;
     
     -- IMPORTANT: "FOR UPDATE" locks the selected rows
     DECLARE cur_pilote CURSOR FOR 
@@ -276,13 +484,17 @@ BEGIN
     
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
 
-    START TRANSACTION; -- Optional but good for wrapping the logic
+    -- Handler to detect database errors, marking a flag to trigger a rollback
+    DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET v_error_flag = TRUE;
+
+    START TRANSACTION; -- Wrap the whole run in an all-or-nothing unit
     
     OPEN cur_pilote;
 
     loop_pilote: LOOP
         FETCH cur_pilote INTO v_brevet, v_comp;
-        IF done = 1 THEN LEAVE loop_pilote; END IF;
+        -- Exit the loop if there are no more rows or if a database error occurred
+        IF done = 1 OR v_error_flag THEN LEAVE loop_pilote; END IF;
 
         -- Business Logic Branching
         IF v_comp = 'AF' THEN
@@ -296,13 +508,51 @@ BEGIN
     END LOOP;
 
     CLOSE cur_pilote;
-    COMMIT; -- Release locks
+
+    -- Complete the transaction: commit only if no error was flagged
+    IF v_error_flag THEN
+        -- If an error occurred, discard all changes to maintain consistency
+        ROLLBACK;
+        SELECT 'An error occurred. Execution aborted and all changes were rolled back.' AS Status;
+    ELSE
+        -- If all updates completed successfully, commit them to disk
+        COMMIT; -- Release locks
+        SELECT 'Updates completed successfully. Transaction committed.' AS Status;
+    END IF;
 END $
 DELIMITER ;
 ```
-**Explanation:**
-*   **`FOR UPDATE`**: In the cursor definition, this ensures that no other transaction can modify these pilots while this procedure is running. This prevents concurrency errors (Lost Updates).
-*   **Logic:** We read `comp` into a variable (`v_comp`) and decide the action based on that variable. We use the Primary Key (`v_brevet`) to target the `UPDATE`/`DELETE` precisely.
+**Detailed Architectural Walkthrough:** let's break down the technical patterns used in this procedure:
+
+```mermaid
+graph TD
+    subgraph Transaction Context
+        StartTx[START TRANSACTION] --> OpenCur[OPEN CURSOR FOR UPDATE]
+        OpenCur --> LockRows[Acquire Exclusive Locks on Matching Rows]
+        LockRows --> LoopStart[Loop: FETCH Row]
+        LoopStart --> CheckStatus{Status OK?}
+        
+        CheckStatus -->|Error Detected| SetErrFlag[Set v_error_flag = TRUE]
+        CheckStatus -->|End of Rows| CloseCur[CLOSE CURSOR]
+        
+        SetErrFlag --> CloseCur
+        CloseCur --> VerifyError{v_error_flag TRUE?}
+        
+        VerifyError -->|Yes| Rb[ROLLBACK: Discard all changes & Release Locks]
+        VerifyError -->|No| Cm[COMMIT: Save all changes & Release Locks]
+    end
+```
+
+**1. Concurrency Control (`FOR UPDATE`)**
+In the cursor definition, `FOR UPDATE` ensures that no other transaction can modify these pilots while the procedure is running — opening the cursor places an **Exclusive Lock (X-Lock)** on every row returned by the query.
+*   **Why this is important:** it prevents other connections from modifying these rows while the loop runs, protecting against **Lost Updates** and **Phantom Reads** (e.g., another process changing a pilot's company code while this procedure is executing would corrupt the branching logic).
+*   **Release timing:** these exclusive locks are held for the duration of the transaction and are released only when it is explicitly ended using `COMMIT` or `ROLLBACK`.
+
+**2. Transaction Safety (Atomicity)**
+The procedure uses an **All-or-Nothing** transaction pattern: by wrapping the logic within a `START TRANSACTION` boundary and monitoring execution using the `SQLEXCEPTION` handler, the database remains in a consistent state. If any single update or delete statement fails (a database error occurs, or the connection is lost), the procedure catches the failure, exits the loop, and rolls back every change made during the run.
+
+**3. Processing Updates Safely (MySQL PK Filtering)**
+Because MySQL does not support the `WHERE CURRENT OF` cursor clause, we read `comp` into a variable (`v_comp`) and decide the action based on that variable, using the Primary Key (`v_brevet`) as a precise filter in the `UPDATE`/`DELETE` statements — guaranteeing that only the exact row currently being processed is modified.
 
 ---
 

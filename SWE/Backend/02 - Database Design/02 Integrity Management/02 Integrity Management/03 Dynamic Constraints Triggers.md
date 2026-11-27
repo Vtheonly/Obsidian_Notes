@@ -73,6 +73,61 @@ Used when a query returns multiple rows and you need to process them one by one.
 > [!INFO] Handlers
 > You need a `CONTINUE HANDLER` to stop the loop when the cursor runs out of data (NOT FOUND).
 
+### Complete Example: `Process_Completed_Order` (Cursor + Handler)
+A real trigger (`AFTER UPDATE ON Orders`) combining a `CURSOR`, a `CONTINUE HANDLER FOR NOT FOUND`, a `LOOP`/`LEAVE` control structure, and `Inventory` updates — it only runs when an order's status transitions to `'Completed'`:
+
+```sql
+DELIMITER $$
+
+CREATE TRIGGER Process_Completed_Order
+AFTER UPDATE ON Orders
+FOR EACH ROW
+BEGIN
+    -- Declare loop control flags and row variables
+    DECLARE finished INT DEFAULT 0;
+    DECLARE item_id INT;
+    DECLARE qty INT;
+    
+    -- 1. Declare the Cursor
+    DECLARE cursor_items CURSOR FOR 
+        SELECT ProductID, Quantity 
+        FROM Order_Items 
+        WHERE OrderID = NEW.ID;
+        
+    -- 2. Declare a Continue Handler to catch when cursor rows are exhausted
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
+    
+    -- Trigger logic: only run if status changed to 'Completed'
+    IF (NEW.Status = 'Completed' AND OLD.Status <> 'Completed') THEN
+        
+        -- 3. Open the Cursor
+        OPEN cursor_items;
+        
+        -- 4. Loop and Fetch data
+        process_loop: LOOP
+            FETCH cursor_items INTO item_id, qty;
+            
+            -- Exit the loop if the handler flipped the finish flag
+            IF finished = 1 THEN 
+                LEAVE process_loop;
+            END IF;
+            
+            -- Business logic: update stock for each item in the order
+            UPDATE Inventory 
+            SET StockLevel = StockLevel - qty 
+            WHERE ProductID = item_id;
+            
+        END LOOP process_loop;
+        
+        -- 5. Close the Cursor to free up database memory
+        CLOSE cursor_items;
+        
+    END IF;
+END $$
+
+DELIMITER ;
+```
+
 ---
 
 ## 4. Example: The "Pilot Qualification" Trigger (From TD4)

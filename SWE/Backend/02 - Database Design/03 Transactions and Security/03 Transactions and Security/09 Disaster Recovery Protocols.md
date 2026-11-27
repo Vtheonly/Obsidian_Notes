@@ -26,5 +26,25 @@ If a database runs for a year, the WAL becomes enormous. Rebooting and reading a
 
 ## 3. High Availability Redundancy
 For mission-critical systems, WAL and Checkpoints are not enough (what if the hard drive itself burns?). 
+While transaction logs and checkpoints protect against system crashes and power losses, they cannot protect against physical disk damage or catastrophic events (such as fire or flooding). To ensure high availability and prevent data loss, databases use redundancy and replication:
+
+```mermaid
+graph TD
+    subgraph Primary Site
+    Master[(Master DB)] -->|1. Write Transaction| WAL1[Local WAL]
+    end
+    
+    subgraph Secondary Site
+    Slave[(Replica / Slave)] <--|2. Stream WAL| WAL1
+    Slave -->|3. Replay WAL| WAL2[Local DB Replica]
+    end
+```
+
 *   **Replication:** The Master server constantly streams its WAL entries to a Slave server. The Slave plays the WAL entries on its own disk.
-*   **Failover:** If the Master dies, a load balancer instantly redirects all user traffic to the Slave, which becomes the new Master, ensuring zero downtime.
+
+### Replication Models: Synchronous vs. Asynchronous
+
+*   **Synchronous Replication:** The master database waits for confirmation from the replica before acknowledging a commit to the client. This guarantees **zero data loss** if the master fails, but it increases transaction **latency**.
+*   **Asynchronous Replication:** The master commits transactions locally and streams the log records to replicas in the background. This has minimal impact on performance, but any unsynced transactions can be lost if the master fails.
+
+*   **Failover:** If the Master dies, a monitoring system detects the outage and promotes the Slave to become the new Master; a load balancer then instantly redirects all user traffic to the promoted instance, ensuring zero downtime.

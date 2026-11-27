@@ -96,9 +96,9 @@ Based on **Source 20 (SQL PROCEDURAL.pdf, Section 3.11.4, Page 11-12)**, here is
 
 Think of a **Savepoint** as a **"Bookmark"** or a **"Checkpoint"** inside a transaction. It allows you to save your progress temporarily so that if an error occurs later, you don't have to restart the *entire* transaction from zero—you can just go back to the bookmark.
 
-### 1. The Syntax ("On" and "Back")
+### 1. The Syntax ("On", "Back", and "Release")
 
-According to the document, there are two main commands:
+According to the document, there are three main commands:
 
 *   **Creating a Bookmark ("ON"):**
     To creates a savepoint at the current moment.
@@ -107,9 +107,15 @@ According to the document, there are two main commands:
     ```
 
 *   **Jumping Back ("Rollback To"):**
-    To undo everything done *after* the marker, but keep everything done *before* it.
+    To undo everything done *after* the marker, but keep everything done *before* it. It does *not* terminate the transaction; the transaction remains open and active.
     ```sql
     ROLLBACK TO SAVEPOINT my_marker;
+    ```
+
+*   **Destroying a Bookmark ("Release"):**
+    To explicitly destroy the savepoint. It does not roll back or commit any data; it simply frees up the system resources used to track that savepoint.
+    ```sql
+    RELEASE SAVEPOINT my_marker;
     ```
 
 ---
@@ -157,10 +163,40 @@ DELETE FROM Compagnie WHERE comp = 'AF';
 ### 3. "Off and On" (Lifecycle of a Savepoint)
 
 *   **ON (Alive):** A savepoint exists as soon as you type `SAVEPOINT Name;`.
-*   **OFF (Dead):** A savepoint disappears (is destroyed) in three cases:
+*   **OFF (Dead):** A savepoint disappears (is destroyed) in these cases:
     1.  **Commit:** If you type `COMMIT`, the transaction ends, and all savepoints are deleted.
     2.  **Full Rollback:** If you type `ROLLBACK` (without a name), the transaction ends, and savepoints are deleted.
-    3.  **Overwriting:** If you type `ROLLBACK TO SAVEPOINT A`, any savepoints created *after* A (like B or C) are destroyed because you went back in time before they existed.
+    3.  **Rolling Back Below Them:** If you type `ROLLBACK TO SAVEPOINT A`, any savepoints created *after* A (like B or C) are destroyed because you went back in time before they existed.
+    4.  **Explicit Release:** `RELEASE SAVEPOINT savepoint_name;` destroys the savepoint without rolling back or committing any data — it simply frees up the system resources used to track that savepoint.
+    5.  **Overwriting (Redeclaration):** If you declare a savepoint with an existing name (e.g., creating a second `SAVEPOINT P1;` inside the same transaction), the new savepoint **overwrites the old one**. Any rollback to `P1` will jump to the most recently declared checkpoint.
+
+The full savepoint lifecycle, as the engine sees it:
+
+```mermaid
+sequenceDiagram
+    participant Tx as Transaction Session
+    participant DB as Database Engine
+
+    Tx->>DB: START TRANSACTION
+    Tx->>DB: INSERT INTO Compagnie VALUES ('AF', 'Air France')
+    Note over DB: Operation 1 Saved in Buffer
+    Tx->>DB: SAVEPOINT P1
+    Note over DB: Savepoint P1 Registered
+    Tx->>DB: UPDATE Compagnie SET city = 'Blagnac' WHERE comp = 'AF'
+    Note over DB: Operation 2 Saved in Buffer
+    Tx->>DB: SAVEPOINT P2
+    Tx->>DB: DELETE FROM Compagnie WHERE comp = 'C1'
+    Note over DB: Operation 3 Saved in Buffer
+    
+    rect rgb(240, 200, 200)
+        Note over Tx, DB: Error occurs or user changes mind
+        Tx->>DB: ROLLBACK TO SAVEPOINT P2
+        Note over DB: Operation 3 Undone. P2 still exists.
+    end
+
+    Tx->>DB: COMMIT
+    Note over DB: Operation 1 and 2 persisted. Savepoints cleared.
+```
 
 ### 4. Example from Course (Source 20, Page 12)
 

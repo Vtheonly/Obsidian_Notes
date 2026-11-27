@@ -7,7 +7,7 @@ While static constraints are usually defined during the `CREATE TABLE` phase, da
 To modify a constraint, you cannot simply "edit" it. You must entirely **DROP** the old constraint and **ADD** a new one.
 
 ### Dropping a Constraint
-To drop a constraint, you must know its name. If you did not explicitly name it during creation, the DBMS auto-generated a name (which you can find by querying the `information_schema.TABLE_CONSTRAINTS` table).
+To drop a constraint, you must know its name. If you did not explicitly name it during creation, the DBMS auto-generated an internal identifier (e.g., `Students_chk_1` or `SYS_C007142`) — a name that must be retrieved from the database's metadata schema (`information_schema.TABLE_CONSTRAINTS`) before dropping.
 
 ```sql
 -- Dropping a CHECK constraint
@@ -31,8 +31,8 @@ ALTER TABLE Students
 ADD CONSTRAINT unique_nin 
 UNIQUE (national_id_number);
 ```
-> [!warning] Precaution
-> When you add a constraint to an existing table, the DBMS will instantly scan all existing rows. If even one existing row violates the new constraint, the `ALTER TABLE` command will fail and the constraint will not be added.
+> [!WARNING] DDL Operations on Live Systems
+> When you add a constraint to an existing table, the DBMS will instantly scan all existing rows. If even one existing row violates the new constraint, the `ALTER TABLE` command will fail and the constraint will not be added. Moreover, adding a constraint to a live table containing millions of rows acquires an **exclusive schema lock (`X-Lock`)**: this blocks all concurrent writes (`INSERT`/`UPDATE`) while the database engine performs the full-table scan.
 
 ## 2. Advanced Foreign Key Behaviors
 Understanding exactly how Foreign Keys restrict data is crucial for preventing orphaned data.

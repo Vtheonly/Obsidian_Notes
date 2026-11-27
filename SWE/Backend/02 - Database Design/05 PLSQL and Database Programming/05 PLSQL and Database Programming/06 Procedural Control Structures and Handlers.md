@@ -42,13 +42,27 @@ SELECT SUM(amount) INTO total_revenue FROM Orders;
         SET counter = counter + 1;
     END WHILE;
     ```
-*   **LOOP with LEAVE:** An infinite loop that must be manually broken.
+*   **REPEAT Loop (post-tested):** Executes the loop body *first*, then evaluates the test condition. This guarantees the loop body runs **at least once**.
+    ```sql
+    REPEAT
+        SET counter = counter + 1;
+    UNTIL counter >= 10
+    END REPEAT;
+    ```
+*   **LOOP with LEAVE / ITERATE:** An infinite loop that must be manually broken.
     ```sql
     my_loop: LOOP
         SET counter = counter + 1;
+
         IF counter >= 10 THEN
             LEAVE my_loop; -- This is the equivalent of 'break'
         END IF;
+
+        IF counter % 2 = 0 THEN
+            ITERATE my_loop; -- This is the equivalent of 'continue'
+        END IF;
+        
+        -- Additional logic for odd numbers
     END LOOP my_loop;
     ```
 

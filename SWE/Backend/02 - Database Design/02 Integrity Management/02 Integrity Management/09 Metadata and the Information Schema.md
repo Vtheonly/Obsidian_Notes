@@ -7,6 +7,14 @@ The `information_schema` is a virtual database built into standard SQL databases
 
 Every time you execute a `CREATE TABLE` or `ALTER TABLE` command, the DBMS does not just create a physical file on the disk; it also inserts records into the `information_schema` tables to document what you just did.
 
+```mermaid
+flowchart TD
+    A[DB Engine Catalog] --> B(information_schema.TABLES)
+    A --> C(information_schema.COLUMNS)
+    A --> D(information_schema.TABLE_CONSTRAINTS)
+    A --> E(information_schema.REFERENTIAL_CONSTRAINTS)
+```
+
 ## 2. Deconstructing `TABLE_CONSTRAINTS`
 When you need to drop a constraint but don't know its name (because the DBMS auto-generated it), you must query this table.
 
@@ -28,3 +36,16 @@ WHERE TABLE_NAME = 'etudiants';
 
 > [!info] The Illusion of "Dropping" a Constraint
 > When you execute `ALTER TABLE etudiants DROP CONSTRAINT etudiants_chk_1;`, you are not altering the raw data bytes on the disk. Under the hood, the DBMS simply executes a `DELETE FROM information_schema.TABLE_CONSTRAINTS WHERE CONSTRAINT_NAME = 'etudiants_chk_1';`. Once the metadata is gone, the DBMS simply stops checking the rule.
+
+## 3. System Internals of Schema Alterations and Drops
+When you drop a constraint, the database engine does not need to alter any user data stored on disk — the operation runs as a metadata transaction inside the system catalog:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    Client->>Engine: ALTER TABLE Pilote DROP CONSTRAINT check_flight_hours;
+    Engine->>Catalog: DELETE FROM information_schema.TABLE_CONSTRAINTS WHERE CONSTRAINT_NAME = 'check_flight_hours';
+    Note over Catalog: Metadata Removed from System Registry
+    Catalog-->>Engine: Metadata Update Success
+    Engine-->>Client: Success (Constraint Removed instantly)
+```

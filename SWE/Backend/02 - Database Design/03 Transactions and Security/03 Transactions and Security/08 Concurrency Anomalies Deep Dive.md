@@ -14,6 +14,19 @@ Occurs when Transaction 1 (T1) reads data written by Transaction 2 (T2) before T
 | 3 | | `ROLLBACK;` | Balance reverts to 1000 |
 | 4 | T1 makes decisions based on 1200. **(CRITICAL ERROR)** | | |
 
+```mermaid
+sequenceDiagram
+    Note over T1: Initial Balance = 1000
+    Note over T2: Initial Balance = 1000
+    T2->>Database: UPDATE account SET balance = 1200 WHERE id = 1
+    Note over Database: RAM updated to 1200. No Commit.
+    T1->>Database: SELECT balance FROM account WHERE id = 1
+    Note over T1: T1 reads uncommitted value: 1200
+    T2->>Database: ROLLBACK
+    Note over Database: RAM restored to 1000.
+    Note over T1: T1 continues processing using 1200 (CRITICAL ERROR!)
+```
+
 ### B. Non-Repeatable Read
 T1 reads a row. T2 modifies that exact row and commits. T1 reads the row again and sees a different value. The read is not repeatable.
 
@@ -22,6 +35,17 @@ T1 reads a row. T2 modifies that exact row and commits. T1 reads the row again a
 | 1 | `SELECT balance...` (Reads 1000) | | Balance = 1000 |
 | 2 | | `UPDATE account SET balance = 1200; COMMIT;` | Balance = 1200 (Committed) |
 | 3 | `SELECT balance...` (Reads 1200) **(INCONSISTENCY)** | | |
+
+```mermaid
+sequenceDiagram
+    T1->>Database: SELECT balance FROM account WHERE id = 1
+    Note over T1: T1 reads balance = 1000
+    T2->>Database: UPDATE account SET balance = 1200 WHERE id = 1
+    T2->>Database: COMMIT
+    Note over Database: Permanent change written to disk
+    T1->>Database: SELECT balance FROM account WHERE id = 1
+    Note over T1: T1 reads balance = 1200 (Inconsistent read within same Tx)
+```
 
 ### C. Phantom Read
 Similar to a Non-Repeatable Read, but involves *ranges* of data. T1 queries a set of rows. T2 inserts or deletes a row in that range and commits. T1 runs the exact same query and gets a different number of rows.
@@ -32,7 +56,37 @@ Similar to a Non-Repeatable Read, but involves *ranges* of data. T1 queries a se
 | 2 | | `INSERT INTO account (balance) VALUES (1500); COMMIT;` | 4 matching rows exist |
 | 3 | `SELECT * WHERE balance > 1000;` (Finds 4 rows) **(PHANTOM ROW)** | | |
 
-### D. Deadlocks (Interblocage)
+```mermaid
+sequenceDiagram
+    T1->>Database: SELECT * FROM account WHERE balance > 1000
+    Note over T1: Returns 3 rows
+    T2->>Database: INSERT INTO account (id, balance) VALUES (99, 1500)
+    T2->>Database: COMMIT
+    T1->>Database: SELECT * FROM account WHERE balance > 1000
+    Note over T1: Returns 4 rows (Row 99 is a "phantom" row)
+```
+
+### D. Lost Update (Mise à Jour Perdue)
+A lost update occurs when two transactions read the same data, calculate a new value based on that data, and then attempt to write their updates back to the database. Without proper locking, the second write can overwrite the first write, causing one of the updates to be lost.
+
+| Time | Transaction 1 (T1) | Transaction 2 (T2) | State of Database |
+| :--- | :--- | :--- | :--- |
+| 1 | `SELECT balance...` (Reads 100) | | Balance = 100 |
+| 2 | | `SELECT balance...` (Reads 100) | Balance = 100 |
+| 3 | `UPDATE account SET balance = 110 (100 + 10);` | | Balance = 110 (Uncommitted) |
+| 4 | | `UPDATE account SET balance = 105 (100 + 5);` | **Balance = 105 (T1's update is lost!)** |
+
+```mermaid
+sequenceDiagram
+    Note over T1: Balance = 100 (Read)
+    Note over T2: Balance = 100 (Read)
+    T1->>Database: UPDATE account SET balance = 110 (100 + 10)
+    Note over Database: Balance updated to 110
+    T2->>Database: UPDATE account SET balance = 105 (100 + 5)
+    Note over Database: Balance updated to 105 (T1's update is lost!)
+```
+
+### E. Deadlocks (Interblocage)
 A mutual blockage where T1 holds Resource A and waits for Resource B, while T2 holds Resource B and waits for Resource A.
 
 ```mermaid

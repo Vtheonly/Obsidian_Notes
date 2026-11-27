@@ -16,7 +16,8 @@ Unlike standard procedures, **you never call a trigger manually**. It waits for 
 Triggers follow the **Event-Condition-Action** logic:
 1.  **Event:** A modification command: `INSERT`, `UPDATE`, or `DELETE`.
 2.  **Timing:** When to fire? `BEFORE` the modification hits the disk, or `AFTER` it is confirmed.
-3.  **Action:** The SQL code to execute (validation, auditing, calculation).
+3.  **Condition (optional):** An optional logic check — either a `WHEN` clause on the trigger definition or an `IF` statement inside the trigger body — that determines whether the trigger's main logic should run.
+4.  **Action:** The SQL code to execute (validation, auditing, calculation).
 
 ### 1.3 Key Variables: `NEW` and `OLD`
 Inside a trigger, you have access to two "pseudo-rows" that hold the data involved in the transaction (**Source 20, Section 4.4**):
@@ -28,6 +29,7 @@ Inside a trigger, you have access to two "pseudo-rows" that hold the data involv
 
 > [!TIP] Access Syntax
 > You access columns using dot notation: `NEW.column_name` or `OLD.column_name`.
+> Attempting to read or modify `OLD` during an `INSERT` statement, or `NEW` during a `DELETE` statement, will cause a compilation or runtime error.
 
 ---
 
@@ -57,6 +59,32 @@ END;
     *   **Use case:** Logging (Audit), updating related tables (denormalization), cascading changes.
     *   *Limitation:* You cannot change `NEW.value` here (it's already written).
 
+The full execution pipeline, showing where each timing runs relative to the static schema constraint check and the storage buffer write:
+
+```mermaid
+flowchart TD
+    Start[Write Request Received] --> B{Timing: BEFORE Trigger?}
+    B -- Yes --> C[Run BEFORE Trigger Logic]
+    C --> D[Modify NEW record value in memory or signal error]
+    D --> E[Run Static Schema Constraints Check]
+    B -- No --> E
+    E --> F{Constraints Passed?}
+    F -- No --> G[Rollback Statement]
+    F -- Yes --> H[Write Row to Storage Page Buffer]
+    H --> I{Timing: AFTER Trigger?}
+    I -- Yes --> J[Run AFTER Trigger Logic]
+    J --> K[Log changes, audit, or cascade other tables]
+    K --> End[Statement Completed Successfully]
+    I -- No --> End
+```
+
+### 2.3 Statement-Level vs. Row-Level Triggers (`FOR EACH ROW`)
+Triggers can run at two different scopes:
+*   **Row-Level Triggers (`FOR EACH ROW`)**:
+    If a single `UPDATE` statement modifies 500 rows, a row-level trigger will execute 500 separate times—once for each individual row. This is the only type of trigger that has access to the `NEW` and `OLD` variables, making it necessary for row-by-row validation.
+*   **Statement-Level Triggers**:
+    If an `UPDATE` statement modifies 500 rows, a statement-level trigger will run exactly once. This trigger cannot access row-specific `NEW` or `OLD` context variables. It is typically used to validate broad transaction rules, run administrative tasks, or check lock patterns.
+
 ---
 
 ## Part 3: Use Cases & Scenarios (Dynamic Integrity)
@@ -70,8 +98,29 @@ END;
 ### 3.2 Denormalization Maintenance
 *   If you store a `Total_Sales` column in a `Store` table (for performance), you need a trigger on the `Sales` table to update that total every time a sale is made.
 
+```sql
+CREATE TRIGGER sync_category_product_count
+AFTER INSERT ON Products
+FOR EACH ROW
+BEGIN
+    UPDATE Product_Categories
+    SET Active_Product_Count = Active_Product_Count + 1
+    WHERE ID = NEW.CategoryID;
+END;
+```
+
 ### 3.3 Auditing
 *   Recording who changed what and when into a `Logs` table.
+
+```sql
+CREATE TRIGGER audit_deleted_employees
+AFTER DELETE ON Employees
+FOR EACH ROW
+BEGIN
+    INSERT INTO Audits_Log (Table_Name, Record_Key, Operation, Altered_By, Timestamp)
+    VALUES ('Employees', OLD.ID, 'DELETE', CURRENT_USER, NOW());
+END;
+```
 
 ---
 
@@ -81,7 +130,9 @@ The following exercises are from **TD N°4 (MySQL Procedural)** and demonstrate 
 
 **Context Schema:**
 *   `Pilote (brevet, nom, nbHVol, comp, nbqualif, grade)`
+    *   *Columns:* `brevet` (License ID - PK), `nom` (Name), `nbHVol` (Flight Hours), `comp` (Airline Code), `nbqualif` (Count of active qualifications), `grade` (Pilot Rank)
 *   `Qualifications (brevet, typa, dateexpiration)`
+    *   *Columns:* `brevet` (License ID - FK), `typa` (Aircraft Type - Composite PK), `dateexpiration` (Expiration Date)
 
 ### Exercise 7: Automatic Counter Decrement (`AFTER DELETE`)
 **Scenario:** The table `Pilote` has a column `nbqualif` which stores the count of qualifications a pilot holds. We must ensure this number stays accurate when a qualification is deleted.
@@ -90,13 +141,15 @@ The following exercises are from **TD N°4 (MySQL Procedural)** and demonstrate 
 ```sql
 DELIMITER $
 
+DROP TRIGGER IF EXISTS TrigDelQualif $
+
 CREATE TRIGGER TrigDelQualif
 AFTER DELETE ON Qualifications
 FOR EACH ROW
 BEGIN
     -- Logic: Find the pilot who owned this qualification and decrease their count
     UPDATE Pilote 
-    SET nbqualif = nbqualif - 1
+    SET nbqualif = COALESCE(nbqualif, 1) - 1
     WHERE brevet = OLD.brevet;
 END $
 
@@ -106,6 +159,7 @@ DELIMITER ;
 1.  **Timing:** `AFTER` is appropriate because we only want to update the count if the deletion actually succeeded.
 2.  **Event:** `DELETE`.
 3.  **Reference:** We use `OLD.brevet` because the row in `Qualifications` is being removed; we need the ID that *used* to be there.
+4.  **Defensive Programming (`COALESCE` + `DROP TRIGGER IF EXISTS`):** If a pilot's `nbqualif` value is `NULL`, subtracting 1 directly would result in `NULL` due to SQL's null propagation rules (`NULL - 1 = NULL`). Using `COALESCE(nbqualif, 1)` ensures that any initial `NULL` safely defaults to a base integer. The leading `DROP TRIGGER IF EXISTS` lets the script be re-run safely during development.
 
 ---
 
@@ -116,12 +170,14 @@ DELIMITER ;
 ```sql
 DELIMITER $
 
+DROP TRIGGER IF EXISTS TrigInsQualif $
+
 CREATE TRIGGER TrigInsQualif
 AFTER INSERT ON Qualifications
 FOR EACH ROW
 BEGIN
     UPDATE Pilote 
-    SET nbqualif = nbqualif + 1
+    SET nbqualif = COALESCE(nbqualif, 0) + 1
     WHERE brevet = NEW.brevet;
 END $
 
@@ -129,6 +185,7 @@ DELIMITER ;
 ```
 **Reasoning:**
 1.  **Reference:** We use `NEW.brevet` because this is the pilot ID associated with the newly inserted row.
+2.  **Null-Handling Strategy (`COALESCE`):** If `nbqualif` starts as `NULL`, `COALESCE` defaults it to `0` and increments it to `1`, preventing `NULL` calculation errors. The leading `DROP TRIGGER IF EXISTS` guarantees clean re-creation.
 
 ---
 
@@ -139,27 +196,32 @@ DELIMITER ;
 ```sql
 DELIMITER $
 
+DROP TRIGGER IF EXISTS TrigUpdQualif $
+
 CREATE TRIGGER TrigUpdQualif
 AFTER UPDATE ON Qualifications
 FOR EACH ROW
 BEGIN
-    -- 1. Remove from the old pilot
-    UPDATE Pilote 
-    SET nbqualif = nbqualif - 1
-    WHERE brevet = OLD.brevet;
+    -- Check if the qualification was transferred to a different pilot
+    IF (OLD.brevet <> NEW.brevet) THEN
+        -- 1. Remove from the old pilot
+        UPDATE Pilote 
+        SET nbqualif = COALESCE(nbqualif, 1) - 1
+        WHERE brevet = OLD.brevet;
 
-    -- 2. Add to the new pilot
-    UPDATE Pilote 
-    SET nbqualif = nbqualif + 1
-    WHERE brevet = NEW.brevet;
+        -- 2. Add to the new pilot
+        UPDATE Pilote 
+        SET nbqualif = COALESCE(nbqualif, 0) + 1
+        WHERE brevet = NEW.brevet;
+    END IF;
 END $
 
 DELIMITER ;
 ```
 **Reasoning:**
 *   An `UPDATE` is conceptually a DELETE of the old state and an INSERT of the new state.
-*   If `OLD.brevet` is the same as `NEW.brevet`, the count performs `-1` then `+1`, resulting in no change (correct).
-*   If they are different, the counts are adjusted correctly for both pilots.
+*   **Condition Validation Check (`OLD.brevet <> NEW.brevet`):** Without this `IF` block, updating other columns of a qualification row (such as changing the expiration date `dateexpiration`) would trigger unnecessary writes to the `Pilote` table, decrementing and then incrementing the same pilot's counter. Wrapping the logic in an `IF` block ensures updates are only processed when a qualification is actually transferred between pilots.
+*   If the brevets are different, the counts are adjusted correctly for both pilots, with `COALESCE` guarding against `NULL` counters (`NULL - 1 = NULL`, `NULL + 1 = NULL`).
 
 ---
 
@@ -175,23 +237,25 @@ DELIMITER ;
 ```sql
 DELIMITER $
 
+DROP TRIGGER IF EXISTS TrigInsGrade $
+
 CREATE TRIGGER TrigInsGrade
 BEFORE INSERT ON Pilote
 FOR EACH ROW
 BEGIN
     -- Rule 1: Validate Commander (CDB)
-    IF NEW.grade = 'CDB' AND (NEW.nbHVol NOT BETWEEN 1000 AND 4000) THEN
+    IF NEW.grade = 'CDB' AND (NEW.nbHVol NOT BETWEEN 1000 AND 4000 OR NEW.nbHVol IS NULL) THEN
         SET NEW.grade = NULL; 
-        -- Logic: "You claimed to be CDB but don't have the hours. Rejected."
+        -- Logic: "You claimed to be CDB but don't have the hours (or none declared). Rejected."
     END IF;
 
     -- Rule 2: Validate Copilot (COPI)
-    IF NEW.grade = 'COPI' AND (NEW.nbHVol NOT BETWEEN 100 AND 1000) THEN
+    IF NEW.grade = 'COPI' AND (NEW.nbHVol NOT BETWEEN 100 AND 1000 OR NEW.nbHVol IS NULL) THEN
         SET NEW.grade = NULL;
     END IF;
 
     -- Rule 3: Validate Instructor (INST)
-    IF NEW.grade = 'INST' AND NEW.nbHVol < 3000 THEN
+    IF NEW.grade = 'INST' AND (NEW.nbHVol < 3000 OR NEW.nbHVol IS NULL) THEN
         SET NEW.grade = NULL;
     END IF;
 END $
@@ -201,6 +265,7 @@ DELIMITER ;
 **Reasoning:**
 *   **Timing:** Must be `BEFORE`. We need to intercept the data (`NEW.grade`) and modify it *before* it is written to the database.
 *   **Action:** Using `SET NEW.col = val` modifies the data in-flight.
+*   **Null-Safety Checking (`OR NEW.nbHVol IS NULL`):** If the insert statement does not specify `nbHVol` (leaving it `NULL`), the database's range evaluation (`NULL < 1000`) would evaluate to `UNKNOWN` in SQL's three-valued logic (3VL), silently letting the row pass. Explicitly checking `OR NEW.nbHVol IS NULL` ensures the trigger handles missing flight hour data safely by forcing the grade to `NULL`.
 
 ---
 
@@ -211,14 +276,16 @@ DELIMITER ;
 ```sql
 DELIMITER $
 
+DROP TRIGGER IF EXISTS CheckMaxQualif $
+
 CREATE TRIGGER CheckMaxQualif
 BEFORE INSERT ON Qualifications
 FOR EACH ROW
 BEGIN
-    DECLARE current_count INT;
+    DECLARE current_count INT DEFAULT 0;
 
-    -- Check current status
-    SELECT nbqualif INTO current_count 
+    -- Check current status (COALESCE guards against a NULL nbqualif counter)
+    SELECT COALESCE(nbqualif, 0) INTO current_count 
     FROM Pilote 
     WHERE brevet = NEW.brevet;
 
@@ -257,7 +324,15 @@ DROP TRIGGER IF EXISTS TriggerName;
 
 ### 5.2 Restrictions
 1.  **No Transactions:** You cannot explicitly use `START TRANSACTION`, `COMMIT`, or `ROLLBACK` inside a trigger. The trigger becomes part of the transaction that fired it.
-2.  **Recursion:** Be careful of updating the same table you are triggering on (Mutating Table Error), though MySQL handles some cases, infinite loops are possible (Update T1 -> Trigger Updates T1 -> Trigger Updates T1...).
+2.  **Recursion / Mutating Table Error:** Be careful of updating the same table you are triggering on — when a trigger fires on a table, that table is in a *mutating state* (undergoing modification), and in many database engines a row-level trigger is prohibited from querying or modifying the table it is attached to, since attempting to do so can result in an infinite execution loop or a deadlock. Though MySQL handles some cases, infinite loops are still possible (Update T1 -> Trigger Updates T1 -> Trigger Updates T1...):
+
+```mermaid
+flowchart TD
+    A[Update Row in Table A] --> B[Trigger on Table A Fires]
+    B --> C[Trigger updates Table A]
+    C --> B
+    Note over B,C: Infinite Recursion Stack Overflow / Locked Session
+```
 
 ---
 

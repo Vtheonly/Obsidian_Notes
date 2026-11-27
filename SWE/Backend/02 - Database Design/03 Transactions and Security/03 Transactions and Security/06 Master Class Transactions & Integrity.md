@@ -149,10 +149,17 @@ When multiple users access data simultaneously, specific problems occur (**Sourc
 *   **Isolation:** If two people press buttons on two adjacent machines at the exact same millisecond, the internal power supply handles them separately.
 *   **Durability:** Once the soda falls (transaction complete), it is yours. Even if the power cuts out immediately after, you still have the soda.
 
+Three other distinct non-IT analogies (one per property):
+*   **Consistency — Double-Entry Bookkeeping:** Every financial transaction must be recorded as both a debit and a credit. The total assets must always balance with liabilities plus equity. Money cannot appear or disappear without a balancing entry.
+*   **Isolation — Fitting Rooms in a Clothing Store:** Multiple customers can try on clothes at the same time. Each customer has their own private space. What happens inside a fitting room is invisible to other customers until they step out with their final selections.
+*   **Durability — Signing a Notarized Contract:** Once a contract is signed by all parties and notarized, it is legally binding and permanent. Even if the office building later burns down, the legal agreement remains in effect because duplicate records are safely stored.
+
 **Q3. Why banking needs strict Atomicity and Durability?**
 *   *Reasoning:*
     *   **Atomicity:** If money leaves Account A but never arrives in Account B due to a crash, money is destroyed. If it arrives in B but isn't removed from A, money is created. Both are illegal in banking.
+        *   *Scenario & Consequence:* A customer transfers \$500 from Account A to Account B; the system debits A but crashes before crediting B. If atomicity is violated, \$500 is lost from A but never credited to B — resulting in an incorrect ledger, balancing errors, and legal liability for the bank.
     *   **Durability:** If a deposit is confirmed (`COMMIT`), the client walks away. If a server crash 5 minutes later erases that deposit, the bank loses credibility and legal standing.
+        *   *Scenario & Consequence:* A customer deposits \$10,000 in cash and the system confirms the deposit; power is lost before the transaction is flushed to disk. Upon reboot the deposit is missing from the database — the customer holds a physical receipt but the bank has no electronic record, leading to loss of customer trust, regulatory audits, and financial disputes.
 
 ---
 
@@ -170,11 +177,28 @@ COMMIT;
 ```
 
 **Q2. Crash after Debit (Ali) but before Credit (Sara).**
-*   *State:* Ali = 400 (in memory/log), Sara = 300.
-*   *Event:* Power failure.
-*   *Recovery:* The system restarts. It reads the Log. It finds the `UPDATE` for Ali but **no** `COMMIT` record.
-*   *Action:* **UNDO**. The system rolls back the change to Ali.
-*   *Final State:* Ali = 500, Sara = 300. (The transfer effectively never happened).
+*   *Pre-crash state (RAM / WAL trace):* The transaction is marked **Active** in the log; Ali's balance in RAM is updated to 400; the update log record for Ali has been written to disk (enforcing the WAL rule); Sara's balance remains 300.
+*   *Event:* Power failure — all uncommitted updates residing only in RAM are lost.
+*   *Recovery:* The system restarts and scans the Log. It finds the `START TRANSACTION` record and the `UPDATE` for Ali but **no** `COMMIT` record — the transaction is incomplete.
+*   *Action:* **UNDO**. The system rolls back the change to Ali, using the pre-image data from the log to restore 500.
+*   *Final State:* Ali = 500, Sara = 300. (The transfer effectively never happened — the database is restored to a consistent state).
+
+**Crash Timeline (Gantt):**
+
+```mermaid
+gantt
+    title Transaction Interruption Timeline
+    dateFormat  X
+    axisFormat %s
+    section Server Memory
+    Ali=400, Sara=300 (Dirty RAM) :active, 1, 3
+    Power Loss (RAM Lost) :crit, milestone, 3, 3
+    section Database Recovery
+    Scan Log for active Tx : 4, 5
+    Identify incomplete Tx : 5, 6
+    Execute UNDO pass : 6, 7
+    Restore initial balances : 7, 8
+```
 
 **Q3. How must the SGBD react to maintain consistency?**
 *   *Solution:* It must enforce the **Atomicity** property using the **WAL (Write-Ahead Logging)** protocol. By ensuring changes are logged before being applied, it guarantees that incomplete sets of operations are fully reversed (Rolled Back).
@@ -193,6 +217,16 @@ COMMIT;
     3.  T1: `ROLLBACK;` (Stock goes back to 100).
     4.  **Result:** T2 thinks stock is 90, but it is actually 100. T2 processed invalid data.
 
+**Trace Table:**
+
+| Time | Transaction 1 ($T_1$) | Transaction 2 ($T_2$) | Stock value in Database | Explanation |
+| :--- | :--- | :--- | :---: | :--- |
+| **$t_1$** | `START TRANSACTION;` | | 100 | $T_1$ begins execution. |
+| **$t_2$** | `UPDATE Produits SET stock = stock - 10 WHERE id=1;` | | 90 (Uncommitted) | $T_1$ updates stock in RAM. |
+| **$t_3$** | | `SELECT stock FROM Produits WHERE id=1;` | 90 (Uncommitted) | $T_2$ reads uncommitted stock value (90). |
+| **$t_4$** | `ROLLBACK;` | | 100 | $T_1$ encounters an error and aborts, reverting changes. |
+| **$t_5$** | | *Processing decisions based on stock = 90* | 100 | $T_2$ processes decisions using an invalid stock level. |
+
 **Q2. Illustrate Lost Update.**
 *   *Scenario:*
     1.  T1: Reads stock (100).
@@ -201,25 +235,59 @@ COMMIT;
     4.  T2: Updates stock to 95 (`100 - 5`) and Commits.
     5.  **Result:** The final stock is 95. T1's subtraction of 10 was completely overwritten and lost. Correct math should be 85.
 
+**Trace Table:**
+
+| Time | Transaction 1 ($T_1$) | Transaction 2 ($T_2$) | Stock value in Database | Explanation |
+| :--- | :--- | :--- | :---: | :--- |
+| **$t_1$** | `SELECT stock FROM Produits WHERE id=1;` (Reads 100) | | 100 | $T_1$ reads current stock (100). |
+| **$t_2$** | | `SELECT stock FROM Produits WHERE id=1;` (Reads 100) | 100 | $T_2$ reads current stock (100). |
+| **$t_3$** | `UPDATE Produits SET stock = 90 WHERE id=1;` | | 90 (Uncommitted) | $T_1$ updates stock based on its read. |
+| **$t_4$** | | `UPDATE Produits SET stock = 95 WHERE id=1;` | 95 (Uncommitted) | $T_2$ overwrites $T_1$'s update based on its read. |
+| **$t_5$** | `COMMIT;` | | 95 | $T_1$ commits its changes. |
+| **$t_6$** | | `COMMIT;` | **95** | $T_2$ commits. $T_1$'s update is permanently lost. |
+
+*Correct Value:* The final stock should be 85 ($100 - 10 - 5$). Because of the lost update, the final stock is 95.
+
 **Q3. Solution?**
 *   *Solution:* Use **Pessimistic Locking** (Verrouillage) or set the Isolation Level to **REPEATABLE READ** or **SERIALIZABLE**. In SQL: `SELECT ... FOR UPDATE` keeps a lock on the row until the transaction ends.
+*   **To prevent Dirty Reads:** Set the isolation level to at least **READ COMMITTED** — read queries can only access committed data, typically by acquiring short-lived shared locks that block until any concurrent exclusive locks are released.
+*   **To prevent Lost Updates:** Use **Pessimistic Locking** during read operations — `SELECT ... FOR UPDATE` acquires an exclusive lock on the row immediately, forcing concurrent transactions to wait until the lock is released.
+
+```sql
+-- Secure update pattern using pessimistic locking
+START TRANSACTION;
+SELECT stock FROM Produits WHERE id = 1 FOR UPDATE; -- Acquires an Exclusive (X) lock
+-- Calculate new stock locally: 100 - 10 = 90
+UPDATE Produits SET stock = 90 WHERE id = 1;
+COMMIT; -- Lock is released here, allowing other transactions to proceed
+```
 
 ---
 
 ### Exercise 5: Log Recovery Analysis
 **Source:** TD n°5 - Exercice 5
 
-**Log Content:**
-1.  T1: UPDATE ... id=1 (-200)
-2.  T2: UPDATE ... id=2 (+200)
-3.  COMMIT T1
-4.  **CRASH** (Before COMMIT T2)
+**Log Content (as scanned by the recovery manager on restart):**
+
+```
+[LSN 101] T1: START
+[LSN 102] T1: UPDATE Comptes SET solde = solde - 200 WHERE id = 1
+[LSN 103] T2: START
+[LSN 104] T2: UPDATE Comptes SET solde = solde + 200 WHERE id = 2
+[LSN 105] T1: COMMIT
+=== SYSTEM CRASH === (Before T2 could commit)
+```
 
 **Q1. Explain SGBD action (REDO/UNDO).**
-*   **Transaction T1:** The log contains `COMMIT T1`.
+*   **Transaction T1:** The log contains `COMMIT T1` (LSN 105).
     *   *Action:* **REDO**. The system ensures the -200 change on id=1 is applied to the disk.
 *   **Transaction T2:** The log contains updates but **no** `COMMIT T2`.
     *   *Action:* **UNDO**. The system reverses the +200 change on id=2.
+
+**Recovery Passes (Simplified ARIES):**
+1.  **Analysis Pass:** The engine scans the log forward, identifying $T_1$ as committed and $T_2$ as active/uncommitted.
+2.  **REDO Pass (Roll Forward):** The engine re-applies all logged updates starting from the oldest unwritten page (LSN 102). It re-applies the update for $T_1$ (LSN 102) **and** the update for $T_2$ (LSN 104) to restore the database to its state at the moment of the crash ("repeats history").
+3.  **UNDO Pass (Roll Back):** The engine scans the log backward to reverse the changes of uncommitted transactions. It finds the update for $T_2$ at LSN 104 and reverses it, writing a **Compensating Log Record (CLR)** to disk so the rollback itself survives repeated crashes. The change made by $T_1$ is left intact.
 
 **Q2. Final State.**
 *   Account 1: Decreased by 200 (Saved).
@@ -241,7 +309,7 @@ COMMIT;
 START TRANSACTION;
 UPDATE Compte_Etudiant SET solde = solde - frais WHERE id = X;
 INSERT INTO Inscriptions VALUES (X, Y, Date);
-UPDATE Cours SET places = places - 1 WHERE id = Y;
+UPDATE Cours SET places = places - 1 WHERE cours_id = Y AND places > 0;
 COMMIT;
 ```
 
@@ -250,7 +318,9 @@ COMMIT;
 *   *Result:* **Automatic Rollback**. The money returns to the student account, and the line in `Inscriptions` is removed.
 
 **Q3. What must the system guarantee?**
-*   *Solution:* **Consistency (Cohérence)**. The sum of enrolled students must match the reduction in available places. The system guarantees this via **Atomicity** (all 3 steps happen, or none happen) and **Isolation** (no one else takes the last seat while this is processing).
+*   *Solution:* **Consistency (Cohérence)**. The sum of enrolled students must match the reduction in available places. The database must prevent enrollment if the course has no available seats — enforced defensively by the check embedded in the update statement: `WHERE cours_id = ... AND places > 0`.
+*   **Atomicity (All-or-Nothing):** The engine uses the **Write-Ahead Log (WAL)** to track all modifications. If a crash occurs mid-process, the engine uses the log to roll back any partial changes, ensuring the enrollment steps either all succeed or all fail together.
+*   **Isolation:** The database must prevent two students from concurrently taking the last available seat in a course. The engine guarantees this by acquiring **Exclusive (X) locks** on the updated rows during the transaction, forcing concurrent updates to queue until the transaction commits.
 
 ---
 
@@ -277,8 +347,9 @@ BEGIN
     
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
 
-    -- Start Transaction explicitly (Good practice with locking)
-    START TRANSACTION; -- or SET AUTOCOMMIT=0
+    -- Disable auto-commit and start the transaction explicitly (Good practice with locking)
+    SET AUTOCOMMIT = 0;
+    START TRANSACTION;
     
     OPEN cur_pilote;
 
